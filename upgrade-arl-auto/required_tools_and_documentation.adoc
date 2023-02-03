@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/required_tools_and_documentation.html 
+keywords: required, tools, documentation, install, worksheet, ontap 
+summary: 'Debe disponer de ciertas herramientas y documentación para actualizar las controladoras que ejecutan ONTAP 9.5 a 9.7 mediante `system controller replace` comandos.' 
+---
+= Herramientas y documentación necesarias
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Debe disponer de herramientas específicas para instalar el nuevo hardware y debe consultar otros documentos durante el proceso de actualización.
+
+Necesita las siguientes herramientas para realizar el grado up:
+
+* Correa de conexión a tierra
+* Destornillador Phillips número 2
+
+
+Vaya a la link:other_references.html["Referencias"] para acceder a la lista de documentos de referencia y sitios de referencia necesarios para esta actualización

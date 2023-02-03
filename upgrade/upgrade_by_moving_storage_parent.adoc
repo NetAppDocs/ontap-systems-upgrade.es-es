@@ -1,0 +1,29 @@
+---
+permalink: upgrade/upgrade-by-moving-storage-parent.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: Si va a actualizar moviendo almacenamiento, debe preparar los nodos originales y configurar los nuevos. Algunos modelos de plataforma admiten la transferencia de almacenamiento interno a los nuevos nodos. Debe reasignar discos y restaurar la configuración de volumen raíz a los nodos nuevos y configurar puertos de red. La actualización moviendo almacenamiento es un procedimiento disruptivo. 
+---
+= Flujo de trabajo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si va a actualizar el hardware de una controladora, mueva almacenamiento, prepare los nodos originales y configure los nuevos. Algunos modelos de plataforma admiten la transferencia de almacenamiento interno a los nuevos nodos. Debe reasignar discos y restaurar la configuración de volumen raíz a los nodos nuevos y configurar puertos de red. La actualización moviendo almacenamiento es un procedimiento disruptivo.
+
+image::../upgrade/media/workflow_for_upgrading_by_moving_storage.png[Flujo de trabajo para actualizar el hardware de la controladora trasladando el almacenamiento]
+
+.Pasos
+. xref:upgrade-prepare-when-moving-storage.adoc[Prepárese para la actualización cuando cambie el almacenamiento]
+. xref:upgrade-shutdown-remove-original-nodes.adoc[Apague los nodos originales]
+. xref:upgrade-remove-disk-ownership-new-nodes.adoc[Elimine la propiedad de los discos conectados a los nuevos nodos]
+. xref:upgrade-reset-default-configuration-node3-and-node4.adoc[Restablece la configuración predeterminada en los nuevos nodos]
+. xref:upgrade-install-new-nodes.adoc[Instale los nodos nuevos]
+. xref:upgrade-set-up-new-nodes.adoc[Configure los nodos nuevos]
+. xref:upgrade-optional-move-internal-storage.adoc[Opcional: Mueva almacenamiento interno o convierta el sistema a una bandeja de unidades]
+. xref:upgrade-attach-shelves-reassign-disks.adoc[Conecte las bandejas de almacenamiento y reasigne la propiedad de disco]
+. xref:upgrade-restore-root-volume-config.adoc[Restaure la configuración del volumen raíz]
+. xref:upgrade-complete.adoc[Complete la actualización]
+

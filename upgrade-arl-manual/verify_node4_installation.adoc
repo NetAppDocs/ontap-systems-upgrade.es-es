@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/verify_node4_installation.html 
+keywords: install, node4, node3, verify, communicate 
+summary: Verifique la instalación y la comunicación del nodo 4 con el nodo 3 durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.7 o una versión anterior. 
+---
+= Verifique la instalación del nodo 4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Después de instalar y arrancar el nodo 4, es necesario verificar que se haya instalado correctamente, que forme parte del clúster y que se pueda comunicar con el nodo 3.
+
+.Pasos
+. En el aviso del sistema, inicie sesión en el nodo 4.
+. Verifique que el nodo 4 forme parte del mismo clúster que el nodo 3 y que esté en buen estado:
++
+`cluster show`
+
+. Verifique que el nodo 4 se pueda comunicar con el nodo 3 y que todas las LIF sean up:
++
+`network interface show -curr-node _node4_`
+
+. Realice una de las siguientes acciones:
++
+[cols="35,65"]
+|===
+| Si el nodo 4 es... | Realice lo siguiente... 
+
+
+| En un chasis independiente del nodo 3  a| 
+Conecte la interconexión de alta disponibilidad entre los nodos siguiendo estos pasos:
+
+.. Conecte el puerto de interconexión superior del nodo 3 al puerto de interconexión superior del nodo 4.
+.. Conecte el puerto de interconexión inferior del nodo 3 al puerto de interconexión inferior del nodo 4.
+.. Vaya a. <<Paso 5,Paso 5>>.
+
+
+
+
+| En el mismo chasis que el nodo 3 | Vaya a. <<Paso 5,Paso 5>>. No es necesario conectar manualmente la interconexión de alta disponibilidad entre los nodos; en configuraciones de mismo chasis, la interconexión de alta disponibilidad está conectada automáticamente a través del plano posterior. 
+|===
+. [[Step5]]realice una de las siguientes acciones:
++
+[cols="35,65"]
+|===
+| Si el clúster es... | Realice lo siguiente... 
+
+
+| En un entorno SAN | Completo <<Step6,Paso 6>> y vaya a la sección link:move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html["Mueva los LIF de datos NAS que pertenecen al nodo 2 de nodo 3 a nodo 4 y verifique las LIF DE SAN en nodo 4"]. 
+
+
+| No en un entorno SAN | Vaya al paso 6 y vaya a la sección link:move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html["Mueva los LIF de datos NAS que pertenecen al nodo 2 de nodo 3 a nodo 4 y verifique las LIF DE SAN en nodo 4"]. 
+|===
+. [[Step6]]Compruebe que tanto el nodo 3 como el nodo 4 se encuentran en quórum introduciendo el siguiente comando en uno de los nodos:
++
+`event log show -messagename scsiblade.*`
+
++
+En el siguiente ejemplo, se muestra el resultado cuando los nodos del clúster están en quórum:
+
++
+[listing]
+----
+cluster::> event log show -messagename scsiblade.*
+Time                Node   Severity      Event
+------------------- ------ ------------- --------------------------
+8/13/2012 14:03:51  node1  INFORMATIONAL scsiblade.in.quorum: The scsi-blade ...
+8/13/2012 14:03:51  node2  INFORMATIONAL scsiblade.in.quorum: The scsi-blade ...
+8/13/2012 14:03:48  node3  INFORMATIONAL scsiblade.in.quorum: The scsi-blade ...
+8/13/2012 14:03:43  node4  INFORMATIONAL scsiblade.in.quorum: The scsi-blade ...
+----
+

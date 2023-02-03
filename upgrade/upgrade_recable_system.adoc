@@ -1,0 +1,31 @@
+---
+permalink: upgrade/upgrade-recable-system.html 
+sidebar: sidebar 
+keywords: run, diagnostic, recable, controller, module, storage, network, connection, recable the system 
+summary: Después de ejecutar los diagnósticos, debe recuperar las conexiones de red y de almacenamiento del módulo del controlador. 
+---
+= Presentación del sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de ejecutar los diagnósticos, debe recuperar las conexiones de red y de almacenamiento del módulo del controlador.
+
+. Recuperar el sistema.
+. Compruebe que el cableado sea correcto mediante Config Advisor.
++
+.. Descargue e instale Config Advisor desde el sitio de soporte de NetApp.
++
+http://mysupport.netapp.com/["mysupport.netapp.com"]
+
+.. Introduzca la información del sistema de destino y, a continuación, haga clic en *recopilar datos*.
+.. Haga clic en la ficha *cableado* y, a continuación, examine la salida.
++
+Asegúrese de que se muestren todas las bandejas de discos y todos los discos aparecen en el resultado, corrigiendo los problemas de cableado que encuentre.
+
+.. Compruebe otro cableado haciendo clic en la ficha correspondiente y, a continuación, examinando el resultado de Config Advisor.
+
+
+

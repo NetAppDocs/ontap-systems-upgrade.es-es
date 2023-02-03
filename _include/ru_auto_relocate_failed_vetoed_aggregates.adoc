@@ -1,0 +1,31 @@
+= 
+:allow-uri-read: 
+
+
+Si alguno de los agregados no se puede reubicar o vetar, debe reubicar los agregados manualmente o, si es necesario, anular los vetos o las comprobaciones de destino.
+
+.Acerca de esta tarea
+La operación de reubicación se pondrá en pausa debido al error.
+
+.Pasos
+. Compruebe los registros del sistema de gestión de eventos (EMS) para determinar por qué no se ha podido reubicar o vetar el agregado.
+. Reubicar agregados que fallen o vetados:
++
+`storage aggregate relocation start -node _node1_ -destination _node2_ -aggregate-list _aggr_name_ -ndo-controller-upgrade true`
+
+. Cuando se le solicite, introduzca `y`.
+. Puede forzar la reubicación mediante uno de los siguientes métodos:
+
+
+[cols="35,65"]
+|===
+| Opción | Descripción 
+
+
+| Anulación de las comprobaciones de veto | Utilice el siguiente comando:
+`storage aggregate relocation start -node node1 -destination node2 -aggregate-list _aggr_list_ -ndo-controller-upgrade true -override-vetoes true` 
+
+
+| Sobreescribir comprobaciones de destino | Utilice el siguiente comando:
+`storage aggregate relocation start -node node1 -destination node2 -aggregate-list _aggr_list_ -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
+|===

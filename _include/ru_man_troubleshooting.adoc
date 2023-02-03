@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+Este procedimiento incluye sugerencias para la solución de problemas.
+
+Si ocurre algún problema mientras actualiza las controladoras, puede consultar la link:troubleshoot_index.html["Solucionar problemas"] sección al final del procedimiento para obtener más información y soluciones posibles.
+
+Si no encuentra ninguna solución al problema que encontró, póngase en contacto con el soporte técnico.

@@ -1,0 +1,10 @@
+= 
+:allow-uri-read: 
+
+
+. [[auto_check3_step13]]salir del modo de mantenimiento:
++
+`halt`
+
+. [[step14]]nodo de arranque en el menú de arranque ejecutando `boot_ontap menu`. Si va a actualizar a un A800, vaya a. <<auto_check3_step23,Paso 23>>.
+

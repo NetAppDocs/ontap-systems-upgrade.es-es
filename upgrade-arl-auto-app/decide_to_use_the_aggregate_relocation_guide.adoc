@@ -1,0 +1,115 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/decide_to_use_the_aggregate_relocation_guide.html 
+keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
+summary: 'Decidir si se utilizará ARL para actualizar controladoras que ejecutan ONTAP 9.8 o una versión posterior mediante `system controller replace` comandos.' 
+---
+= Decida si desea utilizar el procedimiento de reubicación de agregados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En este contenido se describe cómo actualizar las controladoras de almacenamiento en un par de alta disponibilidad con nuevas controladoras sin perder todos los datos y los discos existentes. Se trata de un procedimiento complejo que sólo deben ser utilizados por administradores con experiencia.
+
+Puede utilizar este contenido en las siguientes circunstancias:
+
+* Su sistema operativo es ONTAP 9.8 o posterior.
+* No desea añadir las nuevas controladoras como una pareja de alta disponibilidad nueva al clúster y migrar los datos con movimientos de volúmenes.
+* Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en el modo de privilegios de diagnóstico.
+* Si va a actualizar una configuración de MetroCluster, es una configuración de FC de cuatro nodos o superior y todos los nodos ejecutan ONTAP 9.8 o una versión posterior.
++
+Para actualizar las configuraciones IP de MetroCluster, consulte link:other_references.html["Referencias"] Para vincular al contenido de _MetroCluster Upgrade y Expansion_.
+
+
+
+
+NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.
+
+[[sys_Commands_98_soported_systems]]la siguiente tabla muestra la matriz de modelos admitida para la actualización de controladoras.
+
+|===
+| La controladora anterior | Controladora de reemplazo 
+
+
+| FAS8020 3, FAS8040 3, FAS8060, FAS8080 | FAS8200, FAS8300, FAS8700 Y FAS9000 
+
+
+| FAS8060 4, FAS8080 4 | FAS9500 
+
+
+| AFF8020 3, AFF8040 3, AFF8060, AFF8080 | AFF A300, AFF A400, AFF A700 y AFF A800 
+
+
+| AFF8060 4, AFF8080 4 | AFF A900 
+
+
+| FAS8200 | FAS8300 2, FAS8700, FAS9000, FAS9500 
+
+
+| FAS8300, FAS8700 Y FAS9000 | FAS9500 
+
+
+| AFF A300 | AFF A400 2, AFF A700, AFF A800, AFF A900 
+
+
+| AFF A320 4 | AFF A400 
+
+
+| AFF A400, AFF A700 | AFF A900 
+|===
+
+NOTE: Si la combinación del modelo de actualización de la controladora no se encuentra en la tabla anterior, póngase en contacto con el soporte técnico.
+
+Vaya al AFF paso que hace referencia a A800 de la sección link:set_fc_or_uta_uta2_config_on_node3.html#step23["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3, paso 23"], o. link:set_fc_or_uta_uta2_config_node4.html#step23["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 23"].
+
+Esta 2 Si va a actualizar desde un sistema AFF A300 a un AFF A400 o una FAS8200 a un sistema FAS8300 en una configuración de clúster sin switch de dos nodos, debe seleccionar puertos temporales del clúster para la actualización de controladora. Los sistemas AFF A400 y FAS8300 se ofrecen en dos configuraciones, como un paquete Ethernet donde los puertos de la tarjeta intermedia son de tipo Ethernet y como un paquete FC donde los puertos intermedios son de tipo FC.
+
+* Para un AFF A400 o un FAS8300 con una configuración de tipo Ethernet, puede utilizar cualquiera de los dos puertos intermedios como puertos de clúster temporales.
+* Para una configuración de tipo FC AFF A400 o FAS8300 con un tipo FC, se debe añadir una tarjeta de interfaz de red 10 GbE de cuatro puertos (número de pieza X1147A) para proporcionar puertos temporales del clúster.
+* Tras completar una actualización de la controladora utilizando puertos de clúster temporales, puede migrar de forma no disruptiva LIF de clúster a e3a y e3b, puertos de 100 GbE en un sistema AFF A400 y puertos e0c y e0d y 100 GbE en un sistema FAS8300.
+
+
+Esta versión 3 para actualizaciones de sistemas FAS8020, FAS8040, AFF8020 y AFF8040 a las controladoras de sustitución de destino enumeradas en la tabla anterior; las controladoras de reemplazo deben ejecutar la misma versión de ONTAP que la controladora anterior. Tenga en cuenta que los sistemas FAS8020, FAS8040, AFF8020 y AFF8040 no admiten las versiones de ONTAP posteriores a ONTAP 9.8.
+
+Esta 4 la siguiente tabla muestra las versiones ONTAP mínimas y posteriores admitidas para estas combinaciones de actualizaciones de controladores.
+
+[cols="20,30,20,30"]
+|===
+2+| La controladora anterior 2+| Controladora de reemplazo 
+
+
+| Sistema | Versión de ONTAP | Sistema | Versión de ONTAP 
+
+
+| AFF A320 | 9.9.1 o posterior | AFF A400 | 9.9.1 o posterior 
+
+
+| AFF8060 | 9.8P13 o parches posteriores | AFF A900 | 9.10.1 a 9.12.1 
+
+
+| AFF8080 | 9.8P10 o parches posteriores | AFF A900 | 9.10.1 a 9.12.1 
+
+
+| FAS8060 | 9.8P13 o parches posteriores | FAS9500 | 9.10.1P3 a 9.12.1 
+
+
+| FAS8080 | Parches 9.8P12 o posteriores | FAS9500 | 9.10.1P3 a 9.12.1 
+|===
+[NOTE]
+====
+Para las combinaciones de actualizaciones que se muestran en la tabla anterior:
+
+* No es necesario utilizar la misma versión de ONTAP en las controladoras existentes y de sustitución. La actualización del software ONTAP se realiza con la actualización de la controladora.
+* Al realizar la actualización, debe instalar una controladora de reemplazo con una versión de ONTAP y un nivel de revisión compatibles.
+* No es posible cancelar o volver a realizar una actualización de controladora después de iniciar el procedimiento y actualizar el primer nodo.
+
+
+====
+Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+
+Consulte link:other_references.html["Referencias"] Para establecer un enlace al centro de documentación de _ONTAP 9_, donde puede acceder a la documentación de producto de ONTAP 9.

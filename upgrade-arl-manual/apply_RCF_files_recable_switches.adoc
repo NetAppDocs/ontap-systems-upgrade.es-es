@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/apply_RCF_files_recable_switches.html 
+keywords: rcf files, reference configuration, switches, nodes, recable, fc 
+summary: Instalar archivos RCF para volver a configurar los switches de Cisco y Brocade durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.7 o una versión anterior. 
+---
+= Aplique archivos RCF y vuelva a conectar los conmutadores
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Debe aplicar los archivos de configuración de referencia (RCF) adecuados para volver a configurar los conmutadores para que se adapten a los nuevos nodos. Después de aplicar los RCF, puede recuperar los conmutadores.
+
+.Antes de empezar
+El uso del puerto del switch FC debe coincidir con el uso descrito en el contenido de _MetroCluster conectado a la estructura y configuración_ para poder utilizar los RCF. Vaya a. link:other_references.html["Referencias"] Para enlazar con el contenido _Fabric-Attached MetroCluster Installation and Configuration_.
+
+.Pasos
+. Vaya a la https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["Descargas de RCF de MetroCluster"^] Y seleccione los RCF para la configuración del switch.
++
+Debe utilizar los RCF que coincidan con los modelos de conmutador.
+
+. Instale los RCF del conmutador FC seleccionando el procedimiento que se ajuste a sus modelos de conmutador y siguiendo las instrucciones de instalación:
++
+** https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_install_the_brocade_fc_switch_rcf_file.html["Instale un switch FC Brocade RCF"^]
+** https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_download_and_install_the_cisco_fc_switch_rcf_files.html["Instale un switch Cisco FC RCF"^]
+
+
+. Compruebe que se ha guardado la configuración del switch.
+. Conecte los dos puentes de FC a SAS a los switches FC mediante la distribución de cableado que ha creado en link:determine_new_cabling_layout.html["Determine la nueva distribución del cableado"].
+. Compruebe que los puertos están en línea:
++
+** En el caso de los switches Brocade, utilice `switchshow` comando.
+** En el caso de los switches de Cisco, utilice show `interface brief` comando.
+
+
+. Conecte el cable de los puertos FC-VI de las controladoras a los switches.
+. Desde los nodos existentes, compruebe que los puertos FC-VI estén en línea:
++
+`metrocluster interconnect adapter show`
+
++
+`metrocluster interconnect mirror show`
+
+

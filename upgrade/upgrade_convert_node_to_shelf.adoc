@@ -1,0 +1,33 @@
+---
+permalink: upgrade/upgrade-convert-node-to-shelf.html 
+sidebar: sidebar 
+keywords: node, support, model, process, upgrading, upgrade, moving, move, convert, drive, shelf, attach, convert an original node to a drive shelf 
+summary: Si el nodo original es uno de los modelos admitidos, durante el proceso de actualización moviendo almacenamiento puede convertir el nodo a una bandeja de unidades y, a continuación, arlo a los nuevos nodos del mismo clúster. 
+---
+= Convertir un nodo original en una bandeja de unidades
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si el nodo original es uno de los modelos admitidos, durante el proceso de actualización moviendo almacenamiento puede convertir el nodo a una bandeja de unidades y, a continuación, arlo a los nuevos nodos del mismo clúster.
+
+.Antes de empezar
+Debe haber revisado link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"] acerca de convertir un nodo a una bandeja de unidades. Si necesita orientación específica de su configuración, póngase en contacto con el soporte técnico.
+
+.Pasos
+. Sustituya los módulos de controladora en el nodo que va a convertir con módulos de IOM adecuados.
++
+https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
+. Defina el ID de bandeja de unidades.
++
+Cada bandeja de unidades, incluido el chasis, requiere un ID único.
+
+. Restablezca otros ID de bandeja de unidades según sea necesario.
+. Apague todas las bandejas de unidades conectadas a los nodos nuevos y, a continuación, apague los nodos nuevos.
+. Conecte la bandeja de unidades convertida a un puerto SAS en el sistema nuevo y, si utiliza cableado ACP fuera de banda, al puerto ACP del nodo nuevo.
+. Encienda la bandeja de unidades convertida y cualquier otra bandeja de unidades conectada a los nodos nuevos.
+. Encienda los nodos nuevos y, a continuación, interrumpa el proceso de arranque de cada nodo pulsando Ctrl-C para acceder al aviso del entorno de arranque.
+

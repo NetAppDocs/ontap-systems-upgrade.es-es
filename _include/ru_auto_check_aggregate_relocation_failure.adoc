@@ -1,0 +1,26 @@
+= Compruebe si se ha producido un error de reubicación de agregados
+:allow-uri-read: 
+
+
+
+
+== Compruebe si se ha producido un error de reubicación de agregados
+
+Durante el procedimiento, ARL podría fallar en la etapa 2, etapa 3 o etapa 5.
+
+.Pasos
+. Introduzca el siguiente comando y examine la salida:
++
+`storage aggregate relocation show`
+
++
+La `storage aggregate relocation show` el comando muestra qué agregados se han reubicado correctamente y cuáles no, junto con las causas del fallo.
+
+. Compruebe si hay mensajes EMS en la consola.
+. Realice una de las siguientes acciones:
++
+** Tome la acción correctiva adecuada, en función del resultado del `storage aggregate relocation show` Y el resultado del mensaje de EMS.
+** Fuerce la reubicación del agregado o de los agregados mediante el `override-vetoes` o la `override-destination-checks` opción de `storage aggregate relocation start` comando.
+
+
+

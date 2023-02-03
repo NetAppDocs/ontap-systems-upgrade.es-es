@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: /upgrade-arl-auto-affa900/move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html 
+keywords: moving, non-root, aggregates, nas, lif, node1, node2 
+summary: Confirmar que los LIF de datos NAS del nodo 1 en el nodo 2 están reubicados de nodo 2 a nodo 1 durante una actualización del A700 de AFF a AFF A900. 
+---
+= Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 1 actualizado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Después de comprobar la configuración de red en el nodo 1 y antes de reubicar agregados del nodo 2 al nodo 1, debe comprobar que las LIF de datos NAS que pertenecen al nodo 1 que están actualmente en el nodo 2 se encuentren en el nodo 1. También debe comprobar que las LIF SAN existen en el nodo 1.
+
+.Acerca de esta tarea
+Las LIF remotas gestionan el tráfico a LUN DE SAN durante el procedimiento de actualización. No es necesario mover LIF DE SAN durante la actualización para el estado del clúster o del servicio. Los LIF SAN no se mueven a menos que tengan que asignarse a nuevos puertos. Después de conectar el nodo 1, debe comprobar que el estado de las LIF es bueno y que están ubicadas en los puertos correspondientes.
+
+.Pasos
+. Reanude la operación de reubicación:
++
+`system controller replace resume`
+
++
+El sistema ejecuta las siguientes tareas:
+
++
+--
+** Comprobación de quórum del clúster
+** Comprobación del ID del sistema
+** Comprobación de la versión de la imagen
+** Comprobación de la plataforma de destino
+** Comprobación de accesibilidad de red
+
+
+--
++
+La operación se detiene en esta fase de la comprobación de accesibilidad de red.
+
+. Realice una comprobación de accesibilidad de la red:
++
+`network port reachability -show-detail -node node1`
+
++
+Confirme que todos los puertos conectados, incluidos el grupo de interfaces y los puertos de VLAN, muestran su estado como `OK`.
+
+. Reanude la operación de reubicación:
++
+`system controller replace resume`
+
++
+El sistema realiza las siguientes comprobaciones:
+
++
+--
+** Comprobación del estado del clúster
+** Comprobación del estado de LIF de clúster
+
+
+--
++
+Tras realizar estas comprobaciones, el sistema reubica los agregados no raíz y las LIF de datos NAS que pertenecen al nodo 1 nuevo.
+
++
+La operación de reemplazo de la controladora se coloca en pausa una vez que se completa la reubicación de recursos.
+
+. Comprobar el estado de las operaciones de reubicación de agregados y movimiento de LIF de datos de NAS:
++
+`system controller replace show-details`
+
++
+Si el procedimiento de reemplazo de la controladora está en pausa, compruebe y corrija el error, si corresponde, y luego emita `resume` para continuar la operación.
+
+. Si es necesario, restaure y devuelva los LIF desplazados. Enumerar las LIF desplazadas:
++
+`cluster controller-replacement network displaced-interface show`
+
++
+Si hay alguna LIF desplazada, restaurar el nodo raíz nuevamente al nodo 1:
+
++
+`cluster controller-replacement network displaced-interface restore-home-node`
+
+. Reanude la operación para solicitar que el sistema realice las comprobaciones previas necesarias:
++
+`system controller replace resume`
+
++
+El sistema realiza las siguientes comprobaciones posteriores:
+
++
+** Comprobación de quórum del clúster
+** Comprobación del estado del clúster
+** Comprobación de reconstrucción de los agregados
+** Comprobación del estado del agregado
+** Comprobación del estado del disco
+** Comprobación del estado de LIF de clúster
+** Comprobación del volumen
+
+
+

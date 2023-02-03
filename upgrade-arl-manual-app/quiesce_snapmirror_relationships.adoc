@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/quiesce_snapmirror_relationships.html 
+keywords: quiesce, snapmirror, relationship, netboot, destination cluster 
+summary: Antes de reiniciar el sistema, desactive todas las relaciones de SnapMirror durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.8 o una versión posterior. 
+---
+= Desactive las relaciones de SnapMirror
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de reiniciar el sistema, debe confirmar que toda la relación de SnapMirror se encuentre en modo inactivo. Cuando una relación de SnapMirror se pone en modo inactivo, sigue en modo inactivo tras reinicios y recuperaciones tras fallos.
+
+.Pasos
+. Compruebe el estado de la relación de SnapMirror en el clúster de destino:
++
+`snapmirror show`
+
++
+
+NOTE: Si el estado es `Transferring`, debe anular estas transferencias:
+`snapmirror abort -destination-vserver _vserver name_`
+
++
+La anulación falla si la relación de SnapMirror no se encuentra en el `Transferring` estado.
+
+. Desactive todas las relaciones entre el clúster:
++
+`snapmirror quiesce -destination-vserver *`
+
+

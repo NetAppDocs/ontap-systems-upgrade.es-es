@@ -1,0 +1,102 @@
+---
+permalink: upgrade/upgrade-remove-disk-ownership-new-nodes.html 
+sidebar: sidebar 
+keywords: node, internal, disk, add-on, shelves, attach, system, interfere, controller, upgrade, remove, ownership, node3, node4, node, remove ownership of disks attached to the new nodes 
+summary: Si los nuevos nodos tienen discos internos o bandejas complementarias conectadas al sistema, pueden interferir en la actualización de la controladora. Use los siguientes pasos para eliminar la propiedad de todos los discos nuevos que se incluyen con el nodo 3/nodo 4. 
+---
+= Elimine la propiedad de los discos conectados a los nuevos nodos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si los nuevos nodos tienen discos internos o bandejas complementarias conectadas al sistema, pueden interferir en la actualización de la controladora. Use los siguientes pasos para eliminar la propiedad de todos los discos nuevos que se incluyen con el nodo 3/nodo 4.
+
+.Acerca de esta tarea
+Estos pasos se realizan en los nodos 3 y 4, uno después de otro. La secuencia del nodo no importa.
+
+[NOTE]
+====
+* En este momento, las bandejas de los nodos 1 y 2 no están conectadas físicamente al nodo 3 y al nodo 4.
+* Solo debe eliminar la propiedad de discos de los discos y las bandejas que se suministran con controladoras nuevas.
+* No tendrá que eliminar la propiedad de los discos si va a actualizar el hardware intercambiando una controladora anterior por una nueva en una plataforma de unidades internas mientras conserva el chasis y los discos de la controladora anterior.
++
+Por ejemplo, si actualiza su sistema de A200 a A220 cambiando solo el módulo de controladora A200 antiguo con el nuevo módulo de controladora A220 a la vez que mantiene los chasis y los discos del A200 antiguo en su lugar, No eliminaría la propiedad de los discos del nuevo módulo de controlador A220, como se indica en esta sección _Extracción de la propiedad de los discos conectados a los nuevos nodos_.
+
++
+Póngase en contacto con el soporte técnico de NetApp si tiene preguntas sobre la eliminación de la propiedad de un disco durante una actualización de la controladora.
+
++
+A continuación, se muestra una lista de sistemas que tienen almacenamiento interno: FAS2520, FAS2552, FAS2554, FAS2620, FAS2650, FAS2720, FAS2750, AFF A200, AFF A220, AFF A700s, AFF A800 y AFF A250.
+
++
+Si su sistema no aparece en la lista anterior, consulte https://hwu.netapp.com["Hardware Universe de NetApp"^] para comprobar si tiene unidades internas.
+
+
+
+====
+.Pasos
+. En el símbolo del sistema DEL CARGADOR del nodo, introduzca el comando:
++
+`boot_ontap menu`
+
+. En el símbolo del sistema del menú de inicio, introduzca `9a` Y, a continuación, pulse Intro.
++
+La siguiente pantalla muestra el indicador del menú de inicio.
+
++
+[listing]
+----
+Please choose one of the following:
+
+    (1) Normal Boot.
+    (2) Boot without /etc/rc.
+    (3) Change password.
+    (4) Clean configuration and initialize all disks.
+    (5) Maintenance mode boot.
+    (6) Update flash from backup config.
+    (7) Install new software first.
+    (8) Reboot node.
+    (9) Configure Advanced Drive Partitioning.
+    Selection (1-9)?  9a
+----
+. Introduzca para eliminar la propiedad del disco `y` cuando vea un símbolo del sistema similar a lo siguiente:
++
+[listing]
+----
+
+########## WARNING ##########
+
+This is a disruptive operation and will result in the
+    loss of all filesystem data. Before proceeding further,
+    make sure that:
+    1) This option (9a) has been executed or will be executed
+    on the HA partner node, prior to reinitializing either
+    system in the HA-pair.
+    2) The HA partner node is currently in a halted state or
+    at the LOADER prompt.
+
+
+    Do you still want to continue (yes/no)? yes
+----
++
+El sistema elimina la propiedad del disco y vuelve al menú de inicio.
+
+. En el menú de inicio, acceda `5` para ir al modo de mantenimiento.
+. En el modo de mantenimiento, ejecute el `disk show` comando.
++
+No debe aparecer ningún disco.
+
+. Ejecute el comando: '
++
+`disk show -a`
+
++
+Todos los discos enumerados deben estar sin asignar.
+
+. Salga del modo de mantenimiento:
++
+`halt`
+
+

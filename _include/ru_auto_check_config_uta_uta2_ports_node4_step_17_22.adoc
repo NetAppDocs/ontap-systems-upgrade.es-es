@@ -1,0 +1,85 @@
+= 
+:allow-uri-read: 
+
+
+. [[auto_check_4_step17]]Pulse `Ctrl-C` durante el arranque automático para detener el nodo en el `LOADER>` prompt.
+. En el aviso del cargador, introduzca el modo de mantenimiento:
++
+`boot_ontap maint`
+
+. En el modo de mantenimiento, muestre todos los puertos iniciadores previamente establecidos que ahora se encuentran en modo de destino:
++
+`ucadmin show`
+
++
+Cambie los puertos de nuevo al modo iniciador:
+
++
+`ucadmin modify -m fc -t initiator -f _adapter name_`
+
+. Compruebe que los puertos se han cambiado al modo iniciador:
++
+`ucadmin show`
+
+. Salga del modo de mantenimiento:
++
+`halt`
+
++
+[NOTE]
+====
+Si va a actualizar desde un sistema que admita discos externos a un sistema que también admita discos externos, vaya a. <<auto_check_4_step22,Paso 22>>.
+
+Si va a actualizar desde un sistema que utilice discos externos a un sistema que admita discos tanto internos como externos, por ejemplo, un sistema AFF A800, vaya a. <<auto_check_4_step23,Paso 23>>.
+
+====
+. [[auto_check_4_step22]]en el indicador del cargador, arranque:
++
+`boot_ontap menu`
+
++
+Ahora, en el arranque, el nodo puede detectar todos los discos que se le habían asignado previamente y puede arrancar según se esperaba.
+
++
+Cuando los nodos de clúster que va a sustituir utilizan el cifrado de volumen raíz, el software ONTAP no puede leer la información de volumen de los discos. Restaure las claves del volumen raíz:
+
++
+.. Vuelva al menú de inicio especial:
+`LOADER> boot_ontap menu`
++
+[listing]
+----
+Please choose one of the following:
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+
+Selection (1-11)? 10
+----
+.. Seleccione *(10) establecer secretos de recuperación de Onboard Key Manager*
+.. Introduzca `y` en el siguiente símbolo del sistema:
++
+`This option must be used only in disaster recovery procedures. Are you sure? (y or n): y`
+
+.. En la solicitud de, introduzca la frase de contraseña del gestor de claves.
+.. Introduzca los datos de copia de seguridad cuando se le solicite.
++
+
+NOTE: Debe haber obtenido la clave de acceso y los datos de backup en la link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] sección de este procedimiento.
+
+.. Después de que el sistema se inicie de nuevo en el menú de inicio especial, ejecute la opción *(1) Inicio normal*
++
+
+NOTE: Es posible que se encuentre un error en este momento. Si se produce un error, repita los subpasos de <<auto_check_4_step22,Paso 22>> hasta que el sistema se inicie normalmente.
+
+
+
+

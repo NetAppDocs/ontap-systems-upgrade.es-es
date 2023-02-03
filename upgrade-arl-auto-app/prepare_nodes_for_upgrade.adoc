@@ -1,0 +1,218 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/prepare_nodes_for_upgrade.html 
+keywords: preparing, nodes, upgrade 
+summary: 'Prepare los nodos y ejecute una serie de comprobaciones previas al actualizar controladoras que ejecutan ONTAP 9.8 o una versión posterior con `system controller replace` comandos.' 
+---
+= Prepare los nodos para la actualización
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Debe realizar los siguientes pasos para preparar los nodos para la actualización.
+
+.Pasos
+. Inicie el proceso de sustitución de la controladora con el siguiente comando en la línea de comandos de ONTAP:
++
+`system controller replace start -nodes _node_names_`
+
++
+[NOTE]
+====
+** A partir de ONTAP 9.10.1, el procedimiento de actualización basado en la conmutación negociada automática (NSO) es la opción predeterminada para una configuración FC de MetroCluster de cuatro nodos. Si va a actualizar una configuración de FC MetroCluster de cuatro nodos al utilizar el `system controller replace start` Debe evitar que el procedimiento basado en NSO se inicie configurando el `-nso` parámetro a. `false`:
++
+`system controller replace start -nodes _node_names_ -nso false`
+
+** La `system controller replace start` el comando solo se puede ejecutar en el nivel de privilegios avanzados:
++
+`set -privilege advanced`
+
+
+
+====
++
+Verá la siguiente salida:
+
++
+....
+Warning:
+1. Current ONTAP version is 9.x
+Before starting controller replacement operation, ensure that the new controllers are running the version 9.x
+
+2. Verify that NVMEM or NVRAM batteries of the new nodes are charged, and charge them if they are not. You need to physically check the new nodes to see if the NVMEM or NVRAM  batteries are charged. You can check the battery status either by connecting to a serial console or using SSH, logging into the Service Processor (SP) or Baseboard Management Controller (BMC) for your system, and use the system sensors to see if the battery has a sufficient charge.
+
+Attention: Do not try to clear the NVRAM contents. If there is a need to clear the contents of NVRAM, contact NetApp technical support.
+
+3. If a controller was previously part of a different cluster, run wipeconfig before using it as the replacement controller.
+
+Do you want to continue? {y|n}: y
+....
+. Pulse `y`, verá la siguiente salida:
++
+....
+Controller replacement operation: Prechecks in progress.
+Controller replacement operation has been paused for user intervention.
+....
++
+El sistema ejecuta las siguientes comprobaciones previas; registre la salida de cada comprobación previa para utilizarla más adelante en el procedimiento:
+
++
+[cols="35,65"]
+|===
+| Comprobación previa | Descripción 
+
+
+| Comprobación del estado del clúster | Comprueba todos los nodos del clúster para confirmar que están en buen estado. 
+
+
+| Comprobación del clúster MCC | Comprueba si el sistema es una configuración de MetroCluster. La operación detecta automáticamente si es o no una configuración de MetroCluster y realiza las comprobaciones previas y la verificación específicas. Solo se admite la configuración MetroCluster FC de 4 nodos. En caso de configuración MetroCluster de 2 nodos y de configuración IP de MetroCluster de 4 nodos, la comprobación falla. Si el estado de la configuración de MetroCluster es conmutar, la comprobación falla. 
+
+
+| Comprobación del estado de reubicación de agregados | Comprueba si ya hay una reubicación de agregados en curso. Si hay otra reubicación de agregado en curso, la comprobación falla. 
+
+
+| Comprobación del nombre del modelo | Comprueba si los modelos de controlador son compatibles con este procedimiento. Si los modelos no son compatibles, la tarea falla. 
+
+
+| Comprobación de quórum de clúster | Comprueba que los nodos que se van a sustituir tengan quórum. Si los nodos no están en quórum, la tarea falla. 
+
+
+| Comprobación de la versión de la imagen | Comprueba que los nodos que se reemplazan ejecuten la misma versión de ONTAP. Si las versiones de la imagen ONTAP son diferentes, la tarea fallará. Los nodos nuevos deben tener la misma versión de ONTAP 9.x instalada en ellos que se haya instalado en los nodos originales. Si los nodos nuevos tienen instalada una versión diferente de ONTAP, debe reiniciar el sistema las controladoras nuevas después de instalarlas. Para obtener instrucciones sobre cómo actualizar ONTAP, consulte link:other_references.html["Referencias"] Para enlazar a _Upgrade ONTAP_. 
+
+
+| Comprobación de estado de HA | Comprueba si los dos nodos que se van a reemplazar se encuentran en una configuración de parejas de alta disponibilidad. Si no está habilitada la conmutación por error del almacenamiento para las controladoras, la tarea falla. 
+
+
+| Comprobación del estado del agregado | Si los nodos que se van a sustituir tienen agregados propios para los que no son el propietario principal, la tarea fallará. Los nodos no deben tener ningún agregado que no sea local. 
+
+
+| Comprobación del estado del disco | Si alguno de los nodos que se van a reemplazar tiene discos ausentes o con errores, la tarea falla. Si falta algún disco, consulte link:other_references.html["Referencias"] Para establecer un vínculo a la gestión de discos y agregados con la CLI_, _administración de almacenamiento lógico con la CLI_ y _Administración de alta disponibilidad_ para configurar el almacenamiento para el par de alta disponibilidad. 
+
+
+| Comprobación del estado de LIF de datos | Comprueba si alguno de los nodos que se van a reemplazar tiene LIF de datos no locales. Los nodos no deben contener ninguna LIF de datos para la cual no sean el propietario principal. Si uno de los nodos contiene LIF de datos no locales, la tarea falla. 
+
+
+| Estado de LIF del clúster | Comprueba si los LIF del clúster están activos para ambos nodos. Si las LIF del clúster están inadas, la tarea falla. 
+
+
+| Comprobación del estado de ASUP | Si no se configuran las notificaciones de ASUP, la tarea falla. Debe habilitar ASUP antes de iniciar el procedimiento de reemplazo de controladora. 
+
+
+| Comprobación del uso de CPU | Comprueba si el uso de CPU es superior al 50 % en el caso de cualquiera de los nodos que se van a sustituir. Si el uso de CPU es superior al 50 % durante un período de tiempo considerable, la tarea falla. 
+
+
+| Comprobación de reconstrucción de agregados | Comprueba si la reconstrucción se está produciendo en algún agregado de datos. Si la reconstrucción del agregado está en curso, la tarea falla. 
+
+
+| Comprobación de trabajo de afinidad de nodo | Comprueba si se están ejecutando trabajos de afinidad de nodos. Si se están ejecutando trabajos de afinidad de nodo, la comprobación falla. 
+|===
+. Una vez iniciada la operación de sustitución de la controladora y que se completen las comprobaciones previas, la operación se coloca en pausa para recoger información de resultado que se pueda necesitar más adelante al configurar el nodo 3.
++
+
+NOTE: Si tiene un sistema con más de dos puertos de clúster por nodo, como un sistema FAS8080 o AFF8080, antes de iniciar la actualización, debe migrar y volver a home los LIF del clúster a dos puertos de clúster por nodo. Si realiza la actualización de la controladora con más de dos puertos de clúster por nodo, es posible que falten LIF en el nuevo controlador después de la actualización
+
+. Ejecute el siguiente conjunto de comandos según lo indicado por el procedimiento de reemplazo de la controladora en la consola del sistema.
++
+Desde el puerto serie conectado a cada nodo, ejecute y guarde el resultado de los siguientes comandos de forma individual:
+
++
+** `vserver services name-service dns show`
+** `network interface show -curr-node _local_ -role _cluster,intercluster,node-mgmt,cluster-mgmt,data_`
+** `network port show -node _local_ -type physical`
+** `service-processor show -local -instance`
+** `network fcp adapter show -node _local_`
+** `network port ifgrp show`
+** `system node show -instance -node _local_`
+** `run -node _local_ sysconfig`
+** `storage aggregate show -node _local_`
+** `volume show -node _local_`
+** `storage array config show -switch _switch_name_`
+** `system license show -owner _local_`
+** `storage encryption disk show`
+** `security key-manager onboard show-backup`
+** `security key-manager external show`
+** `security key-manager external show-status`
+** `network port reachability show -detail`
+
+
+
+
+
+NOTE: Si está en uso el cifrado de volúmenes de NetApp (NVE) o el cifrado de agregados de NetApp (NAE) con el gestor de claves incorporado (OKM), mantenga la contraseña del administrador de claves lista para completar la resincronización del gestor de claves más adelante en el procedimiento.
+
+. Si su sistema utiliza unidades de autocifrado, consulte el artículo de la base de conocimientos https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Cómo indicar que tengo unidades FIPS instaladas"^] Para determinar el tipo de unidades de autocifrado que se están utilizando en la pareja de alta disponibilidad que se está actualizando. El software ONTAP admite dos tipos de unidades de autocifrado:
++
+--
+** Unidades SAS o NVMe con cifrado en almacenamiento de NetApp (NSE) certificado FIPS
+** Unidades NVMe (SED) con autocifrado no FIPS
+
+
+[NOTE]
+====
+** No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo o la pareja de alta disponibilidad.
+** Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.
+
+
+====
+https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryption-concept.html#supported-self-encrypting-drive-types["Obtenga más información sobre las unidades de autocifrado compatibles"^].
+
+--
+
+
+
+
+== Corrija la propiedad del agregado si fallan las comprobaciones previas de ARL
+
+Si falla la comprobación del estado del agregado, debe devolver los agregados propiedad del nodo asociado al nodo propietario principal e iniciar de nuevo el proceso de comprobaciones previas.
+
+.Pasos
+. Devolver los agregados que actualmente pertenecen al nodo asociado al nodo propietario principal:
++
+`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
+
+. Compruebe que ni el nodo 1 ni el nodo 2 siguen teniendo agregados cuyos propietarios son actualmente (pero no el propietario del hogar):
++
+`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
+
++
+En el ejemplo siguiente se muestra el resultado del comando cuando un nodo es al mismo tiempo el propietario actual y el propietario principal de los agregados:
+
++
+[listing]
+----
+cluster::> storage aggregate show -nodes node1 -is-home true -fields owner-name,home-name,state
+aggregate   home-name  owner-name  state
+---------   ---------  ----------  ------
+aggr1       node1      node1       online
+aggr2       node1      node1       online
+aggr3       node1      node1       online
+aggr4       node1      node1       online
+
+4 entries were displayed.
+----
+
+
+
+
+=== Después de terminar
+
+Debe reiniciar el proceso de sustitución de la controladora:
+
+`system controller replace start -nodes _node_names_`
+
+
+
+== Licencia
+
+Cuando configura un clúster, el asistente de configuración le solicita que introduzca la clave de licencia base de clúster. Sin embargo, algunas funciones requieren licencias adicionales, que se emiten como _packages_ que incluyen una o más funciones. Cada nodo del clúster debe tener su propia clave para cada función que se usará en el clúster.
+
+Si no tiene claves de licencia nuevas, las funciones con licencia actualmente en el clúster están disponibles para la nueva controladora. Sin embargo, el uso de funciones sin licencia en la controladora puede dejar de cumplir con el acuerdo de licencia, de modo que debe instalar la nueva clave o las claves de licencia para la nueva controladora una vez que se haya completado la actualización.
+
+Consulte link:other_references.html["Referencias"] Para enlazar con el _sitio de soporte de NetApp_ donde puede obtener nuevas claves de licencia de 2 caracteres de ONTAP. Las claves están disponibles en la sección _My Support_ en _Software licences_. Si el sitio no tiene las claves de licencia que necesita, puede ponerse en contacto con su representante de ventas de NetApp.
+
+Para obtener información detallada sobre las licencias, consulte link:other_references.html["Referencias"] Para vincular a _System Administration Reference_.

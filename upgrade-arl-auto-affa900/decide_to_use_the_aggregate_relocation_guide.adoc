@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html 
+keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability, aff, a700, a900 
+summary: Decida si desea utilizar el procedimiento ARL para actualizar un AFF A700 a un AFF A900. 
+---
+= Decida si desea utilizar el procedimiento de reubicación de agregados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En este contenido se describe cómo actualizar las controladoras de almacenamiento en un par de alta disponibilidad A700 de AFF con nuevas controladoras o controladoras AFF A900 en un par de alta disponibilidad FAS9000 con nuevas controladoras FAS9500, a la vez que se conservan todos los datos y discos existentes. Se trata de un procedimiento complejo que sólo deben ser utilizados por administradores con experiencia.
+
+Utilice este procedimiento en las siguientes circunstancias:
+
+* Ha verificado con su representante de ventas de NetApp que ha recibido el controlador AFF A900 o FAS9500 y los módulos NVRAM, así como las piezas necesarias para la actualización.
+* Está ejecutando ONTAP 9.10.1P10, 9.1P6 o una versión posterior.
+* No desea añadir las nuevas controladoras como una nueva pareja de alta disponibilidad al clúster y migrar los datos mediante movimientos de volúmenes.
+* Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en modo de privilegios de diagnóstico.
+
+
+*NO* Utilice este procedimiento en las siguientes circunstancias:
+
+* Utiliza el software de virtualización de FlexArray en los sistemas A700 o FAS9000 de AFF.
+* En este caso, utiliza un switch compartido para la interconexión del clúster y almacenamiento conectado a Ethernet.
+
+
+Para actualizar las configuraciones Fabric MetroCluster o MetroCluster IP, consulte link:other_references.html["Referencias"] Para vincular al contenido de _MetroCluster Upgrade y Expansion_.
+
+
+NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.
+
+Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+
+Consulte link:other_references.html["Referencias"] Para establecer un enlace al centro de documentación de _ONTAP 9_, donde puede acceder a la documentación de producto de ONTAP 9.

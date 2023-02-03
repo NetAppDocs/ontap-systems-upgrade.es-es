@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/check_mcc_config_errors.html 
+keywords: config advisor, mcc, metrocluster, configuration, configure, error, check 
+summary: Utilice la herramienta Config Advisor para comprobar si hay errores de configuración comunes durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.7 o una versión anterior. 
+---
+= Compruebe si hay errores de configuración de MetroCluster
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puede utilizar la herramienta Active IQ Config Advisor disponible en el sitio de soporte de NetApp para comprobar si hay errores comunes de configuración.
+
+Si no tiene una configuración MetroCluster, puede omitir esta sección.
+
+.Acerca de esta tarea
+Active IQ Config Advisor es una herramienta de validación de configuración y comprobación del estado. Puede implementarlo tanto en sitios seguros como en sitios no seguros para la recopilación de datos y el análisis del sistema.
+
+
+NOTE: El soporte para Config Advisor es limitado y solo está disponible en línea.
+
+. Descargue el link:https://mysupport.netapp.com/site/tools["Active IQ Config Advisor"] herramienta.
+. Ejecute Active IQ Config Advisor, revise el resultado y siga sus recomendaciones para solucionar cualquier problema.
+

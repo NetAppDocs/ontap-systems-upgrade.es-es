@@ -1,0 +1,138 @@
+= 
+:allow-uri-read: 
+
+
+Antes de poder reemplazar el nodo 2 con nodo 4, debe enviar un mensaje de AutoSupport para el nodo 2 y luego reubicar los agregados que no son raíz; propiedad del nodo 2 en el nodo 3.
+
+.Pasos
+. [[step1]] Enviar un mensaje de AutoSupport a NetApp para el nodo 2:
++
+`system node autosupport invoke -node _node2_ -type all -message "Upgrading _node2_ from _platform_old_ to _platform_new_"`
+
+. Compruebe que se ha enviado el mensaje de AutoSupport:
++
+`system node autosupport show -node _node2_ -instance`
+
++
+Los campos "último asunto enviado:" y "última vez enviado:" contienen el título del último mensaje que se envió y la hora en que se envió el mensaje.
+
+. [[step3]]reubicar los agregados no raíz:
++
+.. Configure el nivel de privilegio en Advanced:
++
+`set -privilege advanced`
+
+.. Enumere los agregados que son propiedad de 2:
++
+`storage aggregate show -owner-name _node2_`
+
+.. Iniciar reubicación de agregado:
++
+`storage aggregate relocation start -node _node2_ -destination _node3_ -aggregate-list * -ndo-controller-upgrade true`
+
++
+
+NOTE: El comando busca solo agregados que no son raíz.
+
+.. Cuando se le solicite, introduzca `y`.
++
+La reubicación se produce en segundo plano. La reubicación de un agregado puede tardar entre unos segundos y un par de minutos. El tiempo incluye tanto la interrupción del servicio como las partes que no son de la interrupción del servicio. El comando no reasigna ningún agregado sin conexión o restringido.
+
+.. Vuelva al nivel de privilegio de administrador:
++
+`set -privilege admin`
+
+
+
+. Verificar el estado de reubicación del nodo 2:
++
+`storage aggregate relocation show -node _node2_`
+
++
+La salida mostrará "hecho" para un agregado después de que se haya reubicado.
+
++
+
+NOTE: Debe esperar hasta que todos los agregados de los que son propiedad del nodo 2 se hayan reubicado en el nodo 3 antes de continuar con el siguiente paso.
+
+. Realice una de las siguientes acciones:
++
+[cols="35,65"]
+|===
+| Si la reubicación de... | Realice lo siguiente... 
+
+
+| Todos los agregados se han realizado correctamente | Vaya a. <<man_relocate_2_3_step6,Paso 6>>. 
+
+
+| Todos los agregados han fallado o se ha vetado  a| 
+.. Mostrar un mensaje de estado detallado:
++
+`storage aggregate show -instance`
+
++
+También puede consultar los registros de EMS para ver la acción correctiva que es necesaria.
+
++
+
+NOTE: La `event log show` comando muestra todos los errores que se han producido.
+
+.. Realice la acción correctiva.
+.. Configure el nivel de privilegio en Advanced:
++
+`set -privilege advanced`
+
+.. Reubicar agregados que fallen o vetados:
++
+`storage aggregate relocation start -node _node2_ -destination _node3_ -aggregate-list * -ndo-controllerupgrade true`
+
+.. Cuando se le solicite, introduzca `y`.
+.. Vuelva al nivel de privilegio de administrador:
++
+`set -privilege admin`
+
+
+
+Si es necesario, puede forzar la reubicación mediante uno de los siguientes métodos:
+
+** Mediante la anulación de las comprobaciones de veto:
++
+`storage aggregate relocation start -override-vetoes true -ndo-controller-upgrade`
+
+** Mediante la anulación de comprobaciones de destino:
++
+`storage aggregate relocation start -override-destination-checks true -ndocontroller-upgrade`
+
+
+
+Para obtener más información sobre los comandos de reubicación de agregados de almacenamiento, vaya a. link:other_references.html["Referencias"] Para establecer un vínculo a la gestión de discos y agregados con la CLI_ y los comandos _ONTAP 9: Manual Page Reference_.
+
+|===
+. [[man_reubication_2_3_step6]]Compruebe que todos los agregados que no son raíz están en línea en el nodo 3:
++
+`storage aggregate show -node _node3_ -state offline -root false`
+
++
+Si alguno de los agregados se ha desconectado o se ha convertido en externo, debe conectarlos, una vez por cada agregado:
+
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Verifique que todos los volúmenes estén en línea en el nodo 3:
++
+`volume show -node _node3_ -state offline`
+
++
+Si alguno de los volúmenes se encuentra sin conexión en el nodo 3, es necesario conectarlos, una vez por cada volumen:
+
++
+`volume online -vserver _Vserver-name_ -volume _volume-name_`
+
+. Verifique que el nodo 2 no tenga ningún agregado que no sea raíz en línea:
++
+`storage aggregate show -owner-name _node2_ -ha-policy sfo -state online`
+
++
+El resultado del comando no debe mostrar agregados no raíz en línea, ya que todos los agregados en línea no raíz ya se han reubicado al nodo 3.
+
+

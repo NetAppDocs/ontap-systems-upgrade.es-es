@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/record_node2_information.html 
+keywords: record node2 information 
+summary: Registre información acerca de la red de clústeres 2, la gestión, los puertos FC y el ID del sistema de NVRAM durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.7 o una versión posterior. 
+---
+= Grabar información del nodo 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de poder apagar y retirar el nodo 2, debe registrar información acerca de sus puertos de red de clúster, de gestión y de FC, así como del ID del sistema de NVRAM. Es necesario contar con esa información posteriormente en el procedimiento cuando se asignan los discos 2 al nodo 4 y se reasignan los discos.
+
+.Pasos
+. Encuentre los puertos de red de clúster, gestión de nodos, interconexión de clústeres y gestión de clústeres en el nodo 2:
++
+`network interface show -curr-node _node_name_ -role cluster,intercluster,nodemgmt,cluster-mgmt`
+
++
+El sistema muestra las LIF de ese nodo y otros nodos del clúster, como se muestra en el ejemplo siguiente:
+
++
+[listing]
+----
+cluster::> network interface show -curr-node node2 -role
+cluster,intercluster,node-mgmt,cluster-mgmt
+         Logical     Status     Network            Current     Current Is
+Vserver  Interface   Admin/Oper Address/Mask       Node        Port    Home
+-------- ----------  ---------- ------------------ ----------  ------- ----
+node2
+         intercluster up/up     192.168.1.202/24   node2       e0e     true
+         clus1        up/up     169.254.xx.xx/24   node2       e0a     true
+         clus2        up/up     169.254.xx.xx/24   node2       e0b     true
+         mgmt1        up/up     192.168.0.xxx/24   node2       e0c     true
+4 entries were displayed.
+----
++
+
+NOTE: Es posible que el sistema no tenga LIF de interconexión de clústeres. Solo tendrá un LIF de gestión de clústeres en un nodo de una pareja de nodos. Se muestra una LIF de gestión de clústeres en el resultado del ejemplo de link:record_node1_information.html#step["Paso 1"] En _Record 1 Información del puerto_.
+
+. Capture la información de la salida que se va a utilizar en la sección link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
++
+La información de salida se requiere para asignar los nuevos puertos de la controladora a los puertos anteriores de la controladora.
+
+. Determine los puertos físicos en el nodo 2:
++
+`network port show -node _node_name_ -type physical` +
+
++
+`_node_name_` es el nodo que se está migrando.
+
++
+El sistema muestra los puertos físicos en el nodo 2, como se muestra en el ejemplo siguiente:
+
++
+[listing]
+----
+cluster::> network port show -node node2 -type physical
+
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- -----------
+node2
+       e0M       Default      IP_address       up       1500  auto/100
+       e0a       Default      -                up       1500  auto/1000
+       e0b       Default      -                up       1500  auto/1000
+       e1a       Cluster      Cluster          up       9000  auto/10000
+       e1b       Cluster      Cluster          up       9000  auto/10000
+5 entries were displayed.
+----
+. Registre los puertos y sus dominios de retransmisión.
++
+Se deberán asignar los dominios de retransmisión a los puertos en la nueva controladora más adelante en el procedimiento.
+
+. Determinar los puertos FC en el nodo 2:
++
+`network fcp adapter show`
+
++
+El sistema muestra los puertos FC en el nodo 2, como se muestra en el ejemplo siguiente:
+
++
+[listing]
+----
+cluster::> network fcp adapter show -node node2
+                     Connection  Host
+Node         Adapter Established Port Address
+------------ ------- ----------- ------------
+node2
+             0a      ptp         11400
+node2
+             0c      ptp         11700
+node2
+             6a      loop        0
+node2
+             6b      loop        0
+4 entries were displayed.
+----
+. Registre los puertos.
++
+La información de salida es necesaria para asignar los puertos FC nuevos en la nueva controladora más adelante en el procedimiento.
+
+. Si aún no lo ha hecho, compruebe si hay grupos de interfaces o VLAN configuradas en el nodo 2:
++
+`ifgrp show`
+
++
+`vlan show`
+
++
+Utilizará la información de la sección link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
+
+. Realice una de las siguientes acciones:
++
+[cols="35,65"]
+|===
+| Si... | Realice lo siguiente... 
+
+
+| Número de ID del sistema NVRAM registrado en link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] | Vaya a. link:retire_node2.html["Retire el nodo 2"]. 
+
+
+| No ha registrado el número de ID del sistema NVRAM en link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] | Completo <<man_record_2_step9,Paso 9>> y.. <<man_record_2_step10,Paso 10>> y, a continuación, pasar a la siguiente sección, link:retire_node2.html["Retire el nodo 2"]. 
+|===
+. [[man_record_2_step9]]Mostrar los atributos del nodo 2:
++
+`system node show -instance -node node2`
+
++
+[listing]
+----
+cluster::> system node show -instance -node node2
+                            ...
+                 NVRAM System ID: system_ID
+                           ...
+----
+. [[man_record_2_step10]]registre el ID del sistema NVRAM que se va a utilizar en la sección link:install_boot_node4.html["Instale y arranque el nodo 4"].
+

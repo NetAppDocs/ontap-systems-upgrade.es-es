@@ -1,0 +1,44 @@
+= Corrija la propiedad del agregado si fallan las comprobaciones previas de ARL
+:allow-uri-read: 
+
+
+
+
+== Corrija la propiedad del agregado si fallan las comprobaciones previas de ARL
+
+Si falla la comprobación del estado del agregado, debe devolver los agregados propiedad del nodo asociado al nodo propietario principal e iniciar de nuevo el proceso de comprobaciones previas.
+
+.Pasos
+. Devolver los agregados que actualmente pertenecen al nodo asociado al nodo propietario principal:
++
+`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
+
+. Compruebe que ni el nodo 1 ni el nodo 2 siguen teniendo agregados cuyos propietarios son actualmente (pero no el propietario del hogar):
++
+`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
+
++
+En el ejemplo siguiente se muestra el resultado del comando cuando un nodo es al mismo tiempo el propietario actual y el propietario principal de los agregados:
+
++
+[listing]
+----
+cluster::> storage aggregate show -nodes node1 -is-home true -fields owner-name,home-name,state
+aggregate   home-name  owner-name  state
+---------   ---------  ----------  ------
+aggr1       node1      node1       online
+aggr2       node1      node1       online
+aggr3       node1      node1       online
+aggr4       node1      node1       online
+
+4 entries were displayed.
+----
+
+
+
+
+=== Después de terminar
+
+Debe reiniciar el proceso de sustitución de la controladora:
+
+`system controller replace start -nodes _node_names_`

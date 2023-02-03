@@ -1,0 +1,213 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/verify_node1_installation.html 
+keywords: verifying, verify, node1, install, installation, aff, a900, NVRAM, controller 
+summary: Verifique la instalación del nodo 1 con el módulo del controlador AFF A900 y el módulo NVRAM. 
+---
+= Compruebe la instalación del nodo 1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Debe comprobar la instalación del nodo 1 con los controladores AFF A900 o FAS9500 y los módulos NVRAM. Como no existe ningún cambio en los puertos físicos, no es necesario asignar los puertos físicos del nodo 1 anterior al nodo 1 de reemplazo.
+
+.Acerca de esta tarea
+Después de arrancar el nodo 1 con el módulo de controladoras AFF A900 o FAS9500, debe comprobar que está instalado correctamente. Debe esperar a que el nodo 1 se una al quórum y reanudar la operación de reemplazo de la controladora.
+
+En este punto del procedimiento, la operación de actualización de la controladora debería haberse pausado mientras el nodo 1 intenta unir automáticamente el quórum.
+
+.Pasos
+. Compruebe que el nodo 1 ha Unido al quórum:
++
+`cluster show -node node1 -fields health`
+
++
+El resultado del `health` el campo debe ser `true`.
+
+. Compruebe que el nodo 1 forme parte del mismo clúster que el nodo 2 y que esté en buen estado:
++
+`cluster show`
+
+. Cambie al modo de privilegio avanzado:
++
+`set advanced`
+
+. Compruebe el estado del funcionamiento de sustitución de la controladora y compruebe que está en pausa y en el mismo estado que tenía antes de detener el nodo 1 para realizar las tareas físicas de instalación de nuevas controladoras y mover cables:
++
+`system controller replace show`
+
++
+`system controller replace show-details`
+
+. Reanude la operación de sustitución de la controladora:
++
+`system controller replace resume`
+
+. La operación de reemplazo de la controladora se detiene para intervención con el siguiente mensaje:
++
+[listing]
+----
+Cluster::*> system controller replace show
+Node          Status                       Error-Action
+------------  ------------------------     ------------------------------------
+Node1         Paused-for-intervention      Follow the instructions given in
+                                           Step Details
+Node2         None
+
+Step Details:
+--------------------------------------------
+To complete the Network Reachability task, the ONTAP network configuration must be manually adjusted to match the new physical network configuration of the hardware. This includes:
+
+
+1. Re-create the interface group, if needed, before restoring VLANs. For detailed commands and instructions, refer to the "Re-creating VLANs, ifgrps, and broadcast domains" section of the upgrade controller hardware guide for the ONTAP version running on the new controllers.
+2. Run the command "cluster controller-replacement network displaced-vlans show" to check if any VLAN is displaced.
+3. If any VLAN is displaced, run the command "cluster controller-replacement network displaced-vlans restore" to restore the VLAN on the desired port.
+2 entries were displayed.
+----
++
+
+NOTE: En este procedimiento, la sección _Re-creating VLAN, ifgrps y dominios de difusión_ ha cambiado el nombre _Restore network Configuration on 1_.
+
+. Con el reemplazo de la controladora en estado de pausa, continúe a. <<Restaurar la configuración de red en el nodo 1>>.
+
+
+
+
+== Restaurar la configuración de red en el nodo 1
+
+Después de confirmar que el nodo 1 tiene quórum y que puede comunicarse con el nodo 2, compruebe que las VLAN, los grupos de interfaces y los dominios de retransmisión del nodo 1 estén visibles en el nodo 1. Además, compruebe que todos los puertos de red del nodo 1 estén configurados en sus dominios de retransmisión correctos.
+
+.Acerca de esta tarea
+Para obtener más información sobre la creación y recreación de VLAN, grupos de interfaces y dominios de retransmisión, consulte link:other_references.html["Referencias"] Para vincular al contenido de _Network Management_.
+
+.Pasos
+. Enumera todos los puertos físicos que están en el nodo 1 actualizado:
++
+`network port show -node node1`
+
++
+Se muestran todos los puertos de red física, los puertos VLAN y los puertos del grupo de interfaces en el nodo. A partir de esta salida, puede ver los puertos físicos que se han movido al `Cluster` Dominio de difusión por ONTAP. Puede usar esta salida para decidir qué puertos se deben usar como puertos miembro de grupo de interfaces, puertos base de VLAN o puertos físicos independientes para alojar LIF.
+
+. Enumere los dominios de retransmisión del clúster:
++
+`network port broadcast-domain show`
+
+. Enumere la capacidad de acceso del puerto de red de todos los puertos del nodo 1:
++
+`network port reachability show -node node1`
+
++
+Debería ver un resultado como el siguiente ejemplo:
+
++
+[listing]
+----
+Cluster::> reachability show -node node1
+  (network port reachability show)
+Node      Port     Expected Reachability                Reachability Status
+--------- -------- ------------------------------------ ---------------------
+Node1
+          a0a      Default:Default                      ok
+          a0a-822  Default:822                          ok
+          a0a-823  Default:823                          ok
+          e0M      Default:Mgmt                         ok
+          e11a     -                                    no-reachability
+          e11b     -                                    no-reachability
+          e11c     -                                    no-reachability
+          e11d     -                                    no-reachability
+          e3a      -                                    no-reachability
+          e3b      -                                    no-reachability
+          e4a      Cluster:Cluster                      ok
+          e4e      Cluster:Cluster                      ok
+          e5a      -                                    no-reachability
+          e7a      -                                    no-reachability
+          e9a      Default:Default                      ok
+          e9a-822  Default:822                          ok
+          e9a-823  Default:823                          ok
+          e9b      Default:Default                      ok
+          e9b-822  Default:822                          ok
+          e9b-823  Default:823                          ok
+          e9c      Default:Default                      ok
+          e9d      Default:Default                      ok
+22 entries were displayed.
+----
++
+En el ejemplo anterior, el nodo 1 arranca tras el reemplazo de la controladora. Algunos puertos no tienen accesibilidad porque no hay conectividad física. Debe reparar cualquier puerto con un estado de accesibilidad distinto de `ok`.
+
++
+
+NOTE: Durante una actualización de AFF A700 a AFF A900 o de FAS9000 a FAS2500, los puertos de red y su conectividad no deben cambiar. Todos los puertos deben residir en los dominios de retransmisión correctos y la accesibilidad del puerto de red no debe cambiar. Sin embargo, antes de mover las LIF del nodo 2 al nodo 1, debe verificar la capacidad de almacenamiento y el estado de los puertos de red.
+
+. [[restore_1_step4]]repare la accesibilidad de cada uno de los puertos del nodo 1 con un estado de accesibilidad distinto de `ok` utilizando el siguiente comando, en el siguiente orden:
++
+`network port reachability repair -node _node_name_  -port _port_name_`
+
++
+--
+.. Puertos físicos
+.. Puertos VLAN
+
+
+--
++
+Debería ver un resultado como el siguiente ejemplo:
+
++
+[listing]
+----
+Cluster ::> reachability repair -node node1 -port e11b
+----
++
+[listing]
+----
+Warning: Repairing port "node1:e11b" may cause it to move into a different broadcast domain, which can cause LIFs to be re-homed away from the port. Are you sure you want to continue? {y|n}:
+----
++
+Se espera un mensaje de advertencia, como se muestra en el ejemplo anterior, para los puertos con un estado de accesibilidad que puede ser diferente del estado de accesibilidad del dominio de difusión en el que se encuentra actualmente. Revise la conectividad del puerto y la respuesta `y` o. `n` según corresponda.
+
++
+Verifique que todos los puertos físicos tengan la habilidad esperada:
+
++
+`network port reachability show`
+
++
+A medida que se realiza la reparación de accesibilidad, ONTAP intenta colocar los puertos en los dominios de retransmisión correctos. Sin embargo, si no se puede determinar la accesibilidad de un puerto y no pertenece a ninguno de los dominios de difusión existentes, ONTAP creará nuevos dominios de difusión para estos puertos.
+
+. Compruebe la accesibilidad del puerto:
++
+`network port reachability show`
+
++
+Cuando todos los puertos se configuran y se añaden correctamente a los dominios de retransmisión correctos, el `network port reachability show` el comando debería informar el estado de la accesibilidad como `ok` para todos los puertos conectados y el estado como `no-reachability` para puertos sin conectividad física. Si algún puerto informa de un estado distinto a estos dos, realice la reparación de accesibilidad y añada o quite puertos de sus dominios de retransmisión como se indica en <<restore_node1_step4,Paso 4>>.
+
+. Compruebe que todos los puertos se han colocado en dominios de retransmisión:
++
+`network port show`
+
+. Compruebe que todos los puertos de los dominios de retransmisión tengan la unidad de transmisión máxima (MTU) correcta configurada:
++
+`network port broadcast-domain show`
+
+. Restaure los puertos iniciales de LIF, especificando los puertos iniciales de Vserver y LIF, si los hay, que deben restaurarse mediante los siguientes pasos:
++
+.. Enumere las LIF que están desplazadas:
++
+`displaced-interface show`
+
+.. Restaure los nodos de inicio de LIF y sus puertos iniciales:
++
+`displaced-interface restore-home-node -node _node_name_ -vserver _vserver_name_ -lif-name _LIF_name_`
+
+
+
+. Verifique que todas las LIF tienen un puerto doméstico y que están administrativamente más arriba:
++
+`network interface show -fields home-port,status-admin`
+
+

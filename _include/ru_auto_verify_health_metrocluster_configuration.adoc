@@ -1,0 +1,36 @@
+= 
+:allow-uri-read: 
+
+
+. Después del `metrocluster check run` la operación finaliza, vea los resultados:
++
+`metrocluster check show`
+
++
+Después de unos cinco minutos, se muestran los siguientes resultados:
+
++
+[listing]
+----
+metrocluster_siteA::*> metrocluster check show
+Last Checked On: 4/7/2019 21:15:05
+Component            Result
+---------------      -------
+nodes                ok
+lifs                 ok
+config-replication   ok
+aggregates           warning
+clusters             ok
+connections          not-applicable
+volumes              ok
+7 entries were displayed.
+----
+. Comprobar el estado de la operación de comprobación de MetroCluster en ejecución:
++
+`metrocluster operation history show -job-id 38`
+
+. Compruebe que no hay alertas de estado:
++
+`system health alert show`
+
+

@@ -1,0 +1,104 @@
+---
+permalink: upgrade/upgrade-create-aggregate-move-volumes.html 
+sidebar: sidebar 
+keywords: create, aggregate, node, store, volume, original, node, identify, aggregate, individually, create an aggregate and moving volumes to the new nodes 
+summary: Cree al menos un agregado en cada uno de los nuevos nodos para almacenar los volúmenes que desea mover desde los nodos originales. Debe identificar un agregado para cada volumen y moverlo por separado. 
+---
+= Cree un agregado y mueva volúmenes a los nuevos nodos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cree al menos un agregado en cada uno de los nuevos nodos para almacenar los volúmenes que desea mover desde los nodos originales. Debe identificar un agregado para cada volumen y moverlo por separado.
+
+.Antes de empezar
+Se deben inicializar las relaciones de reflejo de protección de datos para poder mover un volumen.
+
+https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["Busque el procedimiento de protección de datos necesario"^].
+
+.Pasos
+. Cree al menos un agregado en cada nuevo nodo:
++
+`storage aggregate create -aggregate aggr_name -node new_node_name -diskcount integer`
+
+. Añada el nuevo agregado a la misma SVM que el agregado del nodo original desde el que desea mover los volúmenes:
++
+`vserver add-aggregates`
+
++
+Tanto el nuevo agregado como el anterior desde el que se moverá el volumen tienen que estar en la misma SVM.
+
+. Compruebe que el nuevo agregado se haya asignado ahora a la misma SVM que el agregado del nodo original:
++
+`vserver show -vserversvm_name`
+
+. Muestra información de los volúmenes que se desean mover de los nodos originales a los nuevos nodos:
++
+`volume show -vserver svm_name -node original_node_name`
+
++
+Debe conservar el resultado del comando para poder consultarlo más adelante si se desea.
+
++
+En el siguiente ejemplo, se muestran los volúmenes en la SVM "vs1" y el nodo "node0":
+
++
+[listing]
+----
+cluster::> volume show -vserver vs1 -node node0
+Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+--------- ------------ ------------ ---------- ---- ---------- ---------- -----
+vs1       clone        aggr1        online     RW         40MB    37.87MB    5%
+vs1       vol1         aggr1        online     RW         40MB    37.87MB    5%
+vs1       vs1root      aggr1        online     RW         20MB    18.88MB    5%
+3 entries were displayed.
+----
+. Determine un agregado al que puede mover un volumen determinado:
++
+`volume move target-aggr show -vserver svm_name -volume vol_name`
+
++
+El siguiente ejemplo muestra que el volumen "user_max" de la SVM "vs2" se puede mover a cualquiera de los agregados mostrados:
+
++
+[listing]
+----
+cluster::> volume move target-aggr show -vserver vs2 -volume user_max
+Aggregate Name   Available Size  Storage Type
+--------------   --------------  ------------
+aggr2            467.9GB         FCAL
+node12a_aggr3    10.34GB         FCAL
+node12a_aggr2    10.36GB         FCAL
+node12a_aggr1    10.36GB         FCAL
+node12a_aggr4    10.36GB         FCAL
+5 entries were displayed
+----
+. Ejecute una comprobación de validación en cada volumen que desee mover para verificar que se pueda mover al agregado especificado:
++
+`volume move start -vserver svm_name -volume volume_name -destination-aggregate destination_aggregate_name -perform-validation-only true`
+
+. Mueva los volúmenes de uno en uno (nivel de privilegios avanzado):
++
+`volume move start -vserver svm_name -volume vol_name -destination-aggregate destination_aggr_name -cutover-window integer`
+
++
+No se puede mover el volumen raíz del nodo (vol0). Se pueden mover otros volúmenes, incluidos los volúmenes raíz de SVM.
+
+. Muestre el resultado de `volume move` operación para verificar que los volúmenes se han movido correctamente:
++
+`volume move show -vserver svm_name -volume vol_name`
+
+. Si la `volume move` la operación no completa la fase final después de varios intentos, fuerza el movimiento para terminar:
++
+`volume move trigger-cutover -vserver svm_name -volume vol_name -force true`
+
++
+Al forzar la operación de movimiento de volúmenes para que finalice, se puede interrumpir el acceso de los clientes al volumen que se está moviendo.
+
+. Compruebe que los volúmenes se hayan movido correctamente a la SVM especificada y se encuentren en el agregado correcto:
++
+`volume show -vserver svm_name`
+
+

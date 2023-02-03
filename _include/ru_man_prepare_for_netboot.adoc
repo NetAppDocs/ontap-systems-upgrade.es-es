@@ -1,0 +1,46 @@
+= 
+:allow-uri-read: 
+
+
+Después de montar físicamente en rack los nodos 3 y 4 posteriormente en el procedimiento, es posible que deba volver a arrancar. El término _netboot_ significa que está arrancando desde una imagen ONTAP almacenada en un servidor remoto. Al prepararse para reiniciar el sistema, debe colocar una copia de la imagen de arranque ONTAP 9 en un servidor web al que pueda acceder el sistema.
+
+.Antes de empezar
+* Compruebe que puede acceder a un servidor HTTP con el sistema.
+* Consulte link:other_references.html["Referencias"] Para crear un enlace al _sitio de soporte de NetApp_ y descargar los archivos del sistema necesarios para su plataforma y la versión correcta de ONTAP.
+
+
+.Acerca de esta tarea
+Debe reiniciar el sistema de las controladoras nuevas si no tienen la misma versión de ONTAP 9 instalada en ellas que se instala en las controladoras originales. Tras instalar cada controladora nueva, arranque el sistema desde la imagen de ONTAP 9 almacenada en el servidor web. A continuación, puede descargar los archivos correctos en el dispositivo multimedia de arranque para posteriores arranques del sistema.
+
+Sin embargo, no es necesario reiniciar el sistema las controladoras si se instala la misma versión de ONTAP 9 en ellas que se instalan en las controladoras originales. Si es así, puede omitir esta sección y continuar a. link:stage_3_install_boot_node3.html["Fase 3: Nodo de instalación y arranque 3"].
+
+.Pasos
+. [[man_netboot_Step1]]Acceda al sitio de soporte de NetApp para descargar los archivos utilizados para reiniciar el sistema.
+. Descargue el software ONTAP adecuado de la sección de descarga de software del sitio de soporte de NetApp y almacene el `<ontap_version>_image.tgz` archivo en un directorio accesible a través de la web.
+. Cambie al directorio accesible a la Web y compruebe que los archivos que necesita están disponibles.
++
+[cols="35,65"]
+|===
+| Durante... | Realice lo siguiente... 
+
+
+| Sistemas de la serie FAS/AFF8000  a| 
+Extraiga el contenido del `<ontap_version>_image.tgz` archivo al directorio de destino:
+
+`tar -zxvf <ontap_version>_image.tgz`
+
+
+NOTE: Si va a extraer el contenido en Windows, utilice 7-Zip o WinRAR para extraer la imagen netboot.
+
+El listado de directorios debe contener una carpeta netboot con un archivo de kernel:
+
+`netboot/kernel`
+
+
+
+| Todos los demás sistemas | La lista de directorios debe contener el siguiente archivo: `<ontap_version>_image.tgz`NOTA: No es necesario extraer el contenido del `<ontap_version>_image.tgz` archivo. 
+|===
++
+Utilizará información en los directorios de link:stage_3_install_boot_node3.html["Etapa 3"].
+
+

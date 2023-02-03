@@ -1,0 +1,28 @@
+---
+permalink: upgrade/upgrade-install-new-nodes.html 
+sidebar: sidebar 
+keywords: upgrade, moving, move, storage, install, node3, node4, attach, power, console, network, connection, install the new nodes 
+summary: Cuando se actualiza, se mueve Storage, el primer paso es instalar el nodo 3 y el nodo 4, y asociar las conexiones de alimentación, consola y red a los nodos nuevos. 
+---
+= Instale los nodos nuevos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando se actualiza, se mueve Storage, el primer paso es instalar el nodo 3 y el nodo 4, y asociar las conexiones de alimentación, consola y red a los nodos nuevos.
+
+.Pasos
+. Si es necesario, instale cualquier adaptador en los nodos 3 y 4, siguiendo las instrucciones del procedimiento de instalación del adaptador correspondiente.
+. Instale los nodos nuevos siguiendo las _instrucciones de instalación y configuración_ de la plataforma.
++
+No conecte las bandejas de discos de los nodos originales a los nuevos nodos en este momento.
+
+. Conecte las conexiones de alimentación y de consola al par de alta disponibilidad node3/node4, siguiendo las _instrucciones de instalación y configuración_ de la plataforma.
+. Conecte los cables de red.
+. Transfiera todos los cables restantes, distintos de los cables de la bandeja de almacenamiento, del par de alta disponibilidad nodo 1/nodo 2 a los puertos correspondientes del nodo 3/nodo 4, respectivamente.
++
+Esto incluye cables Fibre Channel y Ethernet que no se utilizan para conectar bandejas de almacenamiento.
+
+

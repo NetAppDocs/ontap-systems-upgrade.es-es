@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/install_a900_nvs_and_controller_on_node2.html 
+keywords: install, NVRAM, aff, a900, node2, controller, module 
+summary: Instrucciones de instalación de un módulo NVRAM y módulo controlador AFF A900 durante el procedimiento de actualización del controlador ARL. 
+---
+= Instale el AFF A900 o FAS9500 NVRAM y los módulos de controlador en el nodo 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Instale el AFF A900 o FAS9500 NVRAM y los módulos de controlador recibidos para la actualización en el nodo 2. El nodo 2 es la controladora B, situada en el lado derecho del chasis, cuando se tienen en cuenta las controladoras de la parte posterior del sistema.
+
+Debe tener en cuenta lo siguiente al realizar la instalación:
+
+* Mueva todos los módulos de relleno vacíos en las ranuras 6-1 y 6-2 del módulo NVRAM antiguo al nuevo módulo NVRAM.
+* NO mueva el dispositivo coredump desde el módulo NVRAM del A700 de AFF al módulo NVRAM del AFF A900.
+* Mueva todos los módulos de memoria caché flash instalados en el módulo NVRAM FAS9000 al módulo NVRAM FAS9500.
+
+
+.Antes de empezar
+Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
+
+
+
+== Instale el módulo NVRAM AFF A900 o FAS9500
+
+Siga el procedimiento siguiente para instalar el módulo NVRAM AFF A900 o FAS9500 en la ranura 6 del nodo 2.
+
+.Pasos
+. Alinee el módulo NVRAM con los bordes de la abertura del chasis en la ranura 6.
+. Deslice suavemente el módulo NVRAM hacia dentro de la ranura hasta que el pestillo de leva de E/S con letras y numerado comience a acoplarse con el pasador de leva de E/S y, a continuación, empuje el pestillo de leva de E/S hasta bloquear el módulo NVRAM en su sitio.
+
+
+
+
+== Instale el módulo del controlador AFF A900 o FAS9500 en el nodo 2
+
+Siga el procedimiento siguiente para instalar el módulo del controlador AFF A900 o FAS9500 en el nodo 2.
+
+.Pasos
+. Alinee el extremo del módulo del controlador con el compartimiento B del chasis y, a continuación, empuje suavemente el módulo del controlador hasta la mitad dentro del sistema.
++
+
+TIP: La etiqueta del compartimento se encuentra en el chasis directamente sobre el módulo de la controladora.
+
++
+
+NOTE: No inserte completamente el módulo de la controladora en el chasis hasta que se le indique hacerlo más adelante en el procedimiento.
+
+. Conecte los puertos de consola y de gestión al módulo de controladora 2.
++
+
+NOTE: Como el chasis ya está ENCENDIDO, el nodo 2 empieza a arrancar en cuanto esté completamente asentado. Para evitar el arranque del nodo 2, se recomienda conectar los cables de consola y de gestión al módulo de controlador del nodo 2 antes de insertar completamente el módulo de controlador en la ranura.
+
+. Empuje firmemente el módulo de la controladora en el chasis hasta que se ajuste al plano medio y esté totalmente asentado.
++
+El pestillo de bloqueo se eleva cuando el módulo del controlador está completamente asentado.
+
++
+
+WARNING: Para evitar dañar los conectores, no ejerza una fuerza excesiva al deslizar el módulo del controlador hacia el chasis.
+
+. Conecte la consola de serie en cuanto esté sentado el módulo y esté listo para interrumpir EL ARRANQUE AUTOMÁTICO del nodo 1.
+. Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 2 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe EL ARRANQUE AUTOMÁTICO a tiempo y el nodo 2 empieza a arrancar, espere a que aparezca el mensaje y pulse *Ctrl-C* para ir al menú de inicio. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` Para reiniciar el nodo e interrumpir EL ARRANQUE AUTOMÁTICO durante el reinicio.
+

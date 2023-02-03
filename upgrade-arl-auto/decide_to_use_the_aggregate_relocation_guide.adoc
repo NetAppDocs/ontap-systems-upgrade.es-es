@@ -1,0 +1,68 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/decide_to_use_the_aggregate_relocation_guide.html 
+keywords: aggregate relocation, decide to use, upgrade, model, matrix, replacement, controller 
+summary: 'Decidir si utilizar ARL para actualizar controladoras que ejecutan ONTAP 9.5 a 9.7 mediante `system controller replace` comandos.' 
+---
+= Decida si desea utilizar el procedimiento de reubicación de agregados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En este contenido se describe cómo actualizar las controladoras de almacenamiento en un par de alta disponibilidad con nuevas controladoras sin perder todos los datos y los discos existentes. Se trata de un procedimiento complejo que sólo deben ser utilizados por administradores con experiencia.
+
+Utilice este contenido en las siguientes circunstancias:
+
+* Va a actualizar controladoras de NetApp que ejecutan ONTAP 9.5, 9.6 o 9.7. Este documento no se aplica a las actualizaciones a ONTAP 9.8.
+* No desea añadir las nuevas controladoras como una pareja de alta disponibilidad nueva al clúster y migrar los datos con movimientos de volúmenes.
+* Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en el modo de privilegios de diagnóstico.
+* Si va a actualizar una configuración de MetroCluster, es una configuración de FC de 4 nodos o superior y todos los nodos ejecutan ONTAP 9.6 o 9.7.
+
+
+
+NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.
+
+[[sys_Commands_95_97_soported_systems]] las siguientes tablas muestran la matriz de modelos admitida para la actualización de controladoras.
+
+[cols="50,50"]
+|===
+| La controladora anterior | Controladora de reemplazo 
+
+
+| FAS8020, FAS8040, FAS8060 Y FAS8080 | FAS8200, FAS8300, FAS8700 Y FAS9000 
+
+
+| AFF8020, AFF8040, AFF8060 Y AFF8080 | AFF A300, AFF A400, AFF A700 1, AFF 
+
+
+| FAS8200 | FAS8700, FAS9000, FAS8300 4, VERSIÓN 5 
+
+
+| AFF A300 | AFF A700 1, AFF A800 2, Windows 3, AFF 4 5 
+|===
+
+NOTE: Si la combinación del modelo de actualización de la controladora no se encuentra en la tabla anterior, póngase en contacto con el soporte técnico.
+
+Esta 1 la actualización automatizada ARL para el sistema AFF A700 es compatible desde ONTAP 9.7P2.
+
+This 2 Si está actualizando a un AFF A800 o a un sistema que admita discos internos y externos, deberá seguir las instrucciones específicas del agregado raíz de los discos NVMe internos. Consulte link:set_fc_or_uta_uta2_config_on_node3.html#step14["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3, paso 14"] y.. link:set_fc_or_uta_uta2_config_node4.html#step14["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 14"].
+
+Esta 3 actualización automatizada ARL de AFF A300 a un sistema AFF A800 es compatible con ONTAP 9.7P5.
+
+Hacia 4 ARL la actualización automatizada de un sistema AFF A300 a un sistema AFF A400 y un FAS8200 a un sistema FAS8300 es compatible desde ONTAP 9.7P8.
+
+Jesús 5 Si va a actualizar desde un AFF A300 a un AFF A400 o una FAS8200 a un sistema FAS8300 en una configuración de clúster sin switch de dos nodos, debe seleccionar puertos temporales del clúster para la actualización de controladora. Los sistemas AFF A400 y FAS8300 se ofrecen en dos configuraciones, como un paquete Ethernet donde los puertos de la tarjeta intermedia son de tipo Ethernet y como un paquete FC donde los puertos intermedios son de tipo FC.
+
+* Para un AFF A400 o un FAS8300 con una configuración de tipo Ethernet, puede utilizar cualquiera de los dos puertos intermedios como puertos de clúster temporales.
+* Para una configuración de tipo FC AFF A400 o FAS8300 con un tipo FC, se debe añadir una tarjeta de interfaz de red 10 GbE de cuatro puertos (número de pieza X1147A) para proporcionar puertos temporales del clúster.
+* Tras completar una actualización de la controladora utilizando puertos de clúster temporales, puede migrar de forma no disruptiva LIF de clúster a e3a y e3b, puertos de 100 GbE en un sistema AFF A400 y puertos e0c y e0d y 100 GbE en un sistema FAS8300.
+
+
+Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+
+Consulte link:other_references.html["Referencias"] Para establecer un enlace al centro de documentación de _ONTAP 9_, donde puede acceder a la documentación de producto de ONTAP 9.

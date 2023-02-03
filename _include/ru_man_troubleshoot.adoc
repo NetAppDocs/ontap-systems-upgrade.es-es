@@ -1,0 +1,14 @@
+= 
+:allow-uri-read: 
+
+
+Es posible que aparezca un error mientras se actualiza la pareja de nodos. El nodo podría bloquearse, es posible que los agregados no se reubiquen o que los LIF no migren. La causa del fallo y su solución dependen de cuándo se produjo el fallo durante el procedimiento de actualización.
+
+Consulte la tabla que describe las diferentes fases del procedimiento en la sección link:arl_upgrade_workflow.html["Flujo de trabajo de actualización de ARL"]. La información sobre los fallos que pueden producirse se enumera por fase del procedimiento.
+
+* link:aggregate_relocation_failures.html["Fallos de reubicación de agregados"]
+* link:reboots_panics_power_cycles.html["Reinicios, pánicos o ciclos de alimentación"]
+* link:issues_multiple_stages_of_procedure.html["Problemas que pueden surgir en varias etapas del procedimiento"]
+* link:lif_migration_failure.html["Error de migración de LIF"]
+* link:lifs_invalid_ports_after_upgrade.html["Los LIF están en puertos no válidos tras la actualización"]
+

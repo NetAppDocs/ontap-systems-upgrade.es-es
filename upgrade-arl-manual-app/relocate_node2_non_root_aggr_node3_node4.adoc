@@ -1,0 +1,127 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/relocate_node2_non_root_aggr_node3_node4.html 
+keywords: relocate, non-root, aggregates, node3, node4 
+summary: Reubique los agregados que no son raíz del nodo 3 al nodo 4 durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.8 o posterior. 
+---
+= Reubique los agregados que no son raíz del nodo 3 al nodo 4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Después de volver a colocar los agregados no raíz del nodo 3 en el nodo 3, ahora debe reubicarlos de nodo 3 a nodo 4.
+
+.Pasos
+. [[man_reubication_3_4_Step1]]Introduzca el siguiente comando en cualquiera de las controladoras y examine la salida para identificar qué agregados no raíz desea reubicar:
++
+`storage aggregate show -owner-name _node3_ -home-id _node2_system_id_`
+
+. Reubicar los agregados mediante los siguientes subpasos:
++
+.. Acceda al nivel de privilegio avanzado. Para ello, introduzca el siguiente comando en cualquier nodo:
++
+`set -privilege advanced`
+
+.. Introduzca el siguiente comando:
++
+`storage aggregate relocation start -node _node3_ -destination _node4_ -aggregate-list _aggr_name1, aggr_name2..._ -ndo-controller-upgrade true`
+
++
+La lista de agregados es la lista de agregados propiedad del nodo 4 que se obtuvo en <<man_relocate_3_4_Step1,Paso 1>>.
+
+.. Cuando se le solicite, introduzca `y`.
++
+La reubicación se produce en segundo plano. La reubicación de un agregado puede tardar desde unos pocos segundos a un par de minutos. El tiempo incluye tanto la interrupción del servicio como las partes que no son de la interrupción del servicio. El comando no reasigna ningún agregado sin conexión o restringido.
+
+.. Volver al nivel admin:
++
+`set -privilege admin`
+
+
+
+. [[step3]]Compruebe el estado de reubicación:
++
+`storage aggregate relocation show -node _node3_`
+
++
+Se mostrará la salida `Done` para un agregado después de su traslado.
+
++
+
+NOTE: Espere a que todos los agregados del nodo 2 se hayan reubicado al nodo 4 antes de continuar con el siguiente paso.
+
+. Realice una de las siguientes acciones:
++
+[cols="35,65"]
+|===
+| Si la reubicación de... | Realice lo siguiente... 
+
+
+| Todos los agregados se han realizado correctamente | Vaya a. <<man_relocate_3_4_Step5,Paso 5>>. 
+
+
+| Todos los agregados han fallado o se han vetado  a| 
+.. Consulte los registros de EMS para la acción correctiva.
+.. Realice la acción correctiva.
+.. Acceda al nivel de privilegio avanzado. Para ello, introduzca el siguiente comando en cualquier nodo:
++
+`set -privilege advanced`
+
+.. Reubicar agregados que fallen o vetados:
++
+`storage aggregate relocation start -node _node3_ destination _node4_ -aggregate-list _aggr_name1, aggr_name2..._ ndo-controller-upgrade true`
+
++
+La lista de agregados es la lista de agregados fallidos o vetados.
+
+.. Cuando se le solicite, introduzca `y`.
+.. Vuelva al nivel admin. Para ello, introduzca el siguiente comando:
++
+`set -privilege admin`
+
+
+
+Si es necesario, puede forzar la reubicación mediante uno de los siguientes métodos:
+
+** Anulación de las comprobaciones de veto:
++
+`storage aggregate relocation start -override-vetoes -ndo-controller-upgrade`
+
+** Sobreescribir comprobaciones de destino:
++
+`storage aggregate relocation start -override-destination-checks -ndocontroller-upgrade`
+
+
+
+Para obtener más información sobre los comandos de reubicación de agregados de almacenamiento, consulte link:other_references.html["Referencias"] Para establecer un vínculo a la gestión de discos y agregados con la CLI_ y los comandos _ONTAP 9: Manual Page Reference_.
+
+|===
+. [[man_reubication_3_4_Step5]]Compruebe que todos los agregados que no son raíz del nodo 2 estén en línea y su estado en el nodo 4:
++
+`storage aggregate show -node _node4_ -state offline -root false`
+
++
+Los agregados 2 se enumeran en la salida del comando en <<man_relocate_3_4_Step1,Paso 1>>.
+
+. Si alguno de los agregados se ha desconectado o se ha convertido en externo, póngen línea utilizando el siguiente comando de cada agregado:
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Verifique que todos los volúmenes de agregados de nodo 2 estén en línea en el nodo 4:
++
+`volume show -node _node4_ -state offline`
+
+. Si alguno de los volúmenes se encuentra sin conexión en el nodo 4, conectarlos:
++
+`volume online -vserver _vserver-name_ -volume _volume_name_`
+
+. Envíe un mensaje de AutoSupport posterior a la actualización a NetApp para el nodo 4:
++
+`system node autosupport invoke -node _node4_ -type all -message "_node2_ successfully upgraded from _platform_old_ to _platform_new_"`
+
+

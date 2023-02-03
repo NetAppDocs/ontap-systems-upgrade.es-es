@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Los nodos originales o los nodos nuevos pueden estar habilitados para el cifrado de almacenamiento. En ese caso, deberá seguir los pasos adicionales de este procedimiento para verificar que Storage Encryption esté configurado correctamente.
+
+Si desea usar Storage Encryption, todas las unidades de disco asociadas a los nodos deben tener unidades de disco de autocifrado.

@@ -1,0 +1,158 @@
+= 
+:allow-uri-read: 
+
+
+. Reiniciar el sistema en el nodo 4:
++
+[cols="30,70"]
+|===
+| Durante... | Realice lo siguiente... 
+
+
+| Sistemas de la serie FAS/AFF8000 | `netboot \http://<web_server_ip/path_to_web-accessible_directory>/netboot/kernel` 
+
+
+| Todos los demás sistemas | `netboot \http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz` 
+|===
++
+La `<path_to_the_web-accessible_directory>` debería conducir al lugar en el que se ha descargado el `<ontap_version>_image.tgz` En el paso 1 de la sección link:prepare_for_netboot.html["Prepárese para el arranque desde el red"].
+
++
+
+NOTE: No interrumpa el arranque.
+
+. En el menú de inicio, seleccione opción `(7) Install new software first`.
++
+Esta opción del menú descarga e instala la nueva imagen de ONTAP en el dispositivo de arranque.
+
++
+Ignore el siguiente mensaje:
+
++
+`This procedure is not supported for Non-Disruptive Upgrade on an HA pair`
+
++
+La nota se aplica a las actualizaciones no disruptivas de ONTAP, no a las actualizaciones de controladoras.
+
++
+
+NOTE: Utilice siempre netboot para actualizar el nodo nuevo a la imagen deseada. Si utiliza otro método para instalar la imagen en la nueva controladora, podría instalarse la imagen incorrecta. Este problema se aplica a todas las versiones de ONTAP. El procedimiento para reiniciar el sistema combinado con la opción `(7) Install new software` Limpia el soporte de arranque y coloca la misma versión ONTAP en ambas particiones de imagen.
+
+. Si se le solicita que continúe el procedimiento, introduzca `y`, Y cuando se le solicite el paquete, escriba la dirección URL:
++
+`\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
+
+. Lleve a cabo los siguientes pasos para reiniciar el módulo del controlador:
++
+.. Introduzca `n` para omitir la recuperación del backup cuando aparezca la siguiente solicitud:
++
+....
+Do you want to restore the backup configuration now? {y|n}
+....
+.. Reinicie introduciendo `y` cuando vea el siguiente símbolo del sistema:
++
+....
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+....
++
+El módulo del controlador se reinicia pero se detiene en el menú de inicio porque el dispositivo de arranque se ha reformateado y los datos de configuración deben restaurarse.
+
+
+
+. Seleccione el modo de mantenimiento `5` desde el menú de inicio y entrar `y` cuando se le pida que continúe con el arranque.
+. Compruebe que la controladora y el chasis están configurados como ha:
++
+`ha-config show`
+
++
+En el siguiente ejemplo, se muestra el resultado del `ha-config show` comando:
+
++
+....
+Chassis HA configuration: ha
+Controller HA configuration: ha
+....
++
+
+NOTE: El sistema graba en una PROM tanto si se encuentran en un par ha como en una configuración independiente. El estado debe ser el mismo en todos los componentes del sistema independiente o del par de alta disponibilidad.
+
+. Si la controladora y el chasis no están configurados como alta disponibilidad, utilice los siguientes comandos para corregir la configuración:
++
+`ha-config modify controller ha`
+
++
+`ha-config modify chassis ha`
+
++
+Si tiene una configuración MetroCluster, utilice los siguientes comandos para modificar la controladora y el chasis:
+
++
+`ha-config modify controller mcc`
+
++
+`ha-config modify chassis mcc`
+
+. Salga del modo de mantenimiento:
++
+`halt`
+
++
+Interrumpa el arranque automático pulsando Ctrl-C en el símbolo del sistema del entorno de arranque.
+
+. [[auto_install4_step15]]en el nodo 3, compruebe la fecha, la hora y la zona horaria del sistema:
++
+`date`
+
+. El nodo 4, compruebe la fecha mediante el siguiente comando en el símbolo del sistema del entorno de arranque:
++
+`show date`
+
+. Si es necesario, configure la fecha del nodo 4:
++
+`set date _mm/dd/yyyy_`
+
+. En el nodo 4, compruebe la hora mediante el siguiente comando en el símbolo del sistema del entorno de arranque:
++
+`show time`
+
+. Si es necesario, configure la hora del nodo 4:
++
+`set time _hh:mm:ss_`
+
+. En el cargador de arranque, establezca el ID del sistema del partner en el nodo 4:
++
+`setenv partner-sysid _node3_sysid_`
+
++
+Para el nodo 4, `partner-sysid` debe ser el del nodo 3.
+
++
+Guarde los ajustes:
+
++
+`saveenv`
+
+. [[auto_install4_step21]] Compruebe el `partner-sysid` para el nodo 4:
++
+`printenv partner-sysid`
+
+. [[step22]]realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si su sistema... | Realice lo siguiente... 
+
+
+| Cuenta con discos y sin almacenamiento de gestión | Vaya a. <<auto_install4_step23,Paso 23>>. 
+
+
+| Es un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento  a| 
+.. Vaya a la sección link:set_fc_or_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"] y completar las subsecciones de esta sección.
+.. Vuelva a esta sección y complete los pasos restantes, empezando por <<auto_install4_step23,Paso 23>>.
+
+
+
+IMPORTANT: Debe volver a configurar los puertos integrados de FC, los puertos CNA integrados y las tarjetas CNA antes de iniciar ONTAP en el sistema V-Series o con el software de virtualización FlexArray.
+
+|===
+

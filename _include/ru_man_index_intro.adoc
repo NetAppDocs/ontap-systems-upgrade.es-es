@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+En este contenido se describe cómo actualizar el hardware de la controladora sin interrupciones mediante la reubicación de agregados.
+
+Puede actualizar el hardware de la controladora de forma no disruptiva en un par de nodos que ejecutan ONTAP 9 migrando agregados que no son raíz de los nodos originales a los nuevos del mismo clúster. Durante la actualización, se puede acceder a los datos alojados en los nodos que se están actualizando.
+
+Este procedimiento usa un método llamado reubicación de agregados (ARL), que aprovecha la configuración de alta disponibilidad para permitirle mover la propiedad de agregados que no son raíz de un nodo a otro si comparten almacenamiento dentro del mismo clúster.

@@ -1,0 +1,112 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/move_nas_lifs_node1_node2.html 
+keywords: nas, node1, node2, lifs, cluster, san 
+summary: Mueva los LIF de datos del nodo 1 al nodo 2 si tiene un clúster de dos nodos o a un tercer nodo si el clúster tiene más de dos nodos, durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.8 o una versión posterior. 
+---
+= Mueva LIF de datos NAS que pertenezcan al nodo 1 al nodo 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de poder reemplazar el nodo 1 por nodo 3, debe mover las LIF de datos NAS que pertenecen al nodo 1 al nodo 2 si tiene un clúster de dos nodos, o a un tercer nodo si el clúster tiene más de dos nodos. El método que utilice dependerá de si el clúster está configurado para NAS o SAN.
+
+.Acerca de esta tarea
+Las LIF remotas gestionan el tráfico a LUN DE SAN durante el procedimiento de actualización. No es necesario mover LIF DE SAN durante la actualización para el estado del clúster o del servicio. Debe verificar que las LIF están en buen estado y ubicadas en puertos adecuados después de poner el nodo 3 en línea.
+
+.Pasos
+. Enumere todas las LIF de datos NAS alojadas en el nodo 1 introduciendo el comando siguiente y capturando el resultado:
++
+`network interface show -data-protocol nfs|cifs -curr-node _node1_`
+
++
+[listing]
+----
+ cluster::> network interface show -data-protocol nfs|cifs -curr-node node1
+
+          Logical     Status      Network             Current   Current Is
+ Vserver  Interface   Admin/Oper  Address/Mask        Node      Port    Home
+ -------- ----------  ----------  ------------------  --------- ------- ----
+ vs0
+          a0a         up/down     10.63.0.53/24       node1     a0a     true
+          data1       up/up       10.63.0.50/18       node1     e0c     true
+          rads1       up/up       10.63.0.51/18       node1     e1a     true
+          rads2       up/down     10.63.0.52/24       node1     e1b     true
+ vs1
+          lif1        up/up       192.17.176.120/24   node1     e0c     true
+          lif2        up/up       172.17.176.121/24   node1     e1a     true
+----
+. [[step2]]modifique la configuración de reversión automática de todas las LIF del nodo 1 y del nodo 2:
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -auto-revert false`
+
+. [[step3]]realice los pasos siguientes para migrar cualquier LIF de datos NAS alojada en los grupos de interfaces y VLAN del nodo 1:
++
+.. [[subestación]] migre las LIF alojadas en cualquier grupo de interfaces y las VLAN del nodo 1 a un puerto en el nodo 2 capaz de alojar LIF en la misma red que las de los grupos de interfaces introduciendo el comando siguiente, una vez para cada LIF:
++
+`network interface migrate -vserver _Vserver_name_ -lif _LIF_name_ -destination-node _node2_ –destination-port _netport|ifgrp_`
+
+.. Modifique el puerto de inicio y el nodo de inicio de las LIF y VLAN en <<substepa,Subpaso a>> En el puerto y el nodo que actualmente alojan las LIF, escriba el comando siguiente, una vez para cada LIF:
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -home-node _node2_ - home-port _netport|ifgrp_`
+
+
+
+. [[step4]]realice una de las siguientes acciones:
++
+[cols="20,80"]
+|===
+| Si el clúster está configurado para... | Realice lo siguiente... 
+
+
+| NAS | Completo <<man_lif_1_2_step5,Paso 5>> por <<man_lif_1_2_step8,Paso 8>>. 
+
+
+| SAN | Desactive todos los LIF SAN del nodo para desactivarlos durante la actualización:
+`network interface modify -vserver _Vserver-name_ -lif _LIF_name_ -home-node _node_to_upgrade_ -home-port _netport|ifgrp_ -status-admin down` 
+|===
+. [[man_lif_1_2_step5]]migre las LIF de datos NAS del nodo 1 al nodo 2 introduciendo el comando siguiente, una vez para cada LIF de datos:
++
+`network interface migrate -vserver _Vserver-name_ -lif _LIF_name_ -destination-node _node2_ -destination-port _data_port_`
+
+. [[step6]]Introduzca el comando siguiente y examine su resultado para verificar que las LIF se han movido a los puertos correctos y que las LIF tienen el estado up introduciendo el comando siguiente en cualquier nodo y examinando el resultado:
++
+`network interface show -curr-node _node2_ -data-protocol nfs|cifs`
+
+. [[step7]]modifique el nodo de inicio de las LIF migradas:
++
+`network interface modify -vserver _Vserver-name_ -lif _LIF_name_ -home-node _node2_ -home-port _port_name_`
+
+. [[man_lif_1_2_step8]]Compruebe si la LIF está utilizando el puerto como su puerto principal o puerto actual. Si el puerto no es de origen o puerto actual, vaya a. <<man_lif_1_2_step9,Paso 9>>:
++
+`network interface show -home-node _node2_ -home-port _port_name_`
+
++
+`network interface show -curr-node _node_name_ -curr-port _port_name_`
+
+. [[man_lif_1_2_step9]]Si las LIF utilizan el puerto como puerto principal o puerto actual, modifique la LIF para utilizar un puerto diferente:
++
+`network interface migrate -vserver _Vserver-name_ -lif _LIF_name_ -destination–node _node_name_ -destination-port _port_name_`
+
++
+`network interface modify -vserver _Vserver-name_ -lif _LIF_name_ -home–node _node_name_ -home-port _port_name_`
+
+. [[paso 10]]Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en "up" introduciendo el comando siguiente, una vez para cada LIF:
++
+`network interface modify -vserver _Vserver-name_ -lif _LIF_name_ -home-node _nodename_ -status-admin up`
+
++
+
+NOTE: Para las configuraciones de MetroCluster, es posible que no pueda cambiar el dominio de retransmisión de un puerto porque está asociado a un puerto que aloja la LIF de una máquina virtual de almacenamiento (SVM) de destino. Escriba el comando siguiente desde la SVM de origen correspondiente en el sitio remoto para reasignar la LIF de destino a un puerto apropiado:
+`metrocluster vserver resync -vserver _Vserver_name_`
+
+. [[step11]]Introduzca el siguiente comando y examine su salida para verificar que no quedan LIF de datos en el nodo 1:
++
+`network interface show -curr-node _node1_ -role data`
+
+

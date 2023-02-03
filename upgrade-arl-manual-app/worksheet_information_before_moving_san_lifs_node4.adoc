@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/worksheet_information_before_moving_san_lifs_node4.html 
+keywords: worksheet, information, SAN, LIF, switch, port, adapter 
+summary: Registrar la información de configuración de LIF de datos de NAS del nodo 2 durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior. 
+---
+= Hoja de trabajo: Información que se debe registrar antes de mover LIF de datos NAS al nodo 4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para verificar que la configuración sea correcta después de mover las LIF SAN de nodo 3 a nodo 4, es posible usar la siguiente hoja de datos para registrar el `adapter` y.. `switch-port` Información para cada LIF.
+
+Registre la LIF `adapter` información de la `network interface show -data-protocol fc*` resultado del comando y el `switch-port` información de la `fcp adapter show -fields switch-port,fc-wwpn` resultado del comando para nodo 3.
+
+Después de completar la migración al nodo 4, registre la LIF `adapter` y.. `switch-port` La información de las LIF en el nodo 4 y verifique que cada LIF siga estando conectado a la misma `switch-port`.
+
+[cols="6*"]
+|===
+3+| Nodo 3 3+| Node4 
+
+
+| LUN | `adapter` | `switch-port` | LUN | `adapter` | `switch-port` 
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+
+
+|  |  |  |  |  |  
+|===

@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/get_ip_address_of_external_kms_for_storage_encryption.html 
+keywords: IP address, external, key management, server, storage encryption, kmip, onboard key management 
+summary: 'Configure y gestione el cifrado de almacenamiento, gestione las claves de autenticación y ponga en modo inactivo las relaciones de SnapMirror cuando actualice las controladoras que ejecutan ONTAP 9.5 a 9.7 mediante `system controller replace` comandos.' 
+---
+= Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Después de la actualización, debe configurar de inmediato el cifrado del almacenamiento y establecer una clave de autenticación en todo el clúster para reemplazar las claves de autenticación en el nivel de nodo anteriores.
+
+.Pasos
+. Instale los certificados de capa de sockets seguros (SSL) de cliente y servidor necesarios para comunicarse con los servidores de gestión de claves:
++
+`security certificate install`
+
+. Configure el cifrado del almacenamiento en todos los nodos mediante el siguiente comando en cada nodo:
++
+`security key-manager setup`
+
+. Añada la dirección IP para cada servidor de gestión de claves:
++
+`security key-manager add`
+
+. Compruebe que los mismos servidores de gestión de claves estén configurados y disponibles en todos los nodos del clúster:
++
+`security key-manager show -status`
+
+. Cree una nueva clave de autenticación para todo el clúster:
++
+`security key-manager create-key`
+
+. Anote el nuevo ID de clave de autenticación.
+. ReKey todas las unidades de autocifrado con la nueva clave de autenticación:
++
+`storage encryption disk modify -disk * -data-key-id _authentication_key_id_`
+
+
+
+
+
+== Gestionar la autenticación mediante servidores KMIP
+
+Con ONTAP 9.5 a 9.7, se pueden usar servidores de protocolo de interoperabilidad de gestión de claves (KMIP) para gestionar las claves de autenticación.
+
+Pasos
+
+. Añadir una nueva controladora:
++
+`security key-manager setup -node _new_controller_name_`
+
+. Añada el gestor de claves:
++
+`security key-manager -add _key_management_server_ip_address_`
+
+. Verifique que los servidores de gestión de claves estén configurados y disponibles para todos los nodos del clúster:
++
+`security key-manager show -status`
+
+. Restaure las claves de autenticación de todos los servidores de gestión de claves vinculados al nuevo nodo:
++
+`security key-manager restore -node _new_controller_name_`
+
+. ReKey todos los discos de autocifrado con la nueva clave de autenticación:
++
+`storage encryption disk modify -disk * [-data-key-id nonMSID AK]`
+
+. Si utiliza el estándar de procesamiento de información federal (FIPS), vuelva a introducir todos los discos de autocifrado con la nueva clave de autenticación:
++
+`storage encryption disk modify -disk * [-fips-key-id nonMSID AK]`
+
+

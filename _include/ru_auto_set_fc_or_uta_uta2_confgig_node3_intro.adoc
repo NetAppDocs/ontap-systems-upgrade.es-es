@@ -1,0 +1,11 @@
+= 
+:allow-uri-read: 
+
+
+Si el nodo 3 tiene puertos FC integrados, puertos de adaptador de objetivo unificado (UTA/UTA2) integrados o una tarjeta UTA/UTA2, debe configurar los ajustes antes de completar el resto del procedimiento.
+
+.Acerca de esta tarea
+Es posible que tenga que completar la sección <<Configure los puertos FC en el nodo 3>>, la sección <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>, o ambas secciones.
+
+
+NOTE: Los materiales de marketing de NetApp podrían utilizar el término UTA2 para referirse a puertos y adaptadores de adaptador de red convergente (CNA). Sin embargo, la CLI utiliza el término CNA.

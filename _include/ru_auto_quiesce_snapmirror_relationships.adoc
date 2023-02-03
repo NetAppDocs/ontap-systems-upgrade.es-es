@@ -1,0 +1,30 @@
+= Desactivar las relaciones de SnapMirror (opcional)
+:allow-uri-read: 
+
+
+
+
+== Desactivar las relaciones de SnapMirror (opcional)
+
+Antes de continuar con el procedimiento, debe confirmar que todas las relaciones de SnapMirror se ponen en modo inactivo. Cuando una relación de SnapMirror se pone en modo inactivo, sigue en modo inactivo tras reinicios y recuperaciones tras fallos.
+
+.Pasos
+. Compruebe el estado de la relación de SnapMirror en el clúster de destino:
++
+`snapmirror show`
+
++
+[NOTE]
+====
+Si el estado es "transferencia", debe anular dichas transferencias:
+`snapmirror abort -destination-vserver _vserver_name_`
+
+====
++
+La anulación falla si la relación de SnapMirror no se encuentra en el estado "transfiriendo".
+
+. Desactive todas las relaciones entre el clúster:
++
+`snapmirror quiesce -destination-vserver *`
+
+

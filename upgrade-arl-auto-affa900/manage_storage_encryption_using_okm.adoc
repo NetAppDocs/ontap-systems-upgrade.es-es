@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/manage_storage_encryption_using_okm.html 
+keywords: storage, encryption, authentication, key, manager, external 
+summary: Configure y gestione el cifrado de almacenamiento, gestione las claves de autenticación y ponga en modo inactivo las relaciones de SnapMirror durante una actualización de AFF A700 a AFF A900. 
+---
+= Gestione el cifrado de almacenamiento con el gestor de claves incorporado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puede utilizar OKM para gestionar claves de cifrado. Si planea utilizar OKM, debe registrar la frase de acceso y el material de copia de seguridad antes de comenzar la actualización.
+
+.Pasos
+. Guarde la contraseña en una ubicación segura.
+. Cree un backup con fines de recuperación. Ejecute el siguiente comando y guarde el resultado:
++
+`security key-manager onboard show-backup`
+
+
+
+
+
+== Desactivar las relaciones de SnapMirror (opcional)
+
+Antes de continuar con el procedimiento, debe confirmar que todas las relaciones de SnapMirror se ponen en modo inactivo. Cuando una relación de SnapMirror se pone en modo inactivo, sigue en modo inactivo tras reinicios y recuperaciones tras fallos.
+
+.Pasos
+. Compruebe el estado de la relación de SnapMirror en el clúster de destino:
++
+`snapmirror show`
+
++
+[NOTE]
+====
+Si el estado es "transferencia", debe anular dichas transferencias:
+`snapmirror abort -destination-vserver _vserver_name_`
+
+====
++
+La anulación falla si la relación de SnapMirror no se encuentra en el estado "transfiriendo".
+
+. Desactive todas las relaciones entre el clúster:
++
+`snapmirror quiesce -destination-vserver *`
+
+

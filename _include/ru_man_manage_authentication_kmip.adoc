@@ -1,0 +1,32 @@
+= 
+:allow-uri-read: 
+
+
+Con ONTAP 9.5 y versiones posteriores, se pueden utilizar servidores de protocolo de interoperabilidad de gestión de claves (KMIP) para gestionar las claves de autenticación.
+
+.Pasos
+. Añadir una nueva controladora:
++
+`security key-manager setup -node _new_controller_name_`
+
+. Añada el gestor de claves:
++
+`security key-manager -add _key_management_server_ip_address_`
+
+. Verifique que los servidores de gestión de claves estén configurados y disponibles para todos los nodos del clúster:
++
+`security key-manager show -status`
+
+. Restaure las claves de autenticación de todos los servidores de gestión de claves vinculados al nuevo nodo:
++
+`security key-manager restore -node _new_controller_name_`
+
+. ReKey todos los discos de autocifrado con la nueva clave de autenticación:
++
+`storage encryption disk modify -disk * [-data-key-id nonMSID AK]`
+
+. Si utiliza el estándar de procesamiento de información federal (FIPS), vuelva a introducir todos los discos de autocifrado con la nueva clave de autenticación:
++
+`storage encryption disk* modify -disk * [-fips-key-id nonMSID AK]`
+
+

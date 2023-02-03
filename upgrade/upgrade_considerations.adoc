@@ -1,0 +1,92 @@
+---
+permalink: upgrade/upgrade-considerations.html 
+sidebar: sidebar 
+keywords: plan, upgrade, consideration, contact, technical, support, recommendation, guidance, cluster, considerations for upgrading controller hardware 
+summary: Para planificar la actualización, familiarícese con las consideraciones generales de actualización. Si es necesario, póngase en contacto con el soporte técnico para obtener recomendaciones y orientación específica para la configuración del clúster. 
+---
+= Consideraciones que tener en cuenta para actualizar el hardware de la controladora
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para planificar la actualización, debe familiarizarse con las consideraciones generales de actualización. Si es necesario, póngase en contacto con el soporte técnico para obtener recomendaciones y orientación específica para la configuración del clúster.
+
+Requisitos y limitaciones
+
+* El procedimiento de actualización moviendo almacenamiento es disruptivo. El procedimiento de actualización mediante la transferencia de volúmenes es no disruptivo.
+* Los nuevos nodos deben admitir la misma versión de software que los nodos originales.
++
+link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Actualice ONTAP"^]
+
+* Debe observar el tamaño máximo del clúster.
++
+Cuando actualiza moviendo volúmenes, los nodos nuevos se unen al clúster antes de quitar los nodos originales. Confirmar que el número de controladoras del clúster no supera el tamaño máximo de clúster admitido durante el procedimiento.
+
++
+https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
+* Cuando combine un modelo de plataforma de controladora diferente en un clúster, debe seguir las reglas de combinación de plataforma de almacenamiento.
++
+https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
+* Los nodos nuevos deben tener suficiente almacenamiento para acomodar el almacenamiento asociado con los nodos originales.
++
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gestión de discos y agregados con la interfaz de línea de comandos"^]
+
+* El tamaño de agregado raíz y el número de discos que admite el nuevo sistema deben ser iguales o superiores a los que admite el sistema original.
++
+Para ver los requisitos de tamaño de los agregados raíz, consulte https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
+* Las controladoras de una pareja de alta disponibilidad deben ser dos modelos AFF o dos modelos FAS.
+* Puede actualizar moviendo volúmenes o almacenamiento físico de un FAS2xxx a uno FAS2xxx posterior si los nodos están en el mismo clúster. Por ejemplo, puede mover volúmenes o almacenamiento físico de un sistema FAS2552 a FAS2750.
+* Si va a actualizar una pareja de alta disponibilidad de un clúster con varias parejas de alta disponibilidad, debe desplazar épsilon al nodo de una pareja de alta disponibilidad que no esté sometiendo a una actualización de la controladora. Por ejemplo, si va a actualizar NODEA/NodeB en un clúster con la configuración de parejas de alta disponibilidad NODEA/NodeB y nodos C/noded, debe mover épsilon a nodo C o noded.
+* Si utiliza ONTAP 9.6P11, 9.7P8 o versiones posteriores, se recomienda habilitar la toma de control de conectividad, animación y monitor de disponibilidad (CLAM) para que el clúster vuelva al quórum cuando se producen ciertos fallos de nodo. La `kernel-service` el comando requiere un nivel de privilegio avanzado. Para obtener más información, consulte: https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Artículo de la base de conocimientos de NetApp SU436: Se ha cambiado la configuración predeterminada de la toma de control DE CLAM"^]. A partir de ONTAP 9.8, el `kcs-enable-takeover` el parámetro está habilitado de forma predeterminada.
+* Si va a actualizar una configuración de MetroCluster de dos nodos, consulte: https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Seleccione un método de actualización o actualización"^]
+
+
+Con almacenamiento interno
+
+
+NOTE: Los siguientes sistemas tienen almacenamiento interno: FAS2520, FAS2552, FAS2554, FAS2620, FAS2650, FAS2720, FAS2750, AFF A200, AFF A220, AFF A700s, AFF A800, AFF A250 y AFF C190.
+
+* Si su sistema no aparece en la lista anterior, consulte https://hwu.netapp.com["Hardware Universe de NetApp"^] para comprobar si tiene unidades internas.
+* Si tiene un sistema con almacenamiento interno, el método de actualización recomendado es actualizar mediante la transferencia de volúmenes.
+* Si tiene un sistema con almacenamiento interno, puede convertir el sistema a una bandeja de unidades y adjuntarlo a un nuevo nodo en el mismo clúster. Las controladoras FAS2520 no pueden convertirse a una bandeja de unidades.
++
+La conversión de un sistema FAS255x en una bandeja de unidades es una tarea opcional del flujo de trabajo para actualizar mediante el movimiento de almacenamiento.
+
+* Si tiene un sistema con almacenamiento interno o un sistema con volúmenes o agregados en unidades SATA o SSD internas, puede actualizar mediante la transferencia del almacenamiento interno a una bandeja de unidades conectada al nodo nuevo en el mismo clúster.
++
+Transferir el almacenamiento interno es una tarea opcional del flujo de trabajo para actualizar moviendo el almacenamiento.
+
+
+
+Situaciones en las que podrían necesitarse pasos adicionales
+
+* Si el sistema nuevo tiene menos ranuras que el sistema original, o si tiene menos puertos o tipos diferentes, puede que deba añadir un adaptador al nuevo sistema.
++
+https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
+* Si los nodos originales o los nuevos utilizan el software de virtualización FlexArray.
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/V_Series/What_are_the_specific_steps_involved_in_FlexArray_for_NetApp_controller_upgrades%2F%2Freplacements%3F["Artículo de la base de conocimientos de NetApp: ¿Cuáles son los pasos específicos que se deben seguir en FlexArray para actualizar y reemplazar controladoras de NetApp"^]
+
+* Si su clúster tiene hosts SAN, puede que necesite tomar las medidas necesarias para resolver problemas con los cambios de números de serie de la LUN.
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FlexPod_with_Infrastructure_Automation/resolve_issues_during_storage_controller_motherboard_replacement_and_head_upgrades_with_iSCSI_and_FCP["Cómo resolver problemas durante el reemplazo de la placa base y las actualizaciones del cabezal de la controladora de almacenamiento con iSCSI y FCP"^]
+
+* Si el sistema utiliza una ACP fuera de banda, es posible que deba migrar de una ACP fuera de banda a ACP en banda.
++
+https://kb.netapp.com/app/answers/answer_view/a_id/1029778["Artículo de la base de conocimientos de NetApp 1029778: Configuración y soporte de ACP en banda"^]
+
+
+
+*Información relacionada*
+
+xref:upgrade-methods.adoc[Elija métodos para actualizar el hardware de la controladora]
+
+xref:upgrade-by-moving-storage-parent.adoc[Actualice el hardware de las controladoras moviendo el almacenamiento]
+
+xref:upgrade-by-moving-volumes-parent.adoc[Mueva volúmenes para actualizar el hardware de la controladora]

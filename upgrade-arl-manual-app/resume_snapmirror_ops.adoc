@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/resume_snapmirror_ops.html 
+keywords: resume, snapmirror, transfers, relationships 
+summary: Reanude las transferencias y relaciones de SnapMirror durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior. 
+---
+= Reanudar las operaciones de SnapMirror
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puede reanudar las transferencias de SnapMirror que se pusieron en modo inactivo antes de la actualización y reanudar las relaciones de SnapMirror. Las actualizaciones se programan una vez finalizada la actualización.
+
+.Pasos
+. Compruebe el estado de SnapMirror en el destino:
++
+`snapmirror show`
+
+. Reanude la relación de SnapMirror:
++
+`snapmirror resume -destination–vserver _vserver_name_`
+
+

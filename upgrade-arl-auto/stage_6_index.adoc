@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/stage_6_index.html 
+keywords: complete upgrade, node, unified, target, storage, encryption, MetroCluster, stage 6 
+summary: 'Secuencia de procesos en la fase 6 de una actualización de ARL mediante `system controller replace` Comandos en controladoras que ejecutan ONTAP 9.5 a 9.7.' 
+---
+= Etapa 6. Complete la actualización
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Durante la fase 6, el usuario confirma que los nodos nuevos están configurados correctamente y, si los nodos nuevos tienen la función de cifrado habilitada, se configuran y se configuran el cifrado de almacenamiento o el cifrado de volúmenes de NetApp. También debe retirar los nodos antiguos y reanudar las operaciones de SnapMirror.
+
+.Pasos
+. link:get_ip_address_of_external_kms_for_storage_encryption.html["Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento"]
+. link:ensure_new_controllers_are_set_up_correctly.html["Confirmar que las nuevas controladoras están configuradas correctamente"]
+. link:set_up_storage_encryption_new_module.html["Configure Storage Encryption en el nuevo módulo de la controladora"]
+. link:set_up_netapp_volume_encryption_new_module.html["Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora"]
+. link:decommission_old_system.html["Retire el sistema antiguo"]
+. link:resume_snapmirror_operations.html["Reanudar las operaciones de SnapMirror"]
+
+
+.Para la configuración de MetroCluster FC
+Para la configuración de FC de MetroCluster, debe reemplazar el Lo antes posible. de los nodos del sitio de recuperación ante desastres/conmutación por error. No se admite la discrepancia en los modelos de controladoras dentro de un MetroCluster, ya que el error de coincidencia del modelo de controladora puede provocar que la operación de mirroring de recuperación ante desastres se desconecte. Utilice el comando -`skip-metrocluster-check true` Opción para omitir las comprobaciones de MetroCluster cuando se reemplazan los nodos en un segundo sitio.

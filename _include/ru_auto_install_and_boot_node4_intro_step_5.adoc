@@ -1,0 +1,66 @@
+= 
+:allow-uri-read: 
+
+
+Es necesario reiniciar el nodo 4 si no tiene la misma versión de ONTAP 9 que está instalada en el nodo 2. Después de instalar el nodo 4, arranque desde la imagen ONTAP 9 almacenada en el servidor web. A continuación, puede descargar los archivos correctos en el dispositivo multimedia de arranque para posteriores arranques del sistema, siguiendo las instrucciones en link:prepare_for_netboot.html["Prepárese para el arranque desde el red"].
+
+.Importante:
+* Si va a actualizar un sistema V-Series conectado a cabinas de almacenamiento o un sistema con el software de virtualización de FlexArray conectado a cabinas de almacenamiento, debe completar <<auto_install4_step1,Paso 1>> por <<auto_install4_step21,Paso 21>>, luego salga de esta sección y siga las instrucciones a. link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configure los puertos FC en el nodo 4"] y a. link:set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4"], Entrando en comandos en modo de mantenimiento. A continuación, debe volver a esta sección y reanudar con <<auto_install4_step23,Paso 23>>.
+* Sin embargo, si va a actualizar un sistema con discos de almacenamiento, debe completar esta sección entera y continuar a. link:set_fc_or_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"], introduciendo comandos en el símbolo del sistema del clúster.
+
+
+.Pasos
+. [[auto_install4_step1]]Asegúrese de que el nodo 4 tenga suficiente espacio en rack.
++
+Si el nodo 4 se encuentra en un chasis separado del nodo 2, es posible colocar el nodo 4 en la misma ubicación que el nodo 3. Si el nodo 2 y el nodo 4 están en el mismo chasis, el nodo 4 ya se encuentra en la ubicación de rack adecuada.
+
+. Instale el nodo 4 en el rack, siguiendo las instrucciones de _Installation and Setup_ para el modelo de nodo.
+. Cablee el nodo 4, mueva las conexiones del nodo 2 al nodo 4.
++
+Conecte los cables siguientes, siguiendo las instrucciones de _Installation and Setup Instructions_ o de _FlexArray Virtualization Installation reactions and Reference_ para la plataforma node4, el documento de la bandeja de discos correspondiente y _High Availability Management_.
+
++
+Consulte link:other_references.html["Referencias"] Para enlazar con _FlexArray Virtualization Installation requisitos y Reference_ y _High Availability Management_.
+
++
+** Consola (puerto de gestión remota)
+** Puertos del clúster
+** Puertos de datos
+** Puertos de gestión de clústeres y nodos
+** Reducida
+** Configuraciones SAN: Puertos Ethernet iSCSI y switch FC
++
+
+NOTE: Es posible que no sea necesario mover la conexión de cable de la tarjeta de interconexión/tarjeta FC-VI del nodo 2 al nodo 4, ya que la mayoría de los modelos de plataforma tienen modelos de tarjeta de interconexión únicos. Para la configuración de MetroCluster, es necesario mover las conexiones de cables FC-VI del nodo 2 al nodo 4. Si el host nuevo no tiene una tarjeta FC-VI, puede que necesite mover la tarjeta FC-VI.
+
+
+
+. Encienda el nodo 4 y, a continuación, interrumpa el proceso de arranque pulsando `Ctrl-C` en el terminal de la consola para acceder al aviso del entorno de arranque.
++
+
+NOTE: Cuando se arranca el nodo 4, es posible que se muestre el siguiente mensaje de advertencia:
+
++
+....
+WARNING: The battery is unfit to retain data during a power outage. This is likely
+         because the battery is discharged but could be due to other temporary
+         conditions.
+         When the battery is ready, the boot process will complete
+         and services will be engaged. To override this delay, press 'c' followed
+         by 'Enter'
+....
+. Si aparece el mensaje de advertencia en el paso 4, realice las siguientes acciones:
++
+.. Compruebe todos los mensajes de la consola que puedan indicar un problema distinto a una batería NVRAM baja y, si es necesario, realice las acciones correctivas necesarias.
+.. Deje que la batería se cargue y finalice el proceso de arranque.
++
+
+WARNING: *Atención: No anular el retardo; si no se permite que la batería se cargue, se podrían producir pérdidas de datos.*
+
++
+
+NOTE: Consulte link:prepare_for_netboot.html["Prepárese para el arranque desde el red"].
+
+
+
+

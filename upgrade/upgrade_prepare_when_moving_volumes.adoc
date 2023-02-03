@@ -1,0 +1,51 @@
+---
+permalink: upgrade/upgrade-prepare-when-moving-volumes.html 
+sidebar: sidebar 
+keywords: perform, preparation, upgrading, upgrade, controller, hardware, moving, move, volume, prepare for the upgrade when moving volumes 
+summary: Debe realizar algunos pasos de preparación antes de actualizar el hardware de la controladora mediante la transferencia de volúmenes. 
+---
+= Prepare la actualización cuando mueva volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe realizar algunos pasos de preparación antes de actualizar el hardware de la controladora mediante el movimiento de volúmenes.
+
+.Pasos
+. Muestre los volúmenes en los nodos originales:
++
+`volume show`
+
++
+El resultado del comando se utiliza para preparar la lista de volúmenes para moverlos a los nuevos nodos.
+
+. Muestre y registre información de licencia de los nodos originales:
++
+`system license show`
+
+. Si utiliza Storage Encryption en los nodos originales y los nuevos nodos tienen discos habilitados para cifrado, asegúrese de que los discos de los nodos originales estén correctamente protegidos por la clave:
++
+.. Mostrar información sobre discos de cifrado automático (SED):
++
+`storage encryption disk show`
+
+.. Si algún disco está asociado a una clave de ID seguro (no MSID) que no sea de fabricación, vuelva a introducirlos en una clave MSID:
++
+`storage encryption disk modify`
+
+
+
+. Si el clúster se encuentra actualmente en una configuración sin switches de dos nodos, migre el clúster a un clúster con switches de dos nodos mediante el tipo de switch que prefiera.
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140536["Migración a un clúster con switches de dos nodos con switches de clúster de Cisco"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migración a un clúster con switches de dos nodos con switches de clúster CN1610 de NetApp"^]
+
+. Envíe un mensaje de AutoSupport de cada nodo original para informar al soporte técnico de la actualización:
++
+`system node autosupport invoke -node _node_name_ -type all -message "Upgrading node_name from _platform_original_ to _platform_new_"`
+
+

@@ -1,0 +1,127 @@
+= 
+:allow-uri-read: 
+
+
+Antes de poder sustituir el nodo 1 por nodo 3, debe mover los agregados que no son raíz del nodo 1 al nodo 2 mediante el comando de reubicación del agregado de almacenamiento y, luego, verificar la reubicación.
+
+.Pasos
+. [[step1]]reubicar los agregados no raíz realizando los siguientes subpasos:
++
+.. Configure el nivel de privilegio en Advanced:
++
+`set -privilege advanced`
+
+.. Introduzca el siguiente comando:
++
+`storage aggregate relocation start -node _node1_ -destination _node2_ -aggregate-list * -ndo-controller-upgrade true`
+
+.. Cuando se le solicite, introduzca `y`.
++
+La reubicación tendrá lugar en segundo plano. La reubicación de un agregado puede tardar desde unos pocos segundos a un par de minutos. El tiempo incluye tanto la interrupción del servicio como las partes que no son de la interrupción del servicio. El comando no reasigna ningún agregado sin conexión o restringido.
+
+.. Vuelva al nivel admin. Para ello, introduzca el siguiente comando:
++
+`set -privilege admin`
+
+
+
+. Compruebe el estado de reubicación introduciendo el siguiente comando en el nodo 1:
++
+`storage aggregate relocation show -node _node1_`
+
++
+Se mostrará la salida `Done` para un agregado después de su traslado.
+
++
+
+NOTE: Espere a que todos los agregados que no son raíz y que pertenecen al nodo 1 se hayan reasignado al nodo 2 antes de continuar con el siguiente paso.
+
+. Realice una de las siguientes acciones:
++
+[cols="35,65"]
+|===
+| Si la reubicación... | Entonces... 
+
+
+| De todos los agregados se han realizado correctamente | Vaya a. <<man_relocate_1_2_step4,Paso 4>>. 
+
+
+| De todos los agregados fallan o se vetan  a| 
+.. Consulte los registros de EMS para la acción correctiva.
+.. Realice la acción correctiva.
+.. Reubicar agregados que fallen o vetados:
+`storage aggregate relocation start -node _node1_ - destination _node2_ -aggregate-list * -ndo-controller-upgrade true`
+.. Cuando se le solicite, introduzca `y`.
+.. Volver al nivel admin:
+`set -privilege admin`Si es necesario, puede forzar la reubicación mediante uno de los siguientes métodos:
++
+*** Anular comprobaciones de veto:
+`storage aggregate relocation start -override-vetoes true -ndo-controller-upgrade`
+*** Anular comprobaciones de destino:
+`storage aggregate relocation start -override-destination-checks true -ndo-controller-upgrade`
+
+
+
+
+Consulte link:other_references.html["Referencias"] Para establecer un enlace a la gestión de _disco y agregados con el contenido de la CLI_ y los comandos _ONTAP 9: Manual Page Reference_ para obtener más información acerca de los comandos de reubicación de agregados de almacenamiento.
+
+|===
+. [[man_reubication_1_2_step4]]] Verifique que todos los agregados que no son raíz estén en línea y su estado en el nodo 2:
++
+`storage aggregate show -node _node2_ -state online -root false`
+
++
+En el ejemplo siguiente, los agregados no raíz en el nodo 2 están en línea:
+
++
+[listing]
+----
+cluster::> storage aggregate show -node node2 state online -root false
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+aggr_1
+           744.9GB 744.8GB      0% online       5 node2            raid_dp,
+                                                                   normal
+aggr_2     825.0GB 825.0GB      0% online       1 node2            raid_dp,
+                                                                   normal
+2 entries were displayed.
+----
++
+Si los agregados se encuentran sin conexión o en estado no externo en el nodo 2, deben estar en línea usando el siguiente comando en el nodo 2, una vez para cada agregado:
+
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Verifique que todos los volúmenes estén en línea en el nodo 2. Para ello, introduzca el siguiente comando en el nodo 2 y examine su resultado:
++
+`volume show -node _node2_ -state offline`
+
++
+Si alguno de los volúmenes está sin conexión en el nodo 2, debe volver a ponerlos en línea usando el siguiente comando en el nodo 2, una vez para cada volumen:
+
++
+`volume online -vserver _vserver-name_ -volume _volume-name_`
+
++
+La `vserver-name` para utilizarlo con este comando se encuentra en el resultado del anterior `volume show` comando.
+
+. Escriba el siguiente comando en el nodo 2:
++
+`storage failover show -node _node2_`
+
++
+El resultado debería mostrar el siguiente mensaje:
+
++
+[listing]
+----
+Node owns partner's aggregates as part of the nondisruptive controller upgrade procedure.
+----
+. Compruebe que el nodo 1 no tenga agregados que no sean raíz y que estén en línea:
++
+`storage aggregate show -owner-name _node1_ -ha-policy sfo -state online`
+
++
+La salida no debe mostrar ningún agregado en línea que no sea raíz, ya que se haya reubicado al nodo 2.
+
+

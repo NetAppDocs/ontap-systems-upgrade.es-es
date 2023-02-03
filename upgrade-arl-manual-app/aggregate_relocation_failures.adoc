@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/aggregate_relocation_failures.html 
+keywords: aggregate, relocation, failure, error, problem 
+summary: Solucione problemas de fallos de reubicación de agregados que se pueden producir durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior. 
+---
+= Fallos de reubicación de agregados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La reubicación de agregados (ARL) puede fallar en diferentes puntos durante la actualización.
+
+
+
+== Compruebe si se ha producido un error de reubicación de agregados
+
+Durante el procedimiento, ARL podría fallar en la etapa 2, etapa 3 o etapa 5.
+
+.Pasos
+. Introduzca el siguiente comando y examine la salida:
++
+`storage aggregate relocation show`
+
++
+La `storage aggregate relocation show` el comando muestra qué agregados se han reubicado correctamente y cuáles no, junto con las causas del fallo.
+
+. Compruebe si hay mensajes EMS en la consola.
+. Realice una de las siguientes acciones:
++
+** Tome la acción correctiva adecuada, en función del resultado del `storage aggregate relocation show` Y el resultado del mensaje de EMS.
+** Fuerce la reubicación del agregado o de los agregados mediante el `override-vetoes` o la `override-destination-checks` opción de `storage aggregate relocation start` comando.
+
+
++
+Para obtener información detallada acerca de `storage aggregate relocation start`, `override-vetoes`, y. `override-destination-checks` opciones, consulte link:other_references.html["Referencias"] Para enlazar a los comandos _ONTAP 9: Manual Page Reference_.
+
+
+
+
+
+== Los agregados, originalmente del nodo 1, son propiedad del nodo 4 después de completar la actualización
+
+Al final del procedimiento de actualización, el nodo 3 debe ser el nuevo nodo de inicio de los agregados que originalmente tenían el nodo 1 como nodo de inicio. Puede reubicarlos tras la actualización.
+
+.Acerca de esta tarea
+Es posible que los agregados no puedan reubicar correctamente y tener el nodo 1 como nodo de origen en lugar del nodo 3 en las siguientes circunstancias:
+
+* En la fase 3, cuando los agregados se trasladan del nodo 2 al nodo 3. Algunos de los agregados que se están reubicando tienen el nodo 1 como nodo de origen. Por ejemplo, un agregado de este tipo podría llamarse aggr_node_1. Si la reubicación de aggr_node_1 falla durante la etapa 3 y no se puede forzar la reubicación, el agregado se quedará detrás en el nodo 2.
+* Después de la fase 4, cuando el nodo 2 se reemplaza por el nodo 4. Cuando se reemplaza el nodo 2, aggr_node_1 estará en línea con el nodo 4 como su nodo principal en lugar del nodo 3.
+
+
+Puede resolver el problema de propiedad incorrecto después de la fase 6 una vez que se haya habilitado la conmutación por error del almacenamiento siguiendo los pasos siguientes:
+
+.Pasos
+. [[man_aggr_fail_step1]]Introduzca el siguiente comando para obtener una lista de agregados:
++
+`storage aggregate show -nodes _node4_ -is-home true`
+
++
+Para identificar los agregados que no se han reubicado correctamente, consulte la lista de agregados con el propietario raíz del nodo 1 obtenido en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] y compárelo con el resultado del comando anterior.
+
+. [[step2]]Compare la salida de <<man_aggr_fail_step1,Paso 1>> con la salida capturada para el nodo 1 de la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] y anote los agregados que no se hayan reubicado correctamente.
+. [[man_aggr_fail_Step3]]reubique los agregados que quedan detrás del nodo 4:
++
+`storage aggregate relocation start -node _node4_ -aggr _aggr_node_1_ -destination _node3_`
+
++
+No utilice la `-ndo-controller-upgrade` parámetro durante esta reubicación.
+
+. Introduzca el siguiente comando para verificar que el nodo 3 ahora es el propietario principal de los agregados:
++
+`storage aggregate show -aggregate _aggr1,aggr2,aggr3..._ -fields home-name`
+
++
+`_aggr1,aggr2,aggr3..._` es la lista de agregados que tienen el nodo 1 como propietario original del hogar.
+
++
+Los agregados que no tienen nodo 3 como propietario principal se pueden reubicar a nodo 3 con el mismo comando de reubicación en <<man_aggr_fail_Step3,Paso 3>>.
+
+

@@ -1,0 +1,26 @@
+---
+permalink: upgrade/upgrade-by-moving-volumes-parent.html 
+sidebar: sidebar 
+keywords: upgrade by moving volumes 
+summary: Si va a actualizar mediante la transferencia de volúmenes, debe preparar los nodos originales y unir los nuevos nodos al clúster. Mueve volúmenes a los nodos nuevos, configura LIF y desvincula los nodos originales del clúster. La actualización mediante el movimiento de volúmenes es un procedimiento no disruptivo. 
+---
+= Flujo de trabajo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si va a actualizar el hardware de una controladora, mueve volúmenes, prepara los nodos originales y une los nuevos nodos al clúster. Mueve volúmenes a los nodos nuevos, configura LIF y desvincula los nodos originales del clúster. La actualización mediante el movimiento de volúmenes es un procedimiento no disruptivo.
+
+image::../upgrade/media/workflow_for_upgrading_by_moving_volumes.gif[Flujo de trabajo para actualizar el hardware de la controladora mediante el movimiento de volúmenes]
+
+.Pasos
+. xref:upgrade-prepare-when-moving-volumes.adoc[Prepare la actualización cuando mueva volúmenes]
+. xref:upgrade-install-and-join-new-nodes-move-vols.adoc[Instale los nodos nuevos y únalos al clúster]
+. xref:upgrade-create-aggregate-move-volumes.adoc[Cree un agregado y mueva volúmenes a los nuevos nodos]
+. xref:upgrade-move-lifs-to-new-nodes.adoc[Mueva LIF de datos no SAN y LIF de administración del clúster a los nuevos nodos]
+. xref:upgrade_move_delete_recreate_san_lifs.adoc[Mueva, elimine o cree LIF SAN]
+. xref:upgrade-unjoin-original-nodes-move-volumes.adoc[Ununa los nodos originales del clúster]
+. xref:upgrade-complete-move-volumes.adoc[Complete la actualización]
+

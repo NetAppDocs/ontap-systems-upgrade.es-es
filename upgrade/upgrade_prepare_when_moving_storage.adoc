@@ -1,0 +1,172 @@
+---
+permalink: upgrade/upgrade-prepare-when-moving-storage.html 
+sidebar: sidebar 
+keywords: licenses 
+summary: Antes de actualizar, para mover el almacenamiento, se debe recopilar información de licencias de los nodos originales, planificar la configuración de red, registrar los ID del sistema y preparar los archivos necesarios para netboot. 
+---
+= Prepárese para la actualización cuando cambie el almacenamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de actualizar, para mover el almacenamiento, se debe recopilar información de licencias de los nodos originales, planificar la configuración de red, registrar los ID del sistema y preparar los archivos necesarios para netboot.
+
+.Pasos
+. Mostrar y registrar información de licencias de los nodos originales, los nodos 1 y 2:
++
+`system license show`
+
+. Si utiliza Storage Encryption en el par nodo 1/2 de alta disponibilidad y los nodos nuevos tienen discos con cifrado habilitado, asegúrese de que los discos de los nodos originales estén correctamente protegidos mediante la clave:
++
+.. Mostrar información sobre discos de cifrado automático (SED)
++
+`storage encryption disk show`
+
+.. Si algún disco está asociado a una clave de ID seguro (no MSID) de fabricación, vuelva a introducirlos en una clave MSID
++
+`storage encryption disk modify`
+
+
+
+. [[prepare_move_store_3]]Registrar información de configuración del puerto y LIF en el par de alta disponibilidad 1/2:
++
+[cols="1,2"]
+|===
+| Para mostrar información acerca de... | Introduzca... 
+
+
+ a| 
+Bandejas, números de discos de cada bandeja, detalles del almacenamiento flash, memoria, NVRAM y tarjetas de red
+ a| 
+`system node run -node _node_name_ sysconfig`
+
+
+
+ a| 
+LIF de red de clúster y de gestión de nodos
+ a| 
+`network interface show -role cluster,node-mgmt`
+
+
+
+ a| 
+Puertos físicos
+ a| 
+`network port show -node _node_name_ -type physical`
+
+
+
+ a| 
+Grupos de conmutación por error
+ a| 
+`network interface failover-groups show -vserver _vserver_name_`
+
+Registrar los nombres y puertos de los grupos de conmutación por error que no están en todo el clúster.
+
+
+
+ a| 
+Configuración de VLAN
+ a| 
+`network port vlan show -node _node_name_`
+
+Registre cada emparejamiento de puertos de red e ID de VLAN.
+
+
+
+ a| 
+Configuración del grupo de interfaces
+ a| 
+`network port ifgrp show -node _node_name_ -instance`
+
+Registre los nombres de los grupos de interfaces y los puertos asignados a ellos.
+
+
+
+ a| 
+Dominios de retransmisión
+ a| 
+`network port broadcast-domain show`
+
+
+
+ a| 
+Información sobre el espacio IP
+ a| 
+`network ipspace show`
+
+|===
+. Obtenga información sobre los puertos de clúster, los puertos de datos y los puertos de gestión de nodos predeterminados para cada nodo nuevo que vaya a actualizar a: https://hwu.netapp.com["Hardware Universe de NetApp"^]
+. [[ASSIGN_liff]]ciertos sistemas, por ejemplo, FAS8300, AFF A400 o FAS8700, Utilice los puertos «e0a» y «e0b» como puertos de interconexión de alta disponibilidad (ha). Si va a actualizar desde un sistema, como un FAS8200 o un AFF A300, a un sistema que utilice los puertos "e0a" y "e0b" como puertos de interconexión de alta disponibilidad, Debe reasignar las LIF de gestión y de interconexión de clústeres que están configuradas en estos puertos del sistema original a puertos alternativos del sistema de reemplazo.
++
+
+WARNING: Cuando se utilizan los puertos «e0a» y «e0b» como puertos de interconexión de alta disponibilidad en el sistema de sustitución, cualquier LIF de gestión o interconexión de clústeres que se configure en estos puertos podría dar lugar a un fallo de actualización, pues se evitaría que la configuración de alta disponibilidad utilice los puertos «e0a» y «e0b» para arrancar en el sistema de sustitución.
+
++
+--
+.. Verifique si el sistema de sustitución utiliza los puertos «e0a» y «e0b» como puertos de alta disponibilidad: https://hwu.netapp.com["Hardware Universe de NetApp"^]
+.. Si es necesario, identifique las LIF de gestión o interconexión de clústeres configuradas en los puertos "e0a" y "e0b" en el sistema original:
++
+`network interface show -home-port _port_name_`
+
+.. Si es necesario, reasigne solo las LIF de interconexión de clústeres o gestión afectadas a puertos de red que no se estén utilizando como puertos de alta disponibilidad en el sistema de reemplazo:
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-port _new_port_name_`
+
++
+`network interface revert -vserver _vserver_name_ -lif _LIF_name_`
+
++
+En el siguiente ejemplo, las LIF de gestión y interconexión de clústeres en los puertos de red «e0a» y «e0b» se reasignan a los puertos de red «e1a» y «e1b». Los nodos pueden usar puertos de red diferentes porque varían según el sistema.
+
++
+image::../upgrade/media/reassign_lifs.PNG[Volver a asignar LIF a puertos de red en el sistema de reemplazo]
+
+
+
+--
+. [[prepare_Move_store_5]]Descargue y prepare los archivos utilizados para reiniciar el sistema.
++
+Después de instalar los nodos nuevos, es posible que deba reiniciar el sistema para confirmar que los nuevos nodos ejecutan la misma versión de ONTAP que los nodos originales. El término arranque desde red significa que se arranca desde una imagen ONTAP almacenada en un servidor remoto. Al prepararse para reiniciar el sistema, debe colocar una copia de la imagen de arranque ONTAP 9 en un servidor web al que pueda acceder el sistema.
+
++
+.. Acceda a https://mysupport.netapp.com/site/["Sitio de soporte de NetApp"^] para descargar los archivos utilizados para realizar el arranque desde red del sistema.
+.. Descargue el software ONTAP adecuado de la sección de descarga de software del sitio de soporte de NetApp y almacene el `<ontap_version>_image.tgz` archivo en un directorio accesible a través de la web.
+.. Cambie al directorio accesible a la Web y compruebe que los archivos que necesita están disponibles.
+
+
++
+[cols="1,2"]
+|===
+| Durante... | Realice lo siguiente... 
+
+
+ a| 
+*SISTEMAS DE LAS SERIES FAS2200, FAS2500, FAS3200, FAS6200 Y FAS/AFF8000*
+ a| 
+Extraiga el contenido del `<ontap_version>_image.tgz` archivo al directorio de destino:
+`tar -zxvf <ontap_version>_image.tgz`
+
+*Nota:* Si está extrayendo el contenido en Windows, utilice 7-Zip o WinRAR para extraer la imagen de netboot.
+
+El listado de directorios debe contener una carpeta netboot con un archivo de kernel:
+`netboot/kernel`
+
+
+
+ a| 
+*Todos los demás sistemas*
+ a| 
+La lista de directorios debe contener el siguiente archivo:
+
+`<ontap_version>_image.tgz`
+
+
+NOTE: No es necesario extraer el contenido del `<ontap_version>_image.tgz` archivo.
+
+|===
+
+
+Utilizará información en el directorio a. xref:upgrade-set-up-new-nodes.adoc[configure los nodos nuevos].

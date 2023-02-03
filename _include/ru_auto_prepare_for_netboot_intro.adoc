@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Después de montar físicamente en rack los nodos 3 y 4 posteriormente en el procedimiento, es posible que deba volver a arrancar. El término "reiniciar el sistema" significa que se inicia desde una imagen ONTAP almacenada en un servidor remoto. Al prepararse para reiniciar el sistema, debe colocar una copia de la imagen de arranque ONTAP 9 en un servidor web al que pueda acceder el sistema.
+
+.Antes de empezar
+* Compruebe que puede acceder a un servidor HTTP con el sistema.
+* Consulte link:other_references.html["Referencias"] Para crear un enlace al _sitio de soporte de NetApp_ y descargar los archivos del sistema necesarios para su plataforma y la versión correcta de ONTAP.
+
+
+.Acerca de esta tarea
+Debe reiniciar el sistema de las controladoras nuevas si no tienen la misma versión de ONTAP 9 instalada en ellas que se instala en las controladoras originales. Tras instalar cada controladora nueva, arranque el sistema desde la imagen de ONTAP 9 almacenada en el servidor web. A continuación, puede descargar los archivos correctos en el dispositivo multimedia de arranque para posteriores arranques del sistema.

@@ -1,0 +1,127 @@
+---
+permalink: upgrade/upgrade-shutdown-remove-original-nodes.html 
+sidebar: sidebar 
+keywords:  
+summary: Al apagar y quitar los nodos originales, debe enviar un mensaje de AutoSupport sobre la actualización, destruir los buzones, apagar los nodos y quitar el chasis. 
+---
+= Apague los nodos originales
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Al apagar y quitar los nodos originales, debe enviar un mensaje de AutoSupport sobre la actualización, destruir los buzones, apagar los nodos y quitar el chasis.
+
+.Pasos
+. Envíe un mensaje de AutoSupport desde el nodo 1 y el nodo 2 para informar al soporte técnico de la actualización:
++
+`system node autosupport invoke -node _node_name_ -type all -message "MAINT=2h Upgrading _node_name_ from _platform_original_ to _platform_new_"`
+
+. Desactive la conmutación por error de alta disponibilidad o del almacenamiento en los nodos 1 y 2:
++
+[cols="1,2"]
+|===
+| Si tiene un... | Introduzca... 
+
+
+ a| 
+Clúster de dos nodos
+ a| 
+.. `cluster ha modify -configured false`
+.. `storage failover modify -node _node_name_ -enabled false`
+
+
+
+
+ a| 
+Clúster con más de dos nodos
+ a| 
+`storage failover modify -node _node_name_ -enabled false`
+
+|===
+. Detenga el nodo:
++
+`system node halt -node _node_name_`
+
++
+Puede suprimir la comprobación de quórum durante el proceso de reinicio mediante el `-ignore-quorum-warnings` opción.
+
+. Conéctese a la consola de serie, si todavía no está conectado. El nodo debe estar en el aviso del CARGADOR. Utilice la `boot_ontap maint` comando para arrancar en modo de mantenimiento.
++
+Es posible que aparezca un mensaje que le solicite que confirme que el nodo compañero está inactivo o que la toma de control está deshabilitada manualmente en el nodo asociado. Puede entrar `yes` para continuar.
+
+. [[shutdown_node_step5]]Registrar el ID del sistema de cada nodo original, que se obtiene mediante la información de propiedad del disco en modo de mantenimiento:
++
+`disk show -v`
+
++
+Se necesitan los ID del sistema cuando se asignan discos de los nodos originales a los nuevos nodos.
+
++
+[listing]
+----
+*> disk show -v
+Local System ID: 118049495
+DISK    OWNER               POOL    SERIAL NUMBER          HOME
+----    -----               ----    -------------          ----
+0a.33   node1 (118049495)   Pool0   3KS6BN970000973655KL   node1 (118049495)
+0a.32   node1 (118049495)   Pool0   3KS6BCKD000097363ZHK   node1 (118049495)
+0a.36   node1 (118049495)   Pool0   3KS6BL9H000097364W74   node1 (118049495)
+...
+----
+. Si tiene configuración de puertos FC o CNA, muestra la configuración en modo de mantenimiento:
++
+`ucadmin show`
+
++
+Debe registrar el resultado del comando para consultarlo más adelante si se desea.
+
++
+[listing]
+----
+*> ucadmin show
+Current Current Pending   Pending
+Adapter Mode    Type      Mode    Type    Status
+------- ------- --------- ------- ------- ------
+0e      fc      initiator -       -       online
+0f      fc      initiator -       -       online
+0g      cna     target    -       -       online
+0h      cna     target    -       -       online
+...
+----
+. En el modo de mantenimiento, destruya los buzones de correo 1 y 2: +
++
+`mailbox destroy local`
+
++
+La consola muestra un mensaje similar al siguiente:
+
++
+[listing]
+----
+Destroying mailboxes forces a node to create new empty mailboxes, which
+clears any takeover state, removes all knowledge of out-of-date plexes and
+mirrored volumes, and will prevent management services from going online in
+2-node cluster HA configurations.
+Are you sure you want to destroy the local mailboxes?
+----
+. Destruya los buzones mediante la introducción de `y` cuando vea un símbolo del sistema similar a lo siguiente:
++
+[listing]
+----
+.............Mailboxes destroyed
+Takeover On Reboot option will be set to ON after the node boots.
+This option is ON by default except on setups that have iSCSI or FCP license.
+Use "storage failover modify -node <nodename> -onreboot false" to turn it OFF.
+
+*>
+----
+. Salir del modo de mantenimiento:
++
+`halt`
+
+. Apague el nodo 1 y el nodo 2 y, a continuación, desenchúfelos de la fuente de alimentación.
+. Etiquete y quite todos los cables del nodo 1 y del nodo 2.
+. Quite el chasis que contiene los nodos 1 y 2.
+

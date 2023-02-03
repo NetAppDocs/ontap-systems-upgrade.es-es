@@ -1,0 +1,8 @@
+= 
+:allow-uri-read: 
+
+
+Si el nodo 4 tiene puertos FC integrados, puertos de adaptador de objetivo unificado (UTA/UTA2) integrados o una tarjeta UTA/UTA2, debe configurar los ajustes antes de completar el resto del procedimiento.
+
+.Acerca de esta tarea
+Puede que necesite completar el <<Configure los puertos FC en el nodo 4>> de la <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 4>>, o ambas secciones.

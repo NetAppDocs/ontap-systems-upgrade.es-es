@@ -1,0 +1,15 @@
+= 
+:allow-uri-read: 
+
+
+* Las controladoras de reemplazo deben tener una capacidad igual o superior a la de las controladoras originales. La capacidad igual o mayor hace referencia a los atributos, como el tamaño de NVRAM, el volumen, la LUN o los límites de recuento de agregados; también hace referencia al tamaño máximo de volumen o agregado de los nuevos nodos.
+* Puede actualizar los siguientes tipos de sistemas:
++
+** Un sistema FAS a un sistema FAS.
+** Un sistema FAS a un sistema con software de virtualización FlexArray o un sistema V-Series.
+** Un sistema AFF para un sistema AFF.
+** Un sistema con software de virtualización FlexArray o un sistema V-Series para un sistema FAS, siempre y cuando el sistema con software de virtualización FlexArray o sistema V-Series no tenga LUN de cabina.
+** Un sistema de V-Series a un sistema con software de virtualización FlexArray o un sistema V-Series.
+
+
+

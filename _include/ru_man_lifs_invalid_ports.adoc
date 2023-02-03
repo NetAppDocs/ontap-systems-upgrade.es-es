@@ -1,0 +1,12 @@
+= 
+:allow-uri-read: 
+
+
+Tras completar la actualización, las interfaces lógicas (LIF) de FC pueden dejarse en puertos incorrectos si dispone de una configuración MetroCluster. Puede realizar una operación de resincronización para reasignar las LIF a los puertos correctos.
+
+.Paso
+. Introduzca el `metrocluster vserver resync` Comando para reasignar las LIF a los puertos correctos.
++
+`metrocluster vserver resync -vserver _vserver_name_ fcp-mc.headupgrade.test.vs`
+
+

@@ -1,0 +1,10 @@
+= 
+:allow-uri-read: 
+
+
+Durante la fase 4, se reubicarán los agregados no raíz y los LIF de datos NAS del nodo 2 al nodo 3. Debe registrar la información necesaria del nodo 2 y después retirar el nodo 2.
+
+.Pasos
+. link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 3"]
+. link:retire_node2.html["Retire el nodo 2"]
+

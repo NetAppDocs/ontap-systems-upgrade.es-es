@@ -1,0 +1,82 @@
+= Configure los puertos FC en el nodo 4
+:allow-uri-read: 
+
+
+
+
+== Configure los puertos FC en el nodo 4
+
+Si el nodo 4 tiene puertos FC, ya sea integrados o de un adaptador de FC, se deben establecer configuraciones de puertos en el nodo antes de llevarlo al servicio, ya que los puertos no están preconfigurados. Si no se configuran los puertos, es posible que experimente una interrupción del servicio.
+
+.Antes de empezar
+Debe tener los valores de configuración del puerto de FC en el nodo 2 que haya guardado en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"].
+
+.Acerca de esta tarea
+Puede omitir esta sección si el sistema no tiene configuraciones de FC. Si su sistema tiene puertos UTA/UTA2 integrados o un adaptador UTA/UTA2, debe configurarlos en <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 4>>.
+
+
+IMPORTANT: Si su sistema tiene discos de almacenamiento, debe introducir los comandos de esta sección en el símbolo del sistema del clúster. Si tiene un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento, debe introducir comandos en esta sección en modo de mantenimiento.
+
+.Pasos
+. Realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si el sistema que desea actualizar... | Entonces… 
+
+
+| Tiene discos de almacenamiento | `system node hardware unified-connect show` 
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `ucadmin show` 
+|===
++
+El sistema muestra información acerca de todos los adaptadores de red convergente y FC en el sistema.
+
+. Compare la configuración de FC del nodo 4 con la de los ajustes capturados anteriormente del nodo 1.
+. Realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si el sistema que desea actualizar... | Entonces… 
+
+
+| Tiene discos de almacenamiento  a| 
+Modifique los puertos FC en el nodo 4 según sea necesario:
+
+** Para programar puertos de destino:
++
+`ucadmin modify -m fc -t target _adapter_`
+
+** Para programar puertos iniciadores:
++
+`ucadmin modify -m fc -t initiator _adapter_`
+
+
+
+`-t` Es el tipo FC4: Objetivo o iniciador.
+
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento  a| 
+Modifique los puertos FC en el nodo 4 según sea necesario:
+
+`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
+
+`-t` Es el tipo, destino o iniciador de FC4.
+
+
+NOTE: Los puertos FC deben programarse como iniciadores.
+
+|===
+. Salir del modo de mantenimiento:
++
+`halt`
+
+. Arranque el sistema desde el símbolo del sistema del cargador:
++
+`boot_ontap menu`
+
+. Tras introducir el comando, espere hasta que el sistema se detenga en el símbolo del sistema del entorno de arranque.
+. Seleccione opción `5` desde el menú de arranque para el modo de mantenimiento.
+

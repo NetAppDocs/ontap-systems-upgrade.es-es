@@ -1,0 +1,47 @@
+---
+permalink: upgrade/upgrade-move-internal-drives.html 
+sidebar: sidebar 
+keywords: node, support, model, upgrading, upgrade, moving, move, storage, internal, sata, drive, ssd, drive, shelf, attach, cluster, transfer, sas, drive, move internal drives from an original node 
+summary: Si el nodo original es uno de los modelos admitidos, durante el proceso de actualización moviendo almacenamiento puede mover las unidades SATA, SSD o SAS internas del nodo a una bandeja de unidades conectada al nodo nuevo del mismo clúster. 
+---
+= Mueva unidades internas de un nodo original
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si el nodo original es uno de los modelos admitidos, durante el proceso de actualización moviendo almacenamiento puede mover las unidades SATA, SSD o SAS internas del nodo a una bandeja de unidades conectada al nodo nuevo del mismo clúster.
+
+.Antes de empezar
+* Debe haber revisado link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"] acerca de mover unidades internas.
++
+Si necesita orientación específica de su configuración, póngase en contacto con el soporte técnico.
+
+* Los portadores de unidades SATA, SSD o SAS del nodo original deben ser compatibles con la bandeja de unidades nueva.
+* Al nodo nuevo ya se debe conectar una bandeja de unidades compatible.
+* La bandeja de unidades debe tener suficientes bahías libres para admitir los portadores de unidades SATA, SSD o SAS del nodo original.
+
+
+.Pasos
+. Retire con cuidado el bisel de la parte delantera del sistema.
+. [[Move_int_drive_2]]Pulse el botón de liberación situado en el lado izquierdo del portador de la unidad.
++
+El mango de leva del soporte se abre parcialmente y el soporte se libera del plano medio.
+
+. Tire del asa de leva hasta su posición totalmente abierta para desasentar el portador del plano medio y, a continuación, deslice suavemente el soporte para sacarlo de la bandeja de mando.
++
+
+NOTE: Utilice siempre dos manos cuando quite, instale o lleve una unidad. Sin embargo, no coloque las manos en las placas de accionamiento expuestas en la parte inferior del soporte.
+
+. Con el asa de leva en la posición abierta, inserte el soporte en una ranura de la nueva bandeja de unidades, empujando firmemente hasta que el portador se detenga.
++
+
+NOTE: Utilice dos manos al insertar el soporte.
+
+. [[Move_int_Drive_5]] cierre el mango de leva de modo que el portador esté completamente asentado en el plano medio y el mango haga clic en su sitio.
++
+Debe cerrar el mango lentamente para que quede alineado correctamente con la cara del portador.
+
+. Repetición <<move_int_drive_2,Paso 2>> por <<move_int_drive_5,Paso 5>> para todas las unidades que se están moviendo al nuevo sistema.
+

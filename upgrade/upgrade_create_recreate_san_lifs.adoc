@@ -1,0 +1,14 @@
+---
+permalink: upgrade/upgrade_create_recreate_san_lifs.html 
+sidebar: sidebar 
+keywords: cluster, san, environment, delete, lif, re-create, move san lifs 
+summary: En función del contenido del clúster y del entorno del clúster, tendrá que mover, eliminar o volver a crear LIF SAN. 
+---
+= Cree nuevos LIF SAN o vuelva a crear LIF SAN eliminadas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En función de los requisitos del entorno del clúster, podría decidir crear LIF SAN nuevas o volver a crear LIF SAN que haya eliminado anteriormente en este procedimiento. Puede crear o volver a crear LIF DE SAN mediante el https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_creating_network_interfaces.html["creación de interfaces de red"^] Procedimiento de la documentación _Cluster Management Using OnCommand® System Manager_.

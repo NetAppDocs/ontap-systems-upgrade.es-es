@@ -1,0 +1,16 @@
+= 
+:allow-uri-read: 
+
+
+* La actualización de la controladora mediante ARL es compatible en sistemas configurados con volúmenes de SnapLock Enterprise y SnapLock Compliance.
+
+
+Es necesario verificar si la ARL se puede realizar en las controladoras originales y de sustitución. Debe comprobar el tamaño de todos los agregados definidos y la cantidad de discos admitidos por el sistema original. A continuación, compárelo con el tamaño del agregado y el número de discos que admite el nuevo sistema. Para acceder a esta información, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_. El tamaño de agregado y el número de discos que admite el nuevo sistema deben ser iguales o mayores que el tamaño del agregado y el número de discos que admite el sistema original.
+
+En las reglas de combinación de clústeres se debe validar si los nodos nuevos pueden formar parte del clúster con los nodos existentes cuando se reemplaza la controladora original. Para obtener más información acerca de las reglas de mezcla de clústeres, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_.
+
+
+NOTE: Ambos sistemas son de alta disponibilidad o no. Ambos nodos deben tener la personalidad habilitada o deshabilitada. No se puede combinar un nodo con la personalidad All Flash Optimized habilitada con un nodo que no tenga la personalidad habilitada en la misma pareja de ha. Si las personalidades son diferentes, póngase en contacto con el soporte técnico.
+
+
+NOTE: Si el sistema nuevo tiene menos ranuras que el sistema original, o si tiene menos puertos o puertos diferentes, puede que deba añadir un adaptador al nuevo sistema. Consulte link:other_references.html["Referencias"] Para obtener información sobre plataformas específicas, haga un enlace al _Hardware Universe_ en el sitio de soporte de NetApp.

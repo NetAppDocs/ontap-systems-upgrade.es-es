@@ -1,0 +1,212 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/retire_node1.html 
+keywords: retire, node1, epsilon, shut down, failover 
+summary: Deshabilite el par de alta disponibilidad con el nodo 2 y apague correctamente el nodo 1 durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.7 o versiones anteriores. 
+---
+= Retire el nodo 1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para retirar el nodo 1, debe deshabilitar el par de alta disponibilidad con el nodo 2, apagar correctamente el nodo 1 y quitarlo del rack o chasis.
+
+.Pasos
+. Compruebe el número de nodos en el clúster:
++
+`cluster show`
+
++
+El sistema muestra los nodos del clúster, como se muestra en el ejemplo siguiente:
+
++
+[listing]
+----
+cluster::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+node1                 true    true
+node2                 true    true
+2 entries were displayed.
+----
+. [[Man_retire_1_step2]]desactive la conmutación por error del almacenamiento, según corresponda:
++
+[cols="35,65"]
+|===
+| Si el clúster es... | Realice lo siguiente... 
+
+
+| Clúster de dos nodos  a| 
+.. Deshabilite la alta disponibilidad del clúster introduciendo el siguiente comando en cualquiera de los nodos:
+
+
+`cluster ha modify -configured false`
+
+.. Desactivar la recuperación tras fallos del almacenamiento:
+
+
+`storage failover modify -node _node1_ -enabled false`
+
+
+
+| Un clúster con más de dos nodos | Desactivar la recuperación tras fallos del almacenamiento:
+`storage failover modify -node _node1_ -enabled false` 
+|===
++
+
+WARNING: Si no deshabilita la conmutación al respaldo del almacenamiento, se puede producir un fallo de actualización de una controladora que pueda interrumpir el acceso a los datos y provocar la pérdida de datos.
+
+. Compruebe que la recuperación tras fallos del almacenamiento estaba deshabilitada:
++
+`storage failover show`
+
++
+En el siguiente ejemplo, se muestra el resultado del `storage failover show` comando cuando se ha deshabilitado la conmutación por error del almacenamiento para un nodo:
+
++
+[listing]
+----
+ cluster::> storage failover show
+                               Takeover
+ Node           Partner        Possible State Description
+ -------------- -------------- -------- -------------------------------------
+ node1          node2          false    Connected to node2, Takeover
+                                        is not possible: Storage failover is
+                                        disabled
+
+ node2          node1          false    Node owns partner's aggregates as part
+                                        of the nondisruptive controller upgrade
+                                        procedure. Takeover is not possible:
+                                        Storage failover is disabled
+ 2 entries were displayed.
+----
+. Compruebe el estado de los datos de LIF:
++
+`network interface show -role data -curr-node _node2_ -home-node _node1_`
+
++
+Busque en la columna *Administración de estado/Oper* para ver si alguna LIF está inactiva. Si alguna LIF está inactiva, consulte link:troubleshoot_index.html["Troublehole"] sección.
+
+. Realice una de las siguientes acciones:
++
+[cols="35,65"]
+|===
+| Si el clúster es... | Realice lo siguiente... 
+
+
+| Clúster de dos nodos | Vaya a. <<man_retire_1_step6,Paso 6>>. 
+
+
+| Un clúster con más de dos nodos | Vaya a. <<man_retire_1_step8,Paso 8>>. 
+|===
+. [[man_retire_1_step6]]Acceda al nivel de privilegio avanzado de cualquiera de los nodos:
++
+`set -privilege advanced`
+
+. [[step7]]Compruebe que el clúster ha esté deshabilitado:
++
+`cluster ha show`
+
++
+El sistema muestra el siguiente mensaje:
+
++
+[listing]
+----
+High Availability Configured: false
+----
++
+Si el clúster ha no se ha deshabilitado, repita <<man_retire_1_step2,Paso 2>>.
+
+. [[man_retire_1_step8]]Compruebe si el nodo 1 contiene épsilon actualmente:
++
+`cluster show`
+
++
+Dado que en un cluster existe la posibilidad de empate con un número par de nodos, uno de ellos tiene un peso adicional fraccionario al votar, llamado épsilon. Consulte link:other_references.html["Referencias"] Para obtener más información, vincule a _System Administration Reference_.
+
++
+[NOTE]
+====
+Si tiene un clúster de cuatro nodos, puede que esté épsilon en un nodo de una pareja de alta disponibilidad diferente del clúster.
+
+Si va a actualizar una pareja de alta disponibilidad de un clúster con varias parejas de alta disponibilidad, debe desplazar épsilon al nodo de una pareja de alta disponibilidad que no esté sometiendo a una actualización de la controladora. Por ejemplo, si va a actualizar NODEA/NodeB en un clúster con la configuración de parejas de alta disponibilidad NODEA/NodeB y nodos C/noded, debe mover épsilon a nodo C o noded.
+
+====
++
+El siguiente ejemplo muestra que el nodo 1 tiene un valor épsilon:
+
++
+[listing]
+----
+ cluster::*> cluster show
+
+ Node                 Health  Eligibility  Epsilon
+ -------------------- ------- ------------ ------------
+ node1                true    true         true
+ node2                true    true         false
+----
+. Si el nodo 1 está configurado con épsilon, márquelo con épsilon `false` en el nodo, de modo que pueda transferirse al nodo 2:
++
+`cluster modify -node _node1_ -epsilon false`
+
+. Transfiera el épsilon al nodo 2 marcando épsilon `true` en el nodo 2:
++
+`cluster modify -node _node2_ -epsilon true`
+
+. Compruebe que se ha producido el cambio a 2:
++
+`cluster show`
+
++
+[listing]
+----
+ cluster::*> cluster show
+ Node                 Health  Eligibility  Epsilon
+ -------------------- ------- ------------ ------------
+ node1                true    true         false
+ node2                true    true         true
+----
++
+El valor épsilon para el nodo 2 debería ser TRUE y el valor épsilon para el nodo 1 debería ser FALSE.
+
+. Compruebe si la configuración es un clúster sin switches de dos nodos:
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+ cluster::*> network options switchless-cluster show
+
+ Enable Switchless Cluster: false/true
+----
++
+El valor de este comando debe coincidir con el estado físico del sistema.
+
+. Volver al nivel admin:
++
+`set -privilege admin`
+
+. Detenga el nodo 1 del símbolo del sistema del nodo 1:
++
+`system node halt -node _node1_`
+
++
+
+WARNING: *Atención*: Si el nodo 1 está en el mismo chasis que el nodo 2, no apague el chasis utilizando el interruptor de alimentación o tirando del cable de alimentación. Si lo hace, el nodo 2, que sirve datos, estará inactivo.
+
+. Cuando el sistema le solicite que confirme que desea detener el sistema, introduzca `y`.
++
+El nodo se detiene en el aviso del entorno de arranque.
+
+. Cuando el nodo 1 muestra el aviso del entorno de arranque, quitarlo del chasis o del rack.
++
+Puede decomisionar el nodo 1 cuando finalice la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].
+
+

@@ -1,0 +1,29 @@
+= 
+:allow-uri-read: 
+
+
+Este documento se escribe con las siguientes suposiciones:
+
+* El hardware de la controladora de reemplazo es nuevo y no se ha usado.
++
+
+WARNING: *Atención*: Debido a que este procedimiento asume que el hardware del controlador de sustitución es nuevo y no se ha utilizado, los pasos necesarios para preparar los controladores usados con el `wipeconfig` el comando no se incluye en este procedimiento. Debe ponerse en contacto con el soporte técnico si se utilizó anteriormente el hardware de la controladora de reemplazo, especialmente si las controladoras ejecutaban Data ONTAP en 7-Mode.
+
+* Debe leer y comprender las directrices para actualizar la pareja de nodos.
++
+
+WARNING: *Atención*: No intente borrar el contenido de la NVRAM. Si necesita borrar el contenido de NVRAM, póngase en contacto con el soporte técnico de NetApp.
+
+* Está realizando el comando correspondiente antes y después del `modify` comandos y comparar el resultado de ambos `show` comandos para verificar que el `modify` el comando se ha realizado correctamente.
+* Si tiene una configuración SAN, tiene LIF locales y de partners para cada máquina virtual de almacenamiento (SVM), en el par de alta disponibilidad. Si no tiene LIF locales y del partner para cada SVM, debe agregar la LIF de datos DE SAN en el nodo local y remoto para esa SVM antes de iniciar la actualización.
+* Si tiene conjuntos de puertos en una configuración SAN, debe haber verificado que cada conjunto de puertos enlazados contiene al menos un LIF de cada nodo del par de alta disponibilidad.
+
+
+Este procedimiento utiliza el término _boot Environment prompt_ para hacer referencia al prompt de un nodo desde el que puede realizar ciertas tareas, como reiniciar el nodo e imprimir o configurar variables de entorno. A veces, el prompt se denomina informalmente _boot loader prompt_.
+
+El símbolo del sistema del entorno de arranque se muestra en el siguiente ejemplo:
+
+[listing]
+----
+LOADER>
+----

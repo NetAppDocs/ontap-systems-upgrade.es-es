@@ -1,0 +1,21 @@
+= Actualice el par de nodos
+:allow-uri-read: 
+
+
+Antes de actualizar los nodos mediante ARL, debe comprender cómo funciona el procedimiento. En este contenido, el procedimiento se divide en varias etapas.
+
+
+
+== Actualice el par de nodos
+
+Para actualizar la pareja de nodos, debe preparar los nodos originales y realizar una serie de pasos en los nodos original y en los nuevos. A continuación, puede retirar los nodos originales.
+
+
+
+== Información general sobre la secuencia de actualizaciones de ARL
+
+Durante el procedimiento, debe actualizar el hardware de la controladora original con el hardware de la controladora de reemplazo, una controladora cada vez, aprovechando la configuración de par de alta disponibilidad para reubicar la propiedad de agregados que no son raíz. Todos los agregados que no son raíz deben pasar por dos reubicaciones para llegar a su destino final, que es el nodo actualizado correcto.
+
+Cada agregado tiene un propietario particular y un propietario actual. El propietario del hogar es el propietario real del agregado, y el propietario actual es el propietario temporal.
+
+La siguiente tabla describe las tareas de alto nivel que realiza durante cada etapa y el estado de propiedad del agregado al final de la etapa. Los pasos detallados se proporcionan más adelante en el procedimiento:

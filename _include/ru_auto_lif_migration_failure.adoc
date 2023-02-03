@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Después de migrar las LIF, es posible que no entren en línea después de la migración en las fases 2, fase 3 o fase 5.
+
+.Pasos
+. Compruebe que el tamaño de MTU del puerto sea el mismo que el del nodo de origen.
++
+Por ejemplo, si el tamaño de MTU de puerto de clúster es 9000 en el nodo de origen, debe ser 9000 en el nodo de destino.
+
+. Compruebe la conectividad física del cable de red si el estado físico del puerto es `down`.
+

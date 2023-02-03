@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/worksheet_information_before_during_upgrade.html 
+keywords: worksheet, stage, information, node ID, LIF, licensing key, IP address 
+summary: Recopile cierta información durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior. 
+---
+= Hoja de trabajo: Información que se debe recopilar antes y durante la actualización de la controladora
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Debe recopilar cierta información para actualizar correctamente los nodos originales. Esta información incluye los ID de nodo, detalles del puerto y LIF, claves de licencia y direcciones IP.
+
+Puede utilizar la siguiente hoja de trabajo para registrar información para utilizarla más adelante en el procedimiento:
+
+|===
+| Información necesaria | Al recogerse | Cuando se utilice | Información recopilada 
+
+
+| Model, System ID y el número de serie de los nodos originales | Fase 1: _Prepare los nodos para la actualización_ | Etapa 3: _Nodo de instalación y arranque 3_ fase 5: _Nodo de instalación y arranque 4_ fase 6: _Decommision el viejo sistema_ |  
+
+
+| Información sobre bandejas y discos, detalles de almacenamiento flash, memoria, NVRAM y tarjetas adaptadoras en los nodos originales | Fase 1: _Preparación de los nodos para la actualización_ | Durante todo el procedimiento |  
+
+
+| Agregados y volúmenes en línea en los nodos originales | Fase 1: _Prepare los nodos para la actualización_ | Durante todo el procedimiento para verificar que los agregados y volúmenes permanecen en línea excepto durante una breve reubicación |  
+
+
+| Resultado de los comandos `network port vlan show` y.. `network port ifgrp show` | Fase 1: _Prepare los nodos para la actualización_ | Etapa 3: _Asignar puertos del nodo 1 al nodo 3_ fase 5: _Asignar puertos del nodo 2 al nodo 4_ |  
+
+
+| (Solo para entornos SAN) Configuración predeterminada de puertos FC | Fase 1: _Prepare los nodos para la actualización_ | Al configurar puertos de FC en los nodos nuevos |  
+
+
+| (Sistemas o sistemas V-Series con software de virtualización FlexArray solamente) Topología para sistemas o sistemas V-Series con software de virtualización FlexArray | Fase 1: _Prepare los nodos para la actualización_ | Etapa 3: _Nodo de instalación y arranque 3_ fase 5: _Nodo de instalación y arranque 4_ |  
+
+
+| Dirección IP de SPS | Fase 1: _Prepare los nodos para la actualización_ | Fase 6: _Confirme que los nuevos controladores están configurados correctamente_ |  
+
+
+| Claves de licencia | Fase 1: _Prepare los nodos para la actualización_ | Fase 6: _Confirme que los nuevos controladores están configurados correctamente_ |  
+
+
+| La dirección IP del servidor de gestión de claves externo | Fase 1: _Rekey disks for Storage Encryption_ | Fase 6: _Configure el cifrado del almacenamiento en los nuevos nodos_ |  
+
+
+| Nombre y ruta del directorio al que se puede acceder desde el sitio web donde se descargan archivos para reiniciar los nodos | Fase 1: _Prepárese para reiniciar el sistema_ | Etapa 3: _Nodo de instalación y arranque 3_ fase 5: _Nodo de instalación y arranque 4_ |  
+
+
+| LIF de datos no SAN propiedad del nodo 1 | Fase 2: _Move Nonsan data LIF propiedad de 1 a 2_ | Más adelante en la sección |  
+
+
+| Cluster, Intercluster, node-Management, cluster-Management y puertos físicos | Fase 2: _Registrar información del nodo 1_ | Fase 3: _Install and boot node3_ fase 3: _Asignar puertos del nodo 1 al nodo 3_ |  
+
+
+| Puertos en nodos nuevos | Etapa 3: _Asignar puertos del nodo 1 al nodo 3_ | Más adelante, en la sección y en la sección _asignar puertos de 2 a nodo 4_ |  
+
+
+| Puertos y dominios de retransmisión disponibles en nodo 3 | Etapa 3: _Asignar puertos del nodo 1 al nodo 3_ | Más adelante en la sección |  
+
+
+| LIF de datos no SAN no propiedad del nodo 2 | _Mover LIF de datos no SAN que pertenezcan al nodo 1 del nodo 2 al nodo 3 y verificar las LIF SAN del nodo 3_ | Más adelante en la sección |  
+
+
+| LIF de datos no SAN propiedad del nodo 2 | Fase 3: _Move LIF de datos Nonsan propiedad de 2 a nodo 3_ | Más adelante en la sección |  
+
+
+| Cluster, Intercluster, node-Management, cluster-Management y puertos físicos | Etapa 4: _Registrar información 2_ | Fase 5: _Install and booting no4_ fase 5:_ asignar puertos del nodo 2 al nodo 4_ |  
+
+
+| Puertos de red de clúster en el nodo 4 | Fase 5: _Asignar puertos del nodo 2 al nodo 4_ | Más adelante en la sección |  
+
+
+| Puertos y dominios de retransmisión disponibles en nodo 4 | Fase 5: _Asignar puertos del nodo 2 al nodo 4_ | Más adelante en la sección |  
+
+
+| Certificados SSL privados y públicos para el sistema de almacenamiento y certificados SSL privados para cada servidor de gestión de claves | Fase 6: _Configure el cifrado del almacenamiento en los nuevos nodos_ | Más adelante en la sección |  
+|===

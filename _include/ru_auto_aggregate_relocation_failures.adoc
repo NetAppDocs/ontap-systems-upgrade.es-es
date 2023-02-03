@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+La reubicación de agregados (ARL) puede fallar en diferentes puntos durante la actualización.

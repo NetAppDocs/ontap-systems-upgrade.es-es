@@ -1,0 +1,346 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/verify_node3_installation.html 
+keywords: verifying, verify, node, install, installation 
+summary: 'Verifique que los puertos físicos del nodo 1 se asignen correctamente al nodo 3 y restaure la configuración de red del nodo 3 cuando actualice las controladoras que ejecutan ONTAP 9.8 o una versión posterior mediante `system controller replace` comandos.' 
+---
+= Verifique la instalación del nodo 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Debe verificar que los puertos físicos del nodo 1 se asignan correctamente a los puertos físicos del nodo 3. Esto permitirá que el nodo 3 se comunique con otros nodos del clúster y con la red después de la actualización.
+
+.Acerca de esta tarea
+Consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_ y obtener información acerca de los puertos en los nuevos nodos. Utilizará la información más adelante en esta sección.
+
+La distribución del puerto físico puede variar según el modelo de los nodos. Cuando se arranque el nuevo nodo, ONTAP intentará determinar qué puertos deberían alojar las LIF del clúster para que quoren automáticamente.
+
+Si los puertos físicos del nodo 1 no se asignan directamente a los puertos físicos del nodo 3, la sección posterior <<Restaurar la configuración de red en el nodo 3>> se debe utilizar para reparar la conectividad de red.
+
+Después de instalar y arrancar el nodo 3, es necesario verificar que esté instalado correctamente. Es necesario esperar a que el nodo 3 se una al quórum y, luego, reanudar la operación de reubicación.
+
+En este momento del procedimiento, la operación se pausará cuando el quórum de node3 se una a otra.
+
+.Pasos
+. Verifique que el nodo 3 se haya Unido al quórum:
++
+`cluster show -node node3 -fields health`
+
++
+El resultado del `health` el campo debe ser `true`.
+
+. Verifique que el nodo 3 forme parte del mismo clúster que el nodo 2 y que esté en buen estado:
++
+`cluster show`
+
+. Cada LIF de clúster debe estar escuchando en el puerto 7700. Compruebe que las LIF del clúster están escuchando en el puerto 7700:
++
+`::> network connections listening show -vserver Cluster`
+
++
+El resultado esperado de la escucha del puerto 7700 en los puertos del clúster tal y como se muestra en el siguiente ejemplo de un clúster de dos nodos:
+
++
+[listing]
+----
+Cluster::> network connections listening show -vserver Cluster
+Vserver Name     Interface Name:Local Port     Protocol/Service
+---------------- ----------------------------  -------------------
+Node: NodeA
+Cluster          NodeA_clus1:7700               TCP/ctlopcp
+Cluster          NodeA_clus2:7700               TCP/ctlopcp
+Node: NodeB
+Cluster          NodeB_clus1:7700               TCP/ctlopcp
+Cluster          NodeB_clus2:7700               TCP/ctlopcp
+4 entries were displayed.
+----
+. De ser necesario, para cada LIF de clúster que no esté escuchando en el puerto 7700, establezca el estado administrativo de la LIF en `down` y después `up`:
++
+`::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
+
++
+Repita el paso 3 para verificar que el LIF del clúster ahora esté escuchando en el puerto 7700.
+
+. Cambie al modo de privilegio avanzado:
++
+`set advanced`
+
+. Compruebe el estado del funcionamiento de sustitución de la controladora y compruebe que está en pausa y en el mismo estado que tenía antes de detener el nodo 1 para realizar las tareas físicas de instalación de nuevas controladoras y mover cables:
++
+`system controller replace show`
+
++
+`system controller replace show-details`
+
+. Si va a trabajar en un sistema MetroCluster, compruebe que la controladora sustituida esté configurada correctamente para la configuración de MetroCluster; la configuración de MetroCluster debe estar en buen estado. Consulte link:verify_health_of_metrocluster_config.html["Compruebe el estado de la configuración de MetroCluster"].
++
+Vuelva a configurar las LIF de interconexión de clústeres en el nodo de MetroCluster 3 y compruebe la relación entre iguales de clústeres para restaurar la comunicación entre los nodos de MetroCluster antes de continuar con el paso 6.
+
++
+Compruebe el estado del nodo MetroCluster:
+
++
+`metrocluster node show`
+
+. Reanude la operación de sustitución de la controladora:
++
+`system controller replace resume`
+
+. La sustitución de la controladora se detendrá por la intervención indicando el siguiente mensaje:
++
+....
+Cluster::*> system controller replace show
+Node             Status                       Error-Action
+---------------- ------------------------     ------------------------------------
+Node1(now node3) Paused-for-intervention      Follow the instructions given in
+                                              Step Details
+Node2                      None
+
+Step Details:
+--------------------------------------------
+To complete the Network Reachability task, the ONTAP network configuration must be manually adjusted to match the new physical network configuration of the hardware. This includes:
+
+1. Re-create the interface group, if needed, before restoring VLANs. For detailed commands and instructions, refer to the "Re-creating VLANs, ifgrps, and broadcast domains" section of the upgrade controller hardware guide for the ONTAP version running on the new controllers.
+2. Run the command "cluster controller-replacement network displaced-vlans show" to check if any VLAN is displaced.
+3. If any VLAN is displaced, run the command "cluster controller-replacement network displaced-vlans restore" to restore the VLAN on the desired port.
+
+2 entries were displayed.
+....
++
+
+NOTE: En este procedimiento, se ha cambiado el nombre de la sección _Re-creating VLAN, ifgrps y dominios de broadcast_ _Restore network Configuration on node3_.
+
+. Con el reemplazo de la controladora en estado de pausa, continúe a la siguiente sección de este documento para restaurar la configuración de red en el nodo.
+
+
+
+
+== Restaurar la configuración de red en el nodo 3
+
+Una vez que se confirma que el nodo 3 está en quórum y que se puede comunicar con el nodo 2, compruebe que las VLAN del nodo 1, los grupos de interfaces y los dominios de retransmisión se ven en el nodo 3. Además, verifique que todos los puertos de red de nodo 3 estén configurados en los dominios de retransmisión correctos.
+
+.Acerca de esta tarea
+Para obtener más información sobre la creación y recreación de VLAN, grupos de interfaces y dominios de retransmisión, consulte link:other_references.html["Referencias"] Para establecer un vínculo con _Network Management_.
+
+.Pasos
+. [[step1]]enumera todos los puertos físicos del nodo 1 actualizado (conocido como nodo 3):
++
+`network port show -node node3`
+
++
+Se muestran todos los puertos de red física, los puertos VLAN y los puertos del grupo de interfaces en el nodo. A partir de esta salida, puede ver los puertos físicos que se han movido al `Cluster` Dominio de difusión por ONTAP. Puede usar esta salida para decidir qué puertos se deben usar como puertos miembro de grupo de interfaces, puertos base de VLAN o puertos físicos independientes para alojar LIF.
+
+. [[step2]]Lista los dominios de difusión del clúster:
++
+`network port broadcast-domain show`
+
+. [[step3]]enumerar la capacidad de acceso del puerto de red de todos los puertos en el nodo 3:
++
+`network port reachability show`
+
++
+Debería ver un resultado como el siguiente ejemplo:
+
++
+[listing]
+----
+clusterA::*> reachability show -node node1_node3
+(network port reachability show)
+Node         Port       Expected Reachability   Reachability Status
+-----------  ---------  ----------------------  ----------------------
+node1_node3
+             a0a        Default:Default         no-reachability
+             a0a-822    Default:822             no-reachability
+             a0a-823    Default:823             no-reachability
+             e0M        Default:Mgmt            ok
+             e0a        Cluster:Cluster         misconfigured-reachability
+             e0b        Cluster:Cluster         no-reachability
+             e0c        Cluster:Cluster         no-reachability
+             e0d        Cluster:Cluster         no-reachability
+             e0e        Cluster:Cluster         ok
+             e0e-822    -                       no-reachability
+             e0e-823    -                       no-reachability
+             e0f        Default:Default         no-reachability
+             e0f-822    Default:822             no-reachability
+             e0f-823    Default:823             no-reachability
+             e0g        Default:Default         misconfigured-reachability
+             e0h        Default:Default         ok
+             e0h-822    Default:822             ok
+             e0h-823    Default:823             ok
+18 entries were displayed.
+----
++
+En el ejemplo anterior, 1_nodo 3 solo arranca tras el reemplazo de la controladora. Algunos puertos no tienen la posibilidad de acceder a sus dominios de retransmisión esperados y deben repararse.
+
+. [[auto_verify_3_step4]]repare la accesibilidad de cada uno de los puertos del nodo 3 con un estado de accesibilidad distinto de `ok`. Ejecute el siguiente comando, primero en cualquier puerto físico y, después, en todos los puertos VLAN, de uno en uno:
++
+`network port reachability repair -node _node_name_  -port _port_name_`
+
++
+Debería ver un resultado como el siguiente ejemplo:
+
++
+[listing]
+----
+Cluster ::> reachability repair -node node1_node3 -port e0h
+----
++
+[listing]
+----
+Warning: Repairing port "node1_node3: e0h" may cause it to move into a different broadcast domain, which can cause LIFs to be re-homed away from the port. Are you sure you want to continue? {y|n}:
+----
++
+Se espera un mensaje de advertencia, como se muestra anteriormente, para los puertos con un estado de accesibilidad que puede ser diferente del estado de accesibilidad del dominio de difusión en el que se encuentra actualmente. Revise la conectividad del puerto y la respuesta `y` o. `n` según corresponda.
+
++
+Verifique que todos los puertos físicos tengan la habilidad esperada:
+
++
+`network port reachability show`
+
++
+A medida que se realiza la reparación de accesibilidad, ONTAP intenta colocar los puertos en los dominios de retransmisión correctos. Sin embargo, si no se puede determinar la accesibilidad de un puerto y no pertenece a ninguno de los dominios de difusión existentes, ONTAP creará nuevos dominios de difusión para estos puertos.
+
+. [[step5]]Si la configuración del grupo de interfaces no coincide con la nueva distribución del puerto físico de la controladora, modifíquela mediante los pasos siguientes.
++
+.. Primero debe eliminar los puertos físicos que deben ser puertos miembro del grupo de interfaces de su pertenencia a dominio de retransmisión. Para ello, puede utilizar el siguiente comando:
++
+`network port broadcast-domain remove-ports -broadcast-domain _broadcast-domain_name_ -ports _node_name:port_name_`
+
+.. Añada un puerto miembro a un grupo de interfaces:
++
+`network port ifgrp add-port -node _node_name_ -ifgrp _ifgrp_ -port _port_name_`
+
+.. El grupo de interfaces se añade automáticamente al dominio de retransmisión aproximadamente un minuto después de añadir el primer puerto miembro.
+.. Compruebe que el grupo de interfaces se ha agregado al dominio de retransmisión apropiado:
++
+`network port reachability show -node _node_name_ -port _ifgrp_`
+
++
+Si el estado de accesibilidad del grupo de interfaces no es `ok`, asígnelo al dominio de difusión apropiado:
+
++
+`network port broadcast-domain add-ports -broadcast-domain _broadcast_domain_name_ -ports _node:port_`
+
+
+
+. [[step6]]asigne puertos físicos adecuados a la `Cluster` dominio de retransmisión mediante los siguientes pasos:
++
+.. Determine qué puertos tienen la posibilidad de recurrir al `Cluster` dominio de difusión :
++
+`network port reachability show -reachable-broadcast-domains Cluster:Cluster`
+
+.. Repare cualquier puerto con la accesibilidad al `Cluster` dominio de retransmisión, si su estado de accesibilidad no es `ok`:
++
+`network port reachability repair -node _node_name_ -port _port_name_`
+
+
+
+. [[step7]]mueva los puertos físicos restantes a sus dominios de difusión correctos utilizando uno de los siguientes comandos:
++
+`network port reachability repair -node _node_name_ -port _port_name_`
+
++
+`network port broadcast-domain remove-port`
+
++
+`network port broadcast-domain add-port`
+
++
+Compruebe que no hay puertos inesperados o inaccesibles presentes. Compruebe el estado de la accesibilidad de todos los puertos físicos mediante el siguiente comando y examine el resultado para confirmar que el estado es `ok`:
+
++
+`network port reachability show -detail`
+
+. [[paso8]]restaure cualquier VLAN que se haya desplazado siguiendo los pasos siguientes:
++
+.. Enumerar las VLAN desplazadas:
++
+`cluster controller-replacement network displaced-vlans show`
+
++
+Se debe mostrar una salida como la siguiente:
+
++
+[listing]
+----
+Cluster::*> displaced-vlans show
+(cluster controller-replacement network displaced-vlans show)
+          Original
+Node      Base Port   VLANs
+--------  ----------  -----------------------------------------
+Node1       a0a       822, 823
+            e0e       822, 823
+2 entries were displayed.
+----
+.. Restaure las VLAN desplazadas de sus puertos base anteriores:
++
+`cluster controller-replacement network displaced-vlans restore`
+
++
+A continuación se muestra un ejemplo de restauración de VLAN que se han desplazado del grupo de interfaces "a0a" al mismo grupo de interfaces:
+
++
+[listing]
+----
+Cluster::*> displaced-vlans restore -node node1_node3 -port a0a -destination-port a0a
+----
++
+Este es un ejemplo de restauración de VLAN desplazadas en el puerto "e0e" en el puerto e0h':
+
++
+[listing]
+----
+Cluster::*> displaced-vlans restore -node node1_node3 -port e0e -destination-port e0h
+----
++
+Cuando una restauración VLAN se realiza correctamente, las VLAN desplazadas se crean en el puerto de destino especificado. Se produce un error en la restauración de VLAN si el puerto de destino es miembro de un grupo de interfaces o si el puerto de destino está inactivo.
+
++
+Espere aproximadamente un minuto para que las VLAN recién restauradas se coloquen en sus dominios de retransmisión correspondientes.
+
+.. Cree nuevos puertos VLAN según sea necesario para los puertos VLAN que no se encuentran en el `cluster controller-replacement network displaced-vlans show` salida pero se debe configurar en otros puertos físicos.
+
+
+. [[step9]]elimine los dominios de difusión vacíos después de que se hayan completado todas las reparaciones de puerto:
++
+`network port broadcast-domain delete -broadcast-domain _broadcast_domain_name_`
+
+. [[step10]]Compruebe la accesibilidad del puerto:
++
+`network port reachability show`
+
++
+Cuando todos los puertos se configuran y se añaden correctamente a los dominios de retransmisión correctos, el `network port reachability show` el comando debería informar el estado de la accesibilidad como `ok` para todos los puertos conectados y el estado como `no-reachability` para puertos sin conectividad física. Si algún puerto informa de un estado distinto a estos dos, realice la reparación de accesibilidad y añada o quite puertos de sus dominios de retransmisión como se indica en <<auto_verify_3_step4,Paso 4>>.
+
+. Compruebe que todos los puertos se han colocado en dominios de retransmisión:
++
+`network port show`
+
+. Compruebe que todos los puertos de los dominios de retransmisión tengan la unidad de transmisión máxima (MTU) correcta configurada:
++
+`network port broadcast-domain show`
+
+. Restaure los puertos iniciales de LIF, especificando los puertos de inicio de Vserver y LIF, si los hubiera, que deben restaurarse mediante los siguientes pasos:
++
+.. Enumere las LIF que están desplazadas:
++
+`displaced-interface show`
+
+.. Restaure los nodos de inicio de LIF y sus puertos iniciales:
++
+`cluster controller-replacement network displaced-interface restore-home-node -node _node_name_ -vserver _vserver_name_ -lif-name _LIF_name_`
+
+
+
+. Verifique que todas las LIF tienen un puerto doméstico y que están administrativamente más arriba:
++
+`network interface show -fields home-port, status-admin`
+
+

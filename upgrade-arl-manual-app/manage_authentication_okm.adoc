@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/manage_authentication_okm.html 
+keywords: manage, authentication, onboard key manager, okm, key, passphrase, fips 
+summary: Use un gestor de claves incorporado para gestionar las claves de autenticación durante una actualización ARL manual en controladoras que ejecuten ONTAP 9.8 o una versión posterior. 
+---
+= Gestione la autenticación mediante un gestor de claves incorporado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puede usar un gestor de claves incorporado para gestionar las claves de autenticación. Si planea utilizar un gestor de claves incorporado (OKM), debe registrar la frase de paso y el material de copia de seguridad antes de comenzar la actualización.
+
+.Pasos
+. Compruebe que los servidores de gestión de claves estén disponibles para todos los nodos del clúster:
++
+`security key-manager key show`
+
+. ReKey todos los discos de autocifrado con la nueva clave de autenticación:
++
+`storage encryption disk modify -disk * [-data-key-id nonMSID AK>]`
+
+. Si utiliza el estándar de procesamiento de información federal (FIPS), vuelva a introducir todos los discos de autocifrado con la nueva clave de autenticación:
++
+`storage encryption disk* modify -disk * [-fips-key-id nonMSID AK]`
+
+

@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Para actualizar la pareja de nodos, debe preparar los nodos originales y realizar una serie de pasos en los nodos original y en los nuevos. A continuación, puede retirar los nodos originales.

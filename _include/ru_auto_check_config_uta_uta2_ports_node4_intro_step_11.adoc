@@ -1,0 +1,157 @@
+= Comprobar y configurar los puertos UTA/UTA2 en el nodo 4
+:allow-uri-read: 
+
+
+
+
+== Comprobar y configurar los puertos UTA/UTA2 en el nodo 4
+
+Si el nodo 4 tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA 2, debe comprobar la configuración de los puertos y configurarlos, según cómo se desee usar el sistema actualizado.
+
+.Antes de empezar
+Debe tener los módulos SFP+ correctos para los puertos UTA/UTA2.
+
+.Acerca de esta tarea
+Los puertos UTA/UTA2 se pueden configurar en modo FC nativo o modo UTA/UTA 2. El modo FC admite iniciador FC y objetivo FC; el modo UTA/UTA2 permite que el tráfico FCoE y NIC simultáneas comparta la misma interfaz SFP+ 10 GbE y admite destino FC.
+
+
+NOTE: Los materiales de marketing de NetApp podrían utilizar el término UTA2 para consultar los puertos y adaptadores de CNA. Sin embargo, la CLI utiliza el término CNA.
+
+Los puertos UTA/UTA2 pueden estar en un adaptador o en la controladora con las siguientes configuraciones:
+
+* Las tarjetas UTA/UTA2 solicitadas al mismo tiempo que la controladora están configuradas antes del envío para tener la personalidad solicitada.
+* Las tarjetas UTA/UTA2 solicitadas por separado desde la controladora se envían con la personalidad de destino FC predeterminada.
+* Los puertos UTA/UTA2 integrados en las nuevas controladoras están configurados (antes del envío) para tener la personalidad solicitada.
+
+
+Sin embargo, debe comprobar la configuración de los puertos UTA/UTA2 del nodo 4 y cambiarlo, si es necesario.
+
+
+WARNING: *Atención*: Si el sistema tiene discos de almacenamiento, debe introducir los comandos de esta sección en el indicador del clúster a menos que se le indique entrar en modo de mantenimiento. Si tiene un sistema FC de MetroCluster, un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento, debe estar en modo de mantenimiento para configurar puertos UTA/UTA2.
+
+.Pasos
+. Compruebe cómo se configuran los puertos actualmente mediante uno de los siguientes comandos del nodo 4:
++
+[cols="30,70"]
+|===
+| Si el sistema... | Entonces… 
+
+
+| Tiene discos de almacenamiento | `system node hardware unified-connect show` 
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `ucadmin show` 
+|===
++
+El sistema muestra un resultado similar al siguiente ejemplo:
+
++
+....
+*> ucadmin show
+                Current  Current    Pending   Pending   Admin
+Node   Adapter  Mode     Type       Mode      Type      Status
+----   -------  ---      ---------  -------   --------  -------
+f-a    0e       fc       initiator  -          -        online
+f-a    0f       fc       initiator  -          -        online
+f-a    0g       cna      target     -          -        online
+f-a    0h       cna      target     -          -        online
+f-a    0e       fc       initiator  -          -        online
+f-a    0f       fc       initiator  -          -        online
+f-a    0g       cna      target     -          -        online
+f-a    0h       cna      target     -          -        online
+*>
+....
+. Si el módulo SFP+ actual no coincide con el uso deseado, sustitúyalo por el módulo SFP+ correcto.
++
+Póngase en contacto con su representante de NetApp para obtener el módulo SFP+ correcto.
+
+. Examine el resultado del `ucadmin show` Command y determine si los puertos UTA/UTA2 tienen la personalidad que desea.
+. Realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si los puertos CNA... | Entonces… 
+
+
+| No tenga la personalidad que usted desea | Vaya a. <<auto_check_4_step5,Paso 5>>. 
+
+
+| Tenga la personalidad que usted desea | Pase los pasos 5 a 12 y vaya a. <<auto_check_4_step13,Paso 13>>. 
+|===
+. [[auto_check_4_step5]]realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si va a configurar... | Entonces… 
+
+
+| Puertos en una tarjeta UTA/UTA2 | Vaya a. <<auto_check_4_step7,Paso 7>> 
+
+
+| Puertos UTA/UTA2 integrados | Vaya al paso 7 y vaya a. <<auto_check_4_step8,Paso 8>>. 
+|===
+. Si el adaptador está en modo iniciador y si el puerto UTA/UTA2 está en línea, desconecte el puerto UTA/UTA2:
++
+`storage disable adapter _adapter_name_`
+
++
+Los adaptadores del modo de destino se desconectan automáticamente en modo de mantenimiento.
+
+. [[auto_check_4_step7]]Si la configuración actual no coincide con el uso deseado, cambie la configuración según sea necesario:
++
+`ucadmin modify -m fc|cna -t initiator|target _adapter_name_`
+
++
+** `-m` Es el modo personalidad, FC o 10 GbE UTA.
+** `-t` Es el tipo FC4, `target` o. `initiator`.
++
+
+NOTE: Se debe usar iniciador FC para unidades de cinta, sistemas de virtualización FlexArray y configuraciones de MetroCluster. Debe usar el destino FC para los clientes SAN.
+
+
+
+. [[auto_check_4_step8]]Compruebe los ajustes utilizando el siguiente comando y examine su salida:
++
+`ucadmin show`
+
+. Compruebe la configuración:
++
+[cols="40,60"]
+|===
+| Si el sistema... | Entonces… 
+
+
+| Tiene discos de almacenamiento | `ucadmin show` 
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `ucadmin show` 
+|===
++
+La salida de los siguientes ejemplos muestra que el tipo FC4 del adaptador "1b" está cambiando a. `initiator` y que el modo de los adaptadores "2a" y "2b" está cambiando a. `cna`:
+
++
+....
+*> ucadmin show
+Node  Adapter  Current Mode  Current Type  Pending Mode  Pending Type  Admin Status
+----  -------  ------------  ------------  ------------  ------------  ------------
+f-a   1a       fc             initiator    -             -             online
+f-a   1b       fc             target       -             initiator     online
+f-a   2a       fc             target       cna           -             online
+f-a   2b       fc             target       cna           -             online
+4 entries were displayed.
+*>
+....
+. Coloque los puertos de destino en línea introduciendo uno de los siguientes comandos, una vez por cada puerto:
++
+[cols="30,70"]
+|===
+| Si el sistema... | Entonces… 
+
+
+| Tiene discos de almacenamiento | `network fcp adapter modify -node _node_name_ -adapter _adapter_name_ -state up` 
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `fcp config _adapter_name_ up` 
+|===
+. Conecte el cable del puerto.
+

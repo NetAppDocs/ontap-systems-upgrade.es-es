@@ -1,0 +1,136 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/guidelines_upgrade_with_arl.html 
+keywords: guidelines, upgrade 
+summary: Comprenda si puede utilizar el procedimiento manual de actualización de ARL para un par de controladoras que ejecuten ONTAP 9.8 o una versión posterior. 
+---
+= Directrices para actualizar controladoras con ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para comprender si puede utilizar la reubicación de agregados (ARL) para actualizar un par de controladoras que ejecuten ONTAP 9.8 depende de la plataforma y la configuración de las controladoras original y de reemplazo.
+
+
+
+== Actualizaciones compatibles de ARL
+
+Puede actualizar un par de nodos mediante ARL en las siguientes circunstancias:
+
+* Tanto las controladoras originales como las de reemplazo deben ejecutar la misma versión de ONTAP 9.8 antes de la actualización.
+* Las controladoras de reemplazo deben tener una capacidad igual o superior a la de las controladoras originales. La capacidad igual o mayor hace referencia a los atributos, como el tamaño de NVRAM, el volumen, la LUN o los límites de recuento de agregados; también hace referencia al tamaño máximo de volumen o agregado de los nuevos nodos.
+* Puede actualizar los siguientes tipos de sistemas:
++
+** Un sistema FAS a un sistema FAS.
+** Un sistema FAS a un sistema con software de virtualización FlexArray o un sistema V-Series.
+** Un sistema AFF para un sistema AFF.
+** Un sistema con software de virtualización FlexArray o un sistema V-Series para un sistema FAS, siempre y cuando el sistema con software de virtualización FlexArray o sistema V-Series no tenga LUN de cabina.
+** Un sistema de V-Series a un sistema con software de virtualización FlexArray o un sistema V-Series.
+
+
+* Para algunas actualizaciones de controladoras ARL, puede utilizar puertos de clúster temporales en la controladora de reemplazo para la actualización. Por ejemplo, si actualiza desde un AFF A300 a un sistema AFF A400, en función de la configuración del AFF A400, puede utilizar cualquiera de los dos puertos intermedios o agregar una tarjeta de interfaz de red 10 GbE de cuatro puertos para proporcionar puertos temporales del clúster. Después de completar una actualización de controladoras mediante puertos de clúster temporales, puede migrar clústeres a puertos de 100 GbE en la controladora de reemplazo de forma no disruptiva.
+* La actualización de la controladora mediante ARL es compatible en sistemas configurados con volúmenes de SnapLock Enterprise y SnapLock Compliance.
+
+
+Es necesario verificar si la ARL se puede realizar en las controladoras originales y de sustitución. Debe comprobar el tamaño de todos los agregados definidos y la cantidad de discos admitidos por el sistema original. A continuación, compárelo con el tamaño del agregado y el número de discos que admite el nuevo sistema. Para acceder a esta información, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_. El tamaño de agregado y el número de discos que admite el nuevo sistema deben ser iguales o mayores que el tamaño del agregado y el número de discos que admite el sistema original.
+
+En las reglas de combinación de clústeres se debe validar si los nodos nuevos pueden formar parte del clúster con los nodos existentes cuando se reemplaza la controladora original. Para obtener más información acerca de las reglas de mezcla de clústeres, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_.
+
+
+NOTE: Ambos sistemas son de alta disponibilidad o no. Ambos nodos deben tener la personalidad habilitada o deshabilitada. No se puede combinar un nodo con la personalidad All Flash Optimized habilitada con un nodo que no tenga la personalidad habilitada en la misma pareja de ha. Si las personalidades son diferentes, póngase en contacto con el soporte técnico.
+
+
+NOTE: Si el sistema nuevo tiene menos ranuras que el sistema original, o si tiene menos puertos o puertos diferentes, puede que deba añadir un adaptador al nuevo sistema. Consulte link:other_references.html["Referencias"] Para obtener información sobre plataformas específicas, haga un enlace al _Hardware Universe_ en el sitio de soporte de NetApp.
+
+Si tiene un sistema con más de dos puertos de clúster por nodo, como un sistema FAS8080 o AFF8080, antes de iniciar la actualización, debe migrar y volver a home los LIF del clúster a dos puertos de clúster por nodo. Si realiza la actualización de la controladora con más de dos puertos de clúster por nodo, es posible que falten LIF en el nuevo controlador después de la actualización
+
+
+
+== ARL no admite actualizaciones
+
+No se pueden realizar las siguientes actualizaciones:
+
+* Hacia o desde controladoras que no pueden ejecutar ONTAP 9.8 o una versión posterior.
+* Para el reemplazo de controladoras que no admiten las bandejas de discos conectadas a las controladoras originales.
++
+Para obtener información sobre compatibilidad de discos, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_.
+
+* Desde controladoras con agregados raíz o agregados de datos en unidades internas.
++
+Si desea actualizar las controladoras con agregados raíz o agregados de datos en unidades de disco internas, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_ y vaya al procedimiento _Upgrade una pareja de nodos que ejecutan Clustered Data ONTAP moviendo volúmenes_.
+
++
+
+NOTE: Si desea actualizar ONTAP en nodos de un clúster, consulte link:other_references.html["Referencias"] Para enlazar a _Upgrade ONTAP_.
+
+
+
+
+
+== Suposiciones y terminología
+
+Este documento se escribe con las siguientes suposiciones:
+
+* El hardware de la controladora de reemplazo es nuevo y no se ha usado.
++
+
+WARNING: *Atención*: Debido a que este procedimiento asume que el hardware del controlador de sustitución es nuevo y no se ha utilizado, los pasos necesarios para preparar los controladores usados con el `wipeconfig` el comando no se incluye en este procedimiento. Debe ponerse en contacto con el soporte técnico si se utilizó anteriormente el hardware de la controladora de reemplazo, especialmente si las controladoras ejecutaban Data ONTAP en 7-Mode.
+
+* Debe leer y comprender las directrices para actualizar la pareja de nodos.
++
+
+WARNING: *Atención*: No intente borrar el contenido de la NVRAM. Si necesita borrar el contenido de NVRAM, póngase en contacto con el soporte técnico de NetApp.
+
+* Está realizando el comando correspondiente antes y después del `modify` comandos y comparar el resultado de ambos `show` comandos para verificar que el `modify` el comando se ha realizado correctamente.
+* Si tiene una configuración SAN, tiene LIF locales y de partners para cada máquina virtual de almacenamiento (SVM), en el par de alta disponibilidad. Si no tiene LIF locales y del partner para cada SVM, debe agregar la LIF de datos DE SAN en el nodo local y remoto para esa SVM antes de iniciar la actualización.
+* Si tiene conjuntos de puertos en una configuración SAN, debe haber verificado que cada conjunto de puertos enlazados contiene al menos un LIF de cada nodo del par de alta disponibilidad.
+
+
+Este procedimiento utiliza el término _boot Environment prompt_ para hacer referencia al prompt de un nodo desde el que puede realizar ciertas tareas, como reiniciar el nodo e imprimir o configurar variables de entorno. A veces, el prompt se denomina informalmente _boot loader prompt_.
+
+El símbolo del sistema del entorno de arranque se muestra en el siguiente ejemplo:
+
+[listing]
+----
+LOADER>
+----
+
+
+== Licencia en ONTAP 9.8 o posterior
+
+Cuando configura un clúster, el asistente de configuración le solicita que introduzca la clave de licencia base de clúster. Sin embargo, algunas funciones requieren licencias adicionales, que se emiten como _packages_ que incluyen una o más funciones. Cada nodo del clúster debe tener su propia clave para cada función que se usará en el clúster.
+
+Si no tiene claves de licencia nuevas, las funciones con licencia actualmente en el clúster están disponibles para la nueva controladora y seguirán funcionando. Sin embargo, el uso de funciones sin licencia en la controladora puede dejar de cumplir con el acuerdo de licencia, de modo que debe instalar la nueva clave o las claves de licencia para la nueva controladora una vez que finalice la actualización.
+
+Todas las claves de licencia tienen una longitud de 28 caracteres alfabéticos en mayúsculas. Consulte link:other_references.html["Referencias"] Para enlazar al _sitio de soporte de NetApp_ donde puede obtener claves de licencia nuevas de 28 caracteres de ONTAP 9.8. o posterior. Las claves están disponibles en la sección _My Support_ en _Software licences_. Si el sitio no tiene las claves de licencia que necesita, póngase en contacto con su representante de ventas de NetApp.
+
+Para obtener información detallada sobre las licencias, vaya a. link:other_references.html["Referencias"] Para vincular a _System Administration Reference_.
+
+
+
+== Cifrado del almacenamiento
+
+Los nodos originales o los nodos nuevos pueden estar habilitados para el cifrado de almacenamiento. En ese caso, deberá seguir los pasos adicionales de este procedimiento para verificar que Storage Encryption esté configurado correctamente.
+
+Si desea usar Storage Encryption, todas las unidades de disco asociadas a los nodos deben tener unidades de disco de autocifrado.
+
+
+
+== Clústeres de dos nodos sin switches
+
+Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar los nodos en el clúster sin switches mientras realiza la actualización. No es necesario convertirlos en un clúster con switches
+
+
+
+== Resolución de problemas
+
+Este procedimiento incluye sugerencias para la solución de problemas.
+
+Si ocurre algún problema mientras actualiza las controladoras, puede consultar la link:troubleshoot_index.html["Solucionar problemas"] sección al final del procedimiento para obtener más información y soluciones posibles.
+
+Si no encuentra ninguna solución al problema que encontró, póngase en contacto con el soporte técnico.

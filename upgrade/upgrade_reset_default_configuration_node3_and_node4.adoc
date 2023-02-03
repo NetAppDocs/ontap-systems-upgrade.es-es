@@ -1,0 +1,56 @@
+---
+permalink: upgrade/upgrade-reset-default-configuration-node3-and-node4.html 
+sidebar: sidebar 
+keywords: confirm, configuration, information, boot, media, interfere, controller, upgrade, reset, node3, node4, node, default, setting, reset default configuration on the new nodes 
+summary: Para confirmar que la información de configuración del medio de arranque no interfiere con la actualización de la controladora, es necesario restablecer las configuraciones del nodo 3 y del nodo 4 a los ajustes de configuración predeterminados. 
+---
+= Restablece la configuración predeterminada en los nuevos nodos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para confirmar que la información de configuración del medio de arranque no interfiere con la actualización de la controladora, es necesario restablecer las configuraciones del nodo 3 y del nodo 4 a los ajustes de configuración predeterminados.
+
+.Acerca de esta tarea
+Debe realizar los siguientes pasos: Nodo 3 y nodo 4. Puede realizar los pasos en cada nodo en paralelo.
+
+. Arrancar el nodo en el menú de arranque:
++
+`boot_ontap menu`
+
+. En el símbolo del sistema del menú de inicio, escriba `wipeconfig` Y, a continuación, pulse Intro.
++
+La siguiente pantalla muestra el indicador del menú de inicio
+
++
+[listing]
+----
+Please choose one of the following:
+
+    (1) Normal Boot.
+    (2) Boot without /etc/rc.
+    (3) Change password.
+    (4) Clean configuration and initialize all disks.
+    (5) Maintenance mode boot.
+    (6) Update flash from backup config.
+    (7) Install new software first.
+    (8) Reboot node.
+    (9) Configure Advanced Drive Partitioning.
+    Selection (1-9)?  wipeconfig
+----
+. Introduzca `yes` cuando vea un símbolo del sistema similar a lo siguiente:
++
+[listing]
+----
+This option deletes critical system configuration, including cluster membership.
+Warning: do not run this option on a HA node that has been taken over.
+Are you sure you want to continue?: yes
+Rebooting to finish wipeconfig request.
+----
++
+El sistema iniciará el `wipeconfig` procedimiento y reinicio. Una vez completado el procedimiento, el sistema vuelve al menú de inicio.
+
+. Desde el menú de inicio, introduzca 8 para reiniciar el nodo y pulse *Ctrl-C* durante el inicio automático para detener el nodo en el símbolo del SISTEMA DEL CARGADOR.
+

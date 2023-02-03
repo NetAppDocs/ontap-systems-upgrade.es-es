@@ -1,0 +1,203 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/record_node1_information.html 
+keywords: record, information, node1, NVRAM, retire 
+summary: Registre información acerca de la red de clúster 1-1, la gestión, los puertos FC y el ID del sistema NVRAM durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior. 
+---
+= Registre la información del nodo 1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de poder apagar y retirar el nodo 1, debe registrar información acerca de sus puertos de red, gestión y FC del clúster, así como del ID del sistema de NVRAM. Se necesita esa información posteriormente en el procedimiento cuando se asigna el nodo 1 al nodo 3 y se reasignan discos.
+
+.Pasos
+. [[step1]]Introduzca el siguiente comando y capture su salida:
++
+`network route show`
+
++
+El sistema muestra un resultado similar al siguiente ejemplo:
+
++
+[listing]
+----
+ cluster::> network route show
+
+ Vserver        Destination    Gateway      Metric
+  -------------- -------------- ----------- -------
+  iscsi vserver  0.0.0.0/0      10.10.50.1  20
+  node1          0.0.0.0/0      10.10.20.1  10
+  ....
+  node2          0.0.0.0/0      192.169.1.1 20
+----
+. Escriba el siguiente comando y capture su resultado:
++
+`vserver services name-service dns show`
+
++
+El sistema muestra un resultado similar al siguiente ejemplo:
+
++
+[listing]
+----
+ cluster::> vserver services name-service dns show
+                                                               Name
+ Vserver        State     Domains                              Servers
+ -------------- --------- ------------------------------------ ---------------
+ node 1 2       enabled   alpha.beta.gamma.netapp.com          10.10.60.10,
+                                                               10.10.60.20
+ vs_base1       enabled   alpha.beta.gamma.netapp.com,         10.10.60.10,
+                          beta.gamma.netapp.com,               10.10.60.20
+ ...
+ ...
+ vs peer1        enabled  alpha.beta.gamma.netapp.com,         10.10.60.10,
+                          gamma.netapp.com                     10.10.60.20
+----
+. [[man_record_1_step3]]Busque los puertos de red del clúster y gestión de nodos en el nodo 1 introduciendo el comando siguiente en cualquiera de las controladoras:
++
+`network interface show -curr-node _node1_ -role cluster,intercluster,node-mgmt,cluster-mgmt`
+
++
+El sistema muestra las LIF de gestión de clúster, interconexión de clústeres, nodos y clústeres para el nodo del clúster, como se muestra en el siguiente ejemplo:
+
++
+[listing]
+----
+ cluster::> network interface show -curr-node <node1>
+            -role cluster,intercluster,node-mgmt,cluster-mgmt
+
+              Logical       Status     Network            Current  Current Is
+  Vserver     Interface     Admin/Oper Address/Mask       Node     Port    Home
+  ----------- ------------- ---------- ------------------ -------- ------- ----
+  vserver1
+              cluster mgmt   up/up     192.168.x.xxx/24   node1    e0c     true
+  node1
+              intercluster   up/up     192.168.x.xxx/24   node1    e0e     true
+              clus1          up/up     169.254.xx.xx/24   node1    e0a     true
+              clus2          up/up     169.254.xx.xx/24   node1    e0b     true
+              mgmt1          up/up     192.168.x.xxx/24   node1    e0c     true
+ 5 entries were displayed.
+----
++
+
+NOTE: Es posible que el sistema no tenga LIF de interconexión de clústeres.
+
+. Capture la información en el resultado del comando en <<man_record_node1_step3,Paso 3>> para utilizar en la sección link:map_ports_node1_node3.html["Asigne puertos del nodo 1 al nodo 3"].
++
+La información de salida se requiere para asignar los nuevos puertos de la controladora a los puertos anteriores de la controladora.
+
+. Introduzca el siguiente comando en el nodo 1:
++
+`network port show -node _node1_ -type physical`
+
++
+El sistema muestra los puertos físicos del nodo, como se muestra en el ejemplo siguiente:
+
++
+[listing]
+----
+ sti8080mcc-htp-008::> network port show -node sti8080mcc-htp-008 -type physical
+
+ Node: sti8080mcc-htp-008
+
+                                                                  Ignore
+                                            Speed(Mbps)  Health   Health
+ Port  IPspace  Broadcast Domain Link MTU   Admin/Oper   Status   Status
+ ----  -------  ---------------- ---- ----  -----------  -------  -------
+ e0M   Default  Mgmt             up   1500  auto/1000    healthy  false
+ e0a   Default  Default          up   9000  auto/10000   healthy  false
+ e0b   Default  -                up   9000  auto/10000   healthy  false
+ e0c   Default  -                down 9000  auto/-       -        false
+ e0d   Default  -                down 9000  auto/-       -        false
+ e0e   Cluster  Cluster          up   9000  auto/10000   healthy  false
+ e0f   Default  -                up   9000  auto/10000   healthy  false
+ e0g   Cluster  Cluster          up   9000  auto/10000   healthy  false
+ e0h   Default  Default          up   9000  auto/10000   healthy  false
+ 9 entries were displayed.
+----
+. Registre los puertos y sus dominios de retransmisión.
++
+Los dominios de retransmisión deberán asignarse a los nuevos puertos en la nueva controladora más adelante en el procedimiento.
+
+. Introduzca el siguiente comando en el nodo 1:
++
+`network fcp adapter show -node _node1_`
+
++
+El sistema muestra los puertos FC en el nodo, como se muestra en el ejemplo siguiente:
+
++
+[listing]
+----
+ cluster::> fcp adapter show -node <node1>
+                      Connection  Host
+ Node         Adapter Established Port Address
+ ------------ ------- ----------- ------------
+ node1
+               0a     ptp         11400
+ node1
+               0c     ptp         11700
+ node1
+               6a     loop        0
+ node1
+               6b     loop        0
+ 4 entries were displayed.
+----
+. Registre los puertos.
++
+La información de salida es necesaria para asignar los puertos FC nuevos en la nueva controladora más adelante en el procedimiento.
+
+. Si no lo ha hecho anteriormente, compruebe si hay grupos de interfaces o VLAN configuradas en el nodo 1 introduciendo los comandos siguientes:
++
+`network port ifgrp show`
+
++
+`network port vlan show`
+
++
+Utilizará la información de la sección link:map_ports_node1_node3.html["Asigne puertos del nodo 1 al nodo 3"].
+
+. Realice una de las siguientes acciones:
++
+[cols="60,40"]
+|===
+| Si... | Realice lo siguiente... 
+
+
+| Ha registrado el número de ID del sistema NVRAM en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"]. | Pasar a la siguiente sección, link:retire_node1.html["Retire el nodo 1"]. 
+
+
+| No ha registrado el número de ID del sistema NVRAM en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] | Completo <<man_record_node1_step11,Paso 11>> y.. <<man_record_node1_step12,Paso 12>> y después continúe link:retire_node1.html["Retire el nodo 1"]. 
+|===
+. [[man_record_1_step11]]Introduzca el siguiente comando en cualquiera de los controladores:
++
+`system node show -instance -node _node1_`
+
++
+El sistema muestra información acerca del nodo 1, como se muestra en el siguiente ejemplo:
+
++
+[listing]
+----
+ cluster::> system node show -instance -node <node1>
+                              Node: node1
+                             Owner:
+                          Location: GDl
+                             Model: FAS6240
+                     Serial Number: 700000484678
+                         Asset Tag: -
+                            Uptime: 20 days 00:07
+                   NVRAM System ID: 1873757983
+                         System ID: 1873757983
+                            Vendor: NetApp
+                            Health: true
+                       Eligibility: true
+----
+. [[man_record_1_step12]]registre el número de ID del sistema NVRAM que se va a utilizar en la sección link:install_boot_node3.html["Instale y arranque el nodo 3"].
+

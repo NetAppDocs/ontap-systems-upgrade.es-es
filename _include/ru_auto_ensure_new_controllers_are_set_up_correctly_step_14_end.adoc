@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+. Si desea configurar un clúster sin switches en los nuevos nodos, consulte link:other_references.html["Referencias"] Para establecer un enlace al _sitio de soporte de NetApp_ y siga las instrucciones que se indican en _Cambiar a un clúster sin switch de dos nodos_.
+
+
+.Después de terminar
+Si el cifrado del almacenamiento está habilitado en los nodos 3 y 4, complete la sección link:set_up_storage_encryption_new_module.html["Configure Storage Encryption en el nuevo módulo de la controladora"]. De lo contrario, complete la sección link:decommission_old_system.html["Retire el sistema antiguo"].

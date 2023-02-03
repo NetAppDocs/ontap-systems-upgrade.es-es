@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/determine_new_cabling_layout.html 
+keywords: cable, cabling, layout, disk shelf, fc switches 
+summary: Determine la distribución de cableado de los nuevos módulos de controladora y bandejas de discos durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.7 o una versión anterior. 
+---
+= Determine la nueva distribución del cableado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Debe determinar el cableado de los módulos de controladora nuevos y de todas las bandejas de discos nuevas a los switches FC existentes.
+
+.Acerca de esta tarea
+Esta tarea debe realizarse en cada sitio MetroCluster.
+
+.Paso
+Use el contenido _MetroCluster con conexión a la estructura y configuración_ para determinar la distribución del cableado para el tipo de switch y el uso del puerto para una configuración MetroCluster de ocho nodos. El uso del puerto del switch FC debe coincidir con el uso descrito en el contenido para poder utilizar los archivos de configuración de referencia (RCF).
+
+Vaya a. link:other_references.html["Referencias"] Para enlazar con el contenido _Fabric-Attached MetroCluster Installation and Configuration_.
+
+
+NOTE: Si el entorno no puede cablearse de forma que se puedan utilizar los RCF, póngase en contacto con el soporte técnico. No utilice este procedimiento si el cableado no puede utilizar RCF.

@@ -1,0 +1,141 @@
+---
+permalink: upgrade/upgrade-map-network-ports-ontap-9-7-or-earlier.html 
+sidebar: sidebar 
+keywords: enable, node3, node4, node, communicate, cluster, network, upgrade, physical, port, configure, setting, intend, data, map, map network ports using ontap 9.7 or earlier 
+summary: Para habilitar el nodo 3 y el nodo 4 para comunicarse entre sí en el clúster y con la red después de la actualización, debe confirmar que los puertos físicos están correctamente configurados con los ajustes para el uso previsto, como el clúster, los datos, etc. 
+---
+= Asignar puertos de red con ONTAP 9.7 o una versión anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para habilitar el nodo 3 y el nodo 4 para comunicarse entre sí en el clúster y con la red después de la actualización, debe confirmar que los puertos físicos están correctamente configurados con los ajustes para el uso previsto, como el clúster, los datos, etc.
+
+.Antes de empezar
+Estos pasos se aplican a sistemas que ejecutan ONTAP 9.7 o una versión anterior. Si utiliza ONTAP 9.8 o una versión posterior, debe utilizar el procedimiento en xref:upgrade-map-network-ports-ontap-9-8.adoc[Asigne puertos de red mediante ONTAP 9.8 o una versión posterior].
+
+.Acerca de esta tarea
+Debe realizar estos pasos en los nodos 3 y 4.
+
+
+NOTE: Los siguientes ejemplos de comandos hacen referencia al "nodo 1", ya que, en este momento del procedimiento, los nodos de reemplazo "nodo 3" y "nodo 4" se denominan "nodo 1" y "nodo 2".
+
+.Pasos
+. Si el sistema ejecuta ONTAP 9.8 o posterior, *STOP*. Debe utilizar el procedimiento en xref:upgrade-map-network-ports-ontap-9-8.adoc[Asigne puertos de red mediante ONTAP 9.8 o una versión posterior].
+. Ubique la información de configuración de puertos y LIF para los nodos 1 y 2 que haya grabado en _prepare for upgrade al mover almacenamiento_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Paso 3"].
+. Localice la información de los puertos, dominios de retransmisión y espacios IP que registró en _Prepárese para la actualización cuando mueva almacenamiento_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Paso 3"].
++
+https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
+. Realice los siguientes cambios:
++
+.. Si todavía no lo hizo, arranque de nodo 3 y nodo 4 en el símbolo del sistema del clúster.
+.. Añada los puertos correctos al `Cluster` dominio de retransmisión:
++
+`network port modify -node _node_name_ -port _port_name_ -mtu 9000 -ipspace Cluster`
+
++
+En este ejemplo se agrega `Cluster` puerto e1b en «'1 1'»:
+
++
+`network port modify -node node1 -port e1b -ipspace Cluster -mtu 9000`
+
+.. Migre las LIF a los nuevos puertos, una vez por cada LIF:
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -source-node node1 -destination-node node1 -destination-port _port_name_`
+
++
+Los LIF de datos DE SAN solo se pueden migrar cuando están sin conexión.
+
+.. Modifique el puerto de inicio de las LIF de clúster:
++
+`network interface modify -vserver Cluster -lif _lif_name_ –home-port _port_name_`
+
+.. Quite los puertos antiguos del dominio de retransmisión de clúster:
++
+`network port broadcast-domain remove-ports -ipspace Cluster -broadcast-domain Cluster -ports _node1:port_`
+
+.. Mostrar el estado de los nodos 3 y 4:
++
+`cluster show -node _node1_ -fields health`
+
+.. Cada LIF de clúster debe estar escuchando en el puerto 7700. Compruebe que las LIF del clúster están escuchando en el puerto 7700:
++
+`::> network connections listening show -vserver Cluster`
+
++
+El resultado esperado de la escucha del puerto 7700 en los puertos del clúster tal y como se muestra en el siguiente ejemplo de un clúster de dos nodos:
+
++
+[listing]
+----
+Cluster::> network connections listening show -vserver Cluster
+Vserver Name     Interface Name:Local Port     Protocol/Service
+---------------- ----------------------------  -------------------
+Node: NodeA
+Cluster          NodeA_clus1:7700               TCP/ctlopcp
+Cluster          NodeA_clus2:7700               TCP/ctlopcp
+Node: NodeB
+Cluster          NodeB_clus1:7700               TCP/ctlopcp
+Cluster          NodeB_clus2:7700               TCP/ctlopcp
+4 entries were displayed.
+----
+.. De ser necesario, para cada LIF de clúster que no esté escuchando en el puerto 7700, establezca el estado administrativo de la LIF en `down` y después `up`:
++
+`::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
+
++
+Repita el subpaso (g) para comprobar que la LIF del clúster ahora está escuchando en el puerto 7700.
+
+
+
+. Modifique la VLAN y. `ifgrp config` para coincidir con la nueva distribución de puertos físicos de la controladora.
+. Elimine los puertos 1 y 2 que ya no existen en los nodos 3 y nodo 4 (nivel de privilegio avanzado):
++
+`network port delete -node _node1_ -port _port_name_`
+
+. [[map_97_7]] ajuste el dominio de retransmisión de gestión del nodo y migre los LIF de gestión del nodo y de clúster si es necesario:
++
+.. Mostrar el puerto de inicio de una LIF:
++
+`network interface show -fields home-node,home-port`
+
+.. Muestre el dominio de retransmisión que contiene el puerto:
++
+`network port broadcast-domain show -ports _node_name:port_name_`
+
+.. Añada o quite puertos de los dominios de retransmisión según sea necesario:
++
+`network port broadcast-domain add-ports`
+
++
+`network port broadcast-domain remove-ports`
+
+.. Modifique el puerto de inicio de una LIF si es necesario:
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ –home-port _port_name_`
+
+
+
+. Ajuste los dominios de retransmisión entre clústeres y migre las LIF entre clústeres, en caso necesario, mediante los comandos de <<map_97_7,Paso 7>>.
+. Ajuste cualquier otro dominio de retransmisión y migre los LIF de datos, si es necesario, mediante los comandos de <<map_97_7,Paso 7>>.
+. Ajustar todos los grupos de recuperación tras fallos de LIF:
++
+`network interface modify -failover-group _failover_group_ -failover-policy _failover_policy_`
+
++
+El siguiente comando establece la política de conmutación por error en todo el dominio de retransmisión y utiliza los puertos del grupo de conmutación por error "fg1" como destinos de conmutación por error para la LIF "data1" en "1":
+
++
+`network interface modify -vserver node1 -lif data1 -failover-policy broadcast-domain-wide -failover-group fg1`
+
+. Mostrar los atributos de puerto de red de los nodos 3 y 4:
++
+`network port show -node node1`
+
+
+
+.Después de terminar
+Completó la asignación de los puertos físicos. Para completar la actualización, vaya a. xref:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.adoc[Realice los pasos finales de la actualización en ONTAP 9.7 o versiones anteriores].

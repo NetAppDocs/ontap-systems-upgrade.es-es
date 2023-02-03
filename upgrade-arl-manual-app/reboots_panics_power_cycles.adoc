@@ -1,0 +1,225 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/reboots_panics_power_cycles.html 
+keywords: reboot, crash, panic, failure, upgrade 
+summary: 'Podría bloquearse el sistema: Reinicio, alarma o interrupción de un ciclo de encendido y apagado, durante las diferentes fases de una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior.' 
+---
+= Reinicios, pánicos o ciclos de alimentación
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Se puede bloquear el sistema: Reinicio, alarma o interrupción de un ciclo de encendido, durante las diferentes etapas de la actualización. La solución a estos problemas depende de cuándo se produzcan.
+
+
+
+== Reinicia, produce un pánico o ciclos de encendido durante la etapa 2
+
+Los bloqueos pueden producirse antes, durante o inmediatamente después de la fase 2, durante la cual se reubican los agregados del nodo 1 al nodo 2, los LIF de datos y las LIF DE SAN propiedad del nodo 1 al nodo 2, los registros de la información del nodo 1 y los retirada del nodo 1.
+
+
+
+=== El nodo 1 o 2 se bloquea antes de la fase 2 con una alta disponibilidad todavía habilitada
+
+Si el nodo 1 o el nodo 2 se bloquean antes de la fase 2, aún no se han reubicado agregados y la configuración de alta disponibilidad sigue estando habilitada.
+
+.Acerca de esta tarea
+La toma de control y la devolución pueden proceder con normalidad.
+
+.Pasos
+. Compruebe la consola para ver los mensajes de EMS que haya emitido el sistema y realice la acción correctiva recomendada.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+=== El nodo 1 se bloquea durante o solo después de la fase 2 con la alta disponibilidad todavía habilitada
+
+Algunos o todos los agregados se han reubicado del nodo 1 al nodo 2 y la alta disponibilidad sigue estando habilitada. El nodo 2 tomará el volumen raíz del nodo 1 y todos los agregados que no sean raíz al que no se hayan reubicado.
+
+.Acerca de esta tarea
+La propiedad de los agregados que se reubicaron tiene el mismo aspecto que la propiedad de los agregados no raíz que se tomaron el control porque el propietario no ha cambiado. Cuando el nodo 1 entra en el `waiting for giveback state`, el nodo 2 devuelve todos los agregados no raíz del nodo 1.
+
+.Pasos
+. Completo link:relocate_non_root_aggr_node1_node2.html#step1["Paso 1"] En la sección _reubicar de nuevo los agregados no raíz del nodo 1 al nodo 2_.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+=== El nodo 1 se bloquea después de la fase 2 mientras la alta disponibilidad está deshabilitada
+
+El nodo 2 no volverá a ocupar los volúmenes, pero sí estará sirviendo datos en todos los agregados que no sean raíz.
+
+.Pasos
+. Coloque el nodo 1.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
++
+Es posible que observe algunos cambios en el resultado del `storage failover show` comando, pero es típico y no afecta al procedimiento. Consulte la sección de solución de problemas link:issues_multiple_stages_of_procedure.html#Unexpected-storage-failover-show-command-output["Resultado de comando de visualización de conmutación por error del almacenamiento inesperada"].
+
+
+
+
+
+=== El nodo 2 falla durante o después de la fase 2 con alta disponibilidad aún habilitada
+
+El nodo 1 ha reubicado algunos de sus agregados, o todos ellos, al nodo 2. LA ALTA DISPONIBILIDAD está habilitada.
+
+.Acerca de esta tarea
+Los nodos 1 nodo 2 asumir todos los agregados del nodo 2, así como cualquiera de sus propios agregados, que se habían reubicado en el nodo 2. Cuando el nodo 2 entra en el `Waiting for Giveback` state, 1 devuelve todos los agregados del nodo 2.
+
+.Pasos
+. Completo link:relocate_non_root_aggr_node1_node2.html#step1["Paso 1"] En la sección _reubicar de nuevo los agregados no raíz del nodo 1 al nodo 2_.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+=== El nodo 2 se bloquea después de la fase 2 y después de la desactivación de alta disponibilidad
+
+El nodo 1 no asuma el control.
+
+.Pasos
+. Sube el 2.
++
+Se producirá una interrupción del servicio del cliente en todos los agregados, mientras que el nodo 2 arranca.
+
+. Continúe con el resto del procedimiento de actualización de la pareja de nodos.
+
+
+
+
+== Reinicios, pánicos o ciclos de alimentación durante la etapa 3
+
+Los fallos pueden producirse durante o inmediatamente después de la fase 3, durante las cuales se instala y arranca el nodo 3, se pueden asignar puertos del nodo 1 al nodo 3, se pueden mover LIF de datos y LIF DE SAN que pertenecen al nodo 1 y al nodo 3, y se reubicarán todos los agregados del nodo 2 al nodo 3.
+
+
+
+=== El nodo 2 se bloquea durante la fase 3 con la función ha deshabilitada y antes de reubicar cualquier agregado
+
+El nodo 3 no volverá a asumir un fallo en un nodo 2, ya que la alta disponibilidad ya está deshabilitada.
+
+.Pasos
+. Sube el 2.
++
+Se producirá una interrupción del servicio del cliente en todos los agregados, mientras que el nodo 2 arranca.
+
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+=== El nodo 2 se bloquea durante la fase 3 después de reubicar algunos o todos los agregados
+
+El nodo 2 ha reubicado algunos de sus agregados, o todos ellos, al nodo 3, los cuales sirven datos de agregados que se reubicaron. LA ALTA DISPONIBILIDAD está deshabilitada.
+
+.Acerca de esta tarea
+Se producirá una interrupción del cliente para los agregados que no se hayan reubicado.
+
+.Pasos
+. Sube el 2.
+. Reubique los agregados restantes completando link:relocate_non_root_aggr_node2_node3.html#step1["Paso 1"] por link:relocate_non_root_aggr_node2_node3.html#step3["Paso 3"] En la sección _reubique los agregados que no son raíz del nodo 2 al nodo 3_.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+=== El nodo 3 se bloquea durante la fase 3 y antes de que el nodo 2 haya reubicado cualquier agregado
+
+El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados que no son raíz.
+
+.Pasos
+. Traiga el nodo 3.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+=== El nodo 3 se bloquea durante la fase 3 durante la reubicación de agregados
+
+Si el nodo 3 se bloquea mientras el nodo 2 se reubica los agregados en el nodo 3, el nodo 2 anula la reubicación de los agregados restantes.
+
+.Acerca de esta tarea
+El nodo 2 sigue sirviendo agregados restantes, pero los agregados que ya se reubicaron en el nodo 3 se encuentran en una interrupción de cliente, mientras que el nodo 3 se inicia.
+
+.Pasos
+. Traiga el nodo 3.
+. Completo link:relocate_non_root_aggr_node2_node3.html#step3["Paso 3"] De nuevo en la sección _reubique los agregados que no son raíz del nodo 2 al nodo 3_.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+=== El nodo 3 no arranca después de producirse un bloqueo en la fase 3
+
+Debido a un fallo catastrófico, el nodo 3 no se puede arrancar después de un bloqueo durante la fase 3.
+
+.Paso
+. Póngase en contacto con el soporte técnico.
+
+
+
+
+=== El nodo 2 se bloquea después de la fase 3 pero antes de la fase 5
+
+El nodo 3 sigue sirviendo datos a todos los agregados. El par de alta disponibilidad está deshabilitado.
+
+.Pasos
+. Sube el 2.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+=== El nodo 3 se bloquea después de la fase 3, pero antes de la fase 5
+
+El nodo 3 se bloquea después de la fase 3, pero antes de la fase 5. El par de alta disponibilidad está deshabilitado.
+
+.Pasos
+. Traiga el nodo 3.
++
+Se producirá una interrupción del servicio del cliente para todos los agregados.
+
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+== Reinicios, pánicos o ciclos de alimentación durante la etapa 5
+
+Los fallos pueden producirse durante la fase 5, en la cual se instalan y se inician el nodo 4, se asignan puertos del nodo 2 al nodo 4, se mueven LIF de datos y LIF DE SAN que pertenecen al nodo 2 de nodo 3 al nodo 4 y se reasignan todos los agregados del nodo 2 del nodo 3 al nodo 4.
+
+
+
+=== El nodo 3 se bloquea durante la fase 5
+
+El nodo 3 ha reubicado algunos o todos los agregados del nodo 2 a nodo 4. Node4 no toma el relevo, pero continúa sirviendo agregados que no son raíz que el nodo 3 ya se han reubicado. El par de alta disponibilidad está deshabilitado.
+
+.Acerca de esta tarea
+Hay una interrupción del servicio del resto de los agregados hasta que el nodo 3 vuelva a iniciarse.
+
+.Pasos
+. Traiga el nodo 3.
+. Reubique los agregados restantes que pertenecían al nodo 2 repitiendo link:relocate_node2_non_root_aggr_node3_node4.html#Step1["Paso 1"] por link:relocate_node2_non_root_aggr_node3_node4.html#step3["Paso 3"] En la sección, se reubicarán los agregados no raíz del nodo 3 al nodo 4_.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+
+
+
+
+=== Node4 se bloquea durante la etapa 5
+
+El nodo 3 ha reubicado algunos o todos los agregados del nodo 2 a nodo 4. El nodo 3 no toma el relevo, pero continúa sirviendo agregados no raíz que son propiedad del nodo 3, así como los que no se reubicaron. LA ALTA DISPONIBILIDAD está deshabilitada.
+
+.Acerca de esta tarea
+Hay una interrupción de los agregados que no son raíz y que ya se removieron hasta que se vuelva a encender el nodo 4.
+
+.Pasos
+. Traiga el nodo 4.
+. Reubique los agregados restantes que pertenecían al nodo 2 de nuevo finalizando link:relocate_node2_non_root_aggr_node3_node4.html#Step1["Paso 1"] por link:relocate_node2_non_root_aggr_node3_node4.html#step3["Paso 3"] En la reubicación de los agregados no raíz de _2 del nodo 3 al nodo 4_.
+. Continúe con el procedimiento de actualización de la pareja de nodos.
+

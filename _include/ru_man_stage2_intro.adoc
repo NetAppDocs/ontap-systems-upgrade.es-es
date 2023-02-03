@@ -1,0 +1,10 @@
+= 
+:allow-uri-read: 
+
+
+.Pasos
+. link:relocate_non_root_aggr_node1_node2.html["Reubicación de agregados no raíz y LIF de datos NAS propiedad del nodo 1 al nodo 2"]
+. link:move_nas_lifs_node1_node2.html["Traslado de LIF de datos NAS propiedad del nodo 1 al nodo 2"]
+. link:record_node1_information.html["Registro de información del nodo 1"]
+. link:retire_node1.html["Retire el nodo 1"]
+

@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Puede utilizar OKM para gestionar claves de cifrado. Si planea utilizar OKM, debe registrar la frase de acceso y el material de copia de seguridad antes de comenzar la actualización.
+
+.Pasos
+. Guarde la contraseña en una ubicación segura.
+. Cree un backup con fines de recuperación. Ejecute el siguiente comando y guarde el resultado:
++
+`security key-manager onboard show-backup`
+
+

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/retire_node2.html 
+keywords: retire, node2 
+summary: 'Apague el nodo 2 y lo quite del rack o el chasis cuando actualice las controladoras que ejecutan ONTAP 9.8 o una versión posterior mediante `system controller replace` comandos.' 
+---
+= Retire el nodo 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para retirar el nodo 2, debe apagar correctamente el nodo 2 y quitarlo del rack o chasis.
+
+.Pasos
+. Reanude la operación:
++
+`system controller replace resume`
+
++
+El nodo se detiene automáticamente.
+
+
+
+.Después de terminar
+Puede retirar el nodo 2 una vez completada la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].

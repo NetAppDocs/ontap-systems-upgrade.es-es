@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/verify_upgrade_hardware.html 
+keywords: preparing, nodes, upgrade 
+summary: Antes de iniciar la actualización, compruebe que tiene el hardware correcto para una actualización de AFF A700 a AFF A900. 
+---
+= Verifique la actualización de hardware
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de iniciar la actualización, debe verificar que tiene el hardware correcto para una actualización del sistema A700 de AFF a AFF A900 o FAS9000 a FAS9500. Para cada par de alta disponibilidad que vaya a actualizar, debe tener dos módulos de controladora del sistema y dos módulos NVRAM. Si falta piezas, póngase en contacto con el soporte técnico o con su contacto de ventas de NetApp para obtener ayuda.

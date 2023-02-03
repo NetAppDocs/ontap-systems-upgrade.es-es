@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/required_tools_documentation.html 
+keywords: Tool, documentation, center, content, reference, worksheet 
+summary: Debe contar con ciertas herramientas y documentación para realizar una actualización manual de ARL en controladoras que ejecuten ONTAP 9.8 o una versión posterior. 
+---
+= Herramientas y documentación necesarias
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Debe disponer de herramientas específicas para instalar el nuevo hardware y debe consultar otros documentos durante el proceso de actualización. También debe registrar la información esencial para completar la actualización de la controladora; se proporciona una hoja de trabajo para registrar la información.
+
+Se necesitan las siguientes herramientas para realizar la actualización:
+
+* Correa de conexión a tierra
+* Destornillador Phillips número 2
+
+
+Vaya a la link:other_references.html["Referencias"] para acceder a la lista de documentos de referencia necesarios para esta actualización.

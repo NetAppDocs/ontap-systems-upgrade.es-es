@@ -1,0 +1,11 @@
+= 
+:allow-uri-read: 
+
+
+En este contenido se describe cómo actualizar las controladoras de almacenamiento en un par de alta disponibilidad con nuevas controladoras sin perder todos los datos y los discos existentes. Se trata de un procedimiento complejo que sólo deben ser utilizados por administradores con experiencia.
+
+Utilice este contenido en las siguientes circunstancias:
+
+* No desea añadir las nuevas controladoras como una pareja de alta disponibilidad nueva al clúster y migrar los datos con movimientos de volúmenes.
+* Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en el modo de privilegios de diagnóstico.
+

@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/verify_node3_installation.html 
+keywords: install, boot, node3, join quorum, restore, key, manager 
+summary: 'Compruebe que el nodo 3 se una al quórum, vuelva a crear las VLAN del nodo 1, los grupos de interfaces y los dominios de retransmisión, y restaure la configuración del administrador de claves al actualizar controladoras que ejecutan ONTAP 9.5 a 9.7 mediante `system controller replace` comandos.' 
+---
+= Verifique la instalación del nodo 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Después de instalar y arrancar el nodo 3, es necesario verificar que esté instalado correctamente. Es necesario esperar a que el nodo 3 se una al quórum y, luego, reanudar la operación de reubicación.
+
+.Acerca de esta tarea
+En este momento del procedimiento, la operación se pausará cuando el quórum de node3 se una a otra.
+
+.Pasos
+. Verifique que el nodo 3 se haya Unido al quórum:
++
+`cluster show -node node3 -fields health`
+
+. Verifique que el nodo 3 forme parte del mismo clúster que el nodo 2 y que esté en buen estado:
++
+`cluster show`
+
+. Compruebe el estado de la operación y compruebe que la información de configuración del nodo 3 sea la misma que la del nodo 1:
++
+`system controller replace show-details`
+
++
+Si la configuración es diferente del nodo 3, es posible que se produzca una interrupción del sistema posteriormente en el procedimiento.
+
+. Compruebe que la controladora sustituida esté configurada correctamente para la configuración de MetroCluster, la configuración de MetroCluster debe estar en estado correcto y no en modo de conmutación. Consulte link:verify_health_of_metrocluster_config.html["Compruebe el estado de la configuración de MetroCluster"].
+
+
+
+
+== Vuelva a crear las VLAN, los grupos de interfaces y los dominios de retransmisión en el nodo 3
+
+Después de confirmar que el nodo 3 quórum y que puede comunicarse con el nodo 2, debe volver a crear las VLAN del nodo 1, los grupos de interfaces y los dominios de retransmisión en el nodo 3. También es necesario añadir los puertos de nodo 3 a los dominios de retransmisión recientemente creados.
+
+.Acerca de esta tarea
+Para obtener más información sobre la creación y recreación de VLAN, grupos de interfaces y dominios de retransmisión, vaya a. link:other_references.html["Referencias"] Y enlace a _Network Management_.
+
+.Pasos
+. Vuelva a crear las VLAN en el nodo 3 con la información 1-1 registrada en el link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"] sección:
++
+`network port vlan create -node _node_name_ -vlan _vlan-names_`
+
+. Vuelva a crear los grupos de interfaces en el nodo 3 con la información 1-1 registrada en el link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"] sección:
++
+`network port ifgrp create -node _node_name_ -ifgrp _port_ifgrp_names_-distr-func`
+
+. Vuelva a crear los dominios de retransmisión en el nodo 3 con la información del nodo 1 registrada en el link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"] sección:
++
+`network port broadcast-domain create -ipspace Default -broadcast-domain _broadcast_domain_names_ -mtu _mtu_size_ -ports _node_name:port_name,node_name:port_name_`
+
+. Añada los puertos de nodo 3 a los dominios de retransmisión recientemente creados:
++
+`network port broadcast-domain add-ports -broadcast-domain _broadcast_domain_names_ -ports _node_name:port_name,node_name:port_name_`
+
+
+
+
+
+== Restaure la configuración de gestor de claves en el nodo 3
+
+Si utiliza el cifrado de agregados de NetApp (NAE) o el cifrado de volúmenes de NetApp (NVE) para cifrar volúmenes en el sistema que se está actualizando, la configuración de cifrado debe sincronizarse con los nodos nuevos. Si no se restaura key-Manager, cuando se reinstalan los agregados del nodo 1 del nodo 2 al nodo 3 mediante ARL, los volúmenes cifrados se desconectarán.
+
+.Pasos
+. Para sincronizar la configuración de cifrado de Onboard Key Manager, ejecute el siguiente comando en el símbolo del sistema del clúster:
++
+|===
+| Para esta versión de ONTAP… | Se usa este comando... 
+
+
+| ONTAP 9.6 o 9.7 | `security key-manager onboard sync` 
+
+
+| ONTAP 9.5 | `security key-manager setup -node _node_name_` 
+|===
+. Introduzca la clave de acceso en todo el clúster para la instancia de Onboard Key Manager.
+

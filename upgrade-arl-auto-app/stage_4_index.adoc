@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/stage_4_index.html 
+keywords: relocate, retire, node2, LIF, node3, non-root aggregates, stage 4 
+summary: 'Secuencia de procesos en la fase 4 de una actualización de ARL mediante `system controller replace` Comandos en controladoras que ejecutan ONTAP 9.8 o una versión posterior.' 
+---
+= Etapa 4. Reubicar y retirar el 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Durante la fase 4, se reubicarán los agregados no raíz y los LIF de datos NAS del nodo 2 al nodo 3. Debe registrar la información necesaria del nodo 2 para usarla posteriormente, en el procedimiento, y retirar el nodo 2.
+
+.Pasos
+. link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 3"]
+. link:retire_node2.html["Retire el nodo 2"]
+

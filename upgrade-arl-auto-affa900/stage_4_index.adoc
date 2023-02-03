@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/stage_4_index.html 
+keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
+summary: 'Secuencia de procesos en la fase 1 de una actualización de ARL mediante `system controller replace` Comandos en controladoras que ejecutan ONTAP 9.8 o una versión posterior.' 
+---
+= Etapa 4. Reubicar recursos del nodo 2 y retirar el nodo 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Durante la etapa 4, se reubicarán los agregados no raíz y los LIF de datos NAS del nodo 2 al nodo 1 actualizado y se retirarán los nodos 2.
+
+.Pasos
+. link:relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html["Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 1"]
+. link:retire_node2.html["Retire el nodo 2"]
+

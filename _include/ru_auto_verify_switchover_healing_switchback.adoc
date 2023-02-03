@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Debe verificar las operaciones de conmutación de sitios, reparación y conmutación de estado de la configuración de MetroCluster.
+
+Consulte link:other_references.html["Referencias"] Para enlazar con el contenido de _MetroCluster Management and Disaster Recovery_ y utilizar los procedimientos mencionados para la conmutación negociada, la reparación y la conmutación de regreso.

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/relocate_failed_or_vetoed_aggr.html 
+keywords: relocate, aggregates, fail, veto 
+summary: 'Reubicar manualmente agregados con fallos o vetados cuando se actualicen controladoras que ejecutan ONTAP 9.5 a 9.7 mediante una configuración `system controller replace` comandos.' 
+---
+= Se han producido fallos en la reubicación o los agregados vetados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si alguno de los agregados no se puede reubicar o vetar, deberá reubicar los agregados manualmente o anular los vetos o las comprobaciones de destino, si fuera necesario.
+
+.Acerca de esta tarea
+La operación de reubicación se pondrá en pausa debido al error.
+
+.Pasos
+. Compruebe los registros de EMS para determinar por qué el agregado no pudo reubicarse o fue vetado.
+. Reubicar agregados que fallen o vetados:
++
+`storage aggregate relocation start -node _node1_ -destination _node2_ aggregate-list * -ndocontroller-upgrade true`
+
+. Cuando se le solicite, introduzca `y`.
+. Puede forzar la reubicación mediante uno de los siguientes métodos:
++
+[cols="35,65"]
+|===
+| Opción | Descripción 
+
+
+| Anulación de las comprobaciones de veto | Introduzca lo siguiente:
+`storage aggregate relocation start -override-vetoes * -ndocontroller-upgrade true` 
+
+
+| Sobreescribir comprobaciones de destino | Introduzca lo siguiente:
+`storage aggregate relocation start -overridedestination-checks * -ndo-controllerupgrade true` 
+|===
+

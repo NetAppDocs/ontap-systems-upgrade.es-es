@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/join_quorum_node_has_different_ports_stage3.html 
+keywords: aggregate, relocation, quorum, network, ports 
+summary: 'Durante la etapa 3, confirme que el nuevo nodo se une al quórum para actualizar las controladoras que ejecutan ONTAP 9.5 a 9.7 mediante `system controller replace` comandos.' 
+---
+= Unir el quórum cuando un nodo tiene un conjunto diferente de puertos de red
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+El nodo con el nuevo arranque de la controladora e intenta unirse al clúster automáticamente al principio; sin embargo, si el nodo nuevo tiene un conjunto diferente de puertos de red, debe realizar los siguientes pasos para confirmar que el nodo se una correctamente al quórum.
+
+.Acerca de esta tarea
+Puede usar estas instrucciones para los nodos relevantes. El nodo 3 se usa en la siguiente muestra.
+
+.Pasos
+. Compruebe que los puertos de clúster nuevos se encuentran en el dominio de retransmisión del clúster. Para ello, introduzca el siguiente comando y compruebe su resultado:
++
+`network port show -node node -port port -fields broadcast-domain`
+
++
+En el siguiente ejemplo se muestra que el puerto "e1a" se encuentra en el dominio del clúster del nodo 3:
+
++
+[listing]
+----
+cluster::> network port show -node node3 -port e1a -fields broadcast-domain
+node   port broadcast-domain
+------ ---- ----------------
+node3  e1a  Cluster
+----
+. Añada los puertos correctos al dominio de retransmisión del clúster. Para ello, introduzca el siguiente comando y compruebe su resultado:
++
+`network port modify -node -port -ipspace Cluster -mtu 9000`
+
++
+En este ejemplo, se añade el puerto de clúster "e1b" del nodo 3:
+
++
+[listing]
+----
+network port modify -node node3 -port e1b -ipspace Cluster -mtu 9000
+----
+. Migre las LIF del clúster a los puertos nuevos, una vez para cada LIF mediante el siguiente comando:
++
+`network interface migrate -vserver Cluster -lif _lif_name_ -source-node node3 - destination-node node3 -destination-port _port_name_`
+
+. Modifique el puerto de inicio de las LIF del clúster:
++
+`network interface modify -vserver Cluster -lif _lif_name_ –home-port _port_name_`
+
+. Si los puertos del clúster no están en el dominio de retransmisión del clúster, añádalos con el siguiente comando:
++
+`network port broadcast-domain add-ports -ipspace Cluster -broadcast-domain Cluster - ports node:port`
+
+. Quite los puertos antiguos del dominio de retransmisión de clúster. Se puede usar para cualquier nodo relevante. El siguiente comando elimina el puerto "e0d" del nodo 3:
++
+`network port broadcast-domain remove-ports network port broadcast-domain remove-ports ipspace Cluster -broadcast-domain Cluster ‑ports node3:e0d`
+
+. Compruebe que el nodo ha vuelto a unirse al quórum:
++
+`cluster show -node node3 -fields health`
+
+. Ajuste los dominios de retransmisión que alojan las LIF de su clúster y las LIF de gestión de nodos y clústeres. Confirme que cada dominio de retransmisión contiene los puertos correctos. No se puede mover un puerto entre dominios de retransmisión si aloja o pertenece a una LIF, de modo que podría necesitar migrar y modificar las LIF de la siguiente manera:
++
+.. Mostrar el puerto de inicio de una LIF:
++
+`network interface show -fields home-node,home-port`
+
+.. Muestre el dominio de retransmisión que contiene este puerto:
++
+`network port broadcast-domain show -ports _node_name:port_name_`
+
+.. Añada o quite puertos de los dominios de retransmisión:
+`network port broadcast-domain add-ports network port broadcast-domain remove-port`
+.. Modificar un puerto de inicio de una LIF:
+`network interface modify -vserver vserver -lif _lif_name_ –home-port _port_name_` Ajuste los dominios de retransmisión entre clústeres y migre las LIF entre clústeres, si es necesario. Los LIF de datos no cambian.
+
+
+

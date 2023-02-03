@@ -1,0 +1,276 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/map_ports_node1_node3.html 
+keywords: map, ports, node1, node3, cluster, home port, vlan ports, broadcast domain, connectivity 
+summary: Verifique que los puertos físicos del nodo 1 se asignen correctamente al nodo 3 durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.7 o versiones anteriores. 
+---
+= Asigne puertos del nodo 1 al nodo 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Debe asegurarse de que los puertos físicos del nodo 1 se asignen correctamente a los puertos físicos del nodo 3, lo que permitirá que el nodo 3 se comunique con otros nodos del clúster y con la red después de la actualización.
+
+.Antes de empezar
+Ya debe tener información acerca de los puertos en los nodos nuevos del _Hardware Universe_. (Vaya a. link:other_references.html["Referencias"] Para establecer un enlace con el _Hardware Universe_). Utilice la información posteriormente en esta sección y en link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
+
+La configuración de software del nodo 3 debe coincidir con la conectividad física del nodo 3, y es necesario restaurar la conectividad IP para poder continuar con la actualización.
+
+.Acerca de esta tarea
+La configuración del puerto puede variar en función del modelo de los nodos.
+
+Debe hacer que el puerto y la configuración de LIF del nodo original sean compatibles con lo que planifique la configuración del nodo nuevo. Esto es así porque el nuevo nodo reproduce la misma configuración cuando arranca, lo que significa que cuando arranca el nodo 3, ONTAP intentará alojar LIF en los mismos puertos que se usaron en el nodo 1.
+
+Por lo tanto, si los puertos físicos del nodo 1 no se asignan directamente a los puertos físicos del nodo 3, se necesitarán cambios de configuración del software para restaurar la conectividad de clúster, gestión y red después del arranque. Además, si los puertos del clúster del nodo 1 no se asignan directamente a los puertos del clúster del nodo 3, es posible que el nodo 3 no vuelva a unir automáticamente el quórum cuando se reinicia hasta que se realice un cambio de configuración de software para alojar las LIF del clúster en los puertos físicos correctos.
+
+.Pasos
+. [[step1]]Registre toda la información de cableado del nodo 1 para los nodos 1, los puertos, los dominios de retransmisión y los espacios IP, en la siguiente tabla:
++
+[cols=""35"]
+|===
+| LUN | Puertos 1 nodo 1 | Espacios IP 1 | Dominio de retransmisión 1-1 | Puertos de nodo 3 | Puertos de nodo 3 | Dominios de retransmisión de nodo 3 
+
+
+| Clúster 1 |  |  |  |  |  |  
+
+
+| Clúster 2 |  |  |  |  |  |  
+
+
+| Clúster 3 |  |  |  |  |  |  
+
+
+| Clúster 4 |  |  |  |  |  |  
+
+
+| Clúster 5 |  |  |  |  |  |  
+
+
+| Clúster 6 |  |  |  |  |  |  
+
+
+| Gestión de nodos |  |  |  |  |  |  
+
+
+| Gestión de clústeres |  |  |  |  |  |  
+
+
+| Datos 1 |  |  |  |  |  |  
+
+
+| Datos 2 |  |  |  |  |  |  
+
+
+| Datos 3 |  |  |  |  |  |  
+
+
+| Datos 4 |  |  |  |  |  |  
+
+
+| SAN |  |  |  |  |  |  
+
+
+| Puerto de interconexión de clústeres |  |  |  |  |  |  
+|===
++
+Consulte link:record_node1_information.html["Registre la información del nodo 1"] para obtener esta información en los pasos.
+
+. [[step2]]Registre toda la información de cableado para el nodo 3, los puertos, los dominios de retransmisión y los espacios IP de la tabla anterior usando el mismo procedimiento de link:record_node1_information.html["Registre la información del nodo 1"].
+. [[step3]]siga estos pasos para verificar si la configuración es un clúster sin switch de dos nodos:
++
+.. Configure el nivel de privilegio en Advanced:
++
+`cluster::> set -privilege advanced`
+
+.. Compruebe si la configuración es un clúster sin switches de dos nodos:
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+ cluster::*> network options switchless-cluster show
+ Enable Switchless Cluster: false/true
+----
++
+El valor de este comando debe coincidir con el estado físico del sistema.
+
+.. Volver al nivel de privilegio de administración:
++
+[listing]
+----
+ cluster::*> set -privilege admin
+ cluster::>
+----
+
+
+. [[step4]]Consiga el nodo 3 en quórum realizando los siguientes pasos:
++
+.. Nodo de arranque 3. Consulte link:install_boot_node3.html["Instale y arranque el nodo 3"] para arrancar el nodo si aún no lo ha hecho.
+.. Compruebe que los nuevos puertos del clúster se encuentran en el dominio de retransmisión del clúster:
++
+`network port show -node _node-name_ -port _port-name_ -fields broadcast-domain`
+
++
+En el siguiente ejemplo, se muestra que el puerto "e0a" está en el dominio "Cluster" del nodo 3:
+
++
+[listing]
+----
+ cluster::> network port show -node node3 -port e0a -fields broadcast-domain
+
+ node       port broadcast-domain
+ ---------- ---- ----------------
+ node3      e1a  Cluster
+----
+.. Añada los puertos correctos al dominio de retransmisión de clúster:
++
+`network port modify -node _node-name_ -port _port-name_ -ipspace Cluster -mtu 9000`
+
++
+En este ejemplo, se añade el puerto de clúster "e1b" del nodo 3:
+
++
+[listing]
+----
+ network port modify -node node3 -port e1b -ipspace Cluster -mtu 9000
+----
++
+
+NOTE: Para una configuración de MetroCluster, puede que no pueda cambiar el dominio de difusión de un puerto porque está asociado a un puerto que aloja la LIF de una SVM sincronizada en destino y vea errores similares a, pero sin limitarse al siguiente mensaje»:
+
++
+[listing]
+----
+command failed: This operation is not permitted on a Vserver that is configured as the destination of a MetroCluster Vserver relationship.
+----
++
+Escriba el siguiente comando desde la SVM sincronizada en origen correspondiente en el sitio remoto para reasignar la LIF sincronizada en destino a un puerto adecuado:
+
++
+`metrocluster vserver resync -vserver _Vserver-name_`
+
+.. Migre las LIF del clúster a los nuevos puertos, una vez por cada LIF:
++
+`network interface migrate -vserver Cluster -lif _LIF-name_ -source-node _node3_ -destination-node _node3_ -destination-port _port-name_`
+
+.. Modifique el puerto de inicio de las LIF del clúster:
++
+`network interface modify -vserver Cluster -lif _LIF-name_ –home-port _port-name_`
+
+.. Si los puertos del clúster no están en el dominio de retransmisión del clúster, añádalos:
++
+`network port broadcast-domain add-ports -ipspace Cluster -broadcast-domain Cluster -ports _node:port_`
+
+.. Quite los puertos antiguos del dominio de retransmisión de clúster:
++
+`network port broadcast-domain remove-ports`
+
++
+En el siguiente ejemplo se elimina el puerto "e0d" del nodo 3:
+
++
+[listing]
+----
+network port broadcast-domain remove-ports -ipspace Cluster -broadcast-domain Cluster ‑ports <node3:e0d>
+----
+.. Compruebe que el nodo 3 se haya Unido nuevamente al quórum:
++
+`cluster show -node _node3_ -fields health`
+
+
+
+. [[man_map_1_step5]]ajuste los dominios de retransmisión que alojan las LIF del clúster y las LIF de gestión de nodos y/o de gestión de clústeres. Confirme que cada dominio de retransmisión contiene los puertos correctos. No se puede mover un puerto entre dominios de retransmisión si aloja o pertenece a una LIF, de modo que podría necesitar migrar y modificar las LIF de la siguiente manera:
++
+.. Mostrar el puerto de inicio de una LIF:
++
+`network interface show -fields _home-node,home-port_`
+
+.. Muestre el dominio de retransmisión que contiene este puerto:
++
+`network port broadcast-domain show -ports _node_name:port_name_`
+
+.. Añada o quite puertos de los dominios de retransmisión:
++
+`network port broadcast-domain add-ports`
+
++
+`network port broadcast-domain remove-ports`
+
+.. Modificar el puerto de inicio de una LIF:
++
+`network interface modify -vserver _Vserver-name_ -lif _LIF-name_ –home-port _port-name_`
+
+
+
+. [[man_map_1_step6]]ajuste los dominios de retransmisión entre clústeres y migre las LIF de interconexión de clústeres, si es necesario, usando los mismos comandos que se muestran en la <<man_map_1_step5,Paso 5>>.
+. [[step7]]ajuste cualquier otro dominio de difusión y migre las LIF de datos, si es necesario, utilizando los mismos comandos que se muestran en la <<man_map_1_step5,Paso 5>>.
+. [[step8]]Si había algún puerto en el nodo 1 que ya no exista en el nodo 3, siga estos pasos para eliminarlos:
++
+.. Acceda al nivel de privilegio avanzado en cualquiera de los nodos:
++
+`set -privilege advanced`
+
+.. Elimine puertos:
++
+`network port delete -node _node-name_ -port _port-name_`
+
+.. Volver al nivel admin:
++
+`set -privilege admin`
+
+
+
+. [[step9]]ajuste todos los grupos de recuperación tras fallos de LIF:
++
+`network interface modify -failover-group _failover-group_ -failover-policy _failover-policy_`
+
++
+En el siguiente ejemplo, se establece la política de conmutación por error en "todo el dominio de retransmisión" y se utilizan los puertos del grupo de conmutación por error "fg1" como destinos de conmutación por error para la LIF "data1" en "node3":
+
++
+[listing]
+----
+network interface modify -vserver node3 -lif data1 failover-policy broadcast-domainwide -failover-group fg1
+----
++
+Vaya a. link:other_references.html["Referencias"] Para establecer un vínculo a _Network Management_ o a los comandos _ONTAP 9: Manual Page Reference_ para obtener más información.
+
+. Verifique los cambios en el nodo 3:
++
+`network port show -node node3`
+
+. Cada LIF de clúster debe estar escuchando en el puerto 7700. Compruebe que las LIF del clúster están escuchando en el puerto 7700:
++
+`::> network connections listening show -vserver Cluster`
+
++
+El resultado esperado de la escucha del puerto 7700 en los puertos del clúster tal y como se muestra en el siguiente ejemplo de un clúster de dos nodos:
+
++
+[listing]
+----
+Cluster::> network connections listening show -vserver Cluster
+Vserver Name     Interface Name:Local Port     Protocol/Service
+---------------- ----------------------------  -------------------
+Node: NodeA
+Cluster          NodeA_clus1:7700               TCP/ctlopcp
+Cluster          NodeA_clus2:7700               TCP/ctlopcp
+Node: NodeB
+Cluster          NodeB_clus1:7700               TCP/ctlopcp
+Cluster          NodeB_clus2:7700               TCP/ctlopcp
+4 entries were displayed.
+----
+. De ser necesario, para cada LIF de clúster que no esté escuchando en el puerto 7700, establezca el estado administrativo de la LIF en `down` y después `up`:
++
+`::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
+
++
+Repita el paso 11 para verificar que el LIF del clúster ahora esté escuchando en el puerto 7700.
+
+

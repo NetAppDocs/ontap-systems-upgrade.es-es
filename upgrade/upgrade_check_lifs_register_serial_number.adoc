@@ -1,0 +1,41 @@
+---
+permalink: upgrade/upgrade-check-lifs-register-serial-number.html 
+sidebar: sidebar 
+keywords: lifs 
+summary: Antes de devolver el nodo de sustitución al servicio, debe comprobar que las LIF se encuentran en sus puertos principales y registrar el número de serie del nodo de reemplazo si AutoSupport está habilitado y restablecer la devolución automática. 
+---
+= Compruebe las LIF y registre el número de serie
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de devolver el nodo de sustitución al servicio, debe comprobar que las LIF se encuentran en sus puertos principales y registrar el número de serie del nodo de reemplazo si AutoSupport está habilitado y restablecer la devolución automática.
+
+. Compruebe que las interfaces lógicas están reportando a sus puertos y servidores domésticos: `network interface show -is-home false`
++
+Si alguno de los LIF se muestra como false, este se revierte a sus puertos principales: `network interface revert *`
+
+. Registre el número de serie del sistema con el soporte de NetApp.
++
+[cols="1,2"]
+|===
+| Si... | Realice lo siguiente... 
+
+
+ a| 
+AutoSupport está habilitado
+ a| 
+Envíe un mensaje de AutoSupport para registrar el número de serie.
+
+
+
+ a| 
+AutoSupport no está habilitado
+ a| 
+Llame al soporte de NetApp para registrar el número de serie.
+
+|===
+. Si la devolución automática está desactivada, vuelva a habilitarla: `storage failover modify -node local -auto-giveback true`
+

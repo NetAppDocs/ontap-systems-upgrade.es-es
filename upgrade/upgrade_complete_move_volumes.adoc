@@ -1,0 +1,66 @@
+---
+permalink: upgrade/upgrade-complete-move-volumes.html 
+sidebar: sidebar 
+keywords: complete, procedure, upgrading, upgrade, move, moving, volume, configure, service, processor, sp, license, autosupport, storage, encryption, fc, nca, port, complete the upgrade 
+summary: 'Para completar el procedimiento de actualización, mueva volúmenes, necesita configurar Service Processor \(SP\), instalar licencias nuevas y configurar AutoSupport. También es posible que deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o NCA.' 
+---
+= Complete la actualización
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para completar el procedimiento de actualización, mueva volúmenes, debe configurar Service Processor (SP), instalar licencias nuevas y configurar AutoSupport. También es posible que deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o NCA.
+
+. Configure el SP en los nodos nuevos según sea necesario:
++
+`system service-processor network modify`
+
+. Instale nuevas licencias en los nodos nuevos según se requiera:
++
+`system license add`
+
+. Configure AutoSupport en los nodos nuevos:
++
+`system node autosupport modify`
+
+. En cada nodo nuevo, envíe un mensaje de AutoSupport posterior a la actualización al soporte técnico:
++
+`system node autosupport invoke -node node_name -type all -message "node_name successfully upgraded from platform_old to platform_new"`
+
+. Restaure el almacenamiento o la funcionalidad de cifrado de volúmenes mediante el procedimiento adecuado en lahttps://docs.netapp.com/us-en/ontap/encryption-at-rest/index.html["Gestione el cifrado con la interfaz de línea de comandos"^] contenido.
++
+Siga uno de estos procedimientos, en función de si utiliza la gestión de claves externa o incorporada:
+
++
+** «"Restauración de las claves de cifrado de gestión de claves incorporadas"
+** «"Restauración de claves de cifrado de gestión de claves externas"»
+
+
+. Si los nodos nuevos tienen puertos FC (integrados o en adaptadores de FC), puertos CNA integrados o una tarjeta CNA, configure los puertos FC o CNA, introduzca el siguiente comando desde el símbolo del sistema de almacenamiento:
++
+`system node hardware unified-connect modify -node node-name -adapter adapter-name -mode {fc|cna} -type {target|initiator}`
+
++
+link:https://docs.netapp.com/us-en/ontap/san-admin/index.html["Gestión DE SAN con CLI"^]
+
++
+Solo puede modificar la configuración del CNA cuando los adaptadores CNA estén sin conexión.
+
+. Configure un clúster sin switches en los nuevos nodos si es necesario.
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140536["Migración a un clúster con switches de dos nodos con switches de clúster de Cisco"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migración a un clúster con switches de dos nodos con switches de clúster CN1610 de NetApp"^]
+
+. Según sea necesario, retire los sistemas originales a través del sitio de soporte de NetApp para informar a NetApp de que los sistemas ya no están en funcionamiento y que pueden eliminarse de las bases de datos de soporte:
++
+.. Inicie sesión en la https://mysupport.netapp.com/site/global/dashboard["Soporte de NetApp"^] sitio.
+.. Haga clic en el enlace *Mis sistemas instalados*.
+.. En la página *sistemas instalados*, introduzca el número de serie del sistema antiguo en el formulario y, a continuación, haga clic en *Ir*
+.. En la página Formulario de retirada, rellene el formulario y haga clic en *Enviar*.
+
+
+

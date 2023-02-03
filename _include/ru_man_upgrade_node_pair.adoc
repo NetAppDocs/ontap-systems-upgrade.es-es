@@ -1,0 +1,14 @@
+= 
+:allow-uri-read: 
+
+
+Para actualizar la pareja de nodos, debe preparar los nodos originales y realizar una serie de pasos en los nodos original y en los nuevos. A continuación, puede retirar los nodos originales.
+
+.Pasos
+. link:stage1_prepare_for_upgrade.html["Fase 1: Prepárese para la actualización"]
+. link:stage2_relocate_retire_node1.html["Fase 2: Reubicar y retirar el nodo 1"]
+. link:stage_3_install_boot_node3.html["Fase 3: Nodo de instalación y arranque 3"]
+. link:stage4_record_info_retire_node2.html["Etapa 4: Registre la información y retire el nodo 2"]
+. link:stage5_install_boot_node4.html["Fase 5: Nodo de instalación y arranque 4"]
+. link:stage6_complete_upgrade.html["Fase 6: Complete la actualización"]
+

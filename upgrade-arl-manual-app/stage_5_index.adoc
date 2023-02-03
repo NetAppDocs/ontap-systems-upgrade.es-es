@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/stage_5_index.html 
+keywords: stage 5, install, boot, node3, node4, relocate, aggregates 
+summary: Fase 5 secuencia de procesos para una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior. 
+---
+= Stage5. Instale y arranque el nodo 4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En la etapa 5, se instalan y arrancan los nodos 4, se deben asignar los puertos de gestión del clúster y del nodo del nodo 2 al nodo 4, y se mueven las LIF de datos y LAS LIF DE SAN que pertenecen al nodo 2 del nodo 3 al nodo 4. También se reubicarán los agregados de nodo 2 del nodo 3 al nodo 4.
+
+.Pasos
+. link:install_boot_node4.html["Instale y arranque el nodo 4"]
+. link:set_fc_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"]
+. link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"]
+. link:move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html["Mueva los LIF de datos NAS que pertenecen al nodo 2 de nodo 3 a nodo 4 y verifique las LIF DE SAN en nodo 4"]
+. link:relocate_node2_non_root_aggr_node3_node4.html["Reubique los agregados que no son raíz del nodo 3 al nodo 4"]
+

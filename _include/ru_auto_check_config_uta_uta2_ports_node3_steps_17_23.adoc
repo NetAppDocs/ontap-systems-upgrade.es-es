@@ -1,0 +1,146 @@
+= 
+:allow-uri-read: 
+
+
+. [[auto_check3_step17]]Pulse `Ctrl-C` durante el arranque automático para detener el nodo en el `LOADER>` prompt.
+. [[step18]]en el indicador del cargador, entre en el modo de mantenimiento:
++
+`boot_ontap maint`
+
+. [[paso 19]]en el modo de mantenimiento, muestre todos los puertos iniciadores previamente configurados que se encuentran ahora en modo de destino:
++
+`ucadmin show`
+
++
+Cambie los puertos de nuevo al modo iniciador:
+
++
+`ucadmin modify -m fc -t initiator -f _adapter name_`
+
+. [[step20]]Compruebe que los puertos se han cambiado al modo de iniciador:
++
+`ucadmin show`
+
+. [[step21]]salir del modo de mantenimiento:
++
+`halt`
+
++
+[NOTE]
+====
+Si va a actualizar desde un sistema que admita discos externos a un sistema que también admita discos externos, vaya a. <<auto_check3_step22,Paso 22>>.
+
+Si va a realizar una actualización de un sistema que admita discos externos a un sistema que admita discos tanto internos como externos, por ejemplo, un sistema AFF A800, vaya a. <<auto_check3_step23,Paso 23>>.
+
+====
+. [[auto_check3_step22]]en el indicador del cargador, arranque:
++
+`boot_ontap menu`
+
++
+Ahora, en el arranque, el nodo puede detectar todos los discos que se le habían asignado previamente y puede arrancar según se esperaba.
+
++
+Cuando los nodos de clúster que va a sustituir utilizan el cifrado de volumen raíz, el software ONTAP no puede leer la información de volumen de los discos. Restaure las claves del volumen raíz:
+
++
+.. Vuelva al menú de inicio especial:
+`LOADER> boot_ontap menu`
++
+[listing]
+----
+Please choose one of the following:
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+
+Selection (1-11)? 10
+----
+.. Seleccione *(10) establecer secretos de recuperación de Onboard Key Manager*
+.. Introduzca `y` en el siguiente símbolo del sistema:
++
+`This option must be used only in disaster recovery procedures. Are you sure? (y or n): y`
+
+.. En la solicitud de, introduzca la frase de contraseña del gestor de claves.
+.. Introduzca los datos de copia de seguridad cuando se le solicite.
++
+
+NOTE: Debe haber obtenido la clave de acceso y los datos de backup en la link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] sección de este procedimiento.
+
+.. Después de que el sistema se inicie de nuevo en el menú de inicio especial, ejecute la opción *(1) Inicio normal*
++
+
+NOTE: Es posible que se encuentre un error en este momento. Si se produce un error, repita los subpasos de <<auto_check3_step22,Paso 22>> hasta que el sistema se inicie normalmente.
+
+
+
+. [[auto_check3_step23]]Si va a actualizar desde un sistema con discos externos a un sistema que admita discos internos y externos (sistemas AFF A800, por ejemplo), configure el agregado 1-1 como agregado raíz para confirmar que el nodo 3 arranca desde el agregado raíz del nodo 1. Para establecer el agregado raíz, vaya al menú de arranque y seleccione la opción `5` para entrar en el modo de mantenimiento.
++
+
+CAUTION: *Debe realizar los siguientes subpasos en el orden exacto que se muestra; de lo contrario, podría causar una interrupción o incluso pérdida de datos.*
+
++
+El siguiente procedimiento establece el nodo 3 para arrancar desde el agregado raíz del nodo 1:
+
++
+.. Entrar en el modo de mantenimiento:
++
+`boot_ontap maint`
+
+.. Compruebe la información de RAID, plex y suma de comprobación para el agregado 1-1:
++
+`aggr status -r`
+
+.. Compruebe el estado del agregado 1-1:
++
+`aggr status`
+
+.. Si es necesario, active el agregado de los nodos:
++
+`aggr_online root_aggr_from___node1__`
+
+.. Impida que el nodo 3 arranque desde su agregado raíz original:
++
+`aggr offline _root_aggr_on_node3_`
+
+.. Establezca el agregado raíz del nodo 1 como el nuevo agregado raíz del nodo 3:
++
+`aggr options aggr_from___node1__ root`
+
+.. Compruebe que el agregado raíz del nodo 3 esté sin conexión y que el agregado raíz de los discos extraídos del nodo 1 esté en línea y establecido en raíz:
++
+`aggr status`
+
++
+
+NOTE: Si no se pudo realizar el subpaso anterior, el nodo 3 se puede arrancar desde el agregado raíz interno, o bien es posible que el sistema asuma que existe una nueva configuración de clúster o que se le solicite identificar una.
+
++
+El siguiente muestra un ejemplo de resultado del comando:
+
++
+[listing]
+----
+ -----------------------------------------------------------------
+ Aggr                 State    Status             Options
+
+ aggr0_nst_fas8080_15 online   raid_dp, aggr      root, nosnap=on
+                               fast zeroed
+                               64-bit
+
+ aggr0                offline  raid_dp, aggr      diskroot
+                               fast zeroed
+                               64-bit
+ -----------------------------------------------------------------
+----
+
+
+

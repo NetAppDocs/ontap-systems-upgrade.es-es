@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/recreate_vlans_ifgrps_broadcast_domains_node3.html 
+keywords: node3, interface group, VLANs, broadcast domains, re-create 
+summary: 'Vuelva a crear las VLAN del nodo 1, los grupos de interfaces y los dominios de retransmisión en el nodo 3 cuando actualice las controladoras que ejecutan ONTAP 9.5 a 9.7 mediante `system controller replace` comandos.' 
+---
+= Vuelva a crear las VLAN, los grupos de interfaces y los dominios de retransmisión en el nodo 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Después de confirmar que el nodo 3 quórum y que puede comunicarse con el nodo 2, debe volver a crear las VLAN del nodo 1, los grupos de interfaces y los dominios de retransmisión en el nodo 3. También es necesario añadir los puertos de nodo 3 a los dominios de retransmisión recientemente creados.
+
+.Acerca de esta tarea
+Para obtener más información sobre la creación y recreación de VLAN, grupos de interfaces y dominios de retransmisión, vaya a. link:other_references.html["Referencias"] Y enlace a _Network Management_.
+
+.Pasos
+. Vuelva a crear las VLAN en el nodo 3 con la información 1-1 registrada en el link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"] sección:
++
+`network port vlan create -node _node_name_ -vlan _vlan-names_`
+
+. Vuelva a crear los grupos de interfaces en el nodo 3 con la información 1-1 registrada en el link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"] sección:
++
+`network port ifgrp create -node _node_name_ -ifgrp _port_ifgrp_names_-distr-func`
+
+. Vuelva a crear los dominios de retransmisión en el nodo 3 con la información del nodo 1 registrada en el link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"] sección:
++
+`network port broadcast-domain create -ipspace Default -broadcast-domain _broadcast_domain_names_ -mtu _mtu_size_ -ports _node_name:port_name,node_name:port_name_`
+
+. Añada los puertos de nodo 3 a los dominios de retransmisión recientemente creados:
++
+`network port broadcast-domain add-ports -broadcast-domain _broadcast_domain_names_ -ports _node_name:port_name,node_name:port_name_`
+
+

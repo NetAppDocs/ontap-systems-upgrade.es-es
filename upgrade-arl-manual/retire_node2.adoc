@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/retire_node2.html 
+keywords: retire, node2, cluster, SAN, LIFs 
+summary: Apague el nodo 2 correctamente y lo quite del rack o del chasis durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.7 o una versión anterior. 
+---
+= Retire el nodo 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para retirar el nodo 2, debe apagar correctamente el nodo 2 y quitarlo del rack o chasis. Si el clúster está en un entorno SAN, también debe eliminar las LIF DE SAN.
+
+.Pasos
+. Realice una de las siguientes acciones:
++
+[cols="35,65"]
+|===
+| Si el clúster es... | Realice lo siguiente... 
+
+
+| Clúster de dos nodos | Vaya a. <<man_retire_2_Step2,Paso 2>>. 
+
+
+| Un clúster con más de dos nodos | Vaya a. <<man_retire_2_Step9,Paso 9>>. 
+|===
+. [[Man_retire_2_Step2]]Acceda al nivel de privilegio avanzado introduciendo el siguiente comando en cualquiera de los nodos:
++
+`set -privilege advanced`
+
+. Compruebe que el clúster ha se ha deshabilitado introduciendo el comando siguiente y examinando su resultado:
++
+`cluster ha show`
+
++
+El sistema muestra el siguiente mensaje:
+
++
+[listing]
+----
+High Availability Configured: false
+----
+. Compruebe si el nodo 2 está configurado con épsilon introduciendo el siguiente comando y examinando su salida:
++
+`cluster show`
+
++
+En el siguiente ejemplo, el nodo 2 tiene un valor épsilon:
+
++
+[listing]
+----
+cluster*::> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  -----------
+node1                true    true          false
+node2                true    true          true
+
+Warning: Cluster HA has not been configured. Cluster HA must be configured on a two-node cluster to ensure data access availability in the event of storage failover. Use the "cluster ha modify -configured true" command to configure cluster HA.
+
+2 entries were displayed.
+----
++
+
+NOTE: Si va a actualizar una pareja de alta disponibilidad de un clúster con varias parejas de alta disponibilidad, debe desplazar épsilon al nodo de una pareja de alta disponibilidad que no esté sometiendo a una actualización de la controladora. Por ejemplo, si va a actualizar NODEA/NodeB en un clúster con la configuración de parejas de alta disponibilidad NODEA/NodeB y nodos C/noded, debe mover épsilon a nodo C o noded.
+
+. Si el nodo 2 tiene un valor épsilon, márquelo como épsilon `false` en el nodo de modo que se pueda transferir al nodo 3:
++
+`cluster modify -node _node2_ -epsilon false`
+
+. Transfiera el valor épsilon al nodo 3 marcando épsilon `true` el nodo 3:
++
+`cluster modify -node _node3_ -epsilon true`
+
+. Compruebe si la configuración es un clúster sin switches de dos nodos:
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+cluster::*> network options switchless-cluster show
+Enable Switchless Cluster: false/true
+----
++
+El valor de este comando debe coincidir con el estado físico del sistema.
+
+. Compruebe si la configuración es un clúster sin switches de dos nodos:
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+cluster::*> network options switchless-cluster show
+Enable Switchless Cluster: false/true
+----
++
+El valor de este comando debe coincidir con el estado físico del sistema.
+
+. [[Man_retire_2_Step9]]Volver al nivel admin:
++
+`set -privilege admin`
+
+. Detenga el nodo 2 introduciendo el siguiente comando en cualquiera de las controladoras:
+`system node halt -node _node2_`
+. Después de que el nodo 2 se apague por completo, extráigalo del chasis o del rack. Puede retirar el nodo 2 una vez completada la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].
+

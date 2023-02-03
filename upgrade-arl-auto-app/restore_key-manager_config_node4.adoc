@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/restore_key-manager_config_node4.html 
+keywords: restore key-manager, configuration, node4, nve, arl, volume, encryption 
+summary: 'Si es necesario, restaure la configuración de Key-Manager en el nodo 4 cuando actualice controladoras que ejecutan ONTAP 9.8 o una versión posterior mediante `system controller replace` comandos.' 
+---
+= Restaure la configuración de gestor de claves en el nodo 4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si utiliza el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) para cifrar volúmenes en el sistema que se está actualizando, la configuración de cifrado debe sincronizarse con los nodos nuevos. Si no se sincroniza el gestor de claves, cuando se reinstalan los agregados del nodo 2 desde el nodo 3 al nodo 4 mediante ARL, es posible que se produzcan fallos, ya que el nodo 4 no tiene las claves de cifrado necesarias para poner en línea volúmenes y agregados cifrados.
+
+.Acerca de esta tarea
+Para sincronizar la configuración de cifrado con los nuevos nodos, realice los siguientes pasos:
+
+.Pasos
+. Ejecute el siguiente comando desde no4:
++
+`security key-manager onboard sync`
+
+. Verifique que la clave SVM-KEK se restaure en "TRUE" en el nodo 4 antes de reubicar los agregados de datos:
++
+[listing]
+----
+::> security key-manager key query -node node4 -fields restored -key-type SVM-KEK
+----
++
+.Ejemplo
+[listing]
+----
+::> security key-manager key query -node node4 -fields restored -key-type SVM-KEK
+
+node     vserver   key-server   key-id                                  restored
+-------- --------- -----------  --------------------------------------- --------
+node4    svm1      ""           00000000000000000200000000000a008a81976 true
+                                2190178f9350e071fbb90f00000000000000000
+----
+

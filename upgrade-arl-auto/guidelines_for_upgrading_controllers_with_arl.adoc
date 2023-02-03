@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/guidelines_for_upgrading_controllers_with_arl.html 
+keywords: upgrade, controllers, guidelines, ARL, aggregate relocation, supported upgrades, two-node, cluster, troubleshoot 
+summary: 'Comprenda si puede actualizar controladoras que ejecutan ONTAP 9.5 a 9.7 con `system controller replace` comandos.' 
+---
+= Directrices para actualizar controladoras con ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para comprender si puede utilizar la reubicación de agregados (ARL) para actualizar un par de controladoras que ejecuten de ONTAP 9.5 a ONTAP 9.7 depende de la plataforma y la configuración de las controladoras original y de reemplazo.
+
+
+
+== Actualizaciones compatibles de ARL
+
+Cuando actualice un par de nodos con este procedimiento ARL de ONTAP 9.5 a ONTAP 9.7, compruebe que la ARL pueda realizarse en las controladoras originales y de reemplazo.
+
+Debe comprobar el tamaño de todos los agregados definidos y el número de discos admitidos por el sistema original. A continuación, debe comparar los tamaños de los agregados y el número de discos admitidos con el tamaño del agregado y la cantidad de discos que admite el nuevo sistema. Consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_ donde esta información está disponible. El tamaño de agregado y el número de discos que admite el nuevo sistema deben ser iguales o mayores que el tamaño del agregado y el número de discos que admite el sistema original.
+
+En las reglas de combinación de clústeres se debe validar si los nodos nuevos pueden formar parte del clúster con los nodos existentes cuando se reemplaza la controladora original. Para obtener más información acerca de las reglas de mezcla de clústeres, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_.
+
+
+NOTE: Antes de realizar una actualización del sistema AFF, debe actualizar ONTAP a la versión 9.5P1 o posterior. Estos niveles de versión son necesarios para que la actualización se realice correctamente.
+
+
+NOTE: Si va a actualizar un sistema que admita unidades internas (por ejemplo, FAS2700 o AFF A250) pero no tiene unidades internas, consulte link:other_references.html["Referencias"] Asimismo, utilice el procedimiento descrito en _Aggregate Relocation para actualizar manualmente el contenido de hardware_ de la controladora que sea correcto para su versión de ONTAP.
+
+Si utiliza ONTAP 9.6P11, 9.7P8 o versiones posteriores, se recomienda habilitar la toma de control de conectividad, animación y monitor de disponibilidad (CLAM) para que el clúster vuelva al quórum cuando se producen ciertos fallos de nodo. La `kernel-service` el comando requiere un nivel de privilegio avanzado. Para obtener más información, consulte: https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Artículo de la base de conocimientos de NetApp SU436: Se ha cambiado la configuración predeterminada de la toma de control DE CLAM"^].
+
+La actualización de la controladora mediante ARL es compatible en sistemas configurados con volúmenes de SnapLock Enterprise y SnapLock Compliance.
+
+
+
+== Clústeres de dos nodos sin switches
+
+Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar los nodos en el clúster sin switches mientras realiza la actualización. No es necesario convertirlos en un clúster con switches.
+
+
+
+== ARL no admite actualizaciones
+
+No se pueden realizar las siguientes actualizaciones:
+
+* Para el reemplazo de controladoras que no admiten las bandejas de discos conectadas a las controladoras originales
++
+Consulte link:other_references.html["Referencias"] Para establecer un vínculo con el _Hardware Universe_ para obtener información sobre soporte de disco.
+
+* Para las controladoras de gama básica que tienen unidades internas, por ejemplo: Un FAS 2500.
++
+Si desea actualizar las controladoras de gama básica con unidades internas, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_ y vaya al procedimiento _Upgrade una pareja de nodos que ejecutan Clustered Data ONTAP moviendo volúmenes_.
+
+
+
+
+
+== Resolución de problemas
+
+Si ocurre algún problema mientras actualiza las controladoras, puede consultar la link:troubleshoot_index.html["Solucionar problemas"] sección al final del procedimiento para obtener más información y soluciones posibles.
+
+Si no encuentra ninguna solución al problema que encontró, póngase en contacto con el soporte técnico.

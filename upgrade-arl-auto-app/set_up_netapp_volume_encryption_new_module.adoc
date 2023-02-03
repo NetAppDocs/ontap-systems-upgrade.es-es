@@ -1,0 +1,82 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/set_up_netapp_volume_encryption_new_module.html 
+keywords: set up, netapp volume encryption, controller, module, nve, node 
+summary: 'Si es necesario, configure el nuevo módulo de controladora para NVE o NAE al actualizar controladoras que ejecuten ONTAP 9.8 o una versión posterior mediante `system controller replace` comandos.' 
+---
+= Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si la controladora reemplazada o el partner de alta disponibilidad (ha) de la nueva controladora utilizan el cifrado de volúmenes de NetApp (NVE) o el cifrado de agregados de NetApp (NAE), debe configurar el nuevo módulo de controladoras para NVE o NAE.
+
+.Acerca de esta tarea
+Este procedimiento incluye los pasos que se realizan en el nuevo módulo del controlador. Debe introducir el comando en el nodo correcto.
+
+[role="tabbed-block"]
+====
+.Gestión de claves incorporada
+--
+*Configurar NVE o NAE mediante el Administrador de claves incorporado*
+
+.Pasos
+. Restaure las claves de autenticación de todos los servidores de gestión de claves vinculados al nuevo nodo:
++
+`security key-manager onboard sync`
+
+
+
+--
+.Gestión de claves externas
+--
+*Configurar NVE o NAE mediante Gestión de claves externa*
+
+.Pasos
+. Compruebe que los servidores de gestión de claves aún estén disponibles, su estado y la información de la clave de autenticación:
++
+`security key-manager key query -node node`
+
+. Añada los servidores de gestión de claves que se enumeran en el paso anterior a la lista del servidor de gestión de claves de la nueva controladora:
++
+.. Añada el servidor de gestión de claves:
++
+`security key-manager external add-servers -key-servers _key_management_server_ip_address_`
+
+.. Repita el paso anterior para cada servidor de gestión de claves enumerado. Puede vincular hasta cuatro servidores de gestión de claves.
+.. Compruebe que los servidores de gestión de claves se han añadido correctamente:
++
+`security key-manager external show`
+
+
+
+. En el nuevo módulo de controlador, ejecute el asistente de configuración de gestión de claves para configurar e instalar los servidores de gestión de claves.
++
+Debe instalar los mismos servidores de gestión de claves que se instalan en el módulo de controladora existente.
+
++
+.. Inicie el asistente de configuración del servidor de gestión de claves en el nuevo nodo:
++
+`security key-manager external enable`
+
+.. Complete los pasos del asistente para configurar los servidores de gestión de claves.
+
+
+. Restaure las claves de autenticación de todos los servidores de gestión de claves vinculados al nuevo nodo:
++
+`security key-manager external restore`
+
++
+Este comando necesita la clave de acceso de OKM
+
+
+
+--
+====
+.Después de terminar
+Compruebe si algún volumen se desconectó debido a que no había claves de autenticación disponibles o a que no se pudo acceder a los servidores EKM. Vuelva a conectar esos volúmenes en línea mediante el `volume online` comando.

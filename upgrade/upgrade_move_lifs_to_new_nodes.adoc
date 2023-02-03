@@ -1,0 +1,73 @@
+---
+permalink: upgrade/upgrade-move-lifs-to-new-nodes.html 
+sidebar: sidebar 
+keywords: move, volume, original, node, migrate, non-san, lif, cluster-management, move non-san data lifs and cluster management lifs to the new nodeas 
+summary: Después de mover los volúmenes desde los nodos originales, necesitará migrar las LIF de datos sin SAN y los LIF de gestión de clústeres desde los nodos originales hasta los nuevos nodos. 
+---
+= Mueva LIF de datos no SAN y LIF de administración del clúster a los nuevos nodos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de mover los volúmenes de los nodos originales, deberá migrar las LIF de datos sin SAN y las LIF de administración de clúster de los nodos originales a los nuevos nodos.
+
+.Acerca de esta tarea
+No se puede migrar una LIF que se usa para operaciones de descarga de copias con las API de VMware vStorage para la integración de cabinas (VAAI).
+
+.Pasos
+. Desde el nodo en el que se aloja la LIF del clúster, cambie los puertos base de las LIF de datos que no son SAN de los nodos originales a los nuevos nodos:
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _new_node_name_ -home-port {<netport|ifgrp>}`
+
+. Realice una de las siguientes acciones:
++
+[cols="1,2"]
+|===
+| Si desea migrar... | A continuación, introduzca... 
+
+
+ a| 
+Una LIF específica
+ a| 
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -source-node _source_node_name_ -destination-node _dest_node_name_ -destination-port _dest_port_name_`
+
+
+
+ a| 
+Todos los LIF de datos que no sean SAN y los LIF de administración de clúster
+ a| 
+`network interface migrate-all -node _node_name_`
+
+|===
++
+El siguiente comando migra una LIF llamada "datalif1" de la SVM "vs0" al puerto "e0d" de "nodet 0b":
+
++
+[listing]
+----
+cluster::> network interface migrate -vserver vs0 -lif datalif1 -destination-node node0b -destination-port e0d
+----
++
+El siguiente comando migra todas las LIF de datos y de administración de clúster del nodo (local) actual:
+
++
+[listing]
+----
+cluster::> network interface migrate-all -node local
+----
+. Compruebe si el nodo de inicio de la LIF de gestión de clústeres está en uno de los nodos originales: `network interface show -lif cluster_mgmt -fields home-node`
+. Si el nodo inicial del LIF de gestión del clúster está en uno de los nodos originales, realice los siguientes pasos:
++
+.. Cambie el nodo de inicio del LIF de gestión del clúster a uno de los nuevos nodos:
++
+`network interface modify -vserver _cluster_name_ -lif cluster_mgmt -home-node _new_node_name_ -home-port {<netport|ifgrp>}`
+
+.. Migre el LIF de gestión de clústeres a uno de los nuevos nodos:
++
+`network interface migrate -vserver _vserver_name_ -lif cluster-mgmt -destination-node _new_node_name_ -destination-port {<netport|ifgrp>}`
+
+
+
+

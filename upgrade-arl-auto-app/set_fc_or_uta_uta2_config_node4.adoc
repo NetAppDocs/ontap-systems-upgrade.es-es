@@ -1,0 +1,575 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/set_fc_or_uta_uta2_config_node4.html 
+keywords: fc configuration, uta configuration, UTA2 configuration, configure FC ports, UTA/UTA2 card, node4, target, adapter, ports 
+summary: 'Configure los puertos FC integrados de nodo 4, los puertos UTA/UTA2 o la tarjeta UTA/UTA2 cuando actualice las controladoras que ejecutan ONTAP 9.8 o posterior mediante `system controller replace` comandos.' 
+---
+= Establezca la configuración de FC o UTA/UTA2 en el nodo 4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si el nodo 4 tiene puertos FC integrados, puertos de adaptador de objetivo unificado (UTA/UTA2) integrados o una tarjeta UTA/UTA2, debe configurar los ajustes antes de completar el resto del procedimiento.
+
+.Acerca de esta tarea
+Puede que necesite completar el <<Configure los puertos FC en el nodo 4>> de la <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 4>>, o ambas secciones.
+
+
+NOTE: Si el nodo 4 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, y se está actualizando un sistema con discos de almacenamiento, puede omitir link:verify_node4_installation.html["Verifique la instalación del nodo 4"]. Sin embargo, si tiene un sistema V-Series o tiene software de virtualización FlexArray y están conectados a cabinas de almacenamiento, y el nodo 4 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, debe volver a la sección _nodo de instalación y arranque 4_ y reanudar en link:install_boot_node4.html#step22["Paso 22"]. Asegúrese de que el nodo 4 tenga suficiente espacio en rack. Si el nodo 4 se encuentra en un chasis separado del nodo 2, es posible colocar el nodo 4 en la misma ubicación que el nodo 3. Si el nodo 2 y el nodo 4 están en el mismo chasis, el nodo 4 ya se encuentra en la ubicación de rack adecuada.
+
+.Opciones
+* <<Configure los puertos FC en el nodo 4>>
+* <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 4>>
+
+
+
+
+== Configure los puertos FC en el nodo 4
+
+Si el nodo 4 tiene puertos FC, ya sea integrados o de un adaptador de FC, se deben establecer configuraciones de puertos en el nodo antes de llevarlo al servicio, ya que los puertos no están preconfigurados. Si no se configuran los puertos, es posible que experimente una interrupción del servicio.
+
+.Antes de empezar
+Debe tener los valores de configuración del puerto de FC en el nodo 2 que haya guardado en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"].
+
+.Acerca de esta tarea
+Puede omitir esta sección si el sistema no tiene configuraciones de FC. Si su sistema tiene puertos UTA/UTA2 integrados o un adaptador UTA/UTA2, debe configurarlos en <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 4>>.
+
+
+IMPORTANT: Si su sistema tiene discos de almacenamiento, debe introducir los comandos de esta sección en el símbolo del sistema del clúster. Si tiene un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento, debe introducir comandos en esta sección en modo de mantenimiento.
+
+.Pasos
+. Realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si el sistema que desea actualizar... | Entonces… 
+
+
+| Tiene discos de almacenamiento | `system node hardware unified-connect show` 
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `ucadmin show` 
+|===
++
+El sistema muestra información acerca de todos los adaptadores de red convergente y FC en el sistema.
+
+. Compare la configuración de FC del nodo 4 con la de los ajustes capturados anteriormente del nodo 1.
+. Realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si el sistema que desea actualizar... | Entonces… 
+
+
+| Tiene discos de almacenamiento  a| 
+Modifique los puertos FC en el nodo 4 según sea necesario:
+
+** Para programar puertos de destino:
++
+`ucadmin modify -m fc -t target _adapter_`
+
+** Para programar puertos iniciadores:
++
+`ucadmin modify -m fc -t initiator _adapter_`
+
+
+
+`-t` Es el tipo FC4: Objetivo o iniciador.
+
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento  a| 
+Modifique los puertos FC en el nodo 4 según sea necesario:
+
+`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
+
+`-t` Es el tipo, destino o iniciador de FC4.
+
+
+NOTE: Los puertos FC deben programarse como iniciadores.
+
+|===
+. Salir del modo de mantenimiento:
++
+`halt`
+
+. Arranque el sistema desde el símbolo del sistema del cargador:
++
+`boot_ontap menu`
+
+. Tras introducir el comando, espere hasta que el sistema se detenga en el símbolo del sistema del entorno de arranque.
+. Seleccione opción `5` desde el menú de arranque para el modo de mantenimiento.
+
+
+. [[paso8]]realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si el sistema que desea actualizar... | Entonces… 
+
+
+| Tiene discos de almacenamiento  a| 
+** Omita esta sección y vaya a. link:verify_node4_installation.html["Verifique la instalación del nodo 4"] Si el nodo 4 no tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados.
+
+
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento  a| 
+** Vaya a. <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 4>> Si el nodo 4 tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados.
+** Omita la sección _Check y configure los puertos UTA/UTA2 del nodo 4_ si el nodo 4 no tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, vuelva a la sección _Install and boot no4_ y reanude en link:install_boot_node4.html#step23["Paso 23"].
+
+
+|===
+
+
+
+
+== Comprobar y configurar los puertos UTA/UTA2 en el nodo 4
+
+Si el nodo 4 tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA 2, debe comprobar la configuración de los puertos y configurarlos, según cómo se desee usar el sistema actualizado.
+
+.Antes de empezar
+Debe tener los módulos SFP+ correctos para los puertos UTA/UTA2.
+
+.Acerca de esta tarea
+Los puertos UTA/UTA2 se pueden configurar en modo FC nativo o modo UTA/UTA 2. El modo FC admite iniciador FC y objetivo FC; el modo UTA/UTA2 permite que el tráfico FCoE y NIC simultáneas comparta la misma interfaz SFP+ 10 GbE y admite destino FC.
+
+
+NOTE: Los materiales de marketing de NetApp podrían utilizar el término UTA2 para consultar los puertos y adaptadores de CNA. Sin embargo, la CLI utiliza el término CNA.
+
+Los puertos UTA/UTA2 pueden estar en un adaptador o en la controladora con las siguientes configuraciones:
+
+* Las tarjetas UTA/UTA2 solicitadas al mismo tiempo que la controladora están configuradas antes del envío para tener la personalidad solicitada.
+* Las tarjetas UTA/UTA2 solicitadas por separado desde la controladora se envían con la personalidad de destino FC predeterminada.
+* Los puertos UTA/UTA2 integrados en las nuevas controladoras están configurados (antes del envío) para tener la personalidad solicitada.
+
+
+Sin embargo, debe comprobar la configuración de los puertos UTA/UTA2 del nodo 4 y cambiarlo, si es necesario.
+
+
+WARNING: *Atención*: Si el sistema tiene discos de almacenamiento, debe introducir los comandos de esta sección en el indicador del clúster a menos que se le indique entrar en modo de mantenimiento. Si tiene un sistema FC de MetroCluster, un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento, debe estar en modo de mantenimiento para configurar puertos UTA/UTA2.
+
+.Pasos
+. Compruebe cómo se configuran los puertos actualmente mediante uno de los siguientes comandos del nodo 4:
++
+[cols="30,70"]
+|===
+| Si el sistema... | Entonces… 
+
+
+| Tiene discos de almacenamiento | `system node hardware unified-connect show` 
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `ucadmin show` 
+|===
++
+El sistema muestra un resultado similar al siguiente ejemplo:
+
++
+....
+*> ucadmin show
+                Current  Current    Pending   Pending   Admin
+Node   Adapter  Mode     Type       Mode      Type      Status
+----   -------  ---      ---------  -------   --------  -------
+f-a    0e       fc       initiator  -          -        online
+f-a    0f       fc       initiator  -          -        online
+f-a    0g       cna      target     -          -        online
+f-a    0h       cna      target     -          -        online
+f-a    0e       fc       initiator  -          -        online
+f-a    0f       fc       initiator  -          -        online
+f-a    0g       cna      target     -          -        online
+f-a    0h       cna      target     -          -        online
+*>
+....
+. Si el módulo SFP+ actual no coincide con el uso deseado, sustitúyalo por el módulo SFP+ correcto.
++
+Póngase en contacto con su representante de NetApp para obtener el módulo SFP+ correcto.
+
+. Examine el resultado del `ucadmin show` Command y determine si los puertos UTA/UTA2 tienen la personalidad que desea.
+. Realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si los puertos CNA... | Entonces… 
+
+
+| No tenga la personalidad que usted desea | Vaya a. <<auto_check_4_step5,Paso 5>>. 
+
+
+| Tenga la personalidad que usted desea | Pase los pasos 5 a 12 y vaya a. <<auto_check_4_step13,Paso 13>>. 
+|===
+. [[auto_check_4_step5]]realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si va a configurar... | Entonces… 
+
+
+| Puertos en una tarjeta UTA/UTA2 | Vaya a. <<auto_check_4_step7,Paso 7>> 
+
+
+| Puertos UTA/UTA2 integrados | Vaya al paso 7 y vaya a. <<auto_check_4_step8,Paso 8>>. 
+|===
+. Si el adaptador está en modo iniciador y si el puerto UTA/UTA2 está en línea, desconecte el puerto UTA/UTA2:
++
+`storage disable adapter _adapter_name_`
+
++
+Los adaptadores del modo de destino se desconectan automáticamente en modo de mantenimiento.
+
+. [[auto_check_4_step7]]Si la configuración actual no coincide con el uso deseado, cambie la configuración según sea necesario:
++
+`ucadmin modify -m fc|cna -t initiator|target _adapter_name_`
+
++
+** `-m` Es el modo personalidad, FC o 10 GbE UTA.
+** `-t` Es el tipo FC4, `target` o. `initiator`.
++
+
+NOTE: Se debe usar iniciador FC para unidades de cinta, sistemas de virtualización FlexArray y configuraciones de MetroCluster. Debe usar el destino FC para los clientes SAN.
+
+
+
+. [[auto_check_4_step8]]Compruebe los ajustes utilizando el siguiente comando y examine su salida:
++
+`ucadmin show`
+
+. Compruebe la configuración:
++
+[cols="40,60"]
+|===
+| Si el sistema... | Entonces… 
+
+
+| Tiene discos de almacenamiento | `ucadmin show` 
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `ucadmin show` 
+|===
++
+La salida de los siguientes ejemplos muestra que el tipo FC4 del adaptador "1b" está cambiando a. `initiator` y que el modo de los adaptadores "2a" y "2b" está cambiando a. `cna`:
+
++
+....
+*> ucadmin show
+Node  Adapter  Current Mode  Current Type  Pending Mode  Pending Type  Admin Status
+----  -------  ------------  ------------  ------------  ------------  ------------
+f-a   1a       fc             initiator    -             -             online
+f-a   1b       fc             target       -             initiator     online
+f-a   2a       fc             target       cna           -             online
+f-a   2b       fc             target       cna           -             online
+4 entries were displayed.
+*>
+....
+. Coloque los puertos de destino en línea introduciendo uno de los siguientes comandos, una vez por cada puerto:
++
+[cols="30,70"]
+|===
+| Si el sistema... | Entonces… 
+
+
+| Tiene discos de almacenamiento | `network fcp adapter modify -node _node_name_ -adapter _adapter_name_ -state up` 
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `fcp config _adapter_name_ up` 
+|===
+. Conecte el cable del puerto.
+
+
+. [[step12]]realice una de las siguientes acciones:
++
+[cols="30,70"]
+|===
+| Si el sistema... | Entonces… 
+
+
+| Tiene discos de almacenamiento | Vaya a. link:verify_node4_installation.html["Verifique la instalación del nodo 4"]. 
+
+
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva a la sección _Install and boot node4_, y reanude en link:install_boot_node4.html#step23["Paso 23"]. 
+|===
+. [[auto_check_4_step13]]salir del modo de mantenimiento:
++
+`halt`
+
+. [[step14]]nodo de arranque en el menú de arranque:
++
+`boot_ontap menu`.
+
++
+Si va a actualizar a un A800, vaya a. <<auto_check_4_step23,Paso 23>>
+
+. [[auto_check_4_step15]]en el nodo 4, vaya al menú de inicio y utilice 22/7, seleccione la opción oculta `boot_after_controller_replacement`. En el símbolo del sistema, introduzca el nodo 2 para reasignar los discos del nodo 2 al nodo 4, como en el ejemplo siguiente.
++
+.Expanda el ejemplo de salida de consola
+[%collapsible]
+====
+[listing]
+----
+LOADER-A> boot_ontap menu
+.
+.
+<output truncated>
+.
+All rights reserved.
+*******************************
+*                             *
+* Press Ctrl-C for Boot Menu. *
+*                             *
+*******************************
+.
+<output truncated>
+.
+Please choose one of the following:
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? 22/7
+(22/7)                          Print this secret List
+(25/6)                          Force boot with multiple filesystem disks missing.
+(25/7)                          Boot w/ disk labels forced to clean.
+(29/7)                          Bypass media errors.
+(44/4a)                         Zero disks if needed and create new flexible root volume.
+(44/7)                          Assign all disks, Initialize all disks as SPARE, write DDR labels
+.
+.
+<output truncated>
+.
+.
+(wipeconfig)                        Clean all configuration on boot device
+(boot_after_controller_replacement) Boot after controller upgrade
+(boot_after_mcc_transition)         Boot after MCC transition
+(9a)                                Unpartition all disks and remove their ownership information.
+(9b)                                Clean configuration and initialize node with partitioned disks.
+(9c)                                Clean configuration and initialize node with whole disks.
+(9d)                                Reboot the node.
+(9e)                                Return to main boot menu.
+The boot device has changed. System configuration information could be lost. Use option (6) to
+restore the system configuration, or option (4) to initialize all disks and setup a new system.
+Normal Boot is prohibited.
+Please choose one of the following:
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? boot_after_controller_replacement
+This will replace all flash-based configuration with the last backup to disks. Are you sure
+you want to continue?: yes
+.
+.
+<output truncated>
+.
+.
+Controller Replacement: Provide name of the node you would like to replace:
+<nodename of the node being replaced>
+Changing sysid of node node2 disks.
+Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
+Partner sysid = 4294967295, owner sysid = 536940063
+.
+.
+<output truncated>
+.
+.
+varfs_backup_restore: restore using /mroot/etc/varfs.tgz
+varfs_backup_restore: attempting to restore /var/kmip to the boot device
+varfs_backup_restore: failed to restore /var/kmip to the boot device
+varfs_backup_restore: attempting to restore env file to the boot device
+varfs_backup_restore: successfully restored env file to the boot device wrote
+    key file "/tmp/rndc.key"
+varfs_backup_restore: timeout waiting for login
+varfs_backup_restore: Rebooting to load the new varfs
+Terminated
+<node reboots>
+System rebooting...
+.
+.
+Restoring env file from boot media...
+copy_env_file:scenario = head upgrade
+Successfully restored env file from boot media...
+Rebooting to load the restored env file...
+.
+System rebooting...
+.
+.
+.
+<output truncated>
+.
+.
+.
+.
+WARNING: System ID mismatch. This usually occurs when replacing a
+boot device or NVRAM cards!
+Override system ID? {y|n} y
+.
+.
+.
+.
+Login:
+----
+====
++
+
+NOTE: En el ejemplo de resultado de la consola anterior, ONTAP le solicitará el nombre del nodo asociado si el sistema utiliza discos de partición avanzada de disco (ADP).
+
+. Si el sistema entra en un bucle de reinicio con el mensaje `no disks found`, Indica que el sistema ha restablecido los puertos FC o UTA/UTA2 al modo de destino y, por lo tanto, no puede ver ningún disco. Para resolver esto, continúe con <<auto_check_4_step17,Paso 17>> para <<auto_check_4_step22,Paso 22>> o vaya a la sección link:verify_node4_installation.html["Verifique la instalación del nodo 4"].
+. [[auto_check_4_step17]]Pulse `Ctrl-C` durante el arranque automático para detener el nodo en el `LOADER>` prompt.
+. En el aviso del cargador, introduzca el modo de mantenimiento:
++
+`boot_ontap maint`
+
+. En el modo de mantenimiento, muestre todos los puertos iniciadores previamente establecidos que ahora se encuentran en modo de destino:
++
+`ucadmin show`
+
++
+Cambie los puertos de nuevo al modo iniciador:
+
++
+`ucadmin modify -m fc -t initiator -f _adapter name_`
+
+. Compruebe que los puertos se han cambiado al modo iniciador:
++
+`ucadmin show`
+
+. Salga del modo de mantenimiento:
++
+`halt`
+
++
+[NOTE]
+====
+Si va a actualizar desde un sistema que admita discos externos a un sistema que también admita discos externos, vaya a. <<auto_check_4_step22,Paso 22>>.
+
+Si va a actualizar desde un sistema que utilice discos externos a un sistema que admita discos tanto internos como externos, por ejemplo, un sistema AFF A800, vaya a. <<auto_check_4_step23,Paso 23>>.
+
+====
+. [[auto_check_4_step22]]en el indicador del cargador, arranque:
++
+`boot_ontap menu`
+
++
+Ahora, en el arranque, el nodo puede detectar todos los discos que se le habían asignado previamente y puede arrancar según se esperaba.
+
++
+Cuando los nodos de clúster que va a sustituir utilizan el cifrado de volumen raíz, el software ONTAP no puede leer la información de volumen de los discos. Restaure las claves del volumen raíz:
+
++
+.. Vuelva al menú de inicio especial:
+`LOADER> boot_ontap menu`
++
+[listing]
+----
+Please choose one of the following:
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+
+Selection (1-11)? 10
+----
+.. Seleccione *(10) establecer secretos de recuperación de Onboard Key Manager*
+.. Introduzca `y` en el siguiente símbolo del sistema:
++
+`This option must be used only in disaster recovery procedures. Are you sure? (y or n): y`
+
+.. En la solicitud de, introduzca la frase de contraseña del gestor de claves.
+.. Introduzca los datos de copia de seguridad cuando se le solicite.
++
+
+NOTE: Debe haber obtenido la clave de acceso y los datos de backup en la link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] sección de este procedimiento.
+
+.. Después de que el sistema se inicie de nuevo en el menú de inicio especial, ejecute la opción *(1) Inicio normal*
++
+
+NOTE: Es posible que se encuentre un error en este momento. Si se produce un error, repita los subpasos de <<auto_check_4_step22,Paso 22>> hasta que el sistema se inicie normalmente.
+
+
+
+
+
+. [[auto_check_4_step23]] Si va a actualizar desde un sistema con discos externos a un sistema compatible con discos internos y externos (sistemas AFF A800, por ejemplo), configure el agregado como agregado raíz para garantizar que el nodo 4 arranque desde el agregado raíz de 2. Para establecer el agregado raíz, vaya al menú de arranque y seleccione la opción `5` para entrar en el modo de mantenimiento.
++
+
+WARNING: *Debe realizar los siguientes subpasos en el orden exacto que se muestra; de lo contrario, podría causar una interrupción o incluso pérdida de datos.*
+
++
+El siguiente procedimiento establece el nodo 4 para arrancar desde el agregado raíz de 2:
+
++
+.. Entrar en el modo de mantenimiento:
++
+`boot_ontap maint`
+
+.. Compruebe la información de RAID, plex y suma de comprobación para el agregado de 2:
++
+`aggr status -r`
+
+.. Comprobar el estado del agregado 2:
++
+`aggr status`
+
+.. Si es necesario, coloque el agregado 2 en línea:
++
+`aggr_online root_aggr_from___node2__`
+
+.. Impida que el nodo 4 arranque desde su agregado raíz original:
++
+`aggr offline _root_aggr_on_node4_`
+
+.. Establezca el agregado raíz de 2 como el nuevo agregado raíz para el nodo 4:
++
+`aggr options aggr_from___node2__ root`
+
+.. Verifique que el agregado raíz de nodo 4 esté sin conexión y que el agregado raíz de los discos que se han relevo de nodo 2 esté en línea y se establezca en raíz:
++
+`aggr status`
+
++
+
+NOTE: Si no se logra realizar el subpaso anterior, el nodo 4 se puede arrancar desde el agregado raíz interno, o bien se puede provocar que el sistema asuma que existe una nueva configuración de clúster o solicitar que se identifique una.
+
++
+El siguiente muestra un ejemplo de resultado del comando:
+
+
+
++
+....
+---------------------------------------------------------------------
+Aggr State                       Status               Options
+aggr 0_nst_fas8080_15 online     raid_dp, aggr        root, nosnap=on
+                                 fast zeroed
+                                 64-bit
+aggr0 offline                    raid_dp, aggr        diskroot
+                                 fast zeroed`
+                                 64-bit
+---------------------------------------------------------------------
+....
+

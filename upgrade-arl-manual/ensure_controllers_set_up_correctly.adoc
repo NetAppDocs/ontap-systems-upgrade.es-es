@@ -1,0 +1,145 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/ensure_controllers_set_up_correctly.html 
+keywords: set up, controllers, correctly, ha pair, lif, aggregate, node, failover 
+summary: Habilite la pareja de alta disponibilidad, verifique el acceso al almacenamiento de nodos 3 y nodo 4, y confirme la propiedad del agregado después de una actualización manual de ARL en controladoras que ejecutan ONTAP 9.7 o una versión anterior. 
+---
+= Confirmar que las nuevas controladoras están configuradas correctamente
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para confirmar la configuración correcta, debe habilitar la pareja de ha. También es necesario verificar que los nodos 3 y 4 pueden acceder al almacenamiento de cada uno de los demás y que ninguno de los dos posee LIF de datos que pertenecen a otros nodos del clúster. Además, debe confirmar que el nodo 3 tiene agregados del nodo 1 y que el nodo 4 tiene agregados del nodo 2, y que los volúmenes de ambos nodos están en línea.
+
+.Pasos
+. Habilite la conmutación al nodo de respaldo del almacenamiento introduciendo el siguiente comando en uno de los nodos:
++
+`storage failover modify -enabled true -node _node3_`
+
+. Compruebe que la recuperación tras fallos del almacenamiento está activada:
++
+`storage failover show`
+
++
+En el ejemplo siguiente se muestra el resultado del comando cuando la conmutación por error del almacenamiento está habilitada:
+
++
+[listing]
+----
+cluster::> storage failover show
+                              Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- ------------------
+node3          node4          true     Connected to node4
+node4          node3          true     Connected to node3
+----
+. Realice una de las siguientes acciones:
++
+|===
+| Si el clúster es un... | Descripción 
+
+
+| Clúster de dos nodos | Habilite la alta disponibilidad del clúster introduciendo el comando siguiente en cualquiera de los nodos:
+`cluster ha modify -configured true` 
+
+
+| Clúster con más de dos nodos | Vaya a. <<man_ensure_setup_Step4,Paso 4>>. 
+|===
+. [[man_asegurará_setup_Step4]]Compruebe que los nodos 3 y no4 pertenecen al mismo clúster introduciendo el siguiente comando y examinando el resultado:
++
+`cluster show`
+
+. Verifique que los nodos 3 y 4 puedan acceder al almacenamiento de los demás. Para ello, introduzca el siguiente comando y examine el resultado:
++
+`storage failover show -fields local-missing-disks,partner-missing-disks`
+
+. Verifique que ni el nodo 3 ni el nodo 4 sean propiedad de las LIF de datos propias del hogar de otros nodos del clúster. Para ello, introduzca el siguiente comando y examine el resultado:
++
+`network interface show`
+
++
+Si el nodo 3 o el nodo 4 son propiedad de los LIF de datos que pertenecen a otros nodos del clúster, use el `network interface revert` Comando para devolver las LIF de datos a su propietario raíz.
+
+. Verifique que el nodo 3 tenga los agregados del nodo 1 y que el nodo 4 sea propietario de los agregados del nodo 2:
++
+`storage aggregate show -owner-name _node3_`
+`storage aggregate show -owner-name _node4_`
+
+. Determine si alguno de los volúmenes está sin conexión:
++
+`volume show -node _node3_ -state offline`
+`volume show -node _node4_ -state offline`
+
+. Si alguno de los volúmenes se encuentra sin conexión, compártalos con la lista de volúmenes sin conexión en los que se haya capturado link:prepare_nodes_for_upgrade.html#step19d["Paso 19 (d)"] En _prepare los nodos para la actualización_ y active cualquiera de los volúmenes sin conexión, según sea necesario, introduzca el comando siguiente, una vez para cada volumen:
++
+`volume online -vserver _vserver_name_ -volume _volume_name_`
+
+. Instale licencias nuevas para los nodos nuevos introduciendo el siguiente comando para cada nodo:
++
+`system license add -license-code _license_code,license_code,license_code..._`
+
++
+El parámetro license-code acepta una lista de 28 claves de caracteres alfabéticos en mayúsculas. Puede agregar una licencia cada vez, o puede agregar varias licencias a la vez, cada clave de licencia separada por una coma.
+
+. Si se utilizan unidades de autocifrado en la configuración y se han configurado el `kmip.init.maxwait` variable a. `off` (por ejemplo, en link:install_boot_node3.html#step16["Paso 16"] De _Install and boot node3_), debe anular la definición de la variable:
++
+`set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
+
+. Para quitar todas las licencias antiguas de los nodos originales, escriba uno de los siguientes comandos:
++
+`system license clean-up -unused -expired`
+`system license delete -serial-number _node_serial_number_ -package _licensable_package_`
+
++
+** Para eliminar todas las licencias caducadas, introduzca:
++
+`system license clean-up -expired`
+
+** Para eliminar todas las licencias no utilizadas, introduzca:
++
+`system license clean-up -unused`
+
+** Para eliminar una licencia específica de un clúster, introduzca los siguientes comandos en los nodos:
++
+`system license delete -serial-number _node1_serial_number_ -package *`
+`system license delete -serial-number _node2_serial_number_ -package *`
+
++
+Se muestra la siguiente salida:
+
++
+[listing]
+----
+Warning: The following licenses will be removed:
+<list of each installed package>
+Do you want to continue? {y|n}: y
+----
++
+Introduzca `y` para eliminar todos los paquetes.
+
+
+
+. Compruebe que las licencias se han instalado correctamente introduciendo el comando siguiente y examinando su resultado:
++
+`system license show`
+
++
+Puede comparar la salida con la que ha capturado link:prepare_nodes_for_upgrade.html#step30["Paso 30"] De _prepare los nodos para upgrade_.
+
+. Configure los SPS realizando el siguiente comando en ambos nodos:
++
+`system service-processor network modify -node _node_name_`
+
++
+Vaya a. link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_ para obtener información acerca de los SPS y los comandos _ONTAP 9: Referencia de página del manual_ para obtener información detallada acerca de `system service- processor network modify` comando.
+
+. Si desea configurar un clúster sin switches en los nuevos nodos, vaya a. link:other_references.html["Referencias"] Para establecer un enlace al _sitio de soporte de red_ y siga las instrucciones de _transición a un clúster_ sin switch de dos nodos.
+
+
+.Después de terminar
+Si el cifrado del almacenamiento está habilitado en los nodos 3 y 4, complete los pasos de link:set_up_storage_encryption_new_controller.html["Configure Storage Encryption en el nuevo módulo de la controladora"]. De lo contrario, complete los pasos de link:decommission_old_system.html["Retire el sistema antiguo"].

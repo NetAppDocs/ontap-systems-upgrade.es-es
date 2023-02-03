@@ -1,0 +1,211 @@
+---
+permalink: upgrade/upgrade-map-network-ports-ontap-9-8.html 
+sidebar: sidebar 
+keywords: enable, node3, node4, node, communicate, cluster, network, upgrade, physical, port, correct, configure, setting, data, map network ports using ontap 9.8 
+summary: Para habilitar el nodo 3 y el nodo 4 para comunicarse entre sí en el clúster y con la red después de la actualización, debe confirmar que los puertos físicos están correctamente configurados con los ajustes para el uso previsto, como el clúster, los datos, etc. 
+---
+= Asigne puertos de red mediante ONTAP 9.8 o una versión posterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para habilitar el nodo 3 y el nodo 4 para comunicarse entre sí en el clúster y con la red después de la actualización, debe confirmar que los puertos físicos están correctamente configurados con los ajustes para el uso previsto, como el clúster, los datos, etc.
+
+.Antes de empezar
+Estos pasos se aplican a sistemas que ejecutan ONTAP 9.8 o posterior. Si utiliza ONTAP 9.7 o una versión anterior, debe utilizar el procedimiento en xref:upgrade-map-network-ports-ontap-9-7-or-earlier.adoc[Asignar puertos de red con ONTAP 9.7 o una versión anterior].
+
+.Acerca de esta tarea
+Debe realizar estos pasos en los nodos 3 y 4.
+
+
+NOTE: Los siguientes ejemplos de comandos hacen referencia al "nodo 1", ya que, en este momento del procedimiento, los nodos de reemplazo "nodo 3" y "nodo 4" se denominan "nodo 1" y "nodo 2".
+
+.Pasos
+. Si el sistema ejecuta ONTAP 9.7 o anterior, *STOP*. Debe utilizar el procedimiento en xref:upgrade-map-network-ports-ontap-9-7-or-earlier.adoc[Asignar puertos de red con ONTAP 9.7 o una versión anterior].
+. Ubique la información de configuración de puertos y LIF para los nodos 1 y 2 que haya grabado en _prepare for upgrade al mover almacenamiento_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Paso 3"].
+. Localice la información de los puertos, dominios de retransmisión y espacios IP que registró en _Prepárese para la actualización cuando mueva almacenamiento_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Paso 3"].
++
+https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
+. Realice los siguientes cambios:
++
+.. Arranque y inicie sesión en nodo 3 y nodo 4, si todavía no lo hizo.
+.. Modifique los puertos que forman parte del dominio de retransmisión del clúster:
++
+`network port modify -node _node_name_ -port _port_name_ -mtu 9000 -ipspace Cluster`
+
++
+En este ejemplo se agrega `Cluster` puerto e1b en "1 nodo 1":
+
++
+`network port modify -node node1 -port e1b -ipspace Cluster -mtu 9000`
+
+.. Migre las LIF del clúster a los nuevos puertos, una vez por cada LIF:
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -source-node node1 -destination-node node1 -destination-port _port_name_`
+
++
+Cuando se migran todas las LIF del clúster y se establece la comunicación del clúster, el clúster debe entrar en quórum.
+
+.. Modifique el puerto de inicio de las LIF de clúster:
++
+`network interface modify -vserver Cluster -lif _lif_name_ –home-port _port_name_`
+
+.. Quite los puertos antiguos de `Cluster` dominio de retransmisión:
++
+`network port broadcast-domain remove-ports -ipspace Cluster -broadcast-domain Cluster -ports _node1:port_`
+
+.. Mostrar el estado de los nodos 3 y 4:
++
+`cluster show -node _node1_ -fields health`
+
+.. Cada LIF de clúster debe estar escuchando en el puerto 7700. Compruebe que las LIF del clúster están escuchando en el puerto 7700:
++
+`::> network connections listening show -vserver Cluster`
+
++
+El resultado esperado de la escucha del puerto 7700 en los puertos del clúster tal y como se muestra en el siguiente ejemplo de un clúster de dos nodos:
+
++
+[listing]
+----
+Cluster::> network connections listening show -vserver Cluster
+Vserver Name     Interface Name:Local Port     Protocol/Service
+---------------- ----------------------------  -------------------
+Node: NodeA
+Cluster          NodeA_clus1:7700               TCP/ctlopcp
+Cluster          NodeA_clus2:7700               TCP/ctlopcp
+Node: NodeB
+Cluster          NodeB_clus1:7700               TCP/ctlopcp
+Cluster          NodeB_clus2:7700               TCP/ctlopcp
+4 entries were displayed.
+----
+.. De ser necesario, para cada LIF de clúster que no esté escuchando en el puerto 7700, establezca el estado administrativo de la LIF en `down` y después `up`:
++
+`::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
+
++
+Repita el subpaso (g) para comprobar que la LIF del clúster ahora está escuchando en el puerto 7700.
+
+
+
+. [[map_9.8_5]]modifique las pertenencias al dominio de difusión de los puertos físicos que alojan las LIF de datos. Puede hacerlo manualmente, como se muestra en la link:upgrade-map-network-ports-ontap-9-7-or-earlier.html#map_9.7_7["Asigne puertos de red mediante ONTAP 9.7 o anterior, paso 7"]. El método recomendado es utilizar el procedimiento mejorado de exploración y reparación de accesibilidad de red introducido en ONTAP 9.8, como se muestra en el siguiente paso 5, subpasos (a) a (g).
++
+.. Enumerar el estado de accesibilidad de todos los puertos:
++
+`network port reachability show`
+
+.. Repare la accesibilidad de los puertos físicos, seguidos de los puertos VLAN, ejecutando el siguiente comando en cada puerto, un puerto cada vez:
++
+`reachability repair -node _node_name_ -port _port_name_`
+
++
+Se espera una advertencia como la siguiente. Revise e introduzca `y` o. `n` según corresponda:
+
++
+[listing]
+----
+Warning: Repairing port "node_name:port" may cause it to move into a
+different broadcast domain, which can cause LIFs to be re-homed away
+from the port. Are you sure you want to continue? {y|n}:
+----
+.. Para que ONTAP complete la reparación, espere un minuto aproximadamente después de ejecutar el `reachability repair` en el último puerto.
+.. Enumere todos los dominios de retransmisión del clúster:
++
+`network port broadcast-domain show`
+
+.. A medida que se realiza la reparación de accesibilidad, ONTAP intenta colocar los puertos en los dominios de retransmisión correctos. Sin embargo, si la accesibilidad de un puerto no se puede determinar y no corresponde con ninguno de los dominios de retransmisión existentes, ONTAP creará nuevos dominios de retransmisión para estos puertos. Según sea necesario, puede eliminar los dominios de retransmisión recientemente creados si todos sus puertos miembro se convertirán en puertos miembros de los grupos de interfaces. Eliminar dominios de retransmisión:
++
+`broadcast-domain delete -broadcast-domain _broadcast_domain_`
+
+.. Revise la configuración del grupo de interfaces y, según sea necesario, añada o elimine puertos miembro. Añada puertos miembro a los puertos del grupo de interfaces:
++
+`ifgrp add-port -node _node_name_ -ifgrp _ifgrp_port_ -port _port_name_`
+
++
+Quite puertos miembro de los puertos del grupo de interfaces:
+
++
+`ifgrp remove-port -node _node_name_ -ifgrp _ifgrp_port_ -port _port_name_`
+
+.. Elimine y vuelva a crear puertos VLAN según sea necesario. Eliminar puertos VLAN:
++
+`vlan delete -node _node_name_ -vlan-name _vlan_port_`
+
++
+Crear puertos VLAN:
+
++
+`vlan create -node _node_name_ -vlan-name _vlan_port_`
+
++
+
+NOTE: En función de la complejidad de la configuración de red del sistema que se va a actualizar, es posible que deba repetir el paso 5, subpasos (a) a (g) hasta colocar todos los puertos correctamente cuando sea necesario.
+
+
+
+. Si no hay ninguna VLAN configurada en el sistema, vaya a. <<map_98_7,Paso 7>>. Si hay VLAN configuradas, restaure las VLAN desplazadas configuradas previamente en puertos que ya no existen o que se configuraron en puertos que se movieron a otro dominio de difusión.
++
+.. Mostrar las VLAN desplazadas:
++
+`cluster controller-replacement network displaced-vlans show`
+
+.. Restaure las VLAN desplazadas al puerto de destino deseado:
++
+`displaced-vlans restore -node _node_name_ -port _port_name_ -destination-port _destination_port_`
+
+.. Compruebe que se han restaurado todas las VLAN desplazadas:
++
+`cluster controller-replacement network displaced-vlans show`
+
+.. Las VLAN se colocan automáticamente en los dominios de retransmisión correspondientes un minuto después de su creación. Compruebe que las VLAN restauradas se hayan colocado en los dominios de retransmisión correspondientes:
++
+`network port reachability show`
+
+
+
+. [[map_98_7]]a partir de ONTAP 9.8, ONTAP modificará automáticamente los puertos de inicio de las LIF si los puertos se mueven entre dominios de difusión durante el procedimiento de reparación de accesibilidad del puerto de red. Si el puerto inicial de una LIF se ha movido a otro nodo o si no se ha asignado, dicha LIF se presentará como una LIF desplazada. Restaure los puertos de inicio de LIF desplazadas cuyos puertos de inicio ya no existen o se reubicaron en otro nodo.
++
+.. Muestre las LIF cuyos puertos iniciales podrían haberse movido a otro nodo o ya no existen:
++
+`displaced-interface show`
+
+.. Restaure el puerto de inicio de cada LIF:
++
+`displaced-interface restore -vserver _vserver_name_ -lif-name _lif_name_`
+
+.. Compruebe que se han restaurado todos los puertos iniciales de LIF:
++
+`displaced-interface show`
+
++
+Cuando todos los puertos se configuran correctamente y se agregan a los dominios de retransmisión correctos, el comando network Port Reachability show debería informar del estado de accesibilidad como ok para todos los puertos conectados y el estado como no-Reachability para puertos sin conectividad física. Si alguno de los puertos informa de un estado distinto de estos dos, repare la accesibilidad tal como se describe en <<map_98_5,Paso 5>>.
+
+
+
+. Compruebe que todas las LIF están administrativas en puertos que pertenecen a los dominios de retransmisión correctos.
++
+.. Compruebe si existen LIF administrativamente inactivos:
++
+`network interface show -vserver _vserver_name_ -status-admin down`
+
+.. Compruebe si existen LIF operativos inactivos: `network interface show -vserver _vserver_name_ -status-oper down`
+.. Modifique los LIF que deban modificarse para que tengan un puerto de inicio diferente:
++
+`network interface modify -vserver _vserver_name_ -lif _lif_ -home-port _home_port_`
+
++
+
+NOTE: Para los LIF iSCSI, la modificación del puerto inicial requiere que la LIF esté administrativamente inactiva.
+
+.. Revertir las LIF que no son home con sus respectivos puertos:
++
+`network interface revert *`
+
+
+
+
+
+Completó la asignación de los puertos físicos. Para completar la actualización, vaya a. xref:upgrade-final-upgrade-steps-in-ontap-9-8.adoc[Realice los pasos finales de la actualización en ONTAP 9.8 o posterior].

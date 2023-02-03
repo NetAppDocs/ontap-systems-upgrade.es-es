@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/set_up_storage_encryption_new_controller.html 
+keywords: set up, setup, storage encryption, new, controller, module 
+summary: Si es necesario, configure el cifrado de almacenamiento, instale los certificados SSL y configure servidores de gestión de claves durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.7 o una versión anterior. 
+---
+= Configure Storage Encryption en el nuevo módulo de la controladora
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si la controladora reemplazada o el asociado de alta disponibilidad de la nueva controladora utilizan Storage Encryption, debe configurar el nuevo módulo de controlador para Storage Encryption, que incluye la instalación de certificados SSL y la configuración de servidores de administración de claves.
+
+.Acerca de esta tarea
+Este procedimiento incluye los pasos que se realizan en el nuevo módulo del controlador. Debe introducir el comando en el nodo correcto.
+
+.Pasos
+. Compruebe que los servidores de gestión de claves aún estén disponibles, su estado y la información de la clave de autenticación:
++
+`security key-manager show -status`
+
++
+`security key-manager query`
+
+. Añada los servidores de gestión de claves que se enumeran en el paso anterior a la lista del servidor de gestión de claves de la nueva controladora.
++
+.. Añada el servidor de gestión de claves:
++
+`security key-manager -add _key_management_server_ip_address_`
+
+.. Repita el paso anterior para cada servidor de gestión de claves enumerado.
++
+Puede vincular hasta cuatro servidores de gestión de claves.
+
+.. Compruebe que los servidores de gestión de claves se han añadido correctamente:
++
+`security key-manager show`
+
+
+
+. En el nuevo módulo de controlador, ejecute el asistente de configuración de gestión de claves para configurar e instalar los servidores de gestión de claves.
++
+Debe instalar los mismos servidores de gestión de claves que se instalan en el módulo de controladora existente.
+
++
+.. Inicie el asistente de configuración del servidor de gestión de claves en el nuevo nodo:
++
+`security key-manager setup -node _new_controller_name_`
+
+.. Complete los pasos del asistente para configurar los servidores de gestión de claves.
+
+
+. Restaure las claves de autenticación de todos los servidores de gestión de claves vinculados al nuevo nodo:
++
+`security key-manager restore -node _new_controller_name_`
+
+
