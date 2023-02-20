@@ -1,0 +1,4934 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head class="at-element-marker">
+  <title>Grabar información del nodo 2</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Grabar información del nodo 2" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html" />
+	<meta property="og:description" content="Registre información acerca de la red de clústeres 2, la gestión, los puertos FC y el ID del sistema de NVRAM durante una actualización manual de ARL en cont..." />
+  <meta property="og:image" content="https://docs.netapp.com/es-es/ontap-systems-upgrade/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Registre información acerca de la red de clústeres 2, la gestión, los puertos FC y el ID del sistema de NVRAM durante una actualización manual de ARL en cont...">
+  <meta name="keywords" content=" record, node2, information, NVRAM, retire"><!-- Icons -->
+  <link rel="icon" href="/es-es/ontap-systems-upgrade/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/es-es/ontap-systems-upgrade/css/netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/es-es/ontap-systems-upgrade/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/es-es/ontap-systems-upgrade/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/es-es/ontap-systems-upgrade/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    function addAdobeLaunch(adobeId) {
+      var head = document.getElementsByTagName('head')[0];
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/"+adobeId+".min.js";
+      head.appendChild(adobe);
+    }
+
+    function addGoogleAnalytics(gtagId) {
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id="+gtagId;
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gtagId);
+    }
+
+    function addConsent(consentId) {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/"+consentId+"/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = consentId;
+      head.appendChild(onetrustScript);
+    }addConsent("72570c5c-fe30-465f-b0e0-b77f7fb4ae34");
+    addAdobeLaunch("launch-e9ff3acac59f");
+    addGoogleAnalytics("UA-81697994-3");function OptanonWrapper() { }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/es-es/ontap-systems-upgrade/js/na-search.js'></script><script src='/es-es/ontap-systems-upgrade/js/na-pagenav.js'></script><script src='/es-es/ontap-systems-upgrade/js/na-utility.js'></script>
+  <script src='/es-es/ontap-systems-upgrade/js/clouddocs.js'></script>
+  <script src='/es-es/ontap-systems-upgrade/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/es-es/ontap-systems-upgrade/js/toc.js'></script>
+  <script src='/es-es/ontap-systems-upgrade/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+          $(".sidebar-nav-container").on("scroll", function() {
+            $.cookie("sidebarScroll", $(".sidebar-nav-container").scrollTop(), {
+              path    : "/es-es/ontap-systems-upgrade"  
+            });
+          });
+          $(function() {
+            if ($.cookie("sidebarScroll")) {
+              $(".sidebar-nav-container").scrollTop($.cookie("sidebarScroll"));
+            }
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/es-es/ontap-systems-upgrade/js/custom-dropdown.js'></script>
+  <script src='/es-es/ontap-systems-upgrade/js/FileSaver.min.js'></script>
+  <script src='/es-es/ontap-systems-upgrade/js/jszip-utils.min.js'></script>
+  <script src='/es-es/ontap-systems-upgrade/js/jszip.min.js'></script>
+  <script src='/es-es/ontap-systems-upgrade/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-systems-upgrade/issues/new?body=Page%3A%20[Grabar información del nodo 2](https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html)&template=public-issue-template.md" class="page-nav-contribute-link" role="button"><img src="/es-es/ontap-systems-upgrade/images/discuss-sm.svg" alt="" class="github-icon" />Solicitar cambios en el documento</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-systems-upgrade/blob/main/upgrade-arl-manual-app/record_node2_information.adoc" class="page-nav-contribute-link" role="button"><img src="/es-es/ontap-systems-upgrade/images/edit-sm.svg" alt="" class="github-icon" />Editar en GitHub</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/es-es/ontap-systems-upgrade/images/article-sm.svg" alt="" class="github-icon" />Guía del colaborador</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">EN ESTA PÁGINA</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Producto y soluciones</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Asistencia y capacitación</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Comunidad</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Historias de clientes</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/company/contact-us/" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/es-es/ontap-systems-upgrade/search.html"
+          data-type="widget" 
+          data-placeholder="Buscar documentación"
+          data-no-results-found="No se encontraron resultados para {query}"
+          data-did-you-mean="Buscar {suggestion}."
+          data-no-results-found-did-you-mean="No se encontraron resultados para {query}. ¿Quiso decir {suggestion}?"
+          data-results-found="{hitCount} resultados encontrados"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">Español</span>
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html" target="_self"><span translate="no" class="notranslate">Español</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/de-de/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/fr-fr/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
+        </li></ul>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <button id="btn-sidebar-collapse" onclick="hideSidebar()"><img src="/es-es/ontap-systems-upgrade/images/collapse.png" alt="Contraer panel de navegación"></button>
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>PDFs disponibles<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/es-es/ontap-systems-upgrade/pdfs/fullsite-sidebar/Documentación_sobre_las_actualizaciones_del_sistema_AFF_y_FAS.pdf" >
+          <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>PDF de este sitio de documentos</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Actualice_trasladando_volúmenes_o_almacenamiento.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Actualice trasladando volúmenes o almacenamiento
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Actualizar_moviendo_almacenamiento.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Actualizar moviendo almacenamiento
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Opcional__Mueva_almacenamiento_interno_o_conviértalo_a_bandeja_de_unidades.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Opcional: Mueva almacenamiento interno o conviértalo a bandeja de unidades
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Se_completó_la_actualización.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Se completó la actualización
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Complete_en_ONTAP_9_8_o_posterior.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Complete en ONTAP 9.8 o posterior
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Complete_en_ONTAP_9_7_o_anterior.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Complete en ONTAP 9.7 o anterior
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Actualizar_moviendo_volúmenes.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Actualizar moviendo volúmenes
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Mueva__elimine_o_cree_LIF_SAN.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Mueva, elimine o cree LIF SAN
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Use_la_reubicación_de_agregados_para_actualizar_el_hardware_de_la_controladora.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Use la reubicación de agregados para actualizar el hardware de la controladora
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Utilice_los_comandos__system_Controller_replace__para_actualizar_AFF_A700_a_AFF_A900_o_FAS9000_a_FAS9500.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Utilice los comandos "system Controller replace" para actualizar AFF A700 a AFF A900 o FAS9000 a FAS9500
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_1__Preparación_de_la_actualización__actualización_a_AFF_A900_o_FAS9500_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 1. Prepare la actualización
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Fase_2__Reubique_los_recursos_y_retire_el_nodo_1_del_A700_o_FAS9000_de_AFF.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Fase 2. Reubique los recursos y retire el nodo 1 del A700 o FAS9000 de AFF
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_3__Nodo_de_arranque_con_los_controladores_AFF_A900_o_FAS9500_y_módulos_NVRAM.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 3. Nodo de arranque con los controladores AFF A900 o FAS9500 y módulos NVRAM
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_4__Reubicar_recursos_del_nodo_2_y_retirar_el_nodo_2.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 4. Reubicar recursos del nodo 2 y retirar el nodo 2
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_5__Instale_el_AFF_A900_o_FAS9500_NVRAM_y_los_módulos_de_controlador_en_el_nodo_2.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 5. Instale el AFF A900 o FAS9500 NVRAM y los módulos de controlador en el nodo 2
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_6__Inicie_el_nodo_2_con_el_controlador_AFF_A900_o_FAS9500_y_los_módulos_NVRAM.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 6. Inicie el nodo 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_7__Complete_la_actualización.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 7. Complete la actualización
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Solución_de_problemas__actualizar_a_AFF_A900_o_FAS9500_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Solucionar problemas
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Utilice_comandos_para_sustituir_la_controladora_del_sistema_para_actualizar_el_hardware_de_la_controladora_que_ejecute_ONTAP_9_8_o_una_versión_posterior.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Utilice comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_1__Prepárese_para_la_actualización__actualice_con__sustitución_de_controladora_del_sistema__en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 1. Prepare la actualización
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Fase_2__Reubicar_y_retirar_el_nodo_1__actualizar_con_el__sustitución_del_controlador_del_sistema__en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Fase 2. Reubicar y retirar el nodo 1
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_3__Nodo_de_instalación_y_arranque_3__actualización_con__sustitución_de_controladora_del_sistema__en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 3. Instale y arranque el nodo 3
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_4__Reubicar_y_retirar_el_nodo_2__actualizar_con__sustitución_del_controlador_del_sistema__en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 4. Reubicar y retirar el 2
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_5__Nodo_de_instalación_y_arranque_4__actualización_con__sustitución_de_controladora_del_sistema__en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 5. Instale y arranque el nodo 4
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_6__Complete_la_actualización__actualice_con__sustitución_de_controladora_del_sistema__en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 6. Complete la actualización
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Solución_de_problemas__actualice_con_el_programa__sustitución_de_controladora_del_sistema__en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Solucionar problemas
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Actualizar_manualmente_el_hardware_de_la_controladora_que_ejecute_ONTAP_9_8_o_una_versión_posterior.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_1__Preparación_para_la_actualización__actualización_manual_en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 1. Prepare la actualización
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Fase_2__Reubicar_y_retirar_el_nodo_1__actualización_manual_en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Fase 2. Reubicar y retirar el nodo 1
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_3__Nodo_de_instalación_y_arranque_3__actualización_manual_en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 3. Instale y arranque el nodo 3
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_4__Registre_información_y_retire_el_nodo_2__actualización_manual_en_ONTAP_9_8_o_posterior__.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 4. Registre la información y retire el nodo 2
+          </a>
+          
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_5__Nodo_de_instalación_y_arranque_4__actualización_manual_en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 5. Instale y arranque el nodo 4
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_6__Completar_la_actualización__actualización_manual_en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 6. Complete la actualización
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Solución_de_problemas__actualización_manual_en_ONTAP_9_8_o_posterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Solucionar problemas
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Utilice_los_comandos_para_sustituir_la_controladora_del_sistema_para_actualizar_el_hardware_de_la_controladora_que_ejecuta_ONTAP_9_5_a_9_7.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Utilice los comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecuta ONTAP 9.5 a 9.7
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_1__Prepárese_para_la_actualización__actualice_con__sustitución_de_controladora_del_sistema__en_ONTAP_9_5_a_9_7_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 1. Prepare la actualización
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Fase_2__Reubicar_y_retirar_el_nodo_1__actualizar_con_el__sustitución_del_controlador_del_sistema__en_ONTAP_9_5_a_9_7_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Fase 2. Reubicar y retirar el nodo 1
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_3__Nodo_de_instalación_y_arranque_3__actualización_con__sustitución_de_controladora_del_sistema__en_ONTAP_9_5_a_9_7_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 3. Instale y arranque el nodo 3
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_4__Reubicar_y_retirar_el_nodo_2__actualizar_con__sustitución_del_controlador_del_sistema__en_ONTAP_9_5_a_9_7_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 4. Reubicar y retirar el 2
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_5__Nodo_de_instalación_y_arranque_4__actualización_con__sustitución_de_controladora_del_sistema__en_ONTAP_9_5_a_9_7_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 5. Instale y arranque el nodo 4
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_6__Complete_la_actualización__actualice_con__sustitución_de_controladora_del_sistema__en_ONTAP_9_5_a_9_7_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 6. Complete la actualización
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Solución_de_problemas__actualizar_con_el__reemplazo_del_controlador_del_sistema__en_ONTAP_9_5_a_9_7_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Solucionar problemas
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Actualizar_manualmente_el_hardware_de_la_controladora_que_ejecute_ONTAP_9_7_o_una_versión_anterior.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.7 o una versión anterior
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Vuelva_a_configurar_el_diseño_del_switch_FC_para_ONTAP_9_1_o_posterior.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Vuelva a configurar el diseño del switch FC para ONTAP 9.1 o posterior
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_1__Preparación_para_la_actualización__actualización_manual_en_ONTAP_9_7_o_anterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 1. Prepare la actualización
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Fase_2__Reubicar_y_retirar_el_nodo_1__actualización_manual_en_ONTAP_9_7_o_anterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Fase 2. Reubicar y retirar el nodo 1
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_3__Nodo_de_instalación_y_arranque_3__actualización_manual_en_ONTAP_9_7_o_anterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 3. Instale y arranque el nodo 3
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_4__Registre_información_y_retire_el_nodo_2__actualización_manual_en_ONTAP_9_7_o_anterior__.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 4. Registre la información y retire el nodo 2
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_5__Nodo_de_instalación_y_arranque_4__actualización_manual_en_ONTAP_9_7_o_anterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 5. Instale y arranque el nodo 4
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Etapa_6__Completar_la_actualización__actualización_manual_en_ONTAP_9_7_o_anterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Etapa 6. Complete la actualización
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/ontap-systems-upgrade/pdfs/sidebar/Solución_de_problemas__actualización_manual_en_ONTAP_9_7_o_anterior_.pdf" 
+            
+          >
+            <img src="/es-es/ontap-systems-upgrade/images/pdf.png" alt="" width="16" height="16"/>
+            Solucionar problemas
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/es-es/ontap-systems-upgrade/images/pdf-zip.png" alt="" width="16" height="16"/>
+      <pre>Colección de documentos PDF separados<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Documentación sobre las actualizaciones del sistema AFF y FAS"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/index.html">
+        Documentación sobre las actualizaciones del sistema AFF y FAS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Actualice trasladando volúmenes o almacenamiento"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Actualice trasladando volúmenes o almacenamiento</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-decide-to-use-this-guide.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Consideraciones"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-considerations.html">
+        Consideraciones
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Elija método"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-methods.html">
+        Elija método
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Actualizar moviendo almacenamiento"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Actualizar moviendo almacenamiento</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Flujo de trabajo"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-by-moving-storage-parent.html">
+        Flujo de trabajo
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepare"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-prepare-when-moving-storage.html">
+        Prepare
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Apague los nodos originales"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-shutdown-remove-original-nodes.html">
+        Apague los nodos originales
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Elimine la propiedad de disco"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-remove-disk-ownership-new-nodes.html">
+        Elimine la propiedad de disco
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restablecer la configuración predeterminada"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-reset-default-configuration-node3-and-node4.html">
+        Restablecer la configuración predeterminada
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale nodos nuevos"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-install-new-nodes.html">
+        Instale nodos nuevos
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure nodos nuevos"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-set-up-new-nodes.html">
+        Configure nodos nuevos
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Opcional: Mueva almacenamiento interno o conviértalo a bandeja de unidades"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Opcional: Mueva almacenamiento interno o conviértalo a bandeja de unidades</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-optional-move-internal-storage.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mover unidades internas"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-move-internal-drives.html">
+        Mover unidades internas
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Convierta el nodo a la bandeja de unidades"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-convert-node-to-shelf.html">
+        Convierta el nodo a la bandeja de unidades
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Conecte las bandejas de almacenamiento y reasigne la propiedad de disco"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-attach-shelves-reassign-disks.html">
+        Conecte las bandejas de almacenamiento y reasigne la propiedad de disco
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurar la configuración de volúmenes raíz"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-restore-root-volume-config.html">
+        Restaurar la configuración de volúmenes raíz
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Se completó la actualización"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Se completó la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-complete.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Complete en ONTAP 9.8 o posterior"
+      data-li-level="4" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Complete en ONTAP 9.8 o posterior</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="5#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-complete-ontap-9-8.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asignar puertos de red con ONTAP 9.8"
+      data-li-level="5#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-map-network-ports-ontap-9-8.html">
+        Asignar puertos de red con ONTAP 9.8
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Realice los últimos pasos en ONTAP 9.8"
+      data-li-level="5#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-final-upgrade-steps-in-ontap-9-8.html">
+        Realice los últimos pasos en ONTAP 9.8
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Complete en ONTAP 9.7 o anterior"
+      data-li-level="4" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Complete en ONTAP 9.7 o anterior</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="5#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-complete-ontap-9-7-or-earlier.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asignar puertos de red con ONTAP 9.7 o una versión anterior"
+      data-li-level="5#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-map-network-ports-ontap-9-7-or-earlier.html">
+        Asignar puertos de red con ONTAP 9.7 o una versión anterior
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Realice los últimos pasos en ONTAP 9.7 o anterior"
+      data-li-level="5#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html">
+        Realice los últimos pasos en ONTAP 9.7 o anterior
+      </a></li></ul></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Actualizar moviendo volúmenes"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Actualizar moviendo volúmenes</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Flujo de trabajo"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-by-moving-volumes-parent.html">
+        Flujo de trabajo
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepare"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-prepare-when-moving-volumes.html">
+        Prepare
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale y únase a los nuevos nodos"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-install-and-join-new-nodes-move-vols.html">
+        Instale y únase a los nuevos nodos
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Crear agregados y mover volúmenes"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-create-aggregate-move-volumes.html">
+        Crear agregados y mover volúmenes
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva LIF de datos sin SAN y LIF de administración de clúster"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-move-lifs-to-new-nodes.html">
+        Mueva LIF de datos sin SAN y LIF de administración de clúster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva, elimine o cree LIF SAN"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Mueva, elimine o cree LIF SAN</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade_move_delete_recreate_san_lifs.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Consideraciones para mover LIF SAN"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade_considerations_move_san_lifs.html">
+        Consideraciones para mover LIF SAN
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Elimine las LIF SAN"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-delete-san-lifs.html">
+        Elimine las LIF SAN
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cree nuevos LIF SAN o vuelva a crear LIF SAN eliminadas"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade_create_recreate_san_lifs.html">
+        Cree nuevos LIF SAN o vuelva a crear LIF SAN eliminadas
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Desunir los nodos originales"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-unjoin-original-nodes-move-volumes.html">
+        Desunir los nodos originales
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Se completó la actualización"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade/upgrade-complete-move-volumes.html">
+        Se completó la actualización
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Use la reubicación de agregados para actualizar el hardware de la controladora"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Use la reubicación de agregados para actualizar el hardware de la controladora</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl/index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utilice los comandos "system Controller replace" para actualizar AFF A700 a AFF A900 o FAS9000 a FAS9500"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Utilice los comandos "system Controller replace" para actualizar AFF A700 a AFF A900 o FAS9000 a FAS9500</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automatice el proceso de actualización de la controladora"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/automate_the_controller_upgrade_process.html">
+        Automatice el proceso de actualización de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Decida si desea utilizar el contenido de reubicación de agregados"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html">
+        Decida si desea utilizar el contenido de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Herramientas y documentación necesarias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/required_tools_and_documentation.html">
+        Herramientas y documentación necesarias
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Directrices para actualizar controladoras"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html">
+        Directrices para actualizar controladoras
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general de la actualización de ARL"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/overview_of_the_arl_upgrade.html">
+        Descripción general de la actualización de ARL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 1. Preparación de la actualización (actualización a AFF A900 o FAS9500)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 1. Prepare la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/stage_1_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la actualización de hardware"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/verify_upgrade_hardware.html">
+        Verifique la actualización de hardware
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepare los nodos para la actualización"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/prepare_nodes_for_upgrade.html">
+        Prepare los nodos para la actualización
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione el cifrado de almacenamiento con el gestor de claves incorporado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/manage_storage_encryption_using_okm.html">
+        Gestione el cifrado de almacenamiento con el gestor de claves incorporado
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fase 2. Reubique los recursos y retire el nodo 1 del A700 o FAS9000 de AFF"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Fase 2. Reubique los recursos y retire el nodo 1 del A700 o FAS9000 de AFF</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/stage_2_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html">
+        Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Se han producido fallos en la reubicación o los agregados vetados"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/relocate_failed_or_vetoed_aggr.html">
+        Se han producido fallos en la reubicación o los agregados vetados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/retire_node1.html">
+        Retire el nodo 1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Netboot el nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/netboot_node1.html">
+        Netboot el nodo 1
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 3. Nodo de arranque con los controladores AFF A900 o FAS9500 y módulos NVRAM"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 3. Nodo de arranque con los controladores AFF A900 o FAS9500 y módulos NVRAM</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/stage_3_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Nodo de arranque con los controladores AFF A900 o FAS9500 y módulos NVRAM"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/boot_node1_with_a900_controller_and_nvs.html">
+        Nodo de arranque con los controladores AFF A900 o FAS9500 y módulos NVRAM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Compruebe la instalación del nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/verify_node1_installation.html">
+        Compruebe la instalación del nodo 1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaure la configuración de Key-Manager en el nodo 1 actualizado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/restore_key_manager_config_upgraded_node1.html">
+        Restaure la configuración de Key-Manager en el nodo 1 actualizado
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 1 actualizado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html">
+        Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 1 actualizado
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 4. Reubicar recursos del nodo 2 y retirar el nodo 2"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 4. Reubicar recursos del nodo 2 y retirar el nodo 2</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/stage_4_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html">
+        Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/retire_node2.html">
+        Retire el nodo 2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 5. Instale el AFF A900 o FAS9500 NVRAM y los módulos de controlador en el nodo 2"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 5. Instale el AFF A900 o FAS9500 NVRAM y los módulos de controlador en el nodo 2</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/stage_5_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale AFF A900 o FAS9500 NVRAM y los módulos de controlador en el nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/install_a900_nvs_and_controller_on_node2.html">
+        Instale AFF A900 o FAS9500 NVRAM y los módulos de controlador en el nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reiniciar el sistema 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/netboot_node2.html">
+        Reiniciar el sistema 2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 6. Inicie el nodo 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 6. Inicie el nodo 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/stage_6_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Inicie el nodo 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/boot_node2_with_a900_controller_and_nvs.html">
+        Inicie el nodo 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Compruebe la instalación del nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/verify_node2_installation.html">
+        Compruebe la instalación del nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaure la configuración de gestor de claves en el nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/restore_key_manager_config_node2.html">
+        Restaure la configuración de gestor de claves en el nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/move_non_root_aggr_and_nas_data_lifs_back_to_node2.html">
+        Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 7. Complete la actualización"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 7. Complete la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/stage_7_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/get_ip_address_of_external_kms_for_storage_encryption.html">
+        Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Confirmar que las nuevas controladoras están configuradas correctamente"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/ensure_new_controllers_are_set_up_correctly.html">
+        Confirmar que las nuevas controladoras están configuradas correctamente
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure Storage Encryption en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/set_up_storage_encryption_new_module.html">
+        Configure Storage Encryption en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/set_up_netapp_volume_encryption_new_module.html">
+        Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el sistema antiguo"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/decommission_old_system.html">
+        Retire el sistema antiguo
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reanudar las operaciones de SnapMirror"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/resume_snapmirror_operations.html">
+        Reanudar las operaciones de SnapMirror
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Solución de problemas (actualizar a AFF A900 o FAS9500)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Solucionar problemas</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/troubleshoot_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fallos de reubicación de agregados"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/aggregate_relocation_failures.html">
+        Fallos de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reinicios, pánicos o ciclos de alimentación"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/reboots_panics_or_power_cycles.html">
+        Reinicios, pánicos o ciclos de alimentación
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Problemas que pueden surgir en varias etapas del procedimiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/issues_in_multiple_stages_of_procedure.html">
+        Problemas que pueden surgir en varias etapas del procedimiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Error de migración de LIF"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/lif_migration_failure.html">
+        Error de migración de LIF
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Referencias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/other_references.html">
+        Referencias
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utilice comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Utilice comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automatice el proceso de actualización de la controladora"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/automate_the_controller_upgrade_process.html">
+        Automatice el proceso de actualización de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Decida si desea utilizar el contenido de reubicación de agregados"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/decide_to_use_the_aggregate_relocation_guide.html">
+        Decida si desea utilizar el contenido de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Herramientas y documentación necesarias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/required_tools_and_documentation.html">
+        Herramientas y documentación necesarias
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Directrices para actualizar controladoras con ARL"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/guidelines_for_upgrading_controllers_with_arl.html">
+        Directrices para actualizar controladoras con ARL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Compruebe el estado de la configuración de MetroCluster"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/verify_health_of_metrocluster_config.html">
+        Compruebe el estado de la configuración de MetroCluster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Compruebe si hay errores de configuración de MetroCluster"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/check_for_metrocluster_config_errors.html">
+        Compruebe si hay errores de configuración de MetroCluster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la conmutación de sitios, el reparación y la conmutación de estado"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/verify_switchover_healing_switchback.html">
+        Verifique la conmutación de sitios, el reparación y la conmutación de estado
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general de la actualización de ARL"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/overview_of_the_arl_upgrade.html">
+        Descripción general de la actualización de ARL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 1. Prepárese para la actualización (actualice con «sustitución de controladora del sistema» en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 1. Prepare la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_1_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepare los nodos para la actualización"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/prepare_nodes_for_upgrade.html">
+        Prepare los nodos para la actualización
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione el cifrado de almacenamiento con el gestor de claves incorporado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/manage_storage_encryption_using_okm.html">
+        Gestione el cifrado de almacenamiento con el gestor de claves incorporado
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fase 2. Reubicar y retirar el nodo 1 (actualizar con el ‘sustitución del controlador del sistema’ en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Fase 2. Reubicar y retirar el nodo 1</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_2_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/relocate_non_root_aggr_nas_data_lifs_node1_node2.html">
+        Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Se han producido fallos en la reubicación o los agregados vetados"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/relocate_failed_vetoed_aggr.html">
+        Se han producido fallos en la reubicación o los agregados vetados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/retire_node1.html">
+        Retire el nodo 1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepárese para el arranque desde el red"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/prepare_for_netboot.html">
+        Prepárese para el arranque desde el red
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 3. Nodo de instalación y arranque 3 (actualización con «sustitución de controladora del sistema» en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 3. Instale y arranque el nodo 3</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_3_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale y arranque el nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/install_boot_node3.html">
+        Instale y arranque el nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Establezca la configuración de FC o UTA/UTA2 en el nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/set_fc_or_uta_uta2_config_on_node3.html">
+        Establezca la configuración de FC o UTA/UTA2 en el nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la instalación del nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/verify_node3_installation.html">
+        Verifique la instalación del nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaure la configuración de gestor de claves en el nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/restore_key-manager_configuration_node3.html">
+        Restaure la configuración de gestor de claves en el nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva agregados que no son raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/move_non-root_aggr_and_nas_data_lifs_node1_from_node2_to_node3.html">
+        Mueva agregados que no son raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 3
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 4. Reubicar y retirar el nodo 2 (actualizar con "sustitución del controlador del sistema" en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 4. Reubicar y retirar el 2</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_4_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html">
+        Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/retire_node2.html">
+        Retire el nodo 2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 5. Nodo de instalación y arranque 4 (actualización con «sustitución de controladora del sistema» en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 5. Instale y arranque el nodo 4</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_5_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale y arranque el nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/install_boot_node4.html">
+        Instale y arranque el nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Establezca la configuración de FC o UTA/UTA2 en el nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/set_fc_or_uta_uta2_config_node4.html">
+        Establezca la configuración de FC o UTA/UTA2 en el nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la instalación del nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/verify_node4_installation.html">
+        Verifique la instalación del nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaure la configuración de gestor de claves en el nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/restore_key-manager_config_node4.html">
+        Restaure la configuración de gestor de claves en el nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 2 desde el nodo 3 al nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/move_non_root_aggr_and_nas_data_lifs_node2_from_node3_to_node4.html">
+        Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 2 desde el nodo 3 al nodo 4
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 6. Complete la actualización (actualice con «sustitución de controladora del sistema» en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 6. Complete la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_6_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/get_ip_address_of_external_kms_for_storage_encryption.html">
+        Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Confirmar que las nuevas controladoras están configuradas correctamente"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/ensure_new_controllers_are_set_up_correctly.html">
+        Confirmar que las nuevas controladoras están configuradas correctamente
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure Storage Encryption en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/set_up_storage_encryption_new_module.html">
+        Configure Storage Encryption en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/set_up_netapp_volume_encryption_new_module.html">
+        Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el sistema antiguo"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/decommission_old_system.html">
+        Retire el sistema antiguo
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reanudar las operaciones de SnapMirror"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/resume_snapmirror_operations.html">
+        Reanudar las operaciones de SnapMirror
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Solución de problemas (actualice con el programa ‘sustitución de controladora del sistema’ en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Solucionar problemas</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/troubleshoot_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fallos de reubicación de agregados"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/aggregate_relocation_failures.html">
+        Fallos de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reinicios, pánicos o ciclos de alimentación"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/reboots_panics_or_power_cycles.html">
+        Reinicios, pánicos o ciclos de alimentación
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Problemas que pueden surgir en varias etapas del procedimiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/issues_in_multiple_stages_of_procedure.html">
+        Problemas que pueden surgir en varias etapas del procedimiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Error de migración de LIF"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/lif_migration_failure.html">
+        Error de migración de LIF
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Referencias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/other_references.html">
+        Referencias
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Decida si desea utilizar el contenido de reubicación de agregados"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/decide_to_use_arl_guide.html">
+        Decida si desea utilizar el contenido de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Flujo de trabajo de actualización de ARL"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/arl_upgrade_workflow.html">
+        Flujo de trabajo de actualización de ARL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Directrices para actualizar controladoras con ARL"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/guidelines_upgrade_with_arl.html">
+        Directrices para actualizar controladoras con ARL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Herramientas y documentación necesarias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/required_tools_documentation.html">
+        Herramientas y documentación necesarias
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hoja de trabajo: Información que se debe recopilar antes y durante la actualización de la controladora"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/worksheet_information_before_during_upgrade.html">
+        Hoja de trabajo: Información que se debe recopilar antes y durante la actualización de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 1. Preparación para la actualización (actualización manual en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 1. Prepare la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_1_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Determine si la controladora tiene agregados en unidades de disco internas"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/determine_aggregates_on_internal_drives.html">
+        Determine si la controladora tiene agregados en unidades de disco internas
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepare los nodos para la actualización"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/prepare_nodes_for_upgrade.html">
+        Prepare los nodos para la actualización
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione la autenticación mediante un gestor de claves incorporado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/manage_authentication_okm.html">
+        Gestione la autenticación mediante un gestor de claves incorporado
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Desactive las relaciones de SnapMirror"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/quiesce_snapmirror_relationships.html">
+        Desactive las relaciones de SnapMirror
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepárese para el arranque desde el red"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/prepare_for_netboot.html">
+        Prepárese para el arranque desde el red
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fase 2. Reubicar y retirar el nodo 1 (actualización manual en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Fase 2. Reubicar y retirar el nodo 1</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_2_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cambie la ubicación de los agregados que no son raíz del nodo 1 al nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/relocate_non_root_aggr_node1_node2.html">
+        Cambie la ubicación de los agregados que no son raíz del nodo 1 al nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva LIF de datos NAS que pertenezcan al nodo 1 al nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node1_node2.html">
+        Mueva LIF de datos NAS que pertenezcan al nodo 1 al nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Registre la información del nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/record_node1_information.html">
+        Registre la información del nodo 1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/retire_node1.html">
+        Retire el nodo 1
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 3. Nodo de instalación y arranque 3 (actualización manual en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 3. Instale y arranque el nodo 3</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_3_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale y arranque el nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/install_boot_node3.html">
+        Instale y arranque el nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Establezca la configuración de FC o UTA/UTA2 en el nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/set_fc_uta_uta2_config_node3.html">
+        Establezca la configuración de FC o UTA/UTA2 en el nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asigne puertos del nodo 1 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/map_ports_node1_node3.html">
+        Asigne puertos del nodo 1 al nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva LIF de datos NAS que pertenecen al nodo 2 al nodo 3 y verifique las LIF DE SAN del nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html">
+        Mueva LIF de datos NAS que pertenecen al nodo 2 al nodo 3 y verifique las LIF DE SAN del nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hoja de trabajo: Información que se debe registrar antes de mover LIF de datos NAS al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/worksheet_information_before_moving_san_lifs_node3.html">
+        Hoja de trabajo: Información que se debe registrar antes de mover LIF de datos NAS al nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz del nodo 2 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/relocate_non_root_aggr_node2_node3.html">
+        Reubique los agregados que no son raíz del nodo 2 al nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva LIF de datos NAS que sean del nodo 2 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node2_node3.html">
+        Mueva LIF de datos NAS que sean del nodo 2 al nodo 3
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 4. Registre información y retire el nodo 2 (actualización manual en ONTAP 9.8 o posterior)."
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 4. Registre la información y retire el nodo 2</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_4_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Grabar información del nodo 2"
+      data-li-level="4#" 
+      class="  active "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html">
+        Grabar información del nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/retire_node2.html">
+        Retire el nodo 2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 5. Nodo de instalación y arranque 4 (actualización manual en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 5. Instale y arranque el nodo 4</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_5_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale y arranque el nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/install_boot_node4.html">
+        Instale y arranque el nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Establezca la configuración de FC o UTA/UTA2 en el nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/set_fc_uta_uta2_config_node4.html">
+        Establezca la configuración de FC o UTA/UTA2 en el nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asigne puertos del nodo 2 al nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/map_ports_node2_node4.html">
+        Asigne puertos del nodo 2 al nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva los LIF de datos NAS que pertenecen al nodo 2 de nodo 3 a nodo 4 y verifique las LIF DE SAN en nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html">
+        Mueva los LIF de datos NAS que pertenecen al nodo 2 de nodo 3 a nodo 4 y verifique las LIF DE SAN en nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hoja de trabajo: Información que se debe registrar antes de mover LIF de datos NAS al nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/worksheet_information_before_moving_san_lifs_node4.html">
+        Hoja de trabajo: Información que se debe registrar antes de mover LIF de datos NAS al nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz del nodo 3 al nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/relocate_node2_non_root_aggr_node3_node4.html">
+        Reubique los agregados que no son raíz del nodo 3 al nodo 4
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 6. Completar la actualización (actualización manual en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 6. Complete la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_6_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/get_address_key_management_server_encryption.html">
+        Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestionar la autenticación mediante servidores KMIP"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/manage_authentication_kmip.html">
+        Gestionar la autenticación mediante servidores KMIP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione la autenticación mediante un gestor de claves incorporado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="#">
+        Gestione la autenticación mediante un gestor de claves incorporado
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Confirmar que las nuevas controladoras están configuradas correctamente"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/ensure_controllers_set_up_correctly.html">
+        Confirmar que las nuevas controladoras están configuradas correctamente
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure Storage Encryption en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/set_up_storage_encryption_new_controller.html">
+        Configure Storage Encryption en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/set_up_netapp_encryption_on_new_controller.html">
+        Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el sistema antiguo"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/decommission_old_system.html">
+        Retire el sistema antiguo
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reanudar las operaciones de SnapMirror"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/resume_snapmirror_ops.html">
+        Reanudar las operaciones de SnapMirror
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Solución de problemas (actualización manual en ONTAP 9.8 o posterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Solucionar problemas</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/troubleshoot_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fallos de reubicación de agregados"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/aggregate_relocation_failures.html">
+        Fallos de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reinicios, pánicos o ciclos de alimentación"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/reboots_panics_power_cycles.html">
+        Reinicios, pánicos o ciclos de alimentación
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Problemas que pueden surgir en varias etapas del procedimiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/issues_multiple_stages_of_procedure.html">
+        Problemas que pueden surgir en varias etapas del procedimiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Error de migración de LIF"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/lif_migration_failure.html">
+        Error de migración de LIF
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Los LIF están en puertos no válidos tras la actualización"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/lifs_invalid_ports_after_upgrade.html">
+        Los LIF están en puertos no válidos tras la actualización
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Referencias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/other_references.html">
+        Referencias
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utilice los comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecuta ONTAP 9.5 a 9.7"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Utilice los comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecuta ONTAP 9.5 a 9.7</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automatice el proceso de actualización de la controladora"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/automate_the_controller_upgrade_process.html">
+        Automatice el proceso de actualización de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Decida si desea utilizar el contenido de reubicación de agregados"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/decide_to_use_the_aggregate_relocation_guide.html">
+        Decida si desea utilizar el contenido de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Herramientas y documentación necesarias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/required_tools_and_documentation.html">
+        Herramientas y documentación necesarias
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Directrices para actualizar controladoras con ARL"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/guidelines_for_upgrading_controllers_with_arl.html">
+        Directrices para actualizar controladoras con ARL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Compruebe el estado de la configuración de MetroCluster"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/verify_health_of_metrocluster_config.html">
+        Compruebe el estado de la configuración de MetroCluster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Compruebe si hay errores de configuración de MetroCluster"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/check_metrocluster_config_errors.html">
+        Compruebe si hay errores de configuración de MetroCluster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la conmutación de sitios, el reparación y la conmutación de estado"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/verify_switchover_healing_switchback.html">
+        Verifique la conmutación de sitios, el reparación y la conmutación de estado
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general de la actualización de ARL"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/overview_of_the_arl_upgrade.html">
+        Descripción general de la actualización de ARL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 1. Prepárese para la actualización (actualice con «sustitución de controladora del sistema» en ONTAP 9.5 a 9.7)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 1. Prepare la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/stage_1_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepare los nodos para la actualización"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/prepare_nodes_for_upgrade.html">
+        Prepare los nodos para la actualización
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione el cifrado del almacenamiento con el gestor de claves incorporado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/manage_storage_encryption_using_okm.html">
+        Gestione el cifrado del almacenamiento con el gestor de claves incorporado
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fase 2. Reubicar y retirar el nodo 1 (actualizar con el "sustitución del controlador del sistema" en ONTAP 9.5 a 9.7)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Fase 2. Reubicar y retirar el nodo 1</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/stage_2_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html">
+        Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Se han producido fallos en la reubicación o los agregados vetados"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/relocate_failed_or_vetoed_aggr.html">
+        Se han producido fallos en la reubicación o los agregados vetados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/retire_node1.html">
+        Retire el nodo 1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepárese para el arranque desde el red"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/prepare_for_netboot.html">
+        Prepárese para el arranque desde el red
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 3. Nodo de instalación y arranque 3 (actualización con «sustitución de controladora del sistema» en ONTAP 9.5 a 9.7)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 3. Instale y arranque el nodo 3</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/stage_3_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale y arranque el nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/install_boot_node3.html">
+        Instale y arranque el nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Establezca la configuración de FC o UTA/UTA2 en el nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/set_fc_or_uta_uta2_config_on_node3.html">
+        Establezca la configuración de FC o UTA/UTA2 en el nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asigne puertos del nodo 1 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/map_ports_node1_node3.html">
+        Asigne puertos del nodo 1 al nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Unir el quórum cuando un nodo tiene un conjunto diferente de puertos de red"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/join_quorum_node_has_different_ports_stage3.html">
+        Unir el quórum cuando un nodo tiene un conjunto diferente de puertos de red
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la instalación del nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/verify_node3_installation.html">
+        Verifique la instalación del nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva agregados que no son raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/move_non_root_aggr_nas_lifs_node1_from_node2_to_node3.html">
+        Mueva agregados que no son raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 3
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 4. Reubicar y retirar el nodo 2 (actualizar con "sustitución del controlador del sistema" en ONTAP 9.5 a 9.7)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 4. Reubicar y retirar el 2</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/stage_4_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html">
+        Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/retire_node2.html">
+        Retire el nodo 2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 5. Nodo de instalación y arranque 4 (actualización con «sustitución de controladora del sistema» en ONTAP 9.5 a 9.7)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 5. Instale y arranque el nodo 4</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/stage_5_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale y arranque el nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/install_boot_node4.html">
+        Instale y arranque el nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Establezca la configuración de FC o UTA/UTA2 en el nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/set_fc_or_uta_uta2_config_node4.html">
+        Establezca la configuración de FC o UTA/UTA2 en el nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asigne puertos del nodo 2 al nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/map_ports_node2_node4.html">
+        Asigne puertos del nodo 2 al nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Unir el quórum cuando un nodo tiene un conjunto diferente de puertos de red"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/join_quorum_node_has_different_ports_stage5.html">
+        Unir el quórum cuando un nodo tiene un conjunto diferente de puertos de red
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la instalación del nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/verify_node4_installation.html">
+        Verifique la instalación del nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 2 desde el nodo 3 al nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/move_non_root_aggr_and_nas_data_lifs_node2_from_node3_to_node4.html">
+        Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 2 desde el nodo 3 al nodo 4
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 6. Complete la actualización (actualice con «sustitución de controladora del sistema» en ONTAP 9.5 a 9.7)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 6. Complete la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/stage_6_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/get_ip_address_of_external_kms_for_storage_encryption.html">
+        Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Confirmar que las nuevas controladoras están configuradas correctamente"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/ensure_new_controllers_are_set_up_correctly.html">
+        Confirmar que las nuevas controladoras están configuradas correctamente
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure Storage Encryption en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/set_up_storage_encryption_new_module.html">
+        Configure Storage Encryption en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/set_up_netapp_volume_encryption_new_module.html">
+        Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el sistema antiguo"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/decommission_old_system.html">
+        Retire el sistema antiguo
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reanudar las operaciones de SnapMirror"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/resume_snapmirror_operations.html">
+        Reanudar las operaciones de SnapMirror
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Solución de problemas (actualizar con el "reemplazo del controlador del sistema" en ONTAP 9.5 a 9.7)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Solucionar problemas</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/troubleshoot_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fallos de reubicación de agregados"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/aggregate_relocation_failures.html">
+        Fallos de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reinicios, pánicos o ciclos de alimentación"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/reboots_panics_or_power_cycles.html">
+        Reinicios, pánicos o ciclos de alimentación
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Problemas que pueden surgir en varias etapas del procedimiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/issues_in_multiple_stages_of_procedure.html">
+        Problemas que pueden surgir en varias etapas del procedimiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Error de migración de LIF"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/lif_migration_failure.html">
+        Error de migración de LIF
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Referencias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-auto/other_references.html">
+        Referencias
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.7 o una versión anterior"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.7 o una versión anterior</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Decida si desea utilizar el contenido de reubicación de agregados"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/decide_to_use_arl_guide.html">
+        Decida si desea utilizar el contenido de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Flujo de trabajo de actualización de ARL"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/arl_upgrade_workflow.html">
+        Flujo de trabajo de actualización de ARL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Directrices para actualizar controladoras con ARL"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/guidelines_upgrade_with_arl.html">
+        Directrices para actualizar controladoras con ARL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Herramientas y documentación necesarias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/required_tools_documentation.html">
+        Herramientas y documentación necesarias
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hoja de trabajo: Información que se debe recopilar antes y durante la actualización de la controladora"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/worksheet_information_before_during_upgrade.html">
+        Hoja de trabajo: Información que se debe recopilar antes y durante la actualización de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Vuelva a configurar el diseño del switch FC para ONTAP 9.1 o posterior"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Vuelva a configurar el diseño del switch FC para ONTAP 9.1 o posterior</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/reconfig_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Envíe un mensaje de AutoSupport personalizado antes de reconfigurar los switches"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/send_custom_asup_message_prior_reconfig_switches.html">
+        Envíe un mensaje de AutoSupport personalizado antes de reconfigurar los switches
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Compruebe el estado de la configuración de MetroCluster"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/verify_health_mcc_config.html">
+        Compruebe el estado de la configuración de MetroCluster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Compruebe si hay errores de configuración de MetroCluster"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/check_mcc_config_errors.html">
+        Compruebe si hay errores de configuración de MetroCluster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Desactive los switches de forma persistente"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/persist_disable_switches.html">
+        Desactive los switches de forma persistente
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Determine la nueva distribución del cableado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/determine_new_cabling_layout.html">
+        Determine la nueva distribución del cableado
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Aplique archivos RCF y vuelva a conectar los conmutadores"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/apply_RCF_files_recable_switches.html">
+        Aplique archivos RCF y vuelva a conectar los conmutadores
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Active los switches de forma persistente"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/persist_enable_switches.html">
+        Active los switches de forma persistente
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la conmutación de sitios, el reparación y la conmutación de estado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/verify_swtichover_healing_switchback.html">
+        Verifique la conmutación de sitios, el reparación y la conmutación de estado
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 1. Preparación para la actualización (actualización manual en ONTAP 9.7 o anterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 1. Prepare la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/stage_1_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Determine si la controladora tiene agregados en unidades de disco internas"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/determine_aggregates_on_internal_drives.html">
+        Determine si la controladora tiene agregados en unidades de disco internas
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepare los nodos para la actualización"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/prepare_nodes_for_upgrade.html">
+        Prepare los nodos para la actualización
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione la autenticación mediante un gestor de claves incorporado"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/manage_authentication_okm.html">
+        Gestione la autenticación mediante un gestor de claves incorporado
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Desactive las relaciones de SnapMirror"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/quiesce_snapmirror_relationships.html">
+        Desactive las relaciones de SnapMirror
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prepárese para el arranque desde el red"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/prepare_for_netboot.html">
+        Prepárese para el arranque desde el red
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fase 2. Reubicar y retirar el nodo 1 (actualización manual en ONTAP 9.7 o anterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Fase 2. Reubicar y retirar el nodo 1</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/stage_2_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cambie la ubicación de los agregados que no son raíz del nodo 1 al nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/relocate_non_root_aggr_node1_node2.html">
+        Cambie la ubicación de los agregados que no son raíz del nodo 1 al nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva LIF de datos NAS que pertenezcan al nodo 1 al nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/move_nas_lifs_node1_node2.html">
+        Mueva LIF de datos NAS que pertenezcan al nodo 1 al nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Registre la información del nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/record_node1_information.html">
+        Registre la información del nodo 1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/retire_node1.html">
+        Retire el nodo 1
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 3. Nodo de instalación y arranque 3 (actualización manual en ONTAP 9.7 o anterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 3. Instale y arranque el nodo 3</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/stage_3_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale y arranque el nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/install_boot_node3.html">
+        Instale y arranque el nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Establezca la configuración de FC o UTA/UTA2 en el nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_fc_uta_uta2_config_node3.html">
+        Establezca la configuración de FC o UTA/UTA2 en el nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asigne puertos del nodo 1 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/map_ports_node1_node3.html">
+        Asigne puertos del nodo 1 al nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la instalación del nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/verify_node3_installation.html">
+        Verifique la instalación del nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva LIF de datos NAS que pertenecen al nodo 2 al nodo 3 y verifique las LIF DE SAN del nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html">
+        Mueva LIF de datos NAS que pertenecen al nodo 2 al nodo 3 y verifique las LIF DE SAN del nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hoja de trabajo: Información que se debe registrar antes de mover LIF de datos NAS al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/worksheet_information_before_moving_san_lifs_node3.html">
+        Hoja de trabajo: Información que se debe registrar antes de mover LIF de datos NAS al nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz del nodo 2 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/relocate_non_root_aggr_node2_node3.html">
+        Reubique los agregados que no son raíz del nodo 2 al nodo 3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva LIF de datos NAS que sean del nodo 2 al nodo 3"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/move_nas_lifs_node2_node3.html">
+        Mueva LIF de datos NAS que sean del nodo 2 al nodo 3
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 4. Registre información y retire el nodo 2 (actualización manual en ONTAP 9.7 o anterior)."
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 4. Registre la información y retire el nodo 2</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/stage_4_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Grabar información del nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/record_node2_information.html">
+        Grabar información del nodo 2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el nodo 2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/retire_node2.html">
+        Retire el nodo 2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 5. Nodo de instalación y arranque 4 (actualización manual en ONTAP 9.7 o anterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 5. Instale y arranque el nodo 4</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/stage_5_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instale y arranque el nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/install_boot_node4.html">
+        Instale y arranque el nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Establezca la configuración de FC o UTA/UTA2 en el nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_fc_uta_uta2_config_node4.html">
+        Establezca la configuración de FC o UTA/UTA2 en el nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asigne puertos del nodo 2 al nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/map_ports_node2_node4.html">
+        Asigne puertos del nodo 2 al nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Verifique la instalación del nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/verify_node4_installation.html">
+        Verifique la instalación del nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mueva los LIF de datos NAS que pertenecen al nodo 2 de nodo 3 a nodo 4 y verifique las LIF DE SAN en nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html">
+        Mueva los LIF de datos NAS que pertenecen al nodo 2 de nodo 3 a nodo 4 y verifique las LIF DE SAN en nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hoja de trabajo: Información que se debe registrar antes de mover LIF de datos NAS al nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/worksheet_information_before_moving_san_lifs_node4.html">
+        Hoja de trabajo: Información que se debe registrar antes de mover LIF de datos NAS al nodo 4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reubique los agregados que no son raíz del nodo 3 al nodo 4"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/relocate_node2_non_root_aggr_node3_node4.html">
+        Reubique los agregados que no son raíz del nodo 3 al nodo 4
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Etapa 6. Completar la actualización (actualización manual en ONTAP 9.7 o anterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Etapa 6. Complete la actualización</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/stage_6_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/get_address_key_management_server_encryption.html">
+        Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestionar la autenticación mediante servidores KMIP"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/manage_authentication_kmip.html">
+        Gestionar la autenticación mediante servidores KMIP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Confirmar que las nuevas controladoras están configuradas correctamente"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/ensure_controllers_set_up_correctly.html">
+        Confirmar que las nuevas controladoras están configuradas correctamente
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure Storage Encryption en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_up_storage_encryption_new_controller.html">
+        Configure Storage Encryption en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_up_netapp_encryption_on_new_controller.html">
+        Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Retire el sistema antiguo"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/decommission_old_system.html">
+        Retire el sistema antiguo
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reanudar las operaciones de SnapMirror"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/resume_snapmirror_ops.html">
+        Reanudar las operaciones de SnapMirror
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Solución de problemas (actualización manual en ONTAP 9.7 o anterior)"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Solucionar problemas</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Descripción general"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/troubleshoot_index.html">
+        Descripción general
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fallos de reubicación de agregados"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/aggregate_relocation_failures.html">
+        Fallos de reubicación de agregados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reinicios, pánicos o ciclos de alimentación"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/reboots_panics_power_cycles.html">
+        Reinicios, pánicos o ciclos de alimentación
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Problemas que pueden surgir en varias etapas del procedimiento"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/issues_multiple_stages_of_procedure.html">
+        Problemas que pueden surgir en varias etapas del procedimiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Error de migración de LIF"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/lif_migration_failure.html">
+        Error de migración de LIF
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Los LIF están en puertos no válidos tras la actualización"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/lifs_invalid_ports_after_upgrade.html">
+        Los LIF están en puertos no válidos tras la actualización
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Referencias"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/ontap-systems-upgrade/upgrade-arl-manual/other_references.html">
+        Referencias
+      </a></li></ul></li></ul></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+<script>$("#mysidebar li.active").parents('ul').css("display","block");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <div class="ie-utility">
+  <button id="btn-sidebar-expand" onclick="showSidebar()"><img src="/es-es/ontap-systems-upgrade/images/expand.png" alt="Expandir panel de navegación"></button>
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/es-es/ontap-systems-family/">AFF and FAS Systems</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/es-es/ontap-systems-upgrade/">Upgrade&nbsp;controllers</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> Se proporciona el idioma español mediante traducción automática para su comodidad. En caso de alguna inconsistencia, el inglés precede al español. </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Grabar información del nodo 2</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2023-02-20 21:07:01 +0000">02/20/2023</time>
+    
+  
+
+<span>Colaboradores
+</span>
+
+
+</p>
+
+<div class="paragraph lead">
+<p>Antes de poder apagar y retirar el nodo 2, debe registrar información acerca de sus puertos de red de clúster, de gestión y de FC, así como del ID del sistema de NVRAM. Es necesario contar con esa información posteriormente en el procedimiento cuando se asignan los discos 2 al nodo 4 y se reasignan los discos.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Pasos</div>
+<ol class="arabic">
+<li>
+<p>Encuentre los puertos de red de clúster, gestión de nodos, interconexión de clústeres y gestión de clústeres en el nodo 2:</p>
+<div class="paragraph">
+<p><code>network interface show -curr-node <em>node_name</em> -role cluster,intercluster,nodemgmt,cluster-mgmt</code></p>
+</div>
+<div class="paragraph">
+<p>El sistema muestra las LIF de ese nodo y otros nodos del clúster, como se muestra en el ejemplo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster::&gt; network interface show -curr-node node2 -role
+cluster,intercluster,node-mgmt,cluster-mgmt
+         Logical     Status     Network            Current     Current Is
+Vserver  Interface   Admin/Oper Address/Mask       Node        Port    Home
+-------- ----------  ---------- ------------------ ----------  ------- ----
+node2
+         intercluster up/up     192.168.1.202/24   node2       e0e     true
+         clus1        up/up     169.254.xx.xx/24   node2       e0a     true
+         clus2        up/up     169.254.xx.xx/24   node2       e0b     true
+         mgmt1        up/up     192.168.0.xxx/24   node2       e0c     true
+4 entries were displayed.</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-upgrade/images/note.svg" alt="Nota">
+</td>
+<td class="content">
+Es posible que el sistema no tenga LIF de interconexión de clústeres. Solo tendrá un LIF de gestión de clústeres en un nodo de una pareja de nodos. Se muestra una LIF de gestión de clústeres en el resultado del ejemplo de <a href="record_node1_information.html#step">"Paso 1"</a> En <em>Record 1 Información del puerto</em>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Capture la información de la salida que se va a utilizar en la sección <a href="map_ports_node2_node4.html">"Asigne puertos del nodo 2 al nodo 4"</a>.</p>
+<div class="paragraph">
+<p>La información de salida se requiere para asignar los nuevos puertos de la controladora a los puertos anteriores de la controladora.</p>
+</div>
+</li>
+<li>
+<p>Determine los puertos físicos en el nodo 2:</p>
+<div class="paragraph">
+<p><code>network port show -node <em>node_name</em> -type physical</code> +</p>
+</div>
+<div class="paragraph">
+<p><code><em>node_name</em></code> es el nodo que se está migrando.</p>
+</div>
+<div class="paragraph">
+<p>El sistema muestra los puertos físicos en el nodo 2, como se muestra en el ejemplo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster::&gt; network port show -node node2 -type physical
+
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- -----------
+node2
+       e0M       Default      IP_address       up       1500  auto/100
+       e0a       Default      -                up       1500  auto/1000
+       e0b       Default      -                up       1500  auto/1000
+       e1a       Cluster      Cluster          up       9000  auto/10000
+       e1b       Cluster      Cluster          up       9000  auto/10000
+5 entries were displayed.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Registre los puertos y sus dominios de retransmisión.</p>
+<div class="paragraph">
+<p>Se deberán asignar los dominios de retransmisión a los puertos en la nueva controladora más adelante en el procedimiento.</p>
+</div>
+</li>
+<li>
+<p>Determinar los puertos FC en el nodo 2:</p>
+<div class="paragraph">
+<p><code>network fcp adapter show</code></p>
+</div>
+<div class="paragraph">
+<p>El sistema muestra los puertos FC en el nodo 2, como se muestra en el ejemplo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster::&gt; network fcp adapter show -node node2
+                     Connection  Host
+Node         Adapter Established Port Address
+------------ ------- ----------- ------------
+node2
+             0a      ptp         11400
+node2
+             0c      ptp         11700
+node2
+             6a      loop        0
+node2
+             6b      loop        0
+4 entries were displayed.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Registre los puertos.</p>
+<div class="paragraph">
+<p>La información de salida es necesaria para asignar los puertos FC nuevos en la nueva controladora más adelante en el procedimiento.</p>
+</div>
+</li>
+<li>
+<p>Si aún no lo ha hecho, compruebe si hay grupos de interfaces o VLAN configuradas en el nodo 2:</p>
+<div class="paragraph">
+<p><code>ifgrp show</code></p>
+</div>
+<div class="paragraph">
+<p><code>vlan show</code></p>
+</div>
+<div class="paragraph">
+<p>Utilizará la información de la sección <a href="map_ports_node2_node4.html">"Asigne puertos del nodo 2 al nodo 4"</a>.</p>
+</div>
+</li>
+<li>
+<p>Realice una de las siguientes acciones:</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 35%;">
+<col style="width: 65%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Si&#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">Realice lo siguiente&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Número de ID del sistema NVRAM registrado en <a href="prepare_nodes_for_upgrade.html">"Prepare los nodos para la actualización"</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vaya a. <a href="retire_node2.html">"Retire el nodo 2"</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No ha registrado el número de ID del sistema NVRAM en <a href="prepare_nodes_for_upgrade.html">"Prepare los nodos para la actualización"</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Completo <a href="#man_record_2_step9">Paso 9</a> y.. <a href="#man_record_2_step10">Paso 10</a> y, a continuación, pasar a la siguiente sección, <a href="retire_node2.html">"Retire el nodo 2"</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><a id="man_record_2_step9"></a>Mostrar los atributos del nodo 2:</p>
+<div class="paragraph">
+<p><code>system node show -instance -node node2</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster::&gt; system node show -instance -node node2
+                            ...
+                 NVRAM System ID: system_ID
+                           ...</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a id="man_record_2_step10"></a>registre el ID del sistema NVRAM que se va a utilizar en la sección <a href="install_boot_node4.html">"Instale y arranque el nodo 4"</a>.</p>
+</li>
+</ol>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/copyright/">© 2023 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Términos y condiciones</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Política de privacidad</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Política de Cookies</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Configuración de cookies</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a target="_self" href="javascript:netapp_mailto()">Enviar comentarios sobre esta página</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/es-es/ontap-systems-upgrade/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/es-es/ontap-systems-upgrade/js/prism.js'></script>
+      <script type="text/javascript" src='/es-es/ontap-systems-upgrade/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/es-es/ontap-systems-upgrade/js/www-ntap.js'></script>
+    <script src='/es-es/ontap-systems-upgrade/js/tabbed-blocks.js'></script>
+    <script src='/es-es/ontap-systems-upgrade/js/sidebar.js'></script>
+  </body></html>
