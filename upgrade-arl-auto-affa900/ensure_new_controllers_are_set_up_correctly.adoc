@@ -123,7 +123,7 @@ Introduzca `y` para eliminar todos los paquetes.
 +
 Puede comparar la salida con la que ha capturado en link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] sección.
 
-. Si se utilizan unidades de autocifrado en la configuración y se han configurado el `kmip.init.maxwait` variable a. `off` (Por ejemplo, en _Boot 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM_, link:boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1["Paso 1"]), debe anular la definición de la variable:
+. [[unset_maxwait]] Si se utilizan unidades de autocifrado en la configuración y se ha configurado el `kmip.init.maxwait` variable a. `off` (Por ejemplo, en _Boot 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM_, link:boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1["Paso 1"]), debe anular la definición de la variable:
 +
 `set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
 

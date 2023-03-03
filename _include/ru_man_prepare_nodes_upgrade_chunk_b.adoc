@@ -387,9 +387,9 @@ Los campos `Last Subject Sent:` y.. `Last Time Sent:` contiene el título del me
 
 [NOTE]
 ====
-*** No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo o la pareja de alta disponibilidad.
-*** Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.
+No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo o la pareja de alta disponibilidad.
 
+Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.
 
 ====
 https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryption-concept.html#supported-self-encrypting-drive-types["Obtenga más información sobre las unidades de autocifrado compatibles"^].
