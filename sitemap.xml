@@ -92,14 +92,14 @@
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/boot_node1_with_a900_controller_and_nvs.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/boot_node2_with_a900_controller_and_nvs.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
@@ -218,35 +218,35 @@
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/ensure_controllers_set_up_correctly.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/ensure_controllers_set_up_correctly.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/ensure_new_controllers_are_set_up_correctly.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/ensure_new_controllers_are_set_up_correctly.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/ensure_new_controllers_are_set_up_correctly.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
@@ -379,56 +379,56 @@
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/install_boot_node3.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/install_boot_node3.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/install_boot_node3.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/install_boot_node3.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/install_boot_node4.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/install_boot_node4.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/install_boot_node4.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/install_boot_node4.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
@@ -855,35 +855,35 @@
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/prepare_nodes_for_upgrade.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/prepare_nodes_for_upgrade.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/prepare_nodes_for_upgrade.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/prepare_nodes_for_upgrade.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/prepare_nodes_for_upgrade.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
@@ -1268,7 +1268,7 @@
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade//search.html</loc>
       
-      <lastmod>2023-02-20T21:07:17+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:31+00:00</lastmod>
       
     </url>
   

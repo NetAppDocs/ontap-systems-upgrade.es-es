@@ -79,11 +79,17 @@
 
   <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/es-es/ontap-systems-upgrade/js/na-search.js'></script><script src='/es-es/ontap-systems-upgrade/js/na-pagenav.js'></script><script src='/es-es/ontap-systems-upgrade/js/na-utility.js'></script>
+ <!--  
+  <link rel='stylesheet' href='/es-es/ontap-systems-upgrade/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/es-es/ontap-systems-upgrade/css/prism-netapp.css' type='text/css'>
+ -->
+
+  <!-- <script src='/es-es/ontap-systems-upgrade/js/na-utility.js'></script> -->
   <script src='/es-es/ontap-systems-upgrade/js/clouddocs.js'></script>
   <script src='/es-es/ontap-systems-upgrade/js/jquery.navgoco.min.js'></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src='/es-es/ontap-systems-upgrade/js/toc.js'></script>
-  <script src='/es-es/ontap-systems-upgrade/js/customscripts.js'></script><script>
+  <!-- <script src='/es-es/ontap-systems-upgrade/js/toc.js'></script> -->
+  <!-- <script src='/es-es/ontap-systems-upgrade/js/customscripts.js'></script> --><script>
       $(document).ready(function() {
           
           var collapseOnInit = true;
@@ -148,7 +154,7 @@
   <script src='/es-es/ontap-systems-upgrade/js/FileSaver.min.js'></script>
   <script src='/es-es/ontap-systems-upgrade/js/jszip-utils.min.js'></script>
   <script src='/es-es/ontap-systems-upgrade/js/jszip.min.js'></script>
-  <script src='/es-es/ontap-systems-upgrade/js/pdf-ux.js'></script>
+  <!-- <script src='/es-es/ontap-systems-upgrade/js/pdf-ux.js'></script> -->
 </head>
 
 
@@ -221,7 +227,7 @@
           <span class="n-property-bar__menu-toggle-text">Menu</span>
           <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
             <title>bars</title>
-            <use xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#bars"></use>
+            <use xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#bars"></use>
           </svg>
         </a>
       </div>
@@ -230,11 +236,11 @@
           <div class="n-property-bar__logo">
             <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
               <title>netapp-mark</title>
-              <use xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#netapp-mark"></use>
+              <use xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#netapp-mark"></use>
             </svg>
             <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
               <title>netapp-logo</title>
-              <use xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#netapp-logo"></use>
+              <use xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#netapp-logo"></use>
             </svg>
           </div>
         </a>
@@ -260,7 +266,7 @@
           <button class="n-property-bar__search-toggle-button" type="button">
             <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
               <title>search</title>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#search"></use>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#search"></use>
             </svg>
           </button>
         </div>
@@ -274,7 +280,7 @@
       <span class="lang-name">Español</span>
           <svg class="n-globe__icon" aria-labelledby="title">
             <title>globe</title>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#globe"></use>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#globe"></use>
           </svg>
         </button>
       </div>
@@ -4591,7 +4597,7 @@
     <div class="ie-nmt-disclaimer-container">
       <div class="ie-nmt-disclaimer-icon">
         <svg class="luci-icon" aria-hidden="true">
-          <use xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#circle-info">
+          <use xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#circle-info">
         </svg>
       </div>
       <div class="ie-nmt-disclaimer-content">
@@ -4608,7 +4614,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-02-20 21:07:01 +0000">02/20/2023</time>
+    <time datetime="2023-03-03 09:05:15 +0000">03/03/2023</time>
     
   
 
@@ -4806,9 +4812,6 @@ Controller replacement operation has been paused for user intervention.</pre>
 </li>
 </ul>
 </div>
-</li>
-</ol>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -4821,8 +4824,7 @@ Si está en uso el cifrado de volúmenes de NetApp (NVE) o el cifrado de agregad
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Si su sistema utiliza unidades de autocifrado, consulte el artículo de la base de conocimientos <a href="https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed" target="_blank" rel="noopener">"Cómo indicar que tengo unidades FIPS instaladas"</a> Para determinar el tipo de unidades de autocifrado que se están utilizando en la pareja de alta disponibilidad que se está actualizando. El software ONTAP admite dos tipos de unidades de autocifrado:</p>
 <div class="openblock">
@@ -4844,15 +4846,11 @@ Si está en uso el cifrado de volúmenes de NetApp (NVE) o el cifrado de agregad
 <img src="/us-en/ontap-systems-upgrade/images/note.svg" alt="Nota">
 </td>
 <td class="content">
-<div class="ulist">
-<ul>
-<li>
+<div class="paragraph">
 <p>No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo o la pareja de alta disponibilidad.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.</p>
-</li>
-</ul>
 </div>
 </td>
 </tr>
@@ -4985,7 +4983,7 @@ aggr4       node1      node1       online
                 <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
                   <title>blog@</title>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#blog"></use>
+                    xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#blog"></use>
                 </svg>
               </a>
             </li>
@@ -4996,7 +4994,7 @@ aggr4       node1      node1       online
                 <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
                   <title>community@</title>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#comments"></use>
+                    xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#comments"></use>
                 </svg>
               </a>
             </li>
@@ -5007,7 +5005,7 @@ aggr4       node1      node1       online
                 <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
                   <title>twitter@</title>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#twitter"></use>
+                    xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#twitter"></use>
                 </svg>
               </a>
             </li>
@@ -5018,7 +5016,7 @@ aggr4       node1      node1       online
                 <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
                   <title>facebook@</title>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#facebook"></use>
+                    xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#facebook"></use>
                 </svg>
               </a>
             </li>
@@ -5029,7 +5027,7 @@ aggr4       node1      node1       online
                 <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
                   <title>linkedin@</title>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#linkedin"></use>
+                    xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#linkedin"></use>
                 </svg>
               </a>
             </li>
@@ -5040,7 +5038,7 @@ aggr4       node1      node1       online
                 <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
                   <title>youtube@</title>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#youtube"></use>
+                    xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#youtube"></use>
                 </svg>
               </a>
             </li>
@@ -5051,7 +5049,7 @@ aggr4       node1      node1       online
                 <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
                   <title>slideshare@</title>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xlink:href="/es-es/ontap-systems-upgrade/common/svg/sprite.svg#slideshare"></use>
+                    xlink:href="/es-es/ontap-systems-upgrade/images/sprite.svg#slideshare"></use>
                 </svg>
               </a>
             </li>
@@ -5075,7 +5073,6 @@ aggr4       node1      node1       online
       cookieLaw.euCountry = "US";
       cookieLaw.invoke = function(){return false;}
     </script>
-    <script src='/es-es/ontap-systems-upgrade/js/www-ntap.js'></script>
     <script src='/es-es/ontap-systems-upgrade/js/tabbed-blocks.js'></script>
     <script src='/es-es/ontap-systems-upgrade/js/sidebar.js'></script>
   </body></html>
