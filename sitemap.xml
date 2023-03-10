@@ -13,6 +13,13 @@
   
   
     <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/aggregate_relocation_failures.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/aggregate_relocation_failures.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -20,7 +27,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/aggregate_relocation_failures.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/aggregate_relocation_failures.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -41,21 +48,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/aggregate_relocation_failures.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/apply_RCF_files_recable_switches.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/arl_upgrade_workflow.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -69,7 +62,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/automate_the_controller_upgrade_process.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/arl_upgrade_workflow.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -77,6 +70,13 @@
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/automate_the_controller_upgrade_process.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/automate_the_controller_upgrade_process.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -125,13 +125,6 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/decide_to_use_arl_guide.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/decide_to_use_arl_guide.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -139,7 +132,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/decide_to_use_arl_guide.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -153,7 +146,21 @@
     </url>
   
     <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/decide_to_use_the_aggregate_relocation_guide.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/decommission_old_system.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -167,7 +174,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/decommission_old_system.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/decommission_old_system.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -188,7 +195,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/decommission_old_system.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/determine_aggregates_on_internal_drives.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -202,23 +209,9 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/determine_aggregates_on_internal_drives.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/determine_new_cabling_layout.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/ensure_controllers_set_up_correctly.html</loc>
-      
-      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
@@ -230,7 +223,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/ensure_new_controllers_are_set_up_correctly.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/ensure_controllers_set_up_correctly.html</loc>
       
       <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
@@ -244,16 +237,16 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/ensure_new_controllers_are_set_up_correctly.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/ensure_new_controllers_are_set_up_correctly.html</loc>
       
       <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/get_address_key_management_server_encryption.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/ensure_new_controllers_are_set_up_correctly.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
@@ -265,7 +258,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/get_ip_address_of_external_kms_for_storage_encryption.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/get_address_key_management_server_encryption.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -279,14 +272,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/get_ip_address_of_external_kms_for_storage_encryption.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/get_ip_address_of_external_kms_for_storage_encryption.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/get_ip_address_of_external_kms_for_storage_encryption.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -300,14 +293,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/guidelines_for_upgrading_controllers_with_arl.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/guidelines_upgrade_with_arl.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/guidelines_for_upgrading_controllers_with_arl.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -321,14 +314,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl/</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/guidelines_upgrade_with_arl.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -342,14 +328,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -357,6 +336,27 @@
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl/</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -372,12 +372,19 @@
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/install_a900_nvs_and_controller_on_node2.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-10T07:31:22+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/install_boot_node3.html</loc>
+      
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/install_boot_node3.html</loc>
       
       <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
@@ -398,14 +405,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/install_boot_node3.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/install_boot_node4.html</loc>
       
       <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/install_boot_node4.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/install_boot_node4.html</loc>
       
       <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
@@ -426,21 +433,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/install_boot_node4.html</loc>
-      
-      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/issues_in_multiple_stages_of_procedure.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/issues_in_multiple_stages_of_procedure.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/issues_in_multiple_stages_of_procedure.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/issues_in_multiple_stages_of_procedure.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -454,14 +454,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/issues_multiple_stages_of_procedure.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/issues_multiple_stages_of_procedure.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/issues_multiple_stages_of_procedure.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/issues_multiple_stages_of_procedure.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -482,6 +482,13 @@
     </url>
   
     <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/lif_migration_failure.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/lif_migration_failure.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -489,7 +496,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/lif_migration_failure.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/lif_migration_failure.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -510,7 +517,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/lif_migration_failure.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/lifs_invalid_ports_after_upgrade.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -524,7 +531,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/lifs_invalid_ports_after_upgrade.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/manage_authentication_kmip.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -538,7 +545,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/manage_authentication_kmip.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/manage_authentication_okm.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -552,7 +559,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/manage_authentication_okm.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/manage_storage_encryption_using_okm.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -566,14 +573,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/manage_storage_encryption_using_okm.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/manage_storage_encryption_using_okm.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/manage_storage_encryption_using_okm.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/map_ports_node1_node3.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -594,7 +601,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/map_ports_node1_node3.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/map_ports_node2_node4.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -615,7 +622,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/map_ports_node2_node4.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -629,7 +636,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node1_node2.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -643,7 +650,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node1_node2.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -657,7 +664,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node2_node3.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -665,13 +672,6 @@
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/move_nas_lifs_node2_node3.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/move_nas_lifs_node2_node3.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -734,20 +734,6 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/other_references.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl/other_references.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/other_references.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -755,14 +741,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/other_references.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/other_references.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/other_references.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -776,7 +755,21 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/overview.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/other_references.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl/other_references.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/other_references.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -790,7 +783,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/overview_of_the_arl_upgrade.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/overview.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -798,6 +791,13 @@
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/overview_of_the_arl_upgrade.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/overview_of_the_arl_upgrade.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -832,6 +832,13 @@
     </url>
   
     <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/prepare_for_netboot.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/prepare_for_netboot.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -846,9 +853,9 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/prepare_for_netboot.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/prepare_nodes_for_upgrade.html</loc>
       
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
     </url>
   
@@ -860,7 +867,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/prepare_nodes_for_upgrade.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/prepare_nodes_for_upgrade.html</loc>
       
       <lastmod>2023-03-03T09:05:15+00:00</lastmod>
       
@@ -881,20 +888,6 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/prepare_nodes_for_upgrade.html</loc>
-      
-      <lastmod>2023-03-03T09:05:15+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/quiesce_snapmirror_relationships.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/quiesce_snapmirror_relationships.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -902,7 +895,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/reboots_panics_or_power_cycles.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/quiesce_snapmirror_relationships.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -916,14 +909,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/reboots_panics_or_power_cycles.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/reboots_panics_or_power_cycles.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/reboots_panics_power_cycles.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/reboots_panics_or_power_cycles.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -937,14 +930,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/reconfig_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/reboots_panics_power_cycles.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/record_node1_information.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/reconfig_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -958,7 +951,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/record_node2_information.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/record_node1_information.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -966,6 +959,13 @@
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/record_node2_information.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/record_node2_information.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1007,14 +1007,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/relocate_node2_non_root_aggr_node3_node4.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/relocate_node2_non_root_aggr_node3_node4.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/relocate_node2_non_root_aggr_node3_node4.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/relocate_node2_non_root_aggr_node3_node4.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1070,13 +1070,6 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/relocate_non_root_aggr_node1_node2.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/relocate_non_root_aggr_node1_node2.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -1084,7 +1077,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/relocate_non_root_aggr_node2_node3.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/relocate_non_root_aggr_node1_node2.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1098,7 +1091,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/required_tools_and_documentation.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/relocate_non_root_aggr_node2_node3.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1112,6 +1105,13 @@
     </url>
   
     <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/required_tools_and_documentation.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/required_tools_and_documentation.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -1119,14 +1119,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/required_tools_documentation.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/required_tools_documentation.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/required_tools_documentation.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/required_tools_documentation.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1161,14 +1161,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/resume_snapmirror_operations.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/resume_snapmirror_operations.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/resume_snapmirror_operations.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/resume_snapmirror_operations.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1182,6 +1182,13 @@
     </url>
   
     <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/resume_snapmirror_ops.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/resume_snapmirror_ops.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -1189,7 +1196,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/resume_snapmirror_ops.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/retire_node1.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1203,7 +1210,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/retire_node1.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/retire_node1.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1224,7 +1231,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/retire_node1.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/retire_node2.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1238,7 +1245,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/retire_node2.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/retire_node2.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1259,16 +1266,9 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/retire_node2.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade//search.html</loc>
       
-      <lastmod>2023-03-03T09:05:31+00:00</lastmod>
+      <lastmod>2023-03-10T07:31:37+00:00</lastmod>
       
     </url>
   
@@ -1308,13 +1308,6 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_fc_uta_uta2_config_node3.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/set_fc_uta_uta2_config_node3.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -1322,7 +1315,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_fc_uta_uta2_config_node4.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_fc_uta_uta2_config_node3.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1336,7 +1329,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_up_netapp_encryption_on_new_controller.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_fc_uta_uta2_config_node4.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1350,7 +1343,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/set_up_netapp_volume_encryption_new_module.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_up_netapp_encryption_on_new_controller.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1364,14 +1357,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/set_up_netapp_volume_encryption_new_module.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/set_up_netapp_volume_encryption_new_module.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_up_storage_encryption_new_controller.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/set_up_netapp_volume_encryption_new_module.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1385,7 +1378,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/set_up_storage_encryption_new_module.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/set_up_storage_encryption_new_controller.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1399,7 +1392,21 @@
     </url>
   
     <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/set_up_storage_encryption_new_module.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/set_up_storage_encryption_new_module.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_1_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1413,7 +1420,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_1_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_1_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1434,7 +1441,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_1_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_2_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1448,7 +1455,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_2_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_2_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1469,7 +1476,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_2_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_3_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1483,7 +1490,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_3_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_3_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1504,7 +1511,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_3_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_4_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1518,7 +1525,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_4_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_4_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1539,7 +1546,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_4_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_5_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1553,7 +1560,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_5_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_5_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1574,7 +1581,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_5_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_6_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1588,7 +1595,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/stage_6_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_6_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1603,13 +1610,6 @@
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/stage_6_</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/stage_6_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1637,14 +1637,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/troubleshoot_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/troubleshoot_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-app/troubleshoot_</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto-affa900/troubleshoot_</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1840,14 +1840,14 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/upgrade_node_pair.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/upgrade_node_pair.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/upgrade_node_pair.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/upgrade_node_pair.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -1987,6 +1987,13 @@
     </url>
   
     <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/verify_node4_installation.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-auto/verify_node4_installation.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -1995,13 +2002,6 @@
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/verify_node4_installation.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/verify_node4_installation.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -2036,13 +2036,6 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/worksheet_information_before_during_upgrade.html</loc>
-      
-      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/worksheet_information_before_during_upgrade.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
@@ -2050,7 +2043,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/worksheet_information_before_moving_san_lifs_node3.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/worksheet_information_before_during_upgrade.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -2064,7 +2057,7 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/worksheet_information_before_moving_san_lifs_node4.html</loc>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/worksheet_information_before_moving_san_lifs_node3.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
@@ -2072,6 +2065,13 @@
   
     <url>
       <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual-app/worksheet_information_before_moving_san_lifs_node4.html</loc>
+      
+      <lastmod>2023-02-20T21:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/es-es/ontap-systems-upgrade/upgrade-arl-manual/worksheet_information_before_moving_san_lifs_node4.html</loc>
       
       <lastmod>2023-02-20T21:07:01+00:00</lastmod>
       
