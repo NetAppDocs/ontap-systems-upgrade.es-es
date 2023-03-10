@@ -68,4 +68,12 @@ WARNING: Para evitar dañar los conectores, no ejerza una fuerza excesiva al des
 
 . Conecte la consola de serie en cuanto esté sentado el módulo y esté listo para interrumpir EL ARRANQUE AUTOMÁTICO del nodo 1.
 . Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 2 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe EL ARRANQUE AUTOMÁTICO a tiempo y el nodo 2 empieza a arrancar, espere a que aparezca el mensaje y pulse *Ctrl-C* para ir al menú de inicio. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` Para reiniciar el nodo e interrumpir EL ARRANQUE AUTOMÁTICO durante el reinicio.
+. En el símbolo del SISTEMA LOADER> 2, establezca las variables de entorno predeterminadas:
++
+`set-defaults`
+
+. Guarde la configuración predeterminada de las variables de entorno:
++
+`saveenv`
+
 
