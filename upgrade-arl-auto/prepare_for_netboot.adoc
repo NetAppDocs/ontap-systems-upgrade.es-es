@@ -24,7 +24,7 @@ Después de montar físicamente en rack los nodos 3 y 4 posteriormente en el pro
 .Acerca de esta tarea
 Debe reiniciar el sistema de las controladoras nuevas si no tienen la misma versión de ONTAP 9 instalada en ellas que se instala en las controladoras originales. Tras instalar cada controladora nueva, arranque el sistema desde la imagen de ONTAP 9 almacenada en el servidor web. A continuación, puede descargar los archivos correctos en el dispositivo multimedia de arranque para posteriores arranques del sistema.
 
-Sin embargo, no es necesario reiniciar el sistema las controladoras si se instala la misma versión de ONTAP 9 en ellas que se instalan en las controladoras originales. Si es así, puede omitir esta sección y continuar a. link:stage_3_install_boot_node3_overview.html["Fase 3 instalar y arrancar el nodo 3"]
+Sin embargo, no es necesario reiniciar el sistema las controladoras si se instala la misma versión de ONTAP 9 en ellas que se instalan en las controladoras originales. Si es así, puede omitir esta sección y continuar a. link:install_boot_node3.html["Fase 3 instalar y arrancar el nodo 3"]
 
 .Pasos
 . Acceda al sitio de soporte de NetApp para descargar los archivos utilizados para realizar el arranque desde el sistema.
@@ -57,6 +57,6 @@ NOTE: No es necesario extraer el contenido del `<ontap_version>_image.tgz` archi
 
 |===
 +
-Utilizará la información de los directorios en link:stage_3_install_boot_node3_overview.html["Etapa 3"].
+Utilizará la información de los directorios en link:install_boot_node3.html["Etapa 3"].
 
 

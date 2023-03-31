@@ -6,7 +6,7 @@ Durante la fase 2, debe reubicar agregados no raíz y LIF de datos NAS al nodo 1
 
 .Pasos
 . link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"]
-. link:relocate_failed_vetoed_aggr.html["Se han producido fallos en la reubicación o los agregados vetados"]
+. link:relocate_failed_or_vetoed_aggr.html["Se han producido fallos en la reubicación o los agregados vetados"]
 . link:retire_node1.html["Retire el nodo 1"]
 . link:prepare_for_netboot.html["Prepárese para el arranque desde el red"]
 

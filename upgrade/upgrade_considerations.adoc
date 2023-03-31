@@ -49,7 +49,7 @@ Para ver los requisitos de tamaño de los agregados raíz, consulte https://hwu.
 Con almacenamiento interno
 
 
-NOTE: Los siguientes sistemas tienen almacenamiento interno: FAS2520, FAS2552, FAS2554, FAS2620, FAS2650, FAS2720, FAS2750, AFF A200, AFF A220, AFF A700s, AFF A800, AFF A250 y AFF C190.
+NOTE: Los siguientes sistemas tienen almacenamiento interno: FAS2520, FAS2552, FAS2554, FAS2620, FAS2650, FAS2720, FAS2750, AFF A200, AFF A220, AFF A700s, AFF A800, AFF A250, AFF C250 y AFF C190.
 
 * Si su sistema no aparece en la lista anterior, consulte https://hwu.netapp.com["Hardware Universe de NetApp"^] para comprobar si tiene unidades internas.
 * Si tiene un sistema con almacenamiento interno, el método de actualización recomendado es actualizar mediante la transferencia de volúmenes.
@@ -79,7 +79,7 @@ https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FlexPod_wi
 
 * Si el sistema utiliza una ACP fuera de banda, es posible que deba migrar de una ACP fuera de banda a ACP en banda.
 +
-https://kb.netapp.com/app/answers/answer_view/a_id/1029778["Artículo de la base de conocimientos de NetApp 1029778: Configuración y soporte de ACP en banda"^]
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/In-Band_ACP_Setup_and_Support["Artículo de la base de conocimientos de NetApp: Configuración y soporte de ACP en banda"^]
 
 
 

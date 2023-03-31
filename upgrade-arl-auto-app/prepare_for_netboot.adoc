@@ -55,6 +55,6 @@ NOTE: No es necesario extraer el contenido del `<ontap_version>_image.tgz` archi
 
 |===
 +
-Utilizará la información de los directorios en link:stage_3_install_boot_node3_overview.html["Etapa 3"].
+Utilizará la información de los directorios en link:install_boot_node3.html["Etapa 3"].
 
 
