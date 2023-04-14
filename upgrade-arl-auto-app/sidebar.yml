@@ -41,7 +41,7 @@ entries:
       al nodo 1 al nodo 2
     url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_data_lifs_node1_node2.html"
   - title: Se han producido fallos en la reubicación o los agregados vetados
-    url: "/upgrade-arl-auto-app/relocate_failed_vetoed_aggr.html"
+    url: "/upgrade-arl-auto-app/relocate_failed_or_vetoed_aggr.html"
   - title: Retire el nodo 1
     url: "/upgrade-arl-auto-app/retire_node1.html"
   - title: Prepárese para el arranque desde el red

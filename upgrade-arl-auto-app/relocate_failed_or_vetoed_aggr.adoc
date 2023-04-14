@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-app/relocate_failed_vetoed_aggr.html 
+permalink: upgrade-arl-auto-app/relocate_failed_or_vetoed_aggr.html 
 keywords: relocating, failed, vetoed, aggregates, relocation, operation 
 summary: 'Reubicar manualmente agregados con fallos o vetados cuando se actualicen controladoras que ejecuten ONTAP 9.8 o una versión posterior mediante el uso de `system controller replace` comandos.' 
 ---
