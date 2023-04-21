@@ -19,7 +19,7 @@ Durante la fase 1, si es necesario, puede confirmar que las unidades de disco in
 .Pasos
 . link:determine_aggregates_on_internal_drives.html["Determine si la controladora tiene agregados en unidades de disco internas"]
 . link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"]
-. link:manage_authentication_okm.html["Gestione la autenticación mediante un gestor de claves incorporado"]
+. link:manage_authentication_okm.html["Gestione claves de autenticación mediante el gestor de claves incorporado"]
 . link:quiesce_snapmirror_relationships.html["Desactive las relaciones de SnapMirror"]
 . link:prepare_for_netboot.html["Prepárese para el arranque desde el red"]
 

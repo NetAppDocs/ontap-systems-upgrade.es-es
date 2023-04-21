@@ -682,19 +682,14 @@ node2            enable    Postmaster    -                 mailhost
 
 
 | Tiene AutoSupport habilitado...  a| 
-.. Vaya a. <<man_prepare_nodes_step34,Paso 34>>.
-.. Vaya a la sección link:get_address_key_management_server_encryption.html["Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento"].
-
+Vaya a. <<man_prepare_nodes_step34,Paso 34>>.
 
 
 
 | No tiene AutoSupport habilitado...  a| 
-.. Habilite AutoSupport siguiendo las instrucciones de _System Administration Reference_. (Consulte link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_.)
-+
-*Nota:* AutoSupport se activa de forma predeterminada cuando configura el sistema de almacenamiento por primera vez. Aunque puede deshabilitar AutoSupport en cualquier momento, debe dejarla habilitada. Habilitar AutoSupport puede ayudar de forma significativa a identificar problemas y soluciones cuando se producen fallos en el sistema de almacenamiento.
+Habilite AutoSupport siguiendo las instrucciones de _System Administration Reference_. (Consulte link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_.)
 
-.. Vaya a la link:get_address_key_management_server_encryption.html["Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento"] sección.
-
++ *Nota:* AutoSupport está habilitado por defecto cuando configura su sistema de almacenamiento por primera vez. Aunque puede deshabilitar AutoSupport en cualquier momento, debe dejarla habilitada. Habilitar AutoSupport puede ayudar de forma significativa a identificar problemas y soluciones cuando se producen fallos en el sistema de almacenamiento.
 
 |===
 . [[man_prepare_Nodes_step34]]Compruebe que AutoSupport está configurado con los detalles del host de correo y los ID de correo electrónico del destinatario correctos introduciendo el siguiente comando en ambos nodos originales y examinando la salida:
@@ -719,7 +714,7 @@ NOTE: No envíe un mensaje de AutoSupport a NetApp para el nodo 2 en este punto,
 +
 Los campos `Last Subject Sent:` y.. `Last Time Sent:` contiene el título del mensaje del último mensaje enviado y la hora de envío del mensaje.
 
-. Si su sistema utiliza unidades de autocifrado, consulte el artículo de la base de conocimientos https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Cómo indicar que tengo unidades FIPS instaladas"^] Para determinar el tipo de unidades de autocifrado que se están utilizando en la pareja de alta disponibilidad que se está actualizando. El software ONTAP admite dos tipos de unidades de autocifrado:
+. Si su sistema utiliza unidades de autocifrado, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] Para determinar el tipo de unidades de autocifrado que se están utilizando en la pareja de alta disponibilidad que se está actualizando. El software ONTAP admite dos tipos de unidades de autocifrado:
 +
 --
 ** Unidades SAS o NVMe con cifrado en almacenamiento de NetApp (NSE) certificado FIPS

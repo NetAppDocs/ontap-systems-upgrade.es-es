@@ -82,3 +82,21 @@ entries:
     url: "/upgrade/upgrade-unjoin-original-nodes-move-volumes.html"
   - title: Se completó la actualización
     url: "/upgrade/upgrade-complete-move-volumes.html"
+- title: Actualice AFF A250 a AFF A400 mediante la conversión a una bandeja de unidades
+  entries:
+  - title: Flujo de trabajo
+    url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
+  - title: Migre LIF y agregados de datos de node2 a node1
+    url: "/upgrade/upgrade_migrate_lifs_aggregates_node2_to_node1.html"
+  - title: Convierta node2 en una bandeja de unidades y conéctela a node4
+    url: "/upgrade/upgrade_convert_node2_drive_shelf_connect_node4.html"
+  - title: Reasignar unidades de node2 a node4
+    url: "/upgrade/upgrade_reassign_drives_node2_to_node4.html"
+  - title: Migre agregados de datos, épsilon y LIF en node1 a node4
+    url: "/upgrade/upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html"
+  - title: Convierta node1 en una bandeja de unidades y conéctela a node3
+    url: "/upgrade/upgrade_convert_node1_drive_shelf_connect_node3.html"
+  - title: Reasignar unidades de node1 a node3
+    url: "/upgrade/upgrade_reassign_drives_node1_to_node3.html"
+  - title: Migre LIF y agregados de datos de node4 a node3
+    url: "/upgrade/upgrade_migrate_lIFs_aggregates_node4_node3.html"

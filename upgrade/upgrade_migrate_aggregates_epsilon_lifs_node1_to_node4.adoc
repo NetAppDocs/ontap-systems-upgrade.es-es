@@ -1,0 +1,103 @@
+---
+permalink: upgrade/upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node1, node4, migrate, aggregates, lifs 
+summary: Migre los agregados de datos, épsilon y LIF en node1 a node4. 
+---
+= Migre agregados de datos, épsilon y LIF en node1 a node4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de convertir AFF A250 node1 en una bandeja de unidades, debe migrar los agregados de datos, el épsilon y las interfaces lógicas (LIF) del node1 a AFF A400 node4.
+
+.Pasos
+. En el símbolo del sistema DEL CARGADOR DEL nodo, arranque el nodo en el menú de arranque:
++
+`boot_ontap menu`
+
+. Seleccione opción `6 Update flash from backup config` restaurar el sistema de archivos /var a node4.
++
+Esto sustituye la configuración basada en all-flash por el último backup en discos.
+
+. Introduzca `y` para continuar.
++
+[NOTE]
+====
+Como era de esperar, el nodo se reinicia automáticamente para cargar la nueva copia del sistema de archivos /var.
+
+El nodo informa de una advertencia de discrepancia del ID del sistema. Introduzca `y` Para anular el ID del sistema.
+
+====
+. Migrar los LIF de clúster:
++
+`set -privilege advanced`
+
++
+`network port show`
+
++
+[NOTE]
+====
+Si los puertos del clúster del sistema no son similares al actualizar un AFF A250 a un AFF A400, puede que deba cambiar temporalmente las interfaces de node4 en puertos de clúster:
+
+.. `network port modify -node _node4_ -port _port_name_ -mtu 9000 -ipspace Cluster`
+.. `network interface migrate -vserver Cluster -lif _cluster_LIF_  -destination-node _node4_ -destination-port _port_name_`
+
+
+====
+. Migre los agregados de datos de node1 a node4:
++
+`storage aggregate relocation start -aggregate-list _aggregate_list_name_ -node _node1_ -destination _node4_ -ndo-controller-upgrade true -override-destination-checks true`
+
+. Muestre el estado de todos los agregados de datos del clúster:
++
+`storage aggregate show`
+
+. Migrar el épsilon eliminando IF de node1 y moviéndolo a node4.
++
+.. Eliminar épsilon de node1:
++
+`cluster modify -epsilon false -node _local_node_name_`
+
+.. Mueva épsilon a node4:
++
+`cluster modify -epsilon true -node _partner_node_name_`
+
+
+
+. Mostrar el estado del clúster:
++
+`cluster show`
+
+. Mostrar todas las LIF de red de datos:
++
+`network interface show -role data`
+
+. Migre todos los LIF de datos a node4:
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_`
+
+. Mostrar el estado de todas las LIF de datos en el clúster:
++
+`network interface show -role data`
+
+. Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+
+. Migre la LIF de administración del clúster:
++
+`network interface migrate -vserver _vserver_name_ -lif cluster_mgmt -destination-node _node4_ -destination-port _port_name_`
+
+. Muestre el estado de la LIF de gestión del clúster:
++
+`network interface show cluster_mgmt`
+
+. Detener nodo 1:
++
+`halt -node _node1_ -inhibit-takeover true -ignore-quorum-warnings true`
+
+

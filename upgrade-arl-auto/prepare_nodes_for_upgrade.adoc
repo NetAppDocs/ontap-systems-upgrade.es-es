@@ -129,7 +129,7 @@ Desde el puerto serie conectado a cada nodo, ejecute y guarde el resultado de lo
 
 NOTE: Si está en uso el cifrado de volúmenes de NetApp (NVE) o el cifrado de agregados de NetApp (NAE) mediante el gestor de claves incorporado, mantenga la contraseña del administrador de claves lista para completar el resincronización del administrador de claves más adelante en el procedimiento.
 
-. Si su sistema utiliza unidades de autocifrado, consulte el artículo de la base de conocimientos https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Cómo indicar que tengo unidades FIPS instaladas"^] Para determinar el tipo de unidades de autocifrado que se están utilizando en la pareja de alta disponibilidad que se está actualizando. El software ONTAP admite dos tipos de unidades de autocifrado:
+. Si su sistema utiliza unidades de autocifrado, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] Para determinar el tipo de unidades de autocifrado que se están utilizando en la pareja de alta disponibilidad que se está actualizando. El software ONTAP admite dos tipos de unidades de autocifrado:
 +
 --
 ** Unidades SAS o NVMe con cifrado en almacenamiento de NetApp (NSE) certificado FIPS

@@ -61,9 +61,10 @@ Debe instalar los mismos servidores de gestión de claves que se instalan en el 
 
 | Gestión de claves incorporada (OKM) | `security key-manager onboard sync` 
 |===
++
+Para obtener más información, vea el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/dm/Encryption/How_to_restore_external_key_manager_server_configuration_from_the_ONTAP_boot_menu["Cómo restaurar la configuración del servidor del administrador de claves externo desde el menú de arranque de ONTAP"^].
+
 
 
 .Después de terminar
-Compruebe si alguno de los volúmenes se desconectó debido a que no existían claves de autenticación o porque no se pudo acceder a los servidores de gestión de claves externos. Vuelva a conectar esos volúmenes en línea mediante el siguiente comando:
-
-`volume online`
+Compruebe si alguno de los volúmenes se desconectó debido a que no existían claves de autenticación o porque no se pudo acceder a los servidores de gestión de claves externos. Vuelva a conectar esos volúmenes en línea mediante el `volume online` comando.

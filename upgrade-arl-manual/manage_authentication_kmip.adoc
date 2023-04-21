@@ -33,12 +33,4 @@ Con ONTAP 9.5 y versiones posteriores, se pueden utilizar servidores de protocol
 +
 `security key-manager restore -node _new_controller_name_`
 
-. ReKey todos los discos de autocifrado con la nueva clave de autenticación:
-+
-`storage encryption disk modify -disk * [-data-key-id nonMSID AK]`
-
-. Si utiliza el estándar de procesamiento de información federal (FIPS), vuelva a introducir todos los discos de autocifrado con la nueva clave de autenticación:
-+
-`storage encryption disk* modify -disk * [-fips-key-id nonMSID AK]`
-
 

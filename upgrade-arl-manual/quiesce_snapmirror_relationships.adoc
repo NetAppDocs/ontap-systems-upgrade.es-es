@@ -14,7 +14,7 @@ summary: Antes de reiniciar el sistema, desactive todas las relaciones de SnapMi
 
 
 [role="lead"]
-Antes de reiniciar el sistema, debe confirmar que toda la relación de SnapMirror se encuentre en modo inactivo. Cuando una relación de SnapMirror se pone en modo inactivo, sigue en modo inactivo tras reinicios y recuperaciones tras fallos.
+Antes de reiniciar el sistema, debe confirmar que todas las relaciones de SnapMirror se hayan desactivado. Cuando una relación de SnapMirror se pone en modo inactivo, sigue en modo inactivo tras reinicios y recuperaciones tras fallos.
 
 .Pasos
 . Compruebe el estado de la relación de SnapMirror en el clúster de destino:

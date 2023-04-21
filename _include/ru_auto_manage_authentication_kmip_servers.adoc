@@ -19,12 +19,4 @@
 +
 `security key-manager external restore -node _new_controller_name_`
 
-. ReKey todos los discos de autocifrado con la nueva clave de autenticación:
-+
-`storage encryption disk modify -disk * [-data-key-id nonMSID AK]`
-
-. Si utiliza el estándar de procesamiento de información federal (FIPS), vuelva a introducir todos los discos de autocifrado con la nueva clave de autenticación:
-+
-`storage encryption disk modify -disk * [-fips-key-id nonMSID AK]`
-
 

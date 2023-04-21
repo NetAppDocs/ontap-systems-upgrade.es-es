@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: upgrade-arl-manual/manage_authentication_okm.html 
 keywords: manage, authentication, onboard key manager, okm, key, passphrase, fips 
-summary: Use un gestor de claves incorporado para gestionar las claves de autenticación durante una actualización ARL manual en controladoras que ejecuten ONTAP 9.7 o una versión anterior. 
+summary: Utilice OKM para administrar claves de autenticación durante una actualización manual de ARL en controladores que ejecuten ONTAP 9,7 o anterior. 
 ---
-= Gestione la autenticación mediante un gestor de claves incorporado
+= Gestione claves de autenticación mediante el gestor de claves incorporado
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,19 +14,12 @@ summary: Use un gestor de claves incorporado para gestionar las claves de autent
 
 
 [role="lead"]
-Puede usar un gestor de claves incorporado para gestionar las claves de autenticación. Si planea utilizar un gestor de claves incorporado (OKM), debe registrar la frase de paso y el material de copia de seguridad antes de comenzar la actualización.
+Puede utilizar el Administrador de claves integrado (OKM) para gestionar las claves de autenticación. Si tiene configurado OKM, debe registrar la frase de acceso y el material de copia de seguridad antes de iniciar la actualización.
 
 .Pasos
-. Compruebe que los servidores de gestión de claves estén disponibles para todos los nodos del clúster:
+. Registre la clave de acceso para todo el clúster.
 +
-`security key-manager key show`
+Esta es la frase de acceso que se introdujo cuando se configuró o actualizó OKM con la CLI o la API REST.
 
-. ReKey todos los discos de autocifrado con la nueva clave de autenticación:
-+
-`storage encryption disk modify -disk * [-data-key-id nonMSID AK>]`
-
-. Si utiliza el estándar de procesamiento de información federal (FIPS), vuelva a introducir todos los discos de autocifrado con la nueva clave de autenticación:
-+
-`storage encryption disk* modify -disk * [-fips-key-id nonMSID AK]`
-
+. Ejecute el para realizar un backup de la información del gestor de claves `security key-manager onboard show-backup` comando.
 

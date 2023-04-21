@@ -1,0 +1,35 @@
+---
+permalink: upgrade/upgrade_convert_node2_drive_shelf_connect_node4.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: 'Convierta el nodo 2 (AFF A250) en una bandeja de unidades de NS224 y, a continuación, conéctese a node4 (AFF A400).' 
+---
+= Convierta node2 en una bandeja de unidades y conéctela a node4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Convierta AFF A250 node2 en una bandeja de unidades NS224 y, a continuación, conéctese a AFF A400 node4 antes de reasignar unidades de node2 a node4.
+
+.Pasos
+. Desconecte todos los cables de red de node2.
+. Quite node2 del chasis de AFF A250.
+. Inserte el módulo de bandeja NVMe (NSM) en la bahía de node2.
+. Conecte el NSM a node4 cableando el puerto node4 100GbE e0c al puerto NSM B e0a.
++
+image::../upgrade/media/a400_with_ns224_shelf.PNG[AFF A400 con una bandeja NS224]
+
+. Conecte el cableado 25GbE de los puertos node2 e0c y e0d a cualquiera de los dos puertos integrados 25GbE (e0e, e0f, e0g o e0h) en node4.
++
+
+NOTE: Si los puertos internos de 25GbE no están presentes en node4, puede usar un adaptador PCIe de 25GbE GbE para realizar la conexión.
+
+. Si el sistema AFF A400 utiliza puertos FC como puertos integrados, instale un adaptador Ethernet de 25GB Gb en cada nodo para la conectividad del clúster durante la migración:
++
+.. Conecte los cables de las parejas de alta disponibilidad entre los nodos AFF A400 mediante los puertos e0a y e0b.
+.. Conecte los cables de clúster entre los nodos AFF A400 usando los puertos E3A y E3b.
+
+
+

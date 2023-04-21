@@ -1,0 +1,57 @@
+---
+permalink: upgrade/upgrade_reassign_drives_node1_to_node3.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Conecte físicamente node1 a node3 antes de reasignar unidades de node1 a node3 
+---
+= Reasignar unidades de node1 a node3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de convertir AFF A250 node1 a una bandeja de unidades NS224 y conectarse a AFF A400 node3, debe reasignar las unidades que anteriormente pertenecían a node1 a node3.
+
+.Pasos
+. En el símbolo del SISTEMA DEL CARGADOR, arranque node3 en Modo de mantenimiento:
++
+`boot_ontap maint`
+
+. Muestra el estado de las interfaces de 100GbE:
++
+`storage port show`
+
+. Establezca las interfaces de 100GbE a los puertos de almacenamiento:
++
+`storage port modify -p e0c -m storage`
+
++
+`storage port modify -p e0d -m storage`
+
+. Compruebe que el modo cambia a las interfaces 100GbE:
++
+`storage port show`
+
+. Mostrar todas las unidades asociadas:
++
+`disk show -v`
+
+. Registre el ID del sistema local.
+. Reasignar todas las unidades de node1 a node3:
++
+`disk reassign -s _node1_ -d _node3_ -p _node2_`
+
+. Verifique que todas las unidades reasignadas puedan verse en el nuevo ID de sistema:
++
+`disk show -s _node3 system ID_`
+
++
+
+NOTE: Si las unidades no se pueden ver, *STOP* y póngase en contacto con el soporte técnico para obtener ayuda.
+
+. Salir del modo de mantenimiento:
++
+`halt`
+
+

@@ -1,0 +1,29 @@
+---
+permalink: upgrade/upgrade_convert_node1_drive_shelf_connect_node3.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Conecte físicamente node1 a node3 antes de reasignar unidades de node1 a node3 
+---
+= Convierta node1 en una bandeja de unidades y conéctela a node3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Convierta AFF A250 node1 en una bandeja de unidades NS224 y, a continuación, conéctese a AFF A400 node3 antes de reasignar unidades de node1 a node3.
+
+.Pasos
+. Desconecte todos los cables de red del node1.
+. Quite node1 del chasis de AFF A250.
+. Inserte el módulo de bandeja NVMe (NSM) en la bahía de node1.
+. Conecte el NSM a node3 mediante el cableado del puerto node3 100GbE e0c al puerto NSM A e0a.
++
+image::../upgrade/media/a400_with_ns224_shelf.PNG[AFF A400 con una bandeja NS224]
+
+. Conecte el cableado 25GbE de los puertos node1 e0c y e0d a cualquiera de los dos puertos integrados 25GbE (e0e, e0f, e0g o e0h) en node3.
++
+
+NOTE: Si no hay puertos internos de 25GbE GbE en node3, puede usar un adaptador PCIe de 25GbE GbE para realizar la conexión.
+
+

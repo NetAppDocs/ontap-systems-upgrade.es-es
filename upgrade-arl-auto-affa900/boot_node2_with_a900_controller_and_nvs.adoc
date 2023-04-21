@@ -17,41 +17,38 @@ summary: Arranque el nodo 2 con el módulo de controlador AFF A900 y el módulo 
 El nodo 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM están ahora listos para la actualización. Una actualización de A700 de AFF a AFF A900 o de FAS9000 a FAS9500 intercambiando la controladora y los módulos NVRAM implica mover únicamente las conexiones de consola y de gestión. En esta sección se indican los pasos necesarios para arrancar el nodo 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM.
 
 .Pasos
-. [[boot_2_step1]]ajuste el `bootarg.storageencryption.support` y.. `kmip.init.maxwait` variables para evitar un bucle de arranque después de cargar la configuración 2.
+. [[BOOT_node2_step1]]Si tiene unidades de cifrado del almacenamiento de NetApp (NSE) instaladas, siga los pasos siguientes.
 +
-Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Cómo indicar que tengo unidades FIPS instaladas"^] para determinar el tipo de unidades de autocifrado que están en uso.
 
+NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] para determinar el tipo de unidades de autocifrado que están en uso.
+
++
+.. Configurado `bootarg.storageencryption.support` para `true` o. `false`:
 +
 [cols="35,65"]
 |===
+
+
 | Si están en uso las siguientes unidades... | Entonces… 
 
 
-| Unidades de cifrado en almacenamiento de NetApp (NSE) que cumplen con los requisitos de cifrado automático de nivel 2 de FIPS 140-2-2  a| 
-** `setenv bootarg.storageencryption.support *true*`
-** `setenv kmip.init.maxwait off`
+| Unidades NSE que cumplen con los requisitos de autocifrado de FIPS 140-2 de nivel 2 | `setenv bootarg.storageencryption.support *true*` 
 
 
-
-
-| SED de NetApp no con FIPS  a| 
-** `setenv bootarg.storageencryption.support *false*`
-** `setenv kmip.init.maxwait off`
-
-
+| SED de NetApp no con FIPS | `setenv bootarg.storageencryption.support *false*` 
 |===
-+
-
-WARNING: *Tan pronto como la actualización de la controladora se complete en el par de alta disponibilidad, debe anular la definición del `kmip.init.maxwait` variable. Consulte link:ensure_new_controllers_are_set_up_correctly.html#unset_maxwait["Confirme que los nuevos controladores están configurados correctamente, paso 12"]. Si no lo hace, podría producirse una pérdida de datos si se produce una interrupción del suministro eléctrico.*
-
 +
 [NOTE]
 ====
-No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo o la pareja de alta disponibilidad.
-
-Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.
+No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo o la pareja de alta disponibilidad. Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.
 
 ====
+.. Vaya al menú de inicio especial y seleccione la opción `(10) Set Onboard Key Manager recovery secrets`.
++
+Introduzca la frase de acceso y la información de copia de seguridad registrada anteriormente. Consulte link:manage_storage_encryption_using_okm.html["Gestione el cifrado del almacenamiento con el gestor de claves incorporado"].
+
+
+
 . Arranque el nodo en el menú de arranque:
 +
 `boot_ontap menu`

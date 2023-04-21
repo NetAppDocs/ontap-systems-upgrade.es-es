@@ -280,49 +280,41 @@ Consulte la documentación de la cabina de almacenamiento y la división en zona
 La instalación de un módulo de controladora nuevo cambia los valores de WWPN asociados con cada puerto FC integrado.
 
 . [[step26]]Si su configuración utiliza la división en zonas basada en switches, ajuste la división en zonas para reflejar los nuevos valores de WWPN.
-. [[step27]]ajuste el `bootarg.storageencryption.support` y.. `kmip.init.maxwait` variables para evitar un bucle de arranque después de cargar la configuración del nodo 1.
-+
-Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Cómo indicar que tengo unidades FIPS instaladas"^] para determinar el tipo de unidades de autocifrado que están en uso.
 
+
+. Si se instalan unidades de cifrado de almacenamiento de NetApp, siga estos pasos.
++
+
+NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] para determinar el tipo de unidades de autocifrado que están en uso.
+
++
+.. Configurado `bootarg.storageencryption.support` para `true` o. `false`:
 +
 [cols="35,65"]
 |===
 | Si están en uso las siguientes unidades... | Entonces… 
 
 
-| Unidades de cifrado en almacenamiento de NetApp (NSE) que cumplen con los requisitos de cifrado automático de nivel 2 de FIPS 140-2-2  a| 
-** `setenv bootarg.storageencryption.support *true*`
-** `setenv kmip.init.maxwait off`
+| Unidades de cifrado en almacenamiento de NetApp (NSE) que cumplen con los requisitos de cifrado automático de nivel 2 de FIPS 140-2-2 | `setenv bootarg.storageencryption.support *true*` 
 
 
-
-
-| SED de NetApp no con FIPS  a| 
-** `setenv bootarg.storageencryption.support *false*`
-** `setenv kmip.init.maxwait off`
-
-
+| SED de NetApp no con FIPS | `setenv bootarg.storageencryption.support *false*` 
 |===
-+
-
-WARNING: *Tan pronto como la actualización de la controladora se complete en el par de alta disponibilidad, debe anular la definición del `kmip.init.maxwait` variable. Consulte link:ensure_new_controllers_are_set_up_correctly.html#unset_maxwait_system_commands["Confirme que los nuevos controladores están configurados correctamente, paso 12"]. Si no lo hace, podría producirse una pérdida de datos si se produce una interrupción del suministro eléctrico.*
-
 +
 [NOTE]
 ====
-No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo o la pareja de alta disponibilidad.
-
-Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.
+No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo o la pareja de alta disponibilidad. Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.
 
 ====
-. [[step28]]nodo de arranque en el menú de arranque:
+.. Póngase en contacto con el soporte de NetApp para obtener ayuda para restaurar la información sobre la gestión de claves incorporada.
+
+
+. Nodo de arranque en el menú de arranque:
 +
 `boot_ontap menu`
 
 +
-Si no tiene configuración FC o UTA/UTA2, ejecute link:set_fc_or_uta_uta2_config_on_node3.html#auto9597_check_node3_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3, paso 15"] para que el nodo 3 pueda reconocer los discos del nodo 1.
-
-
+Si no tiene una configuración FC o UTA/UTA2, ejecute link:set_fc_or_uta_uta2_config_node4.html#auto_check_node4_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 15"] de modo que el nodo 4 puede reconocer los discos del nodo 2.
 
 . [[auto9597_istall3_step29]]para una configuración MetroCluster, sistemas y sistemas V-Series con software de virtualización FlexArray conectado a matrices de almacenamiento, vaya a. link:set_fc_or_uta_uta2_config_on_node3.html#auto9597_check_node3_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3, paso 15"].
 

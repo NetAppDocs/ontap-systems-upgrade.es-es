@@ -26,7 +26,7 @@ entries:
     url: "/upgrade-arl-manual-app/determine_aggregates_on_internal_drives.html"
   - title: Prepare los nodos para la actualización
     url: "/upgrade-arl-manual-app/prepare_nodes_for_upgrade.html"
-  - title: Gestione la autenticación mediante un gestor de claves incorporado
+  - title: Gestione claves de autenticación mediante el gestor de claves incorporado
     url: "/upgrade-arl-manual-app/manage_authentication_okm.html"
   - title: Desactive las relaciones de SnapMirror
     url: "/upgrade-arl-manual-app/quiesce_snapmirror_relationships.html"
@@ -105,12 +105,8 @@ entries:
   entries:
   - title: Descripción general
     url: "/upgrade-arl-manual-app/stage_6_index.html"
-  - title: Obtenga la dirección IP de un servidor de gestión de claves externo para
-      el cifrado de almacenamiento
-    url: "/upgrade-arl-manual-app/get_address_key_management_server_encryption.html"
   - title: Gestionar la autenticación mediante servidores KMIP
     url: "/upgrade-arl-manual-app/manage_authentication_kmip.html"
-  - title: Gestione la autenticación mediante un gestor de claves incorporado
   - title: Confirmar que las nuevas controladoras están configuradas correctamente
     url: "/upgrade-arl-manual-app/ensure_controllers_set_up_correctly.html"
   - title: Configure Storage Encryption en el nuevo módulo de la controladora

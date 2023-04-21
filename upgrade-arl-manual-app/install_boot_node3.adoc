@@ -25,13 +25,13 @@ Sin embargo, no es necesario reiniciar el nodo 3 si tiene la misma versión o un
 ====
 Si va a actualizar un sistema V-Series conectado a cabinas de almacenamiento o un sistema con el software de virtualización de FlexArray conectado a cabinas de almacenamiento, debe completar <<man_install3_step1,Paso 1>> por <<man_install3_step5,Paso 5>>, deje esta sección en <<man_install3_step6,Paso 6>> y siga las instrucciones de link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"] según sea necesario, introduzca los comandos en modo de mantenimiento. A continuación, debe volver a esta sección y reanudar con <<man_install3_step7,Paso 7>>.
 
-Sin embargo, si va a actualizar un sistema con discos de almacenamiento, debe completar esta sección completa y, a continuación, ir a. link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"], introduciendo comandos en el símbolo del sistema del clúster.
+Sin embargo, si va a actualizar un sistema con discos de almacenamiento, debe completar toda esta sección y, a continuación, vaya a. link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"], introduciendo comandos en el símbolo del sistema del clúster.
 
 ====
 .Pasos
 . [[man_install3_step1]]Asegúrese de que dispone de espacio en rack para el nodo 3.
 +
-Si los nodos 1 y 2 están en un chasis separado, puede colocar el nodo 3 en la misma ubicación de rack que el nodo 1. Sin embargo, si el nodo 1 estaba en el mismo chasis con el nodo 2, debe poner el nodo 3 en su propio espacio de rack, preferiblemente cerca de la ubicación del nodo 1.
+Si los nodos 1 y 2 están en un chasis separado, puede colocar el nodo 3 en la misma ubicación de rack que el nodo 1. Sin embargo, si node1 estaba en el mismo chasis con node2, debe poner node3 en su propio espacio de rack, preferiblemente cerca de la ubicación de node1.
 
 . [[step2]]instale el nodo 3 en el rack siguiendo las _instrucciones de instalación y configuración_ del modelo de nodo.
 +
@@ -60,7 +60,7 @@ Conectar las siguientes conexiones:
 ** Configuraciones SAN: Puertos Ethernet iSCSI y switch FC
 +
 
-NOTE: Es posible que no sea necesario mover la tarjeta de interconexión o la conexión del cable de interconexión del clúster del nodo 1 al nodo 3, ya que la mayoría de los modelos de plataforma tienen un modelo de tarjeta de interconexión único. Para la configuración MetroCluster, es necesario mover las conexiones de cables FC-VI del nodo 1 al nodo 3. Si el host nuevo no tiene una tarjeta FC-VI, puede que necesite mover la tarjeta FC-VI.
+NOTE: Es posible que no sea necesario mover la tarjeta de interconexión o la conexión del cable de interconexión del clúster del nodo 1 al nodo 3, ya que la mayoría de los modelos de plataforma tienen un modelo de tarjeta de interconexión único. Para la configuración de MetroCluster, se deben mover las conexiones de cables FC-VI de node1 a node3. Si el host nuevo no tiene una tarjeta FC-VI, puede que necesite mover la tarjeta FC-VI.
 
 
 
@@ -166,33 +166,26 @@ NOTE: Deje el nodo 4 en el aviso del entorno de arranque; regresará al nodo 4 e
 +
 `set-defaults`
 
-. [[man_install3_step16]]defina el `bootarg.storageencryption.support` y.. `kmip.init.maxwait` variables para evitar un bucle de arranque después de cargar la configuración del nodo 1.
+. [[MAN_install3_step16]]Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, realice los pasos siguientes.
 +
-Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/How_to_tell_I_have_FIPS_drives_installed["Cómo indicar que tengo unidades FIPS instaladas"^] para determinar el tipo de unidades de autocifrado que están en uso.
 
+NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] para determinar el tipo de unidades de autocifrado que están en uso.
+
++
+.. Configurado `bootarg.storageencryption.support` para `true` o. `false`:
 +
 [cols="35,65"]
 |===
+
+
 | Si están en uso las siguientes unidades... | Entonces… 
 
 
-| Unidades de cifrado en almacenamiento de NetApp (NSE) que cumplen con los requisitos de cifrado automático de nivel 2 de FIPS 140-2-2  a| 
-** `setenv bootarg.storageencryption.support *true*`
-** `setenv kmip.init.maxwait off`
+| Unidades NSE que cumplen con los requisitos de autocifrado de FIPS 140-2 de nivel 2 | `setenv bootarg.storageencryption.support *true*` 
 
 
-
-
-| SED de NetApp no con FIPS  a| 
-** `setenv bootarg.storageencryption.support *false*`
-** `setenv kmip.init.maxwait off`
-
-
+| SED de NetApp no con FIPS | `setenv bootarg.storageencryption.support *false*` 
 |===
-+
-
-WARNING: *Tan pronto como la actualización de la controladora se complete en el par de alta disponibilidad, debe anular la definición del `kmip.init.maxwait` variable. Consulte link:ensure_controllers_set_up_correctly.html#unset_maxwait_manual["Confirme que los nuevos controladores están configurados correctamente, paso 11"]. Si no lo hace, podría producirse una pérdida de datos si se produce una interrupción del suministro eléctrico.*
-
 +
 [NOTE]
 ====
@@ -201,6 +194,12 @@ No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo
 Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.
 
 ====
+.. Vaya al menú de inicio especial y seleccione la opción `(10) Set Onboard Key Manager recovery secrets`.
++
+Introduzca la frase de acceso y la información de copia de seguridad registrada anteriormente. Consulte link:manage_authentication_okm.html["Gestione claves de autenticación mediante el gestor de claves incorporado"].
+
+
+
 . [[man_install3_step17]] Si la versión de ONTAP instalada en el nodo 3 es la misma o posterior que la versión de ONTAP 9 instalada en el nodo 1, enumerar y reasignar discos al nuevo nodo 3:
 +
 `boot_ontap`

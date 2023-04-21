@@ -29,7 +29,7 @@ entries:
     url: "/upgrade-arl-auto/stage_1_index.html"
   - title: Prepare los nodos para la actualización
     url: "/upgrade-arl-auto/prepare_nodes_for_upgrade.html"
-  - title: Gestione el cifrado del almacenamiento con el gestor de claves incorporado
+  - title: Gestione el cifrado del almacenamiento mediante el gestor de claves incorporado
     url: "/upgrade-arl-auto/manage_storage_encryption_using_okm.html"
 - title: Fase 2. Reubicar y retirar el nodo 1
   pdf-filename: Fase 2. Reubicar y retirar el nodo 1 (actualizar con el "sustitución
@@ -103,9 +103,8 @@ entries:
   entries:
   - title: Descripción general
     url: "/upgrade-arl-auto/stage_6_index.html"
-  - title: Obtenga la dirección IP de un servidor de gestión de claves externo para
-      el cifrado de almacenamiento
-    url: "/upgrade-arl-auto/get_ip_address_of_external_kms_for_storage_encryption.html"
+  - title: Gestionar la autenticación mediante servidores KMIP
+    url: "/upgrade-arl-auto/manage-authentication-using-kmip-servers.html"
   - title: Confirmar que las nuevas controladoras están configuradas correctamente
     url: "/upgrade-arl-auto/ensure_new_controllers_are_set_up_correctly.html"
   - title: Configure Storage Encryption en el nuevo módulo de la controladora

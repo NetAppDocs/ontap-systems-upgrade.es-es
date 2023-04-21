@@ -1,0 +1,28 @@
+---
+permalink: upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, AFF, FAS, systems, entry, level 
+summary: Lleve a cabo una NDU en sistemas AFF y FAS de NetApp de gama básica sin tener que comprar almacenamiento adicional ni switches de clúster. 
+---
+= Flujo de trabajo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede realizar una actualización sin interrupciones de un sistema AFF A250 de NetApp a un sistema AFF A400 convirtiendo cada nodo A250 de AFF a una bandeja de unidades NS224 y conectándose posteriormente a los nodos de reemplazo de AFF A400.
+
+En este procedimiento, las controladoras de las parejas de alta disponibilidad (HA) AFF A250 se denominan node1 y node2, y las controladoras de las parejas de alta disponibilidad de AFF A400 de reemplazo se denominan node3 y node4.
+
+image::../upgrade/media/ndu_upgrade_entry_level_systems.PNG[Flujo de trabajo para actualizar AFF A250 a AFF A400 mediante la conversión a bandeja de unidades]
+
+.Pasos.
+. xref:upgrade_migrate_lifs_aggregates_node2_to_node1.adoc[Migre LIF y agregados de datos de node2 a node1]
+. xref:upgrade_convert_node2_drive_shelf_connect_node4.adoc[Convierta node2 en una bandeja de unidades y conéctela a node4]
+. xref:upgrade_reassign_drives_node2_to_node4.adoc[Reasignar unidades de node2 a node4]
+. xref:upgrade_migrate_aggregates_epsilon_lifs_node1_node4.adoc[Migre agregados de datos, épsilon y LIF en node1 a node4]
+. xref:upgrade_convert_node1_drive_shelf_connect_node3.html[Convierta node1 en una bandeja de unidades y conéctela a node3]
+. xref:upgrade_reassign_drives_node1_to_node3.adoc[Reasignar unidades de node1 a node3]
+. xref:upgrade_migrate_lIFs_aggregates_node4_node3.adoc[Migre LIF y agregados de datos de node4 a node3]
+
