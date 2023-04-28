@@ -46,6 +46,8 @@ entries:
   - title: Determine si la controladora tiene agregados en unidades de disco internas
     url: "/upgrade-arl-manual/determine_aggregates_on_internal_drives.html"
   - title: Prepare los nodos para la actualización
+    url: "/upgrade-arl-manual/prepare_nodes_for_upgrade.html"
+  - title: Gestione claves de autenticación mediante el gestor de claves incorporado
     url: "/upgrade-arl-manual/manage_authentication_okm.html"
   - title: Desactive las relaciones de SnapMirror
     url: "/upgrade-arl-manual/quiesce_snapmirror_relationships.html"

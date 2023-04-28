@@ -56,7 +56,7 @@ Debe instalar los mismos servidores de gestión de claves que se instalan en el 
 | Durante... | Se usa este comando... 
 
 
-| Gestor de claves externo (EKM) | `security key-manager external restore`Este comando necesita la clave de acceso de OKM 
+| Gestor de claves externas | `security key-manager external restore`Este comando necesita la clave de acceso de OKM 
 
 
 | Gestión de claves incorporada (OKM) | `security key-manager onboard sync` 

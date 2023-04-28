@@ -693,7 +693,7 @@ Vaya a. <<man_prepare_nodes_step34,Paso 34>>.
 | No tiene AutoSupport habilitado...  a| 
 Habilite AutoSupport siguiendo las instrucciones de _System Administration Reference_. (Consulte link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_.)
 
-+ *Nota:* AutoSupport está habilitado por defecto cuando configura su sistema de almacenamiento por primera vez. Aunque puede deshabilitar AutoSupport en cualquier momento, debe dejarla habilitada. Habilitar AutoSupport puede ayudar de forma significativa a identificar problemas y soluciones cuando se producen fallos en el sistema de almacenamiento.
+*Nota:* AutoSupport se activa de forma predeterminada cuando configura el sistema de almacenamiento por primera vez. Aunque puede deshabilitar AutoSupport en cualquier momento, debe dejarla habilitada. Habilitar AutoSupport puede ayudar de forma significativa a identificar problemas y soluciones cuando se producen fallos en el sistema de almacenamiento.
 
 |===
 . [[man_prepare_Nodes_step34]]Compruebe que AutoSupport está configurado con los detalles del host de correo y los ID de correo electrónico del destinatario correctos introduciendo el siguiente comando en ambos nodos originales y examinando la salida:

@@ -59,7 +59,7 @@ Debe instalar los mismos servidores de gestión de claves que se instalan en el 
 
 . Restaure las claves de autenticación de todos los servidores de gestión de claves vinculados al nodo nuevo.
 +
-** Autenticación de restauración para External Key Manager (EKD):
+** Restaurar la autenticación de gestor de claves externo:
 +
 `security key-manager external restore`
 

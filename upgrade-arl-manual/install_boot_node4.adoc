@@ -167,8 +167,6 @@ NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el art�
 +
 [cols="35,65"]
 |===
-
-
 | Si están en uso las siguientes unidades... | Entonces… 
 
 

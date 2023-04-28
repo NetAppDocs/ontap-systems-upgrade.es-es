@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-app/stage_3_index.html
 keywords: installing, booting, node3, install, cluster, stage 3 
 summary: 'Secuencia de procesos en la fase 3 de una actualización de ARL mediante `system controller replace` Comandos en controladoras que ejecutan ONTAP 9.8 o una versión posterior.' 
 ---
-= Etapa 3. Instale y arranque el nodo 3
+= Descripción general
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

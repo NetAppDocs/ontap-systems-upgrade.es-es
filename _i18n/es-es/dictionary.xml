@@ -557,7 +557,6 @@
   <block id="5e1956d6adc0bdab37f993d5b46e373b" category="paragraph">El nodo 1 con el controlador AFF A900 o FAS9500 y los módulos NVRAM están ahora listos para el arranque. Una actualización de A700 de AFF a AFF A900 o de FAS9000 a FAS9500 intercambiando la controladora y los módulos NVRAM implica mover únicamente las conexiones de consola y de gestión. Esta sección proporciona los pasos necesarios para arrancar el nodo 1 con el controlador AFF A900 o FAS9500 y los módulos NVRAM.</block>
   <block id="e05e5b3ebbe0e2f7ee773e008e2cd7bd" category="cell">Si están en uso las siguientes unidades...</block>
   <block id="a7a589b8e6e6d3aac1d1459d66a748a0" category="cell">Entonces…</block>
-  <block id="cbfa089efcac1a28956de515cdcbcecc" category="cell">Unidades de cifrado en almacenamiento de NetApp (NSE) que cumplen con los requisitos de cifrado automático de nivel 2 de FIPS 140-2-2</block>
   <block id="9a7a5052834bdcd10b9395aaeaf8d876" category="list-text"><block ref="62a739993e7d046df94dbc6dc7c3f174" prefix="" category="inline-code"></block></block>
   <block id="102a08eb3220b17bfbecbc277298074d" category="cell">SED de NetApp no con FIPS</block>
   <block id="ad55a196e6d3053365555c02e73f7628" category="list-text"><block ref="20ac903c04b877a6840785a4ed61d182" prefix="" category="inline-code"></block></block>
@@ -708,7 +707,6 @@
   <block id="07d2b82cff600a145725916fee544709" category="cell">Utilice el siguiente comando:<block ref="5eba3b04f044f5b735477875badcd3b7" prefix=" " category="inline-code"></block></block>
   <block id="1b27217f602bc4090b93bc2c72ec2c38" category="cell">Sobreescribir comprobaciones de destino</block>
   <block id="eb3cf479c5f4d8026ff2061e0c748373" category="cell">Utilice el siguiente comando:<block ref="d6fadbaedfb698d24409db0a8a2054df" prefix=" " category="inline-code"></block></block>
-  <block id="e5358fe562a4d74ac4231d8e23d0b088" category="doc">Obtenga la dirección IP de un servidor de gestión de claves externo para el cifrado de almacenamiento</block>
   <block id="d3632885c406f1fdf833bfa7e1f0af27" category="section-title">Gestionar la autenticación mediante servidores KMIP</block>
   <block id="2ed045fa4ee3544c7e5a632a26d55b9f" category="paragraph">A partir de ONTAP 9.10.1, se pueden usar servidores de protocolo de interoperabilidad de gestión de claves (KMIP) para gestionar las claves de autenticación.</block>
   <block id="761ac244160bc99600210b11c30dc464" category="list-text">Añadir una nueva controladora:</block>
@@ -875,7 +873,6 @@
   <block id="e1275af58e555e9cc3d59dc17d1d1ab1" category="inline-link-macro">Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 1 actualizado</block>
   <block id="c9a4b38a782d53b773352b69a5dcb3f0" category="list-text"><block ref="c9a4b38a782d53b773352b69a5dcb3f0" category="inline-link-macro-rx"></block></block>
   <block id="d86fa9c7d1b3bca68c0a69f81f14a78e" category="summary">Secuencia de fase 2 de procesos para una actualización de ARL mediante<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> Comandos en controladoras que ejecutan ONTAP 9.8 o una versión posterior.</block>
-  <block id="3c71d8aea4515e5bab3212b7c7635c9b" category="doc">Fase 2. Reubique los recursos del nodo 1 y retire el nodo 1 del A700 o el FAS9000 de AFF</block>
   <block id="98d03c0eb9112cc9024f712528415cd8" category="paragraph">Durante la fase 2, debe reubicar agregados no raíz y LIF de datos NAS al nodo 1 en el nodo 2. Este proceso está en gran medida automatizado; la operación se pausa para permitir comprobar su estado. Debe reanudar manualmente la operación. Si es necesario, reubique los agregados que han fallado o que han vetado. Debe registrar la información del nodo 1 para su uso posterior en el procedimiento y, a continuación, cambiar el controlador del nodo 1 y los módulos NVRAM correspondientes, retirar el nodo 1 y reiniciar el sistema con el nodo 1 actualizado.</block>
   <block id="9fd31f02e13c9f75db388cfb74e0acc1" category="list-text"><block ref="9fd31f02e13c9f75db388cfb74e0acc1" category="inline-link-macro-rx"></block></block>
   <block id="f9a42009c629603217595f3693c67911" category="list-text"><block ref="f9a42009c629603217595f3693c67911" category="inline-link-macro-rx"></block></block>
@@ -3315,7 +3312,6 @@
   <block id="1d828f70faadc8e1765bcc76134f1d56" category="admonition">Si el estado es<block ref="9244f0a34fd81da60fa38383138864a5" prefix=" " category="inline-code"></block>, debe anular estas transferencias:<block ref="1f35500041b6f7a7473bd9adc985df3d" prefix=" " category="inline-code"></block></block>
   <block id="d5560010a4b579866a98e0b680b5c248" category="paragraph">La anulación falla si la relación de SnapMirror no se encuentra en el<block ref="9244f0a34fd81da60fa38383138864a5" prefix=" " category="inline-code"></block> estado.</block>
   <block id="19b4277aa4310fa75687e1f55755a62c" category="summary">Fase 4 secuencia de procesos para una actualización manual de ARL en controladoras que ejecutan ONTAP 9.7 o una versión anterior.</block>
-  <block id="511701430e4fbf5079759a7c3b7c28ff" category="doc">Etapa 4. Anote la información del nodo 2 y retire el nodo 2</block>
   <block id="b247b39cd3241154261788c28bc948e3" category="paragraph">En la etapa 4, puede grabar la información del nodo 2 para usarla posteriormente en el procedimiento y, a continuación, retirar el nodo 2.</block>
   <block id="cb01034aedc70b6d88070cceb3ec5fd6" category="inline-link-macro">Grabar información del nodo 2</block>
   <block id="bf281b48b35a7cc176890f2be65ca906" category="list-text"><block ref="bf281b48b35a7cc176890f2be65ca906" category="inline-link-macro-rx"></block></block>
@@ -3981,7 +3977,6 @@
   <block id="433d8081a28a0d8c06bf54d23d4e1297" category="list-text"><block ref="433d8081a28a0d8c06bf54d23d4e1297" category="inline-link-macro-rx"></block></block>
   <block id="b432c4295d2cf5336428870eddf6eba1" category="inline-link-macro">Reubique los agregados que no son raíz del nodo 3 al nodo 4</block>
   <block id="9467ac5cfa9f1fb7c82f5dfc6ebcfbef" category="list-text"><block ref="9467ac5cfa9f1fb7c82f5dfc6ebcfbef" category="inline-link-macro-rx"></block></block>
-  <block id="c9db4eeeb7068245ea24e65d2b3044b1" category="summary">Configuración del cifrado del almacenamiento durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.7 o una versión anterior.</block>
   <block id="6d2acf13fe57f3aa46b46db44d2c7e40" category="summary">Informe al soporte técnico de NetApp de que se está realizando el mantenimiento durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.7 o una versión anterior.</block>
   <block id="edcbc9ed6ad9e26568e29e57e3794019" category="paragraph">Antes de reconfigurar los switches, debe emitir un mensaje de AutoSupport para notificar al soporte técnico de NetApp que se están realizando las tareas de mantenimiento. Al informar al soporte técnico de que el mantenimiento está en marcha, se evita que abran un caso basándose en que se ha producido una interrupción.</block>
   <block id="68e6b44b3a749a5a92b3130b283a8d5c" category="paragraph">Esta tarea debe realizarse en cada sitio MetroCluster.</block>
@@ -4014,7 +4009,6 @@
   <block id="6bdf9080f49ca89e65220e312d51e688" category="list-text">Añada el servidor de gestión de claves mediante el siguiente comando:</block>
   <block id="0dd9d4ff0944e970430f96022e169191" category="list-text">Compruebe que los servidores de gestión de claves se han añadido correctamente mediante el siguiente comando:</block>
   <block id="3bf7f9a82df0c130b46780052ca49e4c" category="list-text">Inicie el asistente de configuración del servidor de gestión de claves en el nuevo nodo mediante el siguiente comando:</block>
-  <block id="ce647643e8b085a9425f156173190659" category="list-text">Autenticación de restauración para External Key Manager (EKD):</block>
   <block id="a5e463e5138622ba8c2355b41f67a0ff" category="paragraph">Este comando necesita la clave de acceso del gestor de claves incorporado (OKM)</block>
   <block id="ce4c94d5e669859aacda58a7f2429ddf" category="cell">El resto de las versiones de ONTAP</block>
   <block id="4cb6b559e491ceb7837bbe4029df8647" category="summary">Reubique los agregados que no son raíz del nodo 3 al nodo 4 durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.7 o una versión anterior.</block>
@@ -4290,7 +4284,6 @@
   <block id="eda4ae83149e9e3dde696f5da917ea29" category="summary">Secuencia de procesos en fase 2 para una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior.</block>
   <block id="e3840defa32fbb404cdcebd5c811d7d9" category="summary">Conozca cómo funciona el procedimiento manual de actualización de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior.</block>
   <block id="7311cf26cf7087361501590894ddf505" category="summary">Fase 5 secuencia de procesos para una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior.</block>
-  <block id="d21a0858f74e1b40b984bb621122ad41" category="doc">Stage5. Instale y arranque el nodo 4</block>
   <block id="92cca0d8fba5d6df2ba1db2e4e7cf839" category="paragraph">En la etapa 5, se instalan y arrancan los nodos 4, se deben asignar los puertos de gestión del clúster y del nodo del nodo 2 al nodo 4, y se mueven las LIF de datos y LAS LIF DE SAN que pertenecen al nodo 2 del nodo 3 al nodo 4. También se reubicarán los agregados de nodo 2 del nodo 3 al nodo 4.</block>
   <block id="e8281ab8cf28639b54483c189cac4d56" category="summary">Verifique la instalación y la comunicación de nodo 4 con el nodo 3 durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior.</block>
   <block id="e5255775e89f083d8e69c73098e5fff2" category="list-text">Verifique que el nodo 4 forme parte del mismo clúster que el nodo 3 y esté en buen estado. Para ello, introduzca el siguiente comando:</block>
@@ -4302,7 +4295,6 @@
   <block id="66807f2defef8b7eaf2bfaddf801fc4a" category="list-text">Verifique que tanto el nodo 3 como el nodo 4 tengan quórum. Para ello, introduzca el siguiente comando en uno de los nodos:</block>
   <block id="c5dc6358f70b9b01e402df306b4756e6" category="summary">Si es necesario, configure el nuevo módulo de controladoras para NVE o NAE durante una actualización manual ARL en controladoras que ejecuten ONTAP 9.8 o una versión posterior.</block>
   <block id="f0a0eea61e7c18706f2be0d0b664df19" category="doc">Configure el cifrado de volumen de NetApp o el cifrado agregante en el nuevo módulo del controlador</block>
-  <block id="08ac1a2fb254b60e9c511fe04b6536d0" category="cell">Gestor de claves externo (EKM)</block>
   <block id="3cdf420c4abece4e0eba648610592dde" category="cell"><block ref="24b420efa276a683b4bd02f14a2d6f59" prefix="" category="inline-code"></block>Este comando necesita la clave de acceso de OKM</block>
   <block id="a9849e92b148965a7bbb6c14d0afbcd0" category="cell">Gestión de claves incorporada (OKM)</block>
   <block id="cf82606c547b81a04874bee6575b4863" category="summary">Reubique los agregados que no son raíz del nodo 3 al nodo 4 durante una actualización manual de ARL en controladoras que ejecuten ONTAP 9.8 o posterior.</block>
@@ -4422,7 +4414,6 @@
   <block id="85e374a47bd77502ca7ecd58923ec819" category="paragraph">Sin embargo, no es necesario reiniciar el sistema las controladoras si se instala la misma versión de ONTAP 9 en ellas que se instalan en las controladoras originales. Si es así, puede omitir esta sección y continuar a. <block ref="c6531ef0bbbd2a28b8b9b75b1dc2026b" category="inline-link-macro-rx"></block></block>
   <block id="ec8f42afc125efe6d556f20ecc052848" category="inline-link-macro">Gestione claves de autenticación mediante el gestor de claves incorporado</block>
   <block id="67f80d13cf548292184bc05f4b74227a" category="list-text"><block ref="67f80d13cf548292184bc05f4b74227a" category="inline-link-macro-rx"></block></block>
-  <block id="f4672cbaffd9e421a79615ec725fc37c" category="paragraph">+ *Nota:* AutoSupport está habilitado por defecto cuando configura su sistema de almacenamiento por primera vez. Aunque puede deshabilitar AutoSupport en cualquier momento, debe dejarla habilitada. Habilitar AutoSupport puede ayudar de forma significativa a identificar problemas y soluciones cuando se producen fallos en el sistema de almacenamiento.</block>
   <block id="905e3cdcc0a66a5627f194c9bef68b48" category="inline-link">Cómo saber si una unidad tiene la certificación FIPS</block>
   <block id="9a939769a0a1b5b6c994c5ee6a8c23b2" category="list-text">Si su sistema utiliza unidades de autocifrado, consulte el artículo de la base de conocimientos<block ref="99bc6507ac71bae6bc6755b2bf68f73a" category="inline-link-rx"></block> Para determinar el tipo de unidades de autocifrado que se están utilizando en la pareja de alta disponibilidad que se está actualizando. El software ONTAP admite dos tipos de unidades de autocifrado:</block>
   <block id="93cbc4495a566db3a58548f326fa221c" category="paragraph">Antes de reiniciar el sistema, debe confirmar que todas las relaciones de SnapMirror se hayan desactivado. Cuando una relación de SnapMirror se pone en modo inactivo, sigue en modo inactivo tras reinicios y recuperaciones tras fallos.</block>
@@ -4452,11 +4443,8 @@
   <block id="28556bd95def05fed56f5833d7b0b25b" category="inline-link-macro">Gestione el cifrado del almacenamiento con el gestor de claves incorporado</block>
   <block id="2b0f9b46416ed6835a9cf4374bf56295" category="list-text"><block ref="2b0f9b46416ed6835a9cf4374bf56295" category="inline-link-macro-rx"></block></block>
   <block id="2f3067e385c13bed8c91d99a529e1f6c" category="paragraph">Puede utilizar Onboard Key Manager (OKM) para gestionar las claves de cifrado. Si tiene configurado OKM, debe registrar la frase de acceso y el material de copia de seguridad antes de iniciar la actualización.</block>
-  <block id="56848c85d01c97e89fd91301765bc221" category="list-text">Si se instalan unidades de cifrado de almacenamiento de NetApp, siga estos pasos.</block>
   <block id="03b784c13f464c141a29ed9b7adc0b70" category="paragraph">No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo o la pareja de alta disponibilidad. Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta disponibilidad.</block>
   <block id="bbe12f0052143b9b4fa08d13234931ab" category="paragraph">Introduzca la frase de acceso y la información de copia de seguridad registrada anteriormente. Consulte <block ref="2b0f9b46416ed6835a9cf4374bf56295" category="inline-link-macro-rx"></block>.</block>
-  <block id="08054d649addde697b85edb4a8ffb183" category="list-text">Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, establezca<block ref="e0224203ce4fa326049e3e770300ce8f" prefix=" " category="inline-code"></block> para<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> o.<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>.</block>
-  <block id="f5da7c2e2634ff80aa6ca2b591dbeb0c" category="paragraph">Introduzca la frase de acceso y la información de copia de seguridad registrada anteriormente. Consulte <block ref="2b0f9b46416ed6835a9cf4374bf56295" category="inline-link-macro-rx"></block></block>
   <block id="1b2c9b4403be6eaaf7fa2209a153c703" category="list-text"><block ref="1b2c9b4403be6eaaf7fa2209a153c703" category="inline-link-macro-rx"></block></block>
   <block id="eaf73ead47320ec21942b56fd3660eea" category="list-text">Póngase en contacto con el soporte de NetApp para obtener ayuda para restaurar la información sobre la gestión de claves incorporada.</block>
   <block id="c5915780f057e573017a845938fc8511" category="summary">Prepare node3, conecte el nodo node3 al node4 y después migre las LIF y los agregados de datos en node4 a node3.</block>
@@ -4608,10 +4596,11 @@
   <block id="493f827b1132078fbdd11bc0ceceed47" category="list-text">Reasignar todas las unidades de node2 a node4:</block>
   <block id="c6de9e9749bb1b9764c879c3f4e55899" category="paragraph"><block ref="d3a7175de7ab1d1112d49ac67a531b10" prefix="" category="inline-code"></block></block>
   <block id="eedfdc7d9365a1f9e29964c35c82e348" category="paragraph"><block ref="8cf81755f02bee986a80060b929f2335" prefix="" category="inline-code"></block></block>
-  <block id="c9c88276ee2c2102cc859c79f38df03f" category="paragraph">Directiva no resuelta en &lt;stdin&gt;: Incluye:../_include/ru_man_get_ip_address_external_km_server.adoc[]</block>
   <block id="c8e281db9c8a31e8da74e7ff6bc12115" category="summary">Utilice OKM para administrar claves de autenticación durante una actualización manual de ARL en controladores que ejecuten ONTAP 9,7 o anterior.</block>
-  <block id="e9e0a1f4688f13dee423ee10d2c9cf11" category="list-text">[[MAN_install3_step16]]Si están instaladas unidades de cifrado del sistema de almacenamiento de NetApp, realice los siguientes pasos.</block>
   <block id="20c4be209ec6c65b4221fa6f09f2df42" category="inline-link-macro">Gestione el cifrado del almacenamiento mediante el gestor de claves incorporado</block>
   <block id="bd001ad1a159ea8195f2f6877d4e5047" category="list-text"><block ref="bd001ad1a159ea8195f2f6877d4e5047" category="inline-link-macro-rx"></block></block>
   <block id="73d106cd4da3fdbd0b8a8317db146c37" category="list-text">[[BOOT_node2_step1]]Si tiene unidades de cifrado del almacenamiento de NetApp (NSE) instaladas, siga los pasos siguientes.</block>
+  <block id="04f24e11b658105f38ef40a82c24839e" category="paragraph">*Nota:* AutoSupport se activa de forma predeterminada cuando configura el sistema de almacenamiento por primera vez. Aunque puede deshabilitar AutoSupport en cualquier momento, debe dejarla habilitada. Habilitar AutoSupport puede ayudar de forma significativa a identificar problemas y soluciones cuando se producen fallos en el sistema de almacenamiento.</block>
+  <block id="cb6bc72e3e387b19e4fbc2f28ecc2940" category="list-text">Configurado<block ref="e0224203ce4fa326049e3e770300ce8f" prefix=" " category="inline-code"></block> para<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> o.<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>.</block>
+  <block id="e147253c0010bdd5968cb9b4b9ddf7dc" category="cell">Gestor de claves externas</block>
 </blocks>

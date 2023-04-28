@@ -17,7 +17,7 @@ summary: Nodo de arranque con el módulo de controlador AFF A900 y el módulo NV
 El nodo 1 con el controlador AFF A900 o FAS9500 y los módulos NVRAM están ahora listos para el arranque. Una actualización de A700 de AFF a AFF A900 o de FAS9000 a FAS9500 intercambiando la controladora y los módulos NVRAM implica mover únicamente las conexiones de consola y de gestión. Esta sección proporciona los pasos necesarios para arrancar el nodo 1 con el controlador AFF A900 o FAS9500 y los módulos NVRAM.
 
 .Pasos
-. Si se instalan unidades de cifrado de almacenamiento de NetApp, siga estos pasos.
+. Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, siga estos pasos.
 +
 
 NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] para determinar el tipo de unidades de autocifrado que están en uso.
@@ -27,8 +27,6 @@ NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el art�
 +
 [cols="35,65"]
 |===
-
-
 | Si están en uso las siguientes unidades... | Entonces… 
 
 
