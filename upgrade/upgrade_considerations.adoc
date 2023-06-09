@@ -65,7 +65,7 @@ Transferir el almacenamiento interno es una tarea opcional del flujo de trabajo 
 
 Situaciones en las que podrían necesitarse pasos adicionales
 
-* Si va a actualizar de un AFF A250 a un AFF A400, consulte xref:upgrade-aff_a250_to_aff_a400_ndu_upgrade_workflow.adoc[Actualice AFF A250 a AFF A400 mediante la conversión a una bandeja de unidades].
+* Si va a actualizar de un AFF A250 a un AFF A400, consulte xref:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.adoc[Actualice AFF A250 a AFF A400 mediante la conversión a una bandeja de unidades].
 * Si el sistema nuevo tiene menos ranuras que el sistema original, o si tiene menos puertos o tipos diferentes, puede que deba añadir un adaptador al nuevo sistema.
 +
 https://hwu.netapp.com["Hardware Universe de NetApp"^]

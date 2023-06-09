@@ -14,7 +14,7 @@ summary: Conecte físicamente node2 a node4 antes de reasignar unidades de node2
 Después de convertir AFF A250 node2 a una bandeja de unidades NS224 y conectarse a AFF A400 node4, debe reasignar las unidades que anteriormente pertenecían a node2 a node4.
 
 .Antes de empezar
-Compruebe que tanto node2 como node4 están en espera en el aviso del CARGADOR.
+Compruebe que tanto node3 como node4 están en espera en el aviso del CARGADOR.
 
 .Acerca de esta tarea
 Realice los siguientes pasos en node4.
@@ -40,7 +40,7 @@ Realice los siguientes pasos en node4.
 `storage port show`
 
 +
-Se debe mostrar una salida como la siguiente:
+Se debe mostrar una salida como la del siguiente ejemplo:
 
 +
 [listing]
@@ -59,16 +59,16 @@ Nov 10 16:27:38 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added
 Port Type Mode    Speed(Gb/s) State    Status  VLAN ID
 ---- ---- ------- ----------- -------- ------- -------
 e0c  ENET storage 100 Gb/s    enabled  online  30
-e0d  ENET storage 100 Gb/s    enabled  online  30
+e0d  ENET storage 100 Gb/s    enabled  offline 30
 ----
 . Mostrar todas las unidades asociadas:
 +
 `disk show -v`
 
-. Registre el ID del sistema local.
+. Registre el valor de ID del sistema local; éste es el ID del sistema node4. Registre también los ID del sistema de node1 y node2 de la columna de PROPIETARIO.
 . Reasignar todas las unidades de node2 a node4:
 +
-`disk reassign -s _node2_ -d _node4_ -p _node1_`
+`disk reassign -s _node2_system_ID_ -d _node4_system_ID_ -p _node1_system_ID_`
 
 . Verifique que todas las unidades reasignadas puedan verse en el nuevo ID de sistema:
 +
@@ -78,8 +78,15 @@ e0d  ENET storage 100 Gb/s    enabled  online  30
 
 NOTE: Si las unidades no se pueden ver, *STOP* y póngase en contacto con el soporte técnico para obtener ayuda.
 
+. Compruebe que el agregado raíz de node2 se ha notificado en la salida y que el agregado está en línea:
++
+`aggr status`
+
 . Salga del modo de mantenimiento:
 +
 `halt`
 
 
+
+.El futuro
+link:upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html["Migre agregados de datos, épsilon y LIF en node1 a node4"]

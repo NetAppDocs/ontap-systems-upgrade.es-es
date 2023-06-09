@@ -33,18 +33,40 @@ Después de convertir AFF A250 node1 a una bandeja de unidades NS224 y conectars
 +
 `storage port show`
 
++
+Se debe mostrar una salida como la del siguiente ejemplo:
+
++
+[listing]
+----
+*> storage port modify -p e0c -m storage
+Nov 10 16:27:23 [localhost:nvmeof.port.modify:notice]: Changing NVMe-oF port e0c to storage mode.
+
+Nov 10 16:27:29 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added at address fe80::2a0:98ff:fefa:8885.
+
+*> storage port modify -p e0d -m storage
+Nov 10 16:27:34 [localhost:nvmeof.port.modify:notice]: Changing NVMe-oF port e0d to storage mode.
+
+Nov 10 16:27:38 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added at address fe80::2a0:98ff:fefa:8886.
+
+*> storage port show
+Port Type Mode    Speed(Gb/s) State    Status  VLAN ID
+---- ---- ------- ----------- -------- ------- -------
+e0c  ENET storage 100 Gb/s    enabled  online  30
+e0d  ENET storage 100 Gb/s    enabled  offline 30
+----
 . Mostrar todas las unidades asociadas:
 +
 `disk show -v`
 
-. Registre el ID del sistema local.
+. Registre el valor de ID del sistema local; éste es el ID del sistema node3. Registre también los ID del sistema de node1 y node2 de la columna de PROPIETARIO.
 . Reasignar todas las unidades de node1 a node3:
 +
-`disk reassign -s _node1_ -d _node3_ -p _node2_`
+`disk reassign -s _node1_system_ID_ -d _node3_system_ID_ -p _node4_system_ID_`
 
 . Verifique que todas las unidades reasignadas puedan verse en el nuevo ID de sistema:
 +
-`disk show -s _node3 system ID_`
+`disk show -s _node3_system_ID_`
 
 +
 
@@ -55,3 +77,6 @@ NOTE: Si las unidades no se pueden ver, *STOP* y póngase en contacto con el sop
 `halt`
 
 
+
+.El futuro
+link:upgrade_migrate_lIFs_aggregates_node4_node3.html["Migre LIF y agregados de datos de node4 a node3"]

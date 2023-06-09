@@ -14,7 +14,7 @@ summary: Prepare node3, conecte el nodo node3 al node4 y después migre las LIF 
 Para completar la actualización, conecte node3 a node4 y, a continuación, migre las interfaces lógicas de datos (LIF) y los agregados de datos en node4 a node3.
 
 .Pasos
-. En el símbolo del sistema DEL CARGADOR DEL nodo, arranque el nodo en el menú de arranque:
+. En el símbolo del sistema DEL CARGADOR DE node3, arranque el nodo en el menú de arranque:
 +
 `boot_ontap menu`
 
@@ -27,16 +27,16 @@ Esto sustituye la configuración basada en all-flash por el último backup en di
 +
 [NOTE]
 ====
-Como era de esperar, el nodo se reinicia automáticamente para cargar la nueva copia del sistema de archivos /var.
+El nodo se reinicia automáticamente para cargar la nueva copia del sistema de archivos /var.
 
 El nodo informa de una advertencia de que hay una discrepancia de ID del sistema. Introduzca `y` Para anular el ID del sistema.
 
 ====
 . Conecte node3 a node4:
 +
-.. Conecte los cables de alta disponibilidad multivía (MPHA) a la bandeja NS224 para garantizar la redundancia.
-.. Conecte los cables de parejas de alta disponibilidad (si interfaces separadas) entre los nodos.
-.. Conecte los cables del clúster (si interfaces separadas) entre los nodos.
+.. Conecte los cables de alta disponibilidad multivía (MPHA) a la bandeja NS224 para garantizar la redundancia. Conecte el puerto node3 100GbE e0d al puerto NSM B e0b y conecte el puerto node4 100GbE e0d al puerto NSM A e0a.
+.. Compruebe que los puertos de alta disponibilidad e0a y e0b están conectados entre los nodos.
+.. Compruebe que los puertos E3A y E3b del clúster están conectados entre los nodos.
 
 
 . Migrar los LIF de clúster:
@@ -65,27 +65,29 @@ NOTE: A partir de ONTAP 9,8, se podrían designar nuevos espacios IP y uno o má
 +
 `network interface show -role cluster`
 
-. Migre todas las LIF de red de clúster a los puertos principales:
+. Migre todas las LIF de red de clúster en ambos nodos a sus puertos principales:
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_ -destination-port _port_name_`
+
+. Muestre todas las LIF de red del clúster:
 +
 `network interface show -role cluster`
 
-. Mostrar todas las LIF de red de datos:
+. Compruebe los puertos de inicio de las LIF de red de clúster:
 +
-`network interface show -role data`
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-port _port_name_`
 
 . Migre todos los LIF de datos a node3:
 +
-`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_`
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_ -destination-port _port_name_`
 
 . Mostrar todas las LIF de red de datos:
 +
 `network interface show -role data`
 
+. Configure el nodo de inicio y el puerto de inicio para todas las LIF de datos. Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
 +
-Los LIF de gestión y del clúster no pueden migrar entre nodos. Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
-
-+
-`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+`network interface modify -vserver _vserver_name_ -lif lif_name -home-node _node_name_ -home-port _port_name_ -status-admin up`
 
 . Migre la LIF de administración del clúster:
 +
@@ -114,6 +116,10 @@ Los LIF de gestión y del clúster no pueden migrar entre nodos. Si alguna LIF e
 . Habilite la reversión automática de las LIF de red en los nodos:
 +
 `network interface modify -lif * -auto-revert true`
+
+. Habilitar la conmutación automática al nodo de respaldo de almacenamiento:
++
+`storage failover modify -node * -auto-giveback true`
 
 . Mostrar el estado del clúster:
 +

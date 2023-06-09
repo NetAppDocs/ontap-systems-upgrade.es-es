@@ -14,7 +14,7 @@ summary: Migre los agregados de datos, épsilon y LIF en node1 a node4.
 Antes de convertir AFF A250 node1 en una bandeja de unidades, debe migrar los agregados de datos, el épsilon y las interfaces lógicas (LIF) del node1 a AFF A400 node4.
 
 .Pasos
-. En el símbolo del sistema DEL CARGADOR DEL nodo, arranque el nodo en el menú de arranque:
+. En el símbolo del sistema DEL CARGADOR DE node4, arranque el nodo en el menú de arranque:
 +
 `boot_ontap menu`
 
@@ -26,7 +26,7 @@ Esto sustituye la configuración basada en all-flash por el último backup en di
 +
 [NOTE]
 ====
-Como era de esperar, el nodo se reinicia automáticamente para cargar la nueva copia del sistema de archivos /var.
+El nodo se reinicia automáticamente para cargar la nueva copia del sistema de archivos /var.
 
 El nodo informa de una advertencia de discrepancia del ID del sistema. Introduzca `y` Para anular el ID del sistema.
 
@@ -43,11 +43,31 @@ El nodo informa de una advertencia de discrepancia del ID del sistema. Introduzc
 ====
 Si los puertos del clúster del sistema no son similares al actualizar un AFF A250 a un AFF A400, puede que deba cambiar temporalmente las interfaces de node4 en puertos de clúster:
 
-.. `network port modify -node _node4_ -port _port_name_ -mtu 9000 -ipspace Cluster`
-.. `network interface migrate -vserver Cluster -lif _cluster_LIF_  -destination-node _node4_ -destination-port _port_name_`
-
+`network port modify -node _node4_ -port _port_name_ -mtu 9000 -ipspace Cluster`
 
 ====
++
+`network interface migrate -vserver Cluster -lif _cluster_LIF_  -destination-node _node4_ -destination-port _port_name_`
+
+. Espere a que el clúster llegue al quórum y compruebe que los nodos del clúster están en buen estado:
++
+`– cluster show`
+
++
+
+NOTE: El par de alta disponibilidad y la conmutación por error de almacenamiento siguen deshabilitadas en el estado actual.
+
+. Mueva los LIF de clúster a los 25G puertos de clúster temporales en el node4:
++
+`network interface modify`
+
+. Si se utilizan grupos de interfaces y VLAN de datos en el clúster de AFF A250 que está actualizando, realice este paso. Si no es así, vaya a. <<migrate_node1_nod4,Paso 8>>.
++
+Los nombres de puertos de red físicos difieren entre los sistemas AFF A250 y AFF A400. Como resultado, es posible que haya grupos de interfaces configurados incorrectamente y VLAN desplazadas en node4. Compruebe y, si es necesario, corrija los grupos de interfaces configurados incorrectamente y las VLAN desplazadas.
+
+
+
+[[migrate_node1_nod4]]
 . Migre los agregados de datos de node1 a node4:
 +
 `storage aggregate relocation start -aggregate-list _aggregate_list_name_ -node _node1_ -destination _node4_ -ndo-controller-upgrade true -override-destination-checks true`
@@ -60,11 +80,11 @@ Si los puertos del clúster del sistema no son similares al actualizar un AFF A2
 +
 .. Eliminar épsilon de node1:
 +
-`cluster modify -epsilon false -node _local_node_name_`
+`cluster modify -epsilon false -node _node1_`
 
 .. Mueva épsilon a node4:
 +
-`cluster modify -epsilon true -node _partner_node_name_`
+`cluster modify -epsilon true -node _node4_`
 
 
 
@@ -78,7 +98,7 @@ Si los puertos del clúster del sistema no son similares al actualizar un AFF A2
 
 . Migre todos los LIF de datos a node4:
 +
-`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_`
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node4_ -destination-port _port_name_`
 
 . Mostrar el estado de todas las LIF de datos en el clúster:
 +
@@ -86,7 +106,7 @@ Si los puertos del clúster del sistema no son similares al actualizar un AFF A2
 
 . Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
 +
-`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
 
 . Migre la LIF de administración del clúster:
 +
@@ -101,3 +121,6 @@ Si los puertos del clúster del sistema no son similares al actualizar un AFF A2
 `halt -node _node1_ -inhibit-takeover true -ignore-quorum-warnings true`
 
 
+
+.El futuro
+link:upgrade_convert_node1_drive_shelf_connect_node3.html["Convierta node1 en una bandeja de unidades y conéctela a node3"]

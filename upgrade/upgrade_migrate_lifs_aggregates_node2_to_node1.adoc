@@ -16,8 +16,17 @@ Antes de convertir AFF A250 node2 en una bandeja de unidades, deberá migrar las
 .Antes de empezar
 Compruebe que cumple los siguientes requisitos:
 
-* Las controladoras AFF A250 y AFF A400 tienen instaladas la misma versión y versión de revisión de ONTAP.
-* Ambas controladoras AFF A400 están en espera en la `Maintenance Mode` prompt.
+* Las controladoras AFF A250 y AFF A400 ejecutan la misma versión y versión de revisión de ONTAP.
++
+[NOTE]
+====
+** Debe reiniciar e instalar la versión de ONTAP en cada AFF A400 que sea idéntico a la versión que se ejecuta en AFF A250.
+** Tanto la imagen de inicio principal como la de backup de cada AFF A400 deben tener la misma versión de ONTAP.
+** Si los clústeres de AFF A400 se configuraron previamente, debe borrar cualquier configuración de clúster residual ejecutando un `wipeconfig` desde el menú de arranque.
+
+
+====
+* Ambas controladoras AFF A400 están en espera en el aviso del CARGADOR.
 * Dispone de todos los cables adecuados a mano.
 
 
@@ -25,9 +34,13 @@ Compruebe que cumple los siguientes requisitos:
 Los siguientes pasos se realizan en AFF A250 node1.
 
 .Pasos
-. Deshabilitar la devolución automática de recuperación tras fallos del clúster:
+. Acceda al nivel de privilegio avanzado:
 +
-`storage failover modify -node _node_name_ -auto-giveback false`
+`set -privilege advanced`
+
+. Desactivar la conmutación automática al nodo de respaldo del almacenamiento:
++
+`storage failover modify -node _node1_ -auto-giveback false`
 
 . Deshabilite la reversión automática de las LIF en ambos nodos del par de alta disponibilidad:
 +
@@ -39,11 +52,11 @@ Los siguientes pasos se realizan en AFF A250 node1.
 
 . Muestre el estado de las LIF de administración del clúster:
 +
-`network interface show cluster_mgmt`
+`network interface show -role cluster_mgmt`
 
 . Migre todas las LIF de datos desde las máquinas virtuales de almacenamiento alojadas en node2:
 +
-`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_ -destination-port _port_name_`
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node1_ -destination-port _port_name_`
 
 +
 
@@ -55,7 +68,7 @@ NOTE: Este comando solo migra LIF que no sean SAN. No puede utilizarlo para migr
 
 . Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
 +
-`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _node_name_ -status-admin up`
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
 
 . Muestre el estado de todos los agregados de datos del clúster:
 +
@@ -94,3 +107,6 @@ NOTE: Este comando solo migra LIF que no sean SAN. No puede utilizarlo para migr
 `halt -node _node2_ -inhibit-takeover true -ignore-quorum-warnings true`
 
 
+
+.El futuro
+link:upgrade_convert_node2_drive_shelf_connect_node4.html["Convierta node2 en una bandeja de unidades y conéctela a node4"]

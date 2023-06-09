@@ -24,6 +24,9 @@ homepage:
     links:
     - title: Actualice el hardware de la controladora
       url: "/upgrade/upgrade-decide-to-use-this-guide.html"
+    - title: Actualice AFF A250 a AFF A400 mediante la conversión a una bandeja de
+        unidades
+      url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
   - title: Actualizar mediante el movimiento de agregados en sistemas que ejecutan
       ONTAP 9.8 y versiones posteriores
     links:
