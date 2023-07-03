@@ -2,6 +2,6 @@
 :allow-uri-read: 
 
 
-Cuando configura un clúster, el asistente de configuración le solicita que introduzca la clave de licencia base de clúster. Sin embargo, algunas funciones requieren licencias adicionales, que se emiten como _packages_ que incluyen una o más funciones. Cada nodo del clúster debe tener su propia clave para cada función que se usará en el clúster.
+Algunas funciones requieren licencias, que se emiten como _packages_ que incluyen una o más funciones. Cada nodo del clúster debe tener su propia clave para cada función que se usará en el clúster.
 
 Si no tiene claves de licencia nuevas, las funciones con licencia actualmente en el clúster están disponibles para la nueva controladora y seguirán funcionando. Sin embargo, el uso de funciones sin licencia en la controladora puede dejar de cumplir con el acuerdo de licencia, de modo que debe instalar la nueva clave o las claves de licencia para la nueva controladora una vez que finalice la actualización.

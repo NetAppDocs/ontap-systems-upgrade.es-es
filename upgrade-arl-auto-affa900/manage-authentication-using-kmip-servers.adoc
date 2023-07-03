@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/manage-authentication-using-kmip-servers.html 
 keywords: storage, encryption, authentication, key, manager, external 
-summary: Configure y gestione el cifrado de almacenamiento, gestione las claves de autenticación y ponga en modo inactivo las relaciones de SnapMirror durante una actualización de AFF A700 a AFF A900. 
+summary: Configurar y gestionar el cifrado de almacenamiento, gestionar las claves de autenticación y desactivar las relaciones de SnapMirror cuando se utiliza ARL para actualizar los modelos de controladoras en el mismo chasis. 
 ---
 = Gestionar la autenticación mediante servidores KMIP
 :hardbreaks:

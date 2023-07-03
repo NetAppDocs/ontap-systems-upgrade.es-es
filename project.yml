@@ -30,8 +30,8 @@ homepage:
   - title: Actualizar mediante el movimiento de agregados en sistemas que ejecutan
       ONTAP 9.8 y versiones posteriores
     links:
-    - title: Utilice los comandos "system Controller replace" (sustitución del controlador
-        del sistema) (AFF A700 a AFF A900)
+    - title: Utilice los comandos para sustituir la controladora del sistema para
+        actualizar los modelos de controladora en el mismo chasis
       url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/
     - title: Utilizar comandos para «sustituir controlador del sistema» (en la mayoría
         de los sistemas)

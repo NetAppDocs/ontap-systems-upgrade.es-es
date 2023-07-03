@@ -14,7 +14,7 @@ summary: 'Secuencia de procesos en la fase 1 de una actualización de ARL median
 
 
 [role="lead"]
-Durante la fase 1, realizará comprobaciones previas y, si fuera necesario, corrija la propiedad del agregado. Debe registrar cierta información si gestiona el cifrado de almacenamiento mediante OKM y puede decidir desactivar las relaciones de SnapMirror.
+Durante la fase 1, realizará comprobaciones previas y, si fuera necesario, corrija la propiedad del agregado. Debe registrar cierta información si gestiona el cifrado del almacenamiento mediante el administrador de claves incorporado y puede optar por desactivar las relaciones de SnapMirror.
 
 .Pasos
 . link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"]

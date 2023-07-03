@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/netboot_node1.html 
-keywords: preparing, netboot, ontap, node1, aff, a900 
-summary: Tras intercambiar el módulo de controladora AFF A900 correspondiente y el módulo NVRAM, debe reiniciar el nodo 1. 
+keywords: preparing, prepare, netboot, ontap, node1 
+summary: Al utilizar ARL para actualizar los modelos de controlador en el mismo chasis, debe netboot node1 después de intercambiar el módulo del sistema de reemplazo correspondiente. 
 ---
 = Netboot el nodo 1
 :hardbreaks:
@@ -14,12 +14,13 @@ summary: Tras intercambiar el módulo de controladora AFF A900 correspondiente y
 
 
 [role="lead"]
-Tras intercambiar los módulos NVRAM y las controladoras del nodo 1 del AFF A900 o FAS9500 correspondientes, debe reiniciar el nodo 1. El término arranque desde red significa que se arranca desde una imagen ONTAP almacenada en un servidor remoto. Al prepararse para reiniciar el sistema, debe añadir una copia de la imagen de arranque ONTAP 9 en un servidor web al que puede acceder el sistema.
+Después de intercambiar los módulos del sistema de reemplazo correspondientes, debe netboot node1. El término arranque desde red significa que se arranca desde una imagen ONTAP almacenada en un servidor remoto. Al prepararse para reiniciar el sistema, debe añadir una copia de la imagen de arranque ONTAP 9 en un servidor web al que puede acceder el sistema.
 
-No es posible comprobar la versión de ONTAP instalada en el soporte de arranque de un módulo de controlador AFF A900 o FAS9500 a menos que esté instalado en un chasis y ENCENDIDO. La versión de ONTAP en los medios de arranque AFF A900 o FAS9500 debe ser la misma que la versión de ONTAP que se ejecuta en el sistema A700 o FAS9000 de AFF que está actualizando, y las imágenes de arranque principal y de backup deben coincidir. Puede configurar las imágenes mediante el modo de reiniciar el sistema seguido de `wipeconfig` desde el menú de arranque. Si el módulo de la controladora se usaba anteriormente en otro clúster, el `wipeconfig` el comando borra toda la configuración residual del soporte de arranque.
+No es posible comprobar la versión de ONTAP instalada en el soporte de arranque del módulo de controlador de reemplazo a menos que esté instalado en un chasis y ENCENDIDO. La versión de ONTAP en el soporte de arranque del sistema de reemplazo debe ser la misma que la versión de ONTAP que se ejecuta en el sistema antiguo que se está actualizando, y las imágenes de arranque primarias y de backup deben coincidir. Para verificar la versión mínima de ONTAP admitida para la actualización, consulte link:index.html["Descripción general"].
 
+Puede configurar las imágenes mediante el modo de reiniciar el sistema seguido de `wipeconfig` desde el menú de arranque. Si el módulo de la controladora se usaba anteriormente en otro clúster, el `wipeconfig` el comando borra toda la configuración residual del soporte de arranque.
 
-NOTE: También puede utilizar la opción de arranque USB para realizar el arranque desde red. Consulte el artículo de la base de conocimientos link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Cómo utilizar el comando boot_recovery LOADER para instalar ONTAP para la configuración inicial de un sistema"^].
+También puede utilizar la opción de arranque USB para realizar el arranque desde red. Consulte el artículo de la base de conocimientos link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Cómo utilizar el comando boot_recovery LOADER para instalar ONTAP para la configuración inicial de un sistema"^].
 
 .Antes de empezar
 * Compruebe que puede acceder a un servidor HTTP con el sistema.

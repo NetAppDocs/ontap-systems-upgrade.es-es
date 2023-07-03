@@ -11,7 +11,7 @@ Este procedimiento incluye los pasos que se realizan en el nuevo módulo del con
 ====
 .Gestión de claves incorporada
 --
-*Configurar NVE o NAE mediante el Administrador de claves incorporado*
+Configure NVE o NAE con el gestor de claves incorporado.
 
 .Pasos
 . Restaure las claves de autenticación de todos los servidores de gestión de claves vinculados al nuevo nodo:
@@ -23,7 +23,7 @@ Este procedimiento incluye los pasos que se realizan en el nuevo módulo del con
 --
 .Gestión de claves externas
 --
-*Configurar NVE o NAE mediante Gestión de claves externa*
+Configure NVE o NAE mediante la gestión de claves externa.
 
 .Pasos
 . Compruebe que los servidores de gestión de claves aún estén disponibles, su estado y la información de la clave de autenticación:

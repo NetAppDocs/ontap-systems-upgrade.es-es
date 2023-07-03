@@ -69,7 +69,7 @@ Este comando necesita la clave de acceso del gestor de claves incorporado (OKM)
 +
 Para obtener más información, vea el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/dm/Encryption/How_to_restore_external_key_manager_server_configuration_from_the_ONTAP_boot_menu["Cómo restaurar la configuración del servidor del administrador de claves externo desde el menú de arranque de ONTAP"^].
 
-** Restaurar la autenticación de OKM:
+** Restaurar autenticación para OKM:
 +
 [cols="35,65"]
 |===

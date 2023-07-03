@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/relocate_failed_or_vetoed_aggr.html 
 keywords: relocate, failed, vetoed, aggregates, relocation, operation 
-summary: La reubicación de agregados ha fallado o ha vetado los agregados durante una actualización de AFF A700 a AFF A900. 
+summary: Reubicar agregados con fallos o vetados al utilizar ARL para actualizar los modelos de controladora en el mismo chasis. 
 ---
 = Se han producido fallos en la reubicación o los agregados vetados
 :hardbreaks:

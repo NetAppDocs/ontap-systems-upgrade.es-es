@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/stage_3_index.html 
-keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
-summary: 'Secuencia de procesos en la fase 1 de una actualización de ARL mediante `system controller replace` Comandos en controladoras que ejecutan ONTAP 9.8 o una versión posterior.' 
+keywords: upgrade, boot, node1, verify, restore, overview, stage 3 
+summary: 'Secuencia de proceso de etapa 1 para una actualización de ARL mediante `system controller replace` comandos para actualizar los modelos de controladora en el mismo chasis.' 
 ---
 = Descripción general
 :hardbreaks:
@@ -14,10 +14,10 @@ summary: 'Secuencia de procesos en la fase 1 de una actualización de ARL median
 
 
 [role="lead"]
-Durante la etapa 3, debe arrancar el nodo 1 con una controladora actualizada y módulos NVRAM, y verificar la instalación del nodo 1 actualizada. Si utiliza el cifrado de volúmenes de NetApp (NVE), debe restaurar la configuración del gestor de claves. También puede reubicar agregados no raíz y LIF de datos NAS del nodo 2 al nodo 1 actualizado y comprobar que las LIF DE SAN existen en el nodo 1.
+Durante la etapa 3, se inicia node1 con módulos de sistema actualizados y se verifica la instalación node1 actualizada. Si utiliza el cifrado de volúmenes de NetApp (NVE), debe restaurar la configuración del gestor de claves. También puede reubicar agregados no raíz y LIF de datos NAS del nodo 2 al nodo 1 actualizado y comprobar que las LIF DE SAN existen en el nodo 1.
 
 .Pasos
-. link:boot_node1_with_a900_controller_and_nvs.html["Nodo de arranque con los controladores AFF A900 o FAS9500 y módulos NVRAM"]
+. link:boot_node1_with_a900_controller_and_nvs.html["Arranque node1 con los módulos del sistema de sustitución"]
 . link:verify_node1_installation.html["Compruebe la instalación del nodo 1"]
 . link:restore_key_manager_config_upgraded_node1.html["Restaure la configuración de Key-Manager en el nodo 1 actualizado"]
 . link:move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html["Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 1 actualizado"]

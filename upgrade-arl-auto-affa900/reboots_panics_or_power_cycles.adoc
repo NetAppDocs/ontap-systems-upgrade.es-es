@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/reboots_panics_or_power_cycles.html 
 keywords: reboots, panics, power, cycles, node, crash 
-summary: Puede que el sistema se bloquee, sea de reinicio o de caída o de encendido/apagado durante diferentes etapas al actualizar un A700 de AFF a un AFF A900. 
+summary: 'El sistema podría bloquearse (reiniciar, producir alarmas o pasar por un ciclo de encendido y apagado) durante distintas etapas cuando se usa ARL para actualizar los modelos de controladoras en el mismo chasis.' 
 ---
 = Reinicios, pánicos o ciclos de alimentación
 :hardbreaks:

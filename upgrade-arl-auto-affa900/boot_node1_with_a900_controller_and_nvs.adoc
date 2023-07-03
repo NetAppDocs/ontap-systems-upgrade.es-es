@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/boot_node1_with_a900_controller_and_nvs.html 
-keywords: boot, NVRAM, controller, module, node1, aff, a700, a900 
-summary: Nodo de arranque con el módulo de controlador AFF A900 y el módulo NVRAM. 
+keywords: boot, NVRAM, controller, module, node1, replacement 
+summary: Arranque node1 con los módulos de controladora de reemplazo cuando utilice ARL para actualizar los modelos de controladora en el mismo chasis. 
 ---
-= Nodo de arranque con los controladores AFF A900 o FAS9500 y módulos NVRAM
+= Arranque node1 con los módulos del sistema de sustitución
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,29 @@ summary: Nodo de arranque con el módulo de controlador AFF A900 y el módulo NV
 
 
 [role="lead"]
-El nodo 1 con el controlador AFF A900 o FAS9500 y los módulos NVRAM están ahora listos para el arranque. Una actualización de A700 de AFF a AFF A900 o de FAS9000 a FAS9500 intercambiando la controladora y los módulos NVRAM implica mover únicamente las conexiones de consola y de gestión. Esta sección proporciona los pasos necesarios para arrancar el nodo 1 con el controlador AFF A900 o FAS9500 y los módulos NVRAM.
+node1 con los módulos de reemplazo ya está listo para el arranque. Esta sección proporciona los pasos necesarios para arrancar node1 con los módulos de reemplazo para las siguientes configuraciones de actualización:
+
+[cols="35,65"]
+|===
+| Controlador node1 antiguo | Sustitución de los módulos del sistema node1 
+
+
+| AFF A220
+AFF A200
+C190 de AFF | Módulo controlador AFF A150 ^1^ 
+
+
+| FAS2620
+FAS2720 | Módulo controlador FAS2820 ^1^ 
+
+
+| AFF A700 | Controladora AFF A900 y módulos NVRAM ^2^ 
+
+
+| FAS9000 | Controladora FAS9500 y módulos NVRAM ^2^ 
+|===
+^1^ La actualización al intercambiar el módulo del controlador implica mover todas las conexiones del módulo del controlador antiguo al módulo del controlador de reemplazo.
+^2^ La actualización mediante el cambio de la controladora y los módulos NVRAM implica mover únicamente las conexiones de la consola y de gestión.
 
 .Pasos
 . Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, siga estos pasos.
@@ -51,7 +73,7 @@ Introduzca la frase de acceso y la información de copia de seguridad registrada
 +
 `boot_ontap menu`
 
-. Reasigne los discos 1-1 del A700 de AFF al nodo 1 del AFF A900 introduciendo "22/7" y seleccionando la opción oculta `boot_after_controller_replacement` cuando el nodo se detiene en el menú de arranque.
+. Para reasignar los discos antiguos de node1 al node1 de reemplazo, introduzca «22/7» y seleccione la opción oculta `boot_after_controller_replacement` cuando el nodo se detiene en el menú de arranque.
 +
 Tras un breve retraso, se le pedirá que introduzca el nombre del nodo que se va a reemplazar. Si hay discos compartidos (también llamados Advanced Disk Partitioning (ADP) o discos con particiones), se le pedirá que introduzca el nombre del nodo del compañero de alta disponibilidad.
 

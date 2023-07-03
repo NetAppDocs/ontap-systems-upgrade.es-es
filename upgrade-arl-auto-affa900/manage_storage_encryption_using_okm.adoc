@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/manage_storage_encryption_using_okm.html 
 keywords: storage, encryption, authentication, key, manager, external 
-summary: Configure y gestione el cifrado de almacenamiento, gestione las claves de autenticación y ponga en modo inactivo las relaciones de SnapMirror durante una actualización de AFF A700 a AFF A900. 
+summary: Configurar y gestionar el cifrado de almacenamiento, gestionar las claves de autenticación y desactivar las relaciones de SnapMirror cuando se utiliza ARL para actualizar los modelos de controladoras en el mismo chasis. 
 ---
 = Gestione el cifrado del almacenamiento con el gestor de claves incorporado
 :hardbreaks:

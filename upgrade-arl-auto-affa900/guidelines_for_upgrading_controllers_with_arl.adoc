@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html 
-keywords: guidelines, upgrade, aff, a900, a700, ontap, controllers 
-summary: Comprenda si puede utilizar ARL para actualizar un A700 de AFF a un AFF A900. 
+keywords: guidelines, upgrade, ontap, controllers, old, system, chassis, disk, disks 
+summary: Sepa si puede utilizar ARL, manteniendo el chasis y los discos del sistema antiguos, para la configuración de actualización. 
 ---
 = Directrices para actualizar controladoras
 :hardbreaks:
@@ -14,20 +14,15 @@ summary: Comprenda si puede utilizar ARL para actualizar un A700 de AFF a un AFF
 
 
 [role="lead"]
-Utilizar ARL para actualizar un par de controladoras que ejecuten ONTAP 9.10.1P10, 9.11.1P6 o una versión posterior en las siguientes configuraciones del sistema:
-
-* Controladoras A700 de AFF a un sistema AFF A900
-* Controladoras FAS9000 a un sistema FAS9500
-
+Para comprender si puede utilizar la reubicación de agregados (ARL), que mantiene el antiguo chasis y los discos del sistema, depende de la configuración de actualización del sistema y de la versión de ONTAP.
 
 
 
 == Actualizaciones compatibles de ARL
 
-Actualización de la controladora de un A700 de AFF a un AFF A900 o de un FAS9000 a un FAS9500 con ARL, y el módulo NVRAM es la combinación compatible. Si ha recibido un nuevo sistema AFF A900 o FAS9500 como un sistema completo, incluido un nuevo chasis, consulte link:other_references.html["Referencias"] Para establecer un enlace con los comandos _use "system Controller replace" para actualizar el hardware de la controladora que ejecuta contenido de ONTAP 9.8 o posterior_.
+Las actualizaciones de controladoras son compatibles con ciertas configuraciones del sistema. Para ver la lista de sistemas compatibles y versiones mínimas de ONTAP, consulte link:index.html["Descripción general"].
 
-
-WARNING: Este procedimiento se aplica estrictamente a una actualización de AFF A700 a AFF A900 o de FAS9000 a FAS9500 que ejecute ONTAP 9.10.1P10, 9.11.1P6 o una versión posterior. NO utilice este procedimiento para realizar una actualización entre otras combinaciones del sistema.
+Si ha recibido un nuevo AFF A150, FAS2820, AFF A900 o FAS9500 como sistema completo, incluido un chasis nuevo, consulte link:other_references.html["Referencias"] Para establecer un enlace con los comandos _use "system Controller replace" para actualizar el hardware de la controladora que ejecuta contenido de ONTAP 9.8 o posterior_.
 
 La actualización de la controladora mediante ARL es compatible en sistemas configurados con volúmenes de SnapLock Enterprise y SnapLock Compliance.
 
@@ -36,6 +31,12 @@ La actualización de la controladora mediante ARL es compatible en sistemas conf
 == Clústeres de dos nodos sin switches
 
 Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar los nodos en el clúster sin switches mientras realiza la actualización. No es necesario convertirlos en un clúster con switches.
+
+
+
+== Cambiar clústeres conectados
+
+Si va a actualizar nodos en un clúster conectado a un switch de clúster, debe comprobar que la marca, el modelo, la versión de firmware, RCF y la versión de ONTAP que se ejecutan en el switch serán las mismas que las que se ejecutan en la controladora de reemplazo después de la actualización. Si es necesario, debe realizar la actualización del switch antes de actualizar las controladoras mediante el procedimiento ARL descrito en esta documentación.
 
 
 

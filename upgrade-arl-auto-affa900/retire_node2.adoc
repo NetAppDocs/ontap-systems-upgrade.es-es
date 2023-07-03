@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/retire_node2.html 
-keywords: retire, node2 
-summary: Apague el nodo 2 y extráigalo del rack o chasis durante una actualización de AFF A700 a AFF A900. 
+keywords: retire, node2, retiring, node 
+summary: Apague node2 y quítelo del rack o chasis cuando utilice ARL para actualizar los modelos de controladora en el mismo chasis. 
 ---
 = Retire el nodo 2
 :hardbreaks:

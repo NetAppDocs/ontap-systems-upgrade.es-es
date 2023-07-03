@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/verify_node1_installation.html 
-keywords: verifying, verify, node1, install, installation, aff, a900, NVRAM, controller 
-summary: Verifique la instalación del nodo 1 con el módulo del controlador AFF A900 y el módulo NVRAM. 
+keywords: verifying, verify, node1, install, installation, NVRAM, controller, module, modules 
+summary: Verifique la instalación del node1 con los módulos de reemplazo cuando utilice ARL para actualizar los modelos de controlador en el mismo chasis. 
 ---
 = Compruebe la instalación del nodo 1
 :hardbreaks:
@@ -14,10 +14,10 @@ summary: Verifique la instalación del nodo 1 con el módulo del controlador AFF
 
 
 [role="lead"]
-Debe comprobar la instalación del nodo 1 con los controladores AFF A900 o FAS9500 y los módulos NVRAM. Como no existe ningún cambio en los puertos físicos, no es necesario asignar los puertos físicos del nodo 1 anterior al nodo 1 de reemplazo.
+Debe verificar la instalación de node1 con los módulos del sistema de reemplazo. Como no existe ningún cambio en los puertos físicos, no es necesario asignar los puertos físicos del nodo 1 anterior al nodo 1 de reemplazo.
 
 .Acerca de esta tarea
-Después de arrancar el nodo 1 con el módulo de controladoras AFF A900 o FAS9500, debe comprobar que está instalado correctamente. Debe esperar a que el nodo 1 se una al quórum y reanudar la operación de reemplazo de la controladora.
+Después de arrancar node1 con el módulo de controlador de reemplazo, debe verificar que está instalado correctamente. Debe esperar a que el nodo 1 se una al quórum y reanudar la operación de reemplazo de la controladora.
 
 En este punto del procedimiento, la operación de actualización de la controladora debería haberse pausado mientras el nodo 1 intenta unir automáticamente el quórum.
 
@@ -141,7 +141,7 @@ En el ejemplo anterior, el nodo 1 arranca tras el reemplazo de la controladora. 
 
 +
 
-NOTE: Durante una actualización de AFF A700 a AFF A900 o de FAS9000 a FAS2500, los puertos de red y su conectividad no deben cambiar. Todos los puertos deben residir en los dominios de retransmisión correctos y la accesibilidad del puerto de red no debe cambiar. Sin embargo, antes de mover las LIF del nodo 2 al nodo 1, debe verificar la capacidad de almacenamiento y el estado de los puertos de red.
+NOTE: Durante la actualización, los puertos de red y su conectividad no se deben cambiar. Todos los puertos deben residir en los dominios de retransmisión correctos y la accesibilidad del puerto de red no debe cambiar. Sin embargo, antes de mover las LIF del nodo 2 al nodo 1, debe verificar la capacidad de almacenamiento y el estado de los puertos de red.
 
 . [[restore_1_step4]]repare la accesibilidad de cada uno de los puertos del nodo 1 con un estado de accesibilidad distinto de `ok` utilizando el siguiente comando, en el siguiente orden:
 +

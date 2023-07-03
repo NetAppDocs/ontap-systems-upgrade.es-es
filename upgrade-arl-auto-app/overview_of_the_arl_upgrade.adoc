@@ -38,7 +38,7 @@ La siguiente tabla describe las tareas de alto nivel que realiza durante cada et
 
 
 | link:stage_1_index.html["Etapa 1. Prepare la actualización"]  a| 
-Durante la fase 1, realizará comprobaciones previas y, si fuera necesario, corrija la propiedad del agregado. Debe registrar cierta información si gestiona el cifrado de almacenamiento mediante OKM y puede decidir desactivar las relaciones de SnapMirror.
+Durante la fase 1, realizará comprobaciones previas y, si fuera necesario, corrija la propiedad del agregado. Debe registrar determinada información si gestiona el cifrado del almacenamiento mediante OKM y puede optar por desactivar las relaciones de SnapMirror.
 
 Propiedad del agregado al final de la fase 1:
 

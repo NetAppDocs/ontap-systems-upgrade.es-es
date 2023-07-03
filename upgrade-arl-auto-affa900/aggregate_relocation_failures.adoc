@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/aggregate_relocation_failures.html 
 keywords: aggregate, relocation, failures, arl, stage 2, stage 3, stage 5 
-summary: Solucione problemas de errores de reubicación de agregados que se pueden producir durante una actualización de A700 a AFF A900 de AFF. 
+summary: Solucione los errores de reubicación de agregados que pueden producirse al utilizar ARL para actualizar los modelos de controladora en el mismo chasis. 
 ---
 = Fallos de reubicación de agregados
 :hardbreaks:
@@ -55,7 +55,7 @@ Los agregados pueden no realizar la reubicación correctamente, es decir, tienen
 +
 Algunos de los agregados que se están reubicando tienen el nodo 1 como nodo de origen. Por ejemplo, un agregado de este tipo podría llamarse aggr_node_1. Si la reubicación de aggr_node_1 falla durante la etapa 3 y no se puede forzar la reubicación, el agregado se deja detrás en el nodo 2.
 
-* Después de la fase 4, cuando el nodo 2 se sustituye por el controlador AFF A900 o el módulo FAS9500 y NVRAM.
+* Después de la etapa 4, cuando node2 se sustituye por los nuevos módulos del sistema.
 +
 Cuando se sustituye el nodo 2, aggr_node_1 estará conectado con el nodo 1 como nodo raíz en lugar del nodo 2.
 

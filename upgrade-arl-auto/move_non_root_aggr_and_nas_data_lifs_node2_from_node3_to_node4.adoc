@@ -131,7 +131,7 @@ NOTE: Debe confirmar que mueve LIF SAN a un puerto que tiene la misma velocidad 
 +
 `network interface show -home-node <node4> -role data`
 
-.. Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en mediante la introducción del comando siguiente, una vez para cada LIF:
+.. Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
 +
 `network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
 

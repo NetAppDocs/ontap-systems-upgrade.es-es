@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/stage_6_index.html 
-keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
-summary: 'Secuencia de procesos en la fase 1 de una actualización de ARL mediante `system controller replace` Comandos en controladoras que ejecutan ONTAP 9.8 o una versión posterior.' 
+keywords: upgrade, boot, node2, verify, restore, overview, stage 1 
+summary: 'Secuencia de proceso de etapa 1 para una actualización de ARL mediante `system controller replace` comandos para actualizar los modelos de controladora en el mismo chasis.' 
 ---
 = Descripción general
 :hardbreaks:
@@ -14,9 +14,9 @@ summary: 'Secuencia de procesos en la fase 1 de una actualización de ARL median
 
 
 [role="lead"]
-En la fase 6, se inicia el nodo 2 con un controlador actualizado y módulos NVRAM y se verifica la instalación del nodo 2 actualizado. Si utiliza el cifrado de volúmenes de NetApp (NVE), debe restaurar la configuración del gestor de claves. También puede reubicar agregados que no sean raíz y LIF de datos NAS del nodo 1 al nodo 2 actualizado y verificar que las LIF DE SAN existan en el nodo 2.
+Durante la etapa 6, se inicia node2 con módulos de sistema actualizados y se verifica la instalación node2 actualizada. Si utiliza el cifrado de volúmenes de NetApp (NVE), debe restaurar la configuración del gestor de claves. También puede reubicar agregados que no sean raíz y LIF de datos NAS del nodo 1 al nodo 2 actualizado y verificar que las LIF DE SAN existan en el nodo 2.
 
-. link:boot_node2_with_a900_controller_and_nvs.html["Arranque el nodo 2 con el controlador AFF A900 o FAS9500 y los módulos NVRAM"]
+. link:boot_node2_with_a900_controller_and_nvs.html["Arranque node2 con los módulos del sistema de sustitución"]
 . link:verify_node2_installation.html["Compruebe la instalación del nodo 2"]
 . link:restore_key_manager_config_node2.html["Restaure la configuración de gestor de claves en el nodo 2"]
 . link:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"]

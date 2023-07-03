@@ -14,7 +14,7 @@ summary: 'Decidir si se utilizará ARL para actualizar controladoras que ejecuta
 
 
 [role="lead"]
-En este contenido se describe cómo actualizar las controladoras de almacenamiento en un par de alta disponibilidad con nuevas controladoras sin perder todos los datos y los discos existentes. Se trata de un procedimiento complejo que sólo deben ser utilizados por administradores con experiencia.
+En este contenido se describe cómo actualizar las controladoras de almacenamiento en una pareja de alta disponibilidad con nuevas controladoras y mantener los datos y los discos existentes. Se trata de un procedimiento complejo que sólo deben ser utilizados por administradores con experiencia.
 
 Puede utilizar este contenido en las siguientes circunstancias:
 

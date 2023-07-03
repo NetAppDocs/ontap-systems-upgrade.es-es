@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html 
-keywords: relocate, non-root, aggregates, nas, lif, node2, node1. aff, a900, NVRAM, controller 
-summary: Reubicar los agregados no raíz del nodo 2 en el nodo 1 durante una actualización A700 de AFF a AFF A900. 
+keywords: relocate, non-root, aggregates, nas, lif, node2, node1, NVRAM, controller, module, modules 
+summary: Reubique los agregados no raíz de node2 a node1 cuando utilice ARL para actualizar los modelos de controladoras en el mismo chasis. 
 ---
 = Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 1
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Reubicar los agregados no raíz del nodo 2 en el nodo 1 durante una act
 
 
 [role="lead"]
-Antes de poder sustituir el nodo 2 por el módulo de controlador AFF A900 o FAS9500 y el módulo NVRAM, primero debe reubicar los agregados no raíz que sean propiedad del nodo 2 al nodo 1.
+Antes de poder sustituir node2 con el módulo del sistema de reemplazo, primero debe reubicar los agregados no raíz que pertenecen a node2 a node1.
 
 .Antes de empezar
 Una vez completadas las comprobaciones posteriores a la fase anterior, la versión de recursos para el nodo 2 se iniciará automáticamente. Los agregados que no son raíz y los LIF de datos que no son SAN se migran del nodo 2 al nuevo nodo 1.
@@ -37,10 +37,10 @@ El ejemplo siguiente muestra que los agregados no raíz del nodo 1 están en lí
 ----
 cluster::> storage aggregate show -node node1 state online -root false
 
-Aggregate     Size        Available   Used%   State	 #Vols	 Nodes	  RAID	   Status
+Aggregate     Size        Available   Used%   State	  #Vols	 Nodes	 RAID	  Status
 ----------    ---------   ---------   ------  -----   -----  ------  -------  ------
-aggr_1	      744.9GB      744.8GB	 0%	 online	  5	 node1	  raid_dp  normal
-aggr_2	      825.0GB	    825.0GB	 0%	 online	  1	 node1	  raid_dp  normal
+aggr_1	      744.9GB     744.8GB	  0%	  online	  5	 node1   raid_dp  normal
+aggr_2	      825.0GB	  825.0GB	  0%	  online	  1	 node1   raid_dp  normal
 2 entries were displayed.
 ----
 +
@@ -62,7 +62,7 @@ Si alguno de los volúmenes está sin conexión en el nodo 1, conectarlos utiliz
 +
 La `_vserver-name_` para utilizarlo con este comando se encuentra en el resultado del anterior `volume show` comando.
 
-. Compruebe que las LIF se han movido a los puertos correctos y que tienen el estado de `up`. Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en mediante la introducción del comando siguiente, una vez para cada LIF:
+. Compruebe que las LIF se han movido a los puertos correctos y que tienen el estado de `up`. Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
 +
 `network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _nodename_ - status-admin up`
 
