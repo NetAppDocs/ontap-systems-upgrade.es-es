@@ -14,7 +14,7 @@ summary: Arranque node1 con los módulos de controladora de reemplazo cuando uti
 
 
 [role="lead"]
-node1 con los módulos de reemplazo ya está listo para el arranque. Esta sección proporciona los pasos necesarios para arrancar node1 con los módulos de reemplazo para las siguientes configuraciones de actualización:
+node1 con los módulos de reemplazo está ahora listo para arrancar. Esta sección proporciona los pasos necesarios para arrancar node1 con los módulos de reemplazo para las siguientes configuraciones de actualización:
 
 [cols="35,65"]
 |===
@@ -35,8 +35,8 @@ FAS2720 | Módulo controlador FAS2820 ^1^
 
 | FAS9000 | Controladora FAS9500 y módulos NVRAM ^2^ 
 |===
-^1^ La actualización al intercambiar el módulo del controlador implica mover todas las conexiones del módulo del controlador antiguo al módulo del controlador de reemplazo.
-^2^ La actualización mediante el cambio de la controladora y los módulos NVRAM implica mover únicamente las conexiones de la consola y de gestión.
+^1^ Al sustituir los módulos del controlador, se mueven todas las conexiones del módulo del controlador antiguo al módulo de reemplazo.
+^2^ Al sustituir la controladora y los módulos NVRAM, solo se mueven las conexiones de consola y de gestión.
 
 .Pasos
 . Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, siga estos pasos.

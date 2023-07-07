@@ -14,7 +14,7 @@ summary: Después de intercambiar los módulos del sistema node2 de reemplazo co
 
 
 [role="lead"]
-Después de intercambiar los módulos del sistema node2 de reemplazo correspondientes, es posible que necesite reiniciarlos por red. El término arranque desde red significa que se arranca desde una imagen ONTAP almacenada en un servidor remoto. Al prepararse para reiniciar el sistema, debe colocar una copia de la imagen de arranque ONTAP 9 en un servidor web al que pueda acceder el sistema.
+Después de intercambiar los módulos del sistema node2 de reemplazo correspondientes, es posible que necesite reiniciarlos por red. El término arranque desde red significa que se arranca desde una imagen ONTAP almacenada en un servidor remoto. Cuando se prepara para el arranque por red, se coloca una copia de la imagen de arranque de ONTAP 9 en un servidor web al que el sistema pueda acceder.
 
 No es posible comprobar la versión de ONTAP instalada en el soporte de arranque del módulo de controlador de reemplazo a menos que esté instalado en un chasis y ENCENDIDO. La versión de ONTAP en el soporte de arranque del sistema de reemplazo debe ser la misma que la versión de ONTAP que se ejecuta en el sistema antiguo que se está actualizando, y las imágenes de arranque primarias y de backup deben coincidir. Puede configurar las imágenes mediante el modo de reiniciar el sistema seguido de `wipeconfig` desde el menú de arranque. Si el módulo de la controladora se usaba anteriormente en otro clúster, el `wipeconfig` el comando borra toda la configuración residual del soporte de arranque.
 

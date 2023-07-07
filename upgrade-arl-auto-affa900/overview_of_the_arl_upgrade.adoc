@@ -38,7 +38,7 @@ La siguiente tabla describe las tareas de alto nivel que realiza durante cada et
 
 
 | link:stage_1_index.html["Fase 1: Prepárese para la actualización"]  a| 
-Durante la etapa 1, verifique que tiene el hardware correcto para la actualización, ejecute comprobaciones previas y, si es necesario, corrija la propiedad de agregado. Debe registrar cierta información si gestiona el cifrado de almacenamiento mediante el administrador de claves incorporado y puede optar por desactivar las relaciones de SnapMirror.
+Durante la etapa 1, verifique que dispone del hardware correcto para la actualización, ejecute comprobaciones previas y, si es necesario, corrija la propiedad de agregado. Debe registrar cierta información si gestiona el cifrado de almacenamiento mediante el administrador de claves incorporado y puede optar por desactivar las relaciones de SnapMirror.
 
 Propiedad del agregado al final de la fase 1:
 

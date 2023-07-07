@@ -14,9 +14,9 @@ summary: Recopile cierta información durante una actualización manual de ARL e
 
 
 [role="lead"]
-Debe recopilar cierta información para actualizar correctamente los nodos originales. Esta información incluye los ID de nodo, detalles del puerto y LIF, claves de licencia y direcciones IP.
+Debe recopilar determinada información para admitir la actualización de los nodos originales. Esta información incluye ID de nodos, detalles de puertos y LIF, claves de licencia y direcciones IP.
 
-Puede utilizar la siguiente hoja de trabajo para registrar información para utilizarla más adelante en el procedimiento:
+Puede utilizar la siguiente hoja de trabajo para registrar la información para utilizarla más adelante en el procedimiento:
 
 |===
 | Información necesaria | Al recogerse | Cuando se utilice | Información recopilada 

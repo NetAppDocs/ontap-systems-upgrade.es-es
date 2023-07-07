@@ -14,7 +14,7 @@ summary: 'Prepare el nodo 3 y el nodo 4 para reiniciar controladoras que ejecuta
 
 
 [role="lead"]
-Después de montar físicamente en rack los nodos 3 y 4 posteriormente en el procedimiento, es posible que deba volver a arrancar. El término "reiniciar el sistema" significa que se inicia desde una imagen ONTAP almacenada en un servidor remoto. Al prepararse para reiniciar el sistema, debe colocar una copia de la imagen de arranque ONTAP 9 en un servidor web al que pueda acceder el sistema.
+Después de montar físicamente en rack los nodos 3 y 4 posteriormente en el procedimiento, es posible que deba volver a arrancar. El término "reiniciar el sistema" significa que se inicia desde una imagen ONTAP almacenada en un servidor remoto. Cuando se prepara para el arranque por red, se coloca una copia de la imagen de arranque de ONTAP 9 en un servidor web al que el sistema pueda acceder.
 
 .Antes de empezar
 * Compruebe que puede acceder a un servidor HTTP con el sistema.

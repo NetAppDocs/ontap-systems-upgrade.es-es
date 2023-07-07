@@ -17,7 +17,7 @@ summary: Verifique la instalación del node1 con los módulos de reemplazo cuand
 Debe verificar la instalación de node1 con los módulos del sistema de reemplazo. Como no existe ningún cambio en los puertos físicos, no es necesario asignar los puertos físicos del nodo 1 anterior al nodo 1 de reemplazo.
 
 .Acerca de esta tarea
-Después de arrancar node1 con el módulo de controlador de reemplazo, debe verificar que está instalado correctamente. Debe esperar a que el nodo 1 se una al quórum y reanudar la operación de reemplazo de la controladora.
+Después de arrancar node1 con el módulo de controlador de reemplazo, compruebe que está instalado correctamente. Debe esperar a que el nodo 1 se una al quórum y reanudar la operación de reemplazo de la controladora.
 
 En este punto del procedimiento, la operación de actualización de la controladora debería haberse pausado mientras el nodo 1 intenta unir automáticamente el quórum.
 

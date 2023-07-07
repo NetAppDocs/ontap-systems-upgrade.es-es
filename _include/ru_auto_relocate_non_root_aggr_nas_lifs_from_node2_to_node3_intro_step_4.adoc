@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Antes de poder reemplazar el nodo 2 por nodo 4, debe reubicar los agregados que no son raíz y las LIF de datos NAS que pertenecen al nodo 2 en el nodo 3.
+Antes de sustituir node2 con node4, debe reubicar los agregados no raíz y los LIF de datos NAS que node2 posee a node3.
 
 .Antes de empezar
 Una vez completadas las comprobaciones posteriores a la fase anterior, la versión de recursos para el nodo 2 se iniciará automáticamente. Los agregados que no son raíz y los LIF de datos que no son SAN se migran del nodo 2 al nodo 3.

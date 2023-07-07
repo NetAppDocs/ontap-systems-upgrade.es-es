@@ -14,7 +14,7 @@ summary: 'Secuencia de proceso de etapa 1 para una actualización de ARL mediant
 
 
 [role="lead"]
-Durante la etapa 1, verifique que tiene el hardware correcto para la actualización, ejecute comprobaciones previas y, si es necesario, corrija la propiedad de agregado. Debe registrar cierta información si gestiona el cifrado de almacenamiento mediante el administrador de claves incorporado y puede optar por desactivar las relaciones de SnapMirror.
+Durante la etapa 1, verifique que tiene el hardware correcto para la actualización, ejecute comprobaciones previas y, si es necesario, corrija la propiedad de agregado. También registra cierta información si gestiona el cifrado de almacenamiento mediante el administrador de claves incorporado y puede optar por desactivar las relaciones de SnapMirror.
 
 .Pasos
 . link:verify_upgrade_hardware.html["Verifique la actualización de hardware"]

@@ -66,7 +66,7 @@ El número mínimo de versiones de ONTAP de la tabla anterior es obligatorio. Es
 Durante el procedimiento, debe migrar los agregados no raíz entre los nodos de la controladora antiguos. Después de la instalación, debe migrar los agregados no raíz de los nodos de la controladora antiguos a los nodos de la controladora de reemplazo. Durante el procedimiento de actualización, se puede acceder a los datos alojados en los nodos que se van a actualizar.
 
 .Acerca de esta tarea
-Durante este procedimiento de actualización de la controladora, debe realizar uno de los siguientes procedimientos:
+Durante este procedimiento de actualización de la controladora, debe realizar una de las siguientes actualizaciones:
 
 * Cambie el módulo de controladora de cada nodo en los sistemas AFF A220, AFF A200 o AFF C190 con el nuevo módulo AFF A150.
 * Intercambie el módulo del controlador de cada nodo del sistema FAS2620 o FAS2720 por el nuevo módulo FAS2820.
@@ -97,4 +97,4 @@ NOTE: Los términos *1* y *2* sólo se utilizan como referencia a los nombres de
 
 == Automatice el proceso de actualización de la controladora
 
-Este procedimiento admite las siguientes renovaciones de controladora y proporciona los pasos para el procedimiento automatizado, que usa la asignación automática de discos y comprobaciones de accesibilidad de puertos de red para simplificar la experiencia de actualización de la controladora.
+Este procedimiento proporciona los pasos para el procedimiento automatizado, que utiliza la asignación de disco automática y comprobaciones de accesibilidad de puertos de red para simplificar la experiencia de actualización de controladora.

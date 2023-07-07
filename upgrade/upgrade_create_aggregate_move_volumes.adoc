@@ -4,13 +4,25 @@ sidebar: sidebar
 keywords: create, aggregate, node, store, volume, original, node, identify, aggregate, individually, create an aggregate and moving volumes to the new nodes 
 summary: Cree al menos un agregado en cada uno de los nuevos nodos para almacenar los volúmenes que desea mover desde los nodos originales. Debe identificar un agregado para cada volumen y moverlo por separado. 
 ---
-= Cree un agregado y mueva volúmenes a los nuevos nodos
+= Cree un agregado y mueva volúmenes
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
+Durante una actualización del software ONTAP, se migran los datos al crear un agregado en los nodos nuevos y, luego, mover los volúmenes.
+
+Si la configuración de almacenamiento incluye volúmenes SAN o volúmenes cifrados, también debe mover estos volúmenes:
+
+* <<move_san_vols,Mueva volúmenes SAN>>
+* <<Mueva volúmenes con el cifrado habilitado>>
+
+
+
+
+== Cree un agregado y mueva volúmenes a los nuevos nodos
+
 Cree al menos un agregado en cada uno de los nuevos nodos para almacenar los volúmenes que desea mover desde los nodos originales. Debe identificar un agregado para cada volumen y moverlo por separado.
 
 .Antes de empezar
@@ -18,12 +30,15 @@ Se deben inicializar las relaciones de reflejo de protección de datos para pode
 
 https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["Busque el procedimiento de protección de datos necesario"^].
 
+
+NOTE: Para cada máquina virtual de almacenamiento (SVM), NetApp recomienda mover todos los volúmenes no raíz del clúster antes de mover el volumen raíz, y realizar este procedimiento en una SVM a la vez.
+
 .Pasos
 . Cree al menos un agregado en cada nuevo nodo:
 +
-`storage aggregate create -aggregate aggr_name -node new_node_name -diskcount integer`
+`storage aggregate create -aggregate _aggr_name_ -node _new_node_name_ -diskcount integer`
 
-. Añada el nuevo agregado a la misma SVM que el agregado del nodo original desde el que desea mover los volúmenes:
+. Añada el agregado nuevo a la misma máquina virtual de almacenamiento (SVM) que el agregado del nodo original desde el que desea mover los volúmenes:
 +
 `vserver add-aggregates`
 
@@ -36,7 +51,7 @@ Tanto el nuevo agregado como el anterior desde el que se moverá el volumen tien
 
 . Muestra información de los volúmenes que se desean mover de los nodos originales a los nuevos nodos:
 +
-`volume show -vserver svm_name -node original_node_name`
+`volume show -vserver _svm_name_ -node _original_node_name_`
 
 +
 Debe conservar el resultado del comando para poder consultarlo más adelante si se desea.
@@ -57,7 +72,7 @@ vs1       vs1root      aggr1        online     RW         20MB    18.88MB    5%
 ----
 . Determine un agregado al que puede mover un volumen determinado:
 +
-`volume move target-aggr show -vserver svm_name -volume vol_name`
+`volume move target-aggr show -vserver _svm_name_ -volume _vol_name_`
 
 +
 El siguiente ejemplo muestra que el volumen "user_max" de la SVM "vs2" se puede mover a cualquiera de los agregados mostrados:
@@ -77,28 +92,40 @@ node12a_aggr4    10.36GB         FCAL
 ----
 . Ejecute una comprobación de validación en cada volumen que desee mover para verificar que se pueda mover al agregado especificado:
 +
-`volume move start -vserver svm_name -volume volume_name -destination-aggregate destination_aggregate_name -perform-validation-only true`
+`volume move start -vserver _svm_name_ -volume _volume_name_ -destination-aggregate _destination_aggregate_name_ -perform-validation-only true`
 
 . Mueva los volúmenes de uno en uno (nivel de privilegios avanzado):
 +
-`volume move start -vserver svm_name -volume vol_name -destination-aggregate destination_aggr_name -cutover-window integer`
+`volume move start -vserver _svm_name_ -volume _vol_name_ -destination-aggregate _destination_aggr_name_ -cutover-window integer`
 
 +
 No se puede mover el volumen raíz del nodo (vol0). Se pueden mover otros volúmenes, incluidos los volúmenes raíz de SVM.
 
 . Muestre el resultado de `volume move` operación para verificar que los volúmenes se han movido correctamente:
 +
-`volume move show -vserver svm_name -volume vol_name`
+`volume move show -vserver _svm_name_ -volume _vol_name_`
 
 . Si la `volume move` la operación no completa la fase final después de varios intentos, fuerza el movimiento para terminar:
 +
-`volume move trigger-cutover -vserver svm_name -volume vol_name -force true`
+`volume move trigger-cutover -vserver _svm_name_ -volume _vol_name_ -force true`
 
 +
 Al forzar la operación de movimiento de volúmenes para que finalice, se puede interrumpir el acceso de los clientes al volumen que se está moviendo.
 
 . Compruebe que los volúmenes se hayan movido correctamente a la SVM especificada y se encuentren en el agregado correcto:
 +
-`volume show -vserver svm_name`
+`volume show -vserver _svm_name_`
 
 
+
+
+
+== Mueva volúmenes SAN
+
+Para mover volúmenes SAN, siga los pasos que se indican en https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html["Mover hosts iSCSI de Linux de nodos FC de MetroCluster a nodos IP de MetroCluster"^]. Esto se aplica al movimiento de volúmenes SAN tanto en configuraciones de MetroCluster como no de MetroCluster.
+
+
+
+== Mueva volúmenes con el cifrado habilitado
+
+Para mover volúmenes con el cifrado de agregados habilitado, siga los pasos de https://docs.netapp.com/us-en/ontap/encryption-at-rest/encrypt-existing-volume-task.html["Habilite el cifrado en un volumen existente con el comando volume Move start"^].

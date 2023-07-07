@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Durante la fase 1, realizará comprobaciones previas y, si fuera necesario, corrija la propiedad del agregado. Debe registrar cierta información si gestiona el cifrado del almacenamiento mediante el administrador de claves incorporado y puede optar por desactivar las relaciones de SnapMirror.
+Durante la fase 1, realizará comprobaciones previas y, si fuera necesario, corrija la propiedad del agregado. También registra cierta información si gestiona el cifrado del almacenamiento mediante el administrador de claves incorporado y puede optar por desactivar las relaciones de SnapMirror.
 
 .Pasos
 . link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"]

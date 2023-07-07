@@ -14,7 +14,7 @@ summary: Arranque node2 con los módulos de controladora de reemplazo cuando uti
 
 
 [role="lead"]
-node2 con los módulos de reemplazo ya está listo para el arranque. La actualización mediante el intercambio de los módulos del sistema implica mover únicamente las conexiones de la consola y de gestión. Esta sección proporciona los pasos necesarios para arrancar node2 con los módulos de reemplazo para las siguientes configuraciones de actualización:
+node2 con los módulos de reemplazo está ahora listo para arrancar. La actualización mediante el intercambio de los módulos del sistema implica mover únicamente las conexiones de la consola y de gestión. Esta sección proporciona los pasos necesarios para arrancar node2 con los módulos de reemplazo para las siguientes configuraciones de actualización:
 
 [cols="35,65"]
 |===

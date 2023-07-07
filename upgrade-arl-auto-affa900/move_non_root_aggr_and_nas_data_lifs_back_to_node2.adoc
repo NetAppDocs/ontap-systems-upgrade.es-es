@@ -14,7 +14,7 @@ summary: Compruebe que los LIF de datos NAS de node2 en node1 se reubican de nod
 
 
 [role="lead"]
-Después de verificar la configuración de red en el nodo 2 y antes de reubicar agregados del nodo 1 al nodo 2, debe comprobar que las LIF de datos NAS que pertenecen al nodo 2 que están actualmente en el nodo 1 se encuentren en el nodo 2. También debe verificar si las LIF DE SAN existen en el nodo 2.
+Después de verificar la configuración de red en node2 y antes de reubicar agregados de node1 a node2, debe verificar que los LIF de datos NAS que pertenecen a node2 y que están actualmente en node1 se reubiquen de node1 a node2. También debe verificar si las LIF DE SAN existen en el nodo 2.
 
 .Acerca de esta tarea
 Las LIF remotas gestionan el tráfico a LUN DE SAN durante el procedimiento de actualización. No es necesario mover LIF DE SAN durante la actualización para el estado del clúster o del servicio. Los LIF SAN no se mueven a menos que tengan que asignarse a nuevos puertos. Después de conectar el nodo 2 en línea, debe verificar que las LIF están en buen estado y estén ubicadas en los puertos adecuados.

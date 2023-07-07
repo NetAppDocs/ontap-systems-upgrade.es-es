@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/stage_3_index.html 
 keywords: upgrade, boot, node1, verify, restore, overview, stage 3 
-summary: 'Secuencia de proceso de etapa 1 para una actualización de ARL mediante `system controller replace` comandos para actualizar los modelos de controladora en el mismo chasis.' 
+summary: 'Secuencia de proceso de etapa 3 para una actualización de ARL mediante `system controller replace` comandos para actualizar los modelos de controladora en el mismo chasis.' 
 ---
 = Descripción general
 :hardbreaks:

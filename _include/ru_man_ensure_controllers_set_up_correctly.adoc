@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Para confirmar la configuración correcta, debe habilitar la pareja de ha. También es necesario verificar que los nodos 3 y 4 pueden acceder al almacenamiento de cada uno de los demás y que ninguno de los dos posee LIF de datos que pertenecen a otros nodos del clúster. Además, debe confirmar que el nodo 3 tiene agregados del nodo 1 y que el nodo 4 tiene agregados del nodo 2, y que los volúmenes de ambos nodos están en línea.
+Para confirmar la configuración correcta, tiene que habilitar el par de alta disponibilidad. También debe verificar que node3 y node4 pueden acceder entre sí al almacenamiento de otro y que ninguno de sus propietarios son LIF de datos que pertenecen a otros nodos del clúster. Además, usted confirma que node3 posee los agregados de node1 y que node4 es propietario de los agregados de node2 y que los volúmenes de ambos nodos están en línea.
 
 .Pasos
 . Habilite la conmutación al nodo de respaldo del almacenamiento introduciendo el siguiente comando en uno de los nodos:

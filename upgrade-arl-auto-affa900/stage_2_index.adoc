@@ -14,7 +14,7 @@ summary: 'Secuencia de fase 2 de procesos para una actualización de ARL mediant
 
 
 [role="lead"]
-Durante la fase 2, debe reubicar agregados no raíz y LIF de datos NAS al nodo 1 en el nodo 2. Este proceso está en gran medida automatizado; la operación se pausa para permitir comprobar su estado. Debe reanudar manualmente la operación. Si es necesario, reubique los agregados que han fallado o que han vetado. Debe registrar la información de node1 para utilizarla más adelante en el procedimiento y, a continuación, intercambiar los módulos del sistema node1 correspondientes, retirar node1 y reiniciar el sistema node1 actualizado.
+Durante la fase 2, debe reubicar agregados no raíz y LIF de datos NAS al nodo 1 en el nodo 2. Este proceso está en gran medida automatizado; la operación se pausa para permitir comprobar su estado. Debe reanudar manualmente la operación. Si es necesario, reubique los agregados que han fallado o que han vetado. También debe registrar la información de node1 para utilizarla más adelante en el procedimiento y, a continuación, intercambiar los módulos del sistema node1 correspondientes, retirar node1 y reiniciar el sistema node1 actualizado.
 
 .Pasos
 . link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2"]

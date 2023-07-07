@@ -14,7 +14,7 @@ summary: 'Apague el nodo 2 y lo quite del rack o el chasis cuando actualice las 
 
 
 [role="lead"]
-Para retirar el nodo 2, debe apagar correctamente el nodo 2 y quitarlo del rack o chasis.
+Para retirar node2, primero debe apagar node2 correctamente y quitarlo del rack o el chasis.
 
 .Pasos
 . Reanude la operación:

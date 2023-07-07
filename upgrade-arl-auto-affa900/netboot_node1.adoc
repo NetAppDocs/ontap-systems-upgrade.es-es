@@ -14,7 +14,7 @@ summary: Al utilizar ARL para actualizar los modelos de controlador en el mismo 
 
 
 [role="lead"]
-Después de intercambiar los módulos del sistema de reemplazo correspondientes, debe netboot node1. El término arranque desde red significa que se arranca desde una imagen ONTAP almacenada en un servidor remoto. Al prepararse para reiniciar el sistema, debe añadir una copia de la imagen de arranque ONTAP 9 en un servidor web al que puede acceder el sistema.
+Después de intercambiar los módulos del sistema de reemplazo correspondientes, debe netboot node1. El término arranque desde red significa que se arranca desde una imagen ONTAP almacenada en un servidor remoto. Cuando se prepara para el arranque por red, se añade una copia de la imagen de arranque de ONTAP 9 en un servidor web al que el sistema pueda acceder.
 
 No es posible comprobar la versión de ONTAP instalada en el soporte de arranque del módulo de controlador de reemplazo a menos que esté instalado en un chasis y ENCENDIDO. La versión de ONTAP en el soporte de arranque del sistema de reemplazo debe ser la misma que la versión de ONTAP que se ejecuta en el sistema antiguo que se está actualizando, y las imágenes de arranque primarias y de backup deben coincidir. Para verificar la versión mínima de ONTAP admitida para la actualización, consulte link:index.html["Descripción general"].
 

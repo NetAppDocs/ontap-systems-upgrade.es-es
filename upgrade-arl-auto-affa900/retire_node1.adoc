@@ -14,7 +14,7 @@ summary: Deshabilite el par de HA con node2 y apague node1 cuando utilice ARL pa
 
 
 [role="lead"]
-Para retirar el nodo 1, reanude el funcionamiento automatizado para deshabilitar el par de alta disponibilidad con el nodo 2 y apague correctamente el nodo 1. Posteriormente debe quitar los módulos antiguos del sistema del chasis de node1 y luego instalar los módulos de reemplazo en node1.
+Para retirar node1, debe reanudar la operación automatizada para deshabilitar el par de alta disponibilidad con node2 y apagar node1 correctamente.
 
 .Pasos
 . Reanude la operación:

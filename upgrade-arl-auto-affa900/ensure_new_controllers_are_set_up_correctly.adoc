@@ -14,7 +14,7 @@ summary: Compruebe que la pareja de alta disponibilidad está habilitada, verifi
 
 
 [role="lead"]
-Para confirmar la configuración correcta, debe comprobar que la pareja de ha esté habilitada. También debe verificar que los nodos 1 y 2 pueden acceder al almacenamiento de los demás y que ninguno tiene LIF de datos que pertenezcan a otros nodos del clúster. Además, debe comprobar que todos los agregados de datos se encuentran en sus nodos de inicio correctos y que los volúmenes de ambos nodos están en línea. Si uno de los nodos nuevos tiene un adaptador de destino unificado, debe restaurar cualquier configuración de puerto y es posible que deba cambiar el uso del adaptador.
+Para confirmar la configuración correcta, debe verificar que el par de alta disponibilidad está habilitado. También debe verificar que node1 y node2 pueden acceder entre sí al almacenamiento de otro y que ninguno de sus propietarios son LIF de datos que pertenecen a otros nodos del clúster. Además, se debe verificar que todos los agregados de datos se encuentran en los nodos iniciales correctos y que los volúmenes de ambos nodos estén en línea. Si uno de los nodos nuevos tiene un adaptador de destino unificado, debe restaurar cualquier configuración de puerto y es posible que deba cambiar el uso del adaptador.
 
 .Pasos
 . Después de las comprobaciones posteriores al nodo 2, se habilitan la conmutación por error de almacenamiento y la pareja de alta disponibilidad de clúster para el clúster 2. Una vez finalizada la operación, ambos nodos muestran como completados y el sistema realiza algunas operaciones de limpieza.

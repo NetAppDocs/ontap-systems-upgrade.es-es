@@ -13,12 +13,15 @@ summary: Para planificar la actualización, familiarícese con las consideracion
 [role="lead"]
 Para planificar la actualización, debe familiarizarse con las consideraciones generales de actualización. Si es necesario, póngase en contacto con el soporte técnico para obtener recomendaciones y orientación específica para la configuración del clúster.
 
-Requisitos y limitaciones
-
+.Requisitos y limitaciones
 * El procedimiento de actualización moviendo almacenamiento es disruptivo. El procedimiento de actualización mediante la transferencia de volúmenes es no disruptivo.
-* Los nuevos nodos deben admitir la misma versión de software que los nodos originales.
+* Los nodos originales deben admitir la misma versión de software que los nodos nuevos.
 +
 link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Actualice ONTAP"^]
+
++
+
+NOTE: Para obtener más información sobre las actualizaciones de clústeres de versiones de software mixtas, consulte https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Clústeres de ONTAP de versión mixta"^].
 
 * Debe observar el tamaño máximo del clúster.
 +
