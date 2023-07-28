@@ -4,27 +4,20 @@ sidebar: sidebar
 keywords: create, aggregate, node, store, volume, original, node, identify, aggregate, individually, create an aggregate and moving volumes to the new nodes 
 summary: Cree al menos un agregado en cada uno de los nuevos nodos para almacenar los volúmenes que desea mover desde los nodos originales. Debe identificar un agregado para cada volumen y moverlo por separado. 
 ---
-= Cree un agregado y mueva volúmenes
+= Cree un agregado y mueva volúmenes a los nuevos nodos
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Durante una actualización del software ONTAP, se migran los datos al crear un agregado en los nodos nuevos y, luego, mover los volúmenes.
-
-Si la configuración de almacenamiento incluye volúmenes SAN o volúmenes cifrados, también debe mover estos volúmenes:
-
-* <<move_san_vols,Mueva volúmenes SAN>>
-* <<Mueva volúmenes con el cifrado habilitado>>
-
-
-
-
-== Cree un agregado y mueva volúmenes a los nuevos nodos
-
 Cree al menos un agregado en cada uno de los nuevos nodos para almacenar los volúmenes que desea mover desde los nodos originales. Debe identificar un agregado para cada volumen y moverlo por separado.
 
+[NOTE]
+====
+Si la configuración del almacenamiento incluye volúmenes SAN, siga los pasos de https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html["Mueva hosts iSCSI de Linux de nodos FC de MetroCluster a nodos IP de MetroCluster"^] para mover estos volúmenes a los nodos nuevos.
+
+====
 .Antes de empezar
 Se deben inicializar las relaciones de reflejo de protección de datos para poder mover un volumen.
 
@@ -47,7 +40,7 @@ Tanto el nuevo agregado como el anterior desde el que se moverá el volumen tien
 
 . Compruebe que el nuevo agregado se haya asignado ahora a la misma SVM que el agregado del nodo original:
 +
-`vserver show -vserversvm_name`
+`vserver show -vserver _svm_name_`
 
 . Muestra información de los volúmenes que se desean mover de los nodos originales a los nuevos nodos:
 +
@@ -101,6 +94,10 @@ node12a_aggr4    10.36GB         FCAL
 +
 No se puede mover el volumen raíz del nodo (vol0). Se pueden mover otros volúmenes, incluidos los volúmenes raíz de SVM.
 
++
+
+NOTE: Si la configuración de almacenamiento incluye volúmenes con cifrado habilitado, siga los pasos de https://docs.netapp.com/us-en/ontap/encryption-at-rest/encrypt-existing-volume-task.html["Habilite el cifrado en un volumen existente con el comando volume Move start"^] para mover estos volúmenes.
+
 . Muestre el resultado de `volume move` operación para verificar que los volúmenes se han movido correctamente:
 +
 `volume move show -vserver _svm_name_ -volume _vol_name_`
@@ -117,15 +114,3 @@ Al forzar la operación de movimiento de volúmenes para que finalice, se puede 
 `volume show -vserver _svm_name_`
 
 
-
-
-
-== Mueva volúmenes SAN
-
-Para mover volúmenes SAN, siga los pasos que se indican en https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html["Mover hosts iSCSI de Linux de nodos FC de MetroCluster a nodos IP de MetroCluster"^]. Esto se aplica al movimiento de volúmenes SAN tanto en configuraciones de MetroCluster como no de MetroCluster.
-
-
-
-== Mueva volúmenes con el cifrado habilitado
-
-Para mover volúmenes con el cifrado de agregados habilitado, siga los pasos de https://docs.netapp.com/us-en/ontap/encryption-at-rest/encrypt-existing-volume-task.html["Habilite el cifrado en un volumen existente con el comando volume Move start"^].
