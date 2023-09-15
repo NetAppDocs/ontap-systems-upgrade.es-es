@@ -25,10 +25,16 @@ Utilice este procedimiento en las siguientes circunstancias:
 | La controladora anterior | Controladora de reemplazo 
 
 
+| AFF A220 configurado como ASA | ASA A150 
+
+
 | AFF A220, AFF A200 o AFF C190 | AFF A150 
 
 
 | FAS2620 o FAS2720 | FAS2820 
+
+
+| AFF A700 configurado como ASA | ASA A900 
 
 
 | AFF A700 | AFF A900 
@@ -38,9 +44,8 @@ Utilice este procedimiento en las siguientes circunstancias:
 |===
 * Verificó con su representante de ventas de NetApp que recibió el hardware para actualizar su controladora:
 +
-** Controladora AFF A150
-** Controlador FAS2820
-** La controladora AFF A900 o FAS9500 y los módulos NVRAM y las piezas necesarias para la actualización.
+** Controladoras ASA A150, AFF A150 o FAS2820
+** Controladoras ASA A900, AFF A900 o FAS9500 y módulos NVRAM y las piezas necesarias para la actualización
 
 
 * Está ejecutando la versión mínima de ONTAP para la actualización. Para obtener más información, consulte link:index.html["Descripción general"].

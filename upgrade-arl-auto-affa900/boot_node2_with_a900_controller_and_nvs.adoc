@@ -21,6 +21,9 @@ node2 con los módulos de reemplazo está ahora listo para arrancar. La actualiz
 | Controlador node2 antiguo | Sustitución de los módulos del sistema node2 
 
 
+| AFF A220 configurado como ASA | Módulo de controlador ASA A150 
+
+
 | AFF A220
 AFF A200
 C190 de AFF | Módulo de controlador AFF A150 
@@ -28,6 +31,9 @@ C190 de AFF | Módulo de controlador AFF A150
 
 | FAS2620
 FAS2720 | Módulo del controlador FAS2820 
+
+
+| AFF A700 configurado como ASA | Controladora ASA A900 y módulos NVRAM 
 
 
 | AFF A700 | Controladora AFF A900 y módulos NVRAM 

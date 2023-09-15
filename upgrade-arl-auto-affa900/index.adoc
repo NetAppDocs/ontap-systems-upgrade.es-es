@@ -24,11 +24,14 @@ WARNING: Este procedimiento se aplica estrictamente a las siguientes configuraci
 | Sistema antiguo | Sistema de sustitución | Versiones de ONTAP compatibles 
 
 
+| AFF A220 configurado como cabina All SAN (ASA) | ASA A150 | 9.13.1P1 y posterior 
+
+
 | AFF A220 | AFF A150 | 9.10.1P15, 9.11.1P11, 9.12.1P5 y posteriores 
 
 
 | AFF A200 | AFF A150  a| 
-9.10.1P15, 9.11.1P11 y posterior (AFF A200 y AFF A150)
+9.10.1P15, 9.11.1P11 y posterior
 
 
 NOTE: AFF A200 no es compatible con versiones de ONTAP posteriores a 9.11.1.
@@ -39,7 +42,7 @@ NOTE: AFF A200 no es compatible con versiones de ONTAP posteriores a 9.11.1.
 
 
 | FAS2620 | FAS2820  a| 
-9.11.1P7 y posterior (FAS2620)
+9.11.1P7 (FAS2620)
 
 
 NOTE: FAS2620 no es compatible con versiones de ONTAP posteriores a 9.11.1.
@@ -49,6 +52,9 @@ NOTE: FAS2620 no es compatible con versiones de ONTAP posteriores a 9.11.1.
 
 
 | FAS2720 | FAS2820 | 9.13.1 y posterior 
+
+
+| AFF A700 configurado como ASA | ASA A900 | 9.13.1P1 y posterior 
 
 
 | AFF A700 | AFF A900 | 9.10.1P10, 9.11.1P6 y posterior 
@@ -68,9 +74,8 @@ Durante el procedimiento, debe migrar los agregados no raíz entre los nodos de 
 .Acerca de esta tarea
 Durante este procedimiento de actualización de la controladora, debe realizar una de las siguientes actualizaciones:
 
-* Cambie el módulo de controladora de cada nodo en los sistemas AFF A220, AFF A200 o AFF C190 con el nuevo módulo AFF A150.
-* Intercambie el módulo del controlador de cada nodo del sistema FAS2620 o FAS2720 por el nuevo módulo FAS2820.
-* Intercambie las dos controladoras y los módulos NVRAM de cada nodo en el sistema AFF A700 o FAS9000 con los nuevos módulos AFF A900 o FAS9500.
+* Intercambie el módulo del controlador en cada nodo de la controladora antigua por el módulo nuevo. Esto se aplica a una actualización del sistema AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720.
+* Intercambie la controladora y los módulos NVRAM de cada nodo de la controladora antigua con los módulos nuevos. Esto se aplica a una actualización del sistema AFF A700 o FAS9000.
 
 
 
@@ -89,7 +94,7 @@ NOTE: Los términos *1* y *2* sólo se utilizan como referencia a los nombres de
 * Puede usar este procedimiento para actualizar el hardware de la controladora en clústeres con más de dos nodos; sin embargo, debe realizar el procedimiento por separado para cada pareja de alta disponibilidad del clúster.
 * Si tiene un switch que no es compatible con la versión de ONTAP y el sistema de sustitución al que está actualizando, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_.
 * Este procedimiento solo se aplica a AFF A200, AFF A220, AFF C190, FAS2620, FAS2720, Sistemas AFF A700 y FAS9000. Para todos los demás modelos de controladora que necesitan actualizarse a un sistema AFF A150, FAS2820, AFF A900 o FAS9500, consulte link:other_references.html["Referencias"] Para vincular a los comandos _utilice «system controller replace» para actualizar el hardware de la controladora que ejecute ONTAP 9,8 o posterior_ y _utilice la reubicación de agregados para actualizar manualmente el hardware de la controladora que ejecute contenido de ONTAP 9,8 o posterior_.
-* Los sistemas AFF A900 y FAS9500 solo admiten alimentación de gama alta (de 200 V a 240 V). Si su sistema A700 o FAS9000 de AFF se ejecuta con una alimentación de línea baja (de 100 V a 120 V), debe convertir la alimentación de entrada de AFF A700 o FAS9000 antes de utilizar este procedimiento.
+* Los sistemas ASA A900, AFF A900 y FAS9500 solo admiten energía de línea alta (de 200V V a 240V V CA). Si su sistema A700 o FAS9000 de AFF se ejecuta con una alimentación de línea baja (de 100 V a 120 V), debe convertir la alimentación de entrada de AFF A700 o FAS9000 antes de utilizar este procedimiento.
 * Si va a actualizar desde un AFF A200, AFF A220, AFF C190, FAS2620, FAS2720, El sistema AFF A700 o FAS9000 con tiempos de inactividad permite actualizar el hardware de la controladora moviendo el almacenamiento o poniéndose en contacto con el soporte técnico. Consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
 
 

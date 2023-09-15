@@ -72,7 +72,7 @@ NOTE: Es posible que sean necesarios otros parámetros para la interfaz. Introdu
 
 NOTE: No interrumpa el arranque.
 
-. Espere a que el nodo 1 que se ejecute ahora en el módulo del controlador AFF A900 o FAS9500 arranque y muestre las opciones del menú de inicio como se muestra a continuación:
+. Espere a que node1 se ejecute ahora en el módulo de controlador ASA A900, AFF A900 o FAS9500 para arrancar y mostrar las opciones del menú de arranque como se muestra a continuación:
 +
 [listing]
 ----
