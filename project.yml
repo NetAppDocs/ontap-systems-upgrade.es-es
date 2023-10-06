@@ -13,6 +13,8 @@ sidebar:
     url: "/index.html"
   - section: upgrade
   - section: upgrade-arl
+  - title: Avisos legales
+    url: "/legal-notices.html"
 homepage:
   tiles:
   - title: Manos a la obra
