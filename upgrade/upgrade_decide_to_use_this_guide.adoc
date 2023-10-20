@@ -11,7 +11,7 @@ summary: En este contenido se describe cómo actualizar el hardware de la contro
 
 
 [role="lead"]
-En este contenido se describe cómo actualizar el hardware de la controladora de un sistema AFF o de un sistema FAS en un clúster moviendo almacenamiento o volúmenes.
+En este contenido se describe cómo actualizar el hardware de la controladora de un sistema AFF, FAS o ASA en un clúster moviendo el almacenamiento o los volúmenes.
 
 Utilice este procedimiento si desea actualizar el hardware de la controladora en las siguientes situaciones:
 
@@ -19,7 +19,10 @@ Utilice este procedimiento si desea actualizar el hardware de la controladora en
 NOTE: Los procedimientos de actualización de hardware se han simplificado en ONTAP 9.8 con la introducción de la función de colocación automática de puertos.
 
 * Los nodos originales y los nuevos son compatibles y compatibles.
-* Va a actualizar un par de nodos que ejecutan ONTAP 9.0 o una versión posterior a una pareja nueva de nodos que ejecutan la misma versión.
+* Los nodos originales y nuevos ejecutan ONTAP 9,0 o una versión posterior. NetApp recomienda, siempre que sea posible, que tenga la misma versión de ONTAP que se ejecute en los nodos originales y en los nuevos.
++
+Si la actualización de la controladora incluye versiones mixtas de ONTAP, consulte https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Clústeres de ONTAP de versión mixta"^] si quiere más información.
+
 * Se están reutilizando las direcciones IP, las máscaras de red y las puertas de enlace de los nodos originales en los nuevos nodos.
 * Para actualizar el hardware de la controladora, mueva almacenamiento o mueva volúmenes.
 * Está preparado para realizar un procedimiento disruptivo si va a actualizar moviendo almacenamiento.
@@ -29,27 +32,11 @@ La actualización mediante el movimiento de volúmenes es no disruptiva.
 * Planea convertir un nodo de un modelo compatible a una bandeja de discos y, a continuación, conectar a los nuevos nodos.
 
 
-Si va a actualizar una configuración de MetroCluster de dos nodos, debe utilizar el procedimiento en el https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Actualización y ampliación de MetroCluster®"^] contenido.
+Si desea actualizar una configuración de MetroCluster, consulte https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Actualice, actualice o expanda la configuración de MetroCluster"^].
 
-Este contenido no describe cómo utilizar la reubicación de agregados (ARL) para actualizar el hardware de la controladora, que se describe en la link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl/index.html["Actualización de hardware de la controladora ARL"^] contenido.
+.Información relacionada
+* xref:upgrade-considerations.adoc[Consideraciones que tener en cuenta para actualizar el hardware de la controladora]
+* xref:choose_controller_upgrade_procedure.adoc[Elija métodos para actualizar el hardware de la controladora]
+* https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Dónde encontrar procedimientos para las tareas de mantenimiento de MetroCluster"^]
+* https://hwu.netapp.com["Hardware Universe de NetApp"^]
 
-Si va a sustituir un componente individual, consulte el folleto de unidad reemplazable del sector (FRU) correspondiente a ese componente.
-
-[NOTE]
-====
-En los pasos para actualizar el hardware de la controladora, para mover el almacenamiento, los nodos originales se denominan nodo 1 y nodo 4, y los nuevos se denominan nodo 3 y nodo 4. Durante el procedimiento descrito, el nodo 1 se reemplaza por nodo 3, y el nodo 2 se reemplaza por nodo 4.
-
-image::../upgrade/media/original_to_new_nodes.png[originales a nodos nuevos]
-
-====
-Los términos 1, 2, nodo 3 y nodo 4 solo se usan para distinguir entre los nodos originales y los nuevos. Cuando siga el procedimiento, deberá sustituir los nombres reales de los nodos originales y los nuevos. Sin embargo, en realidad los nombres de los nodos no cambian: El nodo 3 tiene el nombre 1-nodo y el nodo 4 tiene el nombre 2 después de actualizar el hardware de la controladora.
-
-*Información relacionada*
-
-xref:upgrade-considerations.adoc[Consideraciones que tener en cuenta para actualizar el hardware de la controladora]
-
-xref:upgrade-methods.adoc[Elija métodos para actualizar el hardware de la controladora]
-
-https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Dónde encontrar procedimientos para las tareas de mantenimiento de MetroCluster"^]
-
-https://hwu.netapp.com["Hardware Universe de NetApp"^]

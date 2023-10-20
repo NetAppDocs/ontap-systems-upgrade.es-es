@@ -1,0 +1,477 @@
+= Paso 1: Configure nuevas conexiones iSCSI
+:allow-uri-read: 
+
+
+
+
+== Paso 1: Configure nuevas conexiones iSCSI
+
+Para mover las conexiones iSCSI, debe configurar conexiones iSCSI nuevas a los nodos nuevos.
+
+.Pasos
+. Cree interfaces iSCSI en los nodos nuevos y compruebe la conectividad de ping de los hosts iSCSI a las nuevas interfaces en los nodos nuevos.
++
+https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html["Cree interfaces de red"^]
+
++
+El host iSCSI debe ser accesible a todas las interfaces de iSCSI desde la SVM.
+
+. En el host iSCSI, identifique las conexiones iSCSI existentes desde el host al nodo anterior:
++
+[source, cli]
+----
+iscsiadm -m session
+----
++
+[listing]
+----
+[root@scspr1789621001 ~]# iscsiadm -m session
+tcp: [1] 10.230.68.236:3260,1156 iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6 (non-flash)
+tcp: [2] 10.230.68.237:3260,1158 iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6 (non-flash)
+----
+. En el nuevo nodo, compruebe las conexiones desde el nuevo nodo:
++
+[source, cli]
+----
+iscsi session show -vserver <svm-name>
+----
++
+[listing]
+----
+node_A_1-new::*> iscsi session show -vserver vsa_1
+ Tpgroup Initiator Initiator
+Vserver Name TSIH Name ISID Alias
+--------- ------- ---- ------------------------ --------- ---------------------
+vsa_1 iscsi_lf__n1_p1_ 4 iqn.2020-01.com.netapp.englab.gdl:scspr1789621001 00:02:3d:00:00:01 scspr1789621001.gdl.englab.netapp.com
+vsa_1 iscsi_lf__n2_p1_ 4 iqn.2020-01.com.netapp.englab.gdl:scspr1789621001 00:02:3d:00:00:02 scspr1789621001.gdl.englab.netapp.com
+2 entries were displayed.
+----
+. En el nodo nuevo, enumere las interfaces de iSCSI en ONTAP para la SVM que contiene las interfaces:
++
+[source, cli]
+----
+iscsi interface show -vserver <svm-name>
+----
++
+[listing]
+----
+sti8200mcchtp001htp_siteA::*> iscsi interface show -vserver vsa_1
+ Logical Status Curr Curr
+Vserver Interface  TPGT Admin/Oper IP Address Node Port Enabled
+------- ---------- ---- ---------- --------------- ----------- ---- -------
+vsa_1 iscsi_lf__n1_p1_ 1156 up/up 10.230.68.236 sti8200mcc-htp-001 e0g true
+vsa_1 iscsi_lf__n1_p2_ 1157 up/up fd20:8b1e:b255:805e::78c9 sti8200mcc-htp-001 e0h true
+vsa_1 iscsi_lf__n2_p1_ 1158 up/up 10.230.68.237 sti8200mcc-htp-002 e0g true
+vsa_1 iscsi_lf__n2_p2_ 1159 up/up fd20:8b1e:b255:805e::78ca sti8200mcc-htp-002 e0h true
+vsa_1 iscsi_lf__n3_p1_ 1183 up/up 10.226.43.134 sti8200mccip-htp-005 e0c true
+vsa_1 iscsi_lf__n4_p1_ 1188 up/up 10.226.43.142 sti8200mccip-htp-006 e0c true
+6 entries were displayed.
+----
+. En el host iSCSI, ejecute la detección en cualquiera de las direcciones IP de iSCSI en la SVM para detectar los nuevos destinos:
++
+[source, cli]
+----
+iscsiadm -m discovery -t sendtargets -p iscsi-ip-address
+----
++
+La detección se puede ejecutar en cualquier dirección IP de la SVM, incluidas las interfaces que no son iSCSI.
+
++
+[listing]
+----
+[root@scspr1789621001 ~]# iscsiadm -m discovery -t sendtargets -p 10.230.68.236:3260
+10.230.68.236:3260,1156 iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6
+10.226.43.142:3260,1188 iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6
+10.226.43.134:3260,1183 iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6
+10.230.68.237:3260,1158 iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6
+----
+. En el host iSCSI, inicie sesión en todas las direcciones detectadas:
++
+[source, cli]
+----
+iscsiadm -m node -L all -T node-address -p portal-address -l
+----
++
+[listing]
+----
+[root@scspr1789621001 ~]# iscsiadm -m node -L all -T iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6 -p 10.230.68.236:3260 -l
+Logging in to [iface: default, target: iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6, portal: 10.226.43.142,3260] (multiple)
+Logging in to [iface: default, target: iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6, portal: 10.226.43.134,3260] (multiple)
+Login to [iface: default, target: iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6, portal: 10.226.43.142,3260] successful.
+Login to [iface: default, target: iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6, portal: 10.226.43.134,3260] successful.
+----
+. En el host iSCSI, compruebe el inicio de sesión y las conexiones:
++
+[source, cli]
+----
+iscsiadm -m session
+----
++
+[listing]
+----
+[root@scspr1789621001 ~]# iscsiadm -m session
+tcp: [1] 10.230.68.236:3260,1156 iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6 (non-flash)
+tcp: [2] 10.230.68.237:3260,1158 iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6 (non-flash)
+tcp: [3] 10.226.43.142:3260,1188 iqn.1992-08.com.netapp:sn.58d7f6df2cc611eaa9c500a098a71638:vs.6 (non-flash)
+----
+. En el nuevo nodo, compruebe el inicio de sesión y la conexión con el host:
++
+[source, cli]
+----
+iscsi initiator show -vserver <svm-name>
+----
++
+[listing]
+----
+sti8200mcchtp001htp_siteA::*> iscsi initiator show -vserver vsa_1
+ Tpgroup Initiator
+Vserver Name             TSIH Name                  ISID              Igroup Name
+------- --------         ---- --------------------- ----------------- -----------------
+vsa_1 iscsi_lf__n1_p1_ 4 iqn.2020-01.com.netapp.englab.gdl:scspr1789621001 00:02:3d:00:00:01 igroup_linux
+vsa_1 iscsi_lf__n2_p1_ 4 iqn.2020-01.com.netapp.englab.gdl:scspr1789621001 00:02:3d:00:00:02 igroup_linux
+vsa_1 iscsi_lf__n3_p1_ 1 iqn.2020-01.com.netapp.englab.gdl:scspr1789621001 00:02:3d:00:00:04 igroup_linux
+vsa_1 iscsi_lf__n4_p1_ 1 iqn.2020-01.com.netapp.englab.gdl:scspr1789621001 00:02:3d:00:00:03 igroup_linux
+4 entries were displayed.
+----
+
+
+.Resultado
+Al final de esta tarea, el host puede ver todas las interfaces iSCSI (en los nodos antiguos y nuevos) y se ha iniciado sesión en todas esas interfaces.
+
+Los LUN y los volúmenes siguen alojados físicamente en los nodos antiguos. Dado que las LUN solo se notifican en las interfaces antiguas del nodo, el host solo mostrará las rutas de los nodos antiguos. Para ver esto, ejecute el `sanlun lun show -p` y.. `multipath -ll -d` comandos del host y examine las salidas de los comandos.
+
+[listing]
+----
+[root@scspr1789621001 ~]# sanlun lun show -p
+ONTAP Path: vsa_1:/vol/vsa_1_vol6/lun_linux_12
+ LUN: 4
+ LUN Size: 2g
+ Product: cDOT
+ Host Device: 3600a098038304646513f4f674e52774b
+ Multipath Policy: service-time 0
+ Multipath Provider: Native
+--------- ---------- ------- ------------ -------------------
+host vserver
+path path /dev/ host vserver
+state     type       node    adapter      LIF
+--------- ---------- ------- ------------ -------------------
+up        primary    sdk     host3        iscsi_lf__n2_p1_
+up        secondary  sdh     host2        iscsi_lf__n1_p1_
+[root@scspr1789621001 ~]# multipath -ll -d
+3600a098038304646513f4f674e52774b dm-5 NETAPP ,LUN C-Mode
+size=2.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| `- 3:0:0:4 sdk 8:160 active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+ `- 2:0:0:4 sdh 8:112 active ready running
+----
+
+
+== Paso 2: Agregue los nuevos nodos como nodos de informe
+
+Después de configurar las conexiones a los nodos nuevos, añada los nodos nuevos como nodos de generación de informes.
+
+.Pasos
+. En el nuevo nodo, enumere los nodos de generación de informes para las LUN en la SVM:
++
+[source, cli]
+----
+lun mapping show -vserver <svm-name> -fields reporting-nodes -ostype linux
+----
++
+Los siguientes nodos de informe son nodos locales como LUN están físicamente en los nodos antiguos node_A_1-old y node_A_2-old.
+
++
+[listing]
+----
+node_A_1-new::*> lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux
+vserver path                         igroup       reporting-nodes
+------- ---------------------------- ------------ ---------------------------
+vsa_1   /vol/vsa_1_vol1/lun_linux_2  igroup_linux node_A_1-old,node_A_2-old
+.
+.
+.
+vsa_1   /vol/vsa_1_vol9/lun_linux_19 igroup_linux node_A_1-old,node_A_2-old
+12 entries were displayed.
+----
+. En el nuevo nodo, añada nodos de generación de informes:
++
+[source, cli]
+----
+lun mapping add-reporting-nodes -vserver <svm-name> -path /vol/vsa_1_vol*/lun_linux_* -nodes node1,node2 -igroup <igroup_name>
+----
++
+[listing]
+----
+node_A_1-new::*> lun mapping add-reporting-nodes -vserver vsa_1 -path /vol/vsa_1_vol*/lun_linux_* -nodes node_A_1-new,node_A_2-new
+-igroup igroup_linux
+12 entries were acted on.
+----
+. En el nuevo nodo, compruebe que los nodos que acaba de agregar están presentes:
++
+[source, cli]
+----
+lun mapping show -vserver <svm-name> -fields reporting-nodes -ostype linux vserver path igroup reporting-nodes
+----
++
+[listing]
+----
+node_A_1-new::*> lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux vserver path igroup reporting-nodes
+------- --------------------------- ------------ -------------------------------------------------------------------------------
+vsa_1 /vol/vsa_1_vol1/lun_linux_2 igroup_linux node_A_1-old,node_A_2-old,node_A_1-new,node_A_2-new
+vsa_1 /vol/vsa_1_vol1/lun_linux_3 igroup_linux node_A_1-old,node_A_2-old,node_A_1-new,node_A_2-new
+.
+.
+.
+12 entries were displayed.
+----
+. La `sg3-utils` El paquete se debe instalar en el host Linux. Esto evita un `rescan-scsi-bus.sh utility not found` Error al volver a analizar el host Linux para los LUN recién asignados mediante el `rescan-scsi-bus` comando.
++
+En el host, verifique que el `sg3-utils` el paquete está instalado:
+
++
+--
+** Para una distribución basada en Debian:
++
+[source, cli]
+----
+dpkg -l | grep sg3-utils
+----
+** Para una distribución basada en Red Hat:
++
+[source, cli]
+----
+rpm -qa | grep sg3-utils
+----
+
+
+--
++
+Si es necesario, instale el `sg3-utils` Paquete en el host Linux:
+
++
+[source, cli]
+----
+sudo apt-get install sg3-utils
+----
+. En el host, vuelva a analizar el bus SCSI en el host y detecte las rutas recién agregadas:
++
+[source, cli]
+----
+/usr/bin/rescan-scsi-bus.sh -a
+----
++
+[listing]
+----
+[root@stemgr]# /usr/bin/rescan-scsi-bus.sh -a
+Scanning SCSI subsystem for new devices
+Scanning host 0 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 1 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 2 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+ Scanning for device 2 0 0 0 ...
+.
+.
+.
+OLD: Host: scsi5 Channel: 00 Id: 00 Lun: 09
+ Vendor: NETAPP Model: LUN C-Mode Rev: 9800
+ Type: Direct-Access ANSI SCSI revision: 05
+0 new or changed device(s) found.
+0 remapped or resized device(s) found.
+0 device(s) removed.
+----
+. En el host iSCSI, enumere las rutas recién agregadas:
++
+[source, cli]
+----
+sanlun lun show -p
+----
++
+Se muestran cuatro rutas para cada LUN.
+
++
+[listing]
+----
+[root@stemgr]# sanlun lun show -p
+ONTAP Path: vsa_1:/vol/vsa_1_vol6/lun_linux_12
+ LUN: 4
+ LUN Size: 2g
+ Product: cDOT
+ Host Device: 3600a098038304646513f4f674e52774b
+ Multipath Policy: service-time 0
+ Multipath Provider: Native
+------- ---------- ------- ----------- ---------------------
+host vserver
+path path /dev/ host vserver
+state   type       node    adapter     LIF
+------  ---------- ------- ----------- ---------------------
+up      primary    sdk      host3      iscsi_lf__n2_p1_
+up      secondary  sdh     host2       iscsi_lf__n1_p1_
+up      secondary  sdag    host4       iscsi_lf__n4_p1_
+up      secondary  sdah    host5       iscsi_lf__n3_p1_
+----
+. En el nodo nuevo, mueva el volumen o los volúmenes que contienen las LUN de los nodos antiguos a los nodos nuevos.
++
+[listing]
+----
+node_A_1-new::*> vol move start -vserver vsa_1 -volume vsa_1_vol1 -destination-aggregate sti8200mccip_htp_005_aggr1
+[Job 1877] Job is queued: Move "vsa_1_vol1" in Vserver "vsa_1" to aggregate "sti8200mccip_htp_005_aggr1". Use the "volume move show -vserver
+vsa_1 -volume vsa_1_vol1" command to view the status of this operation.
+node_A_1-new::*> vol move show
+Vserver  Volume      State       Move       Phase            Percent-Complete  Time-To-Complete
+-------- ----------  --------    ---------- ---------------- ----------------  ----------------
+vsa_1    vsa_1_vol1  healthy                initializing     -                 -
+----
+. Cuando el volumen se mueva a los nodos nuevos se haya completado, compruebe que el volumen esté en línea:
++
+[source, cli]
+----
+volume show -state
+----
+. Las interfaces de iSCSI en los nodos nuevos donde reside la LUN ahora se actualizan como rutas primarias. Si la ruta primaria no se actualiza después del movimiento de volumen, ejecute `/usr/bin/rescan-scsi-bus.sh -a` y.. `multipath -v3` en el host o simplemente espere a que se produzca el análisis multivía.
++
+En el ejemplo siguiente, la ruta principal es una LIF en el nuevo nodo.
+
++
+[listing]
+----
+[root@stemgr]# sanlun lun show -p
+ONTAP Path: vsa_1:/vol/vsa_1_vol6/lun_linux_12
+ LUN: 4
+ LUN Size: 2g
+ Product: cDOT
+ Host Device: 3600a098038304646513f4f674e52774b
+ Multipath Policy: service-time 0
+ Multipath Provider: Native
+--------- ---------- ------- ------------ -----------------------
+host vserver
+path path /dev/ host vserver
+state     type       node    adapter      LIF
+--------- ---------- ------- ------------ ------------------------
+up        primary    sdag    host4        iscsi_lf__n4_p1_
+up        secondary  sdk     host3        iscsi_lf__n2_p1_
+up        secondary  sdh     host2        iscsi_lf__n1_p1_
+up        secondary  sdah    host5        iscsi_lf__n3_p1_
+----
+
+
+
+
+== Paso 3: Quite los nodos de informes y vuelva a explorar las rutas
+
+Debe quitar los nodos de informes y volver a analizar las rutas.
+
+.Pasos
+. En el nodo nuevo, quite los nodos de informe remotos (los nodos nuevos) de los LUN de Linux:
++
+[source, cli]
+----
+lun mapping remove-reporting-nodes -vserver <svm-name> -path * -igroup <igroup_name> -remote-nodes true
+----
++
+En este caso, los nodos remotos son nodos antiguos.
+
++
+[listing]
+----
+node_A_1-new::*> lun mapping remove-reporting-nodes -vserver vsa_1 -path * -igroup igroup_linux -remote-nodes true
+12 entries were acted on.
+----
+. En el nuevo nodo, compruebe los nodos de generación de informes de las LUN:
++
+[source, cli]
+----
+lun mapping show -vserver <svm-name> -fields reporting-nodes -ostype linux
+----
++
+[listing]
+----
+node_A_1-new::*> lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux
+vserver  path                         igroup        reporting-nodes
+-------  ---------------------------  ------------  -------------------------
+vsa_1    /vol/vsa_1_vol1/lun_linux_2  igroup_linux  node_A_1-new,node_A_2-new
+vsa_1    /vol/vsa_1_vol1/lun_linux_3  igroup_linux  node_A_1-new,node_A_2-new
+vsa_1    /vol/vsa_1_vol2/lun_linux_4  group_linux   node_A_1-new,node_A_2-new
+.
+.
+.
+12 entries were displayed.
+----
+. La `sg3-utils` El paquete se debe instalar en el host Linux. Esto evita un `rescan-scsi-bus.sh utility not found` Error al volver a analizar el host Linux para los LUN recién asignados mediante el `rescan-scsi-bus` comando.
++
+En el host, verifique que el `sg3-utils` el paquete está instalado:
+
++
+--
+** Para una distribución basada en Debian:
++
+[source, cli]
+----
+dpkg -l | grep sg3-utils
+----
+** Para una distribución basada en Red Hat:
++
+[source, cli]
+----
+rpm -qa | grep sg3-utils
+----
+
+
+--
++
+Si es necesario, instale el `sg3-utils` Paquete en el host Linux:
+
++
+[source, cli]
+----
+sudo apt-get install sg3-utils
+----
+. En el host iSCSI, vuelva a analizar el bus SCSI:
++
+[source, cli]
+----
+/usr/bin/rescan-scsi-bus.sh -r
+----
++
+Las rutas que se eliminan son las rutas de los nodos antiguos.
+
++
+[listing]
+----
+[root@scspr1789621001 ~]# /usr/bin/rescan-scsi-bus.sh -r
+Syncing file systems
+Scanning SCSI subsystem for new devices and remove devices that have disappeared
+Scanning host 0 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 1 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 2 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+sg0 changed: LU not available (PQual 1)
+REM: Host: scsi2 Channel: 00 Id: 00 Lun: 00
+DEL: Vendor: NETAPP Model: LUN C-Mode Rev: 9800
+ Type: Direct-Access ANSI SCSI revision: 05
+sg2 changed: LU not available (PQual 1)
+.
+.
+.
+OLD: Host: scsi5 Channel: 00 Id: 00 Lun: 09
+ Vendor: NETAPP Model: LUN C-Mode Rev: 9800
+ Type: Direct-Access ANSI SCSI revision: 05
+0 new or changed device(s) found.
+0 remapped or resized device(s) found.
+24 device(s) removed.
+ [2:0:0:0]
+ [2:0:0:1]
+.
+.
+.
+----
+. En el host iSCSI, compruebe que solo estén visibles las rutas desde los nodos nuevos:
++
+[source, cli]
+----
+sanlun lun show -p
+----
++
+[source, cli]
+----
+multipath -ll -d
+----
+
