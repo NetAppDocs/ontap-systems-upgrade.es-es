@@ -17,7 +17,7 @@ Si no necesita mover volúmenes de SAN iSCSI al actualizar moviendo volúmenes, 
 
 .Acerca de esta tarea
 * Las interfaces IPv4 se crean cuando se configuran las nuevas conexiones iSCSI.
-* Los comandos y ejemplos del host son específicos de los sistemas operativos LINUX.
+* Los comandos y ejemplos del host son específicos de los sistemas operativos Linux.
 
 
 

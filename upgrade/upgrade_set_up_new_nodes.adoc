@@ -16,6 +16,8 @@ Durante el proceso de actualización, es posible mover el almacenamiento, encend
 .Antes de empezar
 Si la versión de ONTAP que se ejecuta en los nodos nuevos es diferente de la versión de los nodos originales, debe haber descargado el correcto `<ontap_version>_image.tgz` Archivo del sitio de soporte de NetApp a un directorio accesible a través de web (consulte _Preprepare para la actualización a la hora de mover almacenamiento_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_5["Paso 5"]). Necesita la `<ontap_version>_image.tgz` archivo para reiniciar el sistema.
 
+También puede utilizar la opción de arranque USB para realizar un arranque desde el sistema. Consulte el artículo de la base de conocimientos link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Cómo utilizar el comando boot_recovery LOADER para instalar ONTAP para la configuración inicial de un sistema"^].
+
 .Pasos
 . Encienda el nodo 3 y, a continuación, pulse inmediatamente Ctrl-C en el terminal de la consola para acceder al aviso del CARGADOR.
 +

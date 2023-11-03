@@ -39,8 +39,7 @@ homepage:
   - title: Actualice mediante la reubicación de agregados en sistemas que ejecutan
       ONTAP 9,7 y versiones anteriores
     links:
-    - title: Utilizar comandos de “sustitución del controlador del sistema” (en la
-        mayoría de los sistemas)
+    - title: Utilice los comandos para reemplazar la controladora del sistema
       url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/
     - title: Utilizar comandos manuales
       url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/
