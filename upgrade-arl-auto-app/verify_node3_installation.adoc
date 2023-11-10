@@ -39,10 +39,20 @@ El resultado del `health` el campo debe ser `true`.
 +
 `cluster show`
 
-. Cada LIF de clúster debe estar escuchando en el puerto 7700. Compruebe que las LIF del clúster están escuchando en el puerto 7700:
+. Según la versión de ONTAP que se ejecute en el par de alta disponibilidad que se va a actualizar, realice una de las siguientes acciones:
 +
-`::> network connections listening show -vserver Cluster`
+[cols="30,70"]
+|===
+| Si la versión de ONTAP es... | Realice lo siguiente... 
 
+
+| 9,8 a 9.11.1 | Compruebe que las LIF del clúster están escuchando en el puerto 7700:
+
+`::> network connections listening show -vserver Cluster` 
+
+
+| 9.12.1 o posterior | Omita este paso y vaya a. <<verify_node3_step_5,Paso 5>>. 
+|===
 +
 El resultado esperado de la escucha del puerto 7700 en los puertos del clúster tal y como se muestra en el siguiente ejemplo de un clúster de dos nodos:
 
@@ -60,14 +70,14 @@ Cluster          NodeB_clus1:7700               TCP/ctlopcp
 Cluster          NodeB_clus2:7700               TCP/ctlopcp
 4 entries were displayed.
 ----
-. De ser necesario, para cada LIF de clúster que no esté escuchando en el puerto 7700, establezca el estado administrativo de la LIF en `down` y después `up`:
+. Para cada LIF de clúster que no esté escuchando en el puerto 7700, establezca el estado administrativo de la LIF en `down` y después `up`:
 +
 `::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
 
 +
 Repita el paso 3 para verificar que el LIF del clúster ahora esté escuchando en el puerto 7700.
 
-. Cambie al modo de privilegio avanzado:
+. [[VERIFY_node3_STEP_5]]Cambiar al modo de privilegio avanzado:
 +
 `set advanced`
 
@@ -127,6 +137,9 @@ Una vez que se confirma que el nodo 3 está en quórum y que se puede comunicar 
 
 .Acerca de esta tarea
 Para obtener más información sobre la creación y recreación de VLAN, grupos de interfaces y dominios de retransmisión, consulte link:other_references.html["Referencias"] Para establecer un vínculo con _Network Management_.
+
+
+NOTE: Si está cambiando la velocidad de puerto de los puertos de los clústeres de e0a y e1a en sistemas AFF A800 o AFF C800, puede observar que se están recibiendo paquetes con formato incorrecto tras la conversión de velocidad. Consulte https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["ID de error de NetApp Bugs Online: 1570339"^] y el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["Errores de CRC en puertos T6 después de convertir de 40GbE a 100GbE"^] para obtener orientación.
 
 .Pasos
 . [[step1]]enumera todos los puertos físicos del nodo 1 actualizado (conocido como nodo 3):

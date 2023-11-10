@@ -964,7 +964,6 @@
   <block id="d86684c09dde7ea5d5d7306c6f674ea3" category="list-text">Cada LIF de clúster debe estar escuchando en el puerto 7700. Compruebe que las LIF del clúster están escuchando en el puerto 7700:</block>
   <block id="b8dabd137df5202c83400e4fde74838d" category="paragraph"><block ref="478f48a10865c64c029e9fd3cec0523d" prefix="" category="inline-code"></block></block>
   <block id="9c26c389cd17f0bf0da92eb4d2187822" category="paragraph">El resultado esperado de la escucha del puerto 7700 en los puertos del clúster tal y como se muestra en el siguiente ejemplo de un clúster de dos nodos:</block>
-  <block id="17a934761f44517e9bcc906e1eb8bfe9" category="list-text">De ser necesario, para cada LIF de clúster que no esté escuchando en el puerto 7700, establezca el estado administrativo de la LIF en<block ref="74e8333ad11685ff3bdae589c8f6e34d" prefix=" " category="inline-code"></block> y después<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>:</block>
   <block id="b3ee2f857e5e883213b8165c5fba42ad" category="paragraph"><block ref="dff01f3bea88545ff8da5c4d9dfa2576" prefix="" category="inline-code"></block></block>
   <block id="ceb1502357ca7edd7dc13458f9f78895" category="paragraph">Repita el subpaso (g) para comprobar que la LIF del clúster ahora está escuchando en el puerto 7700.</block>
   <block id="9694fd9e35e64d8c445c0824b45a5dff" category="inline-link-macro">Asigne puertos de red mediante ONTAP 9.7 o anterior, paso 7</block>
@@ -4859,4 +4858,22 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="fcbf56c541d4d283030e94ff96a44848" category="paragraph">También puede utilizar la opción de arranque USB para realizar un arranque desde el sistema. Consulte el artículo de la base de conocimientos <block ref="184f8f7294797efad8be0da4fb907563" category="inline-link-macro-rx"></block>.</block>
   <block id="626a7cbe056796bcb1c158b143866230" category="sidebar">Notas de la versión de ONTAP</block>
   <block id="806e982f94b5ab4054aa07ccb047ecdb" category="sidebar">Utilice los comandos para reemplazar la controladora del sistema</block>
+  <block id="32d8f219b2e3b24132bd4923c34c4dc6" category="list-text">Para cada LIF de clúster que no esté escuchando en el puerto 7700, establezca el estado administrativo de la LIF en<block ref="74e8333ad11685ff3bdae589c8f6e34d" prefix=" " category="inline-code"></block> y después<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>:</block>
+  <block id="0f072cf75dad23e085e6786bbfa15ee3" category="list-text">Según la versión de ONTAP que se ejecute en el par de alta disponibilidad que se va a actualizar, realice una de las siguientes acciones:</block>
+  <block id="3b7bc6da810fcf3db2d0ac3faf0d4699" category="cell">Si la versión de ONTAP es...</block>
+  <block id="70d79c0ebfb73d5165d2451382cc4332" category="cell">9,8 a 9.11.1</block>
+  <block id="57d17db025176f211f2601bfb69b294f" category="cell">Compruebe que las LIF del clúster están escuchando en el puerto 7700:
+<block ref="478f48a10865c64c029e9fd3cec0523d" prefix=" " category="inline-code"></block></block>
+  <block id="384264f87c50753f2eb17ca87ee9effa" category="cell">9.12.1 o posterior</block>
+  <block id="57e06e6af76d79b8779f5f6d6d293c4b" category="cell">Omita este paso y vaya a. <block ref="42e2bf4f4ef15f603bcc30bc206d35c3" category="inline-xref-macro-rx"></block>.</block>
+  <block id="5b14143915836be17fa2618f3eb7806d" category="cell">Omita este paso y vaya a. <block ref="908f101af36ad2335dd086df5698bdbf" category="inline-xref-macro-rx"></block>.</block>
+  <block id="99b3cab751e6822e482e17b1680dd183" category="cell">Omita este paso y vaya a. <block ref="50ada5c38dd8312cfb2b5108640c8ce7" category="inline-xref-macro-rx"></block>.</block>
+  <block id="931aa0d9454eeac2242bed266d6ccf39" category="list-text">[[VERIFY_node3_STEP_5]]Cambiar al modo de privilegio avanzado:</block>
+  <block id="bb751320dd480e108cbcc56ecb725c59" category="inline-link">ID de error de NetApp Bugs Online: 1570339</block>
+  <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">Errores de CRC en puertos T6 después de convertir de 40GbE a 100GbE</block>
+  <block id="282e5b40067cab0a2f099fb840c18705" category="admonition">Si está cambiando la velocidad de puerto de los puertos de los clústeres de e0a y e1a en sistemas AFF A800 o AFF C800, puede observar que se están recibiendo paquetes con formato incorrecto tras la conversión de velocidad. Consulte<block ref="6d2ed5cfb453d16c38a7a5c4ec937198" category="inline-link-rx"></block> y el artículo de la base de conocimientos<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> para obtener orientación.</block>
+  <block id="4a38eadfc2a9ece3d72590e6313fbd6e" category="admonition">Si está cambiando la velocidad de puerto de las tarjetas de interfaz de red Ethernet basadas en T6 o los puertos de la placa base, puede que observe que se reciben paquetes con formato incorrecto después de la conversión de velocidad. Consulte<block ref="6d2ed5cfb453d16c38a7a5c4ec937198" category="inline-link-rx"></block> y el artículo de la base de conocimientos<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> para obtener orientación.</block>
+  <block id="403701bd83bf4b3cf916d0207d89b4e6" category="cell">Omita este paso y vaya a. <block ref="8837566debd0bf055ddeb89904e2fbbc" category="inline-xref-macro-rx"></block>.</block>
+  <block id="6fdc0880de0e199aedb20bf62f491976" category="list-text">[[verify_node4_step5]]Cambiar al modo de privilegios avanzado:</block>
+  <block id="694bd1275df145cf6b146f04be06b773" category="cell">Omita este paso y vaya a. <block ref="b6919d088e29a20fea866ec3a396e020" category="inline-xref-macro-rx"></block>.</block>
 </blocks>

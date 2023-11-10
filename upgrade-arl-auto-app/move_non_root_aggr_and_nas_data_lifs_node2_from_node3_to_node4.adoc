@@ -19,6 +19,9 @@ Después de verificar la configuración de red en el nodo 4 y antes de reubicar 
 .Acerca de esta tarea
 Las LIF remotas gestionan el tráfico a LUN DE SAN durante el procedimiento de actualización. No es necesario mover LIF DE SAN durante la actualización para el estado del clúster o del servicio. Los LIF SAN no se mueven a menos que tengan que asignarse a nuevos puertos. Verifique que las LIF estén en buen estado y ubicadas en puertos adecuados después de poner el nodo 4 en línea.
 
+
+NOTE: Si está cambiando la velocidad de puerto de las tarjetas de interfaz de red Ethernet basadas en T6 o los puertos de la placa base, puede que observe que se reciben paquetes con formato incorrecto después de la conversión de velocidad. Consulte https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["ID de error de NetApp Bugs Online: 1570339"^] y el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["Errores de CRC en puertos T6 después de convertir de 40GbE a 100GbE"^] para obtener orientación.
+
 .Pasos
 . Reanude la operación de reubicación:
 +
