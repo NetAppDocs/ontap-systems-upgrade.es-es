@@ -14,9 +14,12 @@ summary: Cree al menos un agregado en cada uno de los nuevos nodos para almacena
 Cree al menos un agregado en cada uno de los nuevos nodos para almacenar los volúmenes que desea mover desde los nodos originales. Debe identificar un agregado para cada volumen y moverlo por separado.
 
 .Antes de empezar
-Se deben inicializar las relaciones de reflejo de protección de datos para poder mover un volumen.
-
+* Se deben inicializar las relaciones de reflejo de protección de datos para poder mover un volumen.
++
 https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["Busque el procedimiento de protección de datos necesario"^].
+
+* Si va a mover volúmenes de SAN iSCSI, compruebe que los ha introducido link:upgrade_move_linux_iscsi_hosts_to_new_nodes.html["Se han creado nuevas conexiones iSCSI"].
+
 
 
 NOTE: Para cada máquina virtual de almacenamiento (SVM), NetApp recomienda mover todos los volúmenes no raíz del clúster antes de mover el volumen raíz, y realizar este procedimiento en una SVM a la vez.

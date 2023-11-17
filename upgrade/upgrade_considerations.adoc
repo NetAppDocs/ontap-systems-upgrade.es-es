@@ -36,7 +36,7 @@ Las controladoras de una pareja de alta disponibilidad deben ser dos modelos AFF
 
 | ¿Hay diferentes versiones de ONTAP ejecutándose en los nodos originales y en los nuevos?  a| 
 . https://hwu.netapp.com["Compruebe las versiones de ONTAP y los niveles de parches admitidos por los nodos originales y nuevos"^].
-. NetApp recomienda, siempre que sea posible, que tenga la misma versión de ONTAP que se ejecute en los nodos originales y en los nuevos. Si esto no es posible, link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Actualice la versión de ONTAP"^] En los nodos originales a la versión máxima admitida de modo que la diferencia de versión entre los nodos originales y los nuevos NO sea superior a cuatro. Por ejemplo, se admite ONTAP 9,8 y 9.12.1; sin embargo, no se admite ONTAP 9,8 y 9.13.1.
+. NetApp recomienda, siempre que sea posible, que tenga la misma versión de ONTAP que se ejecute en los nodos originales y en los nuevos. Si esto no es posible, link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Actualice la versión de ONTAP"^] En los nodos originales a la versión máxima admitida de modo que la diferencia de versión entre los nodos originales y los nuevos NO sea superior a cuatro. Por ejemplo, se admite ONTAP 9,8 y 9.12.1; sin embargo, no se admite ONTAP 9,8 y 9.13.1.
 +
 https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Obtenga más información sobre los clústeres mixtos de ONTAP"^].
 

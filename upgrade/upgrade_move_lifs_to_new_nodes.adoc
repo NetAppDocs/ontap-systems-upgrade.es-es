@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: move, volume, original, node, migrate, non-san, lif, cluster-management, move non-san data lifs and cluster management lifs to the new nodeas 
 summary: Después de mover los volúmenes desde los nodos originales, necesitará migrar las LIF de datos sin SAN y los LIF de gestión de clústeres desde los nodos originales hasta los nuevos nodos. 
 ---
-= Mueva LIF de datos no SAN y LIF de administración del clúster a los nuevos nodos
+= Mueva LIF de datos que no sean SAN y LIF de gestión de clúster a los nuevos nodos
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -17,10 +17,18 @@ Después de mover los volúmenes de los nodos originales, deberá migrar las LIF
 No se puede migrar una LIF que se usa para operaciones de descarga de copias con las API de VMware vStorage para la integración de cabinas (VAAI).
 
 .Pasos
-. Desde el nodo en el que se aloja la LIF del clúster, cambie los puertos base de las LIF de datos que no son SAN de los nodos originales a los nuevos nodos:
+. Inicie sesión con la LIF de gestión de clúster y enumere todas las LIF de los nodos originales (lista separada por comas):
 +
-`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-node _new_node_name_ -home-port {<netport|ifgrp>}`
-
+[source, cli]
+----
+network interface show -curr-node <list_of_original_node_names>
+----
+. Cambie los puertos de inicio de las LIF de datos no SAN de los nodos originales a los nodos nuevos:
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <lif_name> -home-node <new_node_name> -home-port {<netport|ifgrp>}
+----
 . Realice una de las siguientes acciones:
 +
 [cols="1,2"]
@@ -31,21 +39,25 @@ No se puede migrar una LIF que se usa para operaciones de descarga de copias con
  a| 
 Una LIF específica
  a| 
-`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _dest_node_name_ -destination-port _dest_port_name_`
-
+[source, cli]
+----
+network interface migrate -vserver <vserver_name> -lif <lif_name> -destination-node <dest_node_name> -destination-port <dest_port_name>
+----
 
 
  a| 
 Todos los LIF de datos que no sean SAN y los LIF de administración de clúster
  a| 
-`network interface migrate-all -node _node_name_`
-
+[source, cli]
+----
+network interface migrate-all -node <node_name>
+----
 |===
 +
 El siguiente comando migra una LIF llamada "datalif1" de la SVM "vs0" al puerto "e0d" de "nodet 0b":
 
 +
-[listing]
+[source, cli]
 ----
 cluster::> network interface migrate -vserver vs0 -lif datalif1 -destination-node node0b -destination-port e0d
 ----
@@ -53,21 +65,30 @@ cluster::> network interface migrate -vserver vs0 -lif datalif1 -destination-nod
 El siguiente comando migra todas las LIF de datos y de administración de clúster del nodo (local) actual:
 
 +
-[listing]
+[source, cli]
 ----
 cluster::> network interface migrate-all -node local
 ----
-. Compruebe si el nodo de inicio de la LIF de gestión de clústeres está en uno de los nodos originales: `network interface show -lif cluster_mgmt -fields home-node`
+. Compruebe si el nodo de inicio de la LIF de gestión de clústeres está en uno de los nodos originales:
++
+[source, cli]
+----
+network interface show -lif cluster_mgmt -fields home-node
+----
 . Si el nodo inicial del LIF de gestión del clúster está en uno de los nodos originales, realice los siguientes pasos:
 +
 .. Cambie el nodo de inicio del LIF de gestión del clúster a uno de los nuevos nodos:
 +
-`network interface modify -vserver _cluster_name_ -lif cluster_mgmt -home-node _new_node_name_ -home-port {<netport|ifgrp>}`
-
+[source, cli]
+----
+network interface modify -vserver <cluster_name> -lif cluster_mgmt -home-node <new_node_name> -home-port {<netport|ifgrp>}
+----
 .. Migre el LIF de gestión de clústeres a uno de los nuevos nodos:
 +
-`network interface migrate -vserver _vserver_name_ -lif cluster-mgmt -destination-node _new_node_name_ -destination-port {<netport|ifgrp>}`
-
+[source, cli]
+----
+network interface migrate -vserver <vserver_name> -lif cluster-mgmt -destination-node <new_node_name> -destination-port {<netport|ifgrp>}
+----
 
 
 
