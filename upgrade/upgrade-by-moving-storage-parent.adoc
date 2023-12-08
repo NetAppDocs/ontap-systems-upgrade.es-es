@@ -1,0 +1,67 @@
+---
+permalink: upgrade/upgrade-by-moving-storage-parent.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: Si va a actualizar moviendo almacenamiento, debe preparar los nodos originales y configurar los nuevos. Algunos modelos de plataforma admiten la transferencia de almacenamiento interno a los nuevos nodos. Debe reasignar discos y restaurar la configuración de volumen raíz a los nodos nuevos y configurar puertos de red. La actualización moviendo almacenamiento es un procedimiento disruptivo. 
+---
+= Flujo de trabajo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si va a actualizar el hardware de una controladora, mueva almacenamiento, prepare los nodos originales y configure los nuevos. Algunos modelos de plataforma admiten la transferencia de almacenamiento interno a los nuevos nodos. Debe reasignar discos y restaurar la configuración de volumen raíz a los nodos nuevos y configurar puertos de red. La actualización moviendo almacenamiento es un procedimiento disruptivo.
+
+[NOTE]
+====
+En los pasos para actualizar el hardware de la controladora, para mover el almacenamiento, los nodos originales se denominan nodo 1 y nodo 4, y los nuevos se denominan nodo 3 y nodo 4. Durante el procedimiento descrito, el nodo 1 se reemplaza por nodo 3, y el nodo 2 se reemplaza por nodo 4.
+
+image::../upgrade/media/original_to_new_nodes.png[Reemplazar node3 y node4 por node1 y node2]
+
+Los términos 1, 2, nodo 3 y nodo 4 solo se usan para distinguir entre los nodos originales y los nuevos. Al seguir el procedimiento, debe sustituirlos por los nombres reales de los nodos originales y nuevos. Sin embargo, en realidad los nombres de los nodos no cambian: El nodo 3 tiene el nombre 1-nodo y el nodo 4 tiene el nombre 2 después de actualizar el hardware de la controladora.
+
+====
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Uno"]link:upgrade-prepare-when-moving-storage.html["Prepárese para la actualización cuando cambie el almacenamiento"]
+[role="quick-margin-para"]
+Antes de actualizar moviendo el almacenamiento, recopile información de licencia de los nodos originales, planifique la configuración de red, registre los ID del sistema y prepare los archivos necesarios para netboot.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]link:upgrade-shutdown-remove-original-nodes.html["Apague los nodos originales"]
+[role="quick-margin-para"]
+Cuando apaga y quita los nodos originales, se envía un mensaje de AutoSupport sobre la actualización, se destruyen los buzones, se apagan los nodos y se quita el chasis.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]link:upgrade-remove-disk-ownership-new-nodes.html["Elimine la propiedad de los discos conectados a los nuevos nodos"]
+[role="quick-margin-para"]
+Si los nuevos nodos tienen discos internos o bandejas complementarias conectadas al sistema, pueden interferir en la actualización de la controladora.  Debe eliminar la propiedad de los discos nuevos que vienen con node3/node4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"]link:upgrade-reset-default-configuration-node3-and-node4.html["Restablece la configuración predeterminada en los nuevos nodos"]
+[role="quick-margin-para"]
+Para confirmar que la información de configuración en el medio de arranque no interfiere con la actualización de la controladora, las configuraciones de node3 y node4 se restablecen a las opciones de configuración predeterminadas.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:upgrade-install-new-nodes.html["Instale los nodos nuevos"]
+[role="quick-margin-para"]
+Cuando se actualiza, se mueve Storage, el primer paso es instalar el nodo 3 y el nodo 4, y asociar las conexiones de alimentación, consola y red a los nodos nuevos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"]link:upgrade-set-up-new-nodes.html["Configure los nodos nuevos"]
+[role="quick-margin-para"]
+Durante el proceso de actualización, es posible mover el almacenamiento, encender el nodo 3 y el nodo 4, arrancar la imagen de software y configurar los nodos. La distribución de puertos físicos entre los nodos originales y los nuevos puede ser diferente. La asignación de los puertos entre los nodos originales y los de reemplazo se debe realizar para identificar un diseño correcto de los puertos y las conexiones.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Siete"]link:upgrade-optional-move-internal-storage.html["Opcional: Mueva almacenamiento interno o convierta el sistema a una bandeja de unidades"]
+[role="quick-margin-para"]
+De manera opcional, si el nodo original es uno de los modelos compatibles, puede mover sus unidades SATA, SSD o SAS internas a una bandeja de unidades conectada a los nodos nuevos durante el proceso de actualización mediante el movimiento del almacenamiento. También puede convertir el sistema a una bandeja de unidades y adjuntarlo a los nuevos nodos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Ocho"]link:upgrade-attach-shelves-reassign-disks.html["Conecte las bandejas de almacenamiento y reasigne la propiedad de disco"]
+[role="quick-margin-para"]
+Se reasignan los discos que pertenecían a node1 y node2 a node3 y node4 respectivamente.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-9.png["Nueve"]link:upgrade-restore-root-volume-config.html["Restaure la configuración del volumen raíz"]
+[role="quick-margin-para"]
+Se restaura la información de configuración del volumen raíz a los dispositivos de arranque.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-10.png["Diez"]link:upgrade-complete.html["Complete la actualización"]
+[role="quick-margin-para"]
+Complete la actualización en ONTAP 9.8 o posterior, o ONTAP 9.7 o anterior.
+
+.Información relacionada
+* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Actualice AFF A250 a AFF A400 mediante la conversión a una bandeja de unidades"] (un procedimiento no disruptivo).
+

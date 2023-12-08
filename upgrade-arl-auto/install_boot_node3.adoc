@@ -314,7 +314,7 @@ No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo
 `boot_ontap menu`
 
 +
-Si no tiene una configuración FC o UTA/UTA2, ejecute link:set_fc_or_uta_uta2_config_node4.html#auto_check_node4_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 15"] de modo que el nodo 4 puede reconocer los discos del nodo 2.
+Si no dispone de una configuración FC o UTA/UTA2, lleve a cabo link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 15"] de modo que el nodo 4 puede reconocer los discos del nodo 2.
 
 . [[auto9597_istall3_step29]]para una configuración MetroCluster, sistemas y sistemas V-Series con software de virtualización FlexArray conectado a matrices de almacenamiento, vaya a. link:set_fc_or_uta_uta2_config_on_node3.html#auto9597_check_node3_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3, paso 15"].
 

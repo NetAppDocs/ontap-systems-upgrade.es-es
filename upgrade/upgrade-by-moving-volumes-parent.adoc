@@ -1,0 +1,46 @@
+---
+permalink: upgrade/upgrade-by-moving-volumes-parent.html 
+sidebar: sidebar 
+keywords: upgrade by moving volumes 
+summary: Si va a actualizar mediante la transferencia de volúmenes, debe preparar los nodos originales y unir los nuevos nodos al clúster. Mueve volúmenes a los nodos nuevos, configura LIF y desvincula los nodos originales del clúster. La actualización mediante el movimiento de volúmenes es un procedimiento no disruptivo. 
+---
+= Flujo de trabajo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si va a actualizar el hardware de una controladora, mueve volúmenes, prepara los nodos originales y une los nuevos nodos al clúster. Mueve volúmenes a los nodos nuevos, configura LIF y desvincula los nodos originales del clúster. La actualización mediante el movimiento de volúmenes es un procedimiento no disruptivo.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Uno"]link:upgrade-prepare-when-moving-volumes.html["Prepare la actualización cuando mueva volúmenes"]
+[role="quick-margin-para"]
+Debe realizar algunos pasos de preparación antes de actualizar el hardware de la controladora mediante el movimiento de volúmenes.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]link:upgrade-install-and-join-new-nodes-move-vols.html["Instale los nodos nuevos y únalos al clúster"]
+[role="quick-margin-para"]
+Instale los nodos nuevos y únalos al clúster para que pueda mover volúmenes desde los nodos originales.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]link:upgrade_move_linux_iscsi_hosts_to_new_nodes.html["Mueva hosts iSCSI de Linux a los nodos nuevos"]
+[role="quick-margin-para"]
+Antes de mover los volúmenes de SAN iSCSI a nodos nuevos, se crean nuevas conexiones iSCSI y se vuelven a analizar las rutas iSCSI a los nodos nuevos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"]link:upgrade-create-aggregate-move-volumes.html["Cree un agregado y mueva volúmenes a los nuevos nodos"]
+[role="quick-margin-para"]
+Debe crear al menos un agregado en cada uno de los nodos nuevos para almacenar los volúmenes que desea mover de los nodos originales. Debe identificar un agregado para cada volumen y mover cada volumen individualmente
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:upgrade-move-lifs-to-new-nodes.html["Mueva LIF de datos no SAN y LIF de administración del clúster a los nuevos nodos"]
+[role="quick-margin-para"]
+Después de haber movido los volúmenes de los nodos originales, deberá migrar los LIF de datos no SAN y las LIF de gestión de clúster de los nodos originales a los nuevos nodos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"]link:upgrade_move_delete_recreate_san_lifs.html["Mueva, elimine o cree LIF SAN"]
+[role="quick-margin-para"]
+Según el contenido del clúster y el entorno del clúster, podrá mover, eliminar o crear LIF de SAN, o volver a crear LIF de SAN eliminados.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Siete"]link:upgrade-unjoin-original-nodes-move-volumes.html["Ununa los nodos originales del clúster"]
+[role="quick-margin-para"]
+Una vez que se han movido los volúmenes a los nodos nuevos, se deben desunir los nodos originales del clúster. Cuando se desvincula un nodo, la configuración del nodo se borra y todos los discos se inicializan.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Ocho"]link:upgrade-complete-move-volumes.html["Complete la actualización"]
+[role="quick-margin-para"]
+Para completar el procedimiento de actualización moviendo volúmenes, debe configurar el Service Processor (SP), instalar licencias nuevas y configurar AutoSupport. También es posible que deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o NCA.

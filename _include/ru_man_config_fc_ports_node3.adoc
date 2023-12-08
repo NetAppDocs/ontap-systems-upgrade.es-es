@@ -144,7 +144,7 @@ NOTE: Los puertos FC deben programarse como iniciadores.
 
 | Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento  a| 
 ** Si el nodo 3 tiene una tarjeta o puertos integrados, vaya a. <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>.
-** Si el nodo 3 no tiene una tarjeta o puertos integrados, omita <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>, Y vuelva al _Install and boot node3_ y reanude en link:install_boot_node3.html#step7["Paso 7"].
+** Si el nodo 3 no tiene una tarjeta o puertos integrados, omita <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>, Y vuelva al _Install and boot node3_ y reanude en link:install_boot_node3.html#man_install3_step7["Paso 7"].
 
 
 |===

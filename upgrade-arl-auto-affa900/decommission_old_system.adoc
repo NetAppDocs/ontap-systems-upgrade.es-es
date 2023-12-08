@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: /upgrade-arl-auto-affa900/decommission_old_system.html 
+permalink: upgrade-arl-auto-affa900/decommission_old_system.html 
 keywords: decommission, old system, upgrade, databases, netapp, support, site, serial, number, cluster 
 summary: Informe a NetApp que el sistema antiguo ya no está en funcionamiento tras la actualización de la controladora. 
 ---

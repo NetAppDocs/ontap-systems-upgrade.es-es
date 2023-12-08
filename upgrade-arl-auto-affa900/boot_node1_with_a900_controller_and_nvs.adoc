@@ -45,7 +45,7 @@ FAS2720 | Módulo controlador FAS2820 ^1^
 ^2^ Al sustituir la controladora y los módulos NVRAM, solo se mueven las conexiones de consola y de gestión.
 
 .Pasos
-. Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, siga estos pasos.
+. [[A900_BOOT_node1]]Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, realice los pasos siguientes.
 +
 
 NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] para determinar el tipo de unidades de autocifrado que están en uso.

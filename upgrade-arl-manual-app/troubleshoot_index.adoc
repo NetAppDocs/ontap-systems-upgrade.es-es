@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-manual-app/troubleshoot_index.html 
-keywrods: troubleshoot, failure, aggregate, relocate, lifs 
+keywords: troubleshoot, failure, aggregate, relocate, lifs 
 summary: Solucione problemas de fallos que pueden producirse durante una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior. 
 ---
 = Solucionar problemas

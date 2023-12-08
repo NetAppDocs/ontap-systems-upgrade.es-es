@@ -65,7 +65,7 @@ NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de vol
 
 NOTE: Si la combinación del modelo de actualización de la controladora no se encuentra en la tabla anterior, póngase en contacto con el soporte técnico.
 
-Vaya al AFF paso que hace referencia a A800 de la sección link:set_fc_or_uta_uta2_config_on_node3.html#step23["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3, paso 23"], o. link:set_fc_or_uta_uta2_config_node4.html#step23["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 23"].
+Vaya al AFF paso que hace referencia a A800 de la sección link:set_fc_or_uta_uta2_config_on_node3.html#auto_check3_step23["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3, paso 23"], o. link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step23["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 23"].
 
 Esta 2 Si va a actualizar desde un sistema AFF A300 a un AFF A400 o una FAS8200 a un sistema FAS8300 en una configuración de clúster sin switch de dos nodos, debe seleccionar puertos temporales del clúster para la actualización de controladora. Los sistemas AFF A400 y FAS8300 se ofrecen en dos configuraciones, como un paquete Ethernet donde los puertos de la tarjeta intermedia son de tipo Ethernet y como un paquete FC donde los puertos intermedios son de tipo FC.
 

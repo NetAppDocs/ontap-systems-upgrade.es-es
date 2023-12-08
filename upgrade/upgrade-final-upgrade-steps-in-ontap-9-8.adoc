@@ -1,10 +1,10 @@
 ---
-permalink: upgrade/upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html 
+permalink: upgrade/upgrade-final-upgrade-steps-in-ontap-9-8.html 
 sidebar: sidebar 
-keywords: complete, procedure, upgrading, upgrade, moving, move, storage, delete, port, lif, re-enable, service, processor, sp, license, autosupport, fc, cna, por, perform final upgrade steps in ontap 9.7 or earlier 
-summary: 'Para completar el procedimiento de actualización, moviendo el almacenamiento, necesita eliminar los puertos y las LIF no utilizados de los nuevos nodos, volver a habilitar la conmutación por error o la alta disponibilidad del almacenamiento, configurar el Service Processor \(SP\), instalar licencias nuevas y configurar AutoSupport. Es posible que también deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o CNA.' 
+keywords: complete, procedure, upgrading, upgrade, moving, move, storage, delete, unused, port, lif, re-enable, failover, availability, service, processor, sp, autosupport, volume, encryption, fc, cna, perform final upgrade steps in ontap 9.8 
+summary: 'Para completar el procedimiento de actualización, mueva almacenamiento, debe eliminar los puertos y las LIF no utilizados de los nuevos nodos, volver a habilitar la conmutación al respaldo del almacenamiento o la alta disponibilidad, configurar Service Processor \(SP\), instalar licencias nuevas y configurar AutoSupport. Es posible que también deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o CNA.' 
 ---
-= Realice los pasos finales de la actualización en ONTAP 9.7 o versiones anteriores
+= Realice los pasos finales de la actualización en ONTAP 9.8 o posterior
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -14,17 +14,13 @@ summary: 'Para completar el procedimiento de actualización, moviendo el almacen
 Para completar el procedimiento de actualización, mueva el almacenamiento, debe eliminar los puertos y las LIF no utilizados de los nuevos nodos, volver a habilitar la conmutación al respaldo del almacenamiento o la alta disponibilidad, configurar el Service Processor (SP), instalar licencias nuevas y configurar AutoSupport. Es posible que también deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o CNA.
 
 .Antes de empezar
-Estos pasos se aplican a sistemas que ejecutan ONTAP 9.7 o una versión anterior. Si utiliza ONTAP 9.8 o una versión posterior, debe utilizar el procedimiento en xref:upgrade-final-upgrade-steps-in-ontap-9-8.adoc[Realice los pasos finales de la actualización en ONTAP 9.8 o posterior].
+Estos pasos se aplican a sistemas que ejecutan ONTAP 9.8 o posterior. Si utiliza ONTAP 9.7 o una versión anterior, debe utilizar el procedimiento en link:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html["Realizando pasos finales de actualización en ONTAP 9.7 o anterior"].
 
 .Pasos
-. Si el sistema ejecuta ONTAP 9.8 o posterior, *STOP*. Debe utilizar el procedimiento en xref:upgrade-final-upgrade-steps-in-ontap-9-8.adoc[Realice los pasos finales de la actualización en ONTAP 9.8 o posterior].
+. Si el sistema ejecuta ONTAP 9.7 o anterior, *STOP*. Debe utilizar el procedimiento en link:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html["Realizando pasos finales de actualización en ONTAP 9.7 o anterior"].
 . Desde el símbolo del sistema de almacenamiento, muestre información acerca de las LIF:
 +
 `network interface show`
-
-. Elimine los puertos que no se utilicen de los nuevos nodos (nivel de privilegio avanzado):
-+
-`network port delete`
 
 . Si está en un entorno SAN, elimine las LIF no utilizadas del conjunto de puertos para que pueda eliminarlas:
 +
@@ -49,12 +45,18 @@ Estos pasos se aplican a sistemas que ejecutan ONTAP 9.7 o una versión anterior
 | Si tiene un... | Realice lo siguiente... 
 
 
-| Clúster de dos nodos | Reactivación de alta disponibilidad:
-`cluster ha modify -configured true` 
+ a| 
+Clúster de dos nodos
+ a| 
+Reactivación de alta disponibilidad: `cluster ha modify -configured true`
 
 
-| Un clúster con más de dos nodos | Volver a habilitar la conmutación al nodo de respaldo del almacenamiento:
-`storage failover modify -node node_name -enabled true` 
+
+ a| 
+Un clúster con más de dos nodos
+ a| 
+Volver a habilitar la conmutación al nodo de respaldo del almacenamiento: `storage failover modify -node node_name -enabled true`
+
 |===
 . Configure el SP en los nodos nuevos según sea necesario:
 +
@@ -72,7 +74,7 @@ Estos pasos se aplican a sistemas que ejecutan ONTAP 9.7 o una versión anterior
 +
 `system node autosupport invoke -node node_name -type all -message "MAINT=END node_name successfully upgraded from platform_old to platform_new"`
 
-. Restaure el almacenamiento o la funcionalidad de cifrado de volúmenes mediante el procedimiento adecuado en lahttps://docs.netapp.com/us-en/ontap/encryption-at-rest/index.html["Gestione el cifrado con la interfaz de línea de comandos"^] contenido.
+. Restaure el almacenamiento o la funcionalidad de cifrado de volúmenes mediante el procedimiento adecuado en la https://docs.netapp.com/us-en/ontap/encryption-at-rest/index.html["Gestione el cifrado con la interfaz de línea de comandos"^] contenido.
 +
 Siga uno de estos procedimientos, en función de si utiliza la gestión de claves externa o incorporada:
 

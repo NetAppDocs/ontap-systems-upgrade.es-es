@@ -11,9 +11,9 @@ Sin embargo, no es necesario reiniciar el nodo 3 si tiene la misma versión o un
 
 [IMPORTANT]
 ====
-Si va a actualizar un sistema V-Series conectado a cabinas de almacenamiento o un sistema con el software de virtualización de FlexArray conectado a cabinas de almacenamiento, debe completar <<man_install3_step1,Paso 1>> por <<man_install3_step5,Paso 5>>, deje esta sección en <<man_install3_step6,Paso 6>> y siga las instrucciones de link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"] según sea necesario, introduzca los comandos en modo de mantenimiento. A continuación, debe volver a esta sección y reanudar con <<man_install3_step7,Paso 7>>.
+Si va a actualizar un sistema V-Series conectado a cabinas de almacenamiento o un sistema con el software de virtualización de FlexArray conectado a cabinas de almacenamiento, debe completar <<man_install3_step1,Paso 1>> por <<man_install3_step5,Paso 5>>, deje esta sección en <<man_install3_step6,Paso 6>> y siga las instrucciones de link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"] según sea necesario, introduzca los comandos en modo de mantenimiento. A continuación, debe volver a esta sección y reanudar con <<man_install3_step7,Paso 7>>.
 
-Sin embargo, si va a actualizar un sistema con discos de almacenamiento, debe completar toda esta sección y, a continuación, vaya a. link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"], introduciendo comandos en el símbolo del sistema del clúster.
+Sin embargo, si va a actualizar un sistema con discos de almacenamiento, debe completar toda esta sección y, a continuación, vaya a. link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"], introduciendo comandos en el símbolo del sistema del clúster.
 
 ====
 .Pasos
@@ -88,7 +88,7 @@ NOTE: *Atención*: No anule el retardo; si no se permite que la batería se carg
 
 
 | Es un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento  a| 
-.. Vaya a. link:set_fc_uta_uta2_config_node3.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 3"] y completar las subsecciones link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_uta_uta2_config_node3.html#check-and-configure-UTAUTA2-ports-on-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"], según corresponda a su sistema.
+.. Vaya a. link:set_fc_uta_uta2_config_node3.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 3"] y completar las subsecciones link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"], según corresponda a su sistema.
 .. Vuelva a esta sección y complete los pasos restantes, empezando por <<man_install3_step7,Paso 7>>.
 
 

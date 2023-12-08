@@ -44,7 +44,7 @@ Conecte la interconexión de alta disponibilidad entre los nodos siguiendo estos
 
 | En el mismo chasis que el nodo 3 | Vaya a. <<step5,Paso 5>>. No es necesario conectar manualmente la interconexión de alta disponibilidad entre los nodos; en configuraciones de mismo chasis, la interconexión de alta disponibilidad está conectada automáticamente a través del plano posterior. 
 |===
-. [[Step5]]realice una de las siguientes acciones:
+. [[step5]]Realice una de las siguientes acciones:
 +
 |===
 | Si el clúster es... | Realice lo siguiente... 

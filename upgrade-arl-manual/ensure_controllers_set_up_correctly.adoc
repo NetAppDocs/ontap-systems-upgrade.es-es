@@ -75,7 +75,7 @@ Si el nodo 3 o el nodo 4 son propiedad de los LIF de datos que pertenecen a otro
 `volume show -node _node3_ -state offline`
 `volume show -node _node4_ -state offline`
 
-. Si alguno de los volúmenes se encuentra sin conexión, compártalos con la lista de volúmenes sin conexión en los que se haya capturado link:prepare_nodes_for_upgrade.html#step19d["Paso 19 (d)"] En _prepare los nodos para la actualización_ y active cualquiera de los volúmenes sin conexión, según sea necesario, introduzca el comando siguiente, una vez para cada volumen:
+. Si alguno de los volúmenes se encuentra sin conexión, compártalos con la lista de volúmenes sin conexión en los que se haya capturado  link:prepare_nodes_for_upgrade.html#man_prepare_nodes_step19["Paso 19 (d)"] En _prepare los nodos para la actualización_ y active cualquiera de los volúmenes sin conexión, según sea necesario, introduzca el comando siguiente, una vez para cada volumen:
 +
 `volume online -vserver _vserver_name_ -volume _volume_name_`
 
@@ -86,7 +86,7 @@ Si el nodo 3 o el nodo 4 son propiedad de los LIF de datos que pertenecen a otro
 +
 El parámetro license-code acepta una lista de 28 claves de caracteres alfabéticos en mayúsculas. Puede agregar una licencia cada vez, o puede agregar varias licencias a la vez, cada clave de licencia separada por una coma.
 
-. [[unset_maxwait_manual]]Si se utilizan unidades de autocifrado en la configuración y se ha configurado el `kmip.init.maxwait` variable a. `off` (por ejemplo, en link:install_boot_node3.html#step16["Paso 16"] De _Install and boot node3_), debe anular la definición de la variable:
+. [[unset_maxwait_manual]]Si se utilizan unidades de autocifrado en la configuración y se ha configurado el `kmip.init.maxwait` variable a. `off` (por ejemplo, en link:install_boot_node3.html#man_install3_step16["Paso 16"] De _Install and boot node3_), debe anular la definición de la variable:
 +
 `set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
 
@@ -129,7 +129,7 @@ Introduzca `y` para eliminar todos los paquetes.
 `system license show`
 
 +
-Puede comparar la salida con la que ha capturado link:prepare_nodes_for_upgrade.html#step30["Paso 30"] De _prepare los nodos para upgrade_.
+Puede comparar la salida con la que ha capturado link:prepare_nodes_for_upgrade.html#man_prepare_nodes_step30["Paso 30"] De _prepare los nodos para upgrade_.
 
 . Configure los SPS realizando el siguiente comando en ambos nodos:
 +

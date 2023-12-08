@@ -17,6 +17,6 @@ Debe utilizar el procedimiento para su versión de ONTAP.
 
 image::../upgrade/media/workflow_completing_upgrade_98_or_97x.png[Complete la actualización]
 
-* xref:upgrade-complete-ontap-9-8.adoc[Complete la actualización en ONTAP 9.8 o posterior]
-* xref:upgrade-complete-ontap-9-7-or-earlier.adoc[Complete la actualización en ONTAP 9.7 o anterior]
+* link:upgrade-complete-ontap-9-8.html["Complete la actualización en ONTAP 9.8 o posterior"]
+* link:upgrade-complete-ontap-9-7-or-earlier.html["Complete la actualización en ONTAP 9.7 o anterior"]
 

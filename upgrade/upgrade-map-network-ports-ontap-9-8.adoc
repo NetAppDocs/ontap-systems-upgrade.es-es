@@ -14,7 +14,7 @@ summary: Para habilitar el nodo 3 y el nodo 4 para comunicarse entre sí en el c
 Para habilitar el nodo 3 y el nodo 4 para comunicarse entre sí en el clúster y con la red después de la actualización, debe confirmar que los puertos físicos están correctamente configurados con los ajustes para el uso previsto, como el clúster, los datos, etc.
 
 .Antes de empezar
-Estos pasos se aplican a sistemas que ejecutan ONTAP 9.8 o posterior. Si utiliza ONTAP 9.7 o una versión anterior, debe utilizar el procedimiento en xref:upgrade-map-network-ports-ontap-9-7-or-earlier.adoc[Asignar puertos de red con ONTAP 9.7 o una versión anterior].
+Estos pasos se aplican a sistemas que ejecutan ONTAP 9.8 o posterior. Si utiliza ONTAP 9.7 o una versión anterior, debe utilizar el procedimiento en link:upgrade-map-network-ports-ontap-9-7-or-earlier.html["Asignar puertos de red con ONTAP 9.7 o una versión anterior"].
 
 .Acerca de esta tarea
 Debe realizar estos pasos en los nodos 3 y 4.
@@ -23,7 +23,7 @@ Debe realizar estos pasos en los nodos 3 y 4.
 NOTE: Los siguientes ejemplos de comandos hacen referencia al "nodo 1", ya que, en este momento del procedimiento, los nodos de reemplazo "nodo 3" y "nodo 4" se denominan "nodo 1" y "nodo 2".
 
 .Pasos
-. Si el sistema ejecuta ONTAP 9.7 o anterior, *STOP*. Debe utilizar el procedimiento en xref:upgrade-map-network-ports-ontap-9-7-or-earlier.adoc[Asignar puertos de red con ONTAP 9.7 o una versión anterior].
+. Si el sistema ejecuta ONTAP 9.7 o anterior, *STOP*. Debe utilizar el procedimiento en link:upgrade-map-network-ports-ontap-9-7-or-earlier.html["Asignar puertos de red con ONTAP 9.7 o una versión anterior"].
 . Ubique la información de configuración de puertos y LIF para los nodos 1 y 2 que haya grabado en _prepare for upgrade al mover almacenamiento_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Paso 3"].
 . Localice la información de los puertos, dominios de retransmisión y espacios IP que registró en _Prepárese para la actualización cuando mueva almacenamiento_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Paso 3"].
 +
@@ -73,7 +73,7 @@ Cuando se migran todas las LIF del clúster y se establece la comunicación del 
 `::> network connections listening show -vserver Cluster` 
 
 
-| 9.12.1 o posterior | Omita este paso y vaya a. <<map_9.8_5,Paso 5>>. 
+| 9.12.1 o posterior | Omita este paso y vaya a. <<map_98_5,Paso 5>>. 
 |===
 +
 El resultado esperado de la escucha del puerto 7700 en los puertos del clúster tal y como se muestra en el siguiente ejemplo de un clúster de dos nodos:
@@ -101,7 +101,7 @@ Repita el subpaso (g) para comprobar que la LIF del clúster ahora está escucha
 
 
 
-. [[map_9.8_5]]modifique las pertenencias al dominio de difusión de los puertos físicos que alojan las LIF de datos. Puede hacerlo manualmente, como se muestra en la link:upgrade-map-network-ports-ontap-9-7-or-earlier.html#map_9.7_7["Asigne puertos de red mediante ONTAP 9.7 o anterior, paso 7"]. El método recomendado es utilizar el procedimiento mejorado de exploración y reparación de accesibilidad de red introducido en ONTAP 9.8, como se muestra en el siguiente paso 5, subpasos (a) a (g).
+. [[MAP_98_5]]Modifique las pertenencias de dominio de difusión de los puertos físicos que alojan LIF de datos. Puede hacerlo manualmente, como se muestra en la link:upgrade-map-network-ports-ontap-9-7-or-earlier.html#map_97_7["Asigne puertos de red mediante ONTAP 9.7 o anterior, paso 7"]. NetApp recomienda utilizar el procedimiento de exploración y reparación de accesibilidad de red mejorado introducido en ONTAP 9,8, como se muestra en el siguiente paso 5, subpasos (a) a (g).
 +
 .. Enumerar el estado de accesibilidad de todos los puertos:
 +
@@ -218,4 +218,4 @@ NOTE: Para los LIF iSCSI, la modificación del puerto inicial requiere que la LI
 
 
 
-Completó la asignación de los puertos físicos. Para completar la actualización, vaya a. xref:upgrade-final-upgrade-steps-in-ontap-9-8.adoc[Realice los pasos finales de la actualización en ONTAP 9.8 o posterior].
+Completó la asignación de los puertos físicos. Para completar la actualización, vaya a. link:upgrade-final-upgrade-steps-in-ontap-9-8.html["Realice los pasos finales de la actualización en ONTAP 9.8 o posterior"].

@@ -255,6 +255,6 @@ Adapter  Mode     Type       Mode     Type       Status
 | Tiene discos de almacenamiento | Vaya a. link:map_ports_node1_node3.html["Asigne puertos del nodo 1 al nodo 3"]. 
 
 
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva al _Install and boot no3_ y reanude el link:install_boot_node3.html#step7["Paso 7"]. 
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva al _Install and boot no3_ y reanude el link:install_boot_node3.html#man_install3_step7["Paso 7"]. 
 |===
 

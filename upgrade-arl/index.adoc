@@ -16,7 +16,7 @@ summary: Use la reubicación de agregados para actualizar el hardware de la cont
 [role="lead"]
 Este contenido describe cómo actualizar el hardware de la controladora sin interrupciones mediante la reubicación de agregados (ARL).
 
-Para obtener otros métodos para actualizar el hardware de la controladora, consulte xref:other_references.adoc[Referencias] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+Para obtener otros métodos para actualizar el hardware de la controladora, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
 
 Puede actualizar el hardware de la controladora de forma no disruptiva en un par de nodos que ejecutan ONTAP migrando agregados que no son raíz de los nodos originales a los nuevos del mismo clúster. Durante la actualización, se puede acceder a los datos alojados en los nodos que se están actualizando.
 

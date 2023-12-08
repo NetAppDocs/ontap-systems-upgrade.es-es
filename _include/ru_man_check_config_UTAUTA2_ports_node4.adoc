@@ -219,6 +219,6 @@ f-a    2b      fc      target    cna      -          online
 | Tiene discos de almacenamiento | Vaya a. link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"]. 
 
 
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva a la sección _Install and boot node4_ y reanude la sección en link:install_boot_node4.html#Step9["Paso 9"]. 
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva a la sección _Install and boot node4_ y reanude la sección en link:install_boot_node4.html#man_install4_Step9["Paso 9"]. 
 |===
 

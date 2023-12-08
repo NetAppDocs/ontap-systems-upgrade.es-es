@@ -109,7 +109,7 @@ Transferir el almacenamiento interno es una tarea opcional del flujo de trabajo 
 
 == Situaciones en las que podría necesitar pasos adicionales
 
-* xref:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.adoc[Va a actualizar de un AFF A250 a un AFF A400] (un procedimiento no disruptivo).
+* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Va a actualizar de un AFF A250 a un AFF A400"] (un procedimiento no disruptivo).
 * Si el sistema nuevo tiene menos ranuras que el sistema original, o si tiene menos puertos o tipos diferentes, puede que deba añadir un adaptador al nuevo sistema. Consulte https://hwu.netapp.com["Hardware Universe de NetApp"^].
 * Si los nodos originales o los nodos nuevos utilizan el software de virtualización FlexArray, consulte el artículo de la base de conocimientos https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/V_Series/What_are_the_specific_steps_involved_in_FlexArray_for_NetApp_controller_upgrades%2F%2Freplacements%3F["Cuáles son los pasos específicos que se deben seguir en FlexArray para actualizar y reemplazar controladoras de NetApp"^].
 * Si su clúster tiene hosts SAN, puede que necesite tomar las medidas necesarias para resolver problemas con los cambios de números de serie de la LUN. Consulte el artículo de la base de conocimientos https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FlexPod_with_Infrastructure_Automation/resolve_issues_during_storage_controller_motherboard_replacement_and_head_upgrades_with_iSCSI_and_FCP["Cómo resolver problemas durante el reemplazo de la placa base y las actualizaciones del cabezal de la controladora de almacenamiento con iSCSI y FCP"^].
@@ -118,6 +118,6 @@ Transferir el almacenamiento interno es una tarea opcional del flujo de trabajo 
 
 .Información relacionada
 * link:../choose_controller_upgrade_procedure.html["Elija métodos para actualizar el hardware de la controladora"]
-* xref:upgrade-by-moving-storage-parent.adoc[Actualice el hardware de las controladoras moviendo el almacenamiento]
-* xref:upgrade-by-moving-volumes-parent.adoc[Mueva volúmenes para actualizar el hardware de la controladora]
+* link:upgrade-by-moving-storage-parent.html["Actualice el hardware de las controladoras moviendo el almacenamiento"]
+* link:upgrade-by-moving-volumes-parent.html["Mueva volúmenes para actualizar el hardware de la controladora"]
 

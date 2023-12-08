@@ -169,4 +169,4 @@ NOTE: No es necesario extraer el contenido del `<ontap_version>_image.tgz` archi
 |===
 
 
-Utilizará información en el directorio a. xref:upgrade-set-up-new-nodes.adoc[configure los nodos nuevos].
+Utilizará información en el directorio a. link:upgrade-set-up-new-nodes.html["configure los nodos nuevos"].

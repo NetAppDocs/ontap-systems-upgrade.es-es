@@ -8,7 +8,7 @@ summary: 'Puede actualizar el hardware de la controladora que ejecuta ONTAP 9.8 
 :allow-uri-read: 
 
 
-[role="lead lead"]
+[role="lead"]
 Este procedimiento describe cómo actualizar el hardware de la controladora mediante la reubicación de agregados (ARL) para las siguientes configuraciones del sistema:
 
 [cols="40,20,40"]

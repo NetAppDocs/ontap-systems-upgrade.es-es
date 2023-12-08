@@ -276,7 +276,7 @@ La instalación de un módulo de controladora nuevo cambia los valores de WWPN a
 . Si su configuración utiliza la división en zonas basada en switches, ajuste la división en zonas para reflejar los nuevos valores de WWPN.
 
 
-. Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, siga estos pasos.
+. [[auto_install4_step27]]Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, realice los pasos siguientes.
 +
 
 NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] para determinar el tipo de unidades de autocifrado que están en uso.
@@ -308,7 +308,7 @@ No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo
 `boot_ontap menu`
 
 +
-Si no tiene una configuración FC o UTA/UTA2, ejecute link:set_fc_or_uta_uta2_config_node4.html#auto_check_node4_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 15"] de modo que el nodo 4 puede reconocer los discos del nodo 2.
+Si no dispone de una configuración FC o UTA/UTA2, lleve a cabo link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 15"] de modo que el nodo 4 puede reconocer los discos del nodo 2.
 
-. [[step29]] para la configuración de MetroCluster, sistemas y sistemas de la serie V con el software de virtualización FlexArray conectado a cabinas de almacenamiento, vaya a. link:set_fc_or_uta_uta2_config_node4.html#auto_check_node4_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 15"].
+. [[step29]] Para las configuraciones de MetroCluster, los sistemas V-Series y los sistemas con el software de virtualización FlexArray conectados a cabinas de almacenamiento, vaya a link:set_fc_or_uta_uta2_config_node4.html# auto_check_4_step15[Compruebe y configure los puertos UTA/UTA2 en node4, Paso 15].
 

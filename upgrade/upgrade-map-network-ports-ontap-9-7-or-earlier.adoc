@@ -14,7 +14,7 @@ summary: Para habilitar el nodo 3 y el nodo 4 para comunicarse entre sí en el c
 Para habilitar el nodo 3 y el nodo 4 para comunicarse entre sí en el clúster y con la red después de la actualización, debe confirmar que los puertos físicos están correctamente configurados con los ajustes para el uso previsto, como el clúster, los datos, etc.
 
 .Antes de empezar
-Estos pasos se aplican a sistemas que ejecutan ONTAP 9.7 o una versión anterior. Si utiliza ONTAP 9.8 o una versión posterior, debe utilizar el procedimiento en xref:upgrade-map-network-ports-ontap-9-8.adoc[Asigne puertos de red mediante ONTAP 9.8 o una versión posterior].
+Estos pasos se aplican a sistemas que ejecutan ONTAP 9.7 o una versión anterior. Si utiliza ONTAP 9.8 o una versión posterior, debe utilizar el procedimiento en link:upgrade-map-network-ports-ontap-9-8.html["Asigne puertos de red mediante ONTAP 9.8 o una versión posterior"].
 
 .Acerca de esta tarea
 Debe realizar estos pasos en los nodos 3 y 4.
@@ -23,7 +23,7 @@ Debe realizar estos pasos en los nodos 3 y 4.
 NOTE: Los siguientes ejemplos de comandos hacen referencia al "nodo 1", ya que, en este momento del procedimiento, los nodos de reemplazo "nodo 3" y "nodo 4" se denominan "nodo 1" y "nodo 2".
 
 .Pasos
-. Si el sistema ejecuta ONTAP 9.8 o posterior, *STOP*. Debe utilizar el procedimiento en xref:upgrade-map-network-ports-ontap-9-8.adoc[Asigne puertos de red mediante ONTAP 9.8 o una versión posterior].
+. Si el sistema ejecuta ONTAP 9.8 o posterior, *STOP*. Debe utilizar el procedimiento en link:upgrade-map-network-ports-ontap-9-8.html["Asigne puertos de red mediante ONTAP 9.8 o una versión posterior"].
 . Ubique la información de configuración de puertos y LIF para los nodos 1 y 2 que haya grabado en _prepare for upgrade al mover almacenamiento_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Paso 3"].
 . Localice la información de los puertos, dominios de retransmisión y espacios IP que registró en _Prepárese para la actualización cuando mueva almacenamiento_, link:upgrade-prepare-when-moving-storage.html#prepare_move_store_3["Paso 3"].
 +
@@ -138,4 +138,4 @@ El siguiente comando establece la política de conmutación por error en todo el
 
 
 .Después de terminar
-Completó la asignación de los puertos físicos. Para completar la actualización, vaya a. xref:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.adoc[Realice los pasos finales de la actualización en ONTAP 9.7 o versiones anteriores].
+Completó la asignación de los puertos físicos. Para completar la actualización, vaya a. link:upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html["Realice los pasos finales de la actualización en ONTAP 9.7 o versiones anteriores"].

@@ -153,7 +153,7 @@ NOTE: Si ha compartido discos, agregados híbridos o ambos en el sistema, debe u
 `_node2_sysid_ -d _node4_sysid_` 
 |===
 +
-Para la `<node2_sysid>` utilice la información capturada en link:record_node2_information.html#man_node2_info_step10["Paso 10"] De la sección _Record 2 information_. Para `_node4_sysid_`, utilice la información capturada en <<man_install4_step23,Paso 23>>.
+Para la `<node2_sysid>` utilice la información capturada en link:record_node2_information.html#man_record_2_step10["Paso 10"] De la sección _Record 2 information_. Para `_node4_sysid_`, utilice la información capturada en <<man_install4_step23,Paso 23>>.
 
 +
 

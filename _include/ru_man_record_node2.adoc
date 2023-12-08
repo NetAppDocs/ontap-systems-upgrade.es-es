@@ -29,7 +29,7 @@ node2
 ----
 +
 
-NOTE: Es posible que el sistema no tenga LIF de interconexión de clústeres. Solo tendrá un LIF de gestión de clústeres en un nodo de una pareja de nodos. Se muestra una LIF de gestión de clústeres en el resultado del ejemplo de link:record_node1_information.html#step["Paso 1"] En _Record 1 Información del puerto_.
+NOTE: Es posible que el sistema no tenga LIF de interconexión de clústeres. Solo tendrá un LIF de gestión de clústeres en un nodo de una pareja de nodos. Se muestra una LIF de gestión del clúster en el resultado de ejemplo de link:record_node1_information.html#step1["Paso 1"] En _Record 1 Información del puerto_.
 
 . Capture la información de la salida que se va a utilizar en la sección link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
 +

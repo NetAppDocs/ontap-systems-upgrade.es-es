@@ -23,7 +23,7 @@ Es posible que tenga que completar la sección <<Configure los puertos FC en el 
 NOTE: Los materiales de marketing de NetApp podrían utilizar el término UTA2 para referirse a puertos y adaptadores de adaptador de red convergente (CNA). Sin embargo, la CLI utiliza el término CNA.
 
 * Si el nodo 3 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, y se está actualizando un sistema con discos de almacenamiento, puede omitir el link:verify_node3_installation.html["Verifique la instalación del nodo 3"] sección.
-* Sin embargo, si tiene un sistema V-Series o un sistema con software de virtualización FlexArray con cabinas de almacenamiento y el nodo 3 no tiene puertos FC integrados, puertos UTA/UTA integrados o una tarjeta UTA/UTA2, vuelva a la sección _Install and boot node3_ y reanude la sección en link:install_boot_node3.html#step23["Paso 23"].
+* Sin embargo, si tiene un sistema V-Series o un sistema con software de virtualización FlexArray con cabinas de almacenamiento y el nodo 3 no tiene puertos FC integrados, puertos UTA/UTA integrados o una tarjeta UTA/UTA2, vuelva a la sección _Install and boot node3_ y reanude la sección en link:install_boot_node3.html#auto_install3_step23["Paso 23"].
 
 
 .Opciones
@@ -123,7 +123,7 @@ NOTE: Los puertos FC deben programarse como iniciadores.
 
 | Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento  a| 
 ** Si el nodo 3 tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, vaya a la sección <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>.
-** Si el nodo 3 no tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, omita la sección <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>> Y vuelva a la sección _Install and boot node3_ y reanude en link:install_boot_node3.html#step23["Paso 23"].
+** Si el nodo 3 no tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, omita la sección <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>> Y vuelva a la sección _Install and boot node3_ y reanude en link:install_boot_node3.html#auto_install3_step23["Paso 23"].
 
 
 |===
@@ -308,7 +308,7 @@ Adapter  Mode       Type        Mode     Type        Status
 | Tiene discos de almacenamiento | Vaya a. link:verify_node3_installation.html["Verifique la instalación del nodo 3"]. 
 
 
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva a la sección _Install and boot node3_, y reanude en link:install_boot_node3.html#step23["Paso 23"]. 
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva a la sección _Install and boot node3_, y reanude en link:install_boot_node3.html#auto_install3_step23["Paso 23"]. 
 |===
 . [[auto_check3_step13]]salir del modo de mantenimiento:
 +

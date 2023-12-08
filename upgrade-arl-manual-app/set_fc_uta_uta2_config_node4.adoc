@@ -21,7 +21,7 @@ Puede que necesite completar <<Configure los puertos FC en el nodo 4>>, la <<Com
 
 Si el nodo 4 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, y se está actualizando un sistema con discos de almacenamiento, puede omitir link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
 
-Sin embargo, si tiene un sistema V-Series o tiene software de virtualización FlexArray y están conectados a cabinas de almacenamiento, y el nodo 4 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, debe volver a la sección _Install and boot node4_ y reanudar en link:install_boot_node4.html#Step9["Paso 9"]. Asegúrese de que el nodo 4 tenga suficiente espacio en rack. Si el nodo 4 se encuentra en un chasis separado del nodo 2, es posible colocar el nodo 4 en la misma ubicación que el nodo 3. Si el nodo 2 y el nodo 4 están en el mismo chasis, el nodo 4 ya se encuentra en la ubicación de rack adecuada.
+Sin embargo, si tiene un sistema V-Series o tiene software de virtualización FlexArray y están conectados a cabinas de almacenamiento, y el nodo 4 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, debe volver a la sección _Install and boot node4_ y reanudar en link:install_boot_node4.html#man_install4_Step9["Paso 9"]. Asegúrese de que el nodo 4 tenga suficiente espacio en rack. Si el nodo 4 se encuentra en un chasis separado del nodo 2, es posible colocar el nodo 4 en la misma ubicación que el nodo 3. Si el nodo 2 y el nodo 4 están en el mismo chasis, el nodo 4 ya se encuentra en la ubicación de rack adecuada.
 
 .Opciones
 * <<Configure los puertos FC en el nodo 4>>
@@ -172,7 +172,7 @@ NOTE: Los puertos FC deben programarse como iniciadores.
 
 | Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento  a| 
 ** Vaya a. <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 4>> Si el nodo 4 tiene una tarjeta UTA/ UTA2 o puertos UTA/UTA2 integrados.
-** Omita la sección _Check y configure los puertos UTA/UTA2 del nodo 4_ si el nodo 4 no tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, vuelva a la sección _Install and boot no4_ y reanude la sección en link:install_boot_node4.html#Step9["Paso 9"].
+** Omita la sección _Check y configure los puertos UTA/UTA2 del nodo 4_ si el nodo 4 no tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, vuelva a la sección _Install and boot no4_ y reanude la sección en link:install_boot_node4.html#man_install4_Step9["Paso 9"].
 
 
 |===
@@ -395,6 +395,6 @@ f-a    2b      fc      target    cna      -          online
 | Tiene discos de almacenamiento | Vaya a. link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"]. 
 
 
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva a la sección _Install and boot node4_ y reanude la sección en link:install_boot_node4.html#Step9["Paso 9"]. 
+| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva a la sección _Install and boot node4_ y reanude la sección en link:install_boot_node4.html#man_install4_Step9["Paso 9"]. 
 |===
 

@@ -14,7 +14,7 @@ summary: Es necesario restaurar la información de configuración desde el volum
 Es necesario restaurar la información de configuración desde el volumen raíz hasta los dispositivos de arranque.
 
 
-NOTE: Si realiza una actualización de controladora in situ a un sistema que utiliza puertos "e0a" y "e0b" como puertos de interconexión de alta disponibilidad (ha), por ejemplo, un FAS8300, un AFF A400 o un sistema FAS8700, compruebe que sí lo ha hecho xref:upgrade-prepare-when-moving-storage.html#assign_lifs[Se reasignan las LIF de gestión o interconexión de clústeres] se configuran en los puertos "e0a" y "e0b" en el sistema original antes de iniciar el procedimiento de actualización.
+NOTE: Si realiza una actualización de controladora in situ a un sistema que utiliza puertos "e0a" y "e0b" como puertos de interconexión de alta disponibilidad (ha), por ejemplo, un FAS8300, un AFF A400 o un sistema FAS8700, compruebe que sí lo ha hecho link:upgrade-prepare-when-moving-storage.html#assign_lifs["Se reasignan las LIF de gestión o interconexión de clústeres"] se configuran en los puertos "e0a" y "e0b" en el sistema original antes de iniciar el procedimiento de actualización.
 
 .Acerca de esta tarea
 Debe realizar estos pasos en el nodo 3 y el nodo 4, completar cada paso en un nodo y luego el otro antes de pasar al siguiente paso.
