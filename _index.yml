@@ -1,8 +1,8 @@
 ---
 indexpage:
-  lead: Este sitio proporciona los procedimientos de actualización para sistemas de
-    almacenamiento AFF y FAS. Seleccione el procedimiento de actualización adecuado
-    para el sistema de almacenamiento.
+  lead: Este sitio proporciona procedimientos de actualización para sistemas de almacenamiento
+    AFF, FAS y ASA. Seleccione el procedimiento de actualización adecuado para el
+    sistema de almacenamiento.
   tiles:
   - title: Manos a la obra
     links:
@@ -41,7 +41,7 @@ indexpage:
       url: https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html
   - title: Más recursos
     links:
-    - title: Documentación de los sistemas ONTAP
+    - title: Documentación de los sistemas de hardware de ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
     - title: Documentación de los switches ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems-switches/index.html

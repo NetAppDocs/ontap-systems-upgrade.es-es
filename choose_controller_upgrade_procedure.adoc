@@ -67,4 +67,4 @@ La reubicación de agregados es un procedimiento de sustitución. No es necesari
 ====
 Si desea actualizar una configuración de MetroCluster, consulte https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Actualice, actualice o expanda la configuración de MetroCluster"^].
 
-Si va a reemplazar un componente individual, consulte https://docs.netapp.com/us-en/ontap-systems/index.html["Documentación de los sistemas AFF y FAS"^] Y localice el folleto de unidad reemplazable del sector (FRU) de ese componente.
+Si va a reemplazar un componente individual, consulte https://docs.netapp.com/us-en/ontap-systems/index.html["Documentación de los sistemas de hardware de ONTAP"^] Y localice el folleto de unidad reemplazable del sector (FRU) de ese componente.

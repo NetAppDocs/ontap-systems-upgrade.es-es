@@ -4034,7 +4034,6 @@
   <block id="e43dab083a912c9831fe30bf3abbb717" category="paragraph"><block ref="6161aeb375fd34f9b1515c4e96c25d18" prefix="" category="inline-code"></block></block>
   <block id="8ccdb707cd31c1e478505a54dfa90f7a" category="paragraph">En este contenido se describe cómo actualizar el hardware de la controladora sin interrupciones mediante la reubicación de agregados.</block>
   <block id="fd6616fb43f706cbccb578942fa320ab" category="paragraph">Puede actualizar el hardware de la controladora de forma no disruptiva en un par de nodos que ejecutan ONTAP 9 migrando agregados que no son raíz de los nodos originales a los nuevos del mismo clúster. Durante la actualización, se puede acceder a los datos alojados en los nodos que se están actualizando.</block>
-  <block id="6af6b76d592516d40ca101051c678be3" category="doc">Documentación sobre las actualizaciones del sistema AFF y FAS</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">Manos a la obra</block>
   <block id="6c54fdf57ce13c518f1cc0d9d5f32820" category="sidebar">Actualice el hardware de la controladora</block>
   <block id="194cc1951d00be469039af6dbda275d0" category="sidebar">Utilizar comandos para «sustituir controlador del sistema» (en la mayoría de los sistemas)</block>
@@ -4042,7 +4041,6 @@
   <block id="7d94daad2b6e9d77a6320a64c21fbc4a" category="sidebar">Actualizar los sistemas en una configuración MetroCluster</block>
   <block id="c6bb96cc8b84319277f00b15adc71d75" category="sidebar">Seleccione el procedimiento de actualización de la configuración de MetroCluster</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">Más recursos</block>
-  <block id="aaf23d643347b5921ba9716fa4c13f83" category="sidebar">Documentación de los sistemas ONTAP</block>
   <block id="743b2bde29eae11996923323c6b89672" category="sidebar">Documentación de los switches ONTAP</block>
   <block id="dd032435fa83549d8bf3928550409a3e" category="sidebar">Documentación sobre el software ONTAP</block>
   <block id="519131237f79eadb2dc6a1e003a087bc" category="sidebar">Active IQ Config Advisor de NetApp</block>
@@ -4750,8 +4748,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="8b9b2634fd898f04166a765851aba8f2" category="list-text"><block ref="8b9b2634fd898f04166a765851aba8f2" category="inline-link-macro-rx"></block></block>
   <block id="441e5e19c045de8820e45a5b22e45056" category="paragraph">*Note2*: Una actualización no disruptiva requiere un nuevo sistema con su propio almacenamiento y estantes para almacenar los datos del sistema original.</block>
   <block id="272d55e2adea123757d8811eaaaebd88" category="paragraph">*Note3*: Al actualizar moviendo volúmenes, se unen los nuevos nodos, se mueven los volúmenes y las LIF a los nuevos nodos y luego se desunen los nodos que se desean eliminar del clúster. Si va a actualizar un clúster de dos nodos sin switches, lo convertirá en un clúster conectado con switches mediante un par de switches de clúster antes de añadir nuevos nodos.</block>
-  <block id="16319414c65274d365d86327a61ef5dc" category="inline-link">Documentación de los sistemas AFF y FAS</block>
-  <block id="c2238e72fe75968b1d2d41e7beba323b" category="paragraph">Si va a reemplazar un componente individual, consulte<block ref="9e966fb68ec771eec4870f18e1909b4f" category="inline-link-rx"></block> Y localice el folleto de unidad reemplazable del sector (FRU) de ese componente.</block>
   <block id="c024cf342a69d8b35b142333f2608aa5" category="sidebar">Actualice mediante la reubicación de agregados en sistemas que ejecutan ONTAP 9,8 y versiones posteriores</block>
   <block id="5d3c4b59db4a991b7c6450c61662dc60" category="sidebar">Actualice mediante la reubicación de agregados en sistemas que ejecutan ONTAP 9,7 y versiones anteriores</block>
   <block id="d58d42ec84ab0189beb36da55893f387" category="sidebar">Actualice moviendo almacenamiento o volúmenes</block>
@@ -4900,5 +4896,15 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="ac5c825456c3417b5a4af98c4f3e915f" category="paragraph">Vaya al AFF paso que hace referencia a A800 de la sección <block ref="d7767766539bb5c2349ec33972e353b3" category="inline-link-macro-rx"></block>, o. <block ref="1ac9d612a445bb1be7d33490e7f7168c" category="inline-link-macro-rx"></block>.</block>
   <block id="e517f479718742d7735088b63cb4b0a6" category="list-text">[[step5]]Realice una de las siguientes acciones:</block>
   <block id="1f6c36e4c21adc6fcbbeb1628f0ce398" category="paragraph">Para obtener otros métodos para actualizar el hardware de la controladora, consulte <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> Para enlazar con _Upgrade moviendo volúmenes o Storage_.</block>
-  <block id="a8337c93c769b636588431825fedbc33" category="sidebar">Este sitio proporciona los procedimientos de actualización para sistemas de almacenamiento AFF y FAS. Seleccione el procedimiento de actualización adecuado para el sistema de almacenamiento.</block>
+  <block id="ce334042acf5cdb00aa6b0cacc91188d" category="list-text">Si es necesario, vuelva a crear las cuentas de usuario no predeterminadas que tenía para el controlador de administración de placa base (BMC) en el sistema antiguo:</block>
+  <block id="7cd124c3569d4b8de1ffd3a55e5a0f72" category="list-text">Cambie o restablezca la contraseña de la cuenta de usuario administrador de BMC.</block>
+  <block id="f9c20a87fa881cd6931b55ff9caab40b" category="paragraph">La contraseña de la cuenta de usuario administrador de BMC está en blanco (sin contraseña) o igual que la contraseña de la cuenta de usuario administrador del sistema.</block>
+  <block id="98295c6ad28170a1a290ca42442cdb79" category="list-text">Vuelva a crear las cuentas de usuario de BMC no predeterminadas mediante<block ref="5d6b067bb8a979d6b47c787077dfae6f" prefix=" " category="inline-code"></block> comando con<block ref="3676d55f84497cbeadfc614c1b1b62fc" prefix=" " category="inline-code"></block> establezca en «service-processor», como se muestra en el siguiente ejemplo:</block>
+  <block id="715d318a746fe248ce78ec5e2626f09e" category="paragraph"><block ref="95c8ee682558c9e9a0683d5d70ee2be7" prefix="" category="inline-code"></block></block>
+  <block id="b6025c8f8309b4b8106567e8e60f52ac" category="admonition">Se requieren privilegios de administrador para crear una cuenta de usuario en BMC.</block>
+  <block id="a64a5798382cc068c2d777ff826bccb5" category="doc">Documentación sobre actualización del hardware de ONTAP</block>
+  <block id="646d7d5f93b4a6d7bbbc65acf5ac1077" category="inline-link">Documentación de los sistemas de hardware de ONTAP</block>
+  <block id="c2bb4d5f8818bc80f7aa15d94d57c6e3" category="paragraph">Si va a reemplazar un componente individual, consulte<block ref="e18a2433f1085adba8dc86307fee18d1" category="inline-link-rx"></block> Y localice el folleto de unidad reemplazable del sector (FRU) de ese componente.</block>
+  <block id="dec452d8e293e5516524ae8a86713211" category="sidebar">Este sitio proporciona procedimientos de actualización para sistemas de almacenamiento AFF, FAS y ASA. Seleccione el procedimiento de actualización adecuado para el sistema de almacenamiento.</block>
+  <block id="ec6e72d1c4bb7dccdc62b6caf35c95f7" category="sidebar">Documentación de los sistemas de hardware de ONTAP</block>
 </blocks>

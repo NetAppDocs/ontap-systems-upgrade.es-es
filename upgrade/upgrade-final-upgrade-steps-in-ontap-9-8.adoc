@@ -100,6 +100,22 @@ https://library.netapp.com/ecm/ecm_download_file/ECMP1140536["Migración a un cl
 +
 https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migración a un clúster con switches de dos nodos con switches de clúster CN1610 de NetApp"^]
 
+. Si es necesario, vuelva a crear las cuentas de usuario no predeterminadas que tenía para el controlador de administración de placa base (BMC) en el sistema antiguo:
++
+.. Cambie o restablezca la contraseña de la cuenta de usuario administrador de BMC.
++
+La contraseña de la cuenta de usuario administrador de BMC está en blanco (sin contraseña) o igual que la contraseña de la cuenta de usuario administrador del sistema.
+
+.. Vuelva a crear las cuentas de usuario de BMC no predeterminadas mediante `security login create` comando con `application` establezca en «service-processor», como se muestra en el siguiente ejemplo:
++
+`security login create -user-or-group-name bmcuser -application service-processor -authentication-method password -role admin`
+
++
+
+NOTE: Se requieren privilegios de administrador para crear una cuenta de usuario en BMC.
+
+
+
 . Según sea necesario, retire los sistemas originales a través del sitio de soporte de NetApp para informar a NetApp de que los sistemas ya no están en funcionamiento y que pueden eliminarse de las bases de datos de soporte:
 +
 .. Inicie sesión en la https://mysupport.netapp.com/site/global/dashboard["Soporte de NetApp"^] sitio.
