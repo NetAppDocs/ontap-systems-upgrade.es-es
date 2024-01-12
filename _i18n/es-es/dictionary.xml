@@ -65,10 +65,8 @@
   <block id="bb54a67e0ba8edb77dda51dedb81fec0" category="list-text">Guarde la configuración predeterminada de las variables de entorno:</block>
   <block id="4efce637d6ec3bc2a69f403fd39b9b41" category="paragraph"><block ref="8d7578ebf6b1d6483a876337d887a337" prefix="" category="inline-code"></block></block>
   <block id="b4c7c005a4b2204b56da4bbb5a2e62b0" category="doc">Decida si desea utilizar el procedimiento de reubicación de agregados</block>
-  <block id="c08f0b6d71108219929095cbd90d111d" category="paragraph">Utilice este procedimiento en las siguientes circunstancias:</block>
   <block id="eb51502469d00e14522e17bfff4124ad" category="list-text">No desea añadir las nuevas controladoras como una nueva pareja de alta disponibilidad al clúster y migrar los datos mediante movimientos de volúmenes.</block>
   <block id="a3bad37bbfc8cbb39ebdfc42ccfa6bec" category="list-text">Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en modo de privilegios de diagnóstico.</block>
-  <block id="9cc6fc2f026195efe30da793b04e5bd0" category="paragraph">*NO* Utilice este procedimiento en las siguientes circunstancias:</block>
   <block id="b0ce3e25b9ec3a13c13ca9a6fa5323b7" category="list-text">Utiliza el software de virtualización de FlexArray en los sistemas A700 o FAS9000 de AFF.</block>
   <block id="d94e9d7914bbd98510d8cb9e0a6d08b1" category="list-text">En este caso, utiliza un switch compartido para la interconexión del clúster y almacenamiento conectado a Ethernet.</block>
   <block id="d95867deadfe690e40f42068d6b59df8" category="inline-link-macro">Referencias</block>
@@ -795,7 +793,6 @@
   <block id="2cd913fdf7e7f2f1c4a048df3be22534" category="list-text">Conecte los puertos de consola y de gestión al módulo de controladora 2.</block>
   <block id="e16c4744183a5e672dc0a8f50d7250d6" category="admonition">Como el chasis ya está ENCENDIDO, el nodo 2 empieza a arrancar en cuanto esté completamente asentado. Para evitar el arranque del nodo 2, se recomienda conectar los cables de consola y de gestión al módulo de controlador del nodo 2 antes de insertar completamente el módulo de controlador en la ranura.</block>
   <block id="d9f54add7d47cd87694cd3f82ac8b56b" category="list-text">Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 2 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe EL ARRANQUE AUTOMÁTICO a tiempo y el nodo 2 empieza a arrancar, espere a que aparezca el mensaje y pulse *Ctrl-C* para ir al menú de inicio. Cuando el nodo se detenga en el menú de arranque, utilice la opción<block ref="c9f0f895fb98ab9159f51fd0297e236d" prefix=" " category="inline-code"></block> Para reiniciar el nodo e interrumpir EL ARRANQUE AUTOMÁTICO durante el reinicio.</block>
-  <block id="c83b4e572cf3ae5eb7bac42baed0ac9e" category="summary">Puede enlazar con otros contenidos de referencia y sitios web de este tema.</block>
   <block id="8fb4b518ce39a0704f920c9d4f2f7b77" category="summary">Use la reubicación de agregados para actualizar el hardware de la controladora</block>
   <block id="6e58652b4dc76659a9eeef1a0ccc6daf" category="paragraph">Este contenido describe cómo actualizar el hardware de la controladora sin interrupciones mediante la reubicación de agregados (ARL).</block>
   <block id="645b41b640376c487d825f5296fcae9d" category="paragraph">Puede actualizar el hardware de la controladora de forma no disruptiva en un par de nodos que ejecutan ONTAP migrando agregados que no son raíz de los nodos originales a los nuevos del mismo clúster. Durante la actualización, se puede acceder a los datos alojados en los nodos que se están actualizando.</block>
@@ -1069,7 +1066,6 @@
   <block id="c1f192f6d626bc5f27fc74b0848a1250" category="paragraph"><block ref="acc3b99f812f210de5147296e269009d" prefix="" category="inline-code"></block></block>
   <block id="e062efd67a70d34c188657c2ffafc80e" category="summary">Debe reasignar los discos que pertenecen al nodo 1 y al nodo 2 respectivamente al nodo 3 y al nodo 4.</block>
   <block id="507efb4e488acd48724d3f1c3d4b184d" category="paragraph">Es necesario realizar los pasos de esta sección, como nodo 3 y nodo 4, completar cada paso del nodo 3 y luego nodo 4 antes de pasar al siguiente paso.</block>
-  <block id="3a1ea4eb792e23021a7c1dcb702a9545" category="list-text">Conecte los cables de la bandeja de almacenamiento del nodo 1/2 al nodo 3/nodo 4. Verifique el suministro de alimentación y la conectividad física de las bandejas.</block>
   <block id="6617e295325d64b4136755492970fe4c" category="list-text">Desde el símbolo del sistema DEL CARGADOR de nodo 3, arranque en modo de mantenimiento:</block>
   <block id="24655647ccabfd614d439a15f52407aa" category="paragraph"><block ref="cce56b203b8705f3487342813b7117be" prefix="" category="inline-code"></block></block>
   <block id="533823574e82f810ad592fb31173b543" category="list-text">Muestre el ID del sistema del nodo 3:</block>
@@ -4895,7 +4891,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="756e1a7c05678e697a7ba0945d87ed6c" category="paragraph">Si no tiene una configuración FC o UTA/UTA2, ejecute <block ref="cd67767b7b87c1efe6325584571ce48d" category="inline-link-macro-rx"></block> de este modo, node4 puede reconocer discos de node2.</block>
   <block id="ac5c825456c3417b5a4af98c4f3e915f" category="paragraph">Vaya al AFF paso que hace referencia a A800 de la sección <block ref="d7767766539bb5c2349ec33972e353b3" category="inline-link-macro-rx"></block>, o. <block ref="1ac9d612a445bb1be7d33490e7f7168c" category="inline-link-macro-rx"></block>.</block>
   <block id="e517f479718742d7735088b63cb4b0a6" category="list-text">[[step5]]Realice una de las siguientes acciones:</block>
-  <block id="1f6c36e4c21adc6fcbbeb1628f0ce398" category="paragraph">Para obtener otros métodos para actualizar el hardware de la controladora, consulte <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> Para enlazar con _Upgrade moviendo volúmenes o Storage_.</block>
   <block id="ce334042acf5cdb00aa6b0cacc91188d" category="list-text">Si es necesario, vuelva a crear las cuentas de usuario no predeterminadas que tenía para el controlador de administración de placa base (BMC) en el sistema antiguo:</block>
   <block id="7cd124c3569d4b8de1ffd3a55e5a0f72" category="list-text">Cambie o restablezca la contraseña de la cuenta de usuario administrador de BMC.</block>
   <block id="f9c20a87fa881cd6931b55ff9caab40b" category="paragraph">La contraseña de la cuenta de usuario administrador de BMC está en blanco (sin contraseña) o igual que la contraseña de la cuenta de usuario administrador del sistema.</block>
@@ -4907,4 +4902,10 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="c2bb4d5f8818bc80f7aa15d94d57c6e3" category="paragraph">Si va a reemplazar un componente individual, consulte<block ref="e18a2433f1085adba8dc86307fee18d1" category="inline-link-rx"></block> Y localice el folleto de unidad reemplazable del sector (FRU) de ese componente.</block>
   <block id="dec452d8e293e5516524ae8a86713211" category="sidebar">Este sitio proporciona procedimientos de actualización para sistemas de almacenamiento AFF, FAS y ASA. Seleccione el procedimiento de actualización adecuado para el sistema de almacenamiento.</block>
   <block id="ec6e72d1c4bb7dccdc62b6caf35c95f7" category="sidebar">Documentación de los sistemas de hardware de ONTAP</block>
+  <block id="1320db1e300a995e122ea5d434b23e9b" category="list-text">Conecte los cables de la bandeja de almacenamiento de las bandejas que se conectaron previamente a node1/node2 a node3/node4.</block>
+  <block id="4e14960b0c5923b866b1398172c14f69" category="admonition">No debe conectar las nuevas bandejas a node3/node4 durante este procedimiento de actualización. Puede conectar nuevas bandejas al sistema de forma no disruptiva una vez completada la actualización de la controladora.</block>
+  <block id="c1f694580637b3e597cbb094a01e4f0b" category="list-text">Verifique el suministro de alimentación y la conectividad física de las bandejas.</block>
+  <block id="ed55776ebd74bfbd9eb16e468efd309c" category="paragraph">Puede utilizar este procedimiento en las siguientes circunstancias:</block>
+  <block id="3767c7624c68d0c29496b5a31369dec4" category="paragraph">No puede utilizar este procedimiento en las siguientes circunstancias:</block>
+  <block id="30fe187542d0301b8cde168dff779374" category="paragraph">Para conocer otros métodos de actualización del hardware del controlador, consulte <block ref="9f3bef3f6be14e6a346fc21a2929c802" category="inline-link-macro-rx"></block>.</block>
 </blocks>

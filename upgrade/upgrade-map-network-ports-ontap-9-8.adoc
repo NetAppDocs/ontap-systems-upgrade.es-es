@@ -218,4 +218,5 @@ NOTE: Para los LIF iSCSI, la modificación del puerto inicial requiere que la LI
 
 
 
+.Después de terminar
 Completó la asignación de los puertos físicos. Para completar la actualización, vaya a. link:upgrade-final-upgrade-steps-in-ontap-9-8.html["Realice los pasos finales de la actualización en ONTAP 9.8 o posterior"].

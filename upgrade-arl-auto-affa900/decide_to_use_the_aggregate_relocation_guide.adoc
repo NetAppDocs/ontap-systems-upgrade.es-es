@@ -16,7 +16,7 @@ summary: Decidir si utilizar el procedimiento ARL que actualiza los modelos de c
 [role="lead"]
 Este contenido describe cómo actualizar las controladoras de almacenamiento en un par de alta disponibilidad y mantener todos los datos y discos existentes. Se trata de un procedimiento complejo que sólo deben ser utilizados por administradores con experiencia.
 
-Utilice este procedimiento en las siguientes circunstancias:
+Puede utilizar este procedimiento en las siguientes circunstancias:
 
 * Está realizando una de las siguientes actualizaciones de la controladora:
 +
@@ -53,7 +53,7 @@ Utilice este procedimiento en las siguientes circunstancias:
 * Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en modo de privilegios de diagnóstico.
 
 
-*NO* Utilice este procedimiento en las siguientes circunstancias:
+No puede utilizar este procedimiento en las siguientes circunstancias:
 
 * Utiliza el software de virtualización de FlexArray en los sistemas A700 o FAS9000 de AFF.
 * En este caso, utiliza un switch compartido para la interconexión del clúster y almacenamiento conectado a Ethernet.

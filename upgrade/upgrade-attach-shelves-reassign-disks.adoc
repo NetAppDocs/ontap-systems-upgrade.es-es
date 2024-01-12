@@ -17,7 +17,12 @@ Debe reasignar los discos que pertenecen al nodo 1 y al nodo 2 respectivamente a
 Es necesario realizar los pasos de esta sección, como nodo 3 y nodo 4, completar cada paso del nodo 3 y luego nodo 4 antes de pasar al siguiente paso.
 
 .Pasos
-. Conecte los cables de la bandeja de almacenamiento del nodo 1/2 al nodo 3/nodo 4. Verifique el suministro de alimentación y la conectividad física de las bandejas.
+. Conecte los cables de la bandeja de almacenamiento de las bandejas que se conectaron previamente a node1/node2 a node3/node4.
++
+
+CAUTION: No debe conectar las nuevas bandejas a node3/node4 durante este procedimiento de actualización. Puede conectar nuevas bandejas al sistema de forma no disruptiva una vez completada la actualización de la controladora.
+
+. Verifique el suministro de alimentación y la conectividad física de las bandejas.
 . Desde el símbolo del sistema DEL CARGADOR de nodo 3, arranque en modo de mantenimiento:
 +
 `boot_ontap maint`
