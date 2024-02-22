@@ -60,7 +60,8 @@ NOTE: Si va a actualizar un clúster de ocho nodos que sirve protocolos de bloqu
 
 
 | ¿Puedo mover almacenamiento interno o convertir el sistema en una bandeja de unidades?  a| 
-. https://hwu.netapp.com/["Compruebe que el tamaño del agregado raíz y la cantidad de discos compatibles con el nuevo sistema son iguales o superiores a los compatibles con el sistema original"^].
+. https://hwu.netapp.com/["Comprobar que el tamaño del agregado raíz actual y la cantidad de discos del agregado raíz cumplen o superan las especificaciones del nuevo sistema"^].
+. https://hwu.netapp.com/["Confirmar que el número de discos de almacenamiento compatibles con el nuevo sistema es igual o superior a los compatibles con el sistema original"^].
 . link:upgrade-by-moving-storage-parent.html["Actualizar moviendo almacenamiento"] (un procedimiento disruptivo).
 
 
