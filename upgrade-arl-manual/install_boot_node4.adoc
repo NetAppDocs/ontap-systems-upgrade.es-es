@@ -80,7 +80,7 @@ NOTE: No es necesario mover la conexión de cable de la tarjeta de interconexió
 
 | Un chasis separado del nodo 3 | Vaya a. <<man_install4_Step6,Paso 6>>. 
 |===
-. [[man_install4_Step6]]Active la alimentación del nodo 4 y, a continuación, interrumpa el arranque pulsando `Ctrl-C` para acceder al indicador de entorno de arranque.
+. [[MAN_install4_Step6]]Encienda la alimentación a node4 y, a continuación, interrumpa el arranque pulsando Ctrl-C para acceder a la petición de datos del entorno de inicio.
 +
 
 NOTE: Cuando se arranca el nodo 4, es posible que se muestre el siguiente mensaje:
@@ -145,7 +145,7 @@ La instalación de un módulo de controladora nuevo cambia los valores de WWPN a
 +
 El sistema muestra todas las LUN de cabina que son visibles para cada uno de los puertos iniciadores FC. Si los LUN de cabina no son visibles, no se pueden reasignar los discos del nodo 2 al nodo 4 más adelante en esta sección.
 
-. Pulse `Ctrl-C` Para mostrar el menú de inicio y seleccionar modo de mantenimiento.
+. Pulse Ctrl-C para mostrar el menú de arranque y seleccione Modo de mantenimiento.
 . [[man_install4_Step15]]en el símbolo del sistema del modo de mantenimiento, introduzca el siguiente comando:
 +
 `halt`

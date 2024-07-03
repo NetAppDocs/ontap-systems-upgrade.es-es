@@ -47,7 +47,37 @@ La operación se detiene en esta fase de la comprobación de accesibilidad de re
 +
 Confirme que todos los puertos conectados, incluidos el grupo de interfaces y los puertos de VLAN, muestran su estado como `OK`.
 
-. Reanude la operación de reubicación:
+. Para actualizar AFF A800 a AFF A70 o AFF A90, debe reasignar los LIF de SAN FCP. Para todas las demás actualizaciones del sistema, vaya a <<resume_relocation_step4,Paso 4>>:
++
+.. Reasignar los LIF SAN FCP utilizados para el acceso a los datos FCP o FC-NVMe a los puertos iniciales correctos:
++
+`network interface show -vserver <vserver_hosting_fcp_lifs>`
+
+.. Para las LIF con el nodo actual como node1 actualizado y el puerto actual informa de «status oper» como «-» (debido a que el puerto existía en el nodo AFF A800 pero no existe en el nodo AFF A90), modifique el puerto actual antes de que pueda conectarse.
++
+Compruebe que se ha establecido la conectividad física con el puerto de destino FC al que se debe mover la LIF de FC:
+
++
+... Establezca el estado de LIF en «inactivo»:
++
+`network interface modify -vserver <vserver_name> -lif <lif_name>  -status-admin down`
+
+... Modifique el puerto raíz de la LIF:
++
+`network interface modify -vserver <vserver_name> -lif <lif_name> - home-node <node1> -home-port <FC_target_port>`
+
+... Establezca el estado de LIF en «activo»:
++
+`network interface modify -vserver <vserver> -lif <lif_name>  -status-admin up`
+
+
+
+
+
++
+Repita los subpasos a y b para cada LIF SAN FC que esté alojado en node1.
+
+. [[resume_relocation_step4]]Reanudar la operación de reubicación:
 +
 `system controller replace resume`
 

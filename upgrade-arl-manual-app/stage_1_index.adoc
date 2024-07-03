@@ -4,7 +4,7 @@ permalink: upgrade-arl-manual-app/stage_1_index.html
 keywords: stage 1, prepare, upgrade, steps 
 summary: Fase 1 secuencia de procesos para una actualización manual de ARL en controladoras que ejecutan ONTAP 9.8 o una versión posterior. 
 ---
-= Descripción general
+= Descripción general de la etapa 1
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

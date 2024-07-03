@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/guidelines_for_upgrading_controllers_with_arl.html 
+keywords: guidelines, upgrading, controllers, ARL 
+summary: 'Determine si puede actualizar controladoras que ejecutan ONTAP 9.15.1 o posterior mediante `system controller replace` comandos.' 
+---
+= Directrices para actualizar controladoras con ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para comprender si puede utilizar ARL para actualizar un par de controladoras que ejecuten ONTAP 9.15.1 o posterior depende de la plataforma y de la configuración de las controladoras originales y de sustitución.
+
+
+
+== Actualizaciones compatibles de ARL
+
+Antes de actualizar un par de nodos mediante este procedimiento ARL, revise los siguientes requisitos para asegurarse de que la configuración es compatible:
+
+* Compruebe que ARL se puede realizar en los controladores originales y de sustitución.
+* Compruebe el tamaño de todos los agregados definidos y el número de discos que admite el sistema original. A continuación, puede comparar los tamaños de agregado y el número de discos que admiten el tamaño del agregado y el número de discos que admite el nuevo sistema. Consulte link:other_references.html["Referencias"] el enlace a _Hardware Universe_ donde está disponible esta información. El tamaño de agregado y el número de discos que admite el nuevo sistema deben ser iguales o mayores que el tamaño del agregado y el número de discos que admite el sistema original.
+* Valide en las reglas de combinación de clústeres si los nodos nuevos pueden formar parte del clúster con los nodos existentes cuando se sustituye la controladora original. Para obtener más información sobre las reglas de mezcla de clústeres, consulte link:other_references.html["Referencias"] el enlace a _Hardware Universe_.
+* Migre y vuelva a alojar los LIF de clúster a dos puertos de clúster por nodo si tiene un sistema, como un AFF 700, con la siguiente configuración:
+* Más de dos puertos de clúster por nodo
+* Una tarjeta de interconexión de clúster en slot4 en modo de partición para crear los puertos E4A, e4b, e4c y e4d, y los puertos E4E, e4f, e4g y e4h
++
+
+NOTE: Si se realiza una actualización de la controladora con más de dos puertos de clúster por nodo, es posible que falten LIF de clúster en la nueva controladora después de la actualización.
+
++
+Para obtener más información, consulte el artículo de la base de conocimientos link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_delete_unwanted_or_unnecessary_cluster_LIFs["Cómo eliminar LIF de clúster no deseadas o innecesarias"^].
+
+
+
+La actualización de la controladora mediante ARL es compatible en sistemas configurados con volúmenes de SnapLock Enterprise y SnapLock Compliance.
+
+
+
+== Clústeres de dos nodos sin switches
+
+Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar los nodos en el clúster sin switches mientras realiza la actualización. No es necesario convertirlos en un clúster con switches.
+
+
+
+== ARL no admite actualizaciones
+
+No es posible actualizar controladoras de reemplazo que no admiten las bandejas de discos conectadas a las controladoras originales.
+
+Consulte link:other_references.html["Referencias"] Para establecer un vínculo con el _Hardware Universe_ para obtener información sobre soporte de disco.
+
+Si desea actualizar controladoras de nivel básico con unidades internas, consulte link to link:other_references.html["Referencias"] _Upgrade moviendo volúmenes o almacenamiento_ y vaya al procedimiento _Actualizar un par de nodos que ejecutan Clustered Data ONTAP moviendo volúmenes_.
+
+
+
+== Solucionar problemas
+
+Si se produce algún problema durante la actualización de las controladoras, consulte link:troubleshoot_index.html["Solucionar problemas"] para obtener más información y posibles soluciones.
+
+Si no encuentra ninguna solución al problema que encontró, póngase en contacto con el soporte técnico.

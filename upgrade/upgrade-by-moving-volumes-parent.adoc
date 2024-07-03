@@ -11,7 +11,13 @@ summary: Si va a actualizar mediante la transferencia de volúmenes, debe prepar
 
 
 [role="lead"]
-Si va a actualizar el hardware de una controladora, mueve volúmenes, prepara los nodos originales y une los nuevos nodos al clúster. Mueve volúmenes a los nodos nuevos, configura LIF y desvincula los nodos originales del clúster. La actualización mediante el movimiento de volúmenes es un procedimiento no disruptivo.
+Actualizar el hardware de la controladora moviendo volúmenes es un procedimiento no disruptivo. Antes de iniciar la actualización, revise los escenarios generales de actualización y las consideraciones sobre la actualización:
+
+* link:upgrade-decide-to-use-this-guide.html["Decidir si se actualizará el volumen o el almacenamiento"]
+* link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"]
+
+
+Para actualizar moviendo volúmenes, debe preparar los nodos originales y unir los nodos nuevos al clúster. Mueve volúmenes a los nodos nuevos, configura LIF y desvincula los nodos originales del clúster.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Uno"]link:upgrade-prepare-when-moving-volumes.html["Prepare la actualización cuando mueva volúmenes"]
 [role="quick-margin-para"]

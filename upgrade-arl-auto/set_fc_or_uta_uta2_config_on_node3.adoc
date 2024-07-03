@@ -100,7 +100,7 @@ NOTE: Los puertos FC deben programarse como iniciadores.
 +
 `halt`
 
-. Arranque el sistema desde el símbolo del sistema del cargador:
+. Arranque el sistema desde el símbolo del sistema del CARGADOR:
 +
 `boot_ontap menu`
 
@@ -403,8 +403,8 @@ Login:
 ----
 ====
 . Si el sistema entra en un bucle de reinicio con el mensaje `no disks found`, esto se debe a que ha restablecido los puertos al modo de destino y, por lo tanto, no puede ver ningún disco. Continúe con <<auto_check3_step17,Paso 17>> para <<auto_check3_step22,Paso 22>> para resolver esto.
-. [[auto_check3_step17]]Pulse `Ctrl-C` durante el arranque automático para detener el nodo en el `LOADER>` prompt.
-. [[step18]]en el indicador del cargador, entre en el modo de mantenimiento:
+. [[auto_check3_step17]]Pulse Ctrl-C durante el AUTOARRANQUE para detener el nodo en el CARGADOR> símbolo del sistema.
+. [[step18]]En el aviso del CARGADOR, acceda al modo de mantenimiento:
 +
 `boot_ontap maint`
 
@@ -434,7 +434,7 @@ Si va a actualizar desde un sistema que admita discos externos a un sistema que 
 Si va a realizar una actualización de un sistema que admita discos externos a un sistema que admita discos tanto internos como externos, por ejemplo, un sistema AFF A800, vaya a. <<auto_check3_step23,Paso 23>>.
 
 ====
-. [[auto_check3_step22]]en el indicador del cargador, arranque:
+. [[auto_check3_step22]]En el símbolo del SISTEMA DEL CARGADOR, arranque:
 +
 `boot_ontap menu`
 
@@ -442,11 +442,13 @@ Si va a realizar una actualización de un sistema que admita discos externos a u
 Ahora, en el arranque, el nodo puede detectar todos los discos que se le habían asignado previamente y puede arrancar según se esperaba.
 
 +
-Cuando los nodos de clúster que va a sustituir utilizan el cifrado de volumen raíz, el software ONTAP no puede leer la información de volumen de los discos. Restaure las claves del volumen raíz:
+Cuando los nodos de clúster que desea reemplazar utilizan cifrado de volumen raíz, ONTAP no puede leer la información de los volúmenes desde los discos. Restaure las claves del volumen raíz:
 
 +
 .. Vuelva al menú de inicio especial:
++
 `LOADER> boot_ontap menu`
+
 +
 [listing]
 ----

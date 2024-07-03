@@ -71,7 +71,7 @@ NOTE: Los puertos FC deben programarse como iniciadores.
 +
 `halt`
 
-. Arranque el sistema desde el símbolo del sistema del cargador:
+. Arranque el sistema desde el símbolo del sistema del CARGADOR:
 +
 `boot_ontap menu`
 

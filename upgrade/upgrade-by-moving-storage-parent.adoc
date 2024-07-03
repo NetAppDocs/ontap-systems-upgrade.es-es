@@ -11,7 +11,13 @@ summary: Si va a actualizar moviendo almacenamiento, debe preparar los nodos ori
 
 
 [role="lead"]
-Si va a actualizar el hardware de una controladora, mueva almacenamiento, prepare los nodos originales y configure los nuevos. Algunos modelos de plataforma admiten la transferencia de almacenamiento interno a los nuevos nodos. Debe reasignar discos y restaurar la configuración de volumen raíz a los nodos nuevos y configurar puertos de red. La actualización moviendo almacenamiento es un procedimiento disruptivo.
+Actualizar el hardware de la controladora moviendo el almacenamiento es un procedimiento disruptivo. Antes de iniciar la actualización, revise los escenarios generales de actualización y las consideraciones sobre la actualización:
+
+* link:upgrade-decide-to-use-this-guide.html["Decidir si se actualizará el volumen o el almacenamiento"]
+* link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"]
+
+
+Para actualizar moviendo el almacenamiento, debe preparar los nodos originales y configurar los nodos nuevos. Algunos modelos de plataforma admiten la transferencia de almacenamiento interno a los nuevos nodos. Debe reasignar discos y restaurar la configuración de volumen raíz a los nodos nuevos y configurar puertos de red.
 
 [NOTE]
 ====

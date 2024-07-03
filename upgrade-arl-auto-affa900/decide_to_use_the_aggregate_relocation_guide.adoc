@@ -25,6 +25,9 @@ Puede utilizar este procedimiento en las siguientes circunstancias:
 | La controladora anterior | Controladora de reemplazo 
 
 
+| AFF A800 | AFF A70 y AFF A90 
+
+
 | AFF A220 configurado como ASA | ASA A150 
 
 
@@ -44,6 +47,7 @@ Puede utilizar este procedimiento en las siguientes circunstancias:
 |===
 * Verificó con su representante de ventas de NetApp que recibió el hardware para actualizar su controladora:
 +
+** Dos o dos controladoras AFF A90 o dos AFF A70 y todos los módulos de I/O necesarios para la actualización. La longitud requerida de 100GbE cables.
 ** Controladoras ASA A150, AFF A150 o FAS2820
 ** Controladoras ASA A900, AFF A900 o FAS9500 y módulos NVRAM y las piezas necesarias para la actualización
 
@@ -55,11 +59,11 @@ Puede utilizar este procedimiento en las siguientes circunstancias:
 
 No puede utilizar este procedimiento en las siguientes circunstancias:
 
-* Utiliza el software de virtualización de FlexArray en los sistemas A700 o FAS9000 de AFF.
+* Utiliza el software de virtualización FlexArray en los sistemas AFF A800, AFF A700 o FAS9000.
 * En este caso, utiliza un switch compartido para la interconexión del clúster y almacenamiento conectado a Ethernet.
 
 
-Para actualizar las configuraciones de Fabric MetroCluster o MetroCluster IP en sistemas AFF A700 o FAS9000, consulte link:other_references.html["Referencias"] Para vincular al contenido de _MetroCluster Upgrade y Expansion_.
+Para actualizar las configuraciones IP de MetroCluster en sistemas AFF A800, AFF A700 o FAS9000, consulte link:other_references.html["Referencias"] para vincular al contenido _Actualización y expansión de MetroCluster_.
 
 
 NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.

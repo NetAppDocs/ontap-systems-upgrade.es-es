@@ -4,7 +4,7 @@ permalink: upgrade-arl/index.html
 keywords: aggregate, relocation, moving, manual, upgrade, relocate, hardware 
 summary: Use la reubicación de agregados para actualizar el hardware de la controladora 
 ---
-= Descripción general
+= Seleccione el procedimiento de actualización de ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -31,9 +31,10 @@ Si va a realizar una actualización mediante comandos del sistema, consulte la s
 | Si está ejecutando esta versión de ONTAP… | Para actualizar con comandos del sistema, utilice… 
 
 
-| 9.10.1 o posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Utilice los comandos para sustituir la controladora del sistema para actualizar los modelos de controladora en el mismo chasis"^]
+| 9.15.1 o posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["Utilice comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora introducido en ONTAP 9.15.1"] 
 
-Es posible usar este procedimiento para actualizar una controladora AFF configurada como cabina All SAN (ASA) a una controladora ASA en ciertos modelos y versiones de software ONTAP. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Leer más"]. 
+
+| 9.10.1 o posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Utilice los comandos para sustituir la controladora del sistema para actualizar los modelos de controladora en el mismo chasis"] Es posible usar este procedimiento para actualizar una controladora AFF configurada como cabina All SAN (ASA) a una controladora ASA en ciertos modelos y versiones de software ONTAP. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Leer más"]. 
 
 
 | 9.8 o posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["Utilice comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior"] 

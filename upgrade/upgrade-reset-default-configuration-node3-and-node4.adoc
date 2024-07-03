@@ -52,5 +52,5 @@ Rebooting to finish wipeconfig request.
 +
 El sistema iniciará el `wipeconfig` procedimiento y reinicio. Una vez completado el procedimiento, el sistema vuelve al menú de inicio.
 
-. Desde el menú de inicio, introduzca 8 para reiniciar el nodo y pulse *Ctrl-C* durante el inicio automático para detener el nodo en el símbolo del SISTEMA DEL CARGADOR.
+. En el menú de arranque, introduzca 8 para reiniciar el nodo y pulse Ctrl-C durante el AUTOARRANQUE para detener el nodo en el símbolo del sistema DEL CARGADOR.
 

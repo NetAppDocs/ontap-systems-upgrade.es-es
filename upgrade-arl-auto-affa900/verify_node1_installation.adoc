@@ -14,10 +14,14 @@ summary: Verifique la instalación del node1 con los módulos de reemplazo cuand
 
 
 [role="lead"]
-Debe verificar la instalación de node1 con los módulos del sistema de reemplazo. Como no existe ningún cambio en los puertos físicos, no es necesario asignar los puertos físicos del nodo 1 anterior al nodo 1 de reemplazo.
+Después de arrancar node1 con el módulo de controlador de reemplazo, verifique que esté instalado correctamente.
+
+Solo para las actualizaciones AFF A800, se asignan los puertos físicos de la node1 existente al node1 de reemplazo, ya que los puertos físicos están cambiando entre AFF A800 y la controladora AFF A90 o AFF A70.
+
+En las demás actualizaciones, no hay cambios en los puertos físicos, por lo que no es necesario asignar los puertos físicos de la node1 antigua a la node1 de reemplazo.
 
 .Acerca de esta tarea
-Después de arrancar node1 con el módulo de controlador de reemplazo, compruebe que está instalado correctamente. Debe esperar a que el nodo 1 se una al quórum y reanudar la operación de reemplazo de la controladora.
+Debe esperar a que el nodo 1 se una al quórum y reanudar la operación de reemplazo de la controladora.
 
 En este punto del procedimiento, la operación de actualización de la controladora debería haberse pausado mientras el nodo 1 intenta unir automáticamente el quórum.
 
@@ -33,6 +37,14 @@ El resultado del `health` el campo debe ser `true`.
 +
 `cluster show`
 
++
+[NOTE]
+====
+Si node1 no se ha unido al quórum después de arrancar, espere cinco minutos y vuelva a comprobarlo. Según la conexión del clúster, el análisis de accesibilidad de los puertos podría tardar algún tiempo en completar y mover LIF a sus respectivos puertos iniciales.
+
+Si node1 todavía no está en quórum después de cinco minutos, considere modificar el puerto de cluster del nuevo nodo colocándolo en el “Cluster ipspace” usando el comando diagnostic privilege `network port modify <port_name> -ipspace Cluster`.
+
+====
 . Cambie al modo de privilegio avanzado:
 +
 `set advanced`
@@ -116,16 +128,14 @@ Node1
           a0a-822  Default:822                          ok
           a0a-823  Default:823                          ok
           e0M      Default:Mgmt                         ok
-          e11a     -                                    no-reachability
-          e11b     -                                    no-reachability
-          e11c     -                                    no-reachability
-          e11d     -                                    no-reachability
+          e1a      Cluster:Cluster                      ok
+          e1b      -                                    no-reachability
+          e2a      -                                    no-reachability
+          e2b      -                                    no-reachability
           e3a      -                                    no-reachability
           e3b      -                                    no-reachability
-          e4a      Cluster:Cluster                      ok
-          e4e      Cluster:Cluster                      ok
-          e5a      -                                    no-reachability
-          e7a      -                                    no-reachability
+          e7a      Cluster:Cluster                      ok
+          e7b      -                                    no-reachability
           e9a      Default:Default                      ok
           e9a-822  Default:822                          ok
           e9a-823  Default:823                          ok
@@ -134,10 +144,10 @@ Node1
           e9b-823  Default:823                          ok
           e9c      Default:Default                      ok
           e9d      Default:Default                      ok
-22 entries were displayed.
+20 entries were displayed.
 ----
 +
-En el ejemplo anterior, el nodo 1 arranca tras el reemplazo de la controladora. Algunos puertos no tienen accesibilidad porque no hay conectividad física. Debe reparar cualquier puerto con un estado de accesibilidad distinto de `ok`.
+En los ejemplos anteriores, node1 arrancó tras el reemplazo de la controladora. Los puertos que muestran «no accesibilidad» no tienen conectividad física. Debe reparar cualquier puerto con un estado de accesibilidad que no sea `ok`.
 
 +
 
@@ -160,12 +170,12 @@ Debería ver un resultado como el siguiente ejemplo:
 +
 [listing]
 ----
-Cluster ::> reachability repair -node node1 -port e11b
+Cluster ::> reachability repair -node node1 -port e1b
 ----
 +
 [listing]
 ----
-Warning: Repairing port "node1:e11b" may cause it to move into a different broadcast domain, which can cause LIFs to be re-homed away from the port. Are you sure you want to continue? {y|n}:
+Warning: Repairing port "node1:e1b" may cause it to move into a different broadcast domain, which can cause LIFs to be re-homed away from the port. Are you sure you want to continue? {y|n}:
 ----
 +
 Se espera un mensaje de advertencia, como se muestra en el ejemplo anterior, para los puertos con un estado de accesibilidad que puede ser diferente del estado de accesibilidad del dominio de difusión en el que se encuentra actualmente. Revise la conectividad del puerto y la respuesta `y` o. `n` según corresponda.

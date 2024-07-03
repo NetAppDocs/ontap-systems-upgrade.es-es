@@ -16,7 +16,7 @@ summary: Al utilizar ARL para actualizar los modelos de controlador en el mismo 
 [role="lead"]
 Después de intercambiar los módulos del sistema de reemplazo correspondientes, debe netboot node1. El término arranque desde red significa que se arranca desde una imagen ONTAP almacenada en un servidor remoto. Cuando se prepara para el arranque por red, se añade una copia de la imagen de arranque de ONTAP 9 en un servidor web al que el sistema pueda acceder.
 
-No es posible comprobar la versión de ONTAP instalada en el soporte de arranque del módulo de controlador de reemplazo a menos que esté instalado en un chasis y ENCENDIDO. La versión de ONTAP en el soporte de arranque del sistema de reemplazo debe ser la misma que la versión de ONTAP que se ejecuta en el sistema antiguo que se está actualizando, y las imágenes de arranque primarias y de backup deben coincidir. Para verificar la versión mínima de ONTAP admitida para la actualización, consulte link:index.html["Descripción general"].
+No es posible comprobar la versión de ONTAP instalada en el soporte de arranque del módulo de controlador de reemplazo a menos que esté instalado en un chasis y ENCENDIDO. La versión de ONTAP en el soporte de arranque del sistema de reemplazo debe ser la misma que la versión de ONTAP que se ejecuta en el sistema antiguo que se está actualizando, y las imágenes de arranque primaria y de backup del soporte de arranque deben coincidir. Para verificar la versión mínima de ONTAP admitida para la actualización, consulte link:index.html["Descripción general"].
 
 Puede configurar las imágenes mediante el modo de reiniciar el sistema seguido de `wipeconfig` desde el menú de arranque. Si el módulo de la controladora se usaba anteriormente en otro clúster, el `wipeconfig` el comando borra toda la configuración residual del soporte de arranque.
 
@@ -72,7 +72,7 @@ NOTE: Es posible que sean necesarios otros parámetros para la interfaz. Introdu
 
 NOTE: No interrumpa el arranque.
 
-. Espere a que node1 se ejecute ahora en el módulo de controlador ASA A900, AFF A900 o FAS9500 para arrancar y mostrar las opciones del menú de arranque como se muestra a continuación:
+. Espere a que el node1 se ejecute en el módulo de controlador de sustitución arranque y muestre las opciones del menú de arranque como se muestra a continuación:
 +
 [listing]
 ----

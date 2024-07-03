@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-app/stage_2_index.html
 keywords: relocating, retiring, node1, lif, stage 2 
 summary: 'Secuencia de fase 2 de procesos para una actualización de ARL mediante `system controller replace` Comandos en controladoras que ejecutan ONTAP 9.8 o una versión posterior.' 
 ---
-= Descripción general
+= Descripción general de la etapa 2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

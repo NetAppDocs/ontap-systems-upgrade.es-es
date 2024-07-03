@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/stage_7_index.html
 keywords: upgrade, authentication, storage, volume, aggregate, encryption, overview, stage 7 
 summary: 'Secuencia de proceso de etapa 7 para una actualización de ARL mediante `system controller replace` comandos para actualizar los modelos de controladora en el mismo chasis.' 
 ---
-= Descripción general
+= Descripción general de la etapa 7
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

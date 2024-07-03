@@ -1,0 +1,443 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/install_boot_node3.html 
+keywords: installing, booting, node3, ontap 
+summary: 'Instale y arranque node3 e instale el software ONTAP cuando actualice las controladoras que ejecuten ONTAP 9.15.1 o posterior mediante `system controller replace` comandos.' 
+---
+= Instale y arranque el nodo 3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Instale node3 en el rack, transfiera las conexiones de node1 a node3, arranque node3 e instale ONTAP. A continuación, deberá reasignar cualquiera de los discos de repuesto de node1, los discos que pertenezcan al volumen raíz y los agregados que no sean raíz que no se hayan reubicado en la versión node2 anteriormente en el proceso, como se explica en esta sección.
+
+.Acerca de esta tarea
+La operación de reubicación se detiene al principio de esta etapa. Este proceso está en gran medida automatizado; la operación se pausa para permitir comprobar su estado. Debe reanudar manualmente la operación. Además, debe verificar que los LIF SAN se hayan conectado correctamente y estén asignados a los puertos físicos FC correctos en node3.
+
+Es necesario reiniciar el nodo 3 si no tiene la misma versión de ONTAP 9 que está instalada en el nodo 1. Después de instalar el nodo 3, arranque desde la imagen ONTAP 9 almacenada en el servidor web. A continuación, puede descargar los archivos correctos en el dispositivo multimedia de arranque para posteriores arranques del sistema, siguiendo las instrucciones en link:prepare_for_netboot.html["Prepárese para el arranque desde el red"].
+
+.Pasos
+. [[auto_install3_step1]]Asegúrese de que dispone de espacio en rack para el nodo 3.
++
+Los requisitos de espacio y altura para los nodos nuevos pueden ser diferentes de los existentes. Planifique los requisitos de espacio para el escenario de actualización.
+
+. [[auto_install3_step2]]instale el nodo 3 en el rack siguiendo las _instrucciones de instalación y configuración_ del modelo de nodo.
+. [[auto_install3_step3]]nodo de cable 3, moviendo las conexiones del nodo 1 al nodo 3.
++
+A partir de ONTAP 9.15.1, los nuevos modelos de controladora tienen solo un puerto «llave» para la controladora de gestión de la placa base (BMC) y las conexiones de gestión. Planifique los cambios de cableado en consecuencia.
+
++
+** Consola (puerto de gestión remota)
+** Clúster y puertos de alta disponibilidad
+** Puertos de datos
+** Puertos de gestión de clústeres y nodos
+** SCSI con conexión en serie (SAS) y puertos de almacenamiento Ethernet
+** Configuraciones SAN: Puertos Ethernet iSCSI, FC y switch NVMe/FC
++
+[NOTE]
+====
+Es posible que deba cambiar los cables de interconexión entre las controladoras antigua y nueva para permitir la interoperabilidad entre los distintos modelos de controladora y de tarjeta. Consulte la link:https://docs.netapp.com/us-en/ontap-systems/index.html["procedimientos de instalación del sistema"^] para obtener un mapa de cableado de las bandejas de almacenamiento Ethernet de los sistemas.
+
+Para las controladoras incluidas en ONTAP 9.15.1 y versiones posteriores, las interconexiones de clúster y alta disponibilidad utilizan los mismos puertos. Para las configuraciones conectadas por switch, es necesario conectar puertos similares al mismo switch de clúster. Por ejemplo, al actualizar a un AFF A1K desde una controladora existente, debe conectar los puertos e1a de ambos nodos a un switch y los puertos e7a de ambos nodos en el segundo switch.
+
+====
+
+
+. [[auto_install3_step4]]Active la alimentación del nodo 3 y, a continuación, interrumpa el proceso de arranque pulsando Ctrl-C en el terminal de la consola para acceder al indicador de entorno de arranque.
++
+
+NOTE: Cuando se arranca el nodo 3, es posible que se muestre el siguiente mensaje de advertencia:
+
++
+....
+WARNING: The battery is unfit to retain data during a power outage. This is likely because the battery is discharged but could be due to other temporary conditions.
+When the battery is ready, the boot process will complete and services will be engaged.
+To override this delay, press 'c' followed by 'Enter'
+....
+. [[auto_install3_step5]]Si aparece el mensaje de advertencia en <<auto_install3_step4,Paso 4>>, realice las siguientes acciones:
++
+.. Compruebe todos los mensajes de la consola que puedan indicar un problema distinto a una batería NVRAM baja y, si es necesario, realice las acciones correctivas necesarias.
+.. Deje que la batería se cargue y finalice el proceso de arranque.
++
+
+WARNING: *Atención: No anular el retardo; si no se permite que la batería se cargue, se podrían producir pérdidas de datos.*
+
++
+
+NOTE: Consulte link:prepare_for_netboot.html["Prepárese para el arranque desde el red"].
+
+
+
+
+
+. [[step6]]Configure la conexión netboot eligiendo una de las siguientes acciones.
++
+
+NOTE: Se deben utilizar el puerto e IP de gestión como conexión para reiniciar el sistema. No utilice una IP de LIF de datos ni una interrupción del servicio de datos mientras se realiza la actualización.
+
++
+[cols="30,70"]
+|===
+| Si el protocolo de configuración dinámica de hosts (DHCP) es... | Realice lo siguiente... 
+
+
+| Ejecutando | Configure la conexión automáticamente mediante el siguiente comando en el símbolo del sistema del entorno de arranque:
+`ifconfig e0M -auto` 
+
+
+| No se está ejecutando  a| 
+Configure manualmente la conexión mediante el siguiente comando en el símbolo del sistema del entorno de arranque:
+`ifconfig e0M -addr=_filer_addr_ -mask=_netmask_ -gw=_gateway_ -dns=_dns_addr_ -domain=_dns_domain_`
+
+`_filer_addr_` Es la dirección IP del sistema de almacenamiento (obligatorio).
+`_netmask_` es la máscara de red del sistema de almacenamiento (obligatoria).
+`_gateway_` es la puerta de enlace del sistema de almacenamiento (obligatorio).
+`_dns_addr_` Es la dirección IP de un servidor de nombres en la red (opcional).
+`_dns_domain_` Es el nombre de dominio del servicio de nombres de dominio (DNS) (opcional).
+
+
+NOTE: Es posible que sean necesarios otros parámetros para la interfaz. Introduzca `help ifconfig` en el símbolo del sistema del firmware para obtener detalles.
+
+|===
+. [[step7]]lleve a cabo netboot en el nodo 3:
++
+`netboot \http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
+
++
+La `<path_to_the_web-accessible_directory>` debería conducir al lugar en el que se ha descargado el `<ontap_version>_image.tgz` en la sección link:prepare_for_netboot.html["Prepárese para el arranque desde el red"].
+
++
+
+NOTE: No interrumpa el arranque.
+
+. [[paso8]]en el menú de inicio, seleccione la opción `(7) Install new software first`.
++
+Esta opción del menú descarga e instala la nueva imagen de ONTAP en el dispositivo de arranque.
+
++
+Ignore el siguiente mensaje:
+
++
+`This procedure is not supported for Non-Disruptive Upgrade on an HA pair`
+
++
+La nota se aplica a las actualizaciones no disruptivas de ONTAP, no a las actualizaciones de controladoras.
+
++
+
+NOTE: Utilice siempre netboot para actualizar el nodo nuevo a la imagen deseada. Si utiliza otro método para instalar la imagen en la nueva controladora, podría instalarse la imagen incorrecta. Este problema se aplica a todas las versiones de ONTAP. El procedimiento para reiniciar el sistema combinado con la opción `(7) Install new software` Limpia el soporte de arranque y coloca la misma versión ONTAP en ambas particiones de imagen.
+
+. [[step9]]Si se le solicita continuar con el procedimiento, introduzca `y`, Y cuando se le solicite el paquete, escriba la dirección URL:
++
+`\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
+
+. [[step10]]lleve a cabo los siguientes pasos para reiniciar el módulo del controlador:
++
+.. Introduzca `n` para omitir la recuperación del backup cuando aparezca la siguiente solicitud:
++
+`Do you want to restore the backup configuration now? {y|n}`
+
+.. Introduzca `y` para reiniciar cuando vea el siguiente aviso:
++
+`The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}`
+
++
+El módulo del controlador se reinicia pero se detiene en el menú de inicio porque el dispositivo de arranque se ha reformateado y los datos de configuración deben restaurarse.
+
+
+
+. [[step11]]Seleccione el modo de mantenimiento `5` desde el menú de inicio y entrar `y` cuando se le pida que continúe con el arranque.
+. [[step12]]Compruebe que la controladora y el chasis están configurados como ha:
++
+`ha-config show`
+
++
+En el siguiente ejemplo, se muestra el resultado del `ha-config show` comando:
+
++
+....
+Chassis HA configuration: ha
+Controller HA configuration: ha
+....
++
+
+NOTE: El sistema graba en una PROM tanto si se encuentran en un par ha como en una configuración independiente. El estado debe ser el mismo en todos los componentes del sistema independiente o del par de alta disponibilidad.
+
+. Si la controladora y el chasis no están configurados como HA, utilice los siguientes comandos para corregir la configuración:
++
+`ha-config modify controller ha`
+
++
+`ha-config modify chassis ha`
+
+. Confirme que todos los puertos Ethernet utilizados para conectarse a las bandejas Ethernet están configurados como almacenamiento:
++
+`storage port show`
+
++
+La salida mostrada depende de la configuración del sistema. El siguiente ejemplo de salida es para un nodo con una única tarjeta de almacenamiento en slot11. La salida del sistema puede ser diferente:
+
++
+[listing]
+----
+*> storage port show
+Port Type Mode    Speed(Gb/s) State    Status  VLAN ID
+---- ---- ------- ----------- -------- ------- -------
+e11a ENET storage 100 Gb/s    enabled  online  30
+e11b ENET storage 100 Gb/s    enabled  online  30
+----
+. Modifique los puertos que no están configurados en el almacenamiento:
++
+`storage port modify -p <port> -m storage`
+
++
+Todos los puertos Ethernet conectados a las bandejas de almacenamiento deben estar configurados como almacenamiento para permitir el acceso a los discos y las bandejas.
+
+. Salga del modo de mantenimiento:
++
+`halt`
+
++
+Interrumpa el arranque automático pulsando `Ctrl-C` en el símbolo del sistema del entorno de arranque.
+
+. En el nodo 2, compruebe la fecha, la hora y la zona horaria del sistema:
++
+`date`
+
+. En node3, compruebe la fecha mediante el siguiente comando en el símbolo del sistema del entorno de inicio:
++
+`show date`
+
+. Si es necesario, establezca la fecha en node3:
++
+`set date <mm/dd/yyyy>`
+
+. En node3, compruebe la hora con el siguiente comando en el símbolo del sistema del entorno de arranque:
++
+`show time`
+
+. Si es necesario, ajuste la hora en node3:
++
+`set time <hh:mm:ss>`
+
+. En el cargador de arranque, defina el ID del sistema asociado en node3:
++
+`setenv partner-sysid <node2_sysid>`
+
++
+Para nodo 3, `partner-sysid` debe ser del nodo 2.
+
++
+.. Guarde los ajustes:
++
+`saveenv`
+
+
+
+. [[auto_install3_step21]]Compruebe el `partner-sysid` para el nodo 3:
++
+`printenv partner-sysid`
+
+. Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, siga estos pasos.
++
+
+NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] para determinar el tipo de unidades de autocifrado que están en uso.
+
++
+.. Configurado `bootarg.storageencryption.support` para `true` o. `false`:
++
+[cols="35,65"]
+|===
+| Si están en uso las siguientes unidades... | Entonces… 
+
+
+| Unidades NSE que cumplen con los requisitos de autocifrado de FIPS 140-2 de nivel 2 | `setenv bootarg.storageencryption.support *true*` 
+
+
+| SED de NetApp no con FIPS | `setenv bootarg.storageencryption.support *false*` 
+|===
+.. Vaya al menú de inicio especial y seleccione la opción `(10) Set Onboard Key Manager recovery secrets`.
++
+Introduzca la frase de acceso y la información de copia de seguridad registrada anteriormente. Consulte link:manage_storage_encryption_using_okm.html["Gestione el cifrado del almacenamiento con el gestor de claves incorporado"].
+
+
+
+. Nodo de arranque en el menú de arranque:
++
+`boot_ontap menu`
+
+. En node3, vaya al menú de arranque y usando 22/7, seleccione la opción oculta `boot_after_controller_replacement`. En el aviso, introduzca el nodo 1 para reasignar los discos del nodo 1 al nodo 3, según el ejemplo siguiente.
++
+.Expanda el ejemplo de salida de consola
+[%collapsible]
+====
+....
+LOADER-A> boot_ontap menu
+.
+<output truncated>
+.
+All rights reserved.
+*******************************
+*                             *
+* Press Ctrl-C for Boot Menu. *
+*                             *
+*******************************
+.
+<output truncated>
+.
+Please choose one of the following:
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? 22/7
+(22/7) Print this secret List
+(25/6) Force boot with multiple filesystem disks missing.
+(25/7) Boot w/ disk labels forced to clean.
+(29/7) Bypass media errors.
+(44/4a) Zero disks if needed and create new flexible root volume.
+(44/7) Assign all disks, Initialize all disks as SPARE, write DDR labels
+.
+<output truncated>
+.
+(wipeconfig)                        Clean all configuration on boot device
+(boot_after_controller_replacement) Boot after controller upgrade
+(boot_after_mcc_transition)         Boot after MCC transition
+(9a)                                Unpartition all disks and remove their ownership information.
+(9b)                                Clean configuration and initialize node with partitioned disks.
+(9c)                                Clean configuration and initialize node with whole disks.
+(9d)                                Reboot the node.
+(9e)                                Return to main boot menu.
+The boot device has changed. System configuration information could be lost. Use option (6) to restore the system configuration, or option (4) to initialize all disks and setup a new system.
+Normal Boot is prohibited.
+Please choose one of the following:
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? boot_after_controller_replacement
+This will replace all flash-based configuration with the last backup to disks. Are you sure you want to continue?: yes
+.
+<output truncated>
+.
+Controller Replacement: Provide name of the node you would like to replace:<nodename of the node being replaced>
+Changing sysid of node node1 disks.
+Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
+Partner sysid = 4294967295, owner sysid = 536940063
+.
+<output truncated>
+.
+varfs_backup_restore: restore using /mroot/etc/varfs.tgz
+varfs_backup_restore: attempting to restore /var/kmip to the boot device
+varfs_backup_restore: failed to restore /var/kmip to the boot device
+varfs_backup_restore: attempting to restore env file to the boot device
+varfs_backup_restore: successfully restored env file to the boot device wrote key file "/tmp/rndc.key"
+varfs_backup_restore: timeout waiting for login
+varfs_backup_restore: Rebooting to load the new varfs
+Terminated
+<node reboots>
+System rebooting...
+.
+Restoring env file from boot media...
+copy_env_file:scenario = head upgrade
+Successfully restored env file from boot media...
+Rebooting to load the restored env file...
+.
+System rebooting...
+.
+<output truncated>
+.
+WARNING: System ID mismatch. This usually occurs when replacing a boot device or NVRAM cards!
+Override system ID? {y|n} y
+.
+Login:
+....
+====
++
+
+NOTE: En el ejemplo de resultado de la consola anterior, ONTAP le solicitará el nombre del nodo asociado si el sistema utiliza discos de partición avanzada de disco (ADP).
+
+. Si el sistema entra en un bucle de reinicio con el mensaje `no disks found`, indica que se ha producido un problema con la reasignación del disco. Consulte link:troubleshoot_index.html["Solucionar problemas"] para resolver el problema.
+. Pulse `Ctrl-C` durante el arranque automático para detener el nodo en `LOADER>` el símbolo del sistema.
+. En el aviso del CARGADOR, introduzca el modo de mantenimiento:
++
+`boot_ontap maint`
+
+. Verifique la conectividad de discos, la cadena del modelo de controladora, la configuración de alta disponibilidad y otros detalles relacionados con la conectividad de hardware.
+. Salga del modo de mantenimiento:
++
+`halt`
+
+. [[auto_check3_step32]]En el símbolo del SISTEMA DEL CARGADOR, arranque:
++
+`boot_ontap menu`
+
++
+Ahora, en el arranque, el nodo puede detectar todos los discos que se le habían asignado previamente y puede arrancar según se esperaba.
+
++
+Cuando los nodos de clúster que desea reemplazar utilizan cifrado de volumen raíz, ONTAP no puede leer la información de los volúmenes desde los discos. Restaure las claves del volumen raíz.
+
++
+
+NOTE: Esto solo se aplica cuando el volumen raíz utiliza el cifrado de volúmenes de NetApp.
+
++
+.. Vuelva al menú de inicio especial:
+`LOADER> boot_ontap menu`
++
+[listing]
+----
+Please choose one of the following:
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+
+Selection (1-11)? 10
+----
+.. Seleccione *(10) establecer secretos de recuperación de Onboard Key Manager*
+.. Introduzca `y` en el siguiente símbolo del sistema:
++
+`This option must be used only in disaster recovery procedures. Are you sure? (y or n): y`
+
+.. En la solicitud de, introduzca la frase de contraseña del gestor de claves.
+.. Introduzca los datos de copia de seguridad cuando se le solicite.
++
+
+NOTE: Debe haber obtenido la clave de acceso y los datos de backup en la link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] sección de este procedimiento.
+
+.. Después de que el sistema se inicie de nuevo en el menú de inicio especial, ejecute la opción *(1) Inicio normal*
++
+
+NOTE: Es posible que se encuentre un error en este momento. Si se produce un error, repita los subpasos de <<auto_check3_step32,Paso 32>> hasta que el sistema arranque normalmente.
+
+
+
+

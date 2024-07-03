@@ -27,8 +27,7 @@ La operación de reubicación se pondrá en pausa debido al error.
 
 . Cuando se le solicite, introduzca `y`.
 . Puede forzar la reubicación mediante uno de los siguientes métodos:
-
-
++
 [cols="35,65"]
 |===
 | Opción | Descripción 
@@ -41,3 +40,4 @@ La operación de reubicación se pondrá en pausa debido al error.
 | Sobreescribir comprobaciones de destino | Utilice el siguiente comando:
 `storage aggregate relocation start -node node1 -destination node2 -aggregate-list _aggr_list_ -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
 |===
+

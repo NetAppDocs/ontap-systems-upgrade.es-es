@@ -14,11 +14,14 @@ summary: Antes de iniciar la actualización, verifique que disponga del hardware
 
 
 [role="lead"]
-Antes de iniciar la actualización, compruebe que dispone del hardware correcto para la actualización. En función de la actualización, para cada par de alta disponibilidad que vaya a actualizar, debe tener dos módulos de controladora o dos módulos de controladora y dos módulos NVRAM. Si faltan piezas, póngase en contacto con el soporte técnico o con su representante de ventas de NetApp para obtener ayuda.
+Antes de iniciar la actualización, compruebe que dispone del hardware correcto para la actualización. En función de la actualización, para cada par de alta disponibilidad que vaya a actualizar, debe tener dos módulos de controladora o dos módulos de controladora y dos módulos NVRAM para el sistema de reemplazo. Si faltan piezas, póngase en contacto con el soporte técnico o con su representante de ventas de NetApp para obtener ayuda.
 
 [cols="50,50"]
 |===
-| Si está actualizando... | Usted debe tener... 
+| Si está actualizando... | El sistema de sustitución debe tener... 
+
+
+| AFF A800 | Dos módulos de controladora, dos NVRAMs y nuevos módulos I/O. 
 
 
 | AFF A220 configurado como ASA para ASA A150 | Dos módulos de controladora 

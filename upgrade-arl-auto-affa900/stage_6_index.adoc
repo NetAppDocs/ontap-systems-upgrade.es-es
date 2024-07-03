@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/stage_6_index.html
 keywords: upgrade, boot, node2, verify, restore, overview, stage 1 
 summary: 'Secuencia de procesos en la fase 6 de una actualización de ARL mediante `system controller replace` comandos para actualizar los modelos de controladora en el mismo chasis.' 
 ---
-= Descripción general
+= Descripción general de la etapa 6
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

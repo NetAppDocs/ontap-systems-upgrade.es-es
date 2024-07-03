@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html 
+keywords:  
+summary:  
+---
+= Cable node1 para clúster compartido de alta disponibilidad y almacenamiento (solo actualización de AFF A800)
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Todas las conexiones de clúster, alta disponibilidad, almacenamiento y datos que se habían conectado anteriormente a AFF A800 node1 se deben conectar ahora a AFF A90 o AFF A70 node1, recién instalados.
+
+En la siguiente tabla se muestra el uso de puertos del switch para las configuraciones de clústeres sin switch de dos nodos.
+
+|===
+| Puerto | Nodo AFF A800 | Nodo AFF A90 | Nodo AFF A70 
+
+
+| Clúster | e0a | e1a | e1a 
+
+
+| Clúster | e1a | e7a (use e1b si no hay e7a) | e1b 
+
+
+| HA | e0b | No conectar | No conectar 
+
+
+| HA | e1b | No conectar | No conectar 
+
+
+| Puertos de almacenamiento SAS (si existen y se utilizan) | Cualquier puerto disponible | Cualquier puerto disponible | Cualquier puerto disponible 
+
+
+| Puertos de almacenamiento Ethernet para bandejas NS224 | Cualquier puerto disponible | Consulte Asignación de conectividad de almacenamiento Ethernet | Consulte Asignación de conectividad de almacenamiento Ethernet 
+|===
+Para un clúster conectado a un switch, los puertos de clúster idénticos en los nodos AFF A90 o AFF A70 deben estar en el mismo switch. Por ejemplo, al finalizar la actualización, se deben conectar e1a en node1 y e1a en node2 a un switch de clúster. De igual forma, el segundo puerto de clúster de ambos nodos debe conectarse al segundo switch de clúster. La conexión cruzada de los puertos compartidos cluster-HA, donde e1a de node1 está conectado a Switcha y e1a de node2 está conectado al conmutador B, evita el fallo de comunicación de alta disponibilidad.

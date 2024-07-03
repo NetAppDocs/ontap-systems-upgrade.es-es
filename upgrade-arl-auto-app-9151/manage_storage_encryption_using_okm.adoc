@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/manage_storage_encryption_using_okm.html 
+keywords: ip, address, external, key, management, server, storage, encryption, upgrading, authentication 
+summary: 'Configure y gestione el cifrado de almacenamiento, gestione las claves de autenticación y desactive las relaciones de SnapMirror cuando actualice las controladoras que ejecutan ONTAP 9.15.1 o una versión posterior mediante `system controller replace` el comando.' 
+---
+= Gestione el cifrado del almacenamiento con el gestor de claves incorporado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puede utilizar Onboard Key Manager (OKM) para gestionar las claves de cifrado. Si tiene configurado OKM, debe registrar la frase de acceso y el material de copia de seguridad antes de iniciar la actualización.
+
+.Pasos
+. Registre la clave de acceso para todo el clúster.
++
+Esta es la frase de acceso que se introdujo cuando se configuró o actualizó OKM con la CLI o la API REST.
+
+. Ejecute el para realizar un backup de la información del gestor de claves `security key-manager onboard show-backup` comando.
+
+
+
+
+== Desactivar las relaciones de SnapMirror (opcional)
+
+Antes de continuar con el procedimiento, debe confirmar que todas las relaciones de SnapMirror se ponen en modo inactivo. Cuando una relación de SnapMirror se pone en modo inactivo, sigue en modo inactivo tras reinicios y recuperaciones tras fallos.
+
+.Pasos
+. Compruebe el estado de la relación de SnapMirror en el clúster de destino:
++
+`snapmirror show`
+
++
+[NOTE]
+====
+Si el estado es "transferencia", debe anular dichas transferencias:
+`snapmirror abort -destination-vserver _vserver_name_`
+
+====
++
+La anulación falla si la relación de SnapMirror no se encuentra en el estado "transfiriendo".
+
+. Desactive todas las relaciones entre el clúster:
++
+`snapmirror quiesce -destination-vserver *`
+
+

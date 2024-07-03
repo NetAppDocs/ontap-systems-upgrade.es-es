@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/stage_1_index.html
 keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
 summary: 'Secuencia de proceso de etapa 1 para una actualización de ARL mediante `system controller replace` para actualizar los modelos de controladora en el mismo chasis.' 
 ---
-= Descripción general
+= Descripción general de la etapa 1
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

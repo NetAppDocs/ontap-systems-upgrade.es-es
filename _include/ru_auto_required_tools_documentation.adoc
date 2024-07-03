@@ -4,7 +4,7 @@
 
 Debe disponer de herramientas específicas para instalar el nuevo hardware y debe consultar otros documentos durante el proceso de actualización.
 
-Necesita las siguientes herramientas para realizar el grado up:
+Se necesitan las siguientes herramientas para realizar la actualización:
 
 * Correa de conexión a tierra
 * Destornillador Phillips número 2

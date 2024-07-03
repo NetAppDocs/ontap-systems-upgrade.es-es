@@ -16,4 +16,6 @@ summary: Debe tener ciertas herramientas y documentación para usar ARL para act
 [role="lead"]
 Para realizar la actualización, debe disponer de una correa de conexión a tierra y debe consultar otros documentos durante el proceso de actualización.
 
+Para una actualización de AFF A800 a un AFF A90 o AFF A70, verifique que los cables 100GbE tengan una longitud mínima de un metro.
+
 Consulte link:other_references.html["Referencias"] para acceder a la lista de documentos de referencia y sitios de referencia necesarios para esta actualización.

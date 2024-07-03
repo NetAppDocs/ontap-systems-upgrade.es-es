@@ -95,7 +95,7 @@ Si tiene una configuración MetroCluster, utilice los siguientes comandos para m
 `halt`
 
 +
-Interrumpa el arranque automático pulsando `Ctrl-C` en el símbolo del sistema del entorno de arranque.
+Interrumpa el AUTOBOOT pulsando Ctrl-C en el prompt del entorno de arranque.
 
 . [[step15]]en el nodo 2, compruebe la fecha, hora y zona horaria del sistema:
 +

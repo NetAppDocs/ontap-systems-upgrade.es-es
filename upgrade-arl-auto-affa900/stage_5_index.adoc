@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/stage_5_index.html
 keywords: upgrade, install, netboot, node2, overview, stage 1 
 summary: 'Secuencia de proceso de etapa 5 para una actualización de ARL mediante `system controller replace` comandos para actualizar los modelos de controladora en el mismo chasis.' 
 ---
-= Descripción general
+= Descripción general de la etapa 5
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -17,6 +17,6 @@ summary: 'Secuencia de proceso de etapa 5 para una actualización de ARL mediant
 Durante la etapa 5, instale los nuevos módulos del sistema que recibió para el node2 actualizado y luego netboot node2.
 
 .Pasos
-. link:install_replacement_system_modules_on_node2.html["Instale los módulos del sistema de reemplazo en node2"]
+. link:install-affa90-affa70-on-node2.html["Instale los módulos del sistema de reemplazo en node2"]
 . link:netboot_node2.html["Reiniciar el sistema 2"]
 

@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/stage_6_index.html 
+keywords: complete upgrade, node, unified, target, storage, encryption, stage 6 
+summary: 'Almacenar en zona intermedia la secuencia de proceso 6 para una actualización de ARL mediante `system controller replace` comandos en controladoras que ejecutan ONTAP 9.15.1 o posterior.' 
+---
+= Descripción general de la etapa 6
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Durante la fase 6, el usuario confirma que los nodos nuevos están configurados correctamente y, si los nodos nuevos tienen la función de cifrado habilitada, se configuran y se configuran el cifrado de almacenamiento o el cifrado de volúmenes de NetApp. También debe retirar los nodos antiguos y reanudar las operaciones de SnapMirror.
+
+.Pasos
+. link:manage-authentication-using-kmip-servers.html["Gestionar la autenticación mediante servidores KMIP"]
+. link:ensure_new_controllers_are_set_up_correctly.html["Confirmar que las nuevas controladoras están configuradas correctamente"]
+. link:set_up_storage_encryption_new_module.html["Configure Storage Encryption en el nuevo módulo de la controladora"]
+. link:set_up_netapp_volume_encryption_new_module.html["Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora"]
+. link:decommission_old_system.html["Retire el sistema antiguo"]
+. link:resume_snapmirror_operations.html["Reanudar las operaciones de SnapMirror"]
+

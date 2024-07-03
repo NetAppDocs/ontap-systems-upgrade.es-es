@@ -18,7 +18,10 @@ node2 con los módulos de reemplazo está ahora listo para arrancar. La actualiz
 
 [cols="35,65"]
 |===
-| Controlador node2 antiguo | Sustitución de los módulos del sistema node2 
+| Controladora node2 existente | Sustitución de los módulos del sistema node2 
+
+
+| AFF A800 | AFF A90 o AFF A70 
 
 
 | AFF A220 configurado como ASA | Módulo de controlador ASA A150 
@@ -90,7 +93,7 @@ Si `[localhost:disk.encryptNoSupport:ALERT]: Detected FIPS-certified encrypting 
 
 .. Detenga el nodo en el símbolo del sistema del CARGADOR.
 .. Compruebe y restablezca los bootargs de cifrado de almacenamiento mencionados en <<boot_node2_step1,Paso 1>>.
-.. En el símbolo del sistema del cargador, arranque:
+.. En el aviso DEL CARGADOR, arranque:
 +
 `boot_ontap`
 

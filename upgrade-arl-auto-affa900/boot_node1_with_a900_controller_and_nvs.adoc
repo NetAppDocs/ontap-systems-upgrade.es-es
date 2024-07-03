@@ -18,7 +18,10 @@ node1 con los módulos de reemplazo está ahora listo para arrancar. Esta secci�
 
 [cols="35,65"]
 |===
-| Controlador node1 antiguo | Sustitución de los módulos del sistema node1 
+| Controladora node1 existente | Sustitución de los módulos del sistema node1 
+
+
+| AFF A800 | AFF A90 o AFF A70 ^1^ 
 
 
 | AFF A220 configurado como ASA | Módulo controlador AFF A150 ^1^ 
@@ -42,9 +45,40 @@ FAS2720 | Módulo controlador FAS2820 ^1^
 | FAS9000 | Controladora FAS9500 y módulos NVRAM ^2^ 
 |===
 ^1^ Al sustituir los módulos del controlador, se mueven todas las conexiones del módulo del controlador antiguo al módulo de reemplazo.
+
 ^2^ Al sustituir la controladora y los módulos NVRAM, solo se mueven las conexiones de consola y de gestión.
 
 .Pasos
+. (Solo actualización de AFF A800) En el aviso del CARGADOR, introduzca el modo de mantenimiento:
++
+`boot_ontap maint`
+
++
+.. Responda a `yes` la solicitud de confirmación.
+.. Muestra el estado de las interfaces de 100GbE:
++
+`storage port show`.
+
++
+Todos los puertos 100GbE conectados a bandejas o switches de almacenamiento NS224 deben informar como `storage` puertos, como se muestra en el resultado de ejemplo a continuación.
+
++
+[listing]
+----
+*> storage port show
+Port Type Mode    Speed(Gb/s) State    Status  VLAN ID
+---- ---- ------- ----------- -------- ------- -------
+e8a  ENET storage 100 Gb/s    enabled  online  30
+e8b  ENET storage 100 Gb/s    enabled  online  30
+e11a ENET storage 100 Gb/s    enabled  online  30
+e11b ENET storage 100 Gb/s    enabled  online  30
+----
+.. Salga del modo de mantenimiento:
++
+`halt`
+
+
+
 . [[A900_BOOT_node1]]Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, realice los pasos siguientes.
 +
 
@@ -92,8 +126,8 @@ Estos mensajes pueden aparecer ocultos en los mensajes de la consola. Si no intr
 Si `[localhost:disk.encryptNoSupport:ALERT]: Detected FIPS-certified encrypting drive` y, o `[localhost:diskown.errorDuringIO:error]: error 3 (disk failed) on disk` se producen errores, realice los pasos siguientes:
 
 .. Detenga el nodo en el símbolo del sistema del CARGADOR.
-.. Compruebe y restablezca los bootargs de cifrado de almacenamiento mencionados en <<A900_boot_node1,Paso 1>>.
-.. En el símbolo del sistema del cargador, arranque:
+.. Compruebe y restablezca los arranques de cifrado de almacenamiento mencionados en <<A900_boot_node1,Paso 2>>.
+.. En el aviso DEL CARGADOR, arranque:
 +
 `boot_ontap`
 

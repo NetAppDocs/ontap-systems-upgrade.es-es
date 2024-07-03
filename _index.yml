@@ -1,5 +1,9 @@
 ---
 indexpage:
+  title: Documentación sobre actualización del hardware de ONTAP
+  summary: Actualiza el hardware de la controladora reubicando agregados, moviendo
+    volúmenes o moviendo almacenamiento.
+  keywords: aggregate, relocation, moving, manual, upgrade, relocate
   lead: Este sitio proporciona procedimientos de actualización para sistemas de almacenamiento
     AFF, FAS y ASA. Seleccione el procedimiento de actualización adecuado para el
     sistema de almacenamiento.
@@ -13,21 +17,24 @@ indexpage:
   - title: Actualice mediante la reubicación de agregados en sistemas que ejecutan
       ONTAP 9,8 y versiones posteriores
     links:
+    - title: Utilice comandos para sustituir la controladora del sistema para actualizar
+        el hardware de la controladora introducido en ONTAP 9.15.1
+      url: "/upgrade-arl-auto-app-9151/index.html"
     - title: Utilice los comandos para sustituir la controladora del sistema para
         actualizar los modelos de controladora en el mismo chasis
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/
+      url: "/upgrade-arl-auto-affa900/index.html"
     - title: Utilizar comandos para «sustituir controlador del sistema» (en la mayoría
         de los sistemas)
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/
+      url: "/upgrade-arl-auto-app/index.html"
     - title: Utilizar comandos manuales
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual-app/
+      url: "/upgrade-arl-manual-app/index.html"
   - title: Actualice mediante la reubicación de agregados en sistemas que ejecutan
       ONTAP 9,7 y versiones anteriores
     links:
     - title: Utilice los comandos para reemplazar la controladora del sistema
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/
+      url: "/upgrade-arl-auto/index.html"
     - title: Utilizar comandos manuales
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/
+      url: "/upgrade-arl-manual/index.html"
   - title: Actualice moviendo almacenamiento o volúmenes
     links:
     - title: Actualice el hardware de la controladora
@@ -43,7 +50,7 @@ indexpage:
     links:
     - title: Documentación de los sistemas de hardware de ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
-    - title: Documentación de los switches ONTAP
+    - title: Documentación de los switches para los sistemas de hardware de ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems-switches/index.html
     - title: Documentación sobre el software ONTAP
       url: https://docs.netapp.com/us-en/ontap/index.html

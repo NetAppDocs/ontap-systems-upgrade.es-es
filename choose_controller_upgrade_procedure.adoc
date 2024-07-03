@@ -21,6 +21,10 @@ Elija un procedimiento de actualización para un sistema con unidades internas, 
 
 * FAS2620, FAS2650, FAS2720 Y FAS2750
 * AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s, y AFF A800
++
+
+NOTE: También puede actualizar un AFF A800 a un AFF A70 o AFF A90 mediante la reubicación de agregado. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["Leer más"].
+
 * AFF C190, AFF C250 y AFF C800
 * ASA A150, ASA A250, ASA A800 y ASA AFF A220
 
@@ -50,10 +54,9 @@ Obtenga información sobre los procedimientos de actualización del hardware de 
 
 * link:upgrade-arl/index.html["Actualización mediante la reubicación de agregados"]
 +
-La reubicación de agregados es un procedimiento de sustitución. No es necesario ampliar o reducir el clúster con los nuevos nodos, lo que resulta más útil para los clústeres de dos nodos sin switches. El movimiento de datos mediante la reubicación de agregados es más rápido que copiar datos entre agregados cuando se mueven volúmenes.
+La reubicación de agregados es un procedimiento de sustitución. No es necesario ampliar y reducir el clúster con los nuevos nodos, lo cual resulta útil para los clústeres de dos nodos sin switches. El movimiento de datos mediante la reubicación de agregados es más rápido que copiar datos entre agregados cuando se mueven volúmenes.
 
-* link:upgrade/upgrade-decide-to-use-this-guide.html["Actualizar moviendo volúmenes"]
-* link:upgrade/upgrade-decide-to-use-this-guide.html["Actualizar moviendo almacenamiento"]
+* link:upgrade/upgrade-decide-to-use-this-guide.html["Actualice trasladando volúmenes o almacenamiento"]
 
 
 [NOTE]

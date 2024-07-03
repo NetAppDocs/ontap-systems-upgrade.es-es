@@ -1,11 +1,4 @@
 ---
 section: upgrade-arl
-title: Actualización mediante la reubicación de agregados
-entries:
-- title: Descripción general
-  url: "/upgrade-arl/index.html"
-- section: upgrade-arl-auto-affa900
-- section: upgrade-arl-auto-app
-- section: upgrade-arl-manual-app
-- section: upgrade-arl-auto
-- section: upgrade-arl-manual
+title: Seleccione el procedimiento de actualización de ARL
+url: "/upgrade-arl/index.html"

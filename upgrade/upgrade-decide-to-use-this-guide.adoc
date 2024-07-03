@@ -15,9 +15,13 @@ En este contenido se describe cómo actualizar el hardware de la controladora de
 
 Utilice este procedimiento si desea actualizar el hardware de la controladora en las siguientes situaciones:
 
+[NOTE]
+====
+Cuando actualiza a un sistema AFF A70, AFF A90 o AFF A1K introducido en ONTAP 9.15.1, ONTAP convierte la eficiencia del almacenamiento de todos los volúmenes existentes con thin provisioning, incluidos los que no utilizan la eficiencia del almacenamiento, y aplica las nuevas funciones de eficiencia del almacenamiento que utilizan la funcionalidad de descarga del hardware. Se trata de un proceso automático en segundo plano, sin impacto visible en el rendimiento del sistema. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["Leer más"^]
 
-NOTE: Los procedimientos de actualización de hardware se han simplificado en ONTAP 9.8 con la introducción de la función de colocación automática de puertos.
+Los procedimientos de actualización de hardware se han simplificado en ONTAP 9.8 con la introducción de la función de colocación automática de puertos.
 
+====
 * Los nodos originales y los nuevos son compatibles y compatibles.
 * Los nodos originales y nuevos ejecutan ONTAP 9,0 o una versión posterior. NetApp recomienda, siempre que sea posible, que tenga la misma versión de ONTAP que se ejecute en los nodos originales y en los nuevos.
 +

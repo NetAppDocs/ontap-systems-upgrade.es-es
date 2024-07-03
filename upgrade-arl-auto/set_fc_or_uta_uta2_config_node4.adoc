@@ -17,7 +17,7 @@ summary: 'Configure los puertos FC integrados de nodo 4, los puertos UTA/UTA2 o 
 Si el nodo 4 tiene puertos FC integrados, puertos de adaptador de objetivo unificado (UTA/UTA2) integrados o una tarjeta UTA/UTA2, debe configurar los ajustes antes de completar el resto del procedimiento.
 
 .Acerca de esta tarea
-Puede que necesite completar el <<Configure los puertos FC en el nodo 4>> de la <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 4>>, o ambas secciones.
+Es posible que deba completar la <<Configure los puertos FC en el nodo 4>> sección OR <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 4>> , o ambas secciones.
 
 
 NOTE: Si el nodo 4 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, y se está actualizando un sistema con discos de almacenamiento, puede omitir el documento link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"] sección. Sin embargo, si tiene un sistema V-Series o tiene software de virtualización FlexArray y están conectados a cabinas de almacenamiento, y el nodo 4 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, debe volver a la sección _nodo de instalación y arranque 4_ y reanudar en link:install_boot_node4.html#step22["Paso 22"]. Asegúrese de que el nodo 4 tenga suficiente espacio en rack. Si el nodo 4 se encuentra en un chasis separado del nodo 2, es posible colocar el nodo 4 en la misma ubicación que el nodo 3. Si el nodo 2 y el nodo 4 están en el mismo chasis, el nodo 4 ya se encuentra en la ubicación de rack adecuada.
@@ -98,7 +98,7 @@ NOTE: Los puertos FC deben programarse como iniciadores.
 +
 `halt`
 
-. Arranque el sistema desde el símbolo del sistema del cargador:
+. Arranque el sistema desde el símbolo del sistema del CARGADOR:
 +
 `boot_ontap menu`
 
@@ -386,8 +386,8 @@ Login: ...
 ----
 ====
 . Si el sistema entra en un bucle de reinicio con el mensaje `no disks found`, esto se debe a que ha restablecido los puertos al modo de destino y, por lo tanto, no puede ver ningún disco. Continúe con <<auto_check_4_step17,Paso 17>> por <<auto_check_4_step22,Paso 22>> para resolver esto.
-. [[auto_check_4_step17]]Pulse `Ctrl-C` durante el arranque automático para detener el nodo en el `LOADER>` prompt.
-. En el aviso del cargador, introduzca el modo de mantenimiento:
+. [[auto_check_4_step17]]Pulse Ctrl-C durante el ARRANQUE AUTOMÁTICO para detener el nodo en el CARGADOR> símbolo del sistema.
+. En el aviso del CARGADOR, introduzca el modo de mantenimiento:
 +
 `boot_ontap maint`
 
@@ -417,7 +417,7 @@ Si va a actualizar desde un sistema que admita discos externos a un sistema que 
 Si va a actualizar desde un sistema que utilice discos externos a un sistema que admita discos tanto internos como externos, por ejemplo, un sistema AFF A800, vaya a. <<auto_check_4_step23,Paso 23>>.
 
 ====
-. [[auto_check_4_step22]]en el indicador del cargador, arranque:
+. [[AUTO_CHECK_4_step22]]En el prompt del CARGADOR, arranque:
 +
 `boot_ontap menu`
 
@@ -425,11 +425,13 @@ Si va a actualizar desde un sistema que utilice discos externos a un sistema que
 Ahora, en el arranque, el nodo puede detectar todos los discos que se le habían asignado previamente y puede arrancar según se esperaba.
 
 +
-Cuando los nodos de clúster que va a sustituir utilizan el cifrado de volumen raíz, el software ONTAP no puede leer la información de volumen de los discos. Restaure las claves del volumen raíz:
+Cuando los nodos de clúster que desea reemplazar utilizan cifrado de volumen raíz, ONTAP no puede leer la información de los volúmenes desde los discos. Restaure las claves del volumen raíz:
 
 +
 .. Vuelva al menú de inicio especial:
++
 `LOADER> boot_ontap menu`
+
 +
 [listing]
 ----
@@ -463,8 +465,6 @@ NOTE: Debe haber obtenido la clave de acceso y los datos de backup en la link:pr
 +
 
 NOTE: Es posible que se encuentre un error en este momento. Si se produce un error, repita los subpasos de <<auto_check_4_step22,Paso 22>> hasta que el sistema se inicie normalmente.
-
-
 
 
 

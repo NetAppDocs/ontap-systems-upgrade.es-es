@@ -13,5 +13,5 @@ Durante la fase 6, el usuario confirma que los nodos nuevos están configurados 
 . link:resume_snapmirror_operations.html["Reanudar las operaciones de SnapMirror"]
 
 
-.Para la configuración de MetroCluster FC
-Para la configuración de FC de MetroCluster, debe reemplazar el Lo antes posible. de los nodos del sitio de recuperación ante desastres/conmutación por error. No se admite la discrepancia en los modelos de controladoras dentro de un MetroCluster, ya que el error de coincidencia del modelo de controladora puede provocar que la operación de mirroring de recuperación ante desastres se desconecte. Utilice el comando -`skip-metrocluster-check true` Opción para omitir las comprobaciones de MetroCluster cuando se reemplazan los nodos en un segundo sitio.
+.Configuración de FC de MetroCluster
+En una configuración de MetroCluster FC, debe sustituir los nodos del sitio de recuperación ante desastres/conmutación al nodo de respaldo lo antes posible. No se admite la discrepancia en los modelos de controladoras dentro de un MetroCluster, ya que el error de coincidencia del modelo de controladora puede provocar que la operación de mirroring de recuperación ante desastres se desconecte. Utilice `-skip-metrocluster-check true` el comando para omitir las comprobaciones de MetroCluster cuando va a reemplazar nodos en el segundo sitio.

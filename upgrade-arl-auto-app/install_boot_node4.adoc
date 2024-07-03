@@ -52,7 +52,7 @@ NOTE: Es posible que no sea necesario mover la conexión de cable de la tarjeta 
 
 
 
-. Encienda el nodo 4 y, a continuación, interrumpa el proceso de arranque pulsando `Ctrl-C` en el terminal de la consola para acceder al aviso del entorno de arranque.
+. Encienda el nodo 4 y, a continuación, interrumpa el proceso de arranque pulsando Ctrl-C en el terminal de la consola para acceder al aviso del entorno de arranque.
 +
 
 NOTE: Cuando se arranca el nodo 4, es posible que se muestre el siguiente mensaje de advertencia:
@@ -206,7 +206,7 @@ Si tiene una configuración MetroCluster, utilice los siguientes comandos para m
 `halt`
 
 +
-Interrumpa el arranque automático pulsando Ctrl-C en el símbolo del sistema del entorno de arranque.
+Interrumpa el AUTOBOOT pulsando Ctrl-C en el prompt del entorno de arranque.
 
 . [[auto_install4_step15]]en el nodo 3, compruebe la fecha, la hora y la zona horaria del sistema:
 +

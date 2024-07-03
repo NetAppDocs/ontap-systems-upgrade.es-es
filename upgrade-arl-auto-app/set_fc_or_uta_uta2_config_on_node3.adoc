@@ -100,7 +100,7 @@ NOTE: Los puertos FC deben programarse como iniciadores.
 +
 `halt`
 
-. Arranque el sistema desde el símbolo del sistema del cargador:
+. Arranque el sistema desde el símbolo del sistema del CARGADOR:
 +
 `boot_ontap menu`
 
@@ -317,7 +317,7 @@ Adapter  Mode       Type        Mode     Type        Status
 . [[step14]]nodo de arranque en el menú de arranque ejecutando `boot_ontap menu`. Si va a actualizar a un A800, vaya a. <<auto_check3_step23,Paso 23>>.
 
 
-. [[auto9597_check_node3_step15]]en el nodo 3, vaya al menú de arranque y utilice 22/7, seleccione la opción oculta `boot_after_controller_replacement`. En el aviso, introduzca el nodo 1 para reasignar los discos del nodo 1 al nodo 3, según el ejemplo siguiente.
+. En node3, vaya al menú de arranque y usando 22/7, seleccione la opción oculta `boot_after_controller_replacement`. En el aviso, introduzca el nodo 1 para reasignar los discos del nodo 1 al nodo 3, según el ejemplo siguiente.
 +
 .Expanda el ejemplo de salida de consola
 [%collapsible]
@@ -423,8 +423,8 @@ Login:
 NOTE: En el ejemplo de resultado de la consola anterior, ONTAP le solicitará el nombre del nodo asociado si el sistema utiliza discos de partición avanzada de disco (ADP).
 
 . Si el sistema entra en un bucle de reinicio con el mensaje `no disks found`, Indica que el sistema ha restablecido los puertos FC o UTA/UTA2 al modo de destino y, por lo tanto, no puede ver ningún disco. Para resolver esto, continúe con <<auto_check3_step17,Paso 17>> para <<auto_check3_step22,Paso 22>>o vaya a la sección link:verify_node3_installation.html["Verifique la instalación del nodo 3"].
-. [[auto_check3_step17]]Pulse `Ctrl-C` durante el arranque automático para detener el nodo en el `LOADER>` prompt.
-. [[step18]]en el indicador del cargador, entre en el modo de mantenimiento:
+. [[auto_check3_step17]]Pulse Ctrl-C durante el AUTOARRANQUE para detener el nodo en el CARGADOR> símbolo del sistema.
+. [[step18]]En el aviso del CARGADOR, acceda al modo de mantenimiento:
 +
 `boot_ontap maint`
 
@@ -454,7 +454,7 @@ Si va a actualizar desde un sistema que admita discos externos a un sistema que 
 Si va a realizar una actualización de un sistema que admita discos externos a un sistema que admita discos tanto internos como externos, por ejemplo, un sistema AFF A800, vaya a. <<auto_check3_step23,Paso 23>>.
 
 ====
-. [[auto_check3_step22]]en el indicador del cargador, arranque:
+. [[auto_check3_step22]]En el símbolo del SISTEMA DEL CARGADOR, arranque:
 +
 `boot_ontap menu`
 
@@ -462,11 +462,17 @@ Si va a realizar una actualización de un sistema que admita discos externos a u
 Ahora, en el arranque, el nodo puede detectar todos los discos que se le habían asignado previamente y puede arrancar según se esperaba.
 
 +
-Cuando los nodos de clúster que va a sustituir utilizan el cifrado de volumen raíz, el software ONTAP no puede leer la información de volumen de los discos. Restaure las claves del volumen raíz:
+Cuando los nodos de clúster que desea reemplazar utilizan cifrado de volumen raíz, ONTAP no puede leer la información de los volúmenes desde los discos. Restaure las claves del volumen raíz.
+
++
+
+NOTE: Esto solo se aplica cuando el volumen raíz utiliza el cifrado de volúmenes de NetApp.
 
 +
 .. Vuelva al menú de inicio especial:
++
 `LOADER> boot_ontap menu`
+
 +
 [listing]
 ----
