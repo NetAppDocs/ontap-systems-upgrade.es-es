@@ -23,7 +23,7 @@ Elija un procedimiento de actualización para un sistema con unidades internas, 
 * AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s, y AFF A800
 +
 
-NOTE: También puede actualizar un AFF A800 a un AFF A70 o AFF A90 mediante la reubicación de agregado. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["Leer más"].
+NOTE: También puede actualizar un AFF A800 a un AFF A70 o AFF A90 mediante la reubicación de agregado. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Leer más"].
 
 * AFF C190, AFF C250 y AFF C800
 * ASA A150, ASA A250, ASA A800 y ASA AFF A220
