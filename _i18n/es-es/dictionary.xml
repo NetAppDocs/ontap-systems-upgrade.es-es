@@ -4879,7 +4879,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="2e1458abf9be810e3c1b32482a2fb654" category="cell">Controladora node2 existente</block>
   <block id="1a68d75a6401790bda4f04fcd5250d89" category="cell">AFF A90 o AFF A70</block>
   <block id="5f9fde3ed8fab53307d0d33e0b21555f" category="doc">Cable node1 para clúster compartido de alta disponibilidad y almacenamiento (solo actualización de AFF A800)</block>
-  <block id="d7c50b232c0b6695dad67576c458f2b7" category="paragraph">Todas las conexiones de clúster, alta disponibilidad, almacenamiento y datos que se habían conectado anteriormente a AFF A800 node1 se deben conectar ahora a AFF A90 o AFF A70 node1, recién instalados.</block>
   <block id="3f96763067b8ef1bea6f3b7936e59b10" category="paragraph">En la siguiente tabla se muestra el uso de puertos del switch para las configuraciones de clústeres sin switch de dos nodos.</block>
   <block id="60aaf44d4b562252c04db7f98497e9aa" category="cell">Puerto</block>
   <block id="ed062d9f9c55cc3a6f727877095b3f8a" category="cell">Nodo AFF A800</block>
@@ -4897,7 +4896,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="c6d464573f83b68eae557ca5213c2dbe" category="cell">Cualquier puerto disponible</block>
   <block id="1106a2319bc9e3e60b2eb082fdf3e891" category="cell">Puertos de almacenamiento Ethernet para bandejas NS224</block>
   <block id="bf88a79b7721bdcefd6f46ff3e6e823a" category="cell">Consulte Asignación de conectividad de almacenamiento Ethernet</block>
-  <block id="98c565adb9d07742bd39f0d8f62a6a4a" category="paragraph">Para un clúster conectado a un switch, los puertos de clúster idénticos en los nodos AFF A90 o AFF A70 deben estar en el mismo switch. Por ejemplo, al finalizar la actualización, se deben conectar e1a en node1 y e1a en node2 a un switch de clúster. De igual forma, el segundo puerto de clúster de ambos nodos debe conectarse al segundo switch de clúster. La conexión cruzada de los puertos compartidos cluster-HA, donde e1a de node1 está conectado a Switcha y e1a de node2 está conectado al conmutador B, evita el fallo de comunicación de alta disponibilidad.</block>
   <block id="b6c0f97a30874aed966651e5abc3c11d" category="cell">AFF A70 y AFF A90</block>
   <block id="11c23a28b09e8dab4fd29659b5d908e1" category="list-text">Dos o dos controladoras AFF A90 o dos AFF A70 y todos los módulos de I/O necesarios para la actualización. La longitud requerida de 100GbE cables.</block>
   <block id="2c379faac9baae13e7fda4f15aafa273" category="list-text">Utiliza el software de virtualización FlexArray en los sistemas AFF A800, AFF A700 o FAS9000.</block>
@@ -5196,4 +5194,18 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="fe9158ff831e80fc9361c4a06ba512f1" category="sidebar">Etapa 6. Complete la actualización (actualice con «sustitución de la controladora del sistema» en ONTAP 9.15.1 o posterior)</block>
   <block id="1d2cec084b14c2bb8b27b81dee7eff45" category="sidebar">Solución de problemas (actualización con «sustitución de controladora de sistema» en ONTAP 9.15.1 o posterior)</block>
   <block id="f6450b8785035cd4f0854992330d2734" category="admonition">También puede actualizar un AFF A800 a un AFF A70 o AFF A90 mediante la reubicación de agregado. <block ref="dd8a9320d133fc6bc4cebf159be26035" category="inline-link-macro-rx"></block>.</block>
+  <block id="d7548e4333d6055e4cfe02fb476e8bb3" category="summary">Conecte el clúster, la alta disponibilidad, el almacenamiento y las conexiones de datos que se habían conectado anteriormente al AFF A800 node1 al AFF A90 o AFF A70 node1 recién instalado</block>
+  <block id="0640a7d79562f0e5755e3f5b4337aaf0" category="paragraph">Conecte el clúster, la alta disponibilidad, el almacenamiento, los datos y las conexiones de gestión que se habían conectado previamente a AFF A800 node1 a los AFF A90 o AFF A70 node1 recién instalados.</block>
+  <block id="e41a57de6846f0486a2837efec0a7735" category="section-title">Conecte los puertos e0M y BMC</block>
+  <block id="83f9eada4a675baaeaa258974d454974" category="paragraph">AFF A800 tiene un puerto de gestión (e0M) y un puerto BMC. En AFF A90 y AFF A70, se combinan los puertos e0M y BMC y se accede a ellos a través del puerto «llave». Debe asegurarse de que los puertos e0M y BMC estén conectados al mismo switch y subred de AFF A800 antes de conectarse a AFF A90 o AFF A70.</block>
+  <block id="71f7c95fc9a5b8a1a847fc0baf3f04a0" category="cell">Si...</block>
+  <block id="31a1d0c3f4eee8e89c1e85f3c2f53402" category="cell">Las direcciones IP e0M y BMC están en la misma subred IP</block>
+  <block id="9fded7c0f0530a23a9a859ba516478e5" category="cell">Conecte el puerto e0M o BMC del AFF A800 al puerto de llave del AFF A90 o AFF A70.</block>
+  <block id="6d317071220219966d4e9dcc83f3c48f" category="cell">Las direcciones IP de e0M y BMC se encuentran en subredes diferentes</block>
+  <block id="06ae0bb86db3eff96d5e95f8377d0658" category="list-text">Combine las direcciones IP e0M y BMC en una subred IP.</block>
+  <block id="444178cd590abb095281389d276396fb" category="section-title">Conéctese a un clúster de dos nodos sin switches</block>
+  <block id="17ff48b429522b181dd38c99ad361c90" category="section-title">Conéctese a un clúster conectado a switches</block>
+  <block id="642bccb8ea8bf1d5af20ff2b734c1972" category="paragraph">Para un clúster conectado con switch, compruebe que cumple los siguientes requisitos:</block>
+  <block id="0bc65976ff133ee82e86f9a6d1241bd3" category="list-text">Los puertos de clúster idénticos de los nodos AFF A90 o AFF A70 están en el mismo switch. Por ejemplo, al finalizar la actualización, se deben conectar e1a en node1 y e1a en node2 a un switch de clúster. De igual forma, el segundo puerto de clúster de ambos nodos debe conectarse al segundo switch de clúster. La conexión cruzada de puertos compartidos cluster-HA, donde e1a desde node1 está conectado a Switcha y e1a desde node2 está conectado al switch B, provocará fallos de comunicación de alta disponibilidad.</block>
+  <block id="a8ddcf9ff72eca8d08263b606043e793" category="list-text">Los nodos AFF A90 y AFF A70 utilizan puertos Ethernet de clúster-alta disponibilidad compartidos. Asegúrese de que los switches de clúster están instalados con un archivo de configuración de referencia (RCF) que sea compatible con los puertos compartidos de cluster-HA.</block>
 </blocks>

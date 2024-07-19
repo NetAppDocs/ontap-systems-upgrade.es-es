@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html 
-keywords:  
-summary:  
+keywords: cluster, ha, aff, a800, shared, storage, data, management 
+summary: Conecte el clúster, la alta disponibilidad, el almacenamiento y las conexiones de datos que se habían conectado anteriormente al AFF A800 node1 al AFF A90 o AFF A70 node1 recién instalado 
 ---
 = Cable node1 para clúster compartido de alta disponibilidad y almacenamiento (solo actualización de AFF A800)
 :hardbreaks:
@@ -14,7 +14,31 @@ summary:
 
 
 [role="lead"]
-Todas las conexiones de clúster, alta disponibilidad, almacenamiento y datos que se habían conectado anteriormente a AFF A800 node1 se deben conectar ahora a AFF A90 o AFF A70 node1, recién instalados.
+Conecte el clúster, la alta disponibilidad, el almacenamiento, los datos y las conexiones de gestión que se habían conectado previamente a AFF A800 node1 a los AFF A90 o AFF A70 node1 recién instalados.
+
+
+
+== Conecte los puertos e0M y BMC
+
+AFF A800 tiene un puerto de gestión (e0M) y un puerto BMC. En AFF A90 y AFF A70, se combinan los puertos e0M y BMC y se accede a ellos a través del puerto «llave». Debe asegurarse de que los puertos e0M y BMC estén conectados al mismo switch y subred de AFF A800 antes de conectarse a AFF A90 o AFF A70.
+
+[cols="35,65"]
+|===
+| Si... | Realice lo siguiente... 
+
+
+| Las direcciones IP e0M y BMC están en la misma subred IP | Conecte el puerto e0M o BMC del AFF A800 al puerto de llave del AFF A90 o AFF A70. 
+
+
+| Las direcciones IP de e0M y BMC se encuentran en subredes diferentes  a| 
+. Combine las direcciones IP e0M y BMC en una subred IP.
+. Conecte el puerto e0M o BMC del AFF A800 al puerto de llave del AFF A90 o AFF A70.
+
+
+|===
+
+
+== Conéctese a un clúster de dos nodos sin switches
 
 En la siguiente tabla se muestra el uso de puertos del switch para las configuraciones de clústeres sin switch de dos nodos.
 
@@ -39,4 +63,12 @@ En la siguiente tabla se muestra el uso de puertos del switch para las configura
 
 | Puertos de almacenamiento Ethernet para bandejas NS224 | Cualquier puerto disponible | Consulte Asignación de conectividad de almacenamiento Ethernet | Consulte Asignación de conectividad de almacenamiento Ethernet 
 |===
-Para un clúster conectado a un switch, los puertos de clúster idénticos en los nodos AFF A90 o AFF A70 deben estar en el mismo switch. Por ejemplo, al finalizar la actualización, se deben conectar e1a en node1 y e1a en node2 a un switch de clúster. De igual forma, el segundo puerto de clúster de ambos nodos debe conectarse al segundo switch de clúster. La conexión cruzada de los puertos compartidos cluster-HA, donde e1a de node1 está conectado a Switcha y e1a de node2 está conectado al conmutador B, evita el fallo de comunicación de alta disponibilidad.
+
+
+== Conéctese a un clúster conectado a switches
+
+Para un clúster conectado con switch, compruebe que cumple los siguientes requisitos:
+
+* Los puertos de clúster idénticos de los nodos AFF A90 o AFF A70 están en el mismo switch. Por ejemplo, al finalizar la actualización, se deben conectar e1a en node1 y e1a en node2 a un switch de clúster. De igual forma, el segundo puerto de clúster de ambos nodos debe conectarse al segundo switch de clúster. La conexión cruzada de puertos compartidos cluster-HA, donde e1a desde node1 está conectado a Switcha y e1a desde node2 está conectado al switch B, provocará fallos de comunicación de alta disponibilidad.
+* Los nodos AFF A90 y AFF A70 utilizan puertos Ethernet de clúster-alta disponibilidad compartidos. Asegúrese de que los switches de clúster están instalados con un archivo de configuración de referencia (RCF) que sea compatible con los puertos compartidos de cluster-HA.
+
