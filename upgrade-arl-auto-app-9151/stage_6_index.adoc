@@ -24,3 +24,15 @@ Durante la fase 6, el usuario confirma que los nodos nuevos están configurados 
 . link:decommission_old_system.html["Retire el sistema antiguo"]
 . link:resume_snapmirror_operations.html["Reanudar las operaciones de SnapMirror"]
 
+
+[NOTE]
+====
+Los sistemas AFF A70, AFF A90 y AFF A1K comparten puertos de red de 100GbE GbE para conexiones de clúster y de alta disponibilidad. Estos sistemas pueden admitir conexiones de clúster 10GbE o 25GbE a switches de clúster heredados; sin embargo, NetApp recomienda actualizar a las velocidades de clúster de 100GbE GbE cuando los switches 10GbE y 25GbE ya no sean necesarios. Para obtener más información, consulte los siguientes artículos de la base de conocimientos:
+
+* link:https://kb.netapp.com/?title=on-prem%2Fontap%2FOHW%2FOHW-KBs%2FHow_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup_on_AFF_A1K%252C_AFF_A90_or_AFF_A70["Cómo configurar los puertos de clústeres 10G o 25G en una nueva configuración de clúster en AFF A1K, AFF A90 o AFF A70"^]
+* link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_an_existing_cluster_from_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports_on_an_AFF_A1K_AFF_A90_or_AFF_A70["Cómo convertir un clúster existente de puertos de clúster 10G o 25G a puertos de clúster 40G o 100g en un AFF A1K, AFF A90 o AFF A70"^]
+
+
+Si no puede vincular los puertos de clúster e0a o e0b del nodo existente a los puertos de clúster del nodo nuevo, consulte link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["ID de error de NetApp Bugs Online CONTAP-166978"^].
+
+====
