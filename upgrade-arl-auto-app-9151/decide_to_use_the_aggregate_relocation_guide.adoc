@@ -36,23 +36,27 @@ No puede utilizar este procedimiento en las siguientes circunstancias:
 [[sys_commands_9151_supported_systems]]La siguiente tabla muestra la matriz de modelo admitida para la actualización del controlador.
 
 |===
-| Controladora existente | Controladora de reemplazo 
+| Controladora existente | Controladora de reemplazo | Compatible empezando con ONTAP... 
 
 
-| AFF A300 | AFF A70, AFF A90 y AFF A1K 
+| FAS8200, FAS8300, FAS8700 Y FAS9000 | FAS70, FAS90 | 9.15.1P3 
 
 
-| AFF A400 | AFF A70, AFF A90 y AFF A1K 
+| FAS9500 | FAS90 | 9.15.1P3 
 
 
-| AFF A700 | AFF A70, AFF A90 y AFF A1K 
+| AFF A300, AFF A400, AFF A700 | AFF A70, AFF A90, AFF A1K | 9.15.1 
 
 
-| AFF A900 | AFF A90 y AFF A1K 
+| AFF A900 | AFF A90 y AFF A1K | 9.15.1 
 |===
 [NOTE]
 ====
-AFF A70 y AFF A90 son sistemas integrados con discos internos. Las dos controladoras y los discos están en un único chasis. No es posible actualizar un sistema existente si las nuevas controladoras tienen unidades internas.
+AFF A70 y AFF A90 son sistemas integrados con dos discos incorporados y dos controladoras en un único chasis.
+
+* Si va a actualizar a un AFF A70 o un AFF A90 con unidades internas, debe eliminar la propiedad de esas unidades antes de la actualización. Después de completar la actualización, puede asignar las unidades internas a los nodos AFF A70 o AFF A90 y usarlas para crear agregados de datos. No es obligatorio migrar agregados de datos o raíz a unidades internas.
+* Si se actualiza a un AFF A70 o AFF A90 sin unidades internas, no es necesario asignar unidades internas después de completar la actualización.
+
 
 Si la combinación del modelo de actualización de la controladora no se encuentra en la tabla anterior, póngase en contacto con el soporte técnico.
 
