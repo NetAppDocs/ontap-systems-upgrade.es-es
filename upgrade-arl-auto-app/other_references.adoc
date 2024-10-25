@@ -10,7 +10,7 @@ summary: 'Contenido de referencia y sitios web necesarios para admitir una actua
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

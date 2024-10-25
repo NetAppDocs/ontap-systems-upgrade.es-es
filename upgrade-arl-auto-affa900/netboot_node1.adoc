@@ -10,7 +10,7 @@ summary: Al utilizar ARL para actualizar los modelos de controlador en el mismo 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

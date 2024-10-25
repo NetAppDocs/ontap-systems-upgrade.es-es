@@ -10,7 +10,7 @@ summary: 'Solucione problemas que se pueden producir durante la actualización d
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

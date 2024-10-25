@@ -10,7 +10,7 @@ summary: Las LIF no están en línea después de la migración en Fase 2, Fase 3
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

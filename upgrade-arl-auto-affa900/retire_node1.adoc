@@ -10,7 +10,7 @@ summary: Deshabilite el par de HA con node2 y apague node1 cuando utilice ARL pa
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

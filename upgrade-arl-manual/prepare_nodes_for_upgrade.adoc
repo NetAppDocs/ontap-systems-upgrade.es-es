@@ -10,7 +10,7 @@ summary: Prepare los nodos, recoja información y confirme que todos los nodos d
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

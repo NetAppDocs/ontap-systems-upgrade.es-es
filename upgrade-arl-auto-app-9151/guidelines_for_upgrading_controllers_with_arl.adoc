@@ -10,7 +10,7 @@ summary: 'Determine si puede actualizar controladoras que ejecutan ONTAP 9.15.1 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

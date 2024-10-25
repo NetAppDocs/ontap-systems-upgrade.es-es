@@ -10,7 +10,7 @@ summary: Mueva los agregados que no sean raíz del nodo 1 al nodo 2 y compruebe 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

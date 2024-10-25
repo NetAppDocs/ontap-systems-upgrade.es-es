@@ -10,7 +10,7 @@ summary: 'Secuencia de fase 2 de procesos para una actualización de ARL mediant
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

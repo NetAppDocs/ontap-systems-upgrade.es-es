@@ -10,7 +10,7 @@ summary: Envíe un mensaje de AutoSupport para el nodo 2 y reubique manualmente 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

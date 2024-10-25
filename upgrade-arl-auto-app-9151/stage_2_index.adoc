@@ -10,7 +10,7 @@ summary: 'Almacenar en zona intermedia la secuencia de proceso 2 para una actual
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

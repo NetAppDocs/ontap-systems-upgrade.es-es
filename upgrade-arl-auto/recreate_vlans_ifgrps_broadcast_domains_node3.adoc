@@ -10,7 +10,7 @@ summary: 'Vuelva a crear las VLAN del nodo 1, los grupos de interfaces y los dom
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

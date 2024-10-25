@@ -10,7 +10,7 @@ summary: 'Habilite el par de HA, verifique el acceso al almacenamiento node3 y n
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

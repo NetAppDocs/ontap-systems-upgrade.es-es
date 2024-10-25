@@ -10,7 +10,7 @@ summary: Puede preparar manualmente el nodo original para la actualización real
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

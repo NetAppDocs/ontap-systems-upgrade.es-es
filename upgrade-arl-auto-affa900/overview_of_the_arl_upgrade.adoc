@@ -10,7 +10,7 @@ summary: Comprenda cómo funciona el procedimiento ARL para actualizar los model
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

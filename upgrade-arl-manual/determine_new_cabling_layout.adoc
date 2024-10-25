@@ -10,7 +10,7 @@ summary: Determine la distribución de cableado de los nuevos módulos de contro
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

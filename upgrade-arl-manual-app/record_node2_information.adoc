@@ -10,7 +10,7 @@ summary: Registre información acerca de la red de clústeres 2, la gestión, lo
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

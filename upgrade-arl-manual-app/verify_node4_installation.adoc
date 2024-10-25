@@ -10,7 +10,7 @@ summary: Verifique la instalación y la comunicación de nodo 4 con el nodo 3 du
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

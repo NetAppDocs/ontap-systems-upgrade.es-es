@@ -10,7 +10,7 @@ summary: 'Habilite la pareja de alta disponibilidad, verifique el acceso al alma
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

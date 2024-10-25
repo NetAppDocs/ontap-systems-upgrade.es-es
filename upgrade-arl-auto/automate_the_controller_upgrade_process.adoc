@@ -10,7 +10,7 @@ summary: Utilice el procedimiento ARL parcialmente automatizado para actualizar 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Antes de reiniciar el sistema, desactive todas las relaciones de SnapMi
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

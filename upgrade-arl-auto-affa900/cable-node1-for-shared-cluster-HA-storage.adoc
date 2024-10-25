@@ -10,7 +10,7 @@ summary: Conecte el clúster, la alta disponibilidad, el almacenamiento y las co
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

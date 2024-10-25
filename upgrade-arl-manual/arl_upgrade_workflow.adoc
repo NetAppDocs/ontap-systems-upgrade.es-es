@@ -10,7 +10,7 @@ summary: Comprender cómo funciona el procedimiento manual de actualización de 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

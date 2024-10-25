@@ -10,7 +10,7 @@ summary: Reubicar agregados con fallos o vetados al utilizar ARL para actualizar
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

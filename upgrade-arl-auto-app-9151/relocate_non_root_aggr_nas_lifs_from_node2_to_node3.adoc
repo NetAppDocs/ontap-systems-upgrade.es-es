@@ -10,7 +10,7 @@ summary: 'Reubicar los agregados no raíz de node2 a node3 si se actualizan cont
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

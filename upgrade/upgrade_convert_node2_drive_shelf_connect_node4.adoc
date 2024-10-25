@@ -19,7 +19,7 @@ Convierta AFF A250 node2 en una bandeja de unidades NS224 y, a continuación, co
 . Inserte el módulo de bandeja NVMe (NSM) en la bahía de node2.
 . Conecte el NSM a node4 cableando el puerto node4 100GbE e0c al puerto NSM B e0a.
 +
-image::../upgrade/media/a400_with_ns224_shelf.PNG[AFF A400 con una bandeja NS224]
+image:a400_with_ns224_shelf.PNG["AFF A400 con una bandeja NS224"]
 
 . Conecte el cableado 25GbE de los puertos node2 e0c y e0d a cualquiera de los dos puertos internos de 25GbE (e0e, e0f, e0g o e0h) en node4 para crear conexiones de clúster temporales.
 +

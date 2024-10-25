@@ -10,7 +10,7 @@ summary: Verifique la instalación y la comunicación de nodos 3 con el nodo 2 d
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

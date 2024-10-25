@@ -10,7 +10,7 @@ summary: 'Puede actualizar el hardware de la controladora que ejecuta ONTAP 9.15
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -40,7 +40,7 @@ Los términos "1", "2", "nodo 3" y "nodo 4" solo se usan para distinguir entre l
 * Cuando actualiza a un sistema introducido en ONTAP 9.15,1, ONTAP convierte la eficiencia de almacenamiento de los volúmenes existentes y aplica las nuevas funciones de eficiencia del almacenamiento que utilizan la funcionalidad de descarga de hardware. Se trata de un proceso automático en segundo plano, sin impacto visible en el rendimiento del sistema.
 +
 ** Para sistemas AFF A70, AFF A90 o AFF A1K, ONTAP convierte la eficiencia del almacenamiento de todos los volúmenes Thin-Provisioning existentes, incluidos aquellos que no usan la eficiencia del almacenamiento.
-** Para un sistema FAS70 y FAS90, ONTAP solo convierte la eficiencia del almacenamiento de los volúmenes Thin-Provisioning existentes que ya tenían activada la eficiencia del almacenamiento antes de la actualización.
+** Para un sistema FAS70 y FAS90, ONTAP solo convierte la eficiencia del almacenamiento de los volúmenes existentes con Thin-Provisioning que tenían activada la eficiencia del almacenamiento antes de la actualización.
 
 
 +

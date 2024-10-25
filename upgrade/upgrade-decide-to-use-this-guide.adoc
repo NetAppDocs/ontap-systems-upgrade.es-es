@@ -20,7 +20,7 @@ Utilice este procedimiento si desea actualizar el hardware de la controladora en
 * Cuando actualiza a un sistema introducido en ONTAP 9.15,1, ONTAP convierte la eficiencia de almacenamiento de los volúmenes existentes y aplica las nuevas funciones de eficiencia del almacenamiento que utilizan la funcionalidad de descarga de hardware. Se trata de un proceso automático en segundo plano, sin impacto visible en el rendimiento del sistema.
 +
 ** Para sistemas AFF A70, AFF A90 o AFF A1K, ONTAP convierte la eficiencia del almacenamiento de todos los volúmenes Thin-Provisioning existentes, incluidos aquellos que no usan la eficiencia del almacenamiento.
-** Para un sistema FAS70 y FAS90, ONTAP solo convierte la eficiencia del almacenamiento de los volúmenes Thin-Provisioning existentes que ya tenían activada la eficiencia del almacenamiento antes de la actualización.
+** Para un sistema FAS70 y FAS90, ONTAP solo convierte la eficiencia del almacenamiento de los volúmenes existentes con Thin-Provisioning que tenían activada la eficiencia del almacenamiento antes de la actualización.
 +
 link:https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["Obtenga más información sobre la eficiencia del almacenamiento"^].
 

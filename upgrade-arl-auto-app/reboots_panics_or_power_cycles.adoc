@@ -10,7 +10,7 @@ summary: 'Puede que el sistema se bloquee: Reinicio, alarma o atravese un ciclo 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

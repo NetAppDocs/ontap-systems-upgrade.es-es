@@ -122,7 +122,7 @@ WARNING: Cuando se utilizan los puertos «e0a» y «e0b» como puertos de interc
 En el siguiente ejemplo, las LIF de gestión y interconexión de clústeres en los puertos de red «e0a» y «e0b» se reasignan a los puertos de red «e1a» y «e1b». Los nodos pueden usar puertos de red diferentes porque varían según el sistema.
 
 +
-image::../upgrade/media/reassign_lifs.PNG[Volver a asignar LIF a puertos de red en el sistema de reemplazo]
+image:reassign_lifs.PNG["Volver a asignar LIF a puertos de red en el sistema de reemplazo"]
 
 
 

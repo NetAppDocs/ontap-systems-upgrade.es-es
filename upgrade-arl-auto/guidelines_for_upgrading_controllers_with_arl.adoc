@@ -10,7 +10,7 @@ summary: 'Comprenda si puede actualizar controladoras que ejecutan ONTAP 9.5 a 9
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

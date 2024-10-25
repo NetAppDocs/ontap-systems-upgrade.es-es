@@ -10,7 +10,7 @@ summary: 'Preparar los nodos y ejecutar una serie de comprobaciones previas al a
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

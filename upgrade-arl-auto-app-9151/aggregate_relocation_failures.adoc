@@ -10,7 +10,7 @@ summary: 'Solución de problemas en los errores de reubicación de agregados que
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

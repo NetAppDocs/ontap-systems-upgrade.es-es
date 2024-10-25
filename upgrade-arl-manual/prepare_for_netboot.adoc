@@ -10,7 +10,7 @@ summary: Prepare el nodo 3 y el nodo 4 durante una actualización manual de ARL 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

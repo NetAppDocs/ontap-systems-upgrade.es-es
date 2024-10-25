@@ -10,7 +10,7 @@ summary: Habilite los switches de Brocade y Cisco en la estructura de forma pers
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

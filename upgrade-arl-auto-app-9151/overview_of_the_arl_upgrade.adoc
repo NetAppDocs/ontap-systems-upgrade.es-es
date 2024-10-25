@@ -10,7 +10,7 @@ summary: 'Comprenda cómo funciona el procedimiento para actualizar controladora
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

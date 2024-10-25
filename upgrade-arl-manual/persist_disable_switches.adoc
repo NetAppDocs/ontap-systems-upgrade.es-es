@@ -10,7 +10,7 @@ summary: Deshabilite los switches Brocade y Cisco en la estructura y modifique l
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

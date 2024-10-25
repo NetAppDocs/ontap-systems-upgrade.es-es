@@ -4,53 +4,177 @@ permalink: upgrade-arl/index.html
 keywords: aggregate, relocation, moving, manual, upgrade, relocate, hardware 
 summary: Use la reubicación de agregados para actualizar el hardware de la controladora 
 ---
-= Seleccione el procedimiento de actualización de ARL
+= Comience aquí: Elija el procedimiento de actualización de ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
-Este contenido describe cómo actualizar el hardware de la controladora sin interrupciones mediante la reubicación de agregados (ARL).
+Puede actualizar el hardware de la controladora sin interrupciones mediante la reubicación de agregados (ARL). Para conocer otros métodos de actualización del hardware del controlador, consulte link:../upgrade/upgrade-decide-to-use-this-guide.html["Actualice trasladando volúmenes o almacenamiento"].
 
-Para conocer otros métodos de actualización del hardware del controlador, consulte link:../upgrade/upgrade-decide-to-use-this-guide.html["Actualice trasladando volúmenes o almacenamiento"].
+El uso de ARL permite actualizar de forma no disruptiva el hardware de la controladora en un par de nodos que ejecutan ONTAP mediante la migración de agregados no raíz de los nodos originales a los nodos nuevos del mismo clúster. Durante la actualización, se puede acceder a los datos alojados en los nodos que se están actualizando.
 
-Puede actualizar el hardware de la controladora de forma no disruptiva en un par de nodos que ejecutan ONTAP migrando agregados que no son raíz de los nodos originales a los nuevos del mismo clúster. Durante la actualización, se puede acceder a los datos alojados en los nodos que se están actualizando.
+ARL aprovecha la configuración de alta disponibilidad para ofrecerle la posibilidad de mover la propiedad de agregados no raíz de un nodo a otro si comparten almacenamiento dentro del mismo clúster.
 
-ARL aprovecha la configuración de alta disponibilidad para ofrecerle la funcionalidad de mover la propiedad de agregados que no son raíz de un nodo a otro si comparten almacenamiento dentro del mismo clúster.
+Existen varios métodos ARL para actualizar el hardware del controlador. Para seleccionar el procedimiento adecuado, revise la siguiente información sobre los sistemas y las versiones de ONTAP compatibles con cada opción de actualización de ARL.
 
-Existen dos métodos ARL para actualizar el hardware de su controladora, usando comandos del sistema o realizando una actualización manual. Antes de empezar, debe comprobar que ha seleccionado el contenido correcto para la actualización del hardware de la controladora.
 
-Si va a realizar una actualización mediante comandos del sistema, consulte la siguiente tabla:
 
-[cols="30,70"]
+== Utilice comandos para reemplazar la controladora del sistema con ONTAP 9.15,1 o posterior
+
+Si el escenario de actualización aparece en la siguiente matriz de sistemas compatibles, vaya a link:../upgrade-arl-auto-app-9151/index.html["Utilice comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora introducido en ONTAP 9.15.1"] para iniciar el procedimiento de actualización.
+
+.Muestra los sistemas admitidos
+[%collapsible]
+====
 |===
-| Si está ejecutando esta versión de ONTAP… | Para actualizar con comandos del sistema, utilice… 
+| Controladora existente | Controladora de reemplazo | Compatible empezando con ONTAP... 
 
 
-| 9.15.1 o posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["Utilice comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora introducido en ONTAP 9.15.1"] 
+| FAS8200, FAS8300, FAS8700 Y FAS9000 | FAS70, FAS90 | 9.15.1P3 
 
 
-| 9.10.1 o posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Utilice los comandos para sustituir la controladora del sistema para actualizar los modelos de controladora en el mismo chasis"] Es posible usar este procedimiento para actualizar una controladora AFF configurada como cabina All SAN (ASA) a una controladora ASA en ciertos modelos y versiones de software ONTAP. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Leer más"]. 
+| FAS9500 | FAS90 | 9.15.1P3 
 
 
-| 9.8 o posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["Utilice comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior"] 
+| AFF A300, AFF A400, AFF A700 | AFF A70, AFF A90, AFF A1K | 9.15.1 
 
 
-| 9.5 a 9.7 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/index.html["Utilice los comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecuta ONTAP 9.5 a ONTAP 9.7"] 
+| AFF A900 | AFF A90 y AFF A1K | 9.15.1 
 |===
-Si va a realizar una actualización manual, consulte la tabla siguiente:
+====
 
-[cols="30,70"]
+
+== Actualice los modelos de controladoras en el mismo chasis
+
+Si el escenario de actualización aparece en la siguiente matriz de sistemas compatibles, vaya a link:../upgrade-arl-auto-affa900/index.html["Utilice los comandos para sustituir la controladora del sistema para actualizar los modelos de controladora en el mismo chasis"] para iniciar el procedimiento de actualización.
+
+.Muestra los sistemas admitidos
+[%collapsible]
+====
+[cols="20,20,40"]
 |===
-| Si está ejecutando esta versión de ONTAP… | Para realizar la actualización manualmente, utilice… 
+| Sistema antiguo | Sistema de sustitución | Versiones de ONTAP compatibles 
 
 
-| 9.8 o posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual-app/index.html["Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior"] 
+| AFF A800 | AFF A70 o AFF A90 | 9.15.1 y posterior 
 
 
-| 9.0 a 9.7 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/index.html["Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.7 o una versión anterior"] 
+| AFF A220 configurado como cabina All SAN (ASA) | ASA A150 | 9.13.1P1 y posterior 
+
+
+| AFF A220 | AFF A150 | 9.10.1P15, 9.11.1P11, 9.12.1P5 y posteriores 
+
+
+| AFF A200 | AFF A150  a| 
+9.10.1P15, 9.11.1P11 y posterior
+
+*Nota*: AFF A200 no admite versiones de ONTAP posteriores a 9.11.1.
+
+
+
+| C190 de AFF | AFF A150 | 9.10.1P15, 9.11.1P11, 9.12.1P5 y posteriores 
+
+
+| FAS2620 | FAS2820  a| 
+9.11.1P7 (FAS2620)
+
+*Nota*: FAS2620 no admite versiones de ONTAP posteriores a 9.11.1.
+
+9.13.1 y posterior (FAS2820)
+
+
+
+| FAS2720 | FAS2820 | 9.13.1 y posterior 
+
+
+| AFF A700 configurado como ASA | ASA A900 | 9.13.1P1 y posterior 
+
+
+| AFF A700 | AFF A900 | 9.10.1P10, 9.11.1P6 y posterior 
+
+
+| FAS9000 | FAS9500 | 9.10.1P10, 9.11.1P6 y posterior 
 |===
+====
+
+
+== Utilice comandos para reemplazar la controladora del sistema con ONTAP 9.8 o posterior
+
+Si el escenario de actualización aparece en la siguiente matriz de sistemas compatibles, vaya a link:../upgrade-arl-auto-app/index.html["Utilice comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior"] para iniciar el procedimiento de actualización.
+
+.Muestra los sistemas admitidos
+[%collapsible]
+====
+|===
+| La controladora anterior | Controladora de reemplazo 
+
+
+| FAS8020, FAS8040, FAS8060 Y FAS8080 | FAS8200, FAS8300, FAS8700 Y FAS9000 
+
+
+| FAS8060, FAS8080 | FAS9500 
+
+
+| AFF8020, AFF8040, AFF8060 Y AFF8080 | AFF A300, AFF A400, AFF A700, AFF A800 
+
+
+| AFF8060, AFF8080 | AFF A900 
+
+
+| FAS8200 | FAS8300 DE FEBRERO DE FAS8700, FAS9000 FAS9500 
+
+
+| FAS8300, FAS8700 Y FAS9000 | FAS9500 
+
+
+| AFF A300 | AFF A400, AFF A700, AFF A800, AFF A900 
+
+
+| AFF A320 | AFF A400 
+
+
+| AFF A400, AFF A700 | AFF A900 
+|===
+====
+
+
+== Utilice los comandos para reemplazar la controladora del sistema con ONTAP 9.5 a 9,7
+
+Si el escenario de actualización aparece en la siguiente matriz de sistemas compatibles, vaya a link:../upgrade-arl-auto/index.html["Utilice los comandos para sustituir la controladora del sistema para actualizar el hardware de la controladora que ejecuta ONTAP 9.5 a 9.7"] para iniciar el procedimiento de actualización.
+
+.Muestra los sistemas admitidos
+[%collapsible]
+====
+[cols="50,50"]
+|===
+| La controladora anterior | Controladora de reemplazo 
+
+
+| FAS8020, FAS8040, FAS8060 Y FAS8080 | FAS8200, FAS8300, FAS8700 Y FAS9000 
+
+
+| AFF8020, AFF8040, AFF8060 Y AFF8080 | AFF A300, AFF A400, AFF A700, AFF A800 
+
+
+| FAS8200 | FAS8700, FAS9000, FAS8300 
+
+
+| AFF A300 | AFF A700, AFF A800, AFF A400 
+|===
+====
+
+
+== Utilice comandos ARL manuales
+
+Si el escenario de actualización no es compatible con comandos del sistema, puede realizar una actualización de ARL mediante comandos manuales.
+
+Elija el procedimiento para su versión de ONTAP para iniciar la actualización:
+
+* link:../upgrade-arl-manual-app/index.html["Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior"]
+* link:../upgrade-arl-manual/index.html["Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.7 o una versión anterior"]
+

@@ -10,7 +10,7 @@ summary: 'Reubique los agregados que no son raíz del nodo 3 cuando actualice la
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

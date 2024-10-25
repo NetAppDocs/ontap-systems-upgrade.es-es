@@ -10,7 +10,7 @@ summary: Mueva los LIF de datos NAS del nodo 3 del nodo 3 al nodo 4 durante una 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Sepa si puede utilizar ARL, manteniendo el chasis y los discos del sist
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

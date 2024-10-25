@@ -10,7 +10,7 @@ summary: 'El sistema podría bloquearse (reiniciar, producir alarmas o pasar por
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

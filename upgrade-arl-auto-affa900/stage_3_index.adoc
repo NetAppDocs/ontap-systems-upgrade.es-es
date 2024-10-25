@@ -10,7 +10,7 @@ summary: 'Secuencia de proceso de etapa 3 para una actualización de ARL mediant
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

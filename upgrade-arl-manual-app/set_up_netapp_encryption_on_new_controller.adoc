@@ -10,7 +10,7 @@ summary: Si es necesario, configure el nuevo módulo de controladoras para NVE o
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

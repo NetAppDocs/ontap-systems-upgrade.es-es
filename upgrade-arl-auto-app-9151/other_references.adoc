@@ -10,7 +10,7 @@ summary: 'Consulte el contenido y los sitios web necesarios para admitir una act
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

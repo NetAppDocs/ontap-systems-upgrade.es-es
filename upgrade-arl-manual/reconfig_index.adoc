@@ -10,7 +10,7 @@ summary: Para ONTAP 9.1 o posterior, vuelva a configurar la distribución del pu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

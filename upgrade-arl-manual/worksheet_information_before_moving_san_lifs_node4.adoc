@@ -10,7 +10,7 @@ summary: Registrar la información de configuración de LIF de datos de NAS del 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

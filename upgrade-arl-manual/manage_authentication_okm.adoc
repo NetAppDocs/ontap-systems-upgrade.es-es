@@ -10,7 +10,7 @@ summary: Utilice OKM para administrar claves de autenticación durante una actua
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

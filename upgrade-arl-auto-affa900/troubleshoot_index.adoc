@@ -10,7 +10,7 @@ summary: Solucione los fallos que pueden producirse al utilizar ARL para actuali
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Haga referencia al contenido y a los sitios web necesarios para admitir
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

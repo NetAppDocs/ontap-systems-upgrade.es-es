@@ -10,7 +10,7 @@ summary: Instalar archivos RCF para volver a configurar los switches de Cisco y 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

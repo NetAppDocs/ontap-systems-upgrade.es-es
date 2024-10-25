@@ -10,7 +10,7 @@ summary: Debe tener ciertas herramientas y documentación para usar ARL para act
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

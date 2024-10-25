@@ -10,7 +10,7 @@ summary: 'Durante la etapa 3, confirme que el nuevo nodo se une al quórum para 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

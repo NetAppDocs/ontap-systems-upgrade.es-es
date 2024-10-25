@@ -10,7 +10,7 @@ summary: 'Compruebe que el nodo 3 se una al quórum, vuelva a crear las VLAN del
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

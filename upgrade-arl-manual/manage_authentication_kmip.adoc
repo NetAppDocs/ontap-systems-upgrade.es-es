@@ -10,7 +10,7 @@ summary: Utilice servidores KMIP para gestionar las claves de autenticación dur
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

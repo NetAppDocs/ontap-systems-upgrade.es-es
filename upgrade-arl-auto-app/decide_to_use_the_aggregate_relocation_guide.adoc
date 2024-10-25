@@ -10,7 +10,7 @@ summary: 'Decidir si se utilizará ARL para actualizar controladoras que ejecuta
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

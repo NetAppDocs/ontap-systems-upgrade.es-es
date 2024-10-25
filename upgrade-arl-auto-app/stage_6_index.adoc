@@ -10,7 +10,7 @@ summary: 'Secuencia de procesos en la fase 6 de una actualización de ARL median
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

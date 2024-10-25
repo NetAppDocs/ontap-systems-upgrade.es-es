@@ -10,7 +10,7 @@ summary: Mueva los LIF de datos del nodo 1 al nodo 2 si tiene un clúster de dos
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

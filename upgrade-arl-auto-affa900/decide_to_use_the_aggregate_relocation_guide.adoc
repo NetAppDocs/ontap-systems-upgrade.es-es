@@ -10,7 +10,7 @@ summary: Decidir si utilizar el procedimiento ARL que actualiza los modelos de c
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

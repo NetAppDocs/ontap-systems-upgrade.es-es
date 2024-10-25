@@ -10,7 +10,7 @@ summary: Los LIF de resincronización que están en puertos no válidos en una c
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

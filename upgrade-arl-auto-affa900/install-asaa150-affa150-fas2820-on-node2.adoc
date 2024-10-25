@@ -10,7 +10,7 @@ summary: Instale los módulos del sistema de reemplazo en node2 durante una actu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

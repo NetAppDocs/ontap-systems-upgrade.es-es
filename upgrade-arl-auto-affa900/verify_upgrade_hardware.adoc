@@ -10,7 +10,7 @@ summary: Antes de iniciar la actualización, verifique que disponga del hardware
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

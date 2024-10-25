@@ -10,7 +10,7 @@ summary: Informe al soporte técnico de NetApp de que se está realizando el man
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

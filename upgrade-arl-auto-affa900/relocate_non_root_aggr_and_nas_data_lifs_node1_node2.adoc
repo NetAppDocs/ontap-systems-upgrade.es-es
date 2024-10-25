@@ -10,7 +10,7 @@ summary: Mueva los agregados no raíz y las LIF de datos NAS de node1 a node2 y 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

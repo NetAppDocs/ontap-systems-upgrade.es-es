@@ -10,7 +10,7 @@ summary: 'Apague el nodo 2 y lo quite del rack o el chasis cuando actualice las 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Arranque node2 con los módulos de controladora de reemplazo cuando uti
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

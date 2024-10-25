@@ -10,7 +10,7 @@ summary: Confirmar que las unidades de disco internas no contienen agregados ra√
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

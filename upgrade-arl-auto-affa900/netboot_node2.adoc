@@ -10,7 +10,7 @@ summary: Después de intercambiar los módulos del sistema node2 de reemplazo co
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Reanude las transferencias y las relaciones de SnapMirror cuando se ac
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

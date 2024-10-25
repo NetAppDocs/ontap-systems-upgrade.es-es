@@ -10,7 +10,7 @@ summary: 'Si es necesario, restaure la configuración de Key-Manager en el nodo 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

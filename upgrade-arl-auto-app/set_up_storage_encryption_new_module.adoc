@@ -10,7 +10,7 @@ summary: 'Si es necesario, configure el cifrado de almacenamiento, instale certi
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

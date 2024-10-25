@@ -10,7 +10,7 @@ summary: Instale y arranque el nodo 3 e instale el software ONTAP durante una ac
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

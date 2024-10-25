@@ -10,7 +10,7 @@ summary: Configure los puertos FC integrados de nodo 4, los puertos UTA/UTA2 o l
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -23,7 +23,7 @@ Para actualizar moviendo el almacenamiento, debe preparar los nodos originales y
 ====
 En los pasos para actualizar el hardware de la controladora, para mover el almacenamiento, los nodos originales se denominan nodo 1 y nodo 4, y los nuevos se denominan nodo 3 y nodo 4. Durante el procedimiento descrito, el nodo 1 se reemplaza por nodo 3, y el nodo 2 se reemplaza por nodo 4.
 
-image::../upgrade/media/original_to_new_nodes.png[Reemplazar node3 y node4 por node1 y node2]
+image:original_to_new_nodes.png["Reemplazar node1 y node2 por node3 y node4"]
 
 Los términos 1, 2, nodo 3 y nodo 4 solo se usan para distinguir entre los nodos originales y los nuevos. Al seguir el procedimiento, debe sustituirlos por los nombres reales de los nodos originales y nuevos. Sin embargo, en realidad los nombres de los nodos no cambian: El nodo 3 tiene el nombre 1-nodo y el nodo 4 tiene el nombre 2 después de actualizar el hardware de la controladora.
 

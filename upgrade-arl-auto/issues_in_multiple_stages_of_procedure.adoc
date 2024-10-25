@@ -10,7 +10,7 @@ summary: 'Información sobre problemas que pueden producirse al actualizar contr
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

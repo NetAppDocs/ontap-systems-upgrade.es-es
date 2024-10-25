@@ -10,7 +10,7 @@ summary: Recopile cierta información durante una actualización manual de ARL e
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

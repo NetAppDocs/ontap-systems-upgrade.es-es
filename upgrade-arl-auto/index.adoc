@@ -10,7 +10,7 @@ summary: 'Es posible actualizar el hardware de la controladora que ejecuta ONTAP
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

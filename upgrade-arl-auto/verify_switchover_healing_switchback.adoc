@@ -10,7 +10,7 @@ summary: 'Verifique las operaciones de conmutación de sitios, reparación y con
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

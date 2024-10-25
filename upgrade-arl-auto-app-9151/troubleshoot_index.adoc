@@ -10,7 +10,7 @@ summary: 'Solucione los errores que pueden producirse al actualizar controladora
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

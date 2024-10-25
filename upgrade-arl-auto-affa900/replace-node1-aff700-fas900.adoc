@@ -10,7 +10,7 @@ summary: Sustituya los módulos del sistema AFF A700 o FAS9000 node1 cuando util
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -35,7 +35,7 @@ WARNING: Cuando esté trabajando en el nodo 1, quite únicamente la consola y lo
 +
 .. Deslice el botón naranja del asa de la leva hacia abajo hasta que se desbloquee.
 +
-image::../media/drw_9500_remove_PCM.png[Retire el módulo del controlador]
+image:drw_9500_remove_PCM.png["Retire el módulo del controlador"]
 
 +
 [cols="20,80"]
@@ -43,12 +43,12 @@ image::../media/drw_9500_remove_PCM.png[Retire el módulo del controlador]
 
 
  a| 
-image::../media/black_circle_one.png[Número uno]
+image:black_circle_one.png["Número uno"]
 | Botón de liberación de la palanca de leva 
 
 
  a| 
-image::../media/black_circle_two.png[Número dos]
+image:black_circle_two.png["Número dos"]
 | Mango de leva 
 |===
 .. Gire el asa de leva para que desacople completamente el módulo del controlador del chasis y, a continuación, deslice el módulo del controlador para sacarlo del chasis.
@@ -81,7 +81,7 @@ El módulo NVRAM se desconecta del chasis y se mueve unas pocas pulgadas.
 
 .. Extraiga el módulo NVRAM del chasis tirando de las lengüetas de tiro situadas en los lados de la cara del módulo.
 +
-image::../media/drw_a900_move-remove_NVRAM_module.png[Extraiga el módulo NVRAM]
+image:drw_a900_move-remove_NVRAM_module.png["Extraiga el módulo NVRAM"]
 
 +
 [cols="20,80"]
@@ -89,12 +89,12 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[Extraiga el módulo NVRAM]
 
 
  a| 
-image::../media/black_circle_one.png[Número uno]
+image:black_circle_one.png["Número uno"]
 | Pestillo de leva de E/S numerado y con letras 
 
 
  a| 
-image::../media/black_circle_two.png[Número dos]
+image:black_circle_two.png["Número dos"]
 | Pestillo de I/o completamente desbloqueado 
 |===
 
@@ -127,7 +127,7 @@ Instale el módulo ASA A900, AFF A900 o FAS9500 NVRAM en la ranura 6 de node1.
 . Alinee el módulo NVRAM con los bordes de la abertura del chasis en la ranura 6.
 . Deslice suavemente el módulo NVRAM hacia dentro de la ranura hasta que el pestillo de leva de E/S con letras y numerado comience a acoplarse con el pasador de leva de E/S y, a continuación, empuje el pestillo de leva de E/S hasta bloquear el módulo NVRAM en su sitio.
 +
-image::../media/drw_a900_move-remove_NVRAM_module.png[Instale el módulo NVRAM]
+image:drw_a900_move-remove_NVRAM_module.png["Instale el módulo NVRAM"]
 
 +
 [cols="20,80"]
@@ -135,12 +135,12 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[Instale el módulo NVRAM]
 
 
  a| 
-image::../media/black_circle_one.png[Número uno]
+image:black_circle_one.png["Número uno"]
 | Pestillo de leva de E/S numerado y con letras 
 
 
  a| 
-image::../media/black_circle_two.png[Número dos]
+image:black_circle_two.png["Número dos"]
 | Pestillo de I/o completamente desbloqueado 
 |===
 
@@ -171,7 +171,7 @@ El pestillo de bloqueo se eleva cuando el módulo del controlador está completa
 WARNING: Para evitar dañar los conectores, no ejerza una fuerza excesiva al deslizar el módulo del controlador hacia el chasis.
 
 +
-image::../media/drw_9500_remove_PCM.png[Instale el módulo del controlador]
+image:drw_9500_remove_PCM.png["Instale el módulo del controlador"]
 
 +
 [cols="20,80"]
@@ -179,12 +179,12 @@ image::../media/drw_9500_remove_PCM.png[Instale el módulo del controlador]
 
 
  a| 
-image::../media/black_circle_one.png[Número uno]
+image:black_circle_one.png["Número uno"]
 | Pestillo de bloqueo del tirador de la leva 
 
 
  a| 
-image::../media/black_circle_two.png[Número dos]
+image:black_circle_two.png["Número dos"]
 | Palanca de leva en posición desbloqueada 
 |===
 . Conecte la consola de serie en cuanto esté sentado el módulo y esté listo para interrumpir EL ARRANQUE AUTOMÁTICO del nodo 1.

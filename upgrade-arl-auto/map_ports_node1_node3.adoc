@@ -10,7 +10,7 @@ summary: 'Compruebe que los puertos físicos del nodo 1 se asignan correctamente
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

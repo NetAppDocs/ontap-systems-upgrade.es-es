@@ -10,7 +10,7 @@ summary: Secuencia de procesos en fase 2 para una actualización manual de ARL e
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

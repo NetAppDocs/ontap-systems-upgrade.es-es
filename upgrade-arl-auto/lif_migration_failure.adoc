@@ -10,7 +10,7 @@ summary: 'Las LIF no están en línea después de la migración en las etapas 2,
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

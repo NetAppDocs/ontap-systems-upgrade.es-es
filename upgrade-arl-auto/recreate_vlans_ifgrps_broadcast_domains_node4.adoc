@@ -10,7 +10,7 @@ summary: 'Vuelva a crear las VLAN, los grupos de interfaces y los dominios de re
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

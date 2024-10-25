@@ -10,7 +10,7 @@ summary: Deshabilite el par de alta disponibilidad con el nodo 2 y apague correc
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

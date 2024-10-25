@@ -10,7 +10,7 @@ summary: Fase 1 secuencia de procesos para una actualización manual de ARL en c
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

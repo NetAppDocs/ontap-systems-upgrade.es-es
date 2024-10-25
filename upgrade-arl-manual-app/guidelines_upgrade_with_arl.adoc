@@ -10,7 +10,7 @@ summary: Comprenda si puede utilizar el procedimiento manual de actualización d
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

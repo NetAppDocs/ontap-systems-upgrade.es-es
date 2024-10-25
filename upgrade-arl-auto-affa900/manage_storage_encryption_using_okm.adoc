@@ -10,7 +10,7 @@ summary: Configurar y gestionar el cifrado de almacenamiento, gestionar las clav
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

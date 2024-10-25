@@ -10,7 +10,7 @@ summary: Prepare el nodo original para la actualización realizando tareas en lo
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

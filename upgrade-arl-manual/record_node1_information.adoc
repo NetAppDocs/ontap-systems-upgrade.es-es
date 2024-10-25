@@ -10,7 +10,7 @@ summary: Registre información acerca de la red del clúster 1-1, la gestión, l
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

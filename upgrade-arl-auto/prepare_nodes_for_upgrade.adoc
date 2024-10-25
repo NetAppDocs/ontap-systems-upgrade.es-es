@@ -10,7 +10,7 @@ summary: 'Prepare los nodos y realice una serie de comprobaciones previas al act
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

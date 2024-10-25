@@ -10,7 +10,7 @@ summary: 'Debe disponer de ciertas herramientas y documentación para actualizar
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Utilice la herramienta Config Advisor para comprobar si hay errores de 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

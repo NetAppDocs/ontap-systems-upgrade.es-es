@@ -10,7 +10,7 @@ summary: 'Conozca cómo el procedimiento para actualizar controladoras que ejecu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

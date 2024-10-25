@@ -10,7 +10,7 @@ summary: Use el administrador de claves incorporado para gestionar claves de aut
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

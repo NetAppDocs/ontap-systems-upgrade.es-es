@@ -10,7 +10,7 @@ summary: 'Reubicar manualmente agregados con fallos o vetados cuando se actualic
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

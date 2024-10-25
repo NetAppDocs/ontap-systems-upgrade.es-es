@@ -10,7 +10,7 @@ summary: Decidir si utilizar el procedimiento manual de ARL para actualizar cont
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

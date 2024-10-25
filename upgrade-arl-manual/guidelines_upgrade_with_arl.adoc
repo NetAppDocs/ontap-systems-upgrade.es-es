@@ -10,7 +10,7 @@ summary: Sepa si puede utilizar el procedimiento manual de ARL para un par de co
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
