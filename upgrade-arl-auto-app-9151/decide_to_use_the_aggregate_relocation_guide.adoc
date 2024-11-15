@@ -52,7 +52,7 @@ No puede utilizar este procedimiento en las siguientes circunstancias:
 |===
 [NOTE]
 ====
-AFF A70 y AFF A90 son sistemas integrados con dos discos incorporados y dos controladoras en un único chasis.
+AFF A70 y AFF A90 son sistemas integrados con dos controladoras en una configuración de alta disponibilidad y discos incorporados en un único chasis.
 
 * Si va a actualizar a un AFF A70 o un AFF A90 con unidades internas, debe eliminar la propiedad de esas unidades antes de la actualización. Después de completar la actualización, puede asignar las unidades internas a los nodos AFF A70 o AFF A90 y usarlas para crear agregados de datos. No es obligatorio migrar agregados de datos o raíz a unidades internas.
 * Si se actualiza a un AFF A70 o AFF A90 sin unidades internas, no es necesario asignar unidades internas después de completar la actualización.
