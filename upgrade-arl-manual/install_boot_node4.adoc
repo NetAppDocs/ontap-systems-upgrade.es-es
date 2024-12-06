@@ -52,7 +52,7 @@ Las siguientes referencias le ayudan a realizar las conexiones de cable adecuada
 +
 ** _Instrucciones de instalación y configuración_ o _FlexArray requisitos de instalación y referencia_ para la plataforma node4
 ** El procedimiento de la bandeja de discos apropiado
-** La documentación _High Availability Management_
+** La documentación _HA pair management_
 +
 Conectar las siguientes conexiones:
 

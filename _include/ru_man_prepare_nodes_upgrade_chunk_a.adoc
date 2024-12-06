@@ -7,7 +7,7 @@ Antes de poder sustituir los nodos originales, debe confirmar que están en un p
 .Pasos
 . Confirme que cada uno de los nodos originales tiene suficientes recursos para admitir adecuadamente la carga de trabajo de ambos nodos durante el modo de toma de control.
 +
-Consulte link:other_references.html["Referencias"] Para enlazar con _High Availability Management_ y seguir la sección _Best Practices for ha pares_ . Ninguno de los nodos originales debe estar funcionando con una utilización superior al 50 %; si el nodo se está ejecutando con una utilización inferior al 50 %, puede manejar las cargas de ambos nodos durante la actualización de la controladora.
+Consulte link:other_references.html["Referencias"]el enlace _HA PARK MANAGEMENT_ y siga la sección _Best practices for HA PARES_. Ninguno de los nodos originales debe estar funcionando con una utilización superior al 50 %; si el nodo se está ejecutando con una utilización inferior al 50 %, puede manejar las cargas de ambos nodos durante la actualización de la controladora.
 
 . Complete los siguientes subpasos para crear una base de rendimiento para los nodos originales:
 +
@@ -150,7 +150,7 @@ node1          node2          true     Connected to node2, Partial giveback
 node2          node1          true     Connected to node1
 ....
 +
-Si alguno de los nodos está en una devolución parcial, use el `storage failover giveback` comando para realizar la devolución y, a continuación, utilizar la `storage failover show-giveback` comando para garantizar que no es necesario devolver ningún agregado. Para obtener información detallada sobre los comandos, consulte link:other_references.html["Referencias"] Para enlazar con _High Availability Management_.
+Si alguno de los nodos está en retorno parcial, utilice `storage failover giveback` el comando para realizar el retorno al nodo primario y, a continuación, utilice `storage failover show-giveback` el comando para asegurarse de que aún no es necesario devolver agregados. Para obtener información detallada sobre los comandos, consulte link:other_references.html["Referencias"]el enlace a _HA pair management_.
 
 . [[man_prepare_Nodes_step9]]confirme que ni el nodo 1 ni el nodo 2 poseen los agregados para los que es el propietario actual (pero no el propietario del hogar):
 +
@@ -239,7 +239,7 @@ node1    None                None
 node2    None                None
 ....
 +
-Si falta algún disco, consulte link:other_references.html["Referencias"] Para establecer un vínculo a la gestión de discos y agregados con la CLI_, _administración de almacenamiento lógico con la CLI_ y _Administración de alta disponibilidad_ para configurar el almacenamiento para el par de alta disponibilidad.
+Si falta algún disco, consulte link:other_references.html["Referencias"]el enlace a _Disk and Aggregate management con CLI_, _Logical storage management con CLI_ y _HA pair management_ para configurar el almacenamiento para la pareja de alta disponibilidad.
 
 . Confirmar que los nodos 1 y 2 están en buen estado y que pueden participar en el clúster:
 +

@@ -77,7 +77,7 @@ El sistema ejecuta las siguientes comprobaciones previas; registre la salida de 
 | Comprobación del estado del agregado | Si los nodos que se van a sustituir tienen agregados propios para los que no son el propietario principal, la tarea fallará. Los nodos no deben tener ningún agregado que no sea local. 
 
 
-| Comprobación del estado del disco | Si alguno de los nodos que se van a reemplazar tiene discos ausentes o con errores, la tarea falla. Si falta algún disco, consulte link:other_references.html["Referencias"] Para establecer un vínculo a la gestión de discos y agregados con la CLI_, _administración de almacenamiento lógico con la CLI_ y _Administración de alta disponibilidad_ para configurar el almacenamiento para el par de alta disponibilidad. 
+| Comprobación del estado del disco | Si alguno de los nodos que se van a reemplazar tiene discos ausentes o con errores, la tarea falla. Si falta algún disco, consulte link:other_references.html["Referencias"]el enlace a _Disk and Aggregate management con CLI_, _Logical storage management con CLI_ y _HA pair management_ para configurar el almacenamiento para la pareja de alta disponibilidad. 
 
 
 | Comprobación del estado de LIF de datos | Comprueba si alguno de los nodos que se van a reemplazar tiene LIF de datos no locales. Los nodos no deben contener ninguna LIF de datos para la cual no sean el propietario principal. Si uno de los nodos contiene LIF de datos no locales, la tarea falla. 

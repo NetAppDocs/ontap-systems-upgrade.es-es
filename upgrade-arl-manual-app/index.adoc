@@ -25,6 +25,26 @@ Este procedimiento describe cómo actualizar el hardware de la controladora medi
 * Desde el sistema FAS hasta el sistema FAS
 * Sistema FAS a un sistema con software de virtualización FlexArray o un sistema V-Series
 * Desde el sistema AFF hasta el sistema AFF
++
+Sólo puede actualizar a un sistema de sustitución de la misma serie:
+
++
+** El sistema A-Series de AFF para el sistema AFF A-Series
+** Del sistema C-Series de AFF al sistema AFF C-Series
+
+
+* Desde el sistema ASA hasta el sistema ASA
++
+No se admite la actualización de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
+
++
+Sólo puede actualizar a un sistema de sustitución de la misma serie:
+
++
+** El sistema A-Series de ASA para el sistema ASA A-Series
+** Del sistema C-Series de ASA al sistema ASA C-Series
+
+
 * Un sistema con software de virtualización FlexArray o un sistema V-Series a un sistema FAS, siempre y cuando el sistema con software de virtualización FlexArray o los sistemas V-Series no tenga LUN de cabina.
 * Sistema de V-Series a un sistema con software de virtualización FlexArray o un sistema V-Series
 

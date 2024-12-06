@@ -17,6 +17,7 @@ Utilice este procedimiento si desea actualizar el hardware de la controladora en
 
 [NOTE]
 ====
+* No se admite la actualización de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
 * Cuando actualiza a un sistema introducido en ONTAP 9.15,1, ONTAP convierte la eficiencia de almacenamiento de los volúmenes existentes y aplica las nuevas funciones de eficiencia del almacenamiento que utilizan la funcionalidad de descarga de hardware. Se trata de un proceso automático en segundo plano, sin impacto visible en el rendimiento del sistema.
 +
 ** Para sistemas AFF A70, AFF A90 o AFF A1K, ONTAP convierte la eficiencia del almacenamiento de todos los volúmenes Thin-Provisioning existentes, incluidos aquellos que no usan la eficiencia del almacenamiento.

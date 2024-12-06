@@ -42,7 +42,7 @@ WARNING: Este procedimiento se aplica estrictamente a las siguientes configuraci
 
 
 | FAS2620 | FAS2820  a| 
-9.11.1P7 (FAS2620) ^2^
+9.11.1P7 o versiones de revisión posteriores (FAS2620) ^2^
 
 9.13.1 y posterior (FAS2820)
 

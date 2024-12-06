@@ -46,7 +46,7 @@ El contenido específico de esta actualización se muestra en la siguiente tabla
 | link:https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Referencias y requisitos de instalación de la virtualización FlexArray"^] | Contiene instrucciones de cableado y otra información para los sistemas de virtualización FlexArray. 
 
 
-| link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Gestión de alta disponibilidad"^] | Describe cómo instalar y gestionar las configuraciones almacenadas en clúster de alta disponibilidad, incluidas la conmutación al nodo de respaldo y la toma de control/retorno al nodo primario de almacenamiento. 
+| link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Gestión de parejas de HA"^] | Describe cómo instalar y gestionar las configuraciones almacenadas en clúster de alta disponibilidad, incluidas la conmutación al nodo de respaldo y la toma de control/retorno al nodo primario de almacenamiento. 
 
 
 | link:https://docs.netapp.com/us-en/ontap/volumes/index.html["Gestión de almacenamiento lógico con CLI"^] | Describe cómo gestionar de forma eficiente sus recursos de almacenamiento lógico mediante volúmenes, volúmenes de FlexClone, archivos y LUN Volúmenes FlexCache, deduplicación, compresión, qtrees y cuotas. 
