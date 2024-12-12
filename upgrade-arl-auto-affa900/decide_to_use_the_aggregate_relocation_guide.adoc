@@ -55,12 +55,12 @@ Puede utilizar este procedimiento en las siguientes circunstancias:
 * Está ejecutando la versión mínima de ONTAP para la actualización. Para obtener más información, consulte link:index.html["Descripción general"].
 * No desea añadir las nuevas controladoras como una nueva pareja de alta disponibilidad al clúster y migrar los datos mediante movimientos de volúmenes.
 * Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en modo de privilegios de diagnóstico.
+* Los sistemas ejecutan ONTAP 9.15.1 o posterior, y utilizan switches Ethernet para conectarse al almacenamiento conectado a Ethernet.
 
 
 No puede utilizar este procedimiento en las siguientes circunstancias:
 
 * Utiliza el software de virtualización FlexArray en los sistemas AFF A800, AFF A700 o FAS9000.
-* En este caso, utiliza un switch compartido para la interconexión del clúster y almacenamiento conectado a Ethernet.
 
 
 Para actualizar las configuraciones IP de MetroCluster en sistemas AFF A800, AFF A700 o FAS9000, consulte link:other_references.html["Referencias"] para vincular al contenido _Actualización y expansión de MetroCluster_.

@@ -62,7 +62,6 @@
   <block id="b4c7c005a4b2204b56da4bbb5a2e62b0" category="doc">Decida si desea utilizar el procedimiento de reubicación de agregados</block>
   <block id="eb51502469d00e14522e17bfff4124ad" category="list-text">No desea añadir las nuevas controladoras como una nueva pareja de alta disponibilidad al clúster y migrar los datos mediante movimientos de volúmenes.</block>
   <block id="a3bad37bbfc8cbb39ebdfc42ccfa6bec" category="list-text">Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en modo de privilegios de diagnóstico.</block>
-  <block id="d94e9d7914bbd98510d8cb9e0a6d08b1" category="list-text">En este caso, utiliza un switch compartido para la interconexión del clúster y almacenamiento conectado a Ethernet.</block>
   <block id="d95867deadfe690e40f42068d6b59df8" category="inline-link-macro">Referencias</block>
   <block id="9ba1e09b1ddccd53d79db29e9f36df42" category="admonition">Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.</block>
   <block id="10d20d0fff1a2bb0b064f8b1a068b234" category="paragraph">Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> Para enlazar con _Upgrade moviendo volúmenes o Storage_.</block>
@@ -5258,4 +5257,5 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="04a7d3ed17290dfa8c947b7265180931" category="list-text">Desde el sistema ASA hasta el sistema ASA</block>
   <block id="6cc3f2b4a05b456b1f754eaf8cb03200" category="list-text">El sistema A-Series de ASA para el sistema ASA A-Series</block>
   <block id="af2a1a7e91ed894338bb4bd32c3e13d0" category="list-text">Del sistema C-Series de ASA al sistema ASA C-Series</block>
+  <block id="bd78dcbf9a0f6c9dff2586a02d89b664" category="list-text">Los sistemas ejecutan ONTAP 9.15.1 o posterior, y utilizan switches Ethernet para conectarse al almacenamiento conectado a Ethernet.</block>
 </blocks>
