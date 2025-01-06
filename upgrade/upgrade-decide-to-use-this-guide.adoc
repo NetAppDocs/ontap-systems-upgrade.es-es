@@ -17,10 +17,10 @@ Utilice este procedimiento si desea actualizar el hardware de la controladora en
 
 [NOTE]
 ====
-* No se admite la actualización de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
-* Cuando actualiza a un sistema introducido en ONTAP 9.15,1, ONTAP convierte la eficiencia de almacenamiento de los volúmenes existentes y aplica las nuevas funciones de eficiencia del almacenamiento que utilizan la funcionalidad de descarga de hardware. Se trata de un proceso automático en segundo plano, sin impacto visible en el rendimiento del sistema.
+* No se admiten las actualizaciones de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de un sistema ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
+* Cuando actualiza a un sistema introducido en ONTAP 9.15.1 o posterior, ONTAP convierte la eficiencia de almacenamiento de los volúmenes existentes y aplica las nuevas funciones de eficiencia del almacenamiento que utilizan la funcionalidad de descarga de hardware. Se trata de un proceso automático en segundo plano, sin impacto visible en el rendimiento del sistema.
 +
-** Para sistemas AFF A70, AFF A90 o AFF A1K, ONTAP convierte la eficiencia del almacenamiento de todos los volúmenes Thin-Provisioning existentes, incluidos aquellos que no usan la eficiencia del almacenamiento.
+** Para AFF A20, AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60 y AFF C80, ONTAP convierte la eficiencia del almacenamiento de todos los volúmenes Thin Provisioning existentes, incluidos los que no utilizan la eficiencia del almacenamiento.
 ** Para un sistema FAS70 y FAS90, ONTAP solo convierte la eficiencia del almacenamiento de los volúmenes existentes con Thin-Provisioning que tenían activada la eficiencia del almacenamiento antes de la actualización.
 +
 link:https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["Obtenga más información sobre la eficiencia del almacenamiento"^].

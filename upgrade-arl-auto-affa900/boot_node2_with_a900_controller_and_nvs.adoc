@@ -14,36 +14,11 @@ summary: Arranque node2 con los módulos de controladora de reemplazo cuando uti
 
 
 [role="lead"]
-node2 con los módulos de reemplazo está ahora listo para arrancar. La actualización mediante el intercambio de los módulos del sistema implica mover únicamente las conexiones de la consola y de gestión. Esta sección proporciona los pasos necesarios para arrancar node2 con los módulos de reemplazo para las siguientes configuraciones de actualización:
-
-[cols="35,65"]
-|===
-| Controladora node2 existente | Sustitución de los módulos del sistema node2 
+node2 con los módulos de reemplazo está ahora listo para arrancar. Los módulos de sustitución admitidos se enumeran en la link:index.html#supported-systems,["matriz de sistemas compatibles"].
 
 
-| AFF A800 | AFF A90 o AFF A70 
+NOTE: Solo puede mover las conexiones de consola y de gestión cuando actualice cambiando los módulos del sistema.
 
-
-| AFF A220 configurado como ASA | Módulo de controlador ASA A150 
-
-
-| AFF A220
-AFF A200
-C190 de AFF | Módulo de controlador AFF A150 
-
-
-| FAS2620
-FAS2720 | Módulo del controlador FAS2820 
-
-
-| AFF A700 configurado como ASA | Controladora ASA A900 y módulos NVRAM 
-
-
-| AFF A700 | Controladora AFF A900 y módulos NVRAM 
-
-
-| FAS9000 | Controladora FAS9500 y módulos NVRAM 
-|===
 .Pasos
 . [[BOOT_node2_step1]]Si tiene unidades de cifrado del almacenamiento de NetApp (NSE) instaladas, siga los pasos siguientes.
 +

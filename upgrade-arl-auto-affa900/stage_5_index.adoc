@@ -17,6 +17,6 @@ summary: 'Secuencia de proceso de etapa 5 para una actualización de ARL mediant
 Durante la etapa 5, instale los nuevos módulos del sistema que recibió para el node2 actualizado y luego netboot node2.
 
 .Pasos
-. link:install-affa90-affa70-on-node2.html["Instale los módulos del sistema de reemplazo en node2"]
+. link:install-aff-a30-a50-c30-c50-node2.html["Instale los módulos del sistema de reemplazo en node2"]
 . link:netboot_node2.html["Reiniciar el sistema 2"]
 

@@ -16,12 +16,25 @@ summary: Puede actualizar el hardware de la controladora convirtiendo un sistema
 [role="lead"]
 Puede actualizar el hardware de la controladora de forma no disruptiva en una pareja de alta disponibilidad mediante la reubicación de agregados (ARL) y la conversión del sistema existente al sistema de reemplazo, conservando así el chasis del sistema y los discos existentes.
 
+ARL se beneficia de la configuración de alta disponibilidad y la comunicación entre clústeres. Esto le permite mover la propiedad de agregados no raíz de un nodo a otro si comparten almacenamiento dentro del mismo clúster.
 
-WARNING: Este procedimiento se aplica estrictamente a las siguientes configuraciones de actualización. *NO* Utilice este procedimiento para realizar una actualización entre cualquier otra combinación de sistema.
+La siguiente tabla muestra la matriz de sistemas admitidos para la actualización de la controladora.
+
+
+CAUTION: Este procedimiento se aplica estrictamente a las siguientes configuraciones de actualización. No utilice este procedimiento para realizar una actualización entre cualquier otra combinación del sistema. Para el resto de modelos de controladora, consulte link:other_references.html["Referencias"]el enlace a los comandos _use «system controller replace» para actualizar el hardware de la controladora con ONTAP 9,8 o posterior_ y el _using la reubicación de agregados para actualizar manualmente el hardware de la controladora con contenido ONTAP 9,8 o posterior_.
 
 [cols="20,20,40"]
 |===
 | Sistema existente | Sistema de sustitución | Versiones de ONTAP compatibles 
+
+
+| AFF C250 ^1^ | AFF C30 y AFF C60 | 9.16.1 
+
+
+| AFF A250 ^1^ | AFF A30 y AFF A50 | 9.16.1 
+
+
+| AFF C800 ^1^ | AFF C80 | 9.16.1 
 
 
 | AFF A800 ^1^ | AFF A90 o AFF A70 | 9.15.1 
@@ -59,40 +72,38 @@ WARNING: Este procedimiento se aplica estrictamente a las siguientes configuraci
 
 | FAS9000 | FAS9500 | 9.10.1P10, 9.11.1P6 y posterior 
 |===
-^1^ Al actualizar a un sistema introducido en ONTAP 9.15.1, ONTAP convierte la eficiencia del almacenamiento de todos los volúmenes con thin provisioning existentes, incluidos los que no utilizan eficiencia del almacenamiento, y aplica las nuevas funciones de eficiencia del almacenamiento que utilizan la funcionalidad de descarga de hardware. Se trata de un proceso automático en segundo plano, sin impacto visible en el rendimiento del sistema. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["Leer más"^]
+^1^ Al actualizar a un sistema introducido en ONTAP 9.15.1 o una versión posterior, ONTAP convierte la eficiencia de almacenamiento de todos los volúmenes con Thin Provisioning existentes, incluidos los que no utilizan eficiencia del almacenamiento, y aplica las nuevas funciones de eficiencia del almacenamiento que utilizan la funcionalidad de descarga de hardware. Se trata de un proceso automático en segundo plano, sin impacto visible en el rendimiento del sistema. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["Leer más"^]
 
 ^2^ Los sistemas AFF A200 y FAS2620 no admiten versiones de ONTAP posteriores a 9.11.1.
 
 [NOTE]
 ====
-NetApp recomienda, siempre que sea posible, que tenga la misma versión de ONTAP en el sistema anterior y en el de sustitución.
+NetApp recomienda encarecidamente, siempre que sea posible, que tenga la misma versión de ONTAP en los sistemas antiguos y de sustitución.
 
 El número mínimo de versiones de ONTAP de la tabla anterior es obligatorio. Estas versiones de ONTAP tienen la versión de firmware del Service Processor o de la controladora de gestión de placa base (BMC) necesaria para admitir la mezcla de tipos de controladoras en un chasis durante una actualización.
 
 ====
-Durante el procedimiento, debe migrar los agregados no raíz entre los nodos de la controladora antiguos. Después de la instalación, debe migrar los agregados no raíz de los nodos de la controladora antiguos a los nodos de la controladora de reemplazo. Durante el procedimiento de actualización, se puede acceder a los datos alojados en los nodos que se van a actualizar.
+Durante el procedimiento, debe actualizar el hardware de la controladora original con el hardware de la controladora de reemplazo y, de este modo, reubicar la propiedad de agregados que no son raíz. Debe migrar los agregados no raíz entre los nodos de la controladora antiguos. Después de instalar los nodos de reemplazo, se deben migrar los agregados no raíz desde los nodos de la controladora antiguos a los nodos de la controladora de reemplazo. Durante el procedimiento de actualización, se puede acceder a los datos alojados en los nodos que se van a actualizar. También migra LIF de datos entre nodos del clúster a medida que continúa.
 
-.Acerca de esta tarea
-Durante este procedimiento de actualización de la controladora, debe realizar una de las siguientes actualizaciones:
+El hardware de la controladora que sustituye depende del tipo de modelo de sistema existente:
 
 [cols="30,70"]
 |===
-| En la existente... | Realice lo siguiente... 
+| Si su sistema existente es... | Realice lo siguiente... 
 
 
-| AFF A800 | Intercambie las dos controladoras AFF A800, NVRAM y todos los módulos de I/O con las nuevas controladoras y módulos de I/O. 
+| AFF A250 y AFF C250 | Intercambie las dos controladoras AFF A250 o AFF C250 con las nuevas controladoras y los módulos I/O. 
 
 
-| AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720 | Intercambie el módulo del controlador en cada nodo de la controladora antigua por el módulo nuevo. 1 
+| AFF A800 y AFF C800 | Intercambie las dos controladoras AFF A800 o AFF C800 con las nuevas controladoras y los módulos I/O. 
+
+
+| AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720 | Intercambie el módulo del controlador en cada nodo de la controladora antigua por el módulo nuevo. 
 
 
 | AFF A700 o FAS9000 | Intercambie la controladora y los módulos NVRAM de cada nodo de la controladora antigua con los módulos nuevos. 1 
 |===
 ^1^ No es necesario mover, desconectar o volver a conectar las tarjetas de E/S, los cables de datos, las bandejas de discos y los discos.
-
-Este procedimiento utiliza un método denominado reubicación de agregados (ARL). ARL aprovecha la configuración de alta disponibilidad y la comunicación entre clústeres, lo que permite mover la propiedad de los agregados que no son raíz de un nodo a otro si comparten almacenamiento dentro del mismo clúster.
-
-Durante el procedimiento, debe actualizar el hardware de la controladora original con el hardware de la controladora de reemplazo y, de este modo, reubicar la propiedad de agregados que no son raíz. Puede migrar agregados varias veces de nodo a nodo para confirmar que al menos un nodo está sirviendo datos desde los agregados a través del procedimiento de actualización. También migra LIF de datos entre nodos del clúster a medida que continúa.
 
 
 NOTE: Los términos *1* y *2* sólo se utilizan como referencia a los nombres de nodo de este documento. Al seguir el procedimiento, debe sustituir los nombres reales de los nodos.
@@ -102,7 +113,7 @@ NOTE: Los términos *1* y *2* sólo se utilizan como referencia a los nombres de
 * En este procedimiento se asume que el hardware de la controladora de reemplazo es nuevo y no se ha usado en otro sistema. Los pasos necesarios para preparar las controladoras usadas con el `wipeconfig` el comando no se incluye en este procedimiento. Debe ponerse en contacto con el soporte técnico si el hardware de la controladora de reemplazo se utilizó anteriormente como parte de otro clúster de ONTAP o como sistema de un único nodo independiente.
 * Puede usar este procedimiento para actualizar el hardware de la controladora en clústeres con más de dos nodos; sin embargo, debe realizar el procedimiento por separado para cada pareja de alta disponibilidad del clúster.
 * Si tiene un switch que no es compatible con la versión de ONTAP y el sistema de sustitución al que está actualizando, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_.
-* Los sistemas AFF A70 y AFF A90 comparten puertos de red 100GbE GbE para las conexiones de clúster y de alta disponibilidad. Estos sistemas pueden admitir conexiones de clúster 10GbE o 25GbE a switches de clúster heredados; sin embargo, NetApp recomienda actualizar a las velocidades de clúster de 100GbE GbE cuando los switches 10GbE y 25GbE ya no sean necesarios. Para obtener más información, consulte los siguientes artículos de la base de conocimientos:
+* Los sistemas AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60, AFF C80, FAS70 y FAS90 comparten 100GbE puertos de red para conexiones de clúster y de alta disponibilidad. Estos sistemas pueden admitir conexiones de clúster 10GbE o 25GbE a switches de clúster heredados; sin embargo, NetApp recomienda actualizar a las velocidades de clúster de 100GbE GbE cuando los switches 10GbE y 25GbE ya no sean necesarios. Para obtener más información, consulte los siguientes artículos de la base de conocimientos:
 +
 --
 ** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup_on_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Cómo configurar los puertos de clústeres 10G o 25G en una nueva configuración de clúster en AFF/ASA A1K, A90, A70, FAS90 y FAS70"^]
@@ -111,11 +122,15 @@ NOTE: Los términos *1* y *2* sólo se utilizan como referencia a los nombres de
 
 --
 +
-Si no puede vincular los puertos de clúster e0a o e0b del nodo existente a los puertos de clúster del nodo nuevo, consulte link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["ID de error de NetApp Bugs Online CONTAP-166978"^].
+Si no puede conectar los puertos de clúster e0a o e0b del nodo existente a los puertos de clúster del nodo nuevo, consulte lo siguiente para obtener más información:
 
-* Este procedimiento solo se aplica a AFF A800, AFF A200, AFF A220, AFF C190, FAS2620, sistemas FAS2720, AFF A700 y FAS9000. Para el resto de modelos de controladoras que necesitan actualizarse a AFF A90, AFF A70, AFF A150, FAS2820, AFF A900, o del sistema FAS9500, consulte link:other_references.html["Referencias"] el enlace para actualizar el hardware de la controladora con ONTAP 9,8 o posterior y el comando _utilizando la reubicación de agregados para actualizar manualmente el hardware de la controladora con contenido de ONTAP 9,8 o posterior_.
++
+** link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["ID de error de NetApp Bugs Online CONTAP-166978"^]
+** https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1127315["ID de error de NetApp Bugs Online: 1127315"^]
+
+
 * Los sistemas ASA A900, AFF A900 y FAS9500 solo admiten energía de línea alta (de 200V V a 240V V CA). Si su sistema A700 o FAS9000 de AFF se ejecuta con una alimentación de línea baja (de 100 V a 120 V), debe convertir la alimentación de entrada de AFF A700 o FAS9000 antes de utilizar este procedimiento.
-* Si va a actualizar desde un AFF A800, AFF A200, AFF A220, AFF C190, FAS2620, sistema FAS2720, AFF A700 o FAS9000 con tiempo de inactividad, puede actualizar el hardware de la controladora moviendo almacenamiento o ponerse en contacto con el soporte técnico. Consulte link:other_references.html["Referencias"] el enlace _Actualizar moviendo volúmenes o almacenamiento_.
+* Si va a actualizar desde un sistema existente con un tiempo de inactividad incluido en los <<supported-systems-in-chassis,matriz de sistemas compatibles>>, puede actualizar el hardware de la controladora moviendo almacenamiento o ponerse en contacto con el soporte técnico. Consulte link:other_references.html["Referencias"] el enlace _Actualizar moviendo volúmenes o almacenamiento_.
 
 
 

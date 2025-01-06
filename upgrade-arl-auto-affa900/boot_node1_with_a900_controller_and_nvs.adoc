@@ -14,46 +14,22 @@ summary: Arranque node1 con los módulos de controladora de reemplazo cuando uti
 
 
 [role="lead"]
-node1 con los módulos de reemplazo está ahora listo para arrancar. Esta sección proporciona los pasos necesarios para arrancar node1 con los módulos de reemplazo para las siguientes configuraciones de actualización:
+node1 con los módulos de reemplazo está ahora listo para arrancar. Los módulos de sustitución admitidos se enumeran en la link:index.html#supported-systems,["matriz de sistemas compatibles"].
 
-[cols="35,65"]
-|===
-| Controladora node1 existente | Sustitución de los módulos del sistema node1 
+[NOTE]
+====
+Al sustituir los módulos del controlador, mueva todas las conexiones del módulo del controlador antiguo al módulo del controlador de reemplazo.
 
+Cuando reemplace la controladora y los módulos NVRAM, mueva solamente las conexiones de consola y de gestión.
 
-| AFF A800 | AFF A90 o AFF A70 ^1^ 
-
-
-| AFF A220 configurado como ASA | Módulo controlador AFF A150 ^1^ 
-
-
-| AFF A220
-AFF A200
-C190 de AFF | Módulo controlador AFF A150 ^1^ 
-
-
-| FAS2620
-FAS2720 | Módulo controlador FAS2820 ^1^ 
-
-
-| AFF A700 configurado como ASA | Controladora ASA A900 y módulos NVRAM ^2^ 
-
-
-| AFF A700 | Controladora AFF A900 y módulos NVRAM ^2^ 
-
-
-| FAS9000 | Controladora FAS9500 y módulos NVRAM ^2^ 
-|===
-^1^ Al sustituir los módulos del controlador, se mueven todas las conexiones del módulo del controlador antiguo al módulo de reemplazo.
-
-^2^ Al sustituir la controladora y los módulos NVRAM, solo se mueven las conexiones de consola y de gestión.
-
+====
 .Pasos
-. (Solo actualización de AFF A800) En el aviso del CARGADOR, introduzca el modo de mantenimiento:
+. (Solo actualización de AFF A250, AFF C250, AFF A800 o AFF C800) En el símbolo del sistema de Loader, introduzca el modo de mantenimiento:
 +
 `boot_ontap maint`
 
 +
+.. Anser `y` al indicador de confirmación de plataforma mixta.
 .. Responda a `yes` la solicitud de confirmación.
 .. Muestra el estado de las interfaces de 100GbE:
 +

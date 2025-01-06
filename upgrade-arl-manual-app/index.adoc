@@ -35,7 +35,7 @@ Sólo puede actualizar a un sistema de sustitución de la misma serie:
 
 * Desde el sistema ASA hasta el sistema ASA
 +
-No se admite la actualización de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
+No se admiten las actualizaciones de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
 
 +
 Sólo puede actualizar a un sistema de sustitución de la misma serie:

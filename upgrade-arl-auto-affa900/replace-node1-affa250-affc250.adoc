@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-affa900/replace-node1-affa800.html 
+permalink: upgrade-arl-auto-affa900/replace-node1-affa250-affc250.html 
 keywords: aff, asa, fas, replace, node1, system, modules 
-summary: Sustituya los módulos del sistema AFF A800 o AFF C800 node1 cuando utilice ARL para actualizar los modelos de controlador en el mismo chasis. 
+summary: Sustituya los módulos del sistema AFF A250 o AFF C250 node1 cuando utilice ARL para actualizar los modelos de controlador en el mismo chasis. 
 ---
-= Sustituya los módulos del controlador AFF A800 o AFF C800
+= Sustituya los módulos del controlador AFF A250 o AFF C250
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -19,30 +19,45 @@ En este momento, el nodo 1 está inactivo y todos los datos están servidos por 
 
 CAUTION: No apague el chasis, ya que node1 y node2 están en el mismo chasis y están alimentados por las mismas fuentes de alimentación.
 
+
+
+== Retire el módulo del controlador AFF A250 o AFF C250
+
+Para extraer el módulo del controlador node1, primero retire el dispositivo de gestión de cables, desbloquee los pestillos de bloqueo y, a continuación, retire el módulo del controlador del chasis.
+
 .Antes de empezar
 Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
 
-
-
-== Prepárese para extraer el módulo del controlador AFF A800 o AFF C800
-
 .Pasos
-. En la parte frontal del chasis, utilice los pulgares para empujar con firmeza cada unidad hasta que sienta una parada positiva. De este modo se garantiza que las unidades se encuentren firmemente asentadas en el plano medio del chasis.
+. Inserte el índice en el mecanismo de bloqueo de ambos lados del módulo del controlador, presione la palanca con el pulgar y tire suavemente del controlador a unas pocas pulgadas del chasis.
 +
-image:drw_a800_drive_seated_IEOPS-960.png["Empuje la unidad para asentarla firmemente contra el plano medio del chasis"]
 
+NOTE: Si tiene dificultades para extraer el módulo del controlador, coloque los dedos de índice a través de los orificios para los dedos desde el interior (cruzando los brazos).
+
++
+image:drw_a250_pcm_remove_install.png["Empuje la unidad para asentarla firmemente contra el plano medio del chasis"]
+
++
+[cols="20,80"]
+|===
+
+
+ a| 
+image:black_circle_one.png["Número uno"]
+| Palanca 
+
+
+ a| 
+image:black_circle_two.png["Número dos"]
+| Mecanismo de cierre 
+|===
 . Vaya a la parte posterior del chasis.
+. Desconecte la fuente de alimentación del módulo del controlador node1 de la fuente.
+. Suelte los retenedores del cable de alimentación y, a continuación, desenchufe los cables de las fuentes de alimentación de node1.
++
 
+CAUTION: Las conexiones de alimentación de node1 y node2 se encuentran una encima de otra. Tenga cuidado de desenchufar los cables de node1. Desconectar los cables de node1 y node2 podría provocar una interrupción del suministro de alimentación de ambos nodos del par de alta disponibilidad.
 
-
-
-== Retire el módulo del controlador AFF A800 o AFF C800
-
-Retire el dispositivo de gestión de cables del módulo existente y saque ligeramente el controlador del chasis.
-
-.Pasos
-. Desconecte las fuentes de alimentación del módulo del controlador node1 de la fuente.
-. Suelte los retenes del cable de alimentación y, a continuación, desenchufe los cables de las fuentes de alimentación.
 . Afloje el gancho y la correa de bucle que sujetan los cables al dispositivo de administración de cables y, a continuación, desconecte los cables del sistema y los módulos SFP y QSFP (si es necesario) del módulo de controlador, manteniendo un seguimiento del lugar en el que se conectan los cables.
 +
 Deje los cables en el dispositivo de administración de cables de manera que cuando vuelva a instalar el dispositivo de administración de cables, los cables estén organizados.
@@ -52,39 +67,23 @@ Deje los cables en el dispositivo de administración de cables de manera que cua
 +
 El módulo de la controladora se mueve ligeramente fuera del chasis.
 
+. Con ambas manos, sujete los lados del módulo del controlador y extráigalo suavemente del chasis y configúrelo sobre una superficie plana y estable.
 +
-image:a800_cable_management.png["Quita la ARM de gestión de cables"]
-
-+
-[cols="20,80"]
-|===
-
-
- a| 
-image:black_circle_one.png["Número uno"]
-| Pestillo de bloqueo 
-
-
- a| 
-image:black_circle_two.png["Número dos"]
-| Pasador de bloqueo 
-|===
+Asegúrese de soportar el peso del módulo del controlador mientras lo desliza fuera del chasis.
 
 
 
 
-== Instale el módulo de controlador AFF A90, AFF A70 o AFF C80
 
-Instale, cablee y conecte el módulo de controlador AFF A90, AFF A70 o AFF C80 en node1.
+== Instale el módulo de controlador AFF A30, AFF A50, AFF C30 o AFF C60
+
+Instale, conecte el cable y conecte el módulo de reemplazo en node1.
 
 .Pasos
 . Alinee el extremo del módulo del controlador con la abertura del chasis y, a continuación, empuje suavemente el módulo del controlador hasta la mitad del sistema.
 +
 
 NOTE: No inserte por completo el módulo de la controladora en el chasis hasta que se le indique hacerlo más adelante en el procedimiento.
-
-+
-image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Instale un AFF A90 o AFF A70"]
 
 . Conecte los puertos de consola y de gestión al módulo del controlador 1-1.
 +

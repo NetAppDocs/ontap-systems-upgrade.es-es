@@ -14,30 +14,35 @@ summary: Antes de iniciar la actualización, verifique que disponga del hardware
 
 
 [role="lead"]
-Antes de iniciar la actualización, compruebe que dispone del hardware correcto para la actualización. En función de la actualización, para cada par de alta disponibilidad que vaya a actualizar, debe tener dos módulos de controladora o dos módulos de controladora y dos módulos NVRAM para el sistema de reemplazo. Si faltan piezas, póngase en contacto con el soporte técnico o con su representante de ventas de NetApp para obtener ayuda.
+Antes de iniciar la actualización, compruebe que tiene los módulos correctos para el sistema de sustitución. Si faltan piezas, póngase en contacto con el soporte técnico o con su representante de ventas de NetApp para obtener ayuda.
 
 [cols="50,50"]
 |===
-| Si está actualizando... | El sistema de sustitución debe tener... 
+| Si va a actualizar desde... | El sistema de sustitución debe tener... 
 
 
-| AFF A800 | Dos módulos de controladora, dos NVRAMs y nuevos módulos I/O. 
+| AFF A250 y AFF C250 | Dos módulos de controladora y nuevos módulos I/O. 
 
 
-| AFF A220 configurado como ASA para ASA A150 | Dos módulos de controladora 
+| AFF A800 y AFF C800 | Dos módulos de controladora, dos NVRAMs y nuevos módulos I/O. 
 
 
-| AFF A220, AFF A200 o AFF C190 a AFF A150 | Dos módulos de controladora 
+ a| 
+* AFF A220 configurado como ASA
+* AFF A220, AFF A200, AFF C190
+* FAS2620, FAS2720
+
+ a| 
+Dos módulos de controladora
+
+Si va a convertir el sistema existente en una bandeja de almacenamiento de modo que pueda conectarlo a otro sistema, el sistema de sustitución también debe tener dos módulos de I/O.
 
 
-| FAS2620 o FAS2720 a FAS2820 | Dos módulos de controladora 
 
+ a| 
+* AFF A700 configurado como ASA
+* AFF A700 a AFF A900
+* FAS9000 hasta FAS9500
 
-| AFF A700 configurado como ASA para ASA A900 | Dos controladoras y dos módulos NVRAM 
-
-
-| AFF A700 a AFF A900 | Dos controladoras y dos módulos NVRAM 
-
-
-| FAS9000 hasta FAS9500 | Dos controladoras y dos módulos NVRAM 
+| Dos controladoras y dos módulos NVRAM 
 |===

@@ -14,7 +14,10 @@ summary: Sustituya los módulos del sistema AFF A700 o FAS9000 node1 cuando util
 
 
 [role="lead"]
-En este momento, el nodo 1 está inactivo y todos los datos están servidos por el nodo 2. Como los nodos 1 y 2 están en el mismo chasis y están encendidos con el mismo conjunto de fuentes de alimentación, no apague el chasis. Debe tener cuidado de quitar únicamente el módulo del controlador del nodo 1 y el módulo NVRAM del nodo 1. Normalmente, el nodo 1 es la controladora A, situada en el lado izquierdo del chasis cuando se mira las controladoras desde la parte posterior del sistema. La etiqueta de la controladora se encuentra en el chasis directamente sobre el módulo de la controladora.
+En este momento, el nodo 1 está inactivo y todos los datos están servidos por el nodo 2. Debe tener cuidado de quitar únicamente el módulo del controlador del nodo 1 y el módulo NVRAM del nodo 1. Normalmente, el nodo 1 es la controladora A, situada en el lado izquierdo del chasis cuando se mira las controladoras desde la parte posterior del sistema. La etiqueta de la controladora se encuentra en el chasis directamente sobre el módulo de la controladora.
+
+
+CAUTION: No apague el chasis, ya que node1 y node2 están en el mismo chasis y están alimentados por las mismas fuentes de alimentación.
 
 .Antes de empezar
 Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
@@ -155,7 +158,7 @@ Utilice el siguiente procedimiento para instalar el módulo de controlador ASA A
 . Alinee el extremo del módulo del controlador con la apertura A en el chasis y, a continuación, empuje suavemente el módulo del controlador hasta la mitad dentro del sistema.
 +
 
-NOTE: No inserte completamente el módulo de la controladora en el chasis hasta que se le indique hacerlo más adelante en el procedimiento.
+NOTE: No inserte por completo el módulo de la controladora en el chasis hasta que se le indique hacerlo más adelante en el procedimiento.
 
 . Conecte los puertos de consola y de gestión al módulo del controlador 1-1.
 +
@@ -168,7 +171,7 @@ El pestillo de bloqueo se eleva cuando el módulo del controlador está completa
 
 +
 
-WARNING: Para evitar dañar los conectores, no ejerza una fuerza excesiva al deslizar el módulo del controlador hacia el chasis.
+WARNING: Para evitar dañar los conectores, no ejerza demasiada fuerza al deslizar el módulo del controlador en el chasis.
 
 +
 image:drw_9500_remove_PCM.png["Instale el módulo del controlador"]

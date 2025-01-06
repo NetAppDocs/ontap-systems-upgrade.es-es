@@ -16,9 +16,9 @@ summary: Verifique la instalación del node1 con los módulos de reemplazo cuand
 [role="lead"]
 Después de arrancar node1 con el módulo de controlador de reemplazo, verifique que esté instalado correctamente.
 
-Solo para las actualizaciones AFF A800, se asignan los puertos físicos de la node1 existente al node1 de reemplazo, ya que los puertos físicos están cambiando entre AFF A800 y la controladora AFF A90 o AFF A70.
+Para las actualizaciones AFF A250, AFF C250, AFF A800 o AFF C800 solamente, se asignan los puertos físicos del node1 existente a la node1 de reemplazo, ya que los puertos físicos están cambiando entre las controladoras existentes y de reemplazo.
 
-En las demás actualizaciones, no hay cambios en los puertos físicos, por lo que no es necesario asignar los puertos físicos de la node1 antigua a la node1 de reemplazo.
+Para todas las demás actualizaciones, no es necesario asignar los puertos físicos de la node1 existente a la node1 de reemplazo.
 
 .Acerca de esta tarea
 Debe esperar a que el nodo 1 se una al quórum y reanudar la operación de reemplazo de la controladora.

@@ -1,7 +1,7 @@
 ---
 section: upgrade-arl-auto-app-9151
 title: Utilice comandos para sustituir la controladora del sistema para actualizar
-  el hardware de la controladora introducido en ONTAP 9.15.1
+  el hardware de la controladora introducido en ONTAP 9.15.1 y versiones posteriores
 entries:
 - title: Descripción general
   url: "/upgrade-arl-auto-app-9151/index.html"
