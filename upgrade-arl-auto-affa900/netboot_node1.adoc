@@ -72,7 +72,7 @@ NOTE: Es posible que sean necesarios otros parámetros para la interfaz. Introdu
 
 NOTE: No interrumpa el arranque.
 
-. (Solo actualizaciones de AFF A250 y AFF C250) Cuando se arranca node1 para el módulo de la controladora de reemplazo, aparece la siguiente advertencia:
+. (AFF A250 y AFF C250 actualizan solamente) Cuando se arranca node1 para el módulo de la controladora de reemplazo, se muestra la siguiente advertencia porque la configuración incluye node2 para la controladora existente:
 +
 [listing]
 ----
@@ -87,7 +87,7 @@ Do you want to continue (y/n):
 Respuesta `y`.
 
 +
-Esta advertencia muestra porque la configuración incluye node2 para la controladora existente. Se muestra para cada arranque del sistema hasta que se actualiza node2. Este es el comportamiento esperado.
+Esta advertencia se muestra para cada arranque del sistema hasta que actualice node2. Este es el comportamiento esperado.
 
 . Espere a que el node1 se ejecute en el módulo de controlador de sustitución arranque y muestre las opciones del menú de arranque como se muestra a continuación:
 +

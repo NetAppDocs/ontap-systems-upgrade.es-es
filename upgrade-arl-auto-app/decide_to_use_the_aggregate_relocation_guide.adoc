@@ -18,12 +18,12 @@ En este contenido se describe cómo actualizar las controladoras de almacenamien
 
 Puede utilizar este contenido en las siguientes circunstancias:
 
-* Su sistema operativo es ONTAP 9.8 o posterior.
-* No desea añadir las nuevas controladoras como una pareja de alta disponibilidad nueva al clúster y migrar los datos con movimientos de volúmenes.
-* Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en el modo de privilegios de diagnóstico.
-* Si va a actualizar una configuración de MetroCluster, es una configuración de FC de cuatro nodos o superior y todos los nodos ejecutan ONTAP 9.8 o una versión posterior.
+* Utiliza ONTAP 9,8 o posterior.
+* No quiere añadir las nuevas controladoras como una nueva pareja de alta disponibilidad al clúster y migrar los datos mediante los movimientos de volúmenes.
+* Tiene experiencia en la administración de ONTAP y está cómodo con los riesgos de trabajar en el modo de privilegios de diagnóstico.
+* Si va a actualizar una configuración MetroCluster, es una configuración FC de cuatro nodos o superior, y todos los nodos ejecutan ONTAP 9,8 o una versión posterior.
 +
-Para actualizar las configuraciones IP de MetroCluster, consulte link:other_references.html["Referencias"] Para vincular al contenido de _MetroCluster Upgrade y Expansion_.
+Para actualizar las configuraciones IP de MetroCluster, consulte link:other_references.html["Referencias"]LINK to _Actualización y expansión de MetroCluster_.
 
 
 
@@ -63,11 +63,11 @@ NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de vol
 | AFF A400, AFF A700 | AFF A900 
 |===
 
-NOTE: Si la combinación del modelo de actualización de la controladora no se encuentra en la tabla anterior, póngase en contacto con el soporte técnico.
+NOTE: Si la combinación de modelo de actualización de la controladora no está en la tabla anterior, póngase en contacto con el soporte técnico.
 
 Vaya al AFF paso que hace referencia a A800 de la sección link:set_fc_or_uta_uta2_config_on_node3.html#auto_check3_step23["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3, paso 23"], o. link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step23["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 23"].
 
-Esta 2 Si va a actualizar desde un sistema AFF A300 a un AFF A400 o una FAS8200 a un sistema FAS8300 en una configuración de clúster sin switch de dos nodos, debe seleccionar puertos temporales del clúster para la actualización de controladora. Los sistemas AFF A400 y FAS8300 se ofrecen en dos configuraciones, como un paquete Ethernet donde los puertos de la tarjeta intermedia son de tipo Ethernet y como un paquete FC donde los puertos intermedios son de tipo FC.
+^2^Si va a actualizar de un AFF A300 a un AFF A400 o un FAS8200 a un sistema FAS8300 en una configuración de clúster sin switch de dos nodos, debe seleccionar puertos de clúster temporales para la actualización de la controladora. Los sistemas AFF A400 y FAS8300 se ofrecen en dos configuraciones, como un paquete Ethernet donde los puertos de la tarjeta intermedia son de tipo Ethernet y como un paquete FC donde los puertos intermedios son de tipo FC.
 
 * Para un AFF A400 o un FAS8300 con una configuración de tipo Ethernet, puede utilizar cualquiera de los dos puertos intermedios como puertos de clúster temporales.
 * Para una configuración de tipo FC AFF A400 o FAS8300 con un tipo FC, se debe añadir una tarjeta de interfaz de red 10 GbE de cuatro puertos (número de pieza X1147A) para proporcionar puertos temporales del clúster.
@@ -106,10 +106,11 @@ Para las combinaciones de actualizaciones que se muestran en la tabla anterior:
 
 * No es necesario utilizar la misma versión de ONTAP en las controladoras existentes y de sustitución. La actualización del software ONTAP se realiza con la actualización de la controladora.
 * Al realizar la actualización, debe instalar una controladora de reemplazo con una versión de ONTAP y un nivel de revisión compatibles.
-* No es posible cancelar o volver a realizar una actualización de controladora después de iniciar el procedimiento y actualizar el primer nodo.
+* No es posible cancelar o cancelar una actualización de una controladora después de iniciar el procedimiento y actualizar el primer nodo.
 
 
 ====
 Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
 
+.Información relacionada
 Consulte link:other_references.html["Referencias"] Para establecer un enlace al centro de documentación de _ONTAP 9_, donde puede acceder a la documentación de producto de ONTAP 9.

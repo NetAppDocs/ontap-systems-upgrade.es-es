@@ -21,5 +21,5 @@ Durante la fase 3, conecta las conexiones compartidas de cluster-HA y almacenami
 . link:boot_node1_with_a900_controller_and_nvs.html["Arranque node1 con los módulos del sistema de sustitución"]
 . link:verify_node1_installation.html["Compruebe la instalación del nodo 1"]
 . link:restore_key_manager_config_upgraded_node1.html["Restaure la configuración de Key-Manager en el nodo 1 actualizado"]
-. link:move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html["Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 1 actualizado"]
+. link:move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html["Mueva node1 agregados no raíz y LIF de datos NAS de node2 al node1 actualizado"]
 

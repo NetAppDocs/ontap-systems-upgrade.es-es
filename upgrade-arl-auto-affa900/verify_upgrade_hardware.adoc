@@ -35,14 +35,14 @@ Antes de iniciar la actualización, compruebe que tiene los módulos correctos p
  a| 
 Dos módulos de controladora
 
-Si va a convertir el sistema existente en una bandeja de almacenamiento de modo que pueda conectarlo a otro sistema, el sistema de sustitución también debe tener dos módulos de I/O.
+Si va a convertir el sistema existente en una bandeja de almacenamiento para poder conectarlo a otro sistema, el sistema de sustitución también debe tener dos módulos de I/O.
 
 
 
  a| 
 * AFF A700 configurado como ASA
-* AFF A700 a AFF A900
-* FAS9000 hasta FAS9500
+* AFF A700
+* FAS9000
 
 | Dos controladoras y dos módulos NVRAM 
 |===

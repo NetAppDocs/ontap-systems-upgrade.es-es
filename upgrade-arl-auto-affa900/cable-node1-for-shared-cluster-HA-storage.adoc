@@ -36,7 +36,7 @@ Si realiza una de las siguientes actualizaciones, debe conectar el clúster, la 
 
 == Conecte los puertos e0M y BMC
 
-Si el sistema existente tiene un puerto de gestión (e0M) y un puerto de BMC. En el sistema de reemplazo, los puertos e0M y BMC se combinan y se accede a ellos a través del puerto «llave». Antes de conectarse al sistema de reemplazo, debe asegurarse de que los puertos e0M y BMC estén conectados al mismo switch y a la misma subred del sistema existente.
+Si el sistema existente tiene un puerto de gestión (e0M) y un puerto BMC, los puertos e0M y BMC se combinan y se accede a ellos a través del puerto «llave» del sistema de reemplazo. Antes de conectarse al sistema de reemplazo, debe asegurarse de que los puertos e0M y BMC estén conectados al mismo switch y a la misma subred del sistema existente.
 
 [cols="35,65"]
 |===

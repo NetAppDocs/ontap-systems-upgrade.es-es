@@ -29,8 +29,8 @@ Durante la fase 7, el usuario confirma que los nodos nuevos están configurados 
 ====
 Los sistemas AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60, AFF C80, FAS70 y FAS90 comparten 100GbE puertos de red para conexiones de clúster y de alta disponibilidad. Estos sistemas pueden admitir conexiones de clúster 10GbE o 25GbE a switches de clúster heredados; sin embargo, NetApp recomienda actualizar a las velocidades de clúster de 100GbE GbE cuando los switches 10GbE y 25GbE ya no sean necesarios. Para obtener más información, consulte los siguientes artículos de la base de conocimientos:
 
-* link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup_on_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Cómo configurar los puertos de clústeres 10G o 25G en una nueva configuración de clúster en AFF/ASA A1K, A90, A70, FAS90 y FAS70"^]
-* link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_an_existing_cluster_from_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports_on_an_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Cómo convertir un clúster existente de puertos de clúster 10G o 25G a puertos de clúster 40G o 100g en un AFF/ASA A1K, FAS70, A70, FAS90, A90"^]
+* link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup["Cómo configurar los puertos de clúster 10G o 25G en una nueva configuración de clúster"^]
+* link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_existing_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports["Cómo convertir los puertos de clúster 10G o 25G existentes a puertos de clúster 40G o 100g"^]
 
 
 Si no puede vincular los puertos de clúster e0a o e0b del nodo existente a los puertos de clúster del nodo nuevo, consulte link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["ID de error de NetApp Bugs Online CONTAP-166978"^].

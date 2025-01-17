@@ -22,7 +22,7 @@ Para comprender si puede utilizar la reubicación de agregados (ARL), que mantie
 
 Las actualizaciones de controladoras son compatibles con ciertas configuraciones del sistema. Para ver la lista de sistemas compatibles y versiones mínimas de ONTAP, consulte link:index.html["Descripción general"].
 
-Si ha recibido un nuevo AFF A30, AFF A50, AFF A70, AFF A90, AFF A150, AFF A900, AFF C30, AFF C60, AFF C80, FAS2820 o FAS9500 como sistema completo, incluyendo un nuevo chasis, consulte el enlace a link:other_references.html["Referencias"]los comandos _use «reemplazar la controladora del sistema» para actualizar el hardware de la controladora con contenido ONTAP 9,8 o posterior_.
+Si ha recibido un nuevo AFF A30, AFF A50, AFF A70, AFF A90, AFF A150, AFF A900, AFF C30, AFF C60, AFF C80, FAS2820 o FAS9500 como sistema completo, incluyendo un nuevo chasis, consulte link:other_references.html["Referencias"]el enlace con los comandos _Use «system controller replace» para actualizar el hardware de la controladora con ONTAP 9,8 o posterior_.
 
 La actualización de la controladora mediante ARL es compatible en sistemas configurados con volúmenes de SnapLock Enterprise y SnapLock Compliance.
 

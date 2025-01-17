@@ -17,7 +17,7 @@ summary: Sustituya node1 los módulos del sistema AFF A220, AFF A200, AFF C190, 
 En este momento, el nodo 1 está inactivo y todos los datos están servidos por el nodo 2. Debe tener cuidado de quitar solo el módulo del controlador node1. Normalmente, el nodo 1 es la controladora A, situada en el lado izquierdo del chasis cuando se mira las controladoras desde la parte posterior del sistema. La etiqueta de la controladora se encuentra en el chasis directamente sobre el módulo de la controladora.
 
 
-CAUTION: No apague el chasis, ya que node1 y node2 están en el mismo chasis y están alimentados por las mismas fuentes de alimentación.
+CAUTION: No apague el chasis, ya que node1 y node2 están en el mismo chasis y conectados a los mismos suministros de alimentación.
 
 .Antes de empezar
 Si usted no está ya conectado a tierra, correctamente tierra usted mismo.

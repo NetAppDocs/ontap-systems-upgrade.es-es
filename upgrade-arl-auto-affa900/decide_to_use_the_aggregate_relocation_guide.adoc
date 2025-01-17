@@ -25,17 +25,19 @@ Puede utilizar este procedimiento en las siguientes circunstancias:
 * La actualización de la controladora se muestra en la link:index.html#supported-systems,["matriz de sistemas compatibles"].
 * Verificó con el representante de ventas de NetApp que recibió el hardware que necesita para actualizar la controladora:
 +
-** Dos controladoras AFF A90, AFF A70 o AFF C80 y todos los módulos de I/O. La longitud requerida de 100GbE cables.
-** Dos controladoras AFF A50, AFF A30, AFF C30 o AFF C60 y módulos de I/O. Los cables necesarios.
+** Dos controladoras AFF A90, AFF A70 o AFF C80 y todos los módulos de I/O. Las longitudes requeridas de cables 100GbE.
+** Dos controladoras AFF A50, AFF A30, AFF C30 o AFF C60, así como módulos de I/O y los cables necesarios
 ** Controladoras ASA A150, AFF A150 o FAS2820
-** Controlador ASA A900, AFF A900 o FAS9500 y módulos NVRAM y las piezas
+** Controlador ASA A900, AFF A900 o FAS9500 y módulos y piezas NVRAM
 
 
 * Está ejecutando la versión mínima de ONTAP para la actualización. Para obtener más información, consulte link:index.html["Descripción general"].
-* No desea añadir las nuevas controladoras como una nueva pareja de alta disponibilidad al clúster y migrar los datos mediante movimientos de volúmenes.
-* Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en modo de privilegios de diagnóstico.
+* Tiene experiencia en la administración de ONTAP y está cómodo con los riesgos de trabajar en modo de privilegio de diagnóstico.
 * Los sistemas ejecutan ONTAP 9.15.1 o posterior, y utilizan switches Ethernet para conectarse al almacenamiento conectado a Ethernet.
 
+
+
+NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.
 
 
 
@@ -43,15 +45,13 @@ Puede utilizar este procedimiento en las siguientes circunstancias:
 
 No puede utilizar este procedimiento en las siguientes circunstancias:
 
-* Utiliza el software de virtualización FlexArray en el sistema existente que se está actualizando.
-* Debe actualizar una configuración de IP de MetroCluster.
+* Quiere añadir las nuevas controladoras como una nueva pareja de HA al clúster y migrar los datos mediante los movimientos de volúmenes.
+* Utiliza el software de virtualización FlexArray en el sistema que se está actualizando.
+* Debe actualizar una configuración IP de MetroCluster.
 +
 Para actualizar una configuración IP de MetroCluster, consulte link:other_references.html["Referencias"] para vincular al contenido _Actualización y Expansión de MetroCluster_.
 
 
-
-
-NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.
 
 Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
 

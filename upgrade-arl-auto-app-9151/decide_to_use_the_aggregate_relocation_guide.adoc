@@ -22,9 +22,9 @@ En este procedimiento se describe cómo actualizar las controladoras de almacena
 
 Puede actualizar una pareja de nodos en las siguientes circunstancias:
 
-* Utiliza ONTAP 9.15.1 o una versión posterior.
+* Utiliza ONTAP 9.15.1 o posterior.
 * No quiere añadir las nuevas controladoras como una nueva pareja de alta disponibilidad al clúster y migrar los datos mediante el procedimiento de movimiento de volúmenes.
-* Tiene experiencia en la administración de ONTAP y se siente cómodo con los riesgos de trabajar en el modo de privilegios de diagnóstico.
+* Tiene experiencia en la administración de ONTAP y está cómodo con los riesgos de trabajar en el modo de privilegios de diagnóstico.
 
 
 
@@ -60,7 +60,7 @@ NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de vol
 
 ^2^ AFF A20, AFF A50, AFF A70 y AFF A90 son sistemas integrados con dos controladoras en una configuración de alta disponibilidad y discos incorporados en un único chasis:
 
-* Si va a actualizar a un AFF A20, AFF A70 o AFF A90 con unidades internas, debe eliminar la propiedad de esas unidades internas antes de la actualización. Una vez completada la actualización, puede asignar las unidades internas a los nodos AFF A20, AFF A70 o AFF A90 y usarlas para crear agregados de datos. No es obligatorio migrar agregados de datos o raíz a unidades internas.
+* Si va a actualizar a un AFF A20, AFF A70 o AFF A90 con unidades internas, debe eliminar la propiedad de esas unidades internas antes de la actualización. Una vez completada la actualización, puede asignar las unidades internas a los nodos AFF A20, AFF A70 o AFF A90 y usarlas para crear agregados de datos. No es necesario migrar agregados de datos ni raíz a unidades internas.
 * Si actualiza a un AFF A20, AFF A70 o AFF A90 sin unidades internas, no es necesario asignar unidades internas después de completar la actualización.
 
 
@@ -98,4 +98,5 @@ Para realizar una actualización de una lista en la tabla anterior, consulte lin
 
 Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
 
+.Información relacionada
 Consulte link:other_references.html["Referencias"] Para establecer un enlace al centro de documentación de _ONTAP 9_, donde puede acceder a la documentación de producto de ONTAP 9.
