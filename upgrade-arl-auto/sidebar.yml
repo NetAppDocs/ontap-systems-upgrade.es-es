@@ -56,6 +56,8 @@ entries:
     url: "/upgrade-arl-auto/install_boot_node3.html"
   - title: Establezca la configuración de FC o UTA/UTA2 en el nodo 3
     url: "/upgrade-arl-auto/set_fc_or_uta_uta2_config_on_node3.html"
+  - title: Reasigne discos de node1 GB a node3
+    url: "/upgrade-arl-auto/reassign-node1-disks-to-node3.html"
   - title: Asigne puertos del nodo 1 al nodo 3
     url: "/upgrade-arl-auto/map_ports_node1_node3.html"
   - title: Unir el quórum cuando un nodo tiene un conjunto diferente de puertos de
@@ -87,6 +89,8 @@ entries:
     url: "/upgrade-arl-auto/install_boot_node4.html"
   - title: Establezca la configuración de FC o UTA/UTA2 en el nodo 4
     url: "/upgrade-arl-auto/set_fc_or_uta_uta2_config_node4.html"
+  - title: Reasigne discos de node2 GB a node4
+    url: "/upgrade-arl-auto/reassign-node2-disks-to-node4.html"
   - title: Asigne puertos del nodo 2 al nodo 4
     url: "/upgrade-arl-auto/map_ports_node2_node4.html"
   - title: Unir el quórum cuando un nodo tiene un conjunto diferente de puertos de

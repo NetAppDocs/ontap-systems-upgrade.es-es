@@ -142,7 +142,7 @@ Para nodo 3, `partner-sysid` debe ser del nodo 2.
 | Si su sistema... | Descripción 
 
 
-| Cuenta con discos y sin almacenamiento de gestión | Vaya a. <<auto_install3_step23,Paso 23>> 
+| Cuenta con discos y sin almacenamiento de gestión | Vaya a. <<auto_install3_step27,Paso 27>> 
 
 
 | Es un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento  a| 

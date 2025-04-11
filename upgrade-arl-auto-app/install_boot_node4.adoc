@@ -85,7 +85,7 @@ NOTE: Consulte link:prepare_for_netboot.html["Prepárese para el arranque desde 
 . [[step6]]Configure la conexión netboot eligiendo una de las siguientes acciones.
 +
 
-NOTE: Se deben utilizar el puerto e IP de gestión como conexión para reiniciar el sistema. No utilice una IP de LIF de datos ni una interrupción del servicio de datos mientras se realiza la actualización.
+NOTE: Se deben utilizar el puerto e IP de gestión como conexión para reiniciar el sistema. No utilice una dirección IP de LIF de datos o puede producirse una interrupción del servicio de datos mientras se realiza la actualización.
 
 +
 [cols="30,70"]
@@ -252,7 +252,7 @@ Guarde los ajustes:
 | Si su sistema... | Realice lo siguiente... 
 
 
-| Cuenta con discos y sin almacenamiento de gestión | Vaya a. <<auto_install4_step23,Paso 23>>. 
+| Cuenta con discos y sin almacenamiento de gestión | Vaya a <<auto_install4_step27,Paso 27>>. 
 
 
 | Es un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento  a| 
@@ -316,7 +316,7 @@ Introduzca la frase de acceso y la información de copia de seguridad registrada
 `boot_ontap menu`
 
 +
-Si no tiene una configuración FC o UTA/UTA2, ejecute link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 15"] de este modo, node4 puede reconocer discos de node2.
+Si no tiene una configuración FC o UTA/UTA2, preforma link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step1["Reasigne los discos node2 a node4, paso 1"] de forma que node4 pueda reconocer discos de node2.
 
 . [[step29]]para la configuración de MetroCluster, sistemas y sistemas V-Series con software de virtualización FlexArray conectado a cabinas de almacenamiento debe configurar y configurar los puertos FC o UTA/UTA2 del nodo 4 para detectar los discos conectados al nodo. Para completar esta tarea, vaya a la sección link:set_fc_or_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UT2 en el nodo 4"].
 

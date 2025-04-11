@@ -6,5 +6,5 @@
 +
 `halt`
 
-. [[step14]]nodo de arranque en el menú de arranque ejecutando `boot_ontap menu`. Si va a actualizar a un A800, vaya a. <<auto_check3_step23,Paso 23>>.
+. [[step14]]Nodo de arranque en el menú de inicio ejecutando `boot_ontap menu`. Si va a actualizar a un sistema A800, vaya a link:reassign-node1-disks-to-node3.html#reassign-node1-node3-app-step9["Reasigne los discos node1 a node3, paso 9"].
 

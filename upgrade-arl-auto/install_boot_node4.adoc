@@ -247,7 +247,7 @@ Guarde los ajustes:
 | Si su sistema... | Realice lo siguiente... 
 
 
-| Cuenta con discos y sin almacenamiento de gestión | Vaya a. <<auto_install4_step23,Paso 23>>. 
+| Cuenta con discos y sin almacenamiento de gestión | Vaya a <<auto_install4_step27,Paso 27>>. 
 
 
 | Es un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento  a| 
@@ -308,7 +308,7 @@ No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo
 `boot_ontap menu`
 
 +
-Si no dispone de una configuración FC o UTA/UTA2, lleve a cabo link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 15"] de modo que el nodo 4 puede reconocer los discos del nodo 2.
+Si no dispone de una configuración FC o UTA/UTA2, asegúrese de link:reassign-node2-disks-to-node4.html#reassign-node2-node4-step1["Reasigne los discos node2 a node4, paso 1"] que node4 reconozca discos de node2.
 
-. [[step29]] Para las configuraciones de MetroCluster, los sistemas V-Series y los sistemas con el software de virtualización FlexArray conectados a cabinas de almacenamiento, vaya a link:set_fc_or_uta_uta2_config_node4.html# auto_check_4_step15[Compruebe y configure los puertos UTA/UTA2 en node4, Paso 15].
+. [[step29]] Para las configuraciones de MetroCluster, los sistemas V-Series y los sistemas con el software de virtualización FlexArray conectado a cabinas de almacenamiento, visite link:reassign-node2-disks-to-node4.html#reassign-node2-node4-step1["Reasigne los discos node2 a node4, paso 1"].
 

@@ -14,11 +14,12 @@ summary: 'Secuencia de procesos en la fase 3 de una actualización de ARL median
 
 
 [role="lead"]
-Durante la fase 3, debe instalar y arrancar el nodo 3, asignar los puertos de gestión del nodo y del clúster del nodo 1 al nodo 3 y verificar la instalación del nodo 3. Si es necesario, debe configurar FC o UTA/UTA2 en el nodo 3 y confirmar que el nodo 3 se ha Unido al quórum. También se deben reubicar los LIF de datos NAS del nodo 1 y los agregados no raíz del nodo 2 al nodo 3, y verificar que las LIF SAN existan en el nodo 3.
+Durante la fase 3, instale e inicie node3, asigne los puertos de gestión de nodos y clústeres de node1 a node3, reasigne los discos de node1 a node3 y verifique la instalación de node3. Si es necesario, debe configurar FC o UTA/UTA2 en el nodo 3 y confirmar que el nodo 3 se ha Unido al quórum. También se deben reubicar los LIF de datos NAS del nodo 1 y los agregados no raíz del nodo 2 al nodo 3, y verificar que las LIF SAN existan en el nodo 3.
 
 .Pasos
 . link:install_boot_node3.html["Instale y arranque el nodo 3"]
 . link:set_fc_or_uta_uta2_config_on_node3.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 3"]
+. link:reassign-node1-disks-to-node3.html["Reasigne discos de node1 GB a node3"]
 . link:map_ports_node1_node3.html["Asigne puertos del nodo 1 al nodo 3"]
 . link:join_quorum_node_has_different_ports_stage3.html["Unirse al quórum cuando un nodo tiene un conjunto diferente de puertos de red"]
 . link:verify_node3_installation.html["Verifique la instalación del nodo 3"]

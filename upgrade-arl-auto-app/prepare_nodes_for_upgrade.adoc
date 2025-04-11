@@ -28,7 +28,7 @@ El proceso de reemplazo de la controladora comienza con una serie de comprobacio
 +
 `system controller replace start -nodes _node_names_ -nso false`
 
-** La `system controller replace start` el comando solo se puede ejecutar en el nivel de privilegios avanzados:
+** Solo puede ejecutar `system controller replace start` el comando en el nivel de privilegio avanzado:
 +
 `set -privilege advanced`
 

@@ -255,7 +255,7 @@ Para nodo 3, `partner-sysid` debe ser del nodo 2.
 | Si su sistema... | Descripción 
 
 
-| Cuenta con discos y sin almacenamiento de gestión | Vaya a. <<auto_install3_step23,Paso 23>> 
+| Cuenta con discos y sin almacenamiento de gestión | Vaya a. <<auto_install3_step27,Paso 27>> 
 
 
 | Es un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento  a| 
@@ -282,6 +282,7 @@ La instalación de un módulo de controladora nuevo cambia los valores de WWPN a
 . [[step26]]Si su configuración utiliza la división en zonas basada en switches, ajuste la división en zonas para reflejar los nuevos valores de WWPN.
 
 
+[[auto_install3_step27]]
 . Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, siga estos pasos.
 +
 
@@ -314,7 +315,7 @@ No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo
 `boot_ontap menu`
 
 +
-Si no dispone de una configuración FC o UTA/UTA2, lleve a cabo link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4, paso 15"] de modo que el nodo 4 puede reconocer los discos del nodo 2.
+Si no dispone de una configuración FC o UTA/UTA2, asegúrese de link:reassign-node1-disks-to-node3.html#reassign-node1-node3-step1["Reasigne los discos node1 a node3, paso 1"] que node3 reconozca discos de node1.
 
-. [[auto9597_istall3_step29]]para una configuración MetroCluster, sistemas y sistemas V-Series con software de virtualización FlexArray conectado a matrices de almacenamiento, vaya a. link:set_fc_or_uta_uta2_config_on_node3.html#auto9597_check_node3_step15["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3, paso 15"].
+. [[auto9597_istall3_step29]]Para obtener una configuración MetroCluster, visite los sistemas y sistemas V-Series con el software de virtualización FlexArray conectado a cabinas de almacenamiento, visite la link:reassign-node1-disks-to-node3.html#reassign-node1-node3-step1["Reasigne los discos node1 a node3, paso 1"].
 

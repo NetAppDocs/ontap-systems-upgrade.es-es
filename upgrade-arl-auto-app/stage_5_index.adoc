@@ -14,11 +14,12 @@ summary: 'Secuencia de procesos en la fase 5 de una actualización de ARL median
 
 
 [role="lead"]
-Durante la fase 5, debe instalar y arrancar el nodo 4, compruebe que los puertos de gestión del clúster y de los nodos del nodo 2 estén en línea en el nodo 4 y verifique la instalación del nodo 4. Si utiliza NVE, debe restaurar la configuración del gestor de claves. Si es necesario, debe configurar FC o UTA/UTA2 en el nodo 4. También se deben reubicar los LIF de datos NAS 2 y los agregados no raíz de nodo 3 a nodo 4, y verificar que las LIF SAN existan en el nodo 4.
+Durante la fase 5, instale e inicie node4, compruebe que el clúster y los puertos de gestión de nodos de node2 estén conectados en node4, vuelva a asignar los discos de node2 a node4 y verifique la instalación de node4. Si utiliza NVE, debe restaurar la configuración del gestor de claves. Si es necesario, debe configurar FC o UTA/UTA2 en el nodo 4. También se deben reubicar los LIF de datos NAS 2 y los agregados no raíz de nodo 3 a nodo 4, y verificar que las LIF SAN existan en el nodo 4.
 
 .Pasos
 . link:install_boot_node4.html["Instale y arranque el nodo 4"]
 . link:set_fc_or_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"]
+. link:reassign-node2-disks-to-node4.html["Reasigne discos de node2 GB a node4"]
 . link:verify_node4_installation.html["Verifique la instalación del nodo 4"]
 . link:restore_key-manager_config_node4.html["Restaure la configuración de gestor de claves en el nodo 4"]
 . link:move_non_root_aggr_and_nas_data_lifs_node2_from_node3_to_node4.html["Mueva agregados no raíz y LIF de datos NAS que pertenecen al nodo 2 desde el nodo 3 al nodo 4"]

@@ -14,11 +14,12 @@ summary: 'Secuencia de procesos en la fase 3 de una actualización de ARL median
 
 
 [role="lead"]
-Durante la fase 3, debe instalar y arrancar el nodo 3, compruebe que los puertos de gestión del nodo y del clúster del nodo 1 estén en línea en el nodo 3 y verifique la instalación del nodo 3. Si utiliza el cifrado de volúmenes de NetApp (NVE), debe restaurar la configuración del gestor de claves. Si es necesario, debe configurar FC o UTA/UTA2 en el nodo 3. También se deben reubicar los LIF de datos NAS del nodo 1 y los agregados no raíz del nodo 2 al nodo 3, y verificar que las LIF SAN existan en el nodo 3.
+Durante la fase 3, instale e inicie node3, compruebe que el clúster y los puertos de gestión de nodos de node1 estén conectados en node3, vuelva a asignar los discos de node1 a node3 y verifique la instalación de node3. Si utiliza el cifrado de volúmenes de NetApp (NVE), debe restaurar la configuración del gestor de claves. Si es necesario, debe configurar FC o UTA/UTA2 en el nodo 3. También se deben reubicar los LIF de datos NAS del nodo 1 y los agregados no raíz del nodo 2 al nodo 3, y verificar que las LIF SAN existan en el nodo 3.
 
 .Pasos
 . link:install_boot_node3.html["Instale y arranque el nodo 3"]
 . link:set_fc_or_uta_uta2_config_on_node3.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 3"]
+. link:reassign-node1-disks-to-node3.html["Reasigne discos de node1 GB a node3"]
 . link:verify_node3_installation.html["Verifique la instalación del nodo 3"]
 . link:restore_key-manager_configuration_node3.html["Restaure la configuración de gestor de claves en el nodo 3"]
 . link:move_non-root_aggr_and_nas_data_lifs_node1_from_node2_to_node3.html["Mueva agregados que no son raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 3"]

@@ -30,7 +30,7 @@ En el ejemplo siguiente, los agregados no raíz en el nodo 2 están en línea:
 +
 [listing]
 ----
-cluster::> storage aggregate show -node node2 state online -root false
+cluster::> storage aggregate show -node node2 -state online -root false
 
 Aggregate  Size     Available  Used%  State  #Vols  Nodes  RAID Status
 ---------  -------  ---------  -----  ------ -----  ------ --------------

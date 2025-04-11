@@ -93,7 +93,7 @@ En el ejemplo del paso anterior, "aggr2" utiliza unidades internas, tal como se 
 
 . Introduzca el siguiente comando en ambas controladoras:
 +
-`aggr status -y`
+`aggr status -v`
 
 +
 El sistema muestra información sobre los volúmenes del agregado, como se muestra en la salida parcial en el ejemplo siguiente:

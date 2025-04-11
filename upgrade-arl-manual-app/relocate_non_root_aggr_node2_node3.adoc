@@ -14,10 +14,37 @@ summary: Envíe un mensaje de AutoSupport para el nodo 2 y reubique manualmente 
 
 
 [role="lead"]
-Antes de poder reemplazar el nodo 2 con nodo 4, debe enviar un mensaje de AutoSupport para el nodo 2 y luego reubicar los agregados que no son raíz; propiedad del nodo 2 en el nodo 3.
+Antes de poder sustituir node2 con node4, debe enviar un mensaje de AutoSupport para node2 y, a continuación, reubicar los agregados no raíz que node2 posee a node3.
 
+[[sysconfig-a-command]]
 .Pasos
-. [[step1]] Enviar un mensaje de AutoSupport a NetApp para el nodo 2:
+. Compruebe que el ID del sistema asociado está configurado correctamente en node2 y node3:
++
+** `system node run -node _node2_ -command sysconfig -a`
+** `system node run -node _node3_ -command sysconfig -a`
++
+El sistema muestra un resultado similar al siguiente ejemplo:
+
++
+[listing, subs="+quotes"]
+----
+NetApp Release 9.16.1: Mon Feb 10 07:55:45 EST 2025
+System ID: _system-ID_; *partner ID: _partner-system-ID_*
+System Serial Number: _system-serial-number_
+System Rev: A0
+System Storage Configuration: Mixed-Path HA
+----
++
+Si el ID de socio es incorrecto para node2 o node3:
+
++
+... Reinicie el nodo con el valor incorrecto.
+... Vuelva a ejecutar los comandos de <<sysconfig-a-command,Paso 1>>y confirme que el identificador de partner ha cambiado al valor correcto.
+
+
+
+
+. Envíe un mensaje de AutoSupport a NetApp para node2:
 +
 `system node autosupport invoke -node _node2_ -type all -message "Upgrading _node2_ from _platform_old_ to _platform_new_"`
 
@@ -28,7 +55,7 @@ Antes de poder reemplazar el nodo 2 con nodo 4, debe enviar un mensaje de AutoSu
 +
 Los campos "último asunto enviado:" y "última vez enviado:" contienen el título del último mensaje que se envió y la hora en que se envió el mensaje.
 
-. [[step3]]reubicar los agregados no raíz:
+. Reubicar los agregados no raíz:
 +
 .. Configure el nivel de privilegio en Advanced:
 +
@@ -48,7 +75,7 @@ NOTE: El comando busca solo agregados que no son raíz.
 
 .. Cuando se le solicite, introduzca `y`.
 +
-La reubicación se produce en segundo plano. La reubicación de un agregado puede tardar entre unos segundos y un par de minutos. El tiempo incluye tanto la interrupción del servicio como las partes que no son de la interrupción del servicio. El comando no reasigna ningún agregado sin conexión o restringido.
+La reubicación se produce en segundo plano. La reubicación de un agregado puede tardar entre unos segundos y un par de minutos. El tiempo incluye tanto la interrupción del servicio como las partes que no son de la interrupción del servicio. El comando no reubica ningún agregado sin conexión ni restringido.
 
 .. Vuelva al nivel de privilegio de administrador:
 +
@@ -61,7 +88,7 @@ La reubicación se produce en segundo plano. La reubicación de un agregado pued
 `storage aggregate relocation show -node _node2_`
 
 +
-La salida mostrará "hecho" para un agregado después de que se haya reubicado.
+La salida muestra “Listo” para un agregado después de que se haya reubicado.
 
 +
 
@@ -74,7 +101,7 @@ NOTE: Debe esperar hasta que todos los agregados de los que son propiedad del no
 | Si la reubicación de... | Realice lo siguiente... 
 
 
-| Todos los agregados se han realizado correctamente | Vaya a. <<man_relocate_2_3_step6,Paso 6>>. 
+| Todos los agregados se han realizado correctamente | Vaya a <<man_relocate_2_3_step7,Paso 7>>. 
 
 
 | Todos los agregados han fallado o se ha vetado  a| 
@@ -120,7 +147,7 @@ Si es necesario, puede forzar la reubicación mediante uno de los siguientes mé
 Para obtener más información sobre los comandos de reubicación de agregados de almacenamiento, vaya a. link:other_references.html["Referencias"] Para establecer un vínculo a la gestión de discos y agregados con la CLI_ y los comandos _ONTAP 9: Manual Page Reference_.
 
 |===
-. [[man_reubication_2_3_step6]]Compruebe que todos los agregados que no son raíz están en línea en el nodo 3:
+. [[man_relocate_2_3_step7]]Verifique que todos los agregados no raíz estén en línea en node3:
 +
 `storage aggregate show -node _node3_ -state offline -root false`
 
@@ -140,7 +167,7 @@ Si alguno de los volúmenes se encuentra sin conexión en el nodo 3, es necesari
 +
 `volume online -vserver _Vserver-name_ -volume _volume-name_`
 
-. Verifique que el nodo 2 no tenga ningún agregado que no sea raíz en línea:
+. Compruebe que node2 no posee ningún agregado no raíz en línea:
 +
 `storage aggregate show -owner-name _node2_ -ha-policy sfo -state online`
 

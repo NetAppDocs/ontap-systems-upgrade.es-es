@@ -23,7 +23,7 @@ El proceso de reemplazo de la controladora comienza con una serie de comprobacio
 
 +
 
-NOTE: Este comando solo se puede ejecutar en el nivel de privilegios avanzados:
+NOTE: Solo puede ejecutar este comando en el nivel de privilegio avanzado:
 `set -privilege advanced`
 
 +
