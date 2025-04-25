@@ -20,7 +20,7 @@ Debe reasignar los discos que pertenecían a node1 a node3 antes de verificar la
 Siga los pasos de esta sección en node3.
 
 .Pasos
-. Vaya al menú de arranque y usando 22/7, seleccione la opción oculta `boot_after_controller_replacement` . En el aviso, introduzca el nodo 1 para reasignar los discos del nodo 1 al nodo 3, según el ejemplo siguiente.
+. [[reassign-node1-node3-app-step1]]Vaya al menú de inicio y, con 22/7, seleccione la opción oculta `boot_after_controller_replacement` . En el aviso, introduzca el nodo 1 para reasignar los discos del nodo 1 al nodo 3, según el ejemplo siguiente.
 +
 .Expanda el ejemplo de salida de consola
 [%collapsible]

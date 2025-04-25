@@ -272,7 +272,7 @@ Introduzca la frase de acceso y la información de copia de seguridad registrada
 
 
 
-. Nodo de arranque en el menú de arranque:
+. Inicie el nodo en el menú de arranque:
 +
 `boot_ontap menu`.
 

@@ -313,12 +313,12 @@ Introduzca la frase de acceso y la información de copia de seguridad registrada
 
 
 
-. Nodo de arranque en el menú de arranque:
+. Inicie el nodo en el menú de arranque:
 +
 `boot_ontap menu`
 
 +
-Si no dispone de una configuración FC o UTA/UTA2, asegúrese de link:reassign-node2-disks-to-node4.html#reassign-node1-node3-app-step1["Reasigne los discos node1 a node3, paso 1"]que node3 reconozca discos de node1.
+Si no dispone de una configuración FC o UTA/UTA2, asegúrese de link:reassign-node1-disks-to-node3.html#reassign-node1-node3-app-step1["Reasigne los discos node1 a node3, paso 1"]que node3 reconozca discos de node1.
 
 . [[step29]]para una configuración MetroCluster, sistemas y sistemas V-Series con software de virtualización FlexArray conectado a cabinas de almacenamiento, debe configurar y configurar los puertos FC o UTA/UTA2 en el nodo 3 para detectar los discos conectados al nodo. Para completar esta tarea, vaya a la sección link:set_fc_or_uta_uta2_config_on_node3.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 3"].
 

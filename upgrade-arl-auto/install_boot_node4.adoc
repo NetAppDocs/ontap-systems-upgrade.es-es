@@ -303,7 +303,7 @@ No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo
 .. Póngase en contacto con el soporte de NetApp para obtener ayuda para restaurar la información sobre la gestión de claves incorporada.
 
 
-. Nodo de arranque en el menú de arranque:
+. Inicie el nodo en el menú de arranque:
 +
 `boot_ontap menu`
 

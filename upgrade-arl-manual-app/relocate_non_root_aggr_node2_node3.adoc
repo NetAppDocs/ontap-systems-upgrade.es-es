@@ -16,41 +16,76 @@ summary: Envíe un mensaje de AutoSupport para el nodo 2 y reubique manualmente 
 [role="lead"]
 Antes de poder sustituir node2 con node4, debe enviar un mensaje de AutoSupport para node2 y, a continuación, reubicar los agregados no raíz que node2 posee a node3.
 
-[[sysconfig-a-command]]
+
+CAUTION: Durante este procedimiento, no reubique agregados de node3 a node2. Esto provoca que los agregados se desconecten y una interrupción de datos para los agregados que se reubican.
+
+[[verify-partner-sys-id]]
 .Pasos
-. Compruebe que el ID del sistema asociado está configurado correctamente en node2 y node3:
+. Compruebe que el ID del sistema asociado está definido correctamente en node3 :
 +
-** `system node run -node _node2_ -command sysconfig -a`
-** `system node run -node _node3_ -command sysconfig -a`
+.. Introduzca el nivel de privilegio avanzado:
++
+`set -privilege advanced`
+
+.. Mostrar el ID del sistema asociado en node3:
++
+`ha interconnect config show -node <node3-node1>`
+
 +
 El sistema muestra un resultado similar al siguiente ejemplo:
 
 +
-[listing, subs="+quotes"]
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
 ----
-NetApp Release 9.16.1: Mon Feb 10 07:55:45 EST 2025
-System ID: _system-ID_; *partner ID: _partner-system-ID_*
-System Serial Number: _system-serial-number_
-System Rev: A0
-System Storage Configuration: Mixed-Path HA
+cluster::*> ha interconnect config show -node <node>
+  (system ha interconnect config show)
+
+                       Node: node3-node1
+          Interconnect Type: RoCE
+            Local System ID: <node3-system-id>
+          Partner System ID: <node2-system-id>
+       Connection Initiator: local
+                  Interface: external
+
+Port   IP Address
+----   -----------------
+e4a-17   0.0.0.0
+e4b-18   0.0.0.0
 ----
+====
+
+
+. Si el identificador del sistema asociado es incorrecto para node3:
 +
-Si el ID de socio es incorrecto para node2 o node3:
-
+.. Parada node3:
 +
-... Reinicie el nodo con el valor incorrecto.
-... Vuelva a ejecutar los comandos de <<sysconfig-a-command,Paso 1>>y confirme que el identificador de partner ha cambiado al valor correcto.
+`halt`
 
+.. En el aviso de Loader, defina el valor correcto de «sisid del partner».
++
+El node3 “partner-sysid” es el ID del sistema de node2, que se puede encontrar en la `ha interconnect config show` salida en <<verify-partner-sys-id,Paso 1>>.
 
+.. Guarde los ajustes:
++
+`saveenv`
+
+.. En el símbolo del sistema de Loader, arranque node3 en el menú de arranque:
++
+`boot_ontap menu`
+
+.. Inicie sesión en node3.
 
 
 . Envíe un mensaje de AutoSupport a NetApp para node2:
 +
-`system node autosupport invoke -node _node2_ -type all -message "Upgrading _node2_ from _platform_old_ to _platform_new_"`
+`system node autosupport invoke -node <node2> -type all -message "Upgrading <node2> from <platform_old> to <platform_new>"`
 
 . Compruebe que se ha enviado el mensaje de AutoSupport:
 +
-`system node autosupport show -node _node2_ -instance`
+`system node autosupport show -node <node2> -instance`
 
 +
 Los campos "último asunto enviado:" y "última vez enviado:" contienen el título del último mensaje que se envió y la hora en que se envió el mensaje.
@@ -63,11 +98,11 @@ Los campos "último asunto enviado:" y "última vez enviado:" contienen el títu
 
 .. Enumere los agregados que son propiedad de 2:
 +
-`storage aggregate show -owner-name _node2_`
+`storage aggregate show -owner-name <node2>`
 
 .. Iniciar reubicación de agregado:
 +
-`storage aggregate relocation start -node _node2_ -destination _node3_ -aggregate-list * -ndo-controller-upgrade true`
+`storage aggregate relocation start -node <node2> -destination <node3> -aggregate-list * -ndo-controller-upgrade true`
 
 +
 
@@ -85,7 +120,7 @@ La reubicación se produce en segundo plano. La reubicación de un agregado pued
 
 . Verificar el estado de reubicación del nodo 2:
 +
-`storage aggregate relocation show -node _node2_`
+`storage aggregate relocation show -node <node2>`
 
 +
 La salida muestra “Listo” para un agregado después de que se haya reubicado.
@@ -101,7 +136,7 @@ NOTE: Debe esperar hasta que todos los agregados de los que son propiedad del no
 | Si la reubicación de... | Realice lo siguiente... 
 
 
-| Todos los agregados se han realizado correctamente | Vaya a <<man_relocate_2_3_step7,Paso 7>>. 
+| Todos los agregados se han realizado correctamente | Vaya a <<man_relocate_2_3_step8,Paso 8>>. 
 
 
 | Todos los agregados han fallado o se ha vetado  a| 
@@ -123,7 +158,7 @@ NOTE: La `event log show` comando muestra todos los errores que se han producido
 
 .. Reubicar agregados que fallen o vetados:
 +
-`storage aggregate relocation start -node _node2_ -destination _node3_ -aggregate-list * -ndo-controllerupgrade true`
+`storage aggregate relocation start -node <node2> -destination <node3> -aggregate-list * -ndo-controllerupgrade true`
 
 .. Cuando se le solicite, introduzca `y`.
 .. Vuelva al nivel de privilegio de administrador:
@@ -147,29 +182,29 @@ Si es necesario, puede forzar la reubicación mediante uno de los siguientes mé
 Para obtener más información sobre los comandos de reubicación de agregados de almacenamiento, vaya a. link:other_references.html["Referencias"] Para establecer un vínculo a la gestión de discos y agregados con la CLI_ y los comandos _ONTAP 9: Manual Page Reference_.
 
 |===
-. [[man_relocate_2_3_step7]]Verifique que todos los agregados no raíz estén en línea en node3:
+. [[man_relocate_2_3_step8]]Verifique que todos los agregados no raíz estén en línea en node3:
 +
-`storage aggregate show -node _node3_ -state offline -root false`
+`storage aggregate show -node <node3> -state offline -root false`
 
 +
 Si alguno de los agregados se ha desconectado o se ha convertido en externo, debe conectarlos, una vez por cada agregado:
 
 +
-`storage aggregate online -aggregate _aggr_name_`
+`storage aggregate online -aggregate <aggregate_name>`
 
 . Verifique que todos los volúmenes estén en línea en el nodo 3:
 +
-`volume show -node _node3_ -state offline`
+`volume show -node <node3> -state offline`
 
 +
 Si alguno de los volúmenes se encuentra sin conexión en el nodo 3, es necesario conectarlos, una vez por cada volumen:
 
 +
-`volume online -vserver _Vserver-name_ -volume _volume-name_`
+`volume online -vserver <Vserver-name> -volume <volume-name>`
 
 . Compruebe que node2 no posee ningún agregado no raíz en línea:
 +
-`storage aggregate show -owner-name _node2_ -ha-policy sfo -state online`
+`storage aggregate show -owner-name <node2> -ha-policy sfo -state online`
 
 +
 El resultado del comando no debe mostrar agregados no raíz en línea, ya que todos los agregados en línea no raíz ya se han reubicado al nodo 3.

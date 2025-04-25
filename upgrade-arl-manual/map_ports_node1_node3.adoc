@@ -19,7 +19,7 @@ Debe asegurarse de que los puertos físicos del nodo 1 se asignen correctamente 
 .Antes de empezar
 Ya debe tener información acerca de los puertos en los nodos nuevos del _Hardware Universe_. (Vaya a. link:other_references.html["Referencias"] Para establecer un enlace con el _Hardware Universe_). Utilice la información posteriormente en esta sección y en link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
 
-La configuración de software del nodo 3 debe coincidir con la conectividad física del nodo 3, y es necesario restaurar la conectividad IP para poder continuar con la actualización.
+La configuración del software de node3 debe coincidir con la conectividad física de node3 y se debe restaurar la conectividad de red antes de continuar con la actualización.
 
 .Acerca de esta tarea
 La configuración del puerto puede variar en función del modelo de los nodos.

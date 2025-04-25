@@ -298,11 +298,11 @@ f-a   2b       fc             target       cna           -             online
 +
 `halt`
 
-. [[step14]]nodo de arranque en el menú de arranque:
+. [[step14]]Inicie el nodo en el menú de inicio:
 +
 `boot_ontap menu`
 
 +
-Si va a actualizar a un sistema A800, vaya a link:reassign-node2-disks-to-node4.html#auto_check_4_step9["Reasigne los discos node2 a node4, paso 9"].
+Si va a actualizar a un sistema AFF A800, vaya a link:reassign-node2-disks-to-node4.html#auto_check_4_step9["Reasigne los discos node2 a node4, paso 9"].
 
 
