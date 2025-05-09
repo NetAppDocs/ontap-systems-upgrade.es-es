@@ -101,5 +101,36 @@ En las siguientes tablas se muestra el uso de puertos del switch para configurac
 Para un clúster con switch, compruebe que cumple con los siguientes requisitos para el nodo AFF A30, AFF A50, AFF A70, AFF A90, AFF C30, AFF C60 o AFF C80 (reemplazo):
 
 * Los puertos de clúster idénticos en el nodo de reemplazo se encuentran en el mismo switch. Por ejemplo, al finalizar la actualización, se deben conectar e1a en node1 y e1a en node2 a un switch de clúster. De igual forma, el segundo puerto de clúster de ambos nodos debe conectarse al segundo switch de clúster. La conexión cruzada de puertos compartidos cluster-HA, donde e1a desde node1 está conectado a Switcha y e1a desde node2 está conectado al switch B, provoca fallos de comunicación de alta disponibilidad.
-* El nodo de reemplazo utiliza puertos Ethernet compartidos de clúster-alta disponibilidad. Comprobar que los switches del clúster están instalados con un archivo de configuración de referencia (RCF) que sea compatible con los puertos compartidos de cluster-HA.
+* El nodo de reemplazo utiliza puertos Ethernet compartidos de clúster-alta disponibilidad.
+* Compruebe que los switches de clúster están instalados con un archivo de configuración de referencia (RCF) que admite los puertos compartidos de clúster-HA:
++
+.. Elimine la configuración existente en el conmutador:
++
+[cols="30,70"]
+|===
+| Si su modelo de interruptor es... | Vaya a... 
+
+
+| Cisco Nexus | El artículo de la base de conocimientos link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["Cómo borrar la configuración en un switch de interconexión de Cisco manteniendo la conectividad remota"^] 
+
+
+| Broadcom BES-53248 | El artículo de la base de conocimientos link:https://kb.netapp.com/on-prem/Switches/Broadcom-KBs/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["Cómo borrar la configuración en un switch de interconexión Broadcom manteniendo la conectividad remota"^] 
+|===
+.. Configure y verifique la configuración del switch:
++
+[cols="30,70"]
+|===
+| Si su modelo de interruptor es... | Vaya a... 
+
+
+| Cisco Nexus 9336C-FX2 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html["Actualice su archivo de configuración de referencia (RCF)"^] 
+
+
+| Broadcom BES-53248 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-bes-53248/upgrade-rcf.html["Actualizar el archivo de configuración de referencia (RCF)"^] 
+
+
+| NVIDIA SN2100 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html["Instale o actualice el script Reference Configuration File (RCF)"^] 
+|===
+
+
 
