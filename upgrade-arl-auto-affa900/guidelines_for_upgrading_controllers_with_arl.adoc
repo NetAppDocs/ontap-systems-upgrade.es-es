@@ -38,7 +38,7 @@ Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar l
 
 Si va a actualizar nodos en un clúster conectado a un switch de clúster, debe comprobar que la marca, el modelo, la versión de firmware, RCF y la versión de ONTAP que se ejecutan en el switch serán las mismas que las que se ejecutan en la controladora de reemplazo después de la actualización. Si es necesario, debe realizar la actualización del switch antes de actualizar las controladoras mediante ARL.
 
-Para obtener más información, consulte link:upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html#connect-switch-attached-cluster["Conéctese a un clúster conectado a switches"].
+Para obtener más información, consulte link:cable-node1-for-shared-cluster-HA-storage.html#connect-switch-attached-cluster["Conéctese a un clúster conectado a switches"].
 
 
 
