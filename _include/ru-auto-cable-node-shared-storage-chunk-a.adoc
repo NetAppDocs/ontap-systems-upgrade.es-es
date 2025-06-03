@@ -1,0 +1,51 @@
+= Conecte los puertos e0M y BMC
+:allow-uri-read: 
+
+
+
+
+== Conecte los puertos e0M y BMC
+
+Si el sistema existente tiene un puerto de gestión (e0M) y un puerto BMC, los puertos e0M y BMC se combinan y se accede a ellos a través del puerto «llave» del sistema de reemplazo. Antes de conectarse al sistema de reemplazo, debe asegurarse de que los puertos e0M y BMC estén conectados al mismo switch y a la misma subred del sistema existente.
+
+[cols="35,65"]
+|===
+| Si... | Realice lo siguiente... 
+
+
+| Las direcciones IP e0M y BMC están en la misma subred IP | Conecte el puerto e0M o BMC del sistema existente al puerto de llave del sistema de sustitución. 
+
+
+| Las direcciones IP de e0M y BMC se encuentran en subredes diferentes  a| 
+. Combine las direcciones IP e0M y BMC en una subred IP.
+. Conecte el puerto e0M o BMC del sistema existente al puerto de llave del sistema de sustitución.
+
+
+|===
+
+
+== Conéctese a un clúster de dos nodos sin switches
+
+En las siguientes tablas se muestra el uso de puertos del switch para configuraciones de clústeres sin switch de dos nodos.
+
+|===
+| Tipo de puerto | AFF A800 y AFF C800 | AFF A90 | AFF A70 y AFF C80 
+
+
+| Clúster | e0a | e1a | e1a 
+
+
+| Clúster | e1a | e7a (use e1b si no hay e7a) | e1b 
+
+
+| HA | e0b | No te conectes | No te conectes 
+
+
+| HA | e1b | No te conectes | No te conectes 
+
+
+| Puertos de almacenamiento SAS (si existen y se utilizan) | Cualquier puerto disponible | Cualquier puerto disponible | Cualquier puerto disponible 
+
+
+| Puertos de almacenamiento Ethernet para bandejas NS224 | Cualquier puerto disponible | Consulte Asignación de conectividad de almacenamiento Ethernet | Consulte Asignación de conectividad de almacenamiento Ethernet 
+|===

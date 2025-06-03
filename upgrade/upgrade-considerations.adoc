@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: plan, upgrade, consideration, contact, technical, support, recommendation, guidance, cluster, considerations for upgrading controller hardware 
 summary: Para planificar la actualización, familiarícese con las consideraciones generales de actualización. Si es necesario, póngase en contacto con el soporte técnico para obtener recomendaciones y orientación específica para la configuración del clúster. 
 ---
-= Consideraciones que tener en cuenta para actualizar el hardware de la controladora
+= Consideraciones para actualizar el hardware del controlador moviendo volúmenes o almacenamiento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -30,7 +30,7 @@ NOTE: Antes de iniciar el procedimiento de actualización de la controladora, de
 | ¿Combino distintos modelos de plataforma de controladora en un clúster?  a| 
 link:https://hwu.netapp.com["Compruebe que sigue las reglas de combinación de plataformas de almacenamiento"^].
 
-Las controladoras de una pareja de alta disponibilidad deben ser dos modelos AFF, FAS o ASA.
+Los controladores en un par HA deben ser dos modelos AFF, FAS o ASA.
 
 
 
@@ -67,7 +67,7 @@ NOTE: Si va a actualizar un clúster de ocho nodos que sirve protocolos de bloqu
 
 
 
-| ¿Estoy actualizando una pareja de alta disponibilidad en un clúster con varios pares de alta disponibilidad? | Mueva épsilon al nodo de un par de alta disponibilidad que no esté realizando una actualización de controladora. Por ejemplo, si va a actualizar NODEA/NodeB en un clúster con la configuración de parejas de alta disponibilidad NODEA/NodeB y nodos C/noded, debe mover épsilon a nodo C o noded. 
+| ¿Estoy actualizando un par de alta disponibilidad en un clúster con múltiples pares de alta disponibilidad? | Mueva épsilon al nodo de un par HA que no esté en proceso de actualización del controlador. Por ejemplo, si va a actualizar NODEA/NodeB en un clúster con la configuración de parejas de alta disponibilidad NODEA/NodeB y nodos C/noded, debe mover épsilon a nodo C o noded. 
 
 
 | ¿Estoy ejecutando ONTAP 9.6P11, 9.7P8 o versiones posteriores? | NetApp recomienda que habilite la toma de control de conectividad, vida útil y supervisión de disponibilidad (CLAM) para devolver el clúster al quórum cuando se produzcan ciertos fallos en los nodos. La `kernel-service` el comando requiere un nivel de privilegio avanzado. Para obtener más información, consulte el artículo de la base de conocimientos de NetApp https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Se ha cambiado la configuración predeterminada de toma de control de CLAM"^].

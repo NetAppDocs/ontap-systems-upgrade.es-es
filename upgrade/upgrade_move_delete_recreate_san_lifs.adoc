@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cluster, san, environment, delete, lif, re-create, move san lifs, create 
 summary: En función del contenido del clúster y del entorno del clúster, tendrá que mover, eliminar o crear LIF SAN, o bien volver a crear LIF SAN eliminadas. 
 ---
-= Descripción general
+= Mover, eliminar o crear SAN LIF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,7 +13,82 @@ summary: En función del contenido del clúster y del entorno del clúster, tend
 [role="lead"]
 En función del contenido del clúster y del entorno del clúster, debe mover, eliminar o crear LIF SAN, o volver a crear LIF SAN eliminadas.
 
-* link:upgrade_considerations_move_san_lifs.html["Consideraciones para mover las LIF SAN"]
-* link:upgrade-delete-san-lifs.html["Elimine ya no es necesario realizar LIF DE SAN desde los nodos originales"]
-* link:upgrade_create_recreate_san_lifs.html["Cree nuevos LIF SAN o vuelva a crear LIF SAN eliminadas"]
 
+
+== Consideraciones para mover LIF SAN
+
+Solo debe mover las LIF SAN si va a cambiar el contenido del clúster, por ejemplo, agregando nodos al clúster o eliminando nodos del clúster. Cuando mueve una LIF, no tiene que volver a dividir en zonas la estructura de FC ni crear nuevas sesiones iSCSI entre los hosts conectados del clúster y la nueva interfaz de destino.
+
+Puede mover un LIF DE SAN mediante el `network interface modify` comando. Para mover un LIF SAN, debe desconectar la LIF, mover el LIF a un puerto o nodo raíz diferente y, a continuación, volver a conectarlo en su nueva ubicación. El acceso asimétrico de Unidad lógica (ALUA, Asymmetric Logical Unit Access) proporciona rutas redundantes y selección automática de rutas como parte de cualquier solución SAN de ONTAP. Por lo tanto, cuando el LIF se desconecta para dicho movimiento, no se produce ninguna interrupción de I/O. El host simplemente reintenta y, a continuación, mueve I/o a otra LIF.
+
+Durante los movimientos de LIF, puede realizar de forma no disruptiva las siguientes tareas:
+
+* Sustituya un par de alta disponibilidad de un clúster por un par de alta disponibilidad actualizado de manera que los hosts que acceden a los datos de una LUN sean transparentes
+* Actualizar una tarjeta de interfaz de destino
+* Traslade los recursos de una máquina virtual de almacenamiento (SVM) de un conjunto de nodos de un clúster a otro conjunto de nodos del mismo clúster
+* Cuando el servidor host está en línea, puede mover una LUN SAN a un nuevo par de alta disponibilidad sin interrumpir el acceso del servidor host a los datos de la LUN
+
+
+Para obtener más información, consulte https://docs.netapp.com/us-en/ontap/san-admin/move-san-lifs-task.html["Movimiento de LIF SAN"^] De la documentación de _SAN Storage Management_.
+
+
+
+== Eliminar los LIF de SAN que ya no son necesarios
+
+Si el clúster se encuentra en un entorno SAN, debe eliminar cualquier LIF DE SAN que ya no necesite desde los nodos originales antes de poder anular la unión de los nodos originales del clúster.
+
+.Pasos
+. Si tiene iniciadores de iSCSI, complete los pasos siguientes:
++
+.. Muestre una lista de iniciadores activos conectados actualmente a una SVM en los nodos originales, una vez por cada una de las LIF anteriores: +
+`iscsi connection show -vserver _Vserver_name_ -lif _old_lif_`
++
+En el siguiente ejemplo, se muestra el resultado del comando con un iniciador activo conectado a SVM vs1:
+
++
+[listing]
+----
+cluster::> iscsi connection show -vserver vs1 -lif data2
+          Tpgroup        Conn  Local           Remote          TCP Recv
+Vserver   Name     TSIH  ID    Address         Address         Size
+--------- -------- ----- ----- --------------- --------------- --------
+vs1       data         9     1 10.229.226.166  10.229.136.188    131400
+----
+.. Si algún iniciador sigue registrando en un nodo original, cierre la sesión de las sesiones del equipo host.
+
+
+. Muestre la lista del conjunto de puertos para determinar si alguna LIF iSCSI o FC de los nodos originales pertenece a un conjunto de puertos:
++
+`lun portset show`
+
++
+En el siguiente ejemplo, se muestra el resultado de `lun portset show` comando:
+
++
+[listing]
+----
+cluster:> lun portset show
+Virtual
+Server    Portset      Protocol Port Names              Igroups
+--------- ------------ -------- ----------------------- ------------
+js11      ps0          mixed    LIF1,                   igroup1
+                                LIF2
+          ps1          iscsi    LIF3                    igroup2
+          ps2          fcp      LIF4                    -
+3 entries were displayed.
+----
+. Si alguno de los iSCSIs o LIF FC de un nodo original es miembro de un conjunto de puertos, elimínelos del conjunto de puertos:
++
+`lun portset remove -vserver _vserver_name_ -portset _portset_name_ -port-name _lif_name_`
+
+. Elimine las LIF en los nodos originales:
++
+`network interface delete -vserver _vserver_name_ -lif _lif_name_`
+
+
+
+
+
+== Cree nuevos LIF SAN o vuelva a crear LIF SAN eliminadas
+
+En función de los requisitos del entorno del clúster, podría decidir crear LIF SAN nuevas o volver a crear LIF SAN que haya eliminado anteriormente en este procedimiento. Puede crear o volver a crear LIF DE SAN mediante el https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_creating_network_interfaces.html["creación de interfaces de red"^] Procedimiento de la documentación _Cluster Management Using OnCommand® System Manager_.

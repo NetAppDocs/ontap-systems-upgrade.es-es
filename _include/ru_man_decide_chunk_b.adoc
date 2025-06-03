@@ -2,9 +2,16 @@
 :allow-uri-read: 
 
 
+[NOTE]
+====
+* . Este procedimiento ARL incluye los pasos que garantizan que los discos internos permanezcan seguros en el chasis al quitar e instalar los controladores durante el procedimiento de actualización
++
+link:../upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["Obtenga información sobre las combinaciones de actualización del sistema compatibles mediante ARL, manteniendo el chasis y los discos del sistema existentes"].
 
-NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.
+* Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.
 
+
+====
 Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
 
 Consulte link:other_references.html["Referencias"] Para establecer un enlace al centro de documentación de _ONTAP 9_, donde puede acceder a la documentación de producto de ONTAP 9.

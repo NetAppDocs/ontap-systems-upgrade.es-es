@@ -21,7 +21,11 @@ Antes de iniciar la actualización, compruebe que tiene los módulos correctos p
 | Si va a actualizar desde... | El sistema de sustitución debe tener... 
 
 
-| AFF A250 y AFF C250 | Dos módulos de controladora y nuevos módulos I/O. 
+| AFF A250 y AFF C250  a| 
+* Dos módulos de controladora y nuevos módulos I/O.
+* Una tarjeta X60132A de 4 puertos 10/25 GbE para configuraciones de actualización sin conmutador de dos nodos
+
+
 
 
 | AFF A800 y AFF C800 | Dos módulos de controladora, dos NVRAMs y nuevos módulos I/O. 

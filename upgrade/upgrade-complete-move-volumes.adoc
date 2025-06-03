@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: complete, procedure, upgrading, upgrade, move, moving, volume, configure, service, processor, sp, license, autosupport, storage, encryption, fc, nca, port, complete the upgrade 
 summary: 'Para completar el procedimiento de actualización, mueva volúmenes, necesita configurar Service Processor \(SP\), instalar licencias nuevas y configurar AutoSupport. También es posible que deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o NCA.' 
 ---
-= Complete la actualización
+= Completar la actualización de volúmenes de movimiento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -38,7 +38,7 @@ Siga uno de estos procedimientos, en función de si utiliza la gestión de clave
 ** «"Restauración de claves de cifrado de gestión de claves externas"»
 
 
-. Si los nodos nuevos tienen puertos FC (integrados o en adaptadores de FC), puertos CNA integrados o una tarjeta CNA, configure los puertos FC o CNA, introduzca el siguiente comando desde el símbolo del sistema de almacenamiento:
+. Si los nuevos nodos tienen puertos FC (integrados o en adaptadores FC), puertos CNA integrados o una tarjeta CNA, configure los puertos FC o CNA ingresando el siguiente comando desde el indicador del sistema de almacenamiento:
 +
 `system node hardware unified-connect modify -node node-name -adapter adapter-name -mode {fc|cna} -type {target|initiator}`
 

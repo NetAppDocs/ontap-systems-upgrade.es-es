@@ -3,11 +3,11 @@ section: upgrade-arl-auto-app
 title: Utilice comandos para sustituir la controladora del sistema para actualizar
   el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior
 entries:
-- title: Descripción general
+- title: Conozca más sobre este procedimiento de ARL
   url: "/upgrade-arl-auto-app/index.html"
 - title: Automatice el proceso de actualización de la controladora
   url: "/upgrade-arl-auto-app/automate_the_controller_upgrade_process.html"
-- title: Decida si desea utilizar el contenido de reubicación de agregados
+- title: Decidir si utilizar este procedimiento ARL
   url: "/upgrade-arl-auto-app/decide_to_use_the_aggregate_relocation_guide.html"
 - title: Herramientas y documentación necesarias
   url: "/upgrade-arl-auto-app/required_tools_and_documentation.html"
@@ -19,14 +19,12 @@ entries:
   url: "/upgrade-arl-auto-app/check_for_metrocluster_config_errors.html"
 - title: Verifique la conmutación de sitios, el reparación y la conmutación de estado
   url: "/upgrade-arl-auto-app/verify_switchover_healing_switchback.html"
-- title: Descripción general de la actualización de ARL
+- title: Conozca la secuencia de actualización de ARL
   url: "/upgrade-arl-auto-app/overview_of_the_arl_upgrade.html"
 - title: Etapa 1. Prepare la actualización
   pdf-filename: Etapa 1. Prepárese para la actualización (actualice con «sustitución
     de controladora del sistema» en ONTAP 9.8 o posterior)
   entries:
-  - title: Descripción general
-    url: "/upgrade-arl-auto-app/stage_1_index.html"
   - title: Prepare los nodos para la actualización
     url: "/upgrade-arl-auto-app/prepare_nodes_for_upgrade.html"
   - title: Gestione el cifrado del almacenamiento con el gestor de claves incorporado
@@ -35,8 +33,6 @@ entries:
   pdf-filename: Fase 2. Reubicar y retirar el nodo 1 (actualizar con el ‘sustitución
     del controlador del sistema’ en ONTAP 9.8 o posterior)
   entries:
-  - title: Descripción general
-    url: "/upgrade-arl-auto-app/stage_2_index.html"
   - title: Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen
       al nodo 1 al nodo 2
     url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_data_lifs_node1_node2.html"
@@ -50,8 +46,6 @@ entries:
   pdf-filename: Etapa 3. Nodo de instalación y arranque 3 (actualización con «sustitución
     de controladora del sistema» en ONTAP 9.8 o posterior)
   entries:
-  - title: Descripción general
-    url: "/upgrade-arl-auto-app/stage_3_index.html"
   - title: Instale y arranque el nodo 3
     url: "/upgrade-arl-auto-app/install_boot_node3.html"
   - title: Establezca la configuración de FC o UTA/UTA2 en el nodo 3
@@ -69,8 +63,6 @@ entries:
   pdf-filename: Etapa 4. Reubicar y retirar el nodo 2 (actualizar con "sustitución
     del controlador del sistema" en ONTAP 9.8 o posterior)
   entries:
-  - title: Descripción general
-    url: "/upgrade-arl-auto-app/stage_4_index.html"
   - title: Reubique los agregados que no son raíz y los LIF de datos NAS del nodo
       2 al nodo 3
     url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html"
@@ -80,8 +72,6 @@ entries:
   pdf-filename: Etapa 5. Nodo de instalación y arranque 4 (actualización con «sustitución
     de controladora del sistema» en ONTAP 9.8 o posterior)
   entries:
-  - title: Descripción general
-    url: "/upgrade-arl-auto-app/stage_5_index.html"
   - title: Instale y arranque el nodo 4
     url: "/upgrade-arl-auto-app/install_boot_node4.html"
   - title: Establezca la configuración de FC o UTA/UTA2 en el nodo 4
@@ -99,8 +89,6 @@ entries:
   pdf-filename: Etapa 6. Complete la actualización (actualice con «sustitución de
     controladora del sistema» en ONTAP 9.8 o posterior)
   entries:
-  - title: Descripción general
-    url: "/upgrade-arl-auto-app/stage_6_index.html"
   - title: Gestionar la autenticación mediante servidores KMIP
     url: "/upgrade-arl-auto-app/manage-authentication-using-kmip-servers.html"
   - title: Confirmar que las nuevas controladoras están configuradas correctamente
@@ -118,8 +106,6 @@ entries:
   pdf-filename: Solución de problemas (actualice con el programa ‘sustitución de controladora
     del sistema’ en ONTAP 9.8 o posterior)
   entries:
-  - title: Descripción general
-    url: "/upgrade-arl-auto-app/troubleshoot_index.html"
   - title: Fallos de reubicación de agregados
     url: "/upgrade-arl-auto-app/aggregate_relocation_failures.html"
   - title: Reinicios, pánicos o ciclos de alimentación

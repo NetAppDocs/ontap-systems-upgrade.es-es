@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html 
+permalink: upgrade-arl-auto-affa900/cable-node2-for-shared-cluster-HA-storage.html 
 keywords: cluster, ha, aff, a800, shared, storage, data, management 
-summary: Conecte el clúster, la alta disponibilidad, el almacenamiento y las conexiones de datos que se habían conectado anteriormente al AFF A800 node1 al AFF A90 o AFF A70 node1 recién instalado 
+summary: Conecte las conexiones de clúster, HA, almacenamiento y datos que estaban conectadas previamente al nodo AFF A8002 al nodo AFF A90 o AFF A701 recién instalado. 
 ---
-= Cable node1 para cluster-HA compartido y almacenamiento
+= Cable node2 para cluster-HA compartido y almacenamiento
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Conecte el clúster, la alta disponibilidad, el almacenamiento y las co
 
 
 [role="lead"]
-Si realiza una de las siguientes actualizaciones, debe conectar el clúster, la alta disponibilidad, el almacenamiento, los datos y las conexiones de gestión que se habían conectado previamente a la node1 en el sistema existente a la node1 recién instalada en el sistema de reemplazo.
+Si está realizando una de las siguientes actualizaciones, debe conectar las conexiones de clúster, HA, almacenamiento, datos y administración que estaban conectadas anteriormente al nodo 2 en el sistema existente al nodo 2 recientemente instalado en el sistema de reemplazo.
 
 [cols="35,65"]
 |===
@@ -80,7 +80,7 @@ En las siguientes tablas se muestra el uso de puertos del switch para configurac
 | Puertos de almacenamiento Ethernet para bandejas NS224 | Cualquier puerto disponible | Consulte Asignación de conectividad de almacenamiento Ethernet | Consulte Asignación de conectividad de almacenamiento Ethernet 
 |===
 |===
-| Puerto | AFF A250 y AFF C250 | AFF A30, AFF C30, AFF C60 | AFF A50 
+| Tipo de puerto | AFF A250 y AFF C250 | AFF A30 y AFF C60 | AFF A50 
 
 
 | Clúster | e0c | e1a (Utilice e1a para la interconexión temporal del clúster) | e1a (Utilice e1a para la interconexión temporal del clúster) 
@@ -89,13 +89,16 @@ En las siguientes tablas se muestra el uso de puertos del switch para configurac
 | Clúster | e0d | e1b (Utilice e1b para la interconexión temporal del clúster) | e1b (Utilice e1b para la interconexión temporal del clúster) 
 
 
-| HA | No es obligatorio | Los puertos HA no son necesarios para la actualización del nodo 1 | Los puertos HA no son necesarios para la actualización del nodo 1 
+| HA | El puerto e0c HA se comparte con el puerto del clúster | e4a en el nodo 1 está conectado directamente a e4a en el nodo 2 mediante un cable de 100 GbE | e4a en el nodo 1 está conectado directamente a e4a en el nodo 2 mediante un cable de 100 GbE 
 
 
-| Puertos de almacenamiento Ethernet | Cualquier puerto disponible | e3a, e3b | e3a, e3b 
+| HA | El puerto e0d HA se comparte con el puerto del clúster | e2a en el nodo1 está conectado directamente a e2a en el nodo2 mediante un cable de 100 GbE. Si e2a no está presente o no admite 100 GbE, conecte directamente e4b en el nodo1 a e4b en el nodo2 mediante un cable de 100 GbE. | e2a en el nodo 1 conectado directamente a e2a en el nodo 2 mediante un cable de 100 GbE. Si e2a no está presente o no admite 100 GbE, conecte directamente e4b en el nodo 1 a e4b en el nodo 2 mediante un cable de 100 GbE. 
 
 
-| Puertos de almacenamiento SAS | Cualquier puerto disponible | 3a, 3b | 3a, 3b 
+| puerto de almacenamiento Ethernet | Cualquier puerto disponible | e3a, e3b | e3a, e3b 
+
+
+| Puerto de almacenamiento SAS | Cualquier puerto disponible | 3a, 3b | 3a, 3b 
 |===
 
 

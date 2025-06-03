@@ -2,7 +2,7 @@
 section: upgrade
 title: Actualice trasladando volúmenes o almacenamiento
 entries:
-- title: Descripción general
+- title: Decidir actualizar moviendo volúmenes o almacenamiento
   url: "/upgrade/upgrade-decide-to-use-this-guide.html"
 - title: Consideraciones
   url: "/upgrade/upgrade-considerations.html"
@@ -24,8 +24,6 @@ entries:
     url: "/upgrade/upgrade-set-up-new-nodes.html"
   - title: 'Opcional: Mueva almacenamiento interno o conviértalo a bandeja de unidades'
     entries:
-    - title: Descripción general
-      url: "/upgrade/upgrade-optional-move-internal-storage.html"
     - title: Mover unidades internas
       url: "/upgrade/upgrade-move-internal-drives.html"
     - title: Convierta el nodo a la bandeja de unidades
@@ -36,20 +34,16 @@ entries:
     url: "/upgrade/upgrade-restore-root-volume-config.html"
   - title: Se completó la actualización
     entries:
-    - title: Descripción general
+    - title: Flujo de trabajo
       url: "/upgrade/upgrade-complete.html"
     - title: Complete en ONTAP 9.8 o posterior
       entries:
-      - title: Descripción general
-        url: "/upgrade/upgrade-complete-ontap-9-8.html"
       - title: Asignar puertos de red con ONTAP 9.8
         url: "/upgrade/upgrade-map-network-ports-ontap-9-8.html"
       - title: Realice los últimos pasos en ONTAP 9.8
         url: "/upgrade/upgrade-final-upgrade-steps-in-ontap-9-8.html"
     - title: Complete en ONTAP 9.7 o anterior
       entries:
-      - title: Descripción general
-        url: "/upgrade/upgrade-complete-ontap-9-7-or-earlier.html"
       - title: Asignar puertos de red con ONTAP 9.7 o una versión anterior
         url: "/upgrade/upgrade-map-network-ports-ontap-9-7-or-earlier.html"
       - title: Realice los últimos pasos en ONTAP 9.7 o anterior
@@ -69,15 +63,7 @@ entries:
   - title: Mueva LIF de datos sin SAN y LIF de administración de clúster
     url: "/upgrade/upgrade-move-lifs-to-new-nodes.html"
   - title: Mueva, elimine o cree LIF SAN
-    entries:
-    - title: Descripción general
-      url: "/upgrade/upgrade_move_delete_recreate_san_lifs.html"
-    - title: Consideraciones para mover LIF SAN
-      url: "/upgrade/upgrade_considerations_move_san_lifs.html"
-    - title: Elimine las LIF SAN
-      url: "/upgrade/upgrade-delete-san-lifs.html"
-    - title: Cree nuevos LIF SAN o vuelva a crear LIF SAN eliminadas
-      url: "/upgrade/upgrade_create_recreate_san_lifs.html"
+    url: "/upgrade/upgrade_move_delete_recreate_san_lifs.html"
   - title: Desunir los nodos originales
     url: "/upgrade/upgrade-unjoin-original-nodes-move-volumes.html"
   - title: Se completó la actualización

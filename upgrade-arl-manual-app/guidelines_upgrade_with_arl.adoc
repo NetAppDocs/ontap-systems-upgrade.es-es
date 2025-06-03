@@ -127,10 +127,10 @@ Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar l
 
 
 
-== Resolución de problemas
+== Solucionar problemas
 
-Este procedimiento incluye sugerencias para la solución de problemas.
+Es posible que aparezca un error mientras se actualiza la pareja de nodos. El nodo podría bloquearse, es posible que los agregados no se reubiquen o que los LIF no migren. La causa del fallo y su solución dependen de cuándo se produjo el fallo durante el procedimiento de actualización.
 
-Si ocurre algún problema mientras actualiza las controladoras, puede consultar la link:troubleshoot_index.html["Solucionar problemas"] sección al final del procedimiento para obtener más información y soluciones posibles.
+Si ocurre algún problema al actualizar los controladores, consulte la link:aggregate_relocation_failures.html["Solucionar problemas"] sección. La información sobre los fallos que pueden ocurrir se enumera por fase del procedimiento en el link:arl_upgrade_workflow.html["Secuencia de actualización de ARL"] .
 
 Si no encuentra ninguna solución al problema que encontró, póngase en contacto con el soporte técnico.

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ndu, nondisruptive, upgrade, AFF, FAS, systems, entry, level 
 summary: Lleve a cabo una NDU en sistemas AFF y FAS de NetApp de gama básica sin tener que comprar almacenamiento adicional ni switches de clúster. 
 ---
-= Flujo de trabajo
+= Actualice AFF A250 a AFF A400 mediante la conversión a un flujo de trabajo de plataforma de unidades
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

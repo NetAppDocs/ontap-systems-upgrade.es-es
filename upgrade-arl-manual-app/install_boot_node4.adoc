@@ -17,16 +17,18 @@ summary: Instale y arranque el nodo 4 e instale el software ONTAP durante una ac
 Debe instalar el nodo 4 en el rack, transferir las conexiones 2 a nodo 4 y el nodo de arranque 4. También debe reasignar todos los repuestos de nodo 2, todos los discos que pertenezcan a raíz y todos los agregados que no sean raíz que no se hayan reubicado al nodo 3 anterior.
 
 .Acerca de esta tarea
-Debe reiniciar el nodo 4 si no tiene la misma versión de ONTAP 9 que está instalada en el nodo 2. Después de instalar el nodo 4, arranque desde la imagen ONTAP 9 almacenada en el servidor web. A continuación, puede descargar los archivos correctos en el dispositivo multimedia de arranque para posteriores arranques del sistema siguiendo las instrucciones en link:prepare_for_netboot.html["Prepárese para el arranque desde el red"]
+Debe iniciar el nodo 4 mediante netboot si no tiene la misma versión de ONTAP 9 instalada en el nodo 2. Después de instalar el nodo 4, arranque desde la imagen ONTAP 9 almacenada en el servidor web. Luego, puede descargar los archivos correctos al dispositivo de arranque para los siguientes arranques del sistema siguiendo las instrucciones de link:prepare_for_netboot.html["Prepárese para el arranque desde el red"] .
 
-Sin embargo, no es necesario que netboot node4 si tiene la misma versión o posterior de ONTAP 9 que está instalada en node2.
+Sin embargo, no es necesario iniciar el nodo 4 desde la red si tiene la misma versión o una versión posterior de ONTAP 9 que está instalada en el nodo 2.
 
-*Información importante:*
+[IMPORTANT]
+====
+* Para actualizar un controlador AFF A800 o AFF C800, debe asegurarse de que todas las unidades en el chasis estén firmemente asentadas contra el plano medio antes de quitar el nodo 2. Para obtener más información, consulte link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Sustituya los módulos del controlador AFF A800 o AFF C800"].
+* Si está actualizando un sistema de la Serie V o un sistema con software de virtualización FlexArray que está conectado a matrices de almacenamiento, debe completar <<man_install4_Step1,Paso 1>> a través de <<man_install4_Step7,Paso 7>> , deja esta sección en <<man_install4_Step8,Paso 8>> y siga las instrucciones en link:set_fc_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"] según sea necesario, ingresando los comandos en modo de mantenimiento. Luego debe regresar a esta sección y reanudar el procedimiento en <<man_install4_Step9,Paso 9>> .
+* Si está actualizando un sistema con discos de almacenamiento, debe completar toda esta sección y luego continuar con la sección link:set_fc_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"] , ingresando comandos en el indicador del clúster.
 
-* Si va a actualizar un sistema V-Series o un sistema con software de virtualización FlexArray conectado a cabinas de almacenamiento, debe completar <<man_install4_Step1,Paso 1>> por <<man_install4_Step7,Paso 7>>, deje esta sección en <<man_install4_Step8,Paso 8>> y siga las instrucciones de link:set_fc_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"] Según sea necesario, introduzca los comandos en modo de mantenimiento. A continuación, debe volver a esta sección y reanudar el procedimiento en <<man_install4_Step9,Paso 9>>.
-* Sin embargo, si va a actualizar un sistema con discos de almacenamiento, debe completar toda esta sección y luego continuar con la sección link:set_fc_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"], introduciendo comandos en el símbolo del sistema del clúster.
 
-
+====
 .Pasos
 . [[man_install4_Step1]]realice una de las siguientes acciones:
 +

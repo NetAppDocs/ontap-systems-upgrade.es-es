@@ -16,7 +16,7 @@ summary: Después de intercambiar los módulos del sistema node2 de reemplazo co
 [role="lead"]
 Después de intercambiar los módulos del sistema node2 de reemplazo correspondientes, es posible que necesite reiniciarlos por red. El término arranque desde red significa que se arranca desde una imagen ONTAP almacenada en un servidor remoto. Cuando se prepara para el arranque por red, se coloca una copia de la imagen de arranque de ONTAP 9 en un servidor web al que el sistema pueda acceder.
 
-No es posible comprobar la versión de ONTAP instalada en el soporte de arranque del módulo de controlador de reemplazo a menos que esté instalado en un chasis y ENCENDIDO. La versión de ONTAP en el soporte de arranque del sistema de reemplazo debe ser la misma que la versión de ONTAP que se ejecuta en el sistema antiguo que se está actualizando, y las imágenes de arranque primarias y de backup deben coincidir. Puede configurar las imágenes mediante el modo de reiniciar el sistema seguido de `wipeconfig` desde el menú de arranque. Si el módulo de la controladora se usaba anteriormente en otro clúster, el `wipeconfig` el comando borra toda la configuración residual del soporte de arranque.
+No es posible comprobar la versión de ONTAP instalada en el medio de arranque del módulo controlador de reemplazo a menos que esté instalado en un chasis y encendido. La versión de ONTAP en el soporte de arranque del sistema de reemplazo debe ser la misma que la versión de ONTAP que se ejecuta en el sistema antiguo que se está actualizando, y las imágenes de arranque primarias y de backup deben coincidir. Puede configurar las imágenes mediante un arranque en red seguido del...  `wipeconfig` comando desde el menú de arranque. Si el módulo controlador se utilizó previamente en otro clúster, el  `wipeconfig` El comando borra cualquier configuración residual en el medio de arranque.
 
 También puede utilizar la opción de arranque USB para realizar el arranque desde red. Consulte el artículo de la base de conocimientos link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Cómo utilizar el comando boot_recovery LOADER para instalar ONTAP para la configuración inicial de un sistema"^].
 
@@ -130,8 +130,27 @@ El módulo del controlador se reinicia pero se detiene en el menú de inicio por
 
 
 
-. En el aviso, ejecute el `wipeconfig` comando para borrar cualquier configuración previa en el soporte de arranque.
+. Borre cualquier configuración previa en el medio de arranque.
 +
+.. En el siguiente mensaje, ejecute el  `wipeconfig` comando y presione la tecla Enter:
++
+[listing]
+----
+Please choose one of the following:
+
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? wipeconfig
+----
 .. Cuando vea el mensaje siguiente, responda `yes`:
 +
 [listing]
@@ -141,6 +160,10 @@ Warning: do not run this option on a HA node that has been taken over.
 Are you sure you want to continue?:
 ----
 .. El nodo se reinicia para finalizar el `wipeconfig` y luego se detiene en el menú de inicio.
++
+
+NOTE: Espere hasta que el nodo se detenga en el menú de arranque después de completar la  `wipeconfig` operación.
+
 
 
 . Seleccione el modo de mantenimiento `5` desde el menú de inicio y entrar `y` cuando se le pida que continúe con el arranque.

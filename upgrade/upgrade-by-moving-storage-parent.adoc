@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: upgrade 
 summary: Si va a actualizar moviendo almacenamiento, debe preparar los nodos originales y configurar los nuevos. Algunos modelos de plataforma admiten la transferencia de almacenamiento interno a los nuevos nodos. Debe reasignar discos y restaurar la configuración de volumen raíz a los nodos nuevos y configurar puertos de red. La actualización moviendo almacenamiento es un procedimiento disruptivo. 
 ---
-= Flujo de trabajo
+= Actualización moviendo el flujo de trabajo de almacenamiento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,11 +4,14 @@
 
 Es necesario reiniciar el nodo 4 si no tiene la misma versión de ONTAP 9 que está instalada en el nodo 2. Después de instalar el nodo 4, arranque desde la imagen ONTAP 9 almacenada en el servidor web. A continuación, puede descargar los archivos correctos en el dispositivo multimedia de arranque para posteriores arranques del sistema, siguiendo las instrucciones en link:prepare_for_netboot.html["Prepárese para el arranque desde el red"].
 
-.Importante:
+[IMPORTANT]
+====
+* Para actualizar un controlador AFF A800 o AFF C800, debe asegurarse de que todas las unidades en el chasis estén firmemente asentadas contra el plano medio antes de quitar el nodo 2. Para obtener más información, consulte link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Sustituya los módulos del controlador AFF A800 o AFF C800"].
 * Si va a actualizar un sistema V-Series conectado a cabinas de almacenamiento o un sistema con el software de virtualización de FlexArray conectado a cabinas de almacenamiento, debe completar <<auto_install4_step1,Paso 1>> por <<auto_install4_step21,Paso 21>>, luego salga de esta sección y siga las instrucciones a. link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configure los puertos FC en el nodo 4"] y a. link:set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4"], Entrando en comandos en modo de mantenimiento. A continuación, debe volver a esta sección y reanudar con <<auto_install4_step23,Paso 23>>.
-* Sin embargo, si va a actualizar un sistema con discos de almacenamiento, debe completar esta sección entera y continuar a. link:set_fc_or_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"], introduciendo comandos en el símbolo del sistema del clúster.
+* Si está actualizando un sistema con discos de almacenamiento, debe completar toda esta sección y luego continuar. link:set_fc_or_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"] , ingresando comandos en el indicador del clúster.
 
 
+====
 .Pasos
 . [[auto_install4_step1]]Asegúrese de que el nodo 4 tenga suficiente espacio en rack.
 +

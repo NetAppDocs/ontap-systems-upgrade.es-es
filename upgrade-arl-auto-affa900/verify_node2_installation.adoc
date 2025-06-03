@@ -29,7 +29,36 @@ En este punto del procedimiento, la operación se detiene mientras el nodo 2 se 
 +
 El resultado del `health` el campo debe ser `true`.
 
-. Compruebe que el nodo 2 forme parte del mismo clúster que el nodo 1 y que esté en buen estado:
+. Este paso se aplica a las siguientes configuraciones de actualización. Para todas las demás actualizaciones del sistema, omita este paso y vaya a <<verify-node2-step3,Paso 3>> :
++
+** Clústeres sin conmutadores de dos nodos
+** Conmutador conectado a sistemas AFF A250 o AFF C250 que se actualiza a un sistema AFF A50, AFF A30, AFF C30 o AFF C60.
+
+
++
+--
+Si el nodo2 no se une al quórum automáticamente:
+
+.. Verifique el espacio IP de los puertos e1a y e1b:
++
+`network port show`
+
+.. Si el espacio IP no es "Cluster", cambie el espacio IP a "Cluster" en e1a y e1b:
++
+`network port modify -node <node_name> -port <port> -ipspace Cluster`
+
+.. Verifique que el espacio IP de los puertos e1a y e1b sea "Cluster":
++
+`network port show`
+
+.. Migrar los LIF del clúster nodo2 a e1a y e1b:
++
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node2_name> -destination-port <port_name`
+
+
+
+--
+. [[verify-node2-step3]]Verifique que el nodo2 y el nodo1 sean parte del mismo clúster y que el clúster esté en buen estado:
 +
 `cluster show`
 
@@ -37,7 +66,46 @@ El resultado del `health` el campo debe ser `true`.
 +
 `set advanced`
 
-. Compruebe el estado de la operación de reemplazo de la controladora y compruebe que esté en pausa y que esté en el mismo estado que antes de detener el nodo 2 para realizar las tareas físicas de instalación de nuevas controladoras y mover cables:
+. Este paso solo aplica a actualizaciones de configuración sin conmutador de dos nodos de un AFF A250 o AFF C250 a un AFF A50, AFF A30, AFF C60 o AFF C30. Para cualquier otra actualización del sistema, omita este paso y vaya a <<verify-node2-step6,Paso 6>> :
++
+Verifique que los puertos e4a, e2a, e1a, e1b o los puertos e4a, e4b, e1a, e1b sean los puertos del clúster en el dominio de transmisión "Clúster".
+
++
+Los sistemas AFF A50, AFF A30, AFF C30 y AFF C60 comparten puertos de clúster y de alta disponibilidad. Puede migrar de forma segura todos los LIF del clúster a e4a, e4b o e4a, e2a en los nodos 1 y 2:
+
++
+.. Enumere los puertos locales y los puertos actuales para todos los LIF del clúster:
++
+`network interface show -role Cluster -fields home-port,curr-port`
+
+.. [[migrate-cluster-lif-step-4b]]En el nodo 1 y el nodo 2, migre los LIF del clúster que usan e1a como puerto local a e4a:
++
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node> -destination-port e4a`
+
+.. En el nodo 1 y el nodo 2, modifique los LIF del clúster migrados en <<migrate-cluster-lif-step-4b,subpaso b>> Para utilizar e4a como puerto de origen:
++
+`network  interface modify -vserver Cluster -lif <cluster_lif> -home-port e4a`
+
+.. Verifique que el clúster esté en quórum:
++
+`cluster show`
+
+.. Repetir <<migrate-cluster-lif-step-4b,subpaso b y subpaso c>> Para migrar y modificar el segundo LIF del clúster en cada nodo a e2a o e4b:
++
+Si e2a está presente y es un puerto de red de 100 GbE, este es el segundo puerto de clúster predeterminado. Si e2a no es un puerto de red de 100 GbE, ONTAP usa e4b como segundo puerto de clúster y de alta disponibilidad.
+
+.. Eliminar e1a y e1b del dominio de difusión "Cluster":
++
+`broadcast-domain remove-ports -broadcast-domain Cluster -ipspace Cluster -ports <node_name>:e1a`
+
+.. Verifique que solo los puertos del clúster e4a, e2a o e4a, e4b estén en el dominio de difusión "Clúster"
++
+`broadcast domain show`
+
+.. Retire las conexiones de cable entre el nodo e1a 1 y el nodo e1a 2, y entre el nodo e1b 1 y el nodo e1b 2 para garantizar que solo se utilicen conexiones de clúster-HA válidas y que no haya conectividad redundante.
+
+
+. [[verify-node2-step6]]Verifique el estado de la operación de reemplazo del controlador y verifique que esté en estado de pausa y en el mismo estado en el que estaba antes de que el nodo 2 se detuviera para realizar las tareas físicas de instalación de nuevos controladores y movimiento de cables:
 +
 `system controller replace show`
 

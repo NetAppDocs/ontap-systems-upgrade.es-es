@@ -79,6 +79,9 @@ Asegúrese de soportar el peso del módulo del controlador mientras lo desliza f
 
 Instale, conecte el cable y conecte el módulo de reemplazo en node1.
 
+.Antes de empezar
+Verifique que tenga una tarjeta X60132A de 4 puertos 10/25 GbE en la ranura 1 del nodo 1. La tarjeta X60132A es necesaria para la interconexión de clústeres en configuraciones de clústeres sin conmutador de dos nodos durante la actualización.
+
 .Pasos
 . Alinee el extremo del módulo del controlador con la abertura del chasis y, a continuación, empuje suavemente el módulo del controlador hasta la mitad del sistema.
 +

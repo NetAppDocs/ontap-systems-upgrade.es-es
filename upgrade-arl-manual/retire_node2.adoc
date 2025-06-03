@@ -67,7 +67,7 @@ Warning: Cluster HA has not been configured. Cluster HA must be configured on a 
 ----
 +
 
-NOTE: Si va a actualizar una pareja de alta disponibilidad de un clúster con varias parejas de alta disponibilidad, debe desplazar épsilon al nodo de una pareja de alta disponibilidad que no esté sometiendo a una actualización de la controladora. Por ejemplo, si va a actualizar NODEA/NodeB en un clúster con la configuración de parejas de alta disponibilidad NODEA/NodeB y nodos C/noded, debe mover épsilon a nodo C o noded.
+NOTE: Si está actualizando un par de HA en un clúster con varios pares de HA, debe mover epsilon al nodo de un par de HA que no esté realizando una actualización de controlador. Por ejemplo, si va a actualizar NODEA/NodeB en un clúster con la configuración de parejas de alta disponibilidad NODEA/NodeB y nodos C/noded, debe mover épsilon a nodo C o noded.
 
 . Si el nodo 2 tiene un valor épsilon, márquelo como épsilon `false` en el nodo de modo que se pueda transferir al nodo 3:
 +

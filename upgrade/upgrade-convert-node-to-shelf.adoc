@@ -13,6 +13,12 @@ summary: Si el nodo original es uno de los modelos admitidos, durante el proceso
 [role="lead"]
 Si el nodo original es uno de los modelos admitidos, durante el proceso de actualización moviendo almacenamiento puede convertir el nodo a una bandeja de unidades y, a continuación, arlo a los nuevos nodos del mismo clúster.
 
+
+NOTE: link:upgrade-move-internal-drives.html["También puede optar por mover unidades internas desde un nodo original"].
+
+.Acerca de esta tarea
+Puedes mover estantes de unidades solo dentro del mismo clúster.
+
 .Antes de empezar
 Debe haber revisado link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"] acerca de convertir un nodo a una bandeja de unidades. Si necesita orientación específica de su configuración, póngase en contacto con el soporte técnico.
 

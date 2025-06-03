@@ -57,8 +57,16 @@ Si desea actualizar las controladoras de gama básica con unidades internas, con
 
 
 
-== Resolución de problemas
+== Configuración de FC de MetroCluster
 
-Si ocurre algún problema mientras actualiza las controladoras, puede consultar la link:troubleshoot_index.html["Solucionar problemas"] sección al final del procedimiento para obtener más información y soluciones posibles.
+En una configuración de MetroCluster FC, debe sustituir los nodos del sitio de recuperación ante desastres/conmutación al nodo de respaldo lo antes posible. No se admite la discrepancia en los modelos de controladoras dentro de un MetroCluster, ya que el error de coincidencia del modelo de controladora puede provocar que la operación de mirroring de recuperación ante desastres se desconecte. Utilice `-skip-metrocluster-check true` el comando para omitir las comprobaciones de MetroCluster cuando va a reemplazar nodos en el segundo sitio.
+
+
+
+== Solucionar problemas
+
+Es posible que aparezca un error mientras se actualiza la pareja de nodos. El nodo podría bloquearse, es posible que los agregados no se reubiquen o que los LIF no migren. La causa del fallo y su solución dependen de cuándo se produjo el fallo durante el procedimiento de actualización.
+
+Si ocurre algún problema, consulte el link:aggregate_relocation_failures.html["Solucionar problemas"] Sección al final del procedimiento para obtener más información y posibles soluciones. La información sobre las fallas que pueden ocurrir se enumera por fase del procedimiento en el link:overview_of_the_arl_upgrade.html["Secuencia de actualización de ARL"] .
 
 Si no encuentra ninguna solución al problema que encontró, póngase en contacto con el soporte técnico.

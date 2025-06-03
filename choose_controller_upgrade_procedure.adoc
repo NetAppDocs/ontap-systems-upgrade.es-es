@@ -21,21 +21,16 @@ Elija un procedimiento de actualización para un sistema con unidades internas, 
 
 * FAS2620, FAS2650, FAS2720 Y FAS2750
 * AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s, y AFF A800
-+
-
-NOTE: También puede actualizar un AFF A800 a un AFF A70 o AFF A90 mediante la reubicación de agregado. link:upgrade-arl-auto-affa900/index.html["Leer más"].
-
 * AFF C190, AFF C250 y AFF C800
-+
-
-NOTE: También puede actualizar un AFF A250 y AFF C250 mediante la reubicación de agregados. link:upgrade-arl-auto-affa900/index.html["Leer más"].
-
 * ASA A150, ASA A250, ASA A800 y ASA AFF A220
 +
 
 NOTE: No se admiten las actualizaciones de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de un sistema ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
 
 
+
+
+NOTE: Para ciertas actualizaciones de controlador, puede utilizar la reubicación agregada para actualizar un sistema con unidades internas. link:upgrade-arl/index.html["Leer más"].
 
 Si el sistema no aparece en la lista, consulte https://hwu.netapp.com["Hardware Universe de NetApp"^] para comprobar si tiene unidades internas.
 

@@ -1,0 +1,14 @@
+= Elija un procedimiento de actualización de hardware diferente
+:allow-uri-read: 
+
+
+
+
+== Elija un procedimiento de actualización de hardware diferente
+
+* link:../upgrade-arl/index.html["Revise los métodos ARL alternativos disponibles para actualizar el hardware del controlador"].
+* Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+
+
+.Información relacionada
+Referirse a link:other_references.html["Referencias"] para vincular a la _Documentación de ONTAP 9_.

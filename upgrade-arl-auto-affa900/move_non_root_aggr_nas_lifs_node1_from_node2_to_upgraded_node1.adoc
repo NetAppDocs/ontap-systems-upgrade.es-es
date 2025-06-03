@@ -63,7 +63,7 @@ Confirme que todos los puertos conectados, incluidos el grupo de interfaces y lo
 | AFF A800 | AFF A70 y AFF A90 
 
 
-| AFF C800 | C80 
+| AFF C800 | AFF C80 
 |===
 +
 Para todas las demás actualizaciones del sistema, vaya a <<resume_relocation_step4,Paso 4>>.

@@ -13,6 +13,9 @@ summary: Si el nodo original es uno de los modelos admitidos, durante el proceso
 [role="lead"]
 Si el nodo original es uno de los modelos admitidos, durante el proceso de actualización moviendo almacenamiento puede mover las unidades SATA, SSD o SAS internas del nodo a una bandeja de unidades conectada al nodo nuevo del mismo clúster.
 
+
+NOTE: link:upgrade-convert-node-to-shelf.html["También puede optar por convertir el sistema en un estante de unidades y conectarlo a los nuevos nodos."].
+
 .Antes de empezar
 * Debe haber revisado link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"] acerca de mover unidades internas.
 +
@@ -22,6 +25,9 @@ Si necesita orientación específica de su configuración, póngase en contacto 
 * Al nodo nuevo ya se debe conectar una bandeja de unidades compatible.
 * La bandeja de unidades debe tener suficientes bahías libres para admitir los portadores de unidades SATA, SSD o SAS del nodo original.
 
+
+.Acerca de esta tarea
+Puedes mover unidades únicamente dentro del mismo clúster.
 
 .Pasos
 . Retire con cuidado el bisel de la parte delantera del sistema.

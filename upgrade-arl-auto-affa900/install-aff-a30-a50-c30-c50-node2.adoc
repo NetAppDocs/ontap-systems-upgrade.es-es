@@ -14,7 +14,7 @@ summary: Instale los módulos del sistema de reemplazo en node2 durante una actu
 
 
 [role="lead"]
-Instale el módulo de controlador de reemplazo que recibió para la actualización en node2. El nodo 2 es la controladora B, situada en el lado derecho del chasis, cuando se tienen en cuenta las controladoras de la parte posterior del sistema.
+Instale el módulo de controlador de reemplazo que recibió para la actualización en node2. El nodo 2 es el controlador B ubicado en la mitad inferior del chasis cuando se miran los controladores desde la parte trasera del sistema.
 
 .Pasos
 . Coloque el sistema de almacenamiento en los rieles situados en el centro del armario o rack de telecomunicaciones, y luego apoye el sistema de almacenamiento desde la parte inferior y deslícelo en su lugar.
@@ -42,4 +42,5 @@ NOTE: Para evitar dañar los conectores, no ejerza demasiada fuerza al deslizar 
 +
 `saveenv`
 
+. Para configuraciones sin conmutador de dos nodos, verifique que tenga una tarjeta X60132A de 4 puertos 10/25 GbE en la ranura 1 del nodo 2. La tarjeta X60132A es necesaria para la interconexión del clúster durante la actualización.
 

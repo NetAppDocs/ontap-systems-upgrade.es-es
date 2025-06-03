@@ -4,20 +4,18 @@ permalink: upgrade-arl-auto-app/index.html
 keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology 
 summary: 'Puede actualizar el hardware de la controladora que ejecuta ONTAP 9.8 o una versión posterior mediante `system controller replace` comandos, reubicar la propiedad de agregados que no son raíz.' 
 ---
-= Descripción general
+= Conozca este procedimiento de actualización de ARL
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
-Este procedimiento describe cómo actualizar el hardware de la controladora mediante la reubicación de agregados (ARL) para las siguientes configuraciones del sistema:
+Existen varios métodos de reubicación agregada (ARL) para actualizar el hardware del controlador. Este procedimiento describe cómo actualizar el hardware del controlador mediante la reubicación agregada (ARL) con comandos de reemplazo del controlador del sistema en sistemas con ONTAP 9.8 o posterior.
 
-[cols="40,20,40"]
-|===
-| Método | Versión de ONTAP | Sistemas compatibles 
-
-
-| Uso `system controller replace` comandos | 9.8 o posterior | link:decide_to_use_the_aggregate_relocation_guide.html#sys_commands_98_supported_systems["Enlace a la matriz de sistemas admitidos"] 
-|===
 Durante el procedimiento, debe actualizar el hardware de la controladora original con el hardware de la controladora de reemplazo y, de este modo, reubicar la propiedad de agregados que no son raíz. Puede migrar agregados varias veces de nodo a nodo para confirmar que al menos un nodo está sirviendo datos desde los agregados a través del procedimiento de actualización. También puede migrar las interfaces lógicas de datos (LIF) y asignar los puertos de red de la nueva controladora a los grupos de interfaces a medida que continúa.
 
 .Terminología utilizada en esta información
@@ -26,7 +24,7 @@ En esta información, los nodos originales reciben el nombre de "nodo 1" y "nodo
 A lo largo de esta información, el término "sistemas con software de virtualización FlexArray" hace referencia a los sistemas que pertenecen a estas nuevas plataformas. El término "sistema V-Series" hace referencia a los sistemas de hardware independientes que pueden conectarse a las cabinas de almacenamiento.
 
 .Información importante:
-* Este procedimiento es complejo y asume que tiene habilidades avanzadas de administración de ONTAP. Usted también debe leer y entender el link:guidelines_for_upgrading_controllers_with_arl.html["Directrices para actualizar controladoras con ARL"] y la link:overview_of_the_arl_upgrade.html["Descripción general de la actualización de ARL"] secciones antes de comenzar la actualización.
+* Este procedimiento es complejo y asume que tiene habilidades avanzadas de administración de ONTAP. También debe leer y comprender el link:guidelines_for_upgrading_controllers_with_arl.html["Pautas para actualizar controladores con ARL"] y el link:overview_of_the_arl_upgrade.html["Secuencia de actualización de ARL"] antes de comenzar la actualización.
 * En este procedimiento se asume que el hardware de la controladora de reemplazo es nuevo y no se ha usado. Los pasos necesarios para preparar las controladoras usadas con el `wipeconfig` el comando no se incluye en este procedimiento. Debe ponerse en contacto con el soporte técnico si se utilizó anteriormente el hardware de la controladora de reemplazo, especialmente si las controladoras ejecutaban Data ONTAP en 7- Mode.
 * Puede utilizar ARL para realizar una actualización de controladoras simplificada y sin interrupciones a una nueva controladora que ejecute una versión de ONTAP posterior a la versión que se ejecuta en el clúster que está actualizando. Las combinaciones de versiones de ONTAP para controladoras antiguas y nuevas están determinadas por el modelo de cadencia de actualizaciones no disruptivas de software de ONTAP. Por ejemplo, si tiene una controladora que ejecuta ONTAP 9.8 y esa es la última versión compatible de esa controladora, puede actualizar a una nueva controladora que ejecute una versión de ONTAP posterior a ONTAP 9.8.
 +

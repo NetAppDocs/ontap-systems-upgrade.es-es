@@ -376,7 +376,7 @@ Login:
 
 NOTE: En el ejemplo de resultado de la consola anterior, ONTAP le solicitará el nombre del nodo asociado si el sistema utiliza discos de partición avanzada de disco (ADP).
 
-. Si el sistema entra en un bucle de reinicio con el mensaje `no disks found`, indica que se ha producido un problema con la reasignación del disco. Consulte link:troubleshoot_index.html["Solucionar problemas"] para resolver el problema.
+. Si el sistema entra en un bucle de reinicio con el mensaje `no disks found`, indica que se ha producido un problema con la reasignación del disco. Consulte link:aggregate_relocation_failures.html["Solucionar problemas"] para resolver el problema.
 . Pulse `Ctrl-C` durante el arranque automático para detener el nodo en `LOADER>` el símbolo del sistema.
 . En el aviso del CARGADOR, introduzca el modo de mantenimiento:
 +

@@ -1,7 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Es posible que aparezca un error mientras se actualiza la pareja de nodos. El nodo podría bloquearse, es posible que los agregados no se reubiquen o que los LIF no migren. La causa del fallo y su solución dependen de cuándo se produjo el fallo durante el procedimiento de actualización.
-
-Consulte la tabla que describe las diferentes fases del procedimiento en la sección link:overview_of_the_arl_upgrade.html["Descripción general de la actualización de ARL"]. La información sobre los fallos que pueden producirse se enumera en la fase del procedimiento.

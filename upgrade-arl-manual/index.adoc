@@ -4,7 +4,7 @@ permalink: upgrade-arl-manual/index.html
 keywords: controller, aggregate, relocation, flexarray, manual, upgrade, metrocluster 
 summary: Utilice el procedimiento de actualización manual de ARL para actualizar el hardware de la controladora que ejecute ONTAP 9.7 o una versión anterior y reubicar la propiedad de agregados no raíz. 
 ---
-= Descripción general
+= Conozca este procedimiento de actualización de ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,14 +14,10 @@ summary: Utilice el procedimiento de actualización manual de ARL para actualiza
 
 
 [role="lead"]
-Este procedimiento describe cómo actualizar el hardware de la controladora mediante la reubicación de agregados (ARL) para las siguientes configuraciones del sistema:
+Este procedimiento describe cómo actualizar el hardware del controlador mediante la reubicación manual de agregados (ARL) en sistemas que ejecutan ONTAP 9.7 o anterior.
 
-[cols="20,20,60"]
-|===
-| Método | Versión de ONTAP | Sistemas compatibles 
+Puede utilizar este procedimiento ARL si está realizando una de las siguientes actualizaciones:
 
-
-| Actualización manual mediante ARL | 9.7 o anterior  a| 
 * Desde el sistema FAS hasta el sistema FAS
 * Sistema FAS a un sistema con software de virtualización FlexArray o un sistema V-Series
 * Desde el sistema AFF hasta el sistema AFF
@@ -29,14 +25,13 @@ Este procedimiento describe cómo actualizar el hardware de la controladora medi
 * Sistema de V-Series a un sistema con software de virtualización FlexArray o un sistema V-Series
 
 
-|===
 Durante el procedimiento, debe actualizar el hardware de la controladora original con el hardware de la controladora de reemplazo y, de este modo, reubicar la propiedad de agregados que no son raíz. Puede migrar agregados varias veces de nodo a nodo para confirmar que al menos un nodo está sirviendo datos desde los agregados a través del procedimiento de actualización. También puede migrar las interfaces lógicas de datos (LIF) y asignar los puertos de red de la nueva controladora a los grupos de interfaces a medida que continúa.
 
 
 NOTE: En este documento, los nodos originales se denominan _1_ y _2_, y los nuevos se denominan _nodo 3_ y _nodo 4_. Durante el procedimiento descrito, el nodo 1 se reemplaza por nodo 3, y el nodo 2 se reemplaza por nodo 4. Los términos _1_, _2_, _node3_ y _node4_ solo se utilizan para distinguir entre los nodos originales y los nuevos. Cuando siga el procedimiento, deberá sustituir los nombres reales de los nodos originales y los nuevos. Sin embargo, en realidad los nombres de los nodos no cambian: El nodo 3 tiene el nombre 1-nodo y el nodo 4 tiene el nombre 2 después de actualizar el hardware de la controladora. En este documento se utiliza el término _systems with FlexArray Virtualization Software_ para hacer referencia a los sistemas que pertenecen a estas nuevas plataformas. Utiliza el término _V-Series system_ para referirse a los sistemas de hardware independientes que pueden conectarse a las cabinas de almacenamiento
 
 .Información importante:
-* Este procedimiento es complejo y asume que tiene habilidades avanzadas de administración de ONTAP. Usted también debe leer y entender el link:guidelines_upgrade_with_arl.html["Directrices para actualizar controladoras con ARL"] y la link:arl_upgrade_workflow.html["Flujo de trabajo de actualización de ARL"] secciones antes de comenzar la actualización.
+* Este procedimiento es complejo y asume que tiene habilidades avanzadas de administración de ONTAP. También debe leer y comprender el link:guidelines_upgrade_with_arl.html["Pautas para actualizar controladores con ARL"] y el link:arl_upgrade_workflow.html["Flujo de trabajo de actualización de ARL"] antes de comenzar la actualización.
 * En este procedimiento se asume que el hardware de la controladora de reemplazo es nuevo y no se ha usado. Los pasos necesarios para preparar las controladoras usadas con el `wipeconfig` el comando no se incluye en este procedimiento. Debe ponerse en contacto con el soporte técnico si se utilizó anteriormente el hardware de la controladora de reemplazo, especialmente si las controladoras ejecutaban Data ONTAP en 7-Mode.
 * Puede usar este procedimiento para actualizar el hardware de la controladora en clústeres con más de dos nodos; sin embargo, debe realizar el procedimiento por separado para cada pareja de alta disponibilidad (ha) del clúster.
 * Este procedimiento se aplica a sistemas FAS, sistemas V-Series, sistemas AFF y sistemas con software de virtualización FlexArray. Los sistemas FAS publicados después de ONTAP 9 pueden conectarse a las cabinas de almacenamiento si se instala la licencia necesaria. Los sistemas V-Series existentes son compatibles con ONTAP 9. Para obtener información sobre la cabina de almacenamiento y los modelos V-Series, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_ y ver la _matriz de soporte de la serie V_.

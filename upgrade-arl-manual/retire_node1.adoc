@@ -90,7 +90,7 @@ En el siguiente ejemplo, se muestra el resultado del `storage failover show` com
 `network interface show -role data -curr-node _node2_ -home-node _node1_`
 
 +
-Busque en la columna *Administración de estado/Oper* para ver si alguna LIF está inactiva. Si alguna LIF está inactiva, consulte link:troubleshoot_index.html["Troublehole"] sección.
+Busque en la columna *Administración de estado/Oper* para ver si alguna LIF está inactiva. Si algún LIF está inactivo, consulte al link:aggregate_relocation_failures.html["Troublehole"] sección.
 
 . Realice una de las siguientes acciones:
 +
@@ -135,7 +135,7 @@ Dado que en un cluster existe la posibilidad de empate con un número par de nod
 ====
 Si tiene un clúster de cuatro nodos, puede que esté épsilon en un nodo de una pareja de alta disponibilidad diferente del clúster.
 
-Si va a actualizar una pareja de alta disponibilidad de un clúster con varias parejas de alta disponibilidad, debe desplazar épsilon al nodo de una pareja de alta disponibilidad que no esté sometiendo a una actualización de la controladora. Por ejemplo, si va a actualizar NODEA/NodeB en un clúster con la configuración de parejas de alta disponibilidad NODEA/NodeB y nodos C/noded, debe mover épsilon a nodo C o noded.
+Si está actualizando un par de HA en un clúster con varios pares de HA, debe mover epsilon al nodo de un par de HA que no esté realizando una actualización de controlador. Por ejemplo, si va a actualizar NODEA/NodeB en un clúster con la configuración de parejas de alta disponibilidad NODEA/NodeB y nodos C/noded, debe mover épsilon a nodo C o noded.
 
 ====
 +

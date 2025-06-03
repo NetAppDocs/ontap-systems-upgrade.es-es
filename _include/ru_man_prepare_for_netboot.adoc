@@ -41,6 +41,6 @@ El listado de directorios debe contener una carpeta netboot con un archivo de ke
 | Todos los demás sistemas | La lista de directorios debe contener el siguiente archivo: `<ontap_version>_image.tgz`NOTA: No es necesario extraer el contenido del `<ontap_version>_image.tgz` archivo. 
 |===
 +
-Utilizará información en los directorios de link:stage_3_index.html["Etapa 3"].
+Utilizará la información de los directorios en link:install_boot_node3.html["Etapa 3"] .
 
 
