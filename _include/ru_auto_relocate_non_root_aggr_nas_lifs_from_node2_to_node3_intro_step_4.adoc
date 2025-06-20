@@ -18,7 +18,7 @@ NOTE: El propietario raíz de los agregados y las LIF no se modifica; solo se mo
 .Pasos
 . Verifique que todos los agregados que no son raíz estén en línea y su estado en el nodo 3:
 +
-`storage aggregate show -node _node3_ -state online -root false`
+`storage aggregate show -node <node3> -state online -root false`
 
 +
 En el ejemplo siguiente, los agregados no raíz en el nodo 2 están en línea:
@@ -37,24 +37,21 @@ aggr_2         825.0GB      825.0GB      0%     online  1      node2  raid_dp  n
 Si los agregados se han desconectado o se han vuelto externos del nodo 3, conectarlos mediante el uso del siguiente comando de nodo 3, una vez por cada agregado:
 
 +
-`storage aggregate online -aggregate _aggr_name_`
+`storage aggregate online -aggregate <aggregate_name>`
 
 . Verifique que todos los volúmenes estén en línea en el nodo 3. Para ello, use el siguiente comando en el nodo 3 y examine el resultado:
 +
-`volume show -node _node3_ -state offline`
+`volume show -node <node3> -state offline`
 
 +
 Si alguno de los volúmenes se encuentra sin conexión en el nodo 3, debe volver a estar en línea mediante el siguiente comando de nodo 3, una vez para cada volumen:
 
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
-
-+
-La `_vserver_name_` para utilizarlo con este comando se encuentra en el resultado del anterior `volume show` comando.
+`volume online -vserver <vserver_name> -volume <volume_name>` < El  `vserver_name` El uso de este comando se encuentra en la salida del comando anterior.  `volume show` dominio.
 
 . Compruebe que las LIF se han movido a los puertos correctos y que tienen el estado de `up`. Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
 +
-`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _node_name_ -status-admin up`
+`network interface modify -vserver <vserver_name> -lif <LIF_name> -home-node <node_name> -status-admin up`
 
 . Si los puertos que alojan actualmente las LIF de datos no existen en el nuevo hardware, elimínelas del dominio de retransmisión:
 +

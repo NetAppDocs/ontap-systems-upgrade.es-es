@@ -42,25 +42,25 @@ Si ni el nodo 3 ni el nodo 4 son propiedad de los LIF de datos propiedad del hog
 
 . Verifique que el nodo 3 tenga los agregados del nodo 1 y que el nodo 4 sea propietario de los agregados del nodo 2:
 +
-`storage aggregate show -owner-name _node3_`
+`storage aggregate show -owner-name <node3>`
 
 +
-`storage aggregate show -owner-name _node4_`
+`storage aggregate show -owner-name <node4>`
 
 . Determine si alguno de los volúmenes está sin conexión:
 +
-`volume show -node _node3_ -state offline`
+`volume show -node <node3> -state offline`
 
 +
-`volume show -node _node4_ -state offline`
+`volume show -node <node4> -state offline`
 
 . Si alguno de los volúmenes se encuentra sin conexión, compárelo con la lista de volúmenes sin conexión que ha capturado en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"], y conectar cualquiera de los volúmenes sin conexión, según sea necesario, mediante el siguiente comando, una vez para cada volumen:
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
+`volume online -vserver <vserver_name> -volume <volume_name>`
 
 . Instale licencias nuevas para los nodos nuevos mediante el siguiente comando para cada nodo:
 +
-`system license add -license-code _license_code,license_code,license_code…_`
+`system license add -license-code <license_code,license_code,license_code…>`
 
 +
 El parámetro license-code acepta una lista de 28 claves de caracteres alfabéticos en mayúsculas. Puede añadir una licencia cada vez, o bien puede añadir varias licencias a la vez, separando cada clave de licencia por una coma.
@@ -70,7 +70,7 @@ El parámetro license-code acepta una lista de 28 claves de caracteres alfabéti
 `system license clean-up -unused -expired`
 
 +
-`system license delete -serial-number _node_serial_number_ -package _licensable_package_`
+`system license delete -serial-number <node_serial_number> -package <licensable_package>`
 
 +
 --
@@ -84,10 +84,10 @@ El parámetro license-code acepta una lista de 28 claves de caracteres alfabéti
 
 ** Elimine una licencia específica de un clúster mediante los siguientes comandos en los nodos:
 +
-`system license delete -serial-number _node1_serial_number_ -package *`
+`system license delete -serial-number <node1_serial_number> -package *`
 
 +
-`system license delete -serial-number _node2_serial_number_ -package *`
+`system license delete -serial-number <node2_serial_number> -package *`
 
 
 

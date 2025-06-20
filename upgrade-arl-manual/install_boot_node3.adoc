@@ -167,7 +167,7 @@ NOTE: Deje el nodo 4 en el aviso del entorno de arranque; regresará al nodo 4 e
 +
 `set-defaults`
 
-. [[MAN_install3_step16]]Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, realice los pasos siguientes.
+. [[man_install3_step16]]Si tiene unidades NetApp Storage Encryption (NSE) instaladas, realice los siguientes pasos:
 +
 
 NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] para determinar el tipo de unidades de autocifrado que están en uso.

@@ -74,13 +74,10 @@ Volver a habilitar la conmutación al nodo de respaldo del almacenamiento: `stor
 +
 `system node autosupport invoke -node node_name -type all -message "MAINT=END node_name successfully upgraded from platform_old to platform_new"`
 
-. Restaure el almacenamiento o la funcionalidad de cifrado de volúmenes mediante el procedimiento adecuado en la https://docs.netapp.com/us-en/ontap/encryption-at-rest/index.html["Gestione el cifrado con la interfaz de línea de comandos"^] contenido.
+. Restaure la funcionalidad de cifrado de volumen o almacenamiento mediante uno de los siguientes procedimientos, dependiendo de si está utilizando administración de claves interna o externa:
 +
-Siga uno de estos procedimientos, en función de si utiliza la gestión de claves externa o incorporada:
-
-+
-** «"Restauración de las claves de cifrado de gestión de claves incorporadas"
-** «"Restauración de claves de cifrado de gestión de claves externas"»
+** link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-onboard-key-management-encryption-keys-task.html["Restaure las claves de cifrado de gestión de claves incorporadas"^]
+** link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-external-encryption-keys-93-later-task.html["Restaure las claves de cifrado de gestión de claves externas"^]
 
 
 . Si los nodos nuevos tienen puertos FC (integrados o en adaptadores de FC), puertos CNA integrados o una tarjeta CNA, configure los puertos FC o CNA introduciendo el comando siguiente en el símbolo del sistema del almacenamiento:

@@ -46,7 +46,7 @@ Puede utilizar la siguiente hoja de trabajo para registrar la información para 
 | Claves de licencia | Fase 1: _Prepare los nodos para la actualización_ | Fase 6: _Confirme que los nuevos controladores están configurados correctamente_ |  
 
 
-| La dirección IP del servidor de gestión de claves externo | Fase 1: _Rekey disks for Storage Encryption_ | Fase 6: _Configure el cifrado del almacenamiento en los nuevos nodos_ |  
+| Dirección IP del servidor de administración de claves externas | Fase 1: _Rekey disks for Storage Encryption_ | Fase 6: _Configure el cifrado del almacenamiento en los nuevos nodos_ |  
 
 
 | Nombre y ruta del directorio al que se puede acceder desde el sitio web donde se descargan archivos para reiniciar los nodos | Fase 1: _Prepárese para reiniciar el sistema_ | Etapa 3: _Nodo de instalación y arranque 3_ fase 5: _Nodo de instalación y arranque 4_ |  

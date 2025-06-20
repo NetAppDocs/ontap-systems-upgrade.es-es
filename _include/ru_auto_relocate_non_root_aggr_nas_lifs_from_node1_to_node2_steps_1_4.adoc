@@ -22,7 +22,7 @@ La operación se pone en pausa para permitir verificar si todos los agregados qu
 
 . Con la operación en pausa, verifique que todos los agregados que no son raíz estén en línea para su estado en el nodo 2:
 +
-`storage aggregate show -node _node2_ -state online -root false`
+`storage aggregate show -node <node2> -state online -root false`
 
 +
 En el ejemplo siguiente, los agregados no raíz en el nodo 2 están en línea:
@@ -42,19 +42,19 @@ aggr_2     825.0GB  825.0GB    0%     online     1  node2  raid_dp,normal
 Si los agregados se encuentran sin conexión o en estado no externo en el nodo 2, deben estar en línea usando el siguiente comando en el nodo 2, una vez para cada agregado:
 
 +
-`storage aggregate online -aggregate _aggr_name_`
+`storage aggregate online -aggregate <aggregate_name>`
 
 . Verifique que todos los volúmenes estén en línea en el nodo 2 mediante el siguiente comando en el nodo 2 y examinar su salida:
 +
-`volume show -node _node2_ -state offline`
+`volume show -node <node2> -state offline`
 
 +
 Si alguno de los volúmenes está sin conexión en el nodo 2, debe volver a ponerlos en línea usando el siguiente comando en el nodo 2, una vez para cada volumen:
 
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
+`volume online -vserver <vserver_name> -volume <volume_name>`
 
 +
-La `_vserver_name_` para utilizarlo con este comando se encuentra en el resultado del anterior `volume show` comando.
+El  `vserver_name` El uso de este comando se encuentra en la salida del comando anterior.  `volume show` dominio.
 
 

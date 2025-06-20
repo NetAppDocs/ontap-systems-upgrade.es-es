@@ -55,25 +55,25 @@ Si ni el nodo 1 ni el nodo 2 tienen LIF de datos propias del hogar de otros nodo
 
 . Confirmar que los agregados son propiedad de sus respectivos nodos principales.
 +
-`storage aggregate show -owner-name _node1_`
+`storage aggregate show -owner-name <node1>`
 
 +
-`storage aggregate show -owner-name _node2_`
+`storage aggregate show -owner-name <node2>`
 
 . Determine si alguno de los volúmenes está sin conexión:
 +
-`volume show -node _node1_ -state offline`
+`volume show -node <node1> -state offline`
 
 +
-`volume show -node _node2_ -state offline`
+`volume show -node <node2> -state offline`
 
 . Si alguno de los volúmenes se encuentra sin conexión, compárelo con la lista de volúmenes sin conexión que ha capturado en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"], y conectar cualquiera de los volúmenes sin conexión, según sea necesario, mediante el siguiente comando, una vez para cada volumen:
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
+`volume online -vserver <vserver_name> -volume <volume_name>`
 
 . Instale licencias nuevas para los nodos nuevos mediante el siguiente comando para cada nodo:
 +
-`system license add -license-code _license_code,license_code,license_code..._`
+`system license add -license-code <license_code,license_code,license_code...>`
 
 +
 El parámetro license-code acepta una lista de 28 claves de caracteres alfabéticos en mayúsculas. Puede añadir una licencia cada vez, o bien puede añadir varias licencias a la vez, separando cada clave de licencia por una coma.
@@ -83,7 +83,7 @@ El parámetro license-code acepta una lista de 28 claves de caracteres alfabéti
 `system license clean-up -unused -expired`
 
 +
-`system license delete -serial-number _node_serial_number_ -package _licensable_package_`
+`system license delete -serial-number <node_serial_number> -package <licensable_package>`
 
 +
 --
@@ -97,8 +97,8 @@ El parámetro license-code acepta una lista de 28 claves de caracteres alfabéti
 
 ** Elimine una licencia específica de un clúster mediante los siguientes comandos en los nodos:
 +
-`system license delete -serial-number _node1_serial_number_ -package *`
-`system license delete -serial-number _node2_serial_number_ -package *`
+`system license delete -serial-number <node1_serial_number> -package *`
+`system license delete -serial-number <node2_serial_number> -package *`
 
 
 
@@ -125,11 +125,11 @@ Puede comparar la salida con la que ha capturado en link:prepare_nodes_for_upgra
 
 . [[unset_maxwait]] Si se utilizan unidades de autocifrado en la configuración y se ha configurado el `kmip.init.maxwait` variable a. `off` (Por ejemplo, en _Boot node2 con los módulos del sistema de reemplazo_, link:boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1["Paso 1"]), debe anular la definición de la variable:
 +
-`set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
+`set diag; systemshell -node <node_name> -command sudo kenv -u -p kmip.init.maxwait`
 
 . Configure los SPS utilizando el siguiente comando en ambos nodos:
 +
-`system service-processor network modify -node _node_name_`
+`system service-processor network modify -node <node_name>`
 
 +
 Consulte link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_ para obtener información sobre los SPS y los comandos _ONTAP 9: Referencia de página del manual_ para obtener información detallada sobre el sistema `service-processor network modify` comando.

@@ -7,7 +7,7 @@ Para confirmar la configuración correcta, tiene que habilitar el par de alta di
 .Pasos
 . Habilite la conmutación al nodo de respaldo del almacenamiento introduciendo el siguiente comando en uno de los nodos:
 +
-`storage failover modify -enabled true -node _node3_`
+`storage failover modify -enabled true -node <node3>`
 
 . Compruebe que la recuperación tras fallos del almacenamiento está activada:
 +
@@ -55,21 +55,21 @@ Si el nodo 3 o el nodo 4 son propiedad de los LIF de datos que pertenecen a otro
 
 . Verifique que el nodo 3 tenga los agregados del nodo 1 y que el nodo 4 sea propietario de los agregados del nodo 2:
 +
-`storage aggregate show -owner-name _node3_`
-`storage aggregate show -owner-name _node4_`
+`storage aggregate show -owner-name <node3>`
+`storage aggregate show -owner-name <node4>`
 
 . Determine si alguno de los volúmenes está sin conexión:
 +
-`volume show -node _node3_ -state offline`
-`volume show -node _node4_ -state offline`
+`volume show -node <node3> -state offline`
+`volume show -node <node4> -state offline`
 
 . Si alguno de los volúmenes se encuentra sin conexión, compártalos con la lista de volúmenes sin conexión en los que se haya capturado  link:prepare_nodes_for_upgrade.html#man_prepare_nodes_step19["Paso 19 (d)"] En _prepare los nodos para la actualización_ y active cualquiera de los volúmenes sin conexión, según sea necesario, introduzca el comando siguiente, una vez para cada volumen:
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
+`volume online -vserver <vserver_name> -volume <volume_name>`
 
 . Instale licencias nuevas para los nodos nuevos introduciendo el siguiente comando para cada nodo:
 +
-`system license add -license-code _license_code,license_code,license_code..._`
+`system license add -license-code <license_code,license_code,license_code...>`
 
 +
 El parámetro license-code acepta una lista de 28 claves de caracteres alfabéticos en mayúsculas. Puede agregar una licencia cada vez, o puede agregar varias licencias a la vez, cada clave de licencia separada por una coma.
@@ -81,7 +81,7 @@ El parámetro license-code acepta una lista de 28 claves de caracteres alfabéti
 . Para quitar todas las licencias antiguas de los nodos originales, escriba uno de los siguientes comandos:
 +
 `system license clean-up -unused -expired`
-`system license delete -serial-number _node_serial_number_ -package _licensable_package_`
+`system license delete -serial-number <node_serial_number> -package <licensable_package>`
 
 +
 ** Para eliminar todas las licencias caducadas, introduzca:
@@ -94,8 +94,8 @@ El parámetro license-code acepta una lista de 28 claves de caracteres alfabéti
 
 ** Para eliminar una licencia específica de un clúster, introduzca los siguientes comandos en los nodos:
 +
-`system license delete -serial-number _node1_serial_number_ -package *`
-`system license delete -serial-number _node2_serial_number_ -package *`
+`system license delete -serial-number <node1_serial_number> -package *`
+`system license delete -serial-number <node2_serial_number> -package *`
 
 +
 Se muestra la siguiente salida:
@@ -121,7 +121,7 @@ Puede comparar la salida con la que ha capturado link:prepare_nodes_for_upgrade.
 
 . Configure los SPS realizando el siguiente comando en ambos nodos:
 +
-`system service-processor network modify -node _node_name_`
+`system service-processor network modify -node <node_name>`
 
 +
 Vaya a. link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_ para obtener información acerca de los SPS y los comandos _ONTAP 9: Referencia de página del manual_ para obtener información detallada acerca de `system service- processor network modify` comando.

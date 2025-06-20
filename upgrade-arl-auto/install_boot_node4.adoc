@@ -279,7 +279,7 @@ La instalación de un módulo de controladora nuevo cambia los valores de WWPN a
 . Si su configuración utiliza la división en zonas basada en switches, ajuste la división en zonas para reflejar los nuevos valores de WWPN.
 
 
-. [[auto_install4_step27]]Si tiene unidades de cifrado de almacenamiento de NetApp (NSE) instaladas, realice los pasos siguientes.
+. [[auto_install4_step27]]Si tiene unidades NetApp Storage Encryption (NSE) instaladas, realice los siguientes pasos:
 +
 
 NOTE: Si aún no lo ha hecho anteriormente en el procedimiento, consulte el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Cómo saber si una unidad tiene la certificación FIPS"^] para determinar el tipo de unidades de autocifrado que están en uso.

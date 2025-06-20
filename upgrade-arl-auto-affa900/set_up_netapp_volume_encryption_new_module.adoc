@@ -85,4 +85,4 @@ Para obtener más información, vea el artículo de la base de conocimientos htt
 Compruebe si algún volumen se desconectó debido a que no había claves de autenticación disponibles o a que no se pudo acceder a los servidores EKM. Vuelva a conectar esos volúmenes en línea mediante el `volume online` comando.
 
 .Después de terminar
-Compruebe si alguno de los volúmenes se desconectó debido a que no existían claves de autenticación o porque no se pudo acceder a los servidores de gestión de claves externos. Vuelva a conectar esos volúmenes en línea mediante el `volume online` comando.
+Compruebe si alguno de los volúmenes se desconectó debido a que no existían claves de autenticación o porque no se pudo acceder a los servidores de gestión de claves externos. Vuelva a poner en línea esos volúmenes mediante el uso de  `volume online` dominio.
