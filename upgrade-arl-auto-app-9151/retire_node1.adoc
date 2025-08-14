@@ -14,7 +14,7 @@ summary: 'Deshabilite el par de HA con node2 y apague node1 si se actualizan las
 
 
 [role="lead"]
-Para retirar el nodo 1, reanude el funcionamiento automatizado para deshabilitar el par de alta disponibilidad con el nodo 2 y apague correctamente el nodo 1. Más adelante en el procedimiento, quite node1 del rack o el chasis.
+Para retirar el nodo 1, reanude la operación automatizada para deshabilitar el par HA con el nodo 2 y apague el nodo 1 correctamente.  Más adelante en el procedimiento, retire el nodo 1 del bastidor o chasis.
 
 .Pasos
 . Reanude la operación:
@@ -28,4 +28,4 @@ Para retirar el nodo 1, reanude el funcionamiento automatizado para deshabilitar
 
 
 .Después de terminar
-Puede decomisionar el nodo 1 cuando finalice la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].
+Después de retirar el nodo 1, verifique que esté apagado y no conectado a la red.  Deje el hardware antiguo del nodo1 en este estado hasta que complete la actualización tanto del nodo1 como del nodo2.  Luego puede desmantelar el nodo 1 durantelink:manage-authentication-using-kmip-servers.html["Etapa 6. Complete la actualización"] .

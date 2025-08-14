@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Para retirar node2, primero debe apagar node2 correctamente y quitarlo del rack o el chasis.
+Para retirar el nodo 2, apáguelo correctamente y luego retírelo del rack o chasis.
 
 .Pasos
 . Reanude la operación:

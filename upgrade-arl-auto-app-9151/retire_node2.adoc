@@ -14,7 +14,7 @@ summary: 'Apague node2 y quítelo del rack o el chasis cuando actualice controla
 
 
 [role="lead"]
-Para retirar node2, primero debe apagar node2 correctamente y quitarlo del rack o el chasis.
+Para retirar el nodo 2, apáguelo correctamente y luego retírelo del rack o chasis.
 
 .Pasos
 . Reanude la operación:
@@ -27,4 +27,4 @@ El nodo se detiene automáticamente.
 
 
 .Después de terminar
-Puede retirar el nodo 2 una vez completada la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].
+Después de retirar el nodo 2, verifique que esté apagado y no conectado a la red.  Deje el hardware antiguo del nodo2 en este estado hasta que complete la actualización tanto del nodo1 como del nodo2.  Luego puede desmantelar el nodo 2 durantelink:manage-authentication-using-kmip-servers.html["Etapa 6. Complete la actualización"] .
