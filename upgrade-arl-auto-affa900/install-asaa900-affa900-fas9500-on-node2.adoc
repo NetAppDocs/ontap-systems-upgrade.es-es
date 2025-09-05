@@ -66,7 +66,7 @@ El pestillo de bloqueo se eleva cuando el módulo del controlador está completa
 
 WARNING: Para evitar dañar los conectores, no ejerza demasiada fuerza al deslizar el módulo del controlador en el chasis.
 
-. Conecte la consola de serie en cuanto esté sentado el módulo y esté listo para interrumpir EL ARRANQUE AUTOMÁTICO del nodo 1.
+. Conecte la consola serial tan pronto como el módulo esté instalado y prepárese para interrumpir el AUTOBOOT del nodo2.
 . Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 2 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe el AUTOARRANQUE a tiempo y node2 comienza el arranque, espere a que se le indique el prompt y pulse Ctrl-C para ir al menú de arranque. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` para reiniciar el nodo e interrumpir EL AUTOARRANQUE durante el reinicio.
 . En el símbolo del SISTEMA LOADER> 2, establezca las variables de entorno predeterminadas:
 +

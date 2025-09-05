@@ -31,7 +31,7 @@ Retire el dispositivo de gestión de cables del módulo existente y saque ligera
 .Pasos
 . Prepárese para extraer el módulo del controlador:
 +
-.. En la parte frontal del chasis, utilice los pulgares para empujar con firmeza cada unidad hasta que sienta una parada positiva. De este modo se garantiza que las unidades se encuentren firmemente asentadas en el plano medio del chasis.
+.. En la parte frontal del chasis, use los pulgares para empujar firmemente cada unidad en los compartimentos de disco superior e inferior hasta que sienta un tope positivo.  Esto garantiza que las unidades estén firmemente asentadas contra el plano medio del chasis.
 +
 image:drw_a800_drive_seated_IEOPS-960.png["Empuje la unidad para asentarla firmemente contra el plano medio del chasis"]
 
@@ -87,6 +87,14 @@ image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Instale un AFF A90 o AFF A70
 +
 
 NOTE: Como el chasis ya está ENCENDIDO, node1 inicia la inicialización del BIOS seguida de AUTOARRANQUE en cuanto inserte el nuevo módulo de controladora. Para evitar este ARRANQUE AUTOMÁTICO, NetApp recomienda conectar los cables serie y de consola antes de insertar el módulo del controlador.
+
+. En la parte frontal del chasis, use los pulgares para empujar firmemente cada unidad en los compartimentos de disco superior e inferior hasta que sienta un tope positivo.  Esto garantiza que las unidades estén firmemente asentadas contra el plano medio del chasis.
++
+image:drw_a800_drive_seated_IEOPS-960.png["Empuje la unidad para asentarla firmemente contra el plano medio del chasis"]
+
++
+.. Vaya a la parte posterior del chasis.
+
 
 . Con el mango de leva en la posición abierta, empuje firmemente el módulo del controlador hasta que se encuentre con el plano medio y quede completamente asentado. El pestillo de bloqueo se eleva cuando el módulo del controlador está completamente asentado. Cierre la palanca de leva a la posición de bloqueo.
 +

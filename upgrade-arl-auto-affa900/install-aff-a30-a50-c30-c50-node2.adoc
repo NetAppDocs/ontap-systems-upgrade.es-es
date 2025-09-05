@@ -22,19 +22,19 @@ Instale el módulo de controlador de reemplazo que recibió para la actualizaci�
 
 NOTE: No inserte por completo el módulo de la controladora en el chasis hasta que se le indique hacerlo más adelante en el procedimiento.
 
-. Conecte los puertos de consola y de gestión al módulo del controlador 1-1.
+. Conecte los puertos de consola y de gestión al módulo de controladora 2.
 +
 
-NOTE: Como el chasis ya está ENCENDIDO, node1 inicia la inicialización del BIOS seguida de AUTOBOOT en cuanto está completamente colocado. Para interrumpir el arranque del nodo 1, antes de insertar por completo el módulo del controlador en la ranura, se recomienda conectar la consola serie y los cables de gestión al módulo del controlador del nodo 1.
+NOTE: Debido a que el chasis ya está encendido, el nodo 2 inicia la inicialización del BIOS seguida del AUTOBOOT tan pronto como está completamente instalado.  Para interrumpir el arranque del nodo 2, antes de insertar completamente el módulo controlador en la ranura, se recomienda conectar los cables de administración y de consola serial al módulo controlador del nodo 2.
 
 . Con el mango de leva en la posición abierta, empuje firmemente el módulo del controlador hasta que se encuentre con el plano medio y quede completamente asentado. El pestillo de bloqueo se eleva cuando el módulo del controlador está completamente asentado. Cierre la palanca de leva a la posición de bloqueo.
 +
 
 NOTE: Para evitar dañar los conectores, no ejerza demasiada fuerza al deslizar el módulo del controlador en el chasis.
 
-. Conecte la consola de serie en cuanto esté sentado el módulo y esté listo para interrumpir EL ARRANQUE AUTOMÁTICO del nodo 1.
-. Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 1 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe el AUTOARRANQUE a tiempo y node1 comienza el arranque, espere a que se le indique el prompt y pulse Ctrl-C para ir al menú de arranque. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` para reiniciar el nodo e interrumpir EL AUTOARRANQUE durante el reinicio.
-. En el símbolo del SISTEMA LOADER> del nodo 1, establezca las variables de entorno predeterminadas:
+. Conecte la consola serial tan pronto como el módulo esté instalado y prepárese para interrumpir el AUTOBOOT del nodo2.
+. Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 2 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe el AUTOARRANQUE a tiempo y node2 comienza el arranque, espere a que se le indique el prompt y pulse Ctrl-C para ir al menú de arranque. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` para reiniciar el nodo e interrumpir EL AUTOARRANQUE durante el reinicio.
+. En el símbolo del SISTEMA LOADER> 2, establezca las variables de entorno predeterminadas:
 +
 `set-defaults`
 
