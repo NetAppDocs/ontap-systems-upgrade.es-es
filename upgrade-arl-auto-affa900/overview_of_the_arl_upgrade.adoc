@@ -93,7 +93,7 @@ Propiedad agregada al final de la etapa 5:
 
 
 | link:boot_node2_with_a900_controller_and_nvs.html["Etapa 6: Arranque node2 con los módulos del sistema de reemplazo"]  a| 
-Durante la Etapa 6, inicia el nodo 2 con módulos de sistema actualizados y verifica la instalación del nodo 2 actualizado.  Si está utilizando NVE, restaure la configuración del administrador de claves.  Si está actualizando una configuración con clústeres conectados a conmutadores, debe validar la configuración del conmutador para los nuevos controladores.  También reubica los agregados no raíz del nodo 1 y los LIF de datos NAS del nodo 1 al nodo 2 actualizado y verifica que los LIF de SAN existan en el nodo 2.
+Durante la Etapa 6, inicia el nodo 2 con módulos de sistema actualizados y verifica la instalación del nodo 2 actualizado. Si está utilizando NVE, restaure la configuración del administrador de claves. Para las actualizaciones de clústeres conectados a conmutadores, debe validar que el archivo de configuración de referencia (RCF) del conmutador del clúster admita los puertos de alta disponibilidad/clúster compartidos. También reubica los agregados no raíz del nodo 1 y los LIF de datos NAS del nodo 1 al nodo 2 actualizado y verifica que los LIF de SAN existan en el nodo 2.
 
 
 

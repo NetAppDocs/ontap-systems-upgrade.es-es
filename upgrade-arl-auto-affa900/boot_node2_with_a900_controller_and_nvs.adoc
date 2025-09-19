@@ -54,7 +54,10 @@ Introduzca la frase de acceso y la información de copia de seguridad registrada
 +
 `boot_ontap menu`
 
-. Para reasignar los discos antiguos de node2 al node2 de reemplazo, introduzca «22/7» y seleccione la opción oculta `boot_after_controller_replacement` cuando el nodo se detiene en el menú de arranque.
+. Cuando el nodo se detenga en el menú de arranque, reasigne los discos del nodo2 antiguo al nodo2 de reemplazo ejecutando el siguiente comando en el nodo2:
++
+`boot_after_controller_replacement`
+
 +
 Tras un breve retraso, se le pedirá que introduzca el nombre del nodo que se va a reemplazar. Si hay discos compartidos (también llamados Advanced Disk Partitioning (ADP) o discos con particiones), se le pedirá que introduzca el nombre del nodo del compañero de alta disponibilidad.
 
@@ -161,6 +164,7 @@ This will replace all flash-based configuration with the last backup to disks. A
 .
 .
 Controller Replacement: Provide name of the node you would like to replace:<nodename of the node being replaced>
+Controller Replacement: Provide High Availability partner of node1: <nodename of the partner of the node being replaced>
 Changing sysid of node node1 disks.
 Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
 Partner sysid = 4294967295, owner sysid = 536940063

@@ -274,9 +274,18 @@ Introduzca la frase de acceso y la información de copia de seguridad registrada
 
 . Inicie el nodo en el menú de arranque:
 +
-`boot_ontap menu`.
+`boot_ontap menu`
 
-. [[AUTO_CHECK_4_step11]]En node4, vaya al menú de inicio y, usando 22/7, seleccione la opción oculta `boot_after_controller_replacement`. En el símbolo del sistema, introduzca el nodo 2 para reasignar los discos del nodo 2 al nodo 4, como en el ejemplo siguiente.
+. [[auto_check_4_step11]]Cuando el nodo 4 se detenga en el menú de arranque, reasigne los discos del nodo 2 al nodo 4 ejecutando el siguiente comando en el nodo 4:
++
+`boot_after_controller_replacement`
+
++
+Tras un breve retraso, se le pedirá que introduzca el nombre del nodo que se va a reemplazar. Si hay discos compartidos (también llamados Advanced Disk Partitioning (ADP) o discos con particiones), se le pedirá que introduzca el nombre del nodo del compañero de alta disponibilidad.
+
++
+Estos mensajes pueden aparecer ocultos en los mensajes de la consola. Si no introduce un nombre de nodo o introduce un nombre incorrecto, se le pedirá que vuelva a introducir el nombre.
+
 +
 .Expanda el ejemplo de salida de consola
 [%collapsible]
@@ -354,6 +363,7 @@ you want to continue?: yes
 .
 Controller Replacement: Provide name of the node you would like to replace:
 <nodename of the node being replaced>
+Controller Replacement: Provide High Availability partner of node1: <nodename of the partner of the node being replaced>
 Changing sysid of node node2 disks.
 Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
 Partner sysid = 4294967295, owner sysid = 536940063

@@ -16,11 +16,17 @@ summary: 'Configure los puertos FC integrados de nodo 3, los puertos UTA/UTA2 o 
 [role="lead"]
 Debe reasignar los discos que pertenecían a node1 a node3 antes de verificar la instalación de node3.
 
-.Acerca de esta tarea
-Siga los pasos de esta sección en node3.
-
 .Pasos
-. [[reassign-node1-node3-step1]]Vaya al menú de inicio y utilice 22/7 y seleccione la opción oculta `boot_after_controller_replacement` . En el aviso, introduzca el nodo 1 para reasignar los discos del nodo 1 al nodo 3, según el ejemplo siguiente.
+. [[reassign-node1-node3-step1]]Verifique que el nodo1 se haya detenido en el menú de arranque y reasigne los discos del nodo1 al nodo3:
++
+`boot_after_controller_replacement`
+
++
+Tras un breve retraso, se le pedirá que introduzca el nombre del nodo que se va a reemplazar. Si hay discos compartidos (también llamados Advanced Disk Partitioning (ADP) o discos con particiones), se le pedirá que introduzca el nombre del nodo del compañero de alta disponibilidad.
+
++
+Estos mensajes pueden aparecer ocultos en los mensajes de la consola. Si no introduce un nombre de nodo o introduce un nombre incorrecto, se le pedirá que vuelva a introducir el nombre.
+
 +
 .Expanda el ejemplo de salida de consola
 [%collapsible]
@@ -74,8 +80,7 @@ disks. Are you sure you want to continue?: yes
 .
 .
 Controller Replacement: Provide name of the node you would like to replace: <name of the node being replaced>
-.
-.
+Controller Replacement: Provide High Availability partner of node1: <nodename of the partner of the node being replaced>
 Changing sysid of node <node being replaced> disks.
 Fetched sanown old_owner_sysid = 536953334 and calculated old sys id = 536953334
 Partner sysid = 4294967295, owner sysid = 536953334
@@ -103,7 +108,7 @@ Login:
 ...
 ----
 ====
-. Si el sistema entra en un bucle de reinicio con el mensaje `no disks found`, esto se debe a que ha restablecido los puertos al modo de destino y, por lo tanto, no puede ver ningún disco. Continúe con <<auto_check3_step3,Paso 3>> <<auto_check3_step8,Paso 8>>para resolver esto.
+. Si el sistema entra en un bucle de reinicio con el mensaje `no disks found` , esto se debe a que ha restablecido los puertos al modo de destino y, por lo tanto, no puede ver ningún disco.  Llevar a cabo<<auto_check3_step3,Paso 3>> a<<auto_check3_step8,Paso 8>> en el nodo3 para resolver este problema.
 . [[auto_check3_step3]]Pulse Ctrl-C durante el ARRANQUE AUTOMÁTICO para detener el nodo en el indicador Loader>.
 . [[step18]]En el aviso del CARGADOR, acceda al modo de mantenimiento:
 +
@@ -186,7 +191,7 @@ NOTE: Es posible que se encuentre un error en este momento. Si se produce un err
 
 
 
-. [[auto_check3_step9]]Si va a actualizar desde un sistema con discos externos a un sistema que admita discos internos y externos (sistemas AFF A800, por ejemplo), configure el agregado 1-1 como agregado raíz para confirmar que el nodo 3 arranca desde el agregado raíz del nodo 1. Para establecer el agregado raíz, vaya al menú de arranque y seleccione la opción `5` para entrar en modo de mantenimiento.
+. [[auto_check3_step9]]Si está actualizando desde un sistema con discos externos a un sistema que admite discos internos y externos (sistemas AFF A800 , por ejemplo), configure el agregado del nodo1 como el agregado raíz para confirmar que el nodo3 arranca desde el agregado raíz del nodo1.  Para configurar el agregado raíz, vaya al menú de arranque en el nodo 3 y seleccione la opción `5` para ingresar al modo de mantenimiento.
 +
 
 CAUTION: *Debe realizar los siguientes subpasos en el orden exacto que se muestra; de lo contrario, podría causar una interrupción o incluso pérdida de datos.*

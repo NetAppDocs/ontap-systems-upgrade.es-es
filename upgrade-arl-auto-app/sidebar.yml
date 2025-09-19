@@ -37,7 +37,7 @@ entries:
       al nodo 1 al nodo 2
     url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_data_lifs_node1_node2.html"
   - title: Se han producido fallos en la reubicación o los agregados vetados
-    url: "/upgrade-arl-auto-app/relocate_failed_or_vetoed_aggr.html"
+    url: "/upgrade-arl-auto-app/relocate-failed-or-vetoed-aggr-node2.html"
   - title: Retire el nodo 1
     url: "/upgrade-arl-auto-app/retire_node1.html"
   - title: Prepárese para el arranque desde el red
@@ -66,6 +66,8 @@ entries:
   - title: Reubique los agregados que no son raíz y los LIF de datos NAS del nodo
       2 al nodo 3
     url: "/upgrade-arl-auto-app/relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html"
+  - title: Se han producido fallos en la reubicación o los agregados vetados
+    url: "/upgrade-arl-auto-app/relocate-failed-or-vetoed-aggr-node3.html"
   - title: Retire el nodo 2
     url: "/upgrade-arl-auto-app/retire_node2.html"
 - title: Etapa 5. Instale y arranque el nodo 4

@@ -16,11 +16,17 @@ summary: 'Debe reasignar los discos que pertenecían a node1 a node3 al actualiz
 [role="lead"]
 Debe reasignar los discos que pertenecían a node1 a node3 antes de verificar la instalación de node3.
 
-.Acerca de esta tarea
-Siga los pasos de esta sección en node3.
-
 .Pasos
-. [[reassign-node1-node3-app-step1]]Vaya al menú de inicio y, con 22/7, seleccione la opción oculta `boot_after_controller_replacement` . En el aviso, introduzca el nodo 1 para reasignar los discos del nodo 1 al nodo 3, según el ejemplo siguiente.
+. [[reassign-node1-node3-app-step1]]Verifique que el nodo1 se haya detenido en el menú de arranque.  Reasignar los discos del nodo1 al nodo3:
++
+`boot_after_controller_replacement`
+
++
+Tras un breve retraso, se le pedirá que introduzca el nombre del nodo que se va a reemplazar. Si hay discos compartidos (también llamados Advanced Disk Partitioning (ADP) o discos con particiones), se le pedirá que introduzca el nombre del nodo del compañero de alta disponibilidad.
+
++
+Estos mensajes pueden aparecer ocultos en los mensajes de la consola. Si no introduce un nombre de nodo o introduce un nombre incorrecto, se le pedirá que vuelva a introducir el nombre.
+
 +
 .Expanda el ejemplo de salida de consola
 [%collapsible]
@@ -89,6 +95,7 @@ This will replace all flash-based configuration with the last backup to disks. A
 <output truncated>
 .
 Controller Replacement: Provide name of the node you would like to replace:<nodename of the node being replaced>
+Controller Replacement: Provide High Availability partner of node1: <nodename of the partner of the node being replaced>
 Changing sysid of node node1 disks.
 Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
 Partner sysid = 4294967295, owner sysid = 536940063
@@ -125,7 +132,12 @@ Login:
 
 NOTE: En el ejemplo de resultado de la consola anterior, ONTAP le solicitará el nombre del nodo asociado si el sistema utiliza discos de partición avanzada de disco (ADP).
 
-. Si el sistema entra en un bucle de reinicio con el mensaje `no disks found`, indica que el sistema ha restablecido los puertos FC o UTA/UTA2 de nuevo al modo de destino y, por lo tanto, no puede ver ningún disco. Para resolver esto, continúe con <<reassign-node1-node3-app-step3,Paso 3>> Para <<reassign-node1-node3-app-step8,Paso 8>>o vaya a la sección link:verify_node3_installation.html["Verifique la instalación del nodo 3"].
+. Si el sistema entra en un bucle de reinicio con el mensaje `no disks found` , indica que el sistema ha restablecido los puertos FC o UTA/UTA2 al modo de destino y, por lo tanto, no puede ver ningún disco.  Seleccione una de las siguientes tareas para resolver este problema:
++
+** Llevar a cabo<<reassign-node1-node3-app-step3,Paso 3>> a<<reassign-node1-node3-app-step8,Paso 8>> en el nodo 3
+** Ir a la secciónlink:verify_node3_installation.html["Verifique la instalación del nodo 3"]
+
+
 . [[reassign-node1-node3-app-step3]]Pulse Ctrl-C durante el ARRANQUE AUTOMÁTICO para detener el nodo en el indicador Loader>.
 . En el aviso del CARGADOR, introduzca el modo de mantenimiento:
 +

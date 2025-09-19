@@ -17,7 +17,7 @@ summary: 'Reubicar manualmente agregados con fallos o vetados cuando se actualic
 Si alguno de los agregados no se puede reubicar o vetar, deberá reubicar los agregados manualmente o anular los vetos o las comprobaciones de destino, si fuera necesario.
 
 .Acerca de esta tarea
-La operación de reubicación se pondrá en pausa debido al error.
+El sistema pausa la operación de reubicación debido al error.
 
 .Pasos
 . Compruebe los registros de EMS para determinar por qué el agregado no pudo reubicarse o fue vetado.

@@ -194,8 +194,53 @@ Si el escenario de actualización aparece en la siguiente matriz de sistemas com
 
 Si el escenario de actualización no es compatible con comandos del sistema, puede realizar una actualización de ARL mediante comandos manuales.
 
-Elija el procedimiento para su versión de ONTAP para iniciar la actualización:
+.Muestra los sistemas admitidos
+[%collapsible]
+====
+[role="tabbed-block"]
+=====
+.ONTAP 9.8 o posterior
+--
+Las actualizaciones manuales de ARL son compatibles con los siguientes sistemas que ejecutan ONTAP 9.8 y versiones posteriores:
 
-* link:../upgrade-arl-manual-app/index.html["Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior"]
-* link:../upgrade-arl-manual/index.html["Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.7 o una versión anterior"]
+* Desde el sistema FAS hasta el sistema FAS
+* Desde el sistema AFF hasta el sistema AFF
++
+Sólo puede actualizar a un sistema de sustitución de la misma serie:
 
++
+** El sistema A-Series de AFF para el sistema AFF A-Series
+** Del sistema C-Series de AFF al sistema AFF C-Series
+
+
+* Desde el sistema ASA hasta el sistema ASA
++
+
+NOTE: No se admiten las actualizaciones de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
+
++
+Sólo puede actualizar a un sistema de sustitución de la misma serie:
+
++
+** El sistema A-Series de ASA para el sistema ASA A-Series
+** Del sistema C-Series de ASA al sistema ASA C-Series
+
+
+
+
+link:../upgrade-arl-manual-app/index.html["Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.8 o una versión posterior"]
+
+--
+.ONTAP 9.7 o anterior
+--
+Las actualizaciones manuales de ARL son compatibles con los siguientes sistemas que ejecutan ONTAP 9.7 y versiones anteriores:
+
+* Desde el sistema FAS hasta el sistema FAS
+* Desde el sistema AFF hasta el sistema AFF
+
+
+link:../upgrade-arl-manual/index.html["Actualizar manualmente el hardware de la controladora que ejecute ONTAP 9.7 o una versión anterior"]
+
+--
+=====
+====
