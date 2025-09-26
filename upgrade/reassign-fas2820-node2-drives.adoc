@@ -1,0 +1,87 @@
+---
+permalink: upgrade/reassign-fas2820-node2-drives.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: Después de convertir el nodo 2 de FAS2820 en un estante de unidad DS212C y conectarlo al nodo 4, reasigna las unidades que anteriormente pertenecían al nodo 2 al nodo 4. 
+---
+= Reasignar unidades del nodo 2 de FAS2820 al nodo 4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Reasigne las unidades que anteriormente pertenecían al nodo 2 de FAS2820 al nodo 4.
+
+.Antes de empezar
+Compruebe que tanto node3 como node4 están en espera en el aviso del CARGADOR.
+
+.Acerca de esta tarea
+Realice los siguientes pasos en el nodo 4.
+
+.Pasos
+. En el símbolo del SISTEMA DEL CARGADOR, arranque node4 en Modo de mantenimiento:
++
+[source, cli]
+----
+boot_ontap maint
+----
++
+Aparece el mensaje del modo de mantenimiento.
+
+. Mostrar todas las unidades asociadas:
++
+[source, cli]
+----
+disk show -v
+----
+. Registre el valor de ID del sistema local; éste es el ID del sistema node4. Registre también los ID del sistema de node1 y node2 de la columna de PROPIETARIO.
+. Reasignar todas las unidades del nodo2 al nodo4.
++
+[role="tabbed-block"]
+====
+.Si está utilizando discos completos
+--
+Ejecute el siguiente comando:
+
+[source, cli]
+----
+disk reassign -s <node2_system_ID> -d <node4_system_ID>
+----
+--
+.Si está utilizando discos particionados
+--
+Ejecute el siguiente comando:
+
+[source, cli]
+----
+disk reassign -s <node2_system_ID> -d <node4_system_ID> -p <node1_system_ID>
+----
+--
+====
+. Verifique que todas las unidades reasignadas puedan verse en el nuevo ID de sistema:
++
+[source, cli]
+----
+disk show -s <node4_System_ID>
+----
++
+
+CAUTION: Si las unidades no se pueden ver, *deténgase* y comuníquese con el soporte técnico para obtener ayuda.
+
+. Compruebe que el agregado raíz de node2 se ha notificado en la salida y que el agregado está en línea:
++
+[source, cli]
+----
+aggr status
+----
+. Salga del modo de mantenimiento:
++
+[source, cli]
+----
+halt
+----
+
+
+.El futuro
+link:migrate-fas2820-aggregates-epsilon-lifs.html["Migre agregados de datos, épsilon y LIF en node1 a node4"]

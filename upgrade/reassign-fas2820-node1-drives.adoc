@@ -1,0 +1,78 @@
+---
+permalink: upgrade/reassign-fas2820-node1-drives.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Después de convertir el nodo 1 de FAS2820 en una unidad DS212C y conectarlo al nodo 3, reasigna las unidades que anteriormente pertenecían al nodo 1 al nodo 3. 
+---
+= Reasignar unidades del nodo 1 de FAS2820 al nodo 3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Reasigne las unidades que fueron asignadas previamente al nodo 1 de FAS2820 al nodo 3.
+
+.Acerca de esta tarea
+Realice los siguientes pasos en el nodo3.
+
+.Pasos
+. En el símbolo del SISTEMA DEL CARGADOR, arranque node3 en Modo de mantenimiento:
++
+[source, cli]
+----
+boot_ontap maint
+----
++
+Aparece el mensaje del modo de mantenimiento.
+
+. Mostrar todas las unidades asociadas:
++
+[source, cli]
+----
+disk show -v
+----
+. Registre el valor del ID del sistema local; este es el ID del sistema del nodo3.  Registre también los ID del sistema del nodo1 y del nodo4 de la columna "PROPIETARIO".
+. Reasignar todas las unidades de node1 a node3:
++
+[role="tabbed-block"]
+====
+.Si está utilizando discos completos
+--
+Ejecute el siguiente comando:
+
+[source, cli]
+----
+disk reassign -s <node1_system_ID> -d <node3_system_ID>
+----
+--
+.Si está utilizando discos particionados
+--
+Ejecute el siguiente comando:
+
+[source, cli]
+----
+disk reassign -s <node1_system_ID> -d <node3_system_ID> -p <node4_system_ID>
+----
+--
+====
+. Verifique que todas las unidades reasignadas puedan verse en el nuevo ID de sistema:
++
+[source, cli]
+----
+disk show -s <node3_system_ID>
+----
++
+
+CAUTION: Si las unidades no se pueden ver, *deténgase* y comuníquese con el soporte técnico para obtener ayuda.
+
+. Salir del modo de mantenimiento:
++
+[source, cli]
+----
+halt
+----
+
+
+.El futuro
+link:migrate-fas2820-node4-lIfs-aggregates.html["Migre LIF y agregados de datos de node4 a node3"]

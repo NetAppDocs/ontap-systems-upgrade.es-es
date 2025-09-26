@@ -48,6 +48,8 @@ La actualización mediante el movimiento de volúmenes es no disruptiva.
 Si desea actualizar una configuración de MetroCluster, consulte https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Actualice, actualice o expanda la configuración de MetroCluster"^].
 
 .Información relacionada
+* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Convertir AFF A250 en un estante de unidad y actualizar a AFF A400"](procedimiento no disruptivo)
+* link:convert-fas2820-to-drive-shelf.html["Actualización de FAS2820 mediante la conversión a un estante de unidad"](procedimiento no disruptivo)
 * link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"]
 * link:../choose_controller_upgrade_procedure.html["Elija métodos para actualizar el hardware de la controladora"]
 * https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Dónde encontrar procedimientos para las tareas de mantenimiento de MetroCluster"^]

@@ -1,0 +1,211 @@
+---
+permalink: upgrade/migrate-fas2820-aggregates-epsilon-lifs.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node1, node4, migrate, aggregates, lifs 
+summary: 'Migre los agregados de datos, épsilon y las interfaces lógicas (LIF) del nodo 1 al nodo 4.' 
+---
+= Migrar agregados de datos, épsilon y LIF del nodo 1 de FAS2820 al nodo 4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Migre los agregados de datos, épsilon y las interfaces lógicas (LIF) del nodo 1 de FAS2820 al nodo 4.
+
+.Acerca de esta tarea
+Realice los siguientes pasos en el nodo 4.
+
+.Pasos
+. En el indicador LOADER del nodo 4, configure el ID del sistema asociado:
++
+[source, cli]
+----
+setenv partner-sysid <system_ID_of_node1>
+----
+. Compruebe el ID del sistema asociado:
++
+[source, cli]
+----
+printenv partner-sysid
+----
+. Guardar los cambios:
++
+[source, cli]
+----
+saveenv
+----
+. Arranque el nodo en el menú de arranque:
++
+[source, cli]
+----
+boot_ontap menu
+----
+. En el menú de arranque, seleccione la opción `6 Update flash from backup config` para restaurar el sistema de archivos /var al nodo4.
++
+Esto sustituye la configuración basada en all-flash por el último backup en discos.
+
+. Introduzca `y` para continuar.
++
+[NOTE]
+====
+El nodo se reinicia automáticamente para cargar la nueva copia del sistema de archivos /var.
+
+El nodo informa de una advertencia de discrepancia del ID del sistema. Introduzca `y` Para anular el ID del sistema.
+
+====
+. Migrar los LIF de clúster:
++
+[source, cli]
+----
+set -privilege advanced
+----
++
+[source, cli]
+----
+network port show
+----
++
+[NOTE]
+====
+Si los puertos del clúster del sistema no son similares al actualizar un FAS2820 a un controlador de reemplazo, es posible que tenga que cambiar temporalmente las interfaces en el nodo 4 a puertos del clúster:
+
+[source, cli]
+----
+network port modify -node <node4> -port <port_name> -mtu 9000 -ipspace Cluster
+----
+====
++
+[source, cli]
+----
+network interface migrate -vserver Cluster -lif <cluster_LIF>  -destination-node <node4> -destination-port <port_name>
+----
+. Espere a que el clúster alcance el quórum y luego verifique que los nodos del clúster estén en buen estado:
++
+[source, cli]
+----
+– cluster show
+----
++
+
+NOTE: El par de alta disponibilidad y la conmutación por error de almacenamiento siguen deshabilitadas en el estado actual.
+
+. Mueva los LIF de clúster a los 25G puertos de clúster temporales en el node4:
++
+[source, cli]
+----
+network interface modify -vserver Cluster -lif <cluster_LIF> -home-node <node4> -home-port <port_name>
+----
+. Complete este paso solo si se utilizan grupos de interfaces y VLAN de datos en el clúster FAS2820 que está actualizando. De lo contrario, vaya a<<migrate_node1_nod4,Paso 11>> .
++
+Los nombres de los puertos de red físicos en el controlador de reemplazo difieren de los del FAS2820.  Esto podría generar VLAN desplazadas y grupos de interfaces configurados incorrectamente en el nodo 4.
+
++
+.. Mostrar las VLAN desplazadas:
++
+[source, cli]
+----
+cluster controller-replacement network displaced-vlans show
+----
+.. Restaurar las VLAN desplazadas:
++
+[source, cli]
+----
+cluster controller-replacement network displaced-vlans restore
+----
+.. Corrija los grupos de interfaz configurados incorrectamente.  Los nombres de los puertos entre el FAS2820 y los controladores que está actualizando pueden ser diferentes.  Actualice los grupos de interfaz con los puertos miembro correctos:
++
+[source, cli]
+----
+ifgrp remove-port -node <node2> -ifgrp <ifgrp_name> -port <port_name>
+----
++
+[source, cli]
+----
+ifgrp add-port -node <node2> -ifgrp <ifgrp_name> -port <port_name>
+----
+
+
+
+
+[[migrate_node1_nod4]]
+. Migre los agregados de datos de node1 a node4:
++
+[source, cli]
+----
+storage aggregate relocation start -aggregate-list <aggregate_list_name> -node <node1> -destination <node4> -ndo-controller-upgrade true -override-destination-checks true
+----
+. Mostrar el estado agregado de datos:
++
+[source, cli]
+----
+storage aggregate show
+----
+. Migre el épsilon eliminándolo del nodo 1 y moviéndolo al nodo 4.
++
+.. Eliminar épsilon de node1:
++
+[source, cli]
+----
+cluster modify -epsilon false -node <node1>
+----
+.. Mueva épsilon a node4:
++
+[source, cli]
+----
+cluster modify -epsilon true -node <node4>
+----
+
+
+. Mostrar el estado del clúster para verificar el cambio de épsilon:
++
+[source, cli]
+----
+cluster show
+----
+. Mostrar todas las LIF de red de datos:
++
+[source, cli]
+----
+network interface show -role data
+----
+. Migre todos los LIF de datos a node4:
++
+[source, cli]
+----
+network interface migrate -vserver <vserver_name> -lif <lif_name> -destination-node <node4> -destination-port <port_name>
+----
+. Mostrar el estado de todas las LIF de datos en el clúster:
++
+[source, cli]
+----
+network interface show -role data
+----
+. Si algún LIF está inactivo, establezca su estado administrativo en `up` ingresando el siguiente comando una vez para cada LIF:
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <lif_name> -status-admin up
+----
+. Migre la LIF de administración del clúster:
++
+[source, cli]
+----
+network interface migrate -vserver <vserver_name> -lif <cluster_mgmt_lif> -destination-node <node4> -destination-port <port_name>
+----
+. Muestre el estado de la LIF de gestión del clúster:
++
+[source, cli]
+----
+network interface show -role cluster-mgmt
+----
+. Detener nodo 1:
++
+[source, cli]
+----
+halt -node <node1> -inhibit-takeover true -ignore-quorum-warnings true
+----
+
+
+.El futuro
+link:convert-fas2820-node1-drive-shelf.html["Convierta node1 en una bandeja de unidades y conéctela a node3"]
