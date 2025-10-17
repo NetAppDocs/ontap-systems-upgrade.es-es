@@ -6,7 +6,7 @@
 
 == Configure los puertos FC en el nodo 3
 
-Si el nodo 3 tiene puertos FC, ya sea integrados o de un adaptador de FC, se deben establecer configuraciones de puertos en el nodo antes de traierlo, ya que los puertos no están preconfigurados. Si no se configuran los puertos, es posible que experimente una interrupción del servicio.
+Si el nodo 3 tiene puertos FC, ya sea integrados o en un adaptador FC complementario, debe establecer las configuraciones de los puertos en el nodo antes de ponerlo en servicio porque los puertos no están preconfigurados cuando se envían los sistemas.  Si no configura los puertos, podría experimentar una interrupción en el servicio.
 
 .Antes de empezar
 Debe tener los valores de configuración del puerto FC del nodo 1 que haya guardado en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"].
@@ -15,59 +15,36 @@ Debe tener los valores de configuración del puerto FC del nodo 1 que haya guard
 Puede omitir esta sección si el sistema no tiene configuraciones de FC. Si su sistema tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, debe configurarlos en <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>.
 
 
-IMPORTANT: Si su sistema tiene discos de almacenamiento, introduzca los comandos de esta sección en el símbolo del sistema del clúster. Si tiene un sistema 'V-Series' o tiene software de virtualización FlexArray y están conectados a cabinas de almacenamiento, introduzca los comandos en esta sección en modo de mantenimiento.
+IMPORTANT: Introduzca los comandos de esta sección en el indicador de shell del modo de mantenimiento.
 
-. [[step1]]Compare la configuración de FC del nodo 3 con la configuración que capturó anteriormente del nodo 1.
-. [[step2]]realice una de las siguientes acciones:
+.Pasos
+. Compare la configuración de FC en el nodo3 con la configuración que capturó anteriormente del nodo1.
+. Realice una de las siguientes acciones para modificar los puertos FC en el nodo 3, según sea necesario:
 +
-[cols="30,70"]
-|===
-| Si el sistema que desea actualizar... | Entonces… 
+En modo de mantenimiento (opción 5 en el menú de arranque):
 
++
+** Para programar como puertos de destino:
++
+`ucadmin modify -m fc -t target <adapter>`
 
-| Tiene discos de almacenamiento  a| 
-En el modo de mantenimiento (opción 5 en el menú de arranque), modifique los puertos FC del nodo 3 según sea necesario:
-
-** Para programar puertos de destino:
-
-
-`ucadmin modify -m fc -t target _adapter_`
++
+Por ejemplo: `ucadmin modify -m fc -t target 2a`
 
 ** Para programar puertos iniciadores:
-
-
-`ucadmin modify -m fc -t initiator _adapter_`
-
-`-t` Es el tipo FC4: Objetivo o iniciador.
-
-
-
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento  a| 
-En el modo de mantenimiento (opción 5 en el menú de arranque), modifique los puertos FC del nodo 3 según sea necesario:
-
-`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
-
-`-t` Es el tipo, destino o iniciador de FC4.
-
-
-NOTE: Los puertos FC deben programarse como iniciadores.
-
-|===
-. [[step3]]realice una de las siguientes acciones:
 +
-[cols="30,70"]
-|===
-| Si el sistema que desea actualizar... | Entonces… 
+`ucadmin modify -m fc -t initiator <adapter>`
+
++
+Por ejemplo: `ucadmin modify -m fc -t initator 2b`
 
 
-| Tiene discos de almacenamiento | Verifique la nueva configuración con el siguiente comando y examine la salida:
-`ucadmin show` 
 
+. Verifique la nueva configuración utilizando el siguiente comando y examinando el resultado:
++
+`ucadmin show`
 
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Verifique la nueva configuración con el siguiente comando y examine la salida:
-`ucadmin show` 
-|===
-. [[step4]]salir del modo de mantenimiento:
+. Detenga el nodo:
 +
 `halt`
 
@@ -75,6 +52,6 @@ NOTE: Los puertos FC deben programarse como iniciadores.
 +
 `boot_ontap menu`
 
-. [[step6]]después de introducir el comando, espere hasta que el sistema se detenga en el indicador de entorno de inicio.
+. Tras introducir el comando, espere hasta que el sistema se detenga en el símbolo del sistema del entorno de arranque.
 . Seleccione opción `5` desde el menú de arranque para el modo de mantenimiento.
 

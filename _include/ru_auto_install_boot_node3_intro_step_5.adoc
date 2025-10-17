@@ -12,7 +12,6 @@ Es necesario reiniciar el nodo 3 si no tiene la misma versión de ONTAP 9 que es
 [IMPORTANT]
 ====
 * Para actualizar un controlador AFF A800 o AFF C800, debe asegurarse de que todas las unidades en el chasis estén firmemente asentadas contra el plano medio antes de quitar el nodo 1. Para obtener más información, consulte link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Sustituya los módulos del controlador AFF A800 o AFF C800"].
-* Si va a actualizar un sistema V-Series conectado a cabinas de almacenamiento o un sistema con el software de virtualización de FlexArray conectado a cabinas de almacenamiento, debe completar <<auto_install3_step1,Paso 1>> por <<auto_install3_step21,Paso 21>>, luego salga de esta sección y siga las instrucciones de la link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"] Secciones según sea necesario, introducir comandos en modo de mantenimiento. A continuación, debe volver a esta sección y reanudar con <<auto_install3_step23,Paso 23>>.
 * Si va a actualizar un sistema con discos de almacenamiento, debe completar esta sección completa y, a continuación, ir a la link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y.. link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"] secciones, introducir comandos en el símbolo del sistema del clúster.
 
 
@@ -29,10 +28,10 @@ NOTE: Si va a actualizar a un sistema con ambos nodos del mismo chasis, instale 
 
 . [[auto_install3_step3]]nodo de cable 3, moviendo las conexiones del nodo 1 al nodo 3.
 +
-Conecte los cables siguientes mediante las _Instrucciones de instalación y configuración_ o _Referencia y requisitos de instalación de virtualización de FlexArray_ de la plataforma node3, el documento de bandeja de discos correspondiente y _Gestión de pares de HA_.
+Conecte las siguientes conexiones utilizando las _Instrucciones de instalación y configuración_ para la plataforma node3, el documento de estante de discos apropiado y la documentación de _Administración de pares HA_.
 
 +
-Consulte link:other_references.html["Referencias"]el enlace para el enlace _FlexArray Virtualization Installation Requirements and Reference_ and _HA pair management_.
+Referirse alink:other_references.html["Referencias"] para vincular a la _gestión de pares HA_.
 
 +
 ** Consola (puerto de gestión remota)
@@ -67,7 +66,7 @@ To override this delay, press 'c' followed by 'Enter'
 .. Deje que la batería se cargue y finalice el proceso de arranque.
 +
 
-WARNING: *Atención: No anular el retardo; si no se permite que la batería se cargue, se podrían producir pérdidas de datos.*
+WARNING: *No anule el retraso; si no permite que la batería se cargue, podría perderse información.*
 
 +
 

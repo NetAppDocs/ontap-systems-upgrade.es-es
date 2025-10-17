@@ -199,7 +199,7 @@ El valor de este comando debe coincidir con el estado físico del sistema.
 
 +
 
-WARNING: *Atención*: Si el nodo 1 está en el mismo chasis que el nodo 2, no apague el chasis utilizando el interruptor de alimentación o tirando del cable de alimentación. Si lo hace, el nodo 2, que sirve datos, estará inactivo.
+WARNING: Si el nodo 1 está en el mismo chasis que el nodo 2, no apague el chasis utilizando el interruptor de encendido ni tirando del cable de alimentación.  Si lo hace, el nodo 2, que proporciona datos, dejará de funcionar.
 
 . Cuando el sistema le solicite que confirme que desea detener el sistema, introduzca `y`.
 +

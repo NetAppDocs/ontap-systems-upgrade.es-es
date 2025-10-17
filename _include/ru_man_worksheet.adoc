@@ -25,9 +25,6 @@ Puede utilizar la siguiente hoja de trabajo para registrar la información para 
 | (Solo para entornos SAN) Configuración predeterminada de puertos FC | Fase 1: _Prepare los nodos para la actualización_ | Al configurar puertos de FC en los nodos nuevos |  
 
 
-| (Sistemas o sistemas V-Series con software de virtualización FlexArray solamente) Topología para sistemas o sistemas V-Series con software de virtualización FlexArray | Fase 1: _Prepare los nodos para la actualización_ | Etapa 3: _Nodo de instalación y arranque 3_ fase 5: _Nodo de instalación y arranque 4_ |  
-
-
 | Dirección IP de SPS | Fase 1: _Prepare los nodos para la actualización_ | Fase 6: _Confirme que los nuevos controladores están configurados correctamente_ |  
 
 

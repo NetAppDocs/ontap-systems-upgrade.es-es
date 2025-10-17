@@ -7,12 +7,12 @@ Este documento se escribe con las siguientes suposiciones:
 * El hardware de la controladora de reemplazo es nuevo y no se ha usado.
 +
 
-WARNING: *Atención*: Debido a que este procedimiento asume que el hardware del controlador de sustitución es nuevo y no se ha utilizado, los pasos necesarios para preparar los controladores usados con el `wipeconfig` el comando no se incluye en este procedimiento. Debe ponerse en contacto con el soporte técnico si se utilizó anteriormente el hardware de la controladora de reemplazo, especialmente si las controladoras ejecutaban Data ONTAP en 7-Mode.
+WARNING: Debido a que este procedimiento supone que el hardware del controlador de reemplazo es nuevo y no se ha utilizado, los pasos necesarios para preparar los controladores usados ​​con el `wipeconfig` Los comandos no están incluidos en este procedimiento.  Debe ponerse en contacto con el soporte técnico si el hardware del controlador de reemplazo se utilizó anteriormente, especialmente si los controladores ejecutaban Data ONTAP en modo 7.
 
 * Debe leer y comprender las directrices para actualizar la pareja de nodos.
 +
 
-WARNING: *Atención*: No intente borrar el contenido de la NVRAM. Si necesita borrar el contenido de NVRAM, póngase en contacto con el soporte técnico de NetApp.
+WARNING: No intente borrar el contenido de la NVRAM .  Si necesita borrar el contenido de la NVRAM, comuníquese con el soporte técnico de NetApp .
 
 * Está realizando el comando correspondiente antes y después del `modify` comandos y comparar el resultado de ambos `show` comandos para verificar que el `modify` el comando se ha realizado correctamente.
 * Si tiene una configuración SAN, tiene LIF locales y de partners para cada máquina virtual de almacenamiento (SVM), en el par de alta disponibilidad. Si no tiene LIF locales y del partner para cada SVM, debe agregar la LIF de datos DE SAN en el nodo local y remoto para esa SVM antes de iniciar la actualización.

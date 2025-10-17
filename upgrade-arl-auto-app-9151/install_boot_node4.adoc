@@ -29,10 +29,10 @@ Si el nodo 4 se encuentra en un chasis separado del nodo 2, es posible colocar e
 . Instale el nodo 4 en el rack, siguiendo las instrucciones de _Installation and Setup_ para el modelo de nodo.
 . Cablee el nodo 4, mueva las conexiones del nodo 2 al nodo 4.
 +
-Conecte con cables las siguientes conexiones siguiendo las instrucciones de _Instrucciones de instalación y configuración_ o _Referencia y requisitos de instalación de virtualización de FlexArray_ para la plataforma node4, el documento de bandeja de discos apropiado y _Gestión de pares de HA_.
+Conecte las siguientes conexiones, utilizando las instrucciones de las _Instrucciones de instalación y configuración_ para la plataforma node4, el documento del estante de discos apropiado y la _administración de pares HA_.
 
 +
-Consulte link:other_references.html["Referencias"]el enlace para el enlace _FlexArray Virtualization Installation Requirements and Reference_ and _HA pair management_.
+Referirse alink:other_references.html["Referencias"] para vincular a la _gestión de pares HA_.
 
 +
 ** Consola (puerto de gestión remota)
@@ -71,7 +71,7 @@ WARNING: The battery is unfit to retain data during a power outage. This is like
 .. Deje que la batería se cargue y finalice el proceso de arranque.
 +
 
-WARNING: *Atención: No anular el retardo; si no se permite que la batería se cargue, se podrían producir pérdidas de datos.*
+WARNING: *No anule el retraso; si no permite que la batería se cargue, podría perderse información.*
 
 +
 

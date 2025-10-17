@@ -37,7 +37,7 @@ Debe comprobar físicamente los nodos 3 y 4 para ver si se cargan las baterías 
 
 +
 
-WARNING: *Atención* no intente borrar el contenido de la NVRAM. Si necesita borrar el contenido de NVRAM, póngase en contacto con el soporte técnico de NetApp.
+WARNING: No intente borrar el contenido de la NVRAM .  Si es necesario borrar el contenido de la NVRAM, comuníquese con el soporte técnico de NetApp .
 
 . Comprobar la versión de ONTAP en los nodos 3 y 4.
 +

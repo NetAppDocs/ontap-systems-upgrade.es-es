@@ -7,7 +7,6 @@ Es necesario reiniciar el nodo 4 si no tiene la misma versión de ONTAP 9 que es
 [IMPORTANT]
 ====
 * Para actualizar un controlador AFF A800 o AFF C800, debe asegurarse de que todas las unidades en el chasis estén firmemente asentadas contra el plano medio antes de quitar el nodo 2. Para obtener más información, consulte link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Sustituya los módulos del controlador AFF A800 o AFF C800"].
-* Si va a actualizar un sistema V-Series conectado a cabinas de almacenamiento o un sistema con el software de virtualización de FlexArray conectado a cabinas de almacenamiento, debe completar <<auto_install4_step1,Paso 1>> por <<auto_install4_step21,Paso 21>>, luego salga de esta sección y siga las instrucciones a. link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configure los puertos FC en el nodo 4"] y a. link:set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Comprobar y configurar los puertos UTA/UTA2 en el nodo 4"], Entrando en comandos en modo de mantenimiento. A continuación, debe volver a esta sección y reanudar con <<auto_install4_step23,Paso 23>>.
 * Si está actualizando un sistema con discos de almacenamiento, debe completar toda esta sección y luego continuar. link:set_fc_or_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"] , ingresando comandos en el indicador del clúster.
 
 
@@ -20,10 +19,10 @@ Si el nodo 4 se encuentra en un chasis separado del nodo 2, es posible colocar e
 . Instale el nodo 4 en el rack, siguiendo las instrucciones de _Installation and Setup_ para el modelo de nodo.
 . Cablee el nodo 4, mueva las conexiones del nodo 2 al nodo 4.
 +
-Conecte con cables las siguientes conexiones siguiendo las instrucciones de _Instrucciones de instalación y configuración_ o _Referencia y requisitos de instalación de virtualización de FlexArray_ para la plataforma node4, el documento de bandeja de discos apropiado y _Gestión de pares de HA_.
+Conecte las siguientes conexiones utilizando las _Instrucciones de instalación y configuración_ para la plataforma node4, el documento de estante de discos apropiado y la documentación de _Administración de pares HA_.
 
 +
-Consulte link:other_references.html["Referencias"]el enlace para el enlace _FlexArray Virtualization Installation Requirements and Reference_ and _HA pair management_.
+Referirse alink:other_references.html["Referencias"] para vincular a la _gestión de pares HA_.
 
 +
 ** Consola (puerto de gestión remota)
@@ -58,7 +57,7 @@ WARNING: The battery is unfit to retain data during a power outage. This is like
 .. Deje que la batería se cargue y finalice el proceso de arranque.
 +
 
-WARNING: *Atención: No anular el retardo; si no se permite que la batería se cargue, se podrían producir pérdidas de datos.*
+WARNING: *No anule el retraso; si no permite que la batería se cargue, podría perderse información.*
 
 +
 

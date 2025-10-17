@@ -48,7 +48,6 @@ NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de vol
 No puede utilizar este procedimiento ARL en las siguientes circunstancias:
 
 * Quiere añadir las nuevas controladoras como una nueva pareja de HA al clúster y migrar los datos mediante los movimientos de volúmenes.
-* Utiliza el software de virtualización FlexArray en el sistema que se está actualizando.
 * Debe actualizar una configuración IP de MetroCluster.
 +
 Para actualizar una configuración IP de MetroCluster, consulte link:other_references.html["Referencias"] para vincular al contenido _Actualización y Expansión de MetroCluster_.

@@ -10,7 +10,7 @@
 
 WARNING: Si este nodo nuevo se ha usado alguna vez en cualquier otro clúster o pareja de alta disponibilidad, debe ejecutar `wipeconfig` antes de continuar. De no hacerlo, se pueden producir interrupciones del servicio o pérdida de datos. Póngase en contacto con el soporte técnico si la controladora de reemplazo se utilizó anteriormente, especialmente si las controladoras ejecutaban ONTAP en 7-Mode.
 
-. [[man_install3_step18]]Pulse CTRL-C para mostrar el menú de inicio.
+. Presione CTRL-C para mostrar el menú de arranque.
 . [[man_install3_step19]]realice una de las siguientes acciones:
 +
 [cols="35,65"]
@@ -18,12 +18,12 @@ WARNING: Si este nodo nuevo se ha usado alguna vez en cualquier otro clúster o 
 | Si el sistema que desea actualizar... | Realice lo siguiente... 
 
 
-| _Not_ tiene la versión correcta o actual de ONTAP en el nodo 3 | Vaya a. <<man_install3_step20,Paso 20>>. 
+| _Not_ tiene la versión correcta o actual de ONTAP en el nodo 3 | Vaya a <<man_install3_step13,Paso 13>>. 
 
 
-| Tiene la versión correcta o actual de ONTAP en el nodo 3 | Vaya a. <<man_install3_step25,Paso 25>>. 
+| Tiene la versión correcta o actual de ONTAP en el nodo 3 | Vaya a <<man_install3_step18,Paso 18>>. 
 |===
-. [[man_install3_step20]]Configure la conexión netboot eligiendo una de las siguientes acciones.
+. [[man_install3_step13]]Configure la conexión de arranque de red eligiendo una de las siguientes acciones.
 +
 
 NOTE: Se deben utilizar el puerto e IP de gestión como conexión para reiniciar el sistema. No utilice una IP de LIF de datos ni ninguna otra interrupción del servicio de datos mientras se realiza la actualización.
@@ -52,7 +52,7 @@ Configure manualmente la conexión introduciendo el siguiente comando en el sím
 NOTE: Es posible que sean necesarios otros parámetros para la interfaz. Introduzca `help ifconfig` en el símbolo del sistema del firmware para obtener detalles.
 
 |===
-. [[man_install3_step21]]lleve a cabo netboot en el nodo 3:
+. Realizar arranque de red en el nodo3:
 +
 [cols="35,65"]
 |===
@@ -71,7 +71,7 @@ La `<path_to_the_web-accessible_directory>` lleva al lugar en el que se ha desca
 
 NOTE: No interrumpa el arranque.
 
-. [[man_install3_step22]]en el menú de inicio, seleccione la opción *(7) instale primero el nuevo software*.
+. Desde el menú de arranque, seleccione primero la opción *(7) Instalar nuevo software*.
 +
 Esta opción del menú descarga e instala la nueva imagen de ONTAP en el dispositivo de arranque.
 
@@ -88,11 +88,11 @@ La nota se aplica a las actualizaciones no disruptivas de ONTAP, no a las actual
 
 NOTE: Utilice siempre netboot para actualizar el nodo nuevo a la imagen deseada. Si utiliza otro método para instalar la imagen en la nueva controladora, es posible que se instale una imagen incorrecta. Este problema se aplica a todas las versiones de ONTAP. El procedimiento para reiniciar el sistema combinado con la opción `(7) Install new software` Limpia el soporte de arranque y coloca la misma versión ONTAP de ONTAP en ambas particiones de imagen.
 
-. [[man_install3_step23]]Si se le solicita que continúe el procedimiento, introduzca `y`, Y cuando se le solicite el paquete, escriba la siguiente dirección URL:
+. Si se le solicita que continúe con el procedimiento, ingrese `y` , y cuando se le solicite el paquete, ingrese la siguiente URL:
 +
 `\http://<web_server_ip>/<path_to_web-accessible_directory>/<ontap_version_image>.tgz`
 
-. [[man_install3_step24]]lleve a cabo los siguientes subpasos:
+. Complete los siguientes subpasos:
 +
 .. Introduzca `n` para omitir la recuperación del backup cuando aparezca la siguiente solicitud:
 +
@@ -111,12 +111,12 @@ El módulo del controlador se reinicia pero se detiene en el menú de arranque p
 
 
 
-. [[man_install3_step25]]Seleccione *(5) modo de mantenimiento boot* introduciendo `5`y, a continuación, introduzca `y` cuando se le solicite continuar con el arranque.
+. [[man_install3_step18]]Seleccione *(5) Modo de mantenimiento de arranque* ingresando `5` , y luego entrar `y` cuando se le solicite continuar con el arranque.
 . [[man_install3_step26]]antes de continuar, vaya a. link:set_fc_uta_uta2_config_node3.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 3"] Se deben realizar los cambios necesarios en los puertos FC o UTA/UTA2 del nodo.
 +
 Realice los cambios recomendados en esas secciones, reinicie el nodo y vaya al modo de mantenimiento.
 
-. [[man_install3_step27]]Busque el ID del sistema del nodo 3:
+. Encuentre el ID del sistema del nodo3:
 +
 `disk show -a`
 
@@ -142,7 +142,7 @@ El sistema muestra el ID del sistema del nodo e información acerca de sus disco
 
 NOTE: Puede que vea el mensaje `disk show: No disks match option -a.` tras introducir el comando. Este no es un mensaje de error para que pueda continuar con el procedimiento.
 
-. [[man_install3_step28]]reasignar repuestos del nodo 1, cualquier disco que pertenezca a la raíz y cualquier agregado que no fuera de raíz que no se haya reubicado en el nodo 2 anteriormente en link:relocate_non_root_aggr_node1_node2.html["Cambie la ubicación de los agregados que no son raíz del nodo 1 al nodo 2"].
+. [[man_install3_step21]]Reasigne los discos de repuesto del nodo 1, cualquier disco que pertenezca a la raíz y cualquier agregado que no sea raíz que no se haya reubicado anteriormente en el nodo 2.link:relocate_non_root_aggr_node1_node2.html["Cambie la ubicación de los agregados que no son raíz del nodo 1 al nodo 2"] .
 +
 Introduzca la forma adecuada del `disk reassign` comando basado en si su sistema tiene discos compartidos:
 
@@ -331,7 +331,7 @@ El sistema se detiene en el aviso del entorno de arranque.
 +
 `set time _hh:mm:ss_`
 
-. [[man_install3_step42]]Compruebe que el ID del sistema asociado esté configurado correctamente como se indica en la <<man_install3_step28,Paso 28>> interruptor de debajo de -p:
+. [[man_install3_step42]]Verifique que el ID del sistema asociado esté configurado correctamente como se indica en<<man_install3_step21,Paso 21>> bajo el modificador -p:
 +
 `printenv partner-sysid`
 

@@ -65,7 +65,7 @@ To override this delay, press 'c' followed by 'Enter'
 .. Deje que la batería se cargue y finalice el proceso de arranque.
 +
 
-WARNING: *Atención: No anular el retardo; si no se permite que la batería se cargue, se podrían producir pérdidas de datos.*
+WARNING: *No anule el retraso; si no permite que la batería se cargue, podría perderse información.*
 
 +
 

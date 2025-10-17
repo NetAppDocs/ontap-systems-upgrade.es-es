@@ -38,7 +38,7 @@ Si la configuración es diferente del nodo 4, es posible que se produzca una int
 . Compruebe que la controladora sustituida esté configurada correctamente para configurar MetroCluster y no en modo de conmutación.
 +
 
-CAUTION: *Atención:* en esta etapa, la configuración de MetroCluster no estará en estado normal y podría tener errores que resolver. Consulte link:verify_health_of_metrocluster_config.html["Compruebe el estado de la configuración de MetroCluster"].
+CAUTION: En esta etapa la configuración de MetroCluster no estará en un estado normal y es posible que haya errores que resolver. Verlink:verify_health_of_metrocluster_config.html["Compruebe el estado de la configuración de MetroCluster"] .
 
 
 

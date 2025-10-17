@@ -42,25 +42,17 @@ Se pueden encontrar los puertos UTA/UTA2 en un adaptador o en la controladora, y
 * Los puertos UTA/UTA2 integrados en las nuevas controladoras se configuran antes del envío para que tengan la personalidad que solicita.
 +
 
-NOTE: *Atención*: Si el sistema tiene discos de almacenamiento, debe introducir los comandos de esta sección en el indicador del clúster a menos que se le indique que entre en modo de mantenimiento. Si tiene un sistema VSeries o tiene software de virtualización FlexArray y está conectado a cabinas de almacenamiento, debe introducir comandos en esta sección en el símbolo del sistema del modo de mantenimiento. Debe estar en modo de mantenimiento para configurar los puertos UTA/UTA2.
+NOTE: Ingrese los comandos de esta sección en el indicador del clúster, a menos que se le indique que ingrese al modo de mantenimiento.
 
 
 
 .Pasos
-. Compruebe cómo están configurados actualmente los puertos, para introducir los siguientes comandos en el nodo 3:
+. Verifique la configuración actual del puerto ingresando el siguiente comando en el nodo3:
 +
-[cols="35,65"]
-|===
-| Si el sistema... | Realice lo siguiente... 
+`system node hardware unified-connect show`
 
-
-| Tiene discos de almacenamiento | `system node hardware unified-connect show` 
-
-
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `ucadmin show` 
-|===
 +
-El sistema muestra un resultado similar a los siguientes ejemplos:
+El sistema muestra un resultado similar al siguiente ejemplo:
 
 +
 [listing]
@@ -80,23 +72,6 @@ El sistema muestra un resultado similar a los siguientes ejemplos:
  f-b   0h       cna      target     -        -        online
  12 entries were displayed.
 ----
-+
-[listing]
-----
-*> ucadmin show
-         Current  Current    Pending  Pending  Admin
-Adapter  Mode     Type       Mode     Type     Status
--------  -------  ---------  -------  -------  ------
-0e       fc       initiator  -        -        online
-0f       fc       initiator  -        -        online
-0g       cna      target     -        -        online
-0h       cna      target     -        -        online
-0e       fc       initiator  -        -        online
-0f       fc       initiator  -        -        online
-0g       cna      target     -        -        online
-0h       cna      target     -        -        online
-*>
-----
 . [[step2]]Si el módulo SFP+ actual no coincide con el uso deseado, sustitúyalo por el módulo SFP+ correcto.
 +
 Póngase en contacto con su representante de NetApp para obtener el módulo SFP+ correcto.
@@ -112,41 +87,36 @@ Póngase en contacto con su representante de NetApp para obtener el módulo SFP+
 | No tenga la personalidad que usted desea | Vaya a. <<man_check_3_step5,Paso 5>>. 
 
 
-| Tenga la personalidad que usted desea | Pase los pasos 5 a 12 y vaya a. <<man_check_3_step13,Paso 13>>. 
+| Tenga la personalidad que usted desea | Omita los pasos 5 a 13 y vaya a<<man_check_3_step14,Paso 14>> . 
 |===
-. [[man_check_3_step5]]realice una de las siguientes acciones:
+. [[man_check_3_step5]]Si el sistema tiene discos de almacenamiento y está ejecutando Clustered Data ONTAP 8.3, inicie el nodo 3 e ingrese al modo de mantenimiento:
 +
-[cols="35,65"]
-|===
-| Si el sistema... | Realice lo siguiente... 
+`boot_ontap maint`
 
+. Compruebe la configuración:
++
+`ucadmin show`
 
-| Cuenta con discos de almacenamiento y utiliza Clustered Data ONTAP 8.3 | Arrancar el nodo 3 e introducir modo de mantenimiento:
-`boot_ontap maint` 
-
-
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vaya a. <<man_check_3_step6,Paso 6>>. Ya debe estar en modo de mantenimiento. 
-|===
-. [[Man_check_3_step6]]realice una de las siguientes acciones:
+. Realice una de las siguientes acciones:
 +
 [cols="35,65"]
 |===
 | Si va a configurar... | Realice lo siguiente... 
 
 
-| Puertos en una tarjeta UTA/UTA2 | Vaya a. <<man_check_3_step7,Paso 7>>. 
+| Puertos en una tarjeta UTA/UTA2 | Vaya a <<man_check_3_step8,Paso 8>>. 
 
 
-| Puertos UTA/UTA2 integrados | Vaya al paso 7 y vaya a. <<man_check_3_step8,Paso 8>>. 
+| Puertos UTA/UTA2 integrados | Omite el paso 8 y ve a<<man_check_3_step9,Paso 9>> . 
 |===
-. [[man_check_3_step7]]Si el adaptador está en modo iniciador y el puerto UTA/UTA2 está conectado, tenga el puerto UTA/UTA2 desconectado:
+. [[man_check_3_step8]]Si el adaptador está en modo iniciador y el puerto UTA/UTA2 está en línea, desconecte el puerto UTA/UTA2:
 +
 `storage disable adapter _adapter_name_`
 
 +
 Los adaptadores del modo de destino se desconectan automáticamente en modo de mantenimiento.
 
-. [[Man_check_3_step8]]Si la configuración actual no coincide con el uso deseado, cambie la configuración según sea necesario:
+. [[man_check_3_step9]]Si la configuración actual no coincide con el uso deseado, cambie la configuración según sea necesario:
 +
 `ucadmin modify -m fc|cna -t initiator|target _adapter_name_`
 
@@ -155,52 +125,25 @@ Los adaptadores del modo de destino se desconectan automáticamente en modo de m
 ** `-t` Es el tipo FC4, `target` o. `initiator`.
 +
 
-NOTE: Debe utilizar el iniciador FC para unidades de cinta, sistemas de virtualización FlexArray y configuraciones MetroCluster. Debe utilizar el destino FC para los clientes SAN.
+NOTE: Debe utilizar el iniciador FC para unidades de cinta y configuraciones de MetroCluster .  Debe utilizar el destino FC para los clientes SAN.
 
 
 
-. Compruebe la configuración:
-+
-`ucadmin show`
-
-. Compruebe la configuración:
-+
-[cols="35,65"]
-|===
-| Si el sistema... | Realice lo siguiente... 
-
-
-| Tiene discos de almacenamiento  a| 
-.. Detenga el sistema:
+. Detenga el sistema:
 +
 `halt`
 
 +
 El sistema se detiene en el aviso del entorno de arranque.
 
-.. Introduzca el siguiente comando:
+. Introduzca el siguiente comando:
 +
 `boot_ontap`
 
-
-
-
-
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Reinicie al modo de mantenimiento:
-`boot_netapp maint` 
-|===
 . [[step11]]Compruebe los ajustes:
 +
-[cols="35,65"]
-|===
-| Si el sistema... | Realice lo siguiente... 
+`system node hardware unified-connect show`
 
-
-| Tiene discos de almacenamiento | `system node hardware unified-connect show` 
-
-
-| Es una controladora V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `ucadmin show` 
-|===
 +
 La salida de los siguientes ejemplos muestra que el tipo FC4 del adaptador "1b" está cambiando a. `initiator` y que el modo de los adaptadores "2a" y "2b" está cambiando a. `cna`:
 
@@ -219,42 +162,9 @@ La salida de los siguientes ejemplos muestra que el tipo FC4 del adaptador "1b" 
 
  4 entries were displayed.
 ----
+. [[paso 12a]]Coloque todos los puertos de destino en línea ingresando el siguiente comando, una vez para cada puerto:
 +
-[listing]
-----
-*> ucadmin show
-         Current  Current    Pending  Pending    Admin
-Adapter  Mode     Type       Mode     Type       Status
--------  -------  ---------  -------  ---------  ------
-1a       fc       initiator  -        -          online
-1b       fc       target     -        initiator  online
-2a       fc       target     cna      -          online
-2b       fc       target     cna      -          online
-*>
-----
-. [[step12a]]Coloque todos los puertos de destino en línea introduciendo uno de los siguientes comandos, una vez por cada puerto:
-+
-[cols="35,65"]
-|===
-| Si el sistema... | Realice lo siguiente... 
+`network fcp adapter modify -node _node_name_ -adapter _adapter_name_ -state up`
 
-
-| Tiene discos de almacenamiento | `network fcp adapter modify -node _node_name_ -adapter _adapter_name_ -state up` 
-
-
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | `fcp config _adapter_name_ up` 
-|===
-. [[Man_check_3_step13]]Conecte el puerto.
-. [[step14]]realice una de las siguientes acciones:
-+
-[cols="35,65"]
-|===
-| Si el sistema... | Realice lo siguiente... 
-
-
-| Tiene discos de almacenamiento | Vaya a. link:map_ports_node1_node3.html["Asigne puertos del nodo 1 al nodo 3"]. 
-
-
-| Es un sistema V-Series o tiene software de virtualización FlexArray y se conecta a las cabinas de almacenamiento | Vuelva al _Install and boot no3_ y reanude el link:install_boot_node3.html#man_install3_step7["Paso 7"]. 
-|===
+. [[man_check_3_step14]]Conecte el puerto.
 

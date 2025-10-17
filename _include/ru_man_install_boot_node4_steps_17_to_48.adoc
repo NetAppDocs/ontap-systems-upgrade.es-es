@@ -13,12 +13,12 @@
 | Si el sistema que desea actualizar... | Realice lo siguiente... 
 
 
-| No tiene la versión correcta o actual de ONTAP en el nodo 4 | Vaya a. <<man_install4_Step20,Paso 20>>. 
+| No tiene la versión correcta o actual de ONTAP en el nodo 4 | Vaya a <<man_install4_Step13,Paso 13>>. 
 
 
-| Tiene la versión correcta o actual de ONTAP en el nodo 4 | Vaya a. <<man_install4_Step25,Paso 25>>. 
+| Tiene la versión correcta o actual de ONTAP en el nodo 4 | Vaya a <<man_install4_Step18,Paso 18>>. 
 |===
-. [[man_install4_Step20]]Configure la conexión netboot eligiendo una de las siguientes acciones.
+. [[man_install4_Step13]]Configure la conexión de arranque de red eligiendo una de las siguientes acciones.
 +
 
 NOTE: Se deben utilizar el puerto de gestión y la dirección IP como conexión para reiniciar el sistema. No utilice una dirección IP de LIF de datos ni una interrupción del servicio de datos mientras se realiza la actualización.
@@ -109,8 +109,8 @@ El módulo del controlador se reinicia pero se detiene en el menú de arranque p
 
 
 
-. [[man_install4_Step25]]Seleccione el modo de mantenimiento `5` desde el menú de inicio y entrar `y` cuando se le pida que continúe con el arranque.
-. [[man_install4_Step26]]antes de continuar, vaya a. link:set_fc_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"] Se deben realizar los cambios necesarios en los puertos FC o UTA/UTA2 del nodo. Realice los cambios recomendados en esas secciones, reinicie el nodo y vaya al modo de mantenimiento.
+. [[man_install4_Step18]]Seleccionar modo de mantenimiento `5` desde el menú de arranque y entrar `y` cuando se le solicite continuar con el arranque.
+. [[man_install4_Step19]]Antes de continuar, vaya alink:set_fc_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"] para realizar los cambios necesarios en los puertos FC o UTA/UTA2 del nodo.  Realice los cambios recomendados en esas secciones, reinicie el nodo y pase al modo de mantenimiento.
 . Introduzca el siguiente comando y examine el resultado para encontrar el ID del sistema del nodo 4:
 +
 `disk show -a`
@@ -296,7 +296,7 @@ El sistema se detiene en el aviso del entorno de arranque.
 +
 `set time _hh:mm:ss_`
 
-. Compruebe que el ID del sistema del partner esté configurado correctamente tal y como se indica en <<man_install4_Step26,Paso 26>> en opción.
+. Verifique que el ID del sistema asociado esté configurado correctamente como se indica en<<man_install4_Step19,Paso 19>> bajo opción.
 +
 `printenv partner-sysid`
 

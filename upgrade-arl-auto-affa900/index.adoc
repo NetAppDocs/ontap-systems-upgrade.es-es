@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-affa900/index.html 
-keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology, old, system, chassis, disk, disks 
+keywords: aggregate, relocation, controller, hardware, aggregates, metrocluster, terminology, old, system, chassis, disk, disks 
 summary: Puede actualizar el hardware de la controladora convirtiendo un sistema antiguo en un sistema de reemplazo y manteniendo los discos y chasis del sistema antiguos. 
 ---
 = Conozca este procedimiento de actualización de ARL
