@@ -6,7 +6,7 @@ Es necesario reiniciar el nodo 4 si no tiene la misma versión de ONTAP 9 que es
 
 [IMPORTANT]
 ====
-* Para actualizar un controlador AFF A800 o AFF C800, debe asegurarse de que todas las unidades en el chasis estén firmemente asentadas contra el plano medio antes de quitar el nodo 2. Para obtener más información, consulte link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Sustituya los módulos del controlador AFF A800 o AFF C800"].
+* Para actualizar un controlador AFF A800 o AFF C800 , debe asegurarse de que todas las unidades en el chasis estén firmemente asentadas contra el plano medio antes de quitar el nodo 2. Para obtener más información, consulte link:../upgrade-arl-auto-in-chassis/replace-node1-affa800.html["Sustituya los módulos del controlador AFF A800 o AFF C800"].
 * Si está actualizando un sistema con discos de almacenamiento, debe completar toda esta sección y luego continuar. link:set_fc_or_uta_uta2_config_node4.html["Establezca la configuración de FC o UTA/UTA2 en el nodo 4"] , ingresando comandos en el indicador del clúster.
 
 

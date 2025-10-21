@@ -1,0 +1,141 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/ensure-new-controllers-are-set-up-correctly.html 
+keywords: ensure, controllers, new, setup, ha, pair, node1, node2, lif, cluster, high, availability 
+summary: Compruebe que la pareja de alta disponibilidad está habilitada, verifique el acceso al almacenamiento node1 y node2 y las LIF, y confirme la propiedad del agregado tras actualizar los modelos de controladora en el mismo chasis. 
+---
+= Confirmar que las nuevas controladoras están configuradas correctamente
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para confirmar la configuración correcta, debe verificar que el par de alta disponibilidad está habilitado. También debe verificar que node1 y node2 pueden acceder entre sí al almacenamiento de otro y que ninguno de sus propietarios son LIF de datos que pertenecen a otros nodos del clúster. Además, se debe verificar que todos los agregados de datos se encuentran en los nodos iniciales correctos y que los volúmenes de ambos nodos estén en línea. Si uno de los nodos nuevos tiene un adaptador de destino unificado, debe restaurar cualquier configuración de puerto y es posible que deba cambiar el uso del adaptador.
+
+.Pasos
+. Después de las comprobaciones posteriores al nodo 2, se habilitan la conmutación por error de almacenamiento y la pareja de alta disponibilidad de clúster para el clúster 2. Una vez finalizada la operación, ambos nodos muestran como completados y el sistema realiza algunas operaciones de limpieza.
+. Compruebe que la recuperación tras fallos del almacenamiento está activada:
++
+`storage failover show`
+
++
+En el ejemplo siguiente se muestra el resultado del comando cuando la conmutación por error del almacenamiento está habilitada:
+
++
+[listing]
+----
+cluster::> storage failover show
+                          Takeover
+Node	    Partner       Possible      State Description
+----------  -----------   ------------  ------------------
+node1	    node2         true	        Connected to node2
+node2	    node1         true	        Connected to node1
+----
+. Compruebe que los nodos 1 y 2 pertenecen al mismo clúster mediante el siguiente comando y examine el resultado:
++
+`cluster show`
+
+. Compruebe que los nodos 1 y 2 pueden acceder al almacenamiento de los demás mediante el siguiente comando y examinar el resultado:
++
+`storage failover show -fields local-missing-disks,partner-missing-disks`
+
+. Compruebe que ni el nodo 1 ni el nodo 2 tienen las LIF de datos propias del hogar de otros nodos del clúster mediante el siguiente comando y examine el resultado:
++
+`network interface show`
+
++
+Si ni el nodo 1 ni el nodo 2 tienen LIF de datos propias del hogar de otros nodos del clúster, revierte las LIF de los datos a su propietario raíz:
+
++
+`network interface revert`
+
+. Confirmar que los agregados son propiedad de sus respectivos nodos principales.
++
+`storage aggregate show -owner-name <node1>`
+
++
+`storage aggregate show -owner-name <node2>`
+
+. Determine si alguno de los volúmenes está sin conexión:
++
+`volume show -node <node1> -state offline`
+
++
+`volume show -node <node2> -state offline`
+
+. Si alguno de los volúmenes se encuentra sin conexión, compárelo con la lista de volúmenes sin conexión que ha capturado en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"], y conectar cualquiera de los volúmenes sin conexión, según sea necesario, mediante el siguiente comando, una vez para cada volumen:
++
+`volume online -vserver <vserver_name> -volume <volume_name>`
+
+. Instale licencias nuevas para los nodos nuevos mediante el siguiente comando para cada nodo:
++
+`system license add -license-code <license_code,license_code,license_code...>`
+
++
+El parámetro license-code acepta una lista de 28 claves de caracteres alfabéticos en mayúsculas. Puede añadir una licencia cada vez, o bien puede añadir varias licencias a la vez, separando cada clave de licencia por una coma.
+
+. Quite todas las licencias antiguas de los nodos originales mediante uno de los siguientes comandos:
++
+`system license clean-up -unused -expired`
+
++
+`system license delete -serial-number <node_serial_number> -package <licensable_package>`
+
++
+--
+** Eliminar todas las licencias caducadas:
++
+`system license clean-up -expired`
+
+** Elimine todas las licencias no utilizadas:
++
+`system license clean-up -unused`
+
+** Elimine una licencia específica de un clúster mediante los siguientes comandos en los nodos:
++
+`system license delete -serial-number <node1_serial_number> -package *`
+`system license delete -serial-number <node2_serial_number> -package *`
+
+
+
+--
++
+Se muestra la siguiente salida:
+
++
+[listing]
+----
+Warning: The following licenses will be removed:
+<list of each installed package>
+Do you want to continue? {y|n}: y
+----
++
+Introduzca `y` para eliminar todos los paquetes.
+
+. Compruebe que las licencias se han instalado correctamente mediante el siguiente comando y examine su resultado:
++
+`system license show`
+
++
+Puede comparar la salida con la que ha capturado en link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] sección.
+
+. [[unset_maxwait]] Si se utilizan unidades de autocifrado en la configuración y se ha configurado el `kmip.init.maxwait` variable a. `off` (Por ejemplo, en _Boot node2 con los módulos del sistema de reemplazo_, link:boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1["Paso 1"]), debe anular la definición de la variable:
++
+`set diag; systemshell -node <node_name> -command sudo kenv -u -p kmip.init.maxwait`
+
+. Configure los SPS utilizando el siguiente comando en ambos nodos:
++
+`system service-processor network modify -node <node_name>`
+
++
+Consulte link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_ para obtener información sobre los SPS y los comandos _ONTAP 9: Referencia de página del manual_ para obtener información detallada sobre el sistema `service-processor network modify` comando.
+
+. Si desea configurar un clúster sin switches en los nuevos nodos, consulte link:other_references.html["Referencias"] Para establecer un enlace al _sitio de soporte de NetApp_ y siga las instrucciones que se indican en _Cambiar a un clúster sin switch de dos nodos_.
+
+
+.Después de terminar
+Si Storage Encryption está habilitado en los nodos 1 y 2, complete la sección link:set_up_storage_encryption_new_module.html["Configure Storage Encryption en el nuevo módulo de la controladora"]. De lo contrario, complete la sección link:decommission_old_system.html["Retire el sistema antiguo"].

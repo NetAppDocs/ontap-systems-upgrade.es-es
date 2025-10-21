@@ -29,9 +29,9 @@ Para actualizar las configuraciones IP de MetroCluster, consulte link:other_refe
 
 [NOTE]
 ====
-* . Este procedimiento ARL incluye los pasos que garantizan que los discos internos permanezcan seguros en el chasis al quitar e instalar los controladores durante el procedimiento de actualización
+* Si está actualizando un sistema intercambiando módulos de controlador en el mismo chasis, como AFF A800 o AFF C800, NetApp recomienda encarecidamente utilizar el procedimiento de actualización quelink:../upgrade-arl-auto-in-chassis/index.html["actualiza los modelos de controlador mediante ARL, manteniendo el chasis y los discos del sistema existentes"] .  Este procedimiento ARL incluye los pasos que garantizan que los discos internos permanezcan seguros en el chasis cuando quita e instala los controladores durante el procedimiento de actualización.
 +
-link:../upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["Obtenga información sobre las combinaciones de actualización del sistema compatibles mediante ARL, manteniendo el chasis y los discos del sistema existentes"].
+link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["Obtenga información sobre las combinaciones de actualización del sistema compatibles mediante ARL, manteniendo el chasis y los discos del sistema existentes"].
 
 * Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.
 

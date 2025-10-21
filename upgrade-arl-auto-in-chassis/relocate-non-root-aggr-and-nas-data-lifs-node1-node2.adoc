@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/relocate-non-root-aggr-and-nas-data-lifs-node1-node2.html 
+keywords: relocating, non-root, aggregates, nas, data, lif, node1, node2, NVRAM, controller, module, modules 
+summary: Mueva los agregados no raíz y las LIF de datos NAS de node1 a node2 y restaure los recursos de node1 cuando utilice ARL para actualizar los modelos de controladora en el mismo chasis. 
+---
+= Reubique los agregados que no son raíz y los LIF de datos NAS que pertenecen al nodo 1 al nodo 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de que pueda sustituir node1 con los módulos de reemplazo para la actualización de su sistema, debe mover los agregados no raíz y las LIF de datos NAS de node1 a node2 antes de restaurar en última instancia los recursos node1 en node1 que se ejecutan en el sistema de reemplazo. Este proceso está en gran medida automatizado; la operación se pausa para permitir comprobar su estado.
+
+.Antes de empezar
+La operación ya se debe poner en pausa cuando se inicia la tarea, por lo que se debe reanudar manualmente.
+
+.Acerca de esta tarea
+Las LIF remotas gestionan el tráfico a LUN DE SAN durante el procedimiento de actualización. No es necesario que mueva LIF DE SAN por estado del clúster ni del servicio durante la actualización. Debe comprobar que las LIF están en buen estado y ubicadas en puertos adecuados después de poner en línea node1 como sistema de sustitución.
+
+
+NOTE: El propietario principal de los agregados y las LIF no está modificado; solo se modifica el propietario actual.
+
+.Pasos
+. Reanudar las operaciones de movimiento de LIF de datos NAS y reubicación de agregados:
++
+`system controller replace resume`
+
++
+Todos los agregados que no son raíz y los LIF de datos NAS están migrados del nodo 1 al nodo 2.
+
++
+La operación se pone en pausa para permitir verificar si todos los agregados que no son raíz del nodo 1 y las LIF de datos que no son SAN se han migrado al nodo 2.
+
+. Comprobar el estado de las operaciones de reubicación de agregados y movimiento de LIF de datos de NAS:
++
+`system controller replace show-details`
+
+. Con la operación en pausa, verifique que todos los agregados que no son raíz estén en línea para su estado en el nodo 2:
++
+`storage aggregate show -node <node2> -state online -root false`
+
++
+En el ejemplo siguiente, los agregados no raíz en el nodo 2 están en línea:
+
++
+[listing]
+----
+cluster::> storage aggregate show -node node2 -state online -root false
+
+Aggregate  Size     Available  Used%  State  #Vols  Nodes  RAID Status
+---------  -------  ---------  -----  ------ -----  ------ --------------
+aggr_1     744.9GB  744.8GB    0%     online     5  node2  raid_dp,normal
+aggr_2     825.0GB  825.0GB    0%     online     1  node2  raid_dp,normal
+2 entries were displayed.
+----
++
+Si los agregados se encuentran sin conexión o en estado no externo en el nodo 2, deben estar en línea usando el siguiente comando en el nodo 2, una vez para cada agregado:
+
++
+`storage aggregate online -aggregate <aggregate_name>`
+
+. Verifique que todos los volúmenes estén en línea en el nodo 2 mediante el siguiente comando en el nodo 2 y examinar su salida:
++
+`volume show -node <node2> -state offline`
+
++
+Si alguno de los volúmenes está sin conexión en el nodo 2, debe volver a ponerlos en línea usando el siguiente comando en el nodo 2, una vez para cada volumen:
+
++
+`volume online -vserver <vserver_name> -volume <volume_name>`
+
++
+El  `vserver_name` El uso de este comando se encuentra en la salida del comando anterior.  `volume show` dominio.
+
+
+
+. [[paso5]]Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _nodename_ -status-admin up`
+
+

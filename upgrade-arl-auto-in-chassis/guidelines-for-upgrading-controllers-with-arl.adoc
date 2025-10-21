@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/guidelines-for-upgrading-controllers-with-arl.html 
+keywords: guidelines, upgrade, ontap, controllers, old, system, chassis, disk, disks 
+summary: Sepa si puede utilizar ARL, manteniendo el chasis y los discos del sistema antiguos, para la configuración de actualización. 
+---
+= Directrices para actualizar controladoras
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para comprender si puede utilizar la reubicación de agregados (ARL), que mantiene el antiguo chasis y los discos del sistema, depende de la configuración de actualización del sistema y de la versión de ONTAP.
+
+
+
+== Actualizaciones compatibles de ARL
+
+Las actualizaciones de controladoras son compatibles con ciertas configuraciones del sistema. Consulte la link:decide_to_use_the_aggregate_relocation_guide.html#supported-systems["Combinaciones de actualización del sistema admitidas"] para obtener una lista de los sistemas compatibles y la versión mínima de ONTAP.
+
+Si ha recibido un nuevo AFF A30, AFF A50, AFF A70, AFF A90, AFF A150, AFF A900, AFF C30, AFF C60, AFF C80, FAS2820 o FAS9500 como sistema completo, incluyendo un nuevo chasis, consulte link:other_references.html["Referencias"]el enlace con los comandos _Use «system controller replace» para actualizar el hardware de la controladora con ONTAP 9,8 o posterior_.
+
+La actualización de la controladora mediante ARL es compatible en sistemas configurados con volúmenes de SnapLock Enterprise y SnapLock Compliance.
+
+
+
+== Clústeres de dos nodos sin switches
+
+Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar los nodos en el clúster sin switches mientras realiza la actualización. No es necesario convertirlos en un clúster con switches.
+
+
+
+== Cambiar clústeres conectados
+
+Si va a actualizar nodos en un clúster conectado a un switch de clúster, debe comprobar que la marca, el modelo, la versión de firmware, RCF y la versión de ONTAP que se ejecutan en el switch serán las mismas que las que se ejecutan en la controladora de reemplazo después de la actualización. Si es necesario, debe realizar la actualización del switch antes de actualizar las controladoras mediante ARL.
+
+Para obtener más información, consulte link:cable-node1-for-shared-cluster-HA-storage.html#connect-switch-attached-cluster["Conéctese a un clúster conectado a switches"].
+
+
+
+== Solucionar problemas
+
+Es posible que aparezca un error mientras se actualiza la pareja de nodos. El nodo podría bloquearse, es posible que los agregados no se reubiquen o que los LIF no migren. La causa del fallo y su solución dependen de cuándo se produjo el fallo durante el procedimiento de actualización.
+
+Si ocurre algún problema, consulte el link:aggregate_relocation_failures.html["Solucionar problemas"] Sección al final del procedimiento para obtener más información y posibles soluciones. La información sobre las fallas que pueden ocurrir se enumera por fase del procedimiento en el link:overview_of_the_arl_upgrade.html["Secuencia de actualización de ARL"] .
+
+Si no encuentra una solución al problema encontrado, comuníquese con el soporte técnico.

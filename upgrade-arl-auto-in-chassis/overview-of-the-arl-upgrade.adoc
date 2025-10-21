@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/overview-of-the-arl-upgrade.html 
+keywords: overview, arl, upgrade, owner, controller, hardware, old, system, chassis, disk, disks 
+summary: Comprenda cómo funciona el procedimiento ARL para actualizar los modelos de controladora en el mismo chasis. 
+---
+= Conozca la secuencia de actualización de ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de actualizar los nodos mediante ARL, debe comprender cómo funciona el procedimiento. En este contenido, el procedimiento se divide en varias etapas.
+
+
+
+== Actualice el par de nodos
+
+Para actualizar la pareja de nodos, debe preparar los nodos originales y realizar una serie de pasos en los nodos original y en los nuevos. A continuación, puede retirar los nodos originales.
+
+
+
+== Información general sobre la secuencia de actualizaciones de ARL
+
+Durante el procedimiento, debe actualizar el hardware de la controladora original con el hardware de la controladora de reemplazo, una controladora cada vez, aprovechando la configuración de par de alta disponibilidad para reubicar la propiedad de agregados que no son raíz. Todos los agregados que no son raíz deben pasar por dos reubicaciones para llegar a su destino final, que es el nodo actualizado correcto.
+
+Cada agregado tiene un propietario particular y un propietario actual. El propietario del hogar es el propietario real del agregado, y el propietario actual es el propietario temporal.
+
+La siguiente tabla describe las tareas de alto nivel que realiza durante cada etapa y el estado de propiedad del agregado al final de la etapa. Los pasos detallados se proporcionan más adelante en el procedimiento:
+
+[cols="35,65"]
+|===
+| Etapa | Pasos 
+
+
+| link:verify_upgrade_hardware.html["Fase 1: Prepárese para la actualización"]  a| 
+Durante la etapa 1, verifique que dispone del hardware correcto para la actualización, ejecute comprobaciones previas y, si es necesario, corrija la propiedad de agregado. Debe registrar cierta información si gestiona el cifrado de almacenamiento mediante el administrador de claves incorporado y puede optar por desactivar las relaciones de SnapMirror.
+
+Propiedad del agregado al final de la fase 1:
+
+* El nodo 1 es el propietario raíz y el propietario actual de los agregados del nodo 1
+* El nodo 2 es el propietario particular y el propietario actual de los agregados del nodo 2
+
+
+
+
+| link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Etapa 2: Reubicar recursos y retirar node1"]  a| 
+Durante la fase 2, reubicará node1 agregados no raíz y LIF de datos NAS de node1 a node2. Este proceso está en gran medida automatizado; la operación se pausa para permitir comprobar su estado. Debe reanudar manualmente la operación. Si es necesario, reubique los agregados que han fallado o que han vetado. Antes de retirar el nodo 1, registre la información del nodo 1 para su uso más adelante. También puede prepararse para reiniciar el sistema posteriormente en el procedimiento.
+
+Propiedad del agregado al final de la fase 2:
+
+* El nodo 2 es el propietario actual de los agregados del nodo 1
+* El nodo 2 es el propietario particular y el propietario actual de agregados del nodo 2
+
+
+
+
+| link:cable-node1-for-shared-cluster-HA-storage.html["Etapa 3: Arranque node1 con los módulos del sistema de reemplazo"]  a| 
+Durante la etapa 3, se inicia node1 con módulos de sistema actualizados y se verifica la instalación node1 actualizada. Si utiliza el cifrado de volúmenes de NetApp (NVE), debe restaurar la configuración del gestor de claves. También puede reubicar agregados no raíz y LIF de datos NAS del nodo 2 al nodo 1 actualizado y comprobar que las LIF DE SAN existen en el nodo 1.
+
+Propiedad agregada al final de la etapa 3:
+
+* node1 actualizado es el propietario y actual propietario de los agregados de node1
+* El nodo 2 es el propietario particular y el propietario actual de agregados del nodo 2
+
+
+
+
+| link:relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html["Etapa 4: Reubicar recursos y retirar node2"]  a| 
+Durante la etapa 4, se reubicarán los agregados no raíz y los LIF de datos NAS del nodo 2 al nodo 1 actualizado y se retirarán los nodos 2.
+
+Propiedad agregada al final de la etapa 4:
+
+* El nodo 1 actualizado es el propietario raíz y el propietario actual de los agregados que originalmente pertenecían al nodo 1
+* El nodo 1 actualizado es el propietario actual de agregados del nodo 2
+
+
+
+
+| link:install-aff-a30-a50-c30-c50-node2.html["Etapa 5: Instale los módulos del sistema de reemplazo en node2"]  a| 
+Durante la etapa 5, instale los nuevos módulos del sistema que recibió para el node2 actualizado y luego netboot node2.
+
+Propiedad agregada al final de la etapa 5:
+
+* El nodo 1 actualizado es el propietario raíz y el propietario actual de los agregados que originalmente pertenecían al nodo 1.
+* El nodo 2 actualizado es el propietario del hogar y el propietario actual de los agregados que originalmente pertenecían al nodo 2.
+
+
+
+
+| link:boot_node2_with_a900_controller_and_nvs.html["Etapa 6: Arranque node2 con los módulos del sistema de reemplazo"]  a| 
+Durante la Etapa 6, inicia el nodo 2 con módulos de sistema actualizados y verifica la instalación del nodo 2 actualizado. Si está utilizando NVE, restaure la configuración del administrador de claves. Para las actualizaciones de clústeres conectados a conmutadores, debe validar que el archivo de configuración de referencia (RCF) del conmutador del clúster admita los puertos de alta disponibilidad/clúster compartidos. También reubica los agregados no raíz del nodo 1 y los LIF de datos NAS del nodo 1 al nodo 2 actualizado y verifica que los LIF de SAN existan en el nodo 2.
+
+
+
+| link:manage-authentication-using-kmip-servers.html["Fase 7: Complete la actualización"]  a| 
+Durante la fase 7, confirme que los nodos nuevos están configurados correctamente y, si los nodos nuevos tienen la función de cifrado habilitada, debe configurar y configurar el cifrado de almacenamiento o NVE. También debe retirar los nodos antiguos y reanudar las operaciones de SnapMirror.
+
+|===

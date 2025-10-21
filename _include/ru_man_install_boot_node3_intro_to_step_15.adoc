@@ -11,7 +11,7 @@ Sin embargo, no es necesario iniciar el nodo 3 mediante netboot si tiene la mism
 
 [IMPORTANT]
 ====
-* Para actualizar un controlador AFF A800 o AFF C800, debe asegurarse de que todas las unidades en el chasis estén firmemente asentadas contra el plano medio antes de quitar el nodo 1. Para obtener más información, consulte link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Sustituya los módulos del controlador AFF A800 o AFF C800"].
+* Para actualizar un controlador AFF A800 o AFF C800 , debe asegurarse de que todas las unidades en el chasis estén firmemente asentadas contra el plano medio antes de quitar el nodo 1. Para obtener más información, consulte link:../upgrade-arl-auto-in-chassis/replace-node1-affa800.html["Sustituya los módulos del controlador AFF A800 o AFF C800"].
 * Si está actualizando un sistema con discos de almacenamiento, debe completar toda esta sección y luego ir a link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configure los puertos FC en el nodo 3"] y link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Comprobar y configurar los puertos UTA/UTA2 en el nodo 3"] , ingresando comandos en el indicador del clúster.
 
 

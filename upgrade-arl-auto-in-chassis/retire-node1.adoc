@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/retire-node1.html 
+keywords: retiring, node1, node, retire 
+summary: Deshabilite el par de HA con node2 y apague node1 cuando utilice ARL para actualizar los modelos de controladoras en el mismo chasis. 
+---
+= Retire el nodo 1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para retirar node1, debe reanudar la operación automatizada para deshabilitar el par de alta disponibilidad con node2 y apagar node1 correctamente.
+
+.Pasos
+. Reanude la operación:
++
+`system controller replace resume`
+
+. Compruebe que el nodo 1 se ha detenido:
++
+`system controller replace show-details`
+
++
+Después de que el nodo 1 se haya detenido por completo, el nodo 1 debería estar en el símbolo del sistema LOADER>. Para ver el aviso DEL CARGADOR>, conéctese a la consola serie del nodo 1.
+
+

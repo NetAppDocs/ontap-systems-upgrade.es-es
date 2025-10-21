@@ -63,7 +63,7 @@ Si el escenario de actualización aparece en la siguiente matriz de sistemas com
 
 == Actualice los modelos de controladoras en el mismo chasis
 
-Si el escenario de actualización aparece en la siguiente matriz de sistemas compatibles, vaya a link:../upgrade-arl-auto-affa900/index.html["Utilice los comandos para sustituir la controladora del sistema para actualizar los modelos de controladora en el mismo chasis"] para iniciar el procedimiento de actualización.
+Si su escenario de actualización aparece en la siguiente matriz de sistemas compatibles, vaya alink:../upgrade-arl-auto-in-chassis/index.html["Utilice los comandos para sustituir la controladora del sistema para actualizar los modelos de controladora en el mismo chasis"] para iniciar el procedimiento de actualización.
 
 .Muestra los sistemas admitidos
 [%collapsible]

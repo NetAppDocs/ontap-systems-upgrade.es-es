@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/replace-node1-affa220-affa200-affc190-fas2620-fas2720.html 
+keywords: aff, asa, fas, replace, node1, system, modules 
+summary: Sustituya node1 los módulos del sistema AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720 cuando utilice ARL para actualizar los modelos de controladoras en el mismo chasis. 
+---
+= Sustituya el módulo de controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+En este momento, el nodo 1 está inactivo y todos los datos están servidos por el nodo 2. Debe tener cuidado de quitar solo el módulo del controlador node1. Normalmente, el nodo 1 es la controladora A, situada en el lado izquierdo del chasis cuando se mira las controladoras desde la parte posterior del sistema. La etiqueta de la controladora se encuentra en el chasis directamente sobre el módulo de la controladora.
+
+
+CAUTION: No apague el chasis, ya que node1 y node2 están en el mismo chasis y conectados a los mismos suministros de alimentación.
+
+.Antes de empezar
+Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
+
+
+
+== Quite el módulo de controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720
+
+Para acceder a los componentes del controlador, retire el módulo del controlador del sistema y, a continuación, retire la cubierta del módulo del controlador.
+
+.Pasos
+. Afloje el gancho y la correa de bucle que sujetan los cables al dispositivo de administración de cables y, a continuación, desconecte los cables del sistema y los SFP (si fuera necesario) del módulo del controlador, manteniendo un seguimiento del lugar en el que estaban conectados los cables.
++
+Deje los cables en el dispositivo de administración de cables de manera que cuando vuelva a instalar el dispositivo de administración de cables, los cables estén organizados.
+
+. Retire y retire los dispositivos de administración de cables de los lados izquierdo y derecho del módulo del controlador.
++
+image:drw_25xx_cable_management_arm.png["Quita la ARM de gestión de cables"]
+
+. Apriete el pestillo del mango de la leva hasta que se suelte, abra el mango de la leva completamente para liberar el módulo del controlador del plano medio y, a continuación, tire con dos manos del módulo del controlador para extraerlo del chasis.
++
+image:drw_2240_x_opening_cam_latch.png["Apertura de la palanca de leva"]
+
+. Dé la vuelta al módulo del controlador y colóquelo sobre una superficie plana y estable.
+
+
+
+
+== Instale el módulo de controlador ASA A150, AFF A150 o FAS2820
+
+Instale, cablee y conecte el módulo de controlador ASA A150, AFF A150 o FAS2820 en node1.
+
+.Pasos
+. Alinee el extremo del módulo del controlador con la abertura del chasis y, a continuación, empuje suavemente el módulo del controlador hasta la mitad del sistema.
++
+
+NOTE: No inserte por completo el módulo de la controladora en el chasis hasta que se le indique hacerlo más adelante en el procedimiento.
+
+. Conecte los puertos de consola y de gestión al módulo del controlador 1-1.
++
+
+NOTE: Como el chasis ya está ENCENDIDO, node1 inicia la inicialización del BIOS seguida de AUTOBOOT en cuanto está completamente colocado. Para interrumpir el arranque del nodo 1, antes de insertar por completo el módulo del controlador en la ranura, se recomienda conectar la consola serie y los cables de gestión al módulo del controlador del nodo 1.
+
+. Con el mango de leva en la posición abierta, empuje firmemente el módulo del controlador hasta que se encuentre con el plano medio y quede completamente asentado. El pestillo de bloqueo se eleva cuando el módulo del controlador está completamente asentado. Cierre la palanca de leva a la posición de bloqueo.
++
+
+NOTE: Para evitar dañar los conectores, no ejerza demasiada fuerza al deslizar el módulo del controlador en el chasis.
+
+. Conecte la consola de serie en cuanto esté sentado el módulo y esté listo para interrumpir EL ARRANQUE AUTOMÁTICO del nodo 1.
+. Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 1 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe el AUTOARRANQUE a tiempo y node1 comienza el arranque, espere a que se le indique el prompt y pulse Ctrl-C para ir al menú de arranque. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` para reiniciar el nodo e interrumpir EL AUTOARRANQUE durante el reinicio.
+. En el símbolo del SISTEMA LOADER> del nodo 1, establezca las variables de entorno predeterminadas:
++
+`set-defaults`
+
+. Guarde la configuración predeterminada de las variables de entorno:
++
+`saveenv`
+
+

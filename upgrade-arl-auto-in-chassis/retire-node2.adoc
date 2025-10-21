@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/retire-node2.html 
+keywords: retire, node2, retiring, node 
+summary: Apague node2 y quítelo del rack o chasis cuando utilice ARL para actualizar los modelos de controladora en el mismo chasis. 
+---
+= Retire el nodo 2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para retirar el nodo 2, apáguelo correctamente y luego retírelo del rack o chasis.
+
+
+
+== Reanudar la operación de reemplazo del controlador del sistema
+
+.Pasos
+. Reanude la operación:
++
+`system controller replace resume`
+
++
+El nodo se detiene automáticamente.
+
+
+
+
+
+== Retire el módulo del controlador AFF A800 o AFF C800
+
+Retire el dispositivo de gestión de cables del módulo existente y saque ligeramente el controlador del chasis.
+
+.Antes de empezar
+Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
+
+.Pasos
+. Prepárese para extraer el módulo del controlador:
++
+.. En la parte frontal del chasis, use los pulgares para empujar firmemente cada unidad en los compartimentos de disco superior e inferior hasta que sienta un tope positivo.  Esto garantiza que las unidades estén firmemente asentadas contra el plano medio del chasis.
++
+image:drw_a800_drive_seated_IEOPS-960.png["Empuje la unidad para asentarla firmemente contra el plano medio del chasis"]
+
+.. Vaya a la parte posterior del chasis.
+
+
+. Desconecte las fuentes de alimentación del módulo controlador node2 de la fuente.
+. Suelte los retenes del cable de alimentación y, a continuación, desenchufe los cables de las fuentes de alimentación.
+. Afloje el gancho y la correa de bucle que sujetan los cables al dispositivo de administración de cables y, a continuación, desconecte los cables del sistema y los módulos SFP y QSFP (si es necesario) del módulo de controlador, manteniendo un seguimiento del lugar en el que se conectan los cables.
++
+Deje los cables en el dispositivo de administración de cables de manera que cuando vuelva a instalar el dispositivo de administración de cables, los cables estén organizados.
+
+. Retire el dispositivo de administración de cables del módulo del controlador y colóquelo aparte.
+. Presione los dos pestillos de bloqueo hacia abajo y, a continuación, gire ambos pestillos hacia abajo al mismo tiempo.
++
+El módulo de la controladora se mueve ligeramente fuera del chasis.
+
+
+
+.Después de terminar
+Puede retirar el nodo 2 una vez completada la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].

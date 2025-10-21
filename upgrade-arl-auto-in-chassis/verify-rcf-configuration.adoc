@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/verify-rcf-configuration.html 
+keywords: aggregate, relocation, cluster, switch, rcf, shared 
+summary: Verifique que el conmutador de clúster RCF admita los puertos de clúster/HA compartidos para los nuevos controladores para las actualizaciones de clústeres conectados al conmutador. 
+---
+= Verificar la configuración de RCF en los conmutadores del clúster
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+En esta etapa del procedimiento de actualización, todos los agregados de datos deben estar en el nodo1.  Si está actualizando una configuración con clústeres conectados a conmutadores, debe validar que el archivo de configuración de referencia del conmutador del clúster (RCF) admita los puertos de clúster/HA compartidos para los nuevos controladores.
+
+Si está actualizando a una configuración de clúster sin conmutador de dos nodos, puede omitir esta sección y pasar alink:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"] .
+
+.Pasos
+. Cambie al modo de privilegio avanzado:
++
+`set advanced`
+
+. Verifique el estado de "IC RDMA":
++
+`ha interconnect status show`
+
++
+En la salida, la "Conexión IC RDMA" debe tener el estado `Up` .
+
++
+[cols="50,50"]
+|===
+| Si el estado de "Conexión IC RDMA" es... | Entonces… 
+
+
+| `Up` | Vaya a link:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"]. 
+
+
+| `Down` | Vaya a <<verify-rcf-step3,Paso 3>>. 
+|===
+. Verifique los puertos del clúster y el conmutador RCF.
++
+Para obtener más información, consulte link:cable-node1-for-shared-cluster-HA-storage.html#connect-switch-attached-cluster["Conéctese a un clúster conectado a switches"].
+
+. Verifique que el estado de "Conexión IC RDMA" haya cambiado a `Up` :
++
+`ha interconnect status show`
+
+
+
+.¿Qué sigue?
+link:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"]
