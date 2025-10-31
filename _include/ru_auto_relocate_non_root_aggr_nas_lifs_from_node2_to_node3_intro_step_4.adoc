@@ -47,7 +47,10 @@ Si los agregados se han desconectado o se han vuelto externos del nodo 3, conect
 Si alguno de los volúmenes se encuentra sin conexión en el nodo 3, debe volver a estar en línea mediante el siguiente comando de nodo 3, una vez para cada volumen:
 
 +
-`volume online -vserver <vserver_name> -volume <volume_name>` < El  `vserver_name` El uso de este comando se encuentra en la salida del comando anterior.  `volume show` dominio.
+`volume online -vserver <vserver_name> -volume <volume_name>`
+
++
+El  `vserver_name` El uso de este comando se encuentra en la salida del comando anterior.  `volume show` dominio.
 
 . Compruebe que las LIF se han movido a los puertos correctos y que tienen el estado de `up`. Si alguna LIF está inactiva, establezca el estado administrativo de las LIF en `up` Con el siguiente comando, una vez para cada LIF:
 +

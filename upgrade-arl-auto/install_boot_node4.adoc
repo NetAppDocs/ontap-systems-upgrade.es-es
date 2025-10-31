@@ -280,5 +280,5 @@ No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo
 .El futuro
 * Si tiene un sistema con una configuración FC o UTA/UTA2,link:set_fc_or_uta_uta2_config_node4.html["Establecer la configuración FC o UTA/UTA2 en el nodo 4"] .
 * Si no tiene una configuración FC o UTA/UTA2,link:reassign-node2-disks-to-node4.html#reassign-node2-node4-step1["Reasignar los discos del nodo 2 al nodo 4, Paso 1"] para que el nodo 4 pueda reconocer los discos del nodo 2.
-* Si tiene una configuración MetroCluster ,link:reassign-node1-disks-to-node3.html#reassign-node1-node3-step1["Reasignar los discos del nodo 1 al nodo 3"] .
+* Si tiene una configuración MetroCluster ,link:set_fc_or_uta_uta2_config_node4.html["Establecer la configuración FC o UTA/UTA2 en el nodo 4"] para detectar los discos conectados al nodo.
 

@@ -13,68 +13,97 @@ summary: 'En general, la forma en que actualice el hardware de la controladora d
 [role="lead"]
 En general, la forma en que actualice el hardware de la controladora depende de los modelos de plataforma de los nodos originales. Se actualiza reubicando agregados o moviendo volúmenes (ambos procedimientos no disruptivos) o moviendo el almacenamiento (un procedimiento disruptivo). Si tiene distintas versiones de ONTAP ejecutándose en los nodos originales y en los nuevos, es posible que deba realizar una actualización de software antes de iniciar la actualización de hardware.
 
-[role="tabbed-block"]
-====
-.Sistemas con unidades internas
---
-Elija un procedimiento de actualización para un sistema con unidades internas, que se enumeran a continuación:
-
-* FAS2620, FAS2650, FAS2720 Y FAS2750
-* AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s, y AFF A800
-* AFF C190, AFF C250 y AFF C800
-* ASA A150, ASA A250, ASA A800 y ASA AFF A220
-+
 
 NOTE: No se admiten las actualizaciones de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de un sistema ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
 
 
 
+== ¿Qué procedimiento de actualización debo utilizar?
 
-NOTE: Para ciertas actualizaciones de controlador, puede utilizar la reubicación agregada para actualizar un sistema con unidades internas. link:upgrade-arl/index.html["Leer más"].
+Para seleccionar el procedimiento de actualización adecuado, revise todas las preguntas que aparecen en la tabla a continuación.
 
-Si el sistema no aparece en la lista, consulte https://hwu.netapp.com["Hardware Universe de NetApp"^] para comprobar si tiene unidades internas.
+[cols="30,70"]
+|===
+| Pregúntate… | Si tu respuesta es sí, puedes hacer esto… 
 
-image:workflow_internal_drives.png["Flujo de trabajo de decisión para elegir un procedimiento de actualización"]
 
---
-.Sistemas con solo unidades externas
---
-Elija un procedimiento de actualización para un sistema con solo unidades externas, que se enumeran a continuación:
+| ¿Estoy utilizando una versión de software diferente en los nodos original y nuevo? | Actualizar la versión de ONTAP en los nodos originales a la versión más alta compatible.  Siempre que sea posible, los nuevos nodos deben ser compatibles con la versión de ONTAP que se ejecuta en los nodos originales.  Si esto no es posible,link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Actualice la versión de ONTAP"^] en los nodos originales a la versión más alta compatible.  La diferencia de versión entre los nodos originales y los nuevos no puede ser mayor que cuatro.  Por ejemplo, se admiten ONTAP 9.8 y 9.12.1; sin embargo, no se admiten ONTAP 9.8 y 9.13.1. link:https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Obtenga más información sobre los clústeres mixtos de ONTAP"^]. 
 
-* FAS8200, FAS8300, FAS8700, FAS9000 Y FAS9500
-* AFF A300, AFF A320, AFF A400, AFF A700 y AFF A900
-* AFF C400
-* ASA A400, ASA A900 y ASA AFF A700
+
+| ¿Quiero realizar una actualización disruptiva? | link:upgrade/upgrade-decide-to-use-this-guide.html["Actualizar moviendo almacenamiento"]. Esto requiere un nuevo sistema con su propio almacenamiento y estanterías para guardar los datos del sistema original.  Es posible la conversión desde un estante de controlador para ciertas actualizaciones. 
+
+
+| ¿Deseo realizar una actualización sin interrupciones?  a| 
+Actualiza tu sistema utilizando uno de los siguientes métodos:
+
+* link:upgrade/upgrade-decide-to-use-this-guide.html["Mover volúmenes"]
 +
+Esto requiere unir los nuevos nodos, mover los volúmenes y las LIF a los nuevos nodos y desconectar los nodos que se desean eliminar del clúster.  Si está actualizando un clúster de dos nodos sin conmutador, conviértalo en un clúster conectado mediante conmutador utilizando un par de conmutadores de clúster antes de agregar nuevos nodos.
 
-NOTE: No se admiten las actualizaciones de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
-
-
-
-Si el sistema no aparece en la lista, consulte https://hwu.netapp.com["Hardware Universe de NetApp"^] comprobar si solo tiene unidades externas.
-
-image:workflow_external_drives.png["Flujo de trabajo de decisión para elegir un procedimiento de actualización"]
-
---
-====
-Obtenga información sobre los procedimientos de actualización del hardware de la controladora:
-
-* link:upgrade-arl/index.html["Actualización mediante la reubicación de agregados"]
+* link:upgrade-arl/index.html["Utilice la reubicación agregada"]
 +
-La reubicación de agregados es un procedimiento de sustitución. No es necesario ampliar y reducir el clúster con los nuevos nodos, lo cual resulta útil para los clústeres de dos nodos sin switches. El movimiento de datos mediante la reubicación de agregados es más rápido que copiar datos entre agregados cuando se mueven volúmenes.
-
-* link:upgrade/upgrade-decide-to-use-this-guide.html["Actualice trasladando volúmenes o almacenamiento"]
+ARL es un procedimiento de reemplazo.  No es necesario expandir ni reducir el clúster con los nuevos nodos, lo cual resulta beneficioso para clústeres sin conmutador de dos nodos.  Al mover volúmenes, trasladar datos mediante la reubicación de agregados es más rápido que copiar datos entre agregados.
 
 
-[NOTE]
-====
-*Note1*: La versión de ONTAP que se ejecuta en los nodos originales debe ser soportada por los nuevos nodos. Si es necesario, link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Actualice la versión de ONTAP"^] en los nodos originales a la versión máxima admitida. La diferencia de versión entre los nodos original y los nuevos no puede ser superior a cuatro. Por ejemplo, se admite ONTAP 9,8 y 9.12.1; sin embargo, no se admite ONTAP 9,8 y 9.13.1. https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Obtenga más información sobre los clústeres mixtos de ONTAP"^].
 
-*Note2*: Una actualización no disruptiva requiere un nuevo sistema con su propio almacenamiento y estantes para almacenar los datos del sistema original.
 
-*Note3*: Al actualizar moviendo volúmenes, se unen los nuevos nodos, se mueven los volúmenes y las LIF a los nuevos nodos y luego se desunen los nodos que se desean eliminar del clúster. Si va a actualizar un clúster de dos nodos sin switches, lo convertirá en un clúster conectado con switches mediante un par de switches de clúster antes de añadir nuevos nodos.
 
-====
-Si desea actualizar una configuración de MetroCluster, consulte https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Actualice, actualice o expanda la configuración de MetroCluster"^].
+| ¿Tengo un sistema modular?  *Nota*: En un sistema modular, el controlador no tiene discos internos y todo el almacenamiento se encuentra en estantes externos. | link:upgrade-arl/index.html["Actualización mediante la reubicación de agregados"]. 
 
-Si va a reemplazar un componente individual, consulte https://docs.netapp.com/us-en/ontap-systems/index.html["Documentación de los sistemas de hardware de ONTAP"^] Y localice el folleto de unidad reemplazable del sector (FRU) de ese componente.
+
+| ¿Tengo un sistema integrado y quiero actualizarlo mediante la migración de volúmenes?  *Nota*: En un sistema integrado, el controlador tiene discos internos y el almacenamiento está contenido dentro del chasis del controlador y en estantes conectados externamente.  Los estantes externos sirven para ampliar el almacenamiento y es posible que no estén incluidos en todas las configuraciones del sistema.  a| 
+. link:https://hwu.netapp.com/DetailViews/Home.aspx["Verifique que su sistema sea compatible."^].
+. link:upgrade/upgrade-decide-to-use-this-guide.html["Actualizar moviendo volúmenes"].
+
+
+
+
+| ¿Tengo un sistema integrado y quiero actualizarlo cambiando solo el módulo controlador, conservando el chasis y los discos existentes? | link:upgrade-arl-auto-affa900/index.html["Actualice utilizando ARL, manteniendo el mismo chasis y discos."]. 
+
+
+| ¿Estoy reubicando una SVM? | Referirse alink:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html#svm-migration-workflow["Descripción general de la movilidad de datos de SVM"^] . 
+
+
+| ¿Estoy actualizando una configuración de MetroCluster ? | Referirse alink:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Actualice, actualice o expanda la configuración de MetroCluster"^] . 
+
+
+| ¿Estoy reemplazando un componente individual? | Consulte ellink:https://docs.netapp.com/us-en/ontap-systems/index.html["Documentación de los sistemas de hardware de ONTAP"^] y localice el folleto de la unidad reemplazable en campo (FRU) para ese componente. 
+|===
+
+
+== Ejemplo: Actualización de FAS9500 a FAS90
+
+Este ejemplo muestra las posibles respuestas para una actualización del controlador FAS9500 a FAS90.
+
+[cols="30,70"]
+|===
+| Pregunta | Ejemplo de respuesta 
+
+
+| ¿Estoy utilizando una versión de software diferente en los nodos original y nuevo? | No. Tanto FAS9500 como FAS90 ejecutan ONTAP 9.15.1. 
+
+
+| ¿Deseo realizar una actualización disruptiva? | No. Quiero mantener mi entorno de producción en línea durante la actualización. 
+
+
+| ¿Deseo realizar una actualización sin interrupciones? | Sí. Dependiendo de si mi sistema es modular o integrado, puedo actualizarlo moviendo volúmenes o utilizando la reubicación de agregados (ARL). 
+
+
+| ¿Tengo un sistema modular? | Sí. El FAS9500 es un sistema modular con estantes de almacenamiento externos.  Puedo actualizar usando ARL. 
+
+
+| ¿Tengo un sistema integrado y quiero actualizarlo mediante la migración de volúmenes? | No. El FAS9500 es un sistema modular, por lo que esto no aplica. 
+
+
+| ¿Tengo un sistema integrado y quiero actualizarlo cambiando solo el módulo controlador, conservando el chasis y los discos existentes? | No. El FAS9500 es un sistema modular, por lo que esto no aplica. 
+
+
+| ¿Estoy reubicando una SVM? | No. Estoy actualizando el hardware manteniendo las mismas SVM. 
+
+
+| ¿Estoy actualizando una configuración de MetroCluster ? | No. Este es un clúster de pares HA estándar. 
+
+
+| ¿Estoy reemplazando un componente individual? | No. Estoy actualizando todo el sistema de control. 
+|===
+*Ruta de actualización recomendada para este ejemplo:*link:upgrade-arl/index.html["Actualice mediante ARL"] porque el FAS9500 es un sistema modular y ARL proporciona un método de actualización no disruptivo.

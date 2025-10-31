@@ -118,7 +118,7 @@ Adapter  Mode     Type       Mode      Type         Status
 ....
 Los puertos UTA/UTA2 se pueden configurar en modo FC nativo o modo UTA/UTA2. El modo FC admite el iniciador FC y el destino FC; el modo UTA/UTA2 permite que el tráfico FCoE y NIC simultáneas comparta la misma interfaz SFP+ 10 GbE y sea compatible con destinos FC.
 
-Los puertos UTA/UTA2 pueden encontrarse en un adaptador adicional o en la placa base del controlador, y tienen las siguientes configuraciones, pero debes verificar la configuración de los puertos UTA/UTA2 en el nodo3 y cambiarla, si es necesario:
+Es posible que encuentre puertos UTA/UTA2 en un adaptador adicional o en la placa base del controlador, y que tengan las siguientes configuraciones, pero debería comprobar la configuración de los puertos UTA/UTA2 en el nodo3 y cambiarla, si es necesario:
 
 * LAS tarjetas UTA/UTA2 solicitadas cuando se solicita la controladora se configuran antes del envío para tener la personalidad que solicita.
 * Las tarjetas UTA/UTA2 solicitadas por separado desde la controladora se envían con la personalidad de destino FC predeterminada.

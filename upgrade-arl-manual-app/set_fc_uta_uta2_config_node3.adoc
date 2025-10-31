@@ -22,9 +22,7 @@ Es posible que necesites completar<<Configure los puertos FC en el nodo 3>> o<<C
 
 NOTE: Los materiales de marketing de NetApp podrían utilizar el término «UTA2» para referirse a adaptadores y puertos de CNA. Sin embargo, la CLI utiliza el término "CNA".
 
-* Si el nodo 3 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2 (por ejemplo, sistemas AFF y FAS introducidos a partir de ONTAP 9.15.1) y está actualizando un sistema con discos de almacenamiento, puede saltar al siguiente paso.link:map_ports_node1_node3.html["Asigne puertos del nodo 1 al nodo 3"] .
-* Sin embargo, si tiene un sistema V-Series o un sistema con software de virtualización FlexArray con cabinas de almacenamiento y el nodo 3 no tiene puertos FC integrados, puertos UTA/UTA integrados o una tarjeta UTA/UTA2, vuelva al _Install and boot no3_ y reanude el link:install_boot_node3.html#man_install3_step22["Paso 22"].
-
+Si el nodo 3 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2 (por ejemplo, sistemas AFF y FAS introducidos a partir de ONTAP 9.15.1) y está actualizando un sistema con discos de almacenamiento, puede saltar al siguiente paso.link:map_ports_node1_node3.html["Asigne puertos del nodo 1 al nodo 3"] .
 
 
 

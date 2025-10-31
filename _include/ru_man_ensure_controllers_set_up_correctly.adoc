@@ -117,7 +117,7 @@ Introduzca `y` para eliminar todos los paquetes.
 `system license show`
 
 +
-Puede comparar la salida con la que ha capturado link:prepare_nodes_for_upgrade.html#man_prepare_nodes_step30["Paso 30"] De _prepare los nodos para upgrade_.
+Puedes comparar la salida con la salida que capturaste enlink:prepare_nodes_for_upgrade.html#man_prepare_nodes_step29["Paso 29"] de _Preparar los nodos para la actualización_.
 
 . Configure los SPS realizando el siguiente comando en ambos nodos:
 +

@@ -13,6 +13,7 @@ summary: Utilice el procedimiento de actualización manual de ARL para actualiza
 :imagesdir: ../media/
 
 
+[role="lead"]
 Este procedimiento describe cómo actualizar el hardware del controlador mediante la reubicación manual de agregados (ARL) en sistemas que ejecutan ONTAP 9.8 o posterior.
 
 Puede utilizar este procedimiento ARL si está realizando una de las siguientes actualizaciones:

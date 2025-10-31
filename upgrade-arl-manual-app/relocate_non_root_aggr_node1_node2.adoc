@@ -17,7 +17,7 @@ summary: Mueva los agregados que no son raíz de un nodo 1 a otro y compruebe la
 Antes de poder sustituir el nodo 1 por nodo 3, debe mover los agregados que no son raíz del nodo 1 al nodo 2 mediante el comando de reubicación del agregado de almacenamiento y, luego, verificar la reubicación.
 
 .Pasos
-. [[step1]]reubicar los agregados no raíz realizando los siguientes subpasos:
+. [[relocate-step1]]Reubique los agregados que no son raíz completando los siguientes subpasos:
 +
 .. Configure el nivel de privilegio en Advanced:
 +

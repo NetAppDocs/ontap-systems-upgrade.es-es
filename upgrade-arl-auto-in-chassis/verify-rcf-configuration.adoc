@@ -41,7 +41,7 @@ En la salida, la "Conexión IC RDMA" debe tener el estado `Up` .
 
 | `Down` | Vaya a <<verify-rcf-step3,Paso 3>>. 
 |===
-. Verifique los puertos del clúster y el conmutador RCF.
+. [[verify-rcf-step3]]Verifique los puertos del clúster y el RCF del conmutador.
 +
 Para obtener más información, consulte link:cable-node1-for-shared-cluster-HA-storage.html#connect-switch-attached-cluster["Conéctese a un clúster conectado a switches"].
 

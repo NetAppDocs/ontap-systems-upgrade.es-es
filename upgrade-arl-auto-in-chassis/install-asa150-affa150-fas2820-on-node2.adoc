@@ -34,7 +34,7 @@ WARNING: No inserte por completo el módulo de la controladora en el chasis hast
 . Conecte los puertos de consola y de gestión al módulo de controladora 2.
 +
 
-NOTE: Debido a que el chasis ya está encendido, el nodo 2 comienza a arrancar tan pronto como está completamente instalado. Para evitar que el nodo 2 arranque, conecte los cables de consola y administración antes de insertar completamente el módulo del controlador.
+NOTE: Debido a que el chasis ya está encendido, el nodo 2 comienza a arrancar tan pronto como esté completamente encajado.  Para evitar que el nodo 2 arranque, conecte los cables de consola y administración antes de insertar completamente el módulo controlador.
 
 . Empuje firmemente el módulo de la controladora en el chasis hasta que se ajuste al plano medio y esté totalmente asentado.
 +

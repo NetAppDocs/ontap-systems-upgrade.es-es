@@ -16,10 +16,6 @@ summary: 'Contenido de referencia y sitios web necesarios para admitir una actua
 [role="lead"]
 Al realizar los procedimientos de este contenido, es posible que deba consultar el contenido de referencia o ir a sitios web de referencia.
 
-* <<Contenido de referencia>>
-* <<Sitios de referencia>>
-
-
 
 
 == Contenido de referencia

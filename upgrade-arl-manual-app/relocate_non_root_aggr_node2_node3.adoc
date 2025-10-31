@@ -21,7 +21,7 @@ CAUTION: Durante este procedimiento, no reubique agregados de node3 a node2. Est
 
 [[verify-partner-sys-id]]
 .Pasos
-. Compruebe que el ID del sistema asociado está definido correctamente en node3 :
+. Verifique que el ID del sistema asociado esté configurado correctamente en el nodo 3:
 +
 .. Introduzca el nivel de privilegio avanzado:
 +
@@ -90,7 +90,7 @@ El node3 “partner-sysid” es el ID del sistema de node2, que se puede encontr
 +
 Los campos "último asunto enviado:" y "última vez enviado:" contienen el título del último mensaje que se envió y la hora en que se envió el mensaje.
 
-. Reubicar los agregados no raíz:
+. [[relocate-step5]]Reubicar los agregados que no son raíz:
 +
 .. Configure el nivel de privilegio en Advanced:
 +

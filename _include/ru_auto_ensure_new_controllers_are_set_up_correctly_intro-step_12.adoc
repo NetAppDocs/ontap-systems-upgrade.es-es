@@ -111,7 +111,7 @@ Introduzca `y` para eliminar todos los paquetes.
 +
 Puede comparar la salida con la que ha capturado en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"].
 
-. [[unset_maxwait_System_Commands]]Si se utilizan unidades de autocifrado en la configuración y se ha configurado el `kmip.init.maxwait` variable a. `off` (por ejemplo, en link:install_boot_node4.html#auto_install4_step27["Instale y arranque el nodo 4, Paso 27"]), debe anular la definición de la variable:
+. [[unset_maxwait_system_commands]]Si se utilizan unidades de autocifrado en la configuración y ha configurado el `kmip.init.maxwait` variable a `off` (por ejemplo, enlink:install_boot_node4.html#auto_install4_step22["Instalar y arrancar el nodo 4, paso 22"] ), debes eliminar la variable:
 +
 `set diag; systemshell -node _node_name_ -command sudo kenv -u -p kmip.init.maxwait`
 

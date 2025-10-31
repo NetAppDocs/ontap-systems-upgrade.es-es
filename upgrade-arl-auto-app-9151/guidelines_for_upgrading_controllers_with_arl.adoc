@@ -59,6 +59,6 @@ Si desea actualizar controladoras de nivel básico con unidades internas, consul
 
 == Solucionar problemas
 
-Si se produce algún problema durante la actualización de las controladoras, consulte link:aggregate_relocation_failures.htmll["Solucionar problemas"] para obtener más información y posibles soluciones.
+Si surge algún problema al actualizar los controladores, consultelink:aggregate_relocation_failures.html["Solucionar problemas"] Para obtener más información y posibles soluciones.
 
 Si no encuentra ninguna solución al problema que encontró, póngase en contacto con el soporte técnico.

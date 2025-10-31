@@ -83,7 +83,7 @@ Este documento se escribe con las siguientes suposiciones:
 * El hardware de la controladora de reemplazo es nuevo y no se ha usado.
 +
 
-WARNING: Debido a que este procedimiento supone que el hardware del controlador de reemplazo es nuevo y no se ha utilizado, los pasos necesarios para preparar los controladores usados ​​con el `wipeconfig` Los comandos no están incluidos en este procedimiento.  Debe ponerse en contacto con el soporte técnico si el hardware del controlador de reemplazo se utilizó anteriormente, especialmente si los controladores ejecutaban Data ONTAP en modo 7.
+WARNING: Los pasos necesarios para preparar los controladores usados con el `wipeconfig` Los comandos no se incluyen en este procedimiento porque este procedimiento supone que el hardware del controlador de reemplazo es nuevo y no se ha utilizado. Debe ponerse en contacto con el soporte técnico si el hardware del controlador de reemplazo se utilizó anteriormente, especialmente si los controladores ejecutaban Data ONTAP en modo 7.
 
 * Debe leer y comprender las directrices para actualizar la pareja de nodos.
 +

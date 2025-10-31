@@ -72,7 +72,7 @@ Si no puede conectar los puertos de clúster e0a o e0b del nodo existente a los 
 
 
 * Los sistemas ASA A900, AFF A900 y FAS9500 solo admiten energía de línea alta (de 200V V a 240V V CA). Si su sistema A700 o FAS9000 de AFF se ejecuta con una alimentación de línea baja (de 100 V a 120 V), debe convertir la alimentación de entrada de AFF A700 o FAS9000 antes de utilizar este procedimiento.
-* Si va a actualizar desde un sistema existente con un tiempo de inactividad incluido en los <<supported-systems-in-chassis,matriz de sistemas compatibles>>, puede actualizar el hardware de la controladora moviendo almacenamiento o ponerse en contacto con el soporte técnico. Consulte link:other_references.html["Referencias"] el enlace _Actualizar moviendo volúmenes o almacenamiento_.
+* Si está actualizando desde un sistema existente con tiempo de inactividad que está incluido en ellink:decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["matriz de sistemas compatibles"] Puede actualizar el hardware del controlador moviendo el almacenamiento o contactando con el soporte técnico.  Referirse alink:other_references.html["Referencias"] para enlazar con _Actualización mediante el traslado de volúmenes o almacenamiento_.
 
 
 

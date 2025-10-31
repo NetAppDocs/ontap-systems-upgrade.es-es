@@ -29,7 +29,7 @@ entries:
       al nodo 1 al nodo 2
     url: "/upgrade-arl-auto-in-chassis/relocate-non-root-aggr-and-nas-data-lifs-node1-node2.html"
   - title: Se han producido fallos en la reubicación o los agregados vetados
-    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html"
+    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node2.html"
   - title: Retire el nodo 1
     url: "/upgrade-arl-auto-in-chassis/retire-node1.html"
   - title: Sustituya los módulos del sistema node1
@@ -62,7 +62,7 @@ entries:
       2 al nodo 1
     url: "/upgrade-arl-auto-in-chassis/relocate-non-root-aggr-nas-lifs-from-node2-to-node1.html"
   - title: Se han producido fallos en la reubicación o los agregados vetados
-    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node2.html"
+    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html"
   - title: Retire el nodo 2
     url: "/upgrade-arl-auto-in-chassis/retire-node2.html"
 - title: Etapa 5. Instale los módulos del sistema de reemplazo en node2

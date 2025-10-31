@@ -185,7 +185,7 @@ NOTE: Debe haber obtenido la clave de acceso y los datos de backup en la link:pr
 .. Después de que el sistema se inicie de nuevo en el menú de inicio especial, ejecute la opción *(1) Inicio normal*
 +
 
-NOTE: Es posible que se encuentre un error en este momento. Si se produce un error, repita los subpasos de <<auto_check_4_step22,Paso 22>> hasta que el sistema se inicie normalmente.
+NOTE: Es posible que se produzca un error en esta etapa.  Si se produce un error, repita los subpasos en<<auto_check_4_step8,Paso 8>> hasta que el sistema arranque normalmente.
 
 
 

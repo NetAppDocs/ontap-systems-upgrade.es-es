@@ -46,7 +46,7 @@ Algunos o todos los agregados se han reubicado del nodo 1 al nodo 2 y la alta di
 La propiedad de los agregados que se reubicaron tiene el mismo aspecto que la propiedad de los agregados no raíz que se tomaron el control porque el propietario no ha cambiado. Cuando el nodo 1 entra en el `waiting for giveback state`, el nodo 2 devuelve todos los agregados no raíz del nodo 1.
 
 .Pasos
-. Completo link:relocate_non_root_aggr_node1_node2.html#step1["Paso 1"] En la sección _reubicar de nuevo los agregados no raíz del nodo 1 al nodo 2_.
+. Completolink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Paso 1"] en la sección _Reubicar agregados no raíz del nodo1 al nodo2_ nuevamente.
 . Continúe con el procedimiento de actualización de la pareja de nodos.
 
 
@@ -74,7 +74,7 @@ El nodo 1 ha reubicado algunos de sus agregados, o todos ellos, al nodo 2. LA AL
 Los nodos 1 nodo 2 asumir todos los agregados del nodo 2, así como cualquiera de sus propios agregados, que se habían reubicado en el nodo 2. Cuando el nodo 2 entra en el `Waiting for Giveback` state, 1 devuelve todos los agregados del nodo 2.
 
 .Pasos
-. Completo link:relocate_non_root_aggr_node1_node2.html#step1["Paso 1"] En la sección _reubicar de nuevo los agregados no raíz del nodo 1 al nodo 2_.
+. Completolink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Paso 1"] en la sección _Reubicar agregados no raíz del nodo1 al nodo2_ nuevamente.
 . Continúe con el procedimiento de actualización de la pareja de nodos.
 
 
@@ -123,7 +123,7 @@ Se producirá una interrupción del cliente para los agregados que no se hayan r
 
 .Pasos
 . Sube el 2.
-. Reubique los agregados restantes completando link:relocate_non_root_aggr_node2_node3.html#step1["Paso 1"] por link:relocate_non_root_aggr_node2_node3.html#step3["Paso 3"] En la sección _reubique los agregados que no son raíz del nodo 2 al nodo 3_.
+. Reubicar los agregados restantes completandolink:relocate_non_root_aggr_node2_node3.html#verify-partner-sys-id["Paso 1"] a través delink:relocate_non_root_aggr_node2_node3.html#relocate-step5["Paso 5"] en la sección _Reubicar agregados no raíz del nodo2 al nodo3_.
 . Continúe con el procedimiento de actualización de la pareja de nodos.
 
 
@@ -149,7 +149,7 @@ El nodo 2 sigue sirviendo agregados restantes, pero los agregados que ya se reub
 
 .Pasos
 . Traiga el nodo 3.
-. Completo link:relocate_non_root_aggr_node2_node3.html#step3["Paso 3"] De nuevo en la sección _reubique los agregados que no son raíz del nodo 2 al nodo 3_.
+. Completolink:relocate_non_root_aggr_node2_node3.html#relocate-step5["Paso 5"] nuevamente en la sección _Reubicar agregados no raíz del nodo 2 al nodo 3_.
 . Continúe con el procedimiento de actualización de la pareja de nodos.
 
 
@@ -220,6 +220,6 @@ Hay una interrupción de los agregados que no son raíz y que ya se removieron h
 
 .Pasos
 . Traiga el nodo 4.
-. Reubique los agregados restantes que pertenecían al nodo 2 de nuevo finalizando link:relocate_node2_non_root_aggr_node3_node4.html#Step1["Paso 1"] por link:relocate_node2_non_root_aggr_node3_node4.html#step3["Paso 3"] En la reubicación de los agregados no raíz de _2 del nodo 3 al nodo 4_.
+. Reubicar los agregados restantes que pertenecían al nodo2 completando nuevamentelink:relocate_node2_non_root_aggr_node3_node4.html#man_relocate_3_4_Step1["Paso 1"] a través delink:relocate_node2_non_root_aggr_node3_node4.html#step3["Paso 3"] en _Reubicar los agregados no raíz del nodo 2 del nodo 3 al nodo 4_.
 . Continúe con el procedimiento de actualización de la pareja de nodos.
 
