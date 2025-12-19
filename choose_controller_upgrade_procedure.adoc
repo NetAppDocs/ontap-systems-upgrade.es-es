@@ -38,7 +38,7 @@ Actualiza tu sistema utilizando uno de los siguientes métodos:
 
 * link:upgrade/upgrade-decide-to-use-this-guide.html["Mover volúmenes"]
 +
-Esto requiere unir los nuevos nodos, mover los volúmenes y las LIF a los nuevos nodos y desconectar los nodos que se desean eliminar del clúster.  Si está actualizando un clúster de dos nodos sin conmutador, conviértalo en un clúster conectado mediante conmutador utilizando un par de conmutadores de clúster antes de agregar nuevos nodos.
+Esto requiere unir los nuevos nodos, mover los volúmenes y las LIF a los nuevos nodos y desconectar los nodos que se desean eliminar del clúster. Si está actualizando un clúster de dos nodos sin conmutador, conviértalo en un clúster conectado mediante conmutador utilizando un par de conmutadores de clúster antes de agregar nuevos nodos.
 
 * link:upgrade-arl/index.html["Utilice la reubicación agregada"]
 +

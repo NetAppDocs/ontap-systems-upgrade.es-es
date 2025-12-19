@@ -112,3 +112,6 @@ Al forzar la operación de movimiento de volúmenes para que finalice, se puede 
 `volume show -vserver _svm_name_`
 
 
+
+.El futuro
+link:upgrade-move-lifs-to-new-nodes.html["Mueva LIF de datos que no sean SAN y LIF de gestión de clúster a los nuevos nodos"]

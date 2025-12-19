@@ -493,3 +493,6 @@ sanlun lun show -p
 multipath -ll -d
 ----
 
+
+.El futuro
+link:upgrade-create-aggregate-move-volumes.html["Cree un agregado y mueva volúmenes a los nuevos nodos"]

@@ -35,7 +35,7 @@ Para obtener más información, consulte https://docs.netapp.com/us-en/ontap/san
 
 == Eliminar los LIF de SAN que ya no son necesarios
 
-Si el clúster se encuentra en un entorno SAN, debe eliminar cualquier LIF DE SAN que ya no necesite desde los nodos originales antes de poder anular la unión de los nodos originales del clúster.
+Si el clúster está en un entorno SAN, debe eliminar cualquier LIF SAN que ya no necesite de los nodos originales antes de poder quitar los nodos originales del clúster.
 
 .Pasos
 . Si tiene iniciadores de iSCSI, complete los pasos siguientes:
@@ -92,3 +92,6 @@ js11      ps0          mixed    LIF1,                   igroup1
 == Cree nuevos LIF SAN o vuelva a crear LIF SAN eliminadas
 
 En función de los requisitos del entorno del clúster, podría decidir crear LIF SAN nuevas o volver a crear LIF SAN que haya eliminado anteriormente en este procedimiento. Puede crear o volver a crear LIF DE SAN mediante el https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_creating_network_interfaces.html["creación de interfaces de red"^] Procedimiento de la documentación _Cluster Management Using OnCommand® System Manager_.
+
+.El futuro
+link:upgrade-remove-original-nodes.html["Eliminar los nodos originales del clúster"]

@@ -17,7 +17,7 @@ Actualizar el hardware de la controladora moviendo volúmenes es un procedimient
 * link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"]
 
 
-Para actualizar moviendo volúmenes, debe preparar los nodos originales y unir los nodos nuevos al clúster. Mueve volúmenes a los nodos nuevos, configura LIF y desvincula los nodos originales del clúster.
+Para actualizar moviendo volúmenes, prepare los nodos originales y una los nuevos nodos al clúster. Mueve volúmenes a los nuevos nodos, configura LIF y elimina los nodos originales del clúster.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Uno"]link:upgrade-prepare-when-moving-volumes.html["Prepare la actualización cuando mueva volúmenes"]
 [role="quick-margin-para"]
@@ -43,9 +43,9 @@ Después de haber movido los volúmenes de los nodos originales, deberá migrar 
 [role="quick-margin-para"]
 Según el contenido del clúster y el entorno del clúster, podrá mover, eliminar o crear LIF de SAN, o volver a crear LIF de SAN eliminados.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Siete"]link:upgrade-unjoin-original-nodes-move-volumes.html["Ununa los nodos originales del clúster"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Siete"]link:upgrade-remove-original-nodes.html["Eliminar los nodos originales del clúster"]
 [role="quick-margin-para"]
-Una vez que se han movido los volúmenes a los nodos nuevos, se deben desunir los nodos originales del clúster. Cuando se desvincula un nodo, la configuración del nodo se borra y todos los discos se inicializan.
+Una vez que los volúmenes se hayan trasladado a los nuevos nodos, elimine los nodos originales del clúster. Cuando se elimina un nodo, se borra la configuración del nodo y se inicializan todos los discos.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Ocho"]link:upgrade-complete-move-volumes.html["Complete la actualización"]
 [role="quick-margin-para"]

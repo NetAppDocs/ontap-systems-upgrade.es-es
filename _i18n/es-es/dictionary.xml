@@ -751,7 +751,6 @@
   <block id="43b6e140cee78de5a68c093867c65596" category="inline-xref-macro">Conecte las bandejas de almacenamiento y reasigne la propiedad de disco</block>
   <block id="bc40b2f6345ce25ab7662ef954f79eac" category="inline-xref-macro">Restaure la configuración del volumen raíz</block>
   <block id="2d425665af37b9989f89179649650990" category="inline-xref-macro">Complete la actualización</block>
-  <block id="94e9d0bee98aefbd97c04b1401f6c790" category="paragraph">Si el clúster se encuentra en un entorno SAN, debe eliminar cualquier LIF DE SAN que ya no necesite desde los nodos originales antes de poder anular la unión de los nodos originales del clúster.</block>
   <block id="94a76ebba8e86706797afe6001140741" category="list-text">Si tiene iniciadores de iSCSI, complete los pasos siguientes:</block>
   <block id="d8a3e002e1fe8c2f25656a36ddbfbeba" category="list-text">Muestre una lista de iniciadores activos conectados actualmente a una SVM en los nodos originales, una vez por cada una de las LIF anteriores: +<block ref="e3b82ab0dd1a8daf0e10586e7dcbd3a9" prefix=" " category="inline-code"></block></block>
   <block id="9882b7407728c4a51f28a203651b752e" category="paragraph">En el siguiente ejemplo, se muestra el resultado del comando con un iniciador activo conectado a SVM vs1:</block>
@@ -788,7 +787,6 @@
   <block id="65ef2ef8754850d3945f71f106c239bf" category="inline-xref-macro">Prepare la actualización cuando mueva volúmenes</block>
   <block id="7d0330f92f5b6340af08f88bf712e687" category="inline-xref-macro">Mueva LIF de datos no SAN y LIF de administración del clúster a los nuevos nodos</block>
   <block id="8093d580d9cc0468991044c64c97b174" category="inline-xref-macro">Mueva, elimine o cree LIF SAN</block>
-  <block id="cf9dafa4aad7081e3241e5bc4acb350f" category="inline-xref-macro">Ununa los nodos originales del clúster</block>
   <block id="03004a754e91e01bc54b3719dea50cd1" category="summary">Para habilitar el nodo 3 y el nodo 4 para comunicarse entre sí en el clúster y con la red después de la actualización, debe confirmar que los puertos físicos están correctamente configurados con los ajustes para el uso previsto, como el clúster, los datos, etc.</block>
   <block id="be1c64568381eb09df4f452433b584eb" category="doc">Asigne puertos de red mediante ONTAP 9.8 o una versión posterior</block>
   <block id="1e9be7aa46166eca7db0fc1c4e7a887b" category="paragraph">Debe realizar estos pasos en los nodos 3 y 4.</block>
@@ -919,22 +917,11 @@
   <block id="3d9010fa119828bc81f438c75af15b63" category="paragraph">En los pasos para actualizar el hardware de la controladora, para mover el almacenamiento, los nodos originales se denominan nodo 1 y nodo 4, y los nuevos se denominan nodo 3 y nodo 4. Durante el procedimiento descrito, el nodo 1 se reemplaza por nodo 3, y el nodo 2 se reemplaza por nodo 4.</block>
   <block id="4888a1163bab7e13f5a9de829f599dba" category="inline-link">Dónde encontrar procedimientos para las tareas de mantenimiento de MetroCluster</block>
   <block id="effb241d20cc6c1913b072368a57f470" category="paragraph"><block ref="effb241d20cc6c1913b072368a57f470" category="inline-link-rx"></block></block>
-  <block id="be560856af220999f45b0e64a842465a" category="summary">Una vez que se han movido los volúmenes a los nodos nuevos, se deben desunir los nodos originales del clúster. Al desunirse a un nodo, la configuración del nodo se borra y se inicializan todos los discos.</block>
-  <block id="f61d9690213fcb44fc551adab505eb85" category="paragraph">Una vez que se han movido los volúmenes a los nodos nuevos, se deben desunir los nodos originales del clúster. Cuando se desvincula un nodo, la configuración del nodo se borra y todos los discos se inicializan.</block>
-  <block id="59e7cb89beb0d9c0f35ba87b5c4549e3" category="list-text">Deshabilite la configuración de alta disponibilidad en los nodos originales:<block ref="f539b9f8648f5ff69608de63350373ce" prefix=" " category="inline-code"></block></block>
   <block id="72992cc1c16f1dbbbcb7cc77a55977d9" category="list-text">Acceda al nivel de privilegio avanzado:</block>
   <block id="dc4a67b269dfaba9479198e3f11a2a68" category="list-text">Identifique el nodo que tiene épsilon:</block>
   <block id="9f964a34bab4b3112781e0b28258f5bb" category="paragraph">En el siguiente ejemplo, "nodo 0" actualmente tiene un valor épsilon:</block>
-  <block id="c66d0d8c1fe1605513edaaeec7a73d16" category="list-text">Si uno de los nodos originales está configurado con épsilon, mueva épsilon a un nodo diferente:</block>
-  <block id="787149e64a0bc37710b15cd205977d92" category="list-text">Elimine épsilon del nodo original: +<block ref="35cf8faa9e6e7d3108a26b5e7ed20f31" prefix=" " category="inline-code"></block></block>
-  <block id="cbb7de31a52f2a91eb5415ac80ca9da6" category="list-text">Asigne épsilon a un nodo diferente: +<block ref="555a9ad5c66d2c298b70afba796395ef" prefix=" " category="inline-code"></block></block>
-  <block id="91ab806eca55f1234d360a9bf96615a0" category="list-text">Desde un nodo que permanecerá en el clúster, desúnase a cada nodo original del clúster (nivel de privilegio avanzado):</block>
-  <block id="01d317947cf0fa7c03a1243dac797c57" category="paragraph"><block ref="2dd02e1a799ef2ee9fc64b2c82df2222" prefix="" category="inline-code"></block></block>
   <block id="7f616e8c743e57f3b11fac3e3bd7ffb1" category="paragraph">El sistema muestra un mensaje similar a lo siguiente:</block>
   <block id="35c143d9885250e0128441d72be169dd" category="list-text">Introduzca<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> para continuar.</block>
-  <block id="a38cfcfcdebdf9c05a1cd632c11918b8" category="paragraph">El nodo sin unir se reinicia automáticamente y se detiene en el menú de arranque.</block>
-  <block id="7ab0d0bb58501cb25dab62cdcffddfb5" category="list-text">En el menú de inicio del nodo no Unido, seleccione la opción *(4) limpiar configuración e inicializar todos los discos* para borrar la configuración del nodo e inicializar todos los discos.</block>
-  <block id="35c0226d4e8a9cad1a873c648504d626" category="list-text">Introduzca<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> en ambas indicaciones.</block>
   <block id="7f1e916ec0aa6a4296149be58ba61a1b" category="list-text">Si el clúster solo tiene dos nodos restantes, configure la alta disponibilidad para el clúster de dos nodos:</block>
   <block id="c1f192f6d626bc5f27fc74b0848a1250" category="paragraph"><block ref="acc3b99f812f210de5147296e269009d" prefix="" category="inline-code"></block></block>
   <block id="e062efd67a70d34c188657c2ffafc80e" category="summary">Debe reasignar los discos que pertenecen al nodo 1 y al nodo 2 respectivamente al nodo 3 y al nodo 4.</block>
@@ -3443,7 +3430,6 @@
   <block id="51e0a0afc4d011a307d3419bfe742eba" category="sidebar">Actualizar moviendo volúmenes</block>
   <block id="ff56b4f5944c3419d2cbe4a5a19eb150" category="sidebar">Instale y únase a los nuevos nodos</block>
   <block id="f86f16f11e093ddd1a9acafc8ee58e6f" category="sidebar">Mueva LIF de datos sin SAN y LIF de administración de clúster</block>
-  <block id="d2e2f3320c4d610d0815b1405859a98b" category="sidebar">Desunir los nodos originales</block>
   <block id="4ca1dd66d65d9f1294c45c6d431d28f1" category="sidebar">Etapa 1. Prepárese para la actualización (actualice con «sustitución de controladora del sistema» en ONTAP 9.8 o posterior)</block>
   <block id="ffe0419692cf91535dfc65f2ebc6be8c" category="sidebar">Fase 2. Reubicar y retirar el nodo 1 (actualizar con el ‘sustitución del controlador del sistema’ en ONTAP 9.8 o posterior)</block>
   <block id="24b8375b0f225570ea07ebeb314eb9c8" category="sidebar">Etapa 3. Nodo de instalación y arranque 3 (actualización con «sustitución de controladora del sistema» en ONTAP 9.8 o posterior)</block>
@@ -4021,7 +4007,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="66686106038dcdf0e7037a2679e6be2b" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="a931a68d44bca92701e3cc2575cb8e58" category="inline-link-macro-rx"></block></block>
   <block id="2431d8b533362d8472db79a8849836be" category="paragraph">Según el contenido del clúster y el entorno del clúster, podrá mover, eliminar o crear LIF de SAN, o volver a crear LIF de SAN eliminados.</block>
   <block id="12e67aac3e7f9227cc35f8f047d7dc74" category="inline-image-macro">Siete</block>
-  <block id="3c49f3e0113334d7428d508b5d1dba98" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block><block ref="a6976dfe70e597796c77b019f33f6b95" category="inline-link-macro-rx"></block></block>
   <block id="baca0ca6729684fd54206793ae4b5bd5" category="inline-image-macro">Ocho</block>
   <block id="266c2a634fcfab43713325017c0d1fc1" category="paragraph-title"><block ref="430057c670c01688e904ed2ba129a0b5" category="inline-image-macro-rx" type="image"></block><block ref="25f018c3ca0d5083cf0a96e5a5daf8b3" category="inline-link-macro-rx"></block></block>
   <block id="55388932978c50267bc31e99b8d1d4d9" category="paragraph">Para completar el procedimiento de actualización moviendo volúmenes, debe configurar el Service Processor (SP), instalar licencias nuevas y configurar AutoSupport. También es posible que deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o NCA.</block>
@@ -4101,7 +4086,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="7679a865afb03bdbcc1cbd8757f79d09" category="list-text"><block ref="7679a865afb03bdbcc1cbd8757f79d09" category="inline-link-macro-rx"></block></block>
   <block id="70df8f2f5459940187f1edf7420f9c6b" category="paragraph">Para actualizar moviendo el almacenamiento, debe preparar los nodos originales y configurar los nodos nuevos. Algunos modelos de plataforma admiten la transferencia de almacenamiento interno a los nuevos nodos. Debe reasignar discos y restaurar la configuración de volumen raíz a los nodos nuevos y configurar puertos de red.</block>
   <block id="ffaf71c89815c9497697e87f8d77a27d" category="paragraph">Actualizar el hardware de la controladora moviendo volúmenes es un procedimiento no disruptivo. Antes de iniciar la actualización, revise los escenarios generales de actualización y las consideraciones sobre la actualización:</block>
-  <block id="cf41c84e5298fdad396a8a0dd7eaf0f3" category="paragraph">Para actualizar moviendo volúmenes, debe preparar los nodos originales y unir los nodos nuevos al clúster. Mueve volúmenes a los nodos nuevos, configura LIF y desvincula los nodos originales del clúster.</block>
   <block id="4b5907b5b5c704438991bdf09784779a" category="list-text">En el menú de arranque, introduzca 8 para reiniciar el nodo y pulse Ctrl-C durante el AUTOARRANQUE para detener el nodo en el símbolo del sistema DEL CARGADOR.</block>
   <block id="ee537959cbe6c4957342c94d3801abf7" category="doc">Seleccione el procedimiento de actualización de ARL</block>
   <block id="e2de59a5a77b66213e7d85b56f1eb224" category="list-text">En el aviso del CARGADOR, introduzca el modo de mantenimiento:</block>
@@ -5266,7 +5250,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="2f5546c2bb23945783cbdb6d6e128cdf" category="paragraph">Actualiza tu sistema utilizando uno de los siguientes métodos:</block>
   <block id="0678555704a75d8c6ba937ca89e44347" category="inline-link-macro">Mover volúmenes</block>
   <block id="7a5d9d481746c5a733396a92b9fa9ad9" category="list-text"><block ref="7a5d9d481746c5a733396a92b9fa9ad9" category="inline-link-macro-rx"></block></block>
-  <block id="7c15b3f4f4497023a45b26abfbd34fa1" category="paragraph">Esto requiere unir los nuevos nodos, mover los volúmenes y las LIF a los nuevos nodos y desconectar los nodos que se desean eliminar del clúster.  Si está actualizando un clúster de dos nodos sin conmutador, conviértalo en un clúster conectado mediante conmutador utilizando un par de conmutadores de clúster antes de agregar nuevos nodos.</block>
   <block id="6de3b933715f67f0e1503dadf7be11b5" category="inline-link-macro">Utilice la reubicación agregada</block>
   <block id="1326c781e22221bcfee09723f0a2bfc2" category="list-text"><block ref="1326c781e22221bcfee09723f0a2bfc2" category="inline-link-macro-rx"></block></block>
   <block id="af07e0611bc43f9c7f0e394b682e76a9" category="paragraph">ARL es un procedimiento de reemplazo.  No es necesario expandir ni reducir el clúster con los nuevos nodos, lo cual resulta beneficioso para clústeres sin conmutador de dos nodos.  Al mover volúmenes, trasladar datos mediante la reubicación de agregados es más rápido que copiar datos entre agregados.</block>
@@ -5314,4 +5297,56 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="b2cf47c2f8de48c91a2658d1bae42ab8" category="admonition">Debido a que el chasis ya está encendido, el nodo 2 comienza a arrancar tan pronto como esté completamente encajado.  Para evitar que el nodo 2 arranque, conecte los cables de consola y administración antes de insertar completamente el módulo controlador.</block>
   <block id="914a76ca2b7f6ddaae8d7322d8dfd459" category="paragraph">No es posible comprobar la versión de ONTAP instalada en el medio de arranque del módulo controlador de repuesto a menos que esté instalado en un chasis y encendido.  La versión de ONTAP en el medio de arranque del sistema de reemplazo debe ser la misma que la versión de ONTAP que se ejecuta en el sistema antiguo que está actualizando, y tanto la imagen de arranque principal como la de respaldo en el medio de arranque deben coincidir.  Para verificar la versión mínima de ONTAP compatible con su actualización, consulte la<block ref="f48bb6f7501a6484670164b41fb968ae" category="inline-link-macro-rx"></block> .</block>
   <block id="fa25f8cd417cf37165c34fcb9720ffe3" category="list-text">[[verify-rcf-step3]]Verifique los puertos del clúster y el RCF del conmutador.</block>
+  <block id="2138fe46f5a4636fa20671bcd5e370b9" category="paragraph">Esto requiere unir los nuevos nodos, mover los volúmenes y las LIF a los nuevos nodos y desconectar los nodos que se desean eliminar del clúster. Si está actualizando un clúster de dos nodos sin conmutador, conviértalo en un clúster conectado mediante conmutador utilizando un par de conmutadores de clúster antes de agregar nuevos nodos.</block>
+  <block id="1e7b20b34e3e14bc87b5019115ef6319" category="paragraph">Para actualizar moviendo volúmenes, prepare los nodos originales y una los nuevos nodos al clúster. Mueve volúmenes a los nuevos nodos, configura LIF y elimina los nodos originales del clúster.</block>
+  <block id="febd744aeea49809fb1302b73fa6bd8c" category="inline-link-macro">Eliminar los nodos originales del clúster</block>
+  <block id="5f9dcd9884f9526b20b37705a8075dc7" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block><block ref="de2c8f88da32b208ab4a1bf0c1405c32" category="inline-link-macro-rx"></block></block>
+  <block id="04c0dc0ac08f266118ef312b94f34222" category="paragraph">Una vez que los volúmenes se hayan trasladado a los nuevos nodos, elimine los nodos originales del clúster. Cuando se elimina un nodo, se borra la configuración del nodo y se inicializan todos los discos.</block>
+  <block id="1411918bbf69ad4104cdc56864b603a3" category="paragraph"><block ref="1411918bbf69ad4104cdc56864b603a3" category="inline-link-macro-rx"></block></block>
+  <block id="cbbd4da8364a1dcf2593c3eec92abe27" category="paragraph"><block ref="cbbd4da8364a1dcf2593c3eec92abe27" category="inline-link-macro-rx"></block></block>
+  <block id="cf954e9acfd74a54fe766c2c130222c6" category="paragraph"><block ref="cf954e9acfd74a54fe766c2c130222c6" category="inline-link-macro-rx"></block></block>
+  <block id="638758de43a31bd2903f659581f78fa7" category="paragraph"><block ref="638758de43a31bd2903f659581f78fa7" category="inline-link-macro-rx"></block></block>
+  <block id="d350fa659f98e0153758612c202e6a04" category="summary">Una vez que los volúmenes se hayan trasladado a los nuevos nodos, elimine los nodos originales del clúster. Cuando se elimina un nodo, se borra la configuración del nodo y se inicializan todos los discos.</block>
+  <block id="174d5560f210e4b4b5a29f385b2c8035" category="paragraph">Después de mover los volúmenes de los nodos originales a los nuevos y mover o eliminar LIF de datos, se eliminan los nodos originales del clúster. Cuando se elimina un nodo, se borra la configuración del nodo y se inicializan todos los discos.</block>
+  <block id="fcd2352296590a0e2accae2dd13e31d6" category="list-text">[[disable-ha]]Deshabilitar la configuración de alta disponibilidad (HA) en los nodos originales:</block>
+  <block id="2c1e3c1177e032883dd8cedb7237369c" category="paragraph"><block ref="cfb56c7a6f1b3b0505ee17fb92209fba" prefix="" category="inline-code"></block></block>
+  <block id="bf80321073982fe86a71c1af9fac0650" category="list-text">[[epsilon-true]]Si uno de los nodos originales contiene épsilon, mueva épsilon a un nodo que no esté eliminando del clúster:</block>
+  <block id="4b839279170b4ba0703853fb5c2cb9da" category="list-text">Eliminar epsilon del nodo original:</block>
+  <block id="222406298d9a2f2c033dca8a74afd55c" category="paragraph"><block ref="de7321e59bd990ec3ef09ca78116a7b0" prefix="" category="inline-code"></block></block>
+  <block id="7a788eb6946d9ba1aaad7df7bfb5f5b2" category="list-text">Asignar epsilon a un nodo diferente:</block>
+  <block id="b0c1e0271345231f93266b65411815c2" category="paragraph"><block ref="45f47d97caec3e0967eb10311176b1bb" prefix="" category="inline-code"></block></block>
+  <block id="14f47a56746d8dd06d7152a27fa22219" category="list-text">Identificar el nodo maestro actual:</block>
+  <block id="e477c0774c6014b5173ffa6810d512ab" category="paragraph"><block ref="484f24f8e4da80a1185aa63fa1d5fc08" prefix="" category="inline-code"></block></block>
+  <block id="f56d76980d50ef81b1a4f2246dbcf0da" category="paragraph">El nodo maestro es el nodo que contiene procesos como<block ref="d724f231a9a7b89757c4394d6622bc47" prefix=" " category="inline-code"></block>,<block ref="7b588256fbdc51b849239cf8988219ff" prefix=" " category="inline-code"></block>,<block ref="4855d47f82dd3929173aadd191f2a0ee" prefix=" " category="inline-code"></block>,<block ref="1ed70af3fcff64fcd6c818d86b6e6150" prefix=" " category="inline-code"></block>, y<block ref="29fa19e764c47fa898f697bf7bb940db" prefix=" " category="inline-code"></block>.</block>
+  <block id="b799370e99c40124bdcc44e4ed7a5704" category="list-text">Si un nodo que está eliminando es el nodo maestro actual, habilite un nodo que permanezca en el clúster para que sea elegido como nodo maestro:</block>
+  <block id="ac13fc86d8d30a4abbb50425385fe453" category="list-text">Hacer que el nodo maestro actual no sea elegible para participar en el clúster:</block>
+  <block id="7021c105080628669b133405100efc63" category="paragraph"><block ref="f2b8f9d3d7fb27d37deaaf84ee69a072" prefix="" category="inline-code"></block></block>
+  <block id="84023f697c3d7f175eb48d9e7f81fe97" category="paragraph">El nodo se marca como no saludable hasta que se restablezca la elegibilidad. Cuando el nodo maestro deja de ser elegible, el quórum del clúster elige a uno de los nodos restantes como el nuevo maestro.</block>
+  <block id="834ca6428bef51142e4d70a6c409829e" category="paragraph">Si está realizando este paso en el primer nodo de un par de alta disponibilidad, debe marcar solo ese nodo como no elegible. No modifique el estado del socio de HA.</block>
+  <block id="c45a4c98c59ca383859dc9ca2d7b3243" category="paragraph">Si el nodo asociado se selecciona como nuevo maestro, debe verificar si contiene épsilon. Si el nodo asociado contiene épsilon, debe mover épsilon a un nodo diferente que permanezca en el clúster antes de que no sea elegible. Esto se hace cuando se repiten estos pasos para eliminar el nodo asociado.</block>
+  <block id="fa46d2d3d8cfe760c5a42ee99c2bb479" category="list-text">Hacer que el nodo maestro anterior sea elegible nuevamente para participar en el clúster:</block>
+  <block id="c1f0c4bf4b8a0d924276f97311b2b56c" category="paragraph"><block ref="14dcae85a302a6e4089a3c2a5636ff04" prefix="" category="inline-code"></block></block>
+  <block id="342dbc3880ef101e1ed2b5b78347d7d3" category="list-text">Inicie sesión en el LIF de administración de nodos remotos o en el LIF de administración de clúster en un nodo que permanezca en el clúster y elimine cada nodo original del clúster (nivel de privilegio avanzado):</block>
+  <block id="eb1f2131641f5195e8a8d9b93f797562" category="paragraph">Con nombre de nodo:</block>
+  <block id="9900c92f7c4f327f3d129fcdb88c5a95" category="paragraph">Con IP de nodo:</block>
+  <block id="e1b2dd8ee5d4a8767f514f7140d3b5b7" category="paragraph">Si tiene un clúster de versiones mixtas y está eliminando el último nodo de versión inferior, utilice el<block ref="980f71817e3a06bee87bd061faeb423d" prefix=" " category="inline-code"></block> parámetro con estos comandos.</block>
+  <block id="76732b147c5a72422d23da150a4c5434" category="paragraph">El sistema le informa lo siguiente:</block>
+  <block id="f80f10147ba45bd1fef6e3c0af2ad9b6" category="list-text">También debe eliminar el socio de conmutación por error del nodo del clúster.</block>
+  <block id="f8794e0f00d445cfe92a1a1eeb5fdb7d" category="list-text">Después de eliminar el nodo y antes de que pueda volver a unirse a un clúster, debe utilizar la opción *(4) Limpiar configuración e inicializar todos los discos* del menú de arranque o la opción *(9) Configurar particionamiento avanzado de unidades* para borrar la configuración del nodo e inicializar todos los discos.</block>
+  <block id="4fcbf7b91c2fe0247f60ee2199672575" category="paragraph">Se genera un mensaje de error si hay condiciones que se deben abordar antes de eliminar el nodo. Por ejemplo, el mensaje puede indicar que el nodo tiene recursos compartidos que debe eliminar o que el nodo está en una configuración de alta disponibilidad de clúster o de conmutación por error de almacenamiento que debe deshabilitar.</block>
+  <block id="39e6f8500af6b07f2903990336145751" category="paragraph">Si el nodo es el maestro del quórum, el clúster pierde brevemente y luego vuelve al quórum. Esta pérdida de quórum es temporal y no afecta ninguna operación de datos.</block>
+  <block id="5b04742f17c701ff3b58fe32667cc471" category="list-text">Si un mensaje de error indica condiciones de error, aborde esas condiciones y vuelva a ejecutar el<block ref="b592ef8b0e17ac31ab55e93e7c1d10e1" prefix=" " category="inline-code"></block> o<block ref="5d16191a3b7abaee7967de5fd82cd336" prefix=" " category="inline-code"></block> dominio.</block>
+  <block id="bb73c71d58dba4f68bd9a8e3fa5709b6" category="paragraph">Después de eliminar con éxito un nodo del clúster, éste se reinicia automáticamente.</block>
+  <block id="b16b992bede9cd61adafd05ccfa8b5db" category="list-text">Si está reutilizando el nodo, borre la configuración del nodo e inicialice todos los discos:</block>
+  <block id="f68297d08c23f1c81caf07d193fce59a" category="list-text">Durante el proceso de arranque, presione Ctrl-C para mostrar el menú de arranque cuando se le solicite.</block>
+  <block id="5b43d3aa91abf75fd24c44f1341b2f06" category="list-text">Seleccione la opción del menú de arranque *(4) Limpiar configuración e inicializar todos los discos*.</block>
+  <block id="82049266f76a1c9f2f0a3be4c999f4d2" category="list-text">[[return-admin]]Regrese al nivel de privilegio de administrador en uno de los nuevos nodos del clúster:</block>
+  <block id="c4ca4238a0b923820dcc509a6f75849b" category="inline-xref">1</block>
+  <block id="d3d9446802a44259755d38e6d163e820" category="inline-xref">10</block>
+  <block id="d189cecc16115f8a1464438558157df4" category="list-text">Repetir pasos <block ref="ad03471bc3c3d3a60bb07d8e505cecf8" category="inline-xref-macro-rx"></block> a <block ref="0b50026eb51fd5abcc3f6c551ad9a731" category="inline-xref-macro-rx"></block> para eliminar el socio de conmutación por error del clúster.</block>
+  <block id="168c92437cbc3465963cce1942e62338" category="paragraph"><block ref="168c92437cbc3465963cce1942e62338" category="inline-link-macro-rx"></block></block>
+  <block id="b442cda004fcb2b77f9a06066859253e" category="paragraph">Si el clúster está en un entorno SAN, debe eliminar cualquier LIF SAN que ya no necesite de los nodos originales antes de poder quitar los nodos originales del clúster.</block>
+  <block id="de2c8f88da32b208ab4a1bf0c1405c32" category="paragraph"><block ref="de2c8f88da32b208ab4a1bf0c1405c32" category="inline-link-macro-rx"></block></block>
+  <block id="0187590ed6627836f657d0d4157f4bd9" category="paragraph"><block ref="0187590ed6627836f657d0d4157f4bd9" category="inline-link-macro-rx"></block></block>
+  <block id="9cab58d086b1e90a5b2f49ae6b194edb" category="sidebar">Eliminar nodos originales</block>
 </blocks>
