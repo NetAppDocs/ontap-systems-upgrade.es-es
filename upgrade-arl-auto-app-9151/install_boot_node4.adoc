@@ -19,7 +19,7 @@ Instale node4 en el rack, transfiera las conexiones de node2 a node4, arranque n
 .Acerca de esta tarea
 La operación de reubicación se detiene al principio de esta etapa. Este proceso está prácticamente automatizado; la operación se pausa para permitir comprobar su estado. Debe reanudar manualmente la operación.
 
-Es necesario reiniciar el nodo 4 si no tiene la misma versión de ONTAP 9 que está instalada en el nodo 2. Después de instalar el nodo 4, arranque desde la imagen ONTAP 9 almacenada en el servidor web. A continuación, puede descargar los archivos correctos en el dispositivo multimedia de arranque para posteriores arranques del sistema, siguiendo las instrucciones en link:prepare_for_netboot.html["Prepárese para el arranque desde el red"].
+Debe iniciar el nodo 4 mediante netboot si la versión de ONTAP en el nodo 4 es diferente a la versión de ONTAP en el nodo 2. Después de instalar node4, inícielo desde la imagen de ONTAP 9 almacenada en el servidor web. Luego puede descargar los archivos correctos al dispositivo de medio de arranque para los arranques posteriores del sistema siguiendo las instrucciones en link:prepare_for_netboot.html["Prepárese para el arranque desde el red"].
 
 .Pasos
 . [[auto_install4_step1]]Asegúrese de que el nodo 4 tenga suficiente espacio en rack.

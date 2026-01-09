@@ -27,30 +27,44 @@ Compruebe los LIF SAN en node4:
 +
 .. Modifique cualquier LIF de SAN iSCSI que informe de un estado de operación inactivo a los nuevos puertos de datos:
 +
-`network interface modify -vserver <vserver> -lif <iscsi_san_lif> admin down`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <iscsi_san_lif> admin down
+----
 +
-`network interface modify -vserver <vserver> -lif <iscsi_san_lif> port <new_port> node <node>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <iscsi_san_lif> port <new_port> node <node>
+----
 +
-`network interface modify -vserver <vserver> -lif <iscsi_san_lif>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <iscsi_san_lif>
+----
 .. Modifique todos los LIF FC y NVMe/FC SAN que residan en la nueva controladora e informen de un estado operativo «inactivo» en los puertos FCP de la nueva controladora:
 +
-`network interface modify -vserver <vserver> -lif <fc_san_lif> admin down`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <fc_san_lif> admin down
+----
 +
-`network interface modify -vserver <vserver> -lif <fc_san_lif> port <new_port> node <node>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <fc_san_lif> port <new_port> node <node>
+----
 +
-`network interface modify -vserver <vserver> -lif <fc_san_lif>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <fc_san_lif>
+----
 
 
 . Reanude la operación de reubicación:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 El sistema ejecuta las siguientes tareas:
 
@@ -67,8 +81,10 @@ La operación se detiene en esta fase de la comprobación de accesibilidad de re
 
 . Reanude la operación de reubicación:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 El sistema realiza las siguientes comprobaciones:
 
@@ -82,25 +98,58 @@ Después de ejecutar estas comprobaciones, el sistema reubica los agregados que 
 
 . Comprobar el estado de las operaciones de reubicación de agregados y movimiento de LIF de datos de NAS:
 +
-`system controller replace show-details`
-
+[source, cli]
+----
+system controller replace show-details
+----
 +
 Si el procedimiento de reemplazo de la controladora está en pausa, compruebe y corrija el error, si corresponde, y luego emita `resume` para continuar la operación.
 
-. Si es necesario, restaure y devuelva los LIF desplazados. Enumerar las LIF desplazadas:
+. Si es necesario, restaure y revierta los LIF desplazados o migre y modifique manualmente los LIF del nodo 2 que no pudieron reubicarse automáticamente en el nodo 4.
 +
-`cluster controller-replacement network displaced-interface show`
-
+[role="tabbed-block"]
+====
+.Restaurar y revertir los LIF desplazados
+--
+.. Enumere todos los LIF desplazados:
 +
-Si alguna LIF se ha desplazado, restaure el nodo de inicio al nodo 4:
-
+[source, cli]
+----
+cluster controller-replacement network displaced-interface show
+----
+.. Si alguna LIF se ha desplazado, restaure el nodo de inicio al nodo 4:
 +
-`cluster controller-replacement network displaced-interface restore-home-node`
+[source, cli]
+----
+cluster controller-replacement network displaced-interface restore-home-node -node <node4_nodename> -vserver <vserver name> -lif-name <lif_name>
+----
 
+
+--
+.Migrar y modificar manualmente los LIF
+--
+.. Migre los LIF que no pudieron reubicarse automáticamente al nodo 4:
++
+[source, cli]
+----
+network interface migrate -vserver <vserver name> -lif <lif_name> -destination-node <node4_nodename> -destination-port <port_on_node4>
+----
+.. Modifique el nodo de inicio y el puerto de inicio para los LIF migrados:
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <data_lif_name> -home-node <node4_nodename> -home-port <home_port>
+----
+
+
+--
+====
 . Reanude la operación para solicitar que el sistema realice las comprobaciones previas necesarias:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 El sistema realiza las siguientes comprobaciones posteriores:
 

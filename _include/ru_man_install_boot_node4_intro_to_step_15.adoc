@@ -5,9 +5,9 @@
 Debe instalar el nodo 4 en el rack, transferir las conexiones 2 a nodo 4 y el nodo de arranque 4. También debe reasignar todos los repuestos de nodo 2, todos los discos que pertenezcan a raíz y todos los agregados que no sean raíz que no se hayan reubicado al nodo 3 anterior.
 
 .Acerca de esta tarea
-Debe iniciar el nodo 4 mediante netboot si no tiene la misma versión de ONTAP 9 instalada en el nodo 2. Después de instalar el nodo 4, arranque desde la imagen ONTAP 9 almacenada en el servidor web. Luego, puede descargar los archivos correctos al dispositivo de arranque para los siguientes arranques del sistema siguiendo las instrucciones de link:prepare_for_netboot.html["Prepárese para el arranque desde el red"] .
+Debe iniciar el nodo 4 mediante netboot si la versión de ONTAP en el nodo 4 es diferente a la versión de ONTAP en el nodo 2. Después de instalar node4, inícielo desde la imagen de ONTAP 9 almacenada en el servidor web. Luego puede descargar los archivos correctos al dispositivo de medio de arranque para los arranques posteriores del sistema siguiendo las instrucciones en link:prepare_for_netboot.html["Prepárese para el arranque desde el red"]
 
-Sin embargo, no es necesario iniciar el nodo 4 desde la red si tiene la misma versión o una versión posterior de ONTAP 9 que está instalada en el nodo 2.
+Sin embargo, no es necesario iniciar el nodo 4 desde la red si la versión de ONTAP en el nodo 4 es la misma o posterior que la versión de ONTAP en el nodo 2.
 
 [IMPORTANT]
 ====

@@ -24,7 +24,7 @@ Si los nodos 1 y 2 están en un chasis separado, puede colocar el nodo 3 en la m
 . [[auto_install3_step2]]instale el nodo 3 en el rack siguiendo las _instrucciones de instalación y configuración_ del modelo de nodo.
 +
 
-NOTE: Si va a actualizar a un sistema con ambos nodos del mismo chasis, instale el nodo 4 en el chasis y el nodo 3. Si no lo hace, cuando inicie el nodo 3, el nodo se comportará como si estuviera en una configuración de chasis dual y cuando inicie el nodo 4, la interconexión entre los nodos no se activará.
+NOTE: Si está actualizando a un sistema con ambos nodos en el mismo chasis, instale el nodo 4 y el nodo 3 en el chasis. Si no instala ambos nodos en el mismo chasis, cuando inicia el nodo3, se comporta como si estuviera en una configuración de chasis dual y cuando inicia el nodo4, la interconexión entre los nodos no aparece.
 
 . [[auto_install3_step3]]nodo de cable 3, moviendo las conexiones del nodo 1 al nodo 3.
 +
