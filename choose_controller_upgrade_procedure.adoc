@@ -27,10 +27,10 @@ Para seleccionar el procedimiento de actualización adecuado, revise todas las p
 | Pregúntate… | Si tu respuesta es sí, puedes hacer esto… 
 
 
-| ¿Estoy utilizando una versión de software diferente en los nodos original y nuevo? | Actualizar la versión de ONTAP en los nodos originales a la versión más alta compatible.  Siempre que sea posible, los nuevos nodos deben ser compatibles con la versión de ONTAP que se ejecuta en los nodos originales.  Si esto no es posible,link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Actualice la versión de ONTAP"^] en los nodos originales a la versión más alta compatible.  La diferencia de versión entre los nodos originales y los nuevos no puede ser mayor que cuatro.  Por ejemplo, se admiten ONTAP 9.8 y 9.12.1; sin embargo, no se admiten ONTAP 9.8 y 9.13.1. link:https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Obtenga más información sobre los clústeres mixtos de ONTAP"^]. 
+| ¿Estoy utilizando una versión de software diferente en los nodos original y nuevo? | Actualiza la versión de ONTAP en los nodos originales a la versión más alta soportada. Cuando sea posible, los nodos nuevos deben soportar la versión de ONTAP que está ejecutándose en los nodos originales. Si esto no es posible, link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Actualice la versión de ONTAP"^] en los nodos originales a la versión más alta soportada. No puedes tener una diferencia de versión mayor a cuatro entre los nodos originales y los nuevos. Por ejemplo, ONTAP 9.8 y 9.12.1 es compatible; sin embargo, ONTAP 9.8 y 9.13.1 no es compatible. link:https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Obtenga más información sobre los clústeres mixtos de ONTAP"^]. 
 
 
-| ¿Quiero realizar una actualización disruptiva? | link:upgrade/upgrade-decide-to-use-this-guide.html["Actualizar moviendo almacenamiento"]. Esto requiere un nuevo sistema con su propio almacenamiento y estanterías para guardar los datos del sistema original.  Es posible la conversión desde un estante de controlador para ciertas actualizaciones. 
+| ¿Quiero realizar una actualización disruptiva? | link:upgrade/upgrade-decide-to-use-this-guide.html["Actualizar moviendo almacenamiento"]. Esto requiere un nuevo sistema con su propio almacenamiento y estantes para guardar los datos del sistema original. Puedes convertir desde un estante de controlador para ciertas actualizaciones. 
 
 
 | ¿Deseo realizar una actualización sin interrupciones?  a| 
@@ -44,11 +44,15 @@ Esto requiere unir los nuevos nodos, mover los volúmenes y las LIF a los nuevos
 +
 ARL es un procedimiento de reemplazo.  No es necesario expandir ni reducir el clúster con los nuevos nodos, lo cual resulta beneficioso para clústeres sin conmutador de dos nodos.  Al mover volúmenes, trasladar datos mediante la reubicación de agregados es más rápido que copiar datos entre agregados.
 
+* link:upgrade/upgrade-decide-to-use-this-guide.html["Mover almacenamiento"]
++
+Puedes actualizar sin interrupciones de un AFF A250 a un AFF A400 o de un FAS2820 a un sistema de sustitución convirtiendo los nodos originales en estanterías de unidades y luego conectando las estanterías de unidades a los nodos de sustitución para mover el almacenamiento a bordo.
 
 
 
 
-| ¿Tengo un sistema modular?  *Nota*: En un sistema modular, el controlador no tiene discos internos y todo el almacenamiento se encuentra en estantes externos. | link:upgrade-arl/index.html["Actualización mediante la reubicación de agregados"]. 
+
+| ¿Tengo un sistema modular? *Nota*: en un sistema modular, el controlador no tiene discos internos; todo el almacenamiento está en estantes conectados externamente. | link:upgrade-arl/index.html["Actualización mediante la reubicación de agregados"]. 
 
 
 | ¿Tengo un sistema integrado y quiero actualizarlo mediante la migración de volúmenes?  *Nota*: En un sistema integrado, el controlador tiene discos internos y el almacenamiento está contenido dentro del chasis del controlador y en estantes conectados externamente.  Los estantes externos sirven para ampliar el almacenamiento y es posible que no estén incluidos en todas las configuraciones del sistema.  a| 
@@ -73,7 +77,7 @@ ARL es un procedimiento de reemplazo.  No es necesario expandir ni reducir el cl
 
 == Ejemplo: Actualización de FAS9500 a FAS90
 
-Este ejemplo muestra las posibles respuestas para una actualización del controlador FAS9500 a FAS90.
+Este ejemplo te da posibles respuestas para una actualización de controlador FAS9500 a FAS90.
 
 [cols="30,70"]
 |===

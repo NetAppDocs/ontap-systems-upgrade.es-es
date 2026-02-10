@@ -2,7 +2,7 @@
 permalink: upgrade/upgrade-by-moving-volumes-parent.html 
 sidebar: sidebar 
 keywords: upgrade by moving volumes 
-summary: Si va a actualizar mediante la transferencia de volúmenes, debe preparar los nodos originales y unir los nuevos nodos al clúster. Mueve volúmenes a los nodos nuevos, configura LIF y desvincula los nodos originales del clúster. La actualización mediante el movimiento de volúmenes es un procedimiento no disruptivo. 
+summary: Si estás actualizando moviendo volúmenes, preparas los nodos originales y unes los nuevos nodos al clúster. Mueves los volúmenes a los nuevos nodos, configuras los LIF y retiras los nodos originales del clúster. Actualizar moviendo volúmenes es una actualización no disruptiva. 
 ---
 = Flujo de trabajo de actualización mediante el movimiento de volúmenes
 :allow-uri-read: 

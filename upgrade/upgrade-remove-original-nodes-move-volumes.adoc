@@ -16,16 +16,24 @@ Después de mover los volúmenes de los nodos originales a los nuevos y mover o 
 .Pasos
 . [[disable-ha]]Deshabilitar la configuración de alta disponibilidad (HA) en los nodos originales:
 +
-`storage failover modify -node <original_node_name> -enabled false`
+[source, cli]
+----
+storage failover modify -node <original_node_name> -enabled false
+----
 
-. Acceda al nivel de privilegio avanzado:
+
+. Cambia el nivel de privilegio a avanzado:
 +
-`set -privilege advanced`
-
-. Identifique el nodo que tiene épsilon:
+[source, cli]
+----
+set -privilege advanced
+----
+. Identifica el nodo en el clúster que tiene epsilon:
 +
-`cluster show`
-
+[source, cli]
+----
+cluster show
+----
 +
 En el siguiente ejemplo, "nodo 0" actualmente tiene un valor épsilon:
 
@@ -40,65 +48,90 @@ node1                true    true         false
 node2                true    true         false
 node3                true    true         false
 ----
-. [[epsilon-true]]Si uno de los nodos originales contiene épsilon, mueva épsilon a un nodo que no esté eliminando del clúster:
+. [[epsilon-true]]Si el nodo que estás eliminando mantiene epsilon:
 +
-.. Eliminar epsilon del nodo original:
+.. Mueve el epsilon del nodo que estás eliminando:
 +
-`cluster modify -node <original_node_name> -epsilon false`
-
-.. Asignar epsilon a un nodo diferente:
+[source, cli]
+----
+cluster modify -node <name_of_node_to_be_removed> -epsilon false
+----
+.. Mueve épsilon a un nodo que no vas a eliminar:
 +
-`cluster modify -node <new_node_name> -epsilon true`
-
+[source, cli]
+----
+cluster modify -node <node_name> -epsilon true
+----
 
 
 . Identificar el nodo maestro actual:
 +
-`cluster ring show`
-
+[source, cli]
+----
+cluster ring show
+----
 +
 El nodo maestro es el nodo que contiene procesos como `mgmt`, `vldb`, `vifmgr`, `bcomd`, y `crs`.
 
-. Si un nodo que está eliminando es el nodo maestro actual, habilite un nodo que permanezca en el clúster para que sea elegido como nodo maestro:
+. Si el nodo que estás eliminando es el nodo maestro actual, habilita otro nodo en el clúster para que sea elegido como nodo maestro:
 +
 .. Hacer que el nodo maestro actual no sea elegible para participar en el clúster:
 +
-`cluster modify -node <original_node_name> -eligibility false`
-
+[source, cli]
+----
+cluster modify -node <node_name> -eligibility false
+----
 +
-El nodo se marca como no saludable hasta que se restablezca la elegibilidad. Cuando el nodo maestro deja de ser elegible, el quórum del clúster elige a uno de los nodos restantes como el nuevo maestro.
+El nodo se marca como no saludable hasta que se restablece la elegibilidad. Cuando el nodo maestro deja de ser elegible, uno de los nodos restantes es elegido por el quórum del clúster como el nuevo maestro.
 
 +
 [NOTE]
 ====
-Si está realizando este paso en el primer nodo de un par de alta disponibilidad, debe marcar solo ese nodo como no elegible. No modifique el estado del socio de HA.
+Si realizas este paso en el primer nodo de un par de HA, deberías marcar solo ese nodo como no apto. No modifiques el estado del compañero de HA.
 
-Si el nodo asociado se selecciona como nuevo maestro, debe verificar si contiene épsilon. Si el nodo asociado contiene épsilon, debe mover épsilon a un nodo diferente que permanezca en el clúster antes de que no sea elegible. Esto se hace cuando se repiten estos pasos para eliminar el nodo asociado.
+Si el nodo asociado es seleccionado como el nuevo maestro, necesitas verificar si tiene epsilon antes de hacerlo inelegible. Si el nodo asociado tiene epsilon, necesitas mover epsilon a un nodo diferente que permanezca en el cluster antes de hacerlo inelegible. Haces esto cuando repites estos pasos para remover el nodo asociado.
 
 ====
 .. Hacer que el nodo maestro anterior sea elegible nuevamente para participar en el clúster:
 +
-`cluster modify -node <node_name> -eligibility true`
+[source, cli]
+----
+cluster modify -node <node_name> -eligibility true
+----
 
 
-
-. Inicie sesión en el LIF de administración de nodos remotos o en el LIF de administración de clúster en un nodo que permanezca en el clúster y elimine cada nodo original del clúster (nivel de privilegio avanzado):
+. Inicia sesión en la LIF de gestión del nodo remoto o en la LIF de gestión del clúster en un nodo que no vas a quitar del clúster.
+. Elimina los nodos del clúster:
 +
+|===
+| Para esta versión de ONTAP... | Se usa este comando... 
+
+
+ a| 
+ONTAP 9.3
+ a| 
+[source, cli]
+----
+cluster unjoin
+----
+
+
+ a| 
+ONTAP 9.4 y posteriores
+ a| 
 Con nombre de nodo:
 
-+
 [source, cli]
 ----
-cluster remove-node -node <original_node_name>
+cluster remove-node -node <node_name>
 ----
-+
 Con IP de nodo:
 
-+
 [source, cli]
 ----
-cluster remove-node -cluster_ip <original_node_ip>
+cluster remove-node -cluster_ip <node_ip>
 ----
+|===
 +
 Si tiene un clúster de versiones mixtas y está eliminando el último nodo de versión inferior, utilice el `-skip-last-low-version-node-check` parámetro con estos comandos.
 
@@ -112,13 +145,13 @@ El sistema le informa lo siguiente:
 Se genera un mensaje de error si hay condiciones que se deben abordar antes de eliminar el nodo. Por ejemplo, el mensaje puede indicar que el nodo tiene recursos compartidos que debe eliminar o que el nodo está en una configuración de alta disponibilidad de clúster o de conmutación por error de almacenamiento que debe deshabilitar.
 
 +
-Si el nodo es el maestro del quórum, el clúster pierde brevemente y luego vuelve al quórum. Esta pérdida de quórum es temporal y no afecta ninguna operación de datos.
+Si el nodo es el quorum master, el clúster perderá brevemente y luego volverá al quorum. Esta pérdida de quorum es temporal y no afecta ninguna operación de datos.
 
 
 
 . Si un mensaje de error indica condiciones de error, aborde esas condiciones y vuelva a ejecutar el `cluster remove-node` o `cluster unjoin` dominio.
 +
-Después de eliminar con éxito un nodo del clúster, éste se reinicia automáticamente.
+El nodo se reinicia automáticamente después de ser eliminado con éxito del cluster.
 
 . Si está reutilizando el nodo, borre la configuración del nodo e inicialice todos los discos:
 +
@@ -126,17 +159,21 @@ Después de eliminar con éxito un nodo del clúster, éste se reinicia automát
 .. Seleccione la opción del menú de arranque *(4) Limpiar configuración e inicializar todos los discos*.
 
 
-. [[return-admin]]Regrese al nivel de privilegio de administrador en uno de los nuevos nodos del clúster:
+. [[return-admin]]Vuelve al nivel de privilegio admin:
 +
 [source, cli]
 ----
 set -privilege admin
 ----
+
+
 . Repetir pasos <<disable-ha,1>> a <<return-admin,10>> para eliminar el socio de conmutación por error del clúster.
 . Si el clúster solo tiene dos nodos restantes, configure la alta disponibilidad para el clúster de dos nodos:
 +
-`cluster ha modify -configured true`
-
+[source, cli]
+----
+cluster ha modify -configured true
+----
 
 
 .El futuro

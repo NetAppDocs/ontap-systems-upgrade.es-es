@@ -11,26 +11,33 @@ summary: Lleve a cabo una NDU en sistemas AFF y FAS de NetApp de gama básica si
 
 
 [role="lead"]
-Puede realizar una actualización sin interrupciones de un sistema NetApp AFF A250 a un sistema NetApp AFF A400 convirtiendo cada nodo de AFF A250 a una bandeja de unidades NS224 y, posteriormente, conectándose a los nodos de reemplazo de AFF A400.
+Realiza una actualización no disruptiva de un sistema AFF A250 a un sistema AFF A400 convirtiendo los nodos AFF A250 en estanterías de unidades NS224. Luego, conéctalos a los nodos de reemplazo AFF A400. Esto mueve el almacenamiento integrado AFF A250 al sistema de reemplazo AFF A400.
+
+.Antes de empezar
+Revisa los escenarios generales de actualización y las consideraciones de actualización para actualizar moviendo volúmenes o almacenamiento:
+
+* link:upgrade-decide-to-use-this-guide.html["Decidir si se actualizará el volumen o el almacenamiento"]
+* link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"]
+
 
 .Acerca de esta tarea
-En este procedimiento, las controladoras de las parejas de alta disponibilidad (HA) AFF A250 se denominan node1 y node2, y las controladoras de las parejas de alta disponibilidad de AFF A400 de reemplazo se denominan node3 y node4.
+Los controladores del par de alta disponibilidad (HA) AFF A250 son node1 y node2 y los controladores del par de alta disponibilidad (HA) de reemplazo AFF A400 son node3 y node4.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Uno"]link:upgrade_migrate_lifs_aggregates_node2_to_node1.html["Migre LIF y agregados de datos de node2 a node1"]
 [role="quick-margin-para"]
-Antes de convertir AFF A250 node2 en una bandeja de unidades, deberá migrar las interfaces lógicas (LIF) y los agregados de datos en node2 a node1.
+Antes de convertir AFF A250 node2 en una estantería de unidades, migra las interfaces lógicas (LIF) y los agregados de datos de node2 a node1.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]link:upgrade_convert_node2_drive_shelf_connect_node4.html["Convierta node2 en una bandeja de unidades y conéctela a node4"]
 [role="quick-margin-para"]
-Se convierte AFF A250 node2 a una bandeja de unidades NS224 y, luego, se conecta a AFF A400 node4 antes de reasignar unidades de node2 a node4.
+Convierta AFF A250 node2 en una bandeja de unidades NS224 y, a continuación, conéctese a AFF A400 node4 antes de reasignar unidades de node2 a node4.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]link:upgrade_reassign_drives_node2_to_node4.html["Reasignar unidades de node2 a node4"]
 [role="quick-margin-para"]
-Después de convertir AFF A250 node2 a una bandeja de unidades NS224 y conectarse a AFF A400 node4, se reasignarán las unidades que anteriormente pertenecían a node2 a node4
+Después de convertir el nodo2 de AFF A250 en una estantería de unidades NS224 y conectarlo al nodo4 de AFF A400, reasigna las unidades que antes pertenecían al nodo2 al nodo4.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"]link:upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html["Migre agregados de datos, épsilon y LIF en node1 a node4"]
 [role="quick-margin-para"]
-Antes de convertir AFF A250 node1 en una bandeja de unidades, debe migrar los agregados de datos, el épsilon y las LIF en node1 a AFF A400 node4.
+Antes de convertir AFF A250 node1 en una estantería de unidades, migra los agregados de datos, epsilon y LIFs en node1 a AFF A400 node4.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:upgrade_convert_node1_drive_shelf_connect_node3.html["Convierta node1 en una bandeja de unidades y conéctela a node3"]
 [role="quick-margin-para"]
@@ -38,8 +45,8 @@ Convierta AFF A250 node1 en una bandeja de unidades NS224 y, a continuación, co
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"]link:upgrade_reassign_drives_node1_to_node3.html["Reasignar unidades de node1 a node3"]
 [role="quick-margin-para"]
-Después de convertir AFF A250 node1 a una bandeja de unidades NS224 y conectarse a AFF A400 node3, se reasignarán las unidades que anteriormente pertenecían a node1 a node3.
+Después de convertir el nodo1 de AFF A250 en una estantería de unidades NS224 y conectarlo al nodo3 de AFF A400, reasigna al nodo3 las unidades que antes pertenecían al nodo1.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Siete"]link:upgrade_migrate_lIFs_aggregates_node4_node3.html["Migre LIF y agregados de datos de node4 a node3"]
 [role="quick-margin-para"]
-Para completar la actualización, conecte node3 a node4 y después migre los LIF de datos y los agregados de datos en node4 a node3.
+Para completar la actualización, conecta el nodo3 al nodo4 y luego migra las LIF de datos y los agregados de datos del nodo4 al nodo3.
