@@ -16,19 +16,20 @@ summary: Instale los módulos del sistema de reemplazo en node2 durante una actu
 [role="lead"]
 Instale los módulos NVRAM y las controladoras ASA A900, AFF A900 o FAS9500 que recibió para la actualización en node2. El nodo 2 es la controladora B, situada en el lado derecho del chasis, cuando se tienen en cuenta las controladoras de la parte posterior del sistema.
 
-Debe tener en cuenta lo siguiente al realizar la instalación:
-
+[NOTE]
+====
 * Mueva todos los módulos de relleno vacíos en las ranuras 6-1 y 6-2 del módulo NVRAM antiguo al nuevo módulo NVRAM.
 * NO mueva el dispositivo coredump del módulo NVRAM de AFF A700 al módulo NVRAM de ASA A900 o AFF A900.
 * Mueva todos los módulos de memoria caché flash instalados en el módulo NVRAM FAS9000 al módulo NVRAM FAS9500.
 
 
+====
 .Antes de empezar
 Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
 
 
 
-== Instale el módulo ASA A900, AFF A900 o FAS9500 NVRAM
+== Paso 1: instala el módulo NVRAM de ASA A900, AFF A900 o FAS9500
 
 Instale el módulo ASA A900, AFF A900 o FAS9500 NVRAM en la ranura 6 de node2.
 
@@ -39,7 +40,7 @@ Instale el módulo ASA A900, AFF A900 o FAS9500 NVRAM en la ranura 6 de node2.
 
 
 
-== Instale el módulo del controlador ASA A900, AFF A900 o FAS9500 en node2
+== Paso 2: instala el módulo controlador ASA A900, AFF A900 o FAS9500
 
 Instale, cablee y conecte el módulo de controlador ASA A900, AFF A900 o FAS9500 en node2.
 
@@ -70,10 +71,14 @@ WARNING: Para evitar dañar los conectores, no ejerza demasiada fuerza al desliz
 . Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 2 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe el AUTOARRANQUE a tiempo y node2 comienza el arranque, espere a que se le indique el prompt y pulse Ctrl-C para ir al menú de arranque. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` para reiniciar el nodo e interrumpir EL AUTOARRANQUE durante el reinicio.
 . En el símbolo del SISTEMA LOADER> 2, establezca las variables de entorno predeterminadas:
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Guarde la configuración predeterminada de las variables de entorno:
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 

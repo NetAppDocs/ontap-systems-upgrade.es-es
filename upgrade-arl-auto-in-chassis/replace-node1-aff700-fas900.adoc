@@ -14,6 +14,8 @@ summary: Sustituya los módulos del sistema AFF A700 o FAS9000 node1 cuando util
 
 
 [role="lead"]
+Sustituye el controlador y los módulos NVRAM del nodo1 AFF A700 o FAS9000 por el controlador y los módulos NVRAM ASA A900, AFF A900 o FAS9500.
+
 En este momento, el nodo 1 está inactivo y todos los datos están servidos por el nodo 2. Debe tener cuidado de quitar únicamente el módulo del controlador del nodo 1 y el módulo NVRAM del nodo 1. Normalmente, el nodo 1 es la controladora A, situada en el lado izquierdo del chasis cuando se mira las controladoras desde la parte posterior del sistema. La etiqueta de la controladora se encuentra en el chasis directamente sobre el módulo de la controladora.
 
 
@@ -24,9 +26,9 @@ Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
 
 
 
-== Quite el módulo de controladoras A700 o FAS9000 de AFF
+== Paso 1: quita el módulo controlador AFF A700 o FAS9000
 
-Desconecte y retire el módulo de controlador AFF A700 o FAS9000 de node1.
+Separa y retira el módulo controlador AFF A700 o FAS9000 del nodo1.
 
 .Pasos
 . Desconecte el cable de consola, si lo hay, y el cable de gestión del módulo de controlador node1.
@@ -64,9 +66,9 @@ Asegúrese de que admite la parte inferior del módulo de la controladora cuando
 
 
 
-== Quite el módulo NVRAM del A700 o FAS9000 de AFF
+== Paso 2: quitar el módulo NVRAM del AFF A700 o FAS9000
 
-Desbloquee y retire el módulo NVRAM AFF A700 o FAS9000 de node1.
+Desbloquea y quita el módulo NVRAM del node1 AFF A700 o FAS9000.
 
 
 NOTE: El módulo NVRAM A700 o FAS9000 de AFF se encuentra en la ranura 6 y tiene el doble de altura que los otros módulos del sistema.
@@ -106,26 +108,18 @@ image:black_circle_two.png["Número dos"]
 
 
 
-== Instale ASA A900, AFF A900 o FAS9500 NVRAM y los módulos del controlador
+== Paso 3: instala el módulo NVRAM de ASA A900, AFF A900 o FAS9500
 
-Instale, cablee y conecte los módulos de la controladora y NVRAM de ASA A900, AFF A900 o FAS9500 en node1.
+Instala, cablea y conecta el módulo NVRAM del ASA A900, AFF A900 o FAS9500 en node1.
 
-Debe tener en cuenta lo siguiente al realizar la instalación:
-
+[NOTE]
+====
 * Mueva todos los módulos de relleno vacíos en las ranuras 6-1 y 6-2 del módulo NVRAM antiguo al nuevo módulo NVRAM.
 * NO mueva el dispositivo coredump del módulo NVRAM de AFF A700 al módulo NVRAM de ASA A900 o AFF A900.
 * Mueva todos los módulos de memoria caché flash instalados en el módulo NVRAM FAS9000 al módulo NVRAM FAS9500.
 
 
-.Antes de empezar
-Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
-
-
-
-=== Instale el módulo ASA A900, AFF A900 o FAS9500 NVRAM
-
-Instale el módulo ASA A900, AFF A900 o FAS9500 NVRAM en la ranura 6 de node1.
-
+====
 .Pasos
 . Alinee el módulo NVRAM con los bordes de la abertura del chasis en la ranura 6.
 . Deslice suavemente el módulo NVRAM hacia dentro de la ranura hasta que el pestillo de leva de E/S con letras y numerado comience a acoplarse con el pasador de leva de E/S y, a continuación, empuje el pestillo de leva de E/S hasta bloquear el módulo NVRAM en su sitio.
@@ -150,9 +144,9 @@ image:black_circle_two.png["Número dos"]
 
 
 
-=== Instale el módulo del controlador ASA A900, AFF A900 o FAS9500 en node1.
+== Paso 4: instala el módulo controlador ASA A900, AFF A900 o FAS9500 en node1.
 
-Utilice el siguiente procedimiento para instalar el módulo de controlador ASA A900, AFA A900 o FAS9500 en node1.
+Instala, cablea y conecta el módulo controlador ASA A900, AFF A900 o FAS9500 en node1.
 
 .Pasos
 . Alinee el extremo del módulo del controlador con la apertura A en el chasis y, a continuación, empuje suavemente el módulo del controlador hasta la mitad dentro del sistema.
@@ -194,10 +188,14 @@ image:black_circle_two.png["Número dos"]
 . Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 1 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe el AUTOARRANQUE a tiempo y node1 comienza el arranque, espere a que se le indique el prompt y pulse Ctrl-C para ir al menú de arranque. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` para reiniciar el nodo e interrumpir EL AUTOARRANQUE durante el reinicio.
 . En el símbolo del SISTEMA LOADER> del nodo 1, establezca las variables de entorno predeterminadas:
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Guarde la configuración predeterminada de las variables de entorno:
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 

@@ -14,6 +14,8 @@ summary: Sustituya node1 los módulos del sistema AFF A220, AFF A200, AFF C190, 
 
 
 [role="lead"]
+Sustituye el módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720 del nodo1 por un módulo controlador ASA A150, AFF A150 o FAS2820.
+
 En este momento, el nodo 1 está inactivo y todos los datos están servidos por el nodo 2. Debe tener cuidado de quitar solo el módulo del controlador node1. Normalmente, el nodo 1 es la controladora A, situada en el lado izquierdo del chasis cuando se mira las controladoras desde la parte posterior del sistema. La etiqueta de la controladora se encuentra en el chasis directamente sobre el módulo de la controladora.
 
 
@@ -24,9 +26,9 @@ Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
 
 
 
-== Quite el módulo de controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720
+== Paso 1: quita el módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720
 
-Para acceder a los componentes del controlador, retire el módulo del controlador del sistema y, a continuación, retire la cubierta del módulo del controlador.
+Para acceder a los componentes dentro del controlador node1, retira el módulo del controlador del sistema y luego quita la cubierta del módulo del controlador.
 
 .Pasos
 . Afloje el gancho y la correa de bucle que sujetan los cables al dispositivo de administración de cables y, a continuación, desconecte los cables del sistema y los SFP (si fuera necesario) del módulo del controlador, manteniendo un seguimiento del lugar en el que estaban conectados los cables.
@@ -70,10 +72,14 @@ NOTE: Para evitar dañar los conectores, no ejerza demasiada fuerza al deslizar 
 . Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 1 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe el AUTOARRANQUE a tiempo y node1 comienza el arranque, espere a que se le indique el prompt y pulse Ctrl-C para ir al menú de arranque. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` para reiniciar el nodo e interrumpir EL AUTOARRANQUE durante el reinicio.
 . En el símbolo del SISTEMA LOADER> del nodo 1, establezca las variables de entorno predeterminadas:
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Guarde la configuración predeterminada de las variables de entorno:
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 

@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/replace-node1-affa800.html
 keywords: aff, asa, fas, replace, node1, system, modules 
 summary: Sustituya los módulos del sistema AFF A800 o AFF C800 node1 cuando utilice ARL para actualizar los modelos de controlador en el mismo chasis. 
 ---
-= Sustituya los módulos del controlador AFF A800 o AFF C800
+= Sustituye el módulo controlador AFF A800 o AFF C800 del nodo1
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,9 @@ summary: Sustituya los módulos del sistema AFF A800 o AFF C800 node1 cuando uti
 
 
 [role="lead"]
-En este momento, el nodo 1 está inactivo y todos los datos están servidos por el nodo 2. Debe tener cuidado de quitar solo el módulo del controlador node1. Normalmente, el nodo 1 es la controladora A, situada en el lado izquierdo del chasis cuando se mira las controladoras desde la parte posterior del sistema. La etiqueta de la controladora se encuentra en el chasis directamente sobre el módulo de la controladora.
+Reemplaza el módulo controlador AFF A800 o AFF C800 del nodo1 por un módulo controlador AFF A90, AFF A70 o AFF C80.
+
+En esta etapa, el nodo1 está fuera de servicio y todos los datos son servidos por el nodo2. Debes tener cuidado de quitar solo el módulo controlador del nodo1. Cuando miras los controladores desde la parte trasera del sistema, los controladores están apilados, con el controlador A normalmente en la parte superior. La etiqueta del controlador está en el chasis directamente encima del módulo controlador.
 
 
 CAUTION: No apague el chasis, ya que node1 y node2 están en el mismo chasis y conectados a los mismos suministros de alimentación.
@@ -24,20 +26,55 @@ Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
 
 
 
-== Retire el módulo del controlador AFF A800 o AFF C800
+== Paso 1: quita el módulo controlador AFF A800 o AFF C800
 
-Retire el dispositivo de gestión de cables del módulo existente y saque ligeramente el controlador del chasis.
+Retira el dispositivo de gestión de cables del módulo node1 existente y mueve el controlador ligeramente fuera del chasis.
 
 .Pasos
-. Prepárese para extraer el módulo del controlador:
+. Asegúrate de que todas las unidades del chasis estén firmemente asentadas contra el plano medio usando tus pulgares para empujar cada unidad hasta que sientas un tope positivo.
 +
-.. En la parte frontal del chasis, use los pulgares para empujar firmemente cada unidad en los compartimentos de disco superior e inferior hasta que sienta un tope positivo.  Esto garantiza que las unidades estén firmemente asentadas contra el plano medio del chasis.
+.Vídeo: confirma la colocación de la unidad
+video::2c46e4af-2c21-4f12-b065-b38b003d0ea2[panopto]
++
+image:drw_a800_drive_seated_IEOPS-960.svg["Coloca las unidades"]
+
+. Revisa las unidades controladoras según el estado del sistema:
++
+.. En la controladora sana, verifica si algún grupo RAID activo está en estado degradado, en estado de fallo o en ambos:
++
+[source, cli]
+----
+storage aggregate show -raidstatus !*normal*
+----
++
+*** Si el comando devuelve `There are no entries matching your query.`, continúa en <<Check-missing-drives,ve al siguiente subpaso para comprobar si faltan unidades de disco>>.
+*** Si el comando devuelve cualquier otro resultado, recopila los datos de AutoSupport de ambos controladores y contacta a NetApp Support para más ayuda.
++
+[source, cli]
+----
+system node autosupport invoke -node * -type all -message '<message_name>'
+----
+
+
+.. [[Check-missing-drives]]Comprueba si faltan unidades tanto en el sistema de archivos como en las unidades de repuesto:
++
+[source, cli]
+----
+event log show -severity * -node * -message-name *disk.missing*
+----
++
+*** Si el comando devuelve `There are no entries matching your query.`, continúa en <<remove-power-cables,ir al siguiente paso>>.
+*** Si el comando devuelve cualquier otro resultado, recopila los datos de AutoSupport de ambos controladores y contacta a NetApp Support para más ayuda.
++
+[source, cli]
+----
+system node autosupport invoke -node * -type all -message '<message_name>'
+----
 
 
 
 
-image:drw_a800_drive_seated_IEOPS-960.png["Empuje la unidad para asentarla firmemente contra el plano medio del chasis"]
-
+. [[quitar-cables-de-energía]]Quita los retenedores de los cables de alimentación y luego desconecta los cables de las fuentes de alimentación.
 . Desconecte las fuentes de alimentación del módulo del controlador node1 de la fuente.
 . Suelte los retenes del cable de alimentación y, a continuación, desenchufe los cables de las fuentes de alimentación.
 . Afloje el gancho y la correa de bucle que sujetan los cables al dispositivo de administración de cables y, a continuación, desconecte los cables del sistema y los módulos SFP y QSFP (si es necesario) del módulo de controlador, manteniendo un seguimiento del lugar en el que se conectan los cables.
@@ -68,7 +105,11 @@ image:black_circle_two.png["Número dos"]
 |===
 
 
-Instala el módulo controlador AFF A90, AFF A70 o AFF C80, cablea y conecta el módulo controlador AFF A90, AFF A70 o AFF C80 en node1.
+
+
+== Paso 2: instala el módulo controlador AFF A90, AFF A70 o AFF C80
+
+Instala, cablea y conecta el módulo controlador AFF A90, AFF A70 o AFF C80 en node1.
 
 .Pasos
 . Alinee el extremo del módulo del controlador con la abertura del chasis y, a continuación, empuje suavemente el módulo del controlador hasta la mitad del sistema.
@@ -82,7 +123,7 @@ image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Instale un AFF A90 o AFF A70
 . Conecte los puertos de consola y de gestión al módulo del controlador 1-1.
 +
 
-NOTE: Como el chasis ya está ENCENDIDO, node1 inicia la inicialización del BIOS seguida de AUTOARRANQUE en cuanto inserte el nuevo módulo de controladora. Para evitar este ARRANQUE AUTOMÁTICO, NetApp recomienda conectar los cables serie y de consola antes de insertar el módulo del controlador.
+NOTE: Cuando insertes el módulo controlador node1 en el siguiente paso, node1 iniciará inmediatamente la inicialización de la BIOS seguida de AUTOBOOT porque el chasis ya está encendido. Evitas este AUTOBOOT conectando los cables serie y de consola antes de insertar el módulo.
 
 . En la parte frontal del chasis, use los pulgares para empujar firmemente cada unidad en los compartimentos de disco superior e inferior hasta que sienta un tope positivo.  Esto garantiza que las unidades estén firmemente asentadas contra el plano medio del chasis.
 +
@@ -104,10 +145,14 @@ Si no interrumpe el AUTOARRANQUE a tiempo y node1 comienza el arranque, espere a
 
 . En el símbolo del SISTEMA LOADER> del nodo 1, establezca las variables de entorno predeterminadas:
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Guarde la configuración predeterminada de las variables de entorno:
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 

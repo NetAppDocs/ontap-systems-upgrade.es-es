@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/install-asa150-affa150-fas2820-on-node2.html 
 keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
-summary: Instale los módulos del sistema de reemplazo en node2 durante una actualización ARL de los modelos de controladora en el mismo chasis. 
+summary: Instala los módulos de sistema de sustitución en node2 durante una actualización ARL de modelos de controlador en el mismo chasis. 
 ---
-= Instale el módulo del controlador ASA A150, AFF A150 o FAS2820 en node2
+= Instala el módulo controlador ASA A150, AFF A150 o FAS2820 en node2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Instale los módulos del sistema de reemplazo en node2 durante una actu
 
 
 [role="lead"]
-Instale el módulo de controlador ASA A150, AFF A150 o FAS2820 que recibió para la actualización en node2. El nodo 2 es la controladora B, situada en el lado derecho del chasis, cuando se tienen en cuenta las controladoras de la parte posterior del sistema.
+Instala el módulo de controlador ASA A150, AFF A150 o FAS2820 que recibiste para la actualización en node2. Node2 es el controlador B ubicado en el lado derecho del chasis cuando miras los controladores desde la parte trasera del sistema.
 
 .Antes de empezar
 * Si usted no está ya conectado a tierra, correctamente tierra usted mismo.

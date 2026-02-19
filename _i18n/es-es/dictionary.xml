@@ -12,7 +12,6 @@
   <block id="c293ce688a142a8943b3fa428c09e414" category="paragraph">Después de que el nodo 1 se haya detenido por completo, el nodo 1 debería estar en el símbolo del sistema LOADER&gt;. Para ver el aviso DEL CARGADOR&gt;, conéctese a la consola serie del nodo 1.</block>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="paragraph-title">Antes de empezar</block>
   <block id="a7b5ccf02bd0f6b23fc889ebb5354dbc" category="paragraph">Si usted no está ya conectado a tierra, correctamente tierra usted mismo.</block>
-  <block id="ba579f865c148542656e741f915bc210" category="section-title">Quite el módulo de controladoras A700 o FAS9000 de AFF</block>
   <block id="16597a9dd20f2d5db13339b0bf3ad60c" category="admonition">Cuando esté trabajando en el nodo 1, quite únicamente la consola y los cables e0M del nodo 1. Durante este proceso, no debe quitar ni cambiar ningún otro cable ni conexión de los nodos 1 o 2.</block>
   <block id="4f15dffc58c8598c508fa46cd5335ebb" category="list-text">Desbloquee y extraiga el módulo De la controladora A del chasis.</block>
   <block id="c1ed0cd23ea77c49b5611e5929537b3f" category="list-text">Deslice el botón naranja del asa de la leva hacia abajo hasta que se desbloquee.</block>
@@ -24,7 +23,6 @@
   <block id="b733ab833a64f07b84375a26a6af83f0" category="cell">Mango de leva</block>
   <block id="1ce9441378e5288a31f9dee89eb4cb1d" category="list-text">Gire el asa de leva para que desacople completamente el módulo del controlador del chasis y, a continuación, deslice el módulo del controlador para sacarlo del chasis.</block>
   <block id="838771143f1029cc3b1ac5c3be2796bc" category="paragraph">Asegúrese de que admite la parte inferior del módulo de la controladora cuando la deslice para sacarlo del chasis.</block>
-  <block id="831816e1924f3edb2d170ec4c291d0f3" category="section-title">Quite el módulo NVRAM del A700 o FAS9000 de AFF</block>
   <block id="3d748e41fa426d2025ff3eb80b369ede" category="admonition">El módulo NVRAM A700 o FAS9000 de AFF se encuentra en la ranura 6 y tiene el doble de altura que los otros módulos del sistema.</block>
   <block id="0857dbdec564e89c1ed34a571bb8af41" category="list-text">Desbloquee y retire el módulo NVRAM de la ranura 6 del nodo 1.</block>
   <block id="1746c03166c1029bf12087835ea936f0" category="list-text">Pulse el botón de leva numerado y con letras.</block>
@@ -35,7 +33,6 @@
   <block id="1ade29bb16a89d6eb1ac0378b26d08cc" category="image-alt">Extraiga el módulo NVRAM</block>
   <block id="c6e52defde912721ad3ec5315c5d9664" category="cell">Pestillo de leva de E/S numerado y con letras</block>
   <block id="0e50691d6ac3e9df529fa546f2486bd7" category="cell">Pestillo de I/o completamente desbloqueado</block>
-  <block id="d9e40d62315bfc8bad4f1329f7f9b867" category="paragraph">Debe tener en cuenta lo siguiente al realizar la instalación:</block>
   <block id="342f3ca2519e4e92f56675a89236fce6" category="list-text">Mueva todos los módulos de relleno vacíos en las ranuras 6-1 y 6-2 del módulo NVRAM antiguo al nuevo módulo NVRAM.</block>
   <block id="d0106eeb656b11c6a07a8e45dcf1b214" category="list-text">Mueva todos los módulos de memoria caché flash instalados en el módulo NVRAM FAS9000 al módulo NVRAM FAS9500.</block>
   <block id="3d6ee5006b58007aa6b243ac902837ac" category="list-text">Alinee el módulo NVRAM con los bordes de la abertura del chasis en la ranura 6.</block>
@@ -3709,7 +3706,6 @@
   <block id="3a3f289393d9aae4f5403ed3ce658b92" category="paragraph">Durante la etapa 3, se inicia node1 con módulos de sistema actualizados y se verifica la instalación node1 actualizada. Si utiliza el cifrado de volúmenes de NetApp (NVE), debe restaurar la configuración del gestor de claves. También puede reubicar agregados no raíz y LIF de datos NAS del nodo 2 al nodo 1 actualizado y comprobar que las LIF DE SAN existen en el nodo 1.</block>
   <block id="64a849a8de630f1ea4ad68009f78a51d" category="inline-link-macro">Arranque node1 con los módulos del sistema de sustitución</block>
   <block id="1cf4820f0a2cb46c48512331c3f04acd" category="inline-xref">Sustituya el módulo de controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720</block>
-  <block id="c5c5d4bed82b3aa15921eef0f13a3aa2" category="section-title">Quite el módulo de controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720</block>
   <block id="359b2f64ed46d9bc640532f2fd8810c0" category="list-text">Afloje el gancho y la correa de bucle que sujetan los cables al dispositivo de administración de cables y, a continuación, desconecte los cables del sistema y los SFP (si fuera necesario) del módulo del controlador, manteniendo un seguimiento del lugar en el que estaban conectados los cables.</block>
   <block id="73ffa1532dd710d7eb1520cb730fb392" category="paragraph">Deje los cables en el dispositivo de administración de cables de manera que cuando vuelva a instalar el dispositivo de administración de cables, los cables estén organizados.</block>
   <block id="3e5a02473a086978bae6a6516ad46c5e" category="list-text">Retire y retire los dispositivos de administración de cables de los lados izquierdo y derecho del módulo del controlador.</block>
@@ -3801,16 +3797,9 @@
   <block id="0e096ce16590ab86950913510752010e" category="cell">ASA A900</block>
   <block id="0d1ed1043a9669e13b81f70da0ae56bb" category="list-text">Controladoras ASA A150, AFF A150 o FAS2820</block>
   <block id="23025a0dc68c759874f99e85d38e7ede" category="section-title">Instale el módulo de controlador ASA A150, AFF A150 o FAS2820</block>
-  <block id="d7a4c6633fbd09856927cf66880d4940" category="section-title">Instale ASA A900, AFF A900 o FAS9500 NVRAM y los módulos del controlador</block>
   <block id="70b323769da32749c57798f0d8e782e5" category="list-text">NO mueva el dispositivo coredump del módulo NVRAM de AFF A700 al módulo NVRAM de ASA A900 o AFF A900.</block>
-  <block id="74cfe385d1c40d7e412430b003bd358b" category="section-title">Instale el módulo ASA A900, AFF A900 o FAS9500 NVRAM</block>
-  <block id="ad6cf4baff2cddaf65f868a474f4ace2" category="section-title">Instale el módulo del controlador ASA A900, AFF A900 o FAS9500 en node1.</block>
-  <block id="1e05d2a5422d862c8080573b0bffa1d7" category="paragraph">Utilice el siguiente procedimiento para instalar el módulo de controlador ASA A900, AFA A900 o FAS9500 en node1.</block>
-  <block id="400a12b5c5627da96b0587ceaacabfa4" category="inline-xref">Instale el módulo del controlador ASA A150, AFF A150 o FAS2820 en node2</block>
   <block id="74cae3e1383e831697d2a89099232c43" category="inline-xref">Instale ASA A900, AFF A900 o FAS9500 NVRAM y los módulos del controlador en node2</block>
-  <block id="78bd224431479d8d5cafd763cca39b7c" category="paragraph">Instale el módulo de controlador ASA A150, AFF A150 o FAS2820 que recibió para la actualización en node2. El nodo 2 es la controladora B, situada en el lado derecho del chasis, cuando se tienen en cuenta las controladoras de la parte posterior del sistema.</block>
   <block id="a2f2586b0e85eb39267cb5c9d9e043d2" category="paragraph">Instale los módulos NVRAM y las controladoras ASA A900, AFF A900 o FAS9500 que recibió para la actualización en node2. El nodo 2 es la controladora B, situada en el lado derecho del chasis, cuando se tienen en cuenta las controladoras de la parte posterior del sistema.</block>
-  <block id="f457531b113b8b894781ad94a1fa19d3" category="section-title">Instale el módulo del controlador ASA A900, AFF A900 o FAS9500 en node2</block>
   <block id="86e722dcbc94e4ea341e26dd6af9f76a" category="cell">AFF A220 configurado como cabina All SAN (ASA)</block>
   <block id="4fdc3efb53d664a8ab709272358f7966" category="cell">9.13.1P1 y posterior</block>
   <block id="6e43ae996b970f40321b42d34dd0b4b8" category="list-text">Los sistemas ASA A900, AFF A900 y FAS9500 solo admiten energía de línea alta (de 200V V a 240V V CA). Si su sistema A700 o FAS9000 de AFF se ejecuta con una alimentación de línea baja (de 100 V a 120 V), debe convertir la alimentación de entrada de AFF A700 o FAS9000 antes de utilizar este procedimiento.</block>
@@ -4101,7 +4090,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="1445b140af84df0e7f83e7c1a538e1ae" category="cell">AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720</block>
   <block id="86c15a425269c6a2503b9871021e6df8" category="cell">AFF A700 o FAS9000</block>
   <block id="7f42c48311ba942f81d7a07c44c47d3b" category="admonition">Los términos *1* y *2* sólo se utilizan como referencia a los nombres de nodo de este documento. Al seguir el procedimiento, debe sustituir los nombres reales de los nodos.</block>
-  <block id="a06d68e350c79a17b1b36fae9ee9106c" category="doc">Instale el módulo AFF A90 o AFF A70 en node2</block>
   <block id="011359cc38c137752e931fd997e519a7" category="image-alt">Instale un AFF A90 o AFF A70</block>
   <block id="b360374fb1c72b27ec9072588d678096" category="admonition">Como el chasis ya está ENCENDIDO, node1 inicia la inicialización del BIOS seguida de AUTOBOOT en cuanto está completamente colocado. Para interrumpir el arranque del nodo 1, antes de insertar por completo el módulo del controlador en la ranura, se recomienda conectar la consola serie y los cables de gestión al módulo del controlador del nodo 1.</block>
   <block id="da7cf8ace467e07feef604bd9a07fa23" category="list-text">Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 1 se detiene en el símbolo del sistema del CARGADOR. Si no interrumpe el AUTOARRANQUE a tiempo y node1 comienza el arranque, espere a que se le indique el prompt y pulse Ctrl-C para ir al menú de arranque. Cuando el nodo se detenga en el menú de arranque, utilice la opción<block ref="c9f0f895fb98ab9159f51fd0297e236d" prefix=" " category="inline-code"></block> para reiniciar el nodo e interrumpir EL AUTOARRANQUE durante el reinicio.</block>
@@ -4125,13 +4113,8 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="9d5362e3cd7fb6dab4963fa3402a8946" category="list-text"><block ref="8a376dcd15839d79f652ba0bc6e1b6ce" prefix="" category="inline-code"></block></block>
   <block id="21abd3e611a550d5b10a01fcf5ca52e4" category="list-text"><block ref="d0e63dc99f0f9ab0cd3804cc52f2f14d" prefix="" category="inline-code"></block></block>
   <block id="0366a42f2fc03b6171f842157c923ac3" category="summary">Sustituya los módulos del sistema AFF A700 o FAS9000 node1 cuando utilice ARL para actualizar los modelos de controladora en el mismo chasis.</block>
-  <block id="e61a8da38f14e94b700a22cac8ae4393" category="paragraph">Desconecte y retire el módulo de controlador AFF A700 o FAS9000 de node1.</block>
   <block id="a9d2e9a8e51c956ec73ca97b2f59618d" category="list-text">Desconecte el cable de consola, si lo hay, y el cable de gestión del módulo de controlador node1.</block>
-  <block id="b7f982c550f1b3edd9e8d8d5b9eb50cd" category="paragraph">Desbloquee y retire el módulo NVRAM AFF A700 o FAS9000 de node1.</block>
-  <block id="ea1e71ef4fce4fbc966397450b8ecf3b" category="paragraph">Instale, cablee y conecte los módulos de la controladora y NVRAM de ASA A900, AFF A900 o FAS9500 en node1.</block>
-  <block id="b79aee15f2c133859a90a1a37bf3949a" category="paragraph">Instale el módulo ASA A900, AFF A900 o FAS9500 NVRAM en la ranura 6 de node1.</block>
   <block id="9e0a1039504ca0408797903c8f8ca02d" category="summary">Sustituya node1 los módulos del sistema AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720 cuando utilice ARL para actualizar los modelos de controladoras en el mismo chasis.</block>
-  <block id="1bea5ea0e73e228055c8e231e1075879" category="paragraph">Para acceder a los componentes del controlador, retire el módulo del controlador del sistema y, a continuación, retire la cubierta del módulo del controlador.</block>
   <block id="3b59a6e4feb61a49bd8e07d1dc5ed44d" category="paragraph">Instale, cablee y conecte el módulo de controlador ASA A150, AFF A150 o FAS2820 en node1.</block>
   <block id="73ee2bd7f33c26664f94c379c6ab36d2" category="image-alt">Empuje la unidad para asentarla firmemente contra el plano medio del chasis</block>
   <block id="9bedcc9650ba1fe86ed7720eb975429e" category="list-text">Vaya a la parte posterior del chasis.</block>
@@ -4463,7 +4446,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="7be812dd65bbd3f39bbb06fd50caac76" category="list-text"><block ref="7be812dd65bbd3f39bbb06fd50caac76" category="inline-link-macro-rx"></block></block>
   <block id="3a7170fc4a84869f969e046621bc8c18" category="inline-link">ID de error de NetApp Bugs Online: 1127315</block>
   <block id="7e3f4ab9cf33dd84dd92d4491c7263da" category="list-text"><block ref="7e3f4ab9cf33dd84dd92d4491c7263da" category="inline-link-rx"></block></block>
-  <block id="316abd6cd53d12f8bf03ae8388826d10" category="doc">Instale el módulo AFF A30, AFF A50, AFF C30 o AFF C60 en node2</block>
   <block id="bdb39b5926a304a8f387b036b6fd9445" category="list-text">Coloque el sistema de almacenamiento en los rieles situados en el centro del armario o rack de telecomunicaciones, y luego apoye el sistema de almacenamiento desde la parte inferior y deslícelo en su lugar.</block>
   <block id="b9772390f34f13ee0716466b74abfc71" category="admonition">No inserte por completo el módulo de la controladora en el chasis hasta que se le indique hacerlo más adelante en el procedimiento.</block>
   <block id="933b2ea0dc8285d8ab95430d9aa0b8bb" category="admonition">Para evitar dañar los conectores, no ejerza demasiada fuerza al deslizar el módulo del controlador en el chasis.</block>
@@ -4474,9 +4456,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="6d25c71e79b9f8280c5a17b473c08b82" category="paragraph">En este momento, el nodo 1 está inactivo y todos los datos están servidos por el nodo 2. Debe tener cuidado de quitar únicamente el módulo del controlador del nodo 1 y el módulo NVRAM del nodo 1. Normalmente, el nodo 1 es la controladora A, situada en el lado izquierdo del chasis cuando se mira las controladoras desde la parte posterior del sistema. La etiqueta de la controladora se encuentra en el chasis directamente sobre el módulo de la controladora.</block>
   <block id="accf85406d8f852aec80eff93db683c2" category="paragraph">En este momento, el nodo 1 está inactivo y todos los datos están servidos por el nodo 2. Debe tener cuidado de quitar solo el módulo del controlador node1. Normalmente, el nodo 1 es la controladora A, situada en el lado izquierdo del chasis cuando se mira las controladoras desde la parte posterior del sistema. La etiqueta de la controladora se encuentra en el chasis directamente sobre el módulo de la controladora.</block>
   <block id="1519b2b4ff3e01880d93809dab9f313f" category="summary">Sustituya los módulos del sistema AFF A250 o AFF C250 node1 cuando utilice ARL para actualizar los modelos de controlador en el mismo chasis.</block>
-  <block id="eab9dfa8a69e88f238fb25a87fa387df" category="doc">Sustituya los módulos del controlador AFF A250 o AFF C250</block>
-  <block id="d92bacce0a7f4e74afb2b72f85dfbb19" category="section-title">Retire el módulo del controlador AFF A250 o AFF C250</block>
-  <block id="a680c497ac8bfdb387a08dc6d8235544" category="paragraph">Para extraer el módulo del controlador node1, primero retire el dispositivo de gestión de cables, desbloquee los pestillos de bloqueo y, a continuación, retire el módulo del controlador del chasis.</block>
   <block id="1f9529736c8bd4ae7629be26ea8da34d" category="list-text">Inserte el índice en el mecanismo de bloqueo de ambos lados del módulo del controlador, presione la palanca con el pulgar y tire suavemente del controlador a unas pocas pulgadas del chasis.</block>
   <block id="edfea1a2881be4e7bcc10dfa9c8b3fc6" category="admonition">Si tiene dificultades para extraer el módulo del controlador, coloque los dedos de índice a través de los orificios para los dedos desde el interior (cruzando los brazos).</block>
   <block id="ae1f698aa370a20f4923c53be3433bb9" category="paragraph"><block ref="ae1f698aa370a20f4923c53be3433bb9" category="inline-image-macro-rx" type="image"></block></block>
@@ -4879,7 +4858,6 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="9385d14007f76e744745739d94bc306a" category="paragraph">Después de retirar el nodo 2, verifique que esté apagado y no conectado a la red.  Deje el hardware antiguo del nodo2 en este estado hasta que complete la actualización tanto del nodo1 como del nodo2.  Luego puede desmantelar el nodo 2 durante<block ref="0f82d37b39d321fc9b25cdd372b37e32" category="inline-link-macro-rx"></block> .</block>
   <block id="3df2e25dd62a653c7cb81686296e66ad" category="admonition">Debido a que el chasis ya está encendido, el nodo 2 inicia la inicialización del BIOS seguida del AUTOBOOT tan pronto como está completamente instalado.  Para interrumpir el arranque del nodo 2, antes de insertar completamente el módulo controlador en la ranura, se recomienda conectar los cables de administración y de consola serial al módulo controlador del nodo 2.</block>
   <block id="0c1a4b73743825276f6a94f00753ae1c" category="list-text">Conecte la consola serial tan pronto como el módulo esté instalado y prepárese para interrumpir el AUTOBOOT del nodo2.</block>
-  <block id="b83800b3bdc2a5eef7a8fe97664b1121" category="paragraph">Instale el módulo controlador AFF A90 o AFF A70 que recibió para la actualización en el nodo 2.  El nodo 2 es el controlador B ubicado en la bahía inferior del chasis cuando se miran los controladores desde la parte posterior del sistema.</block>
   <block id="4e0d7c1abfb8de7fd56ae6e56c1b7b4b" category="list-text">En la parte frontal del chasis, use los pulgares para empujar firmemente cada unidad en los compartimentos de disco superior e inferior hasta que sienta un tope positivo.  Esto garantiza que las unidades estén firmemente asentadas contra el plano medio del chasis.</block>
   <block id="a3fa441608c8038d19e72ef43c8108bc" category="section-title">Reanudar la operación de reemplazo del controlador del sistema</block>
   <block id="20d8255eb490088576c2cdeea2fb6e2a" category="list-text">Desconecte las fuentes de alimentación del módulo controlador node2 de la fuente.</block>
@@ -5356,5 +5334,49 @@ A partir de ONTAP 9.8, el<block ref="5e9ba5cfa6f3b94ec0f02e2b3ea161d9" prefix=" 
   <block id="5f2bd886a1ddbc0f18d7dda59298b8e8" category="paragraph">Después de convertir el nodo2 de AFF A250 en una estantería de unidades NS224 y conectarlo al nodo4 de AFF A400, reasigna las unidades que antes pertenecían al nodo2 al nodo4.</block>
   <block id="39f91ec3fbd4d906c846b0ee83a740e8" category="paragraph">Antes de convertir AFF A250 node1 en una estantería de unidades, migra los agregados de datos, epsilon y LIFs en node1 a AFF A400 node4.</block>
   <block id="ce2f3556362c3cfcb43ad4834d6282a4" category="paragraph">Después de convertir el nodo1 de AFF A250 en una estantería de unidades NS224 y conectarlo al nodo3 de AFF A400, reasigna al nodo3 las unidades que antes pertenecían al nodo1.</block>
-  <block id="a636e9bc040eb70e113d52373fce20bc" category="paragraph">Instala el módulo controlador AFF A90, AFF A70 o AFF C80, cablea y conecta el módulo controlador AFF A90, AFF A70 o AFF C80 en node1.</block>
+  <block id="04e23b210e0430fd6997a9fc1d8fda00" category="doc">Instala el módulo AFF A30, AFF A50, AFF C30 o AFF C60 en node2</block>
+  <block id="d9408ab5bc96e9410c367a1693dfa37a" category="summary">Instala los módulos de sistema de sustitución en node2 durante una actualización ARL de modelos de controlador en el mismo chasis.</block>
+  <block id="a4a2dd9d36b116bef402bcdf710dc709" category="doc">Instala el módulo AFF A90 o AFF A70 en node2</block>
+  <block id="e6ae8ed645d47b31d65c89bd281a2134" category="paragraph">Instala el módulo controlador AFF A90 o AFF A70 que recibiste para la actualización en node2. Node2 es el controlador B ubicado en la bahía inferior del chasis cuando miras los controladores desde la parte trasera del sistema.</block>
+  <block id="7c44b93e39110a1df5d5b1d5c7b2aa96" category="doc">Instala el módulo controlador ASA A150, AFF A150 o FAS2820 en node2</block>
+  <block id="0a5f16db0d2a164e8fb5e89418a84b7c" category="paragraph">Instala el módulo de controlador ASA A150, AFF A150 o FAS2820 que recibiste para la actualización en node2. Node2 es el controlador B ubicado en el lado derecho del chasis cuando miras los controladores desde la parte trasera del sistema.</block>
+  <block id="177d9f0d90545dcab9e666b61c7d50f8" category="section-title">Paso 1: instala el módulo NVRAM de ASA A900, AFF A900 o FAS9500</block>
+  <block id="6e154df7ee1e94fc9a1ca3cdea1b07ce" category="section-title">Paso 2: instala el módulo controlador ASA A900, AFF A900 o FAS9500</block>
+  <block id="63ec106ef1df9e11add410bfee39c255" category="paragraph">Sustituye el controlador y los módulos NVRAM del nodo1 AFF A700 o FAS9000 por el controlador y los módulos NVRAM ASA A900, AFF A900 o FAS9500.</block>
+  <block id="f068fd46a83c2c7cc89a6914580e1fe8" category="section-title">Paso 1: quita el módulo controlador AFF A700 o FAS9000</block>
+  <block id="6ede165fbcdd9ed79328813d3b4841c1" category="paragraph">Separa y retira el módulo controlador AFF A700 o FAS9000 del nodo1.</block>
+  <block id="65f3134141aa5c0f8155431d84cb2403" category="section-title">Paso 2: quitar el módulo NVRAM del AFF A700 o FAS9000</block>
+  <block id="ea74aa661bf9ba2c79c2b33036d932a4" category="paragraph">Desbloquea y quita el módulo NVRAM del node1 AFF A700 o FAS9000.</block>
+  <block id="5d14417f8702231142efb65651cceb29" category="section-title">Paso 3: instala el módulo NVRAM de ASA A900, AFF A900 o FAS9500</block>
+  <block id="03b810b0757f0f71cebb2860f21b9ecc" category="paragraph">Instala, cablea y conecta el módulo NVRAM del ASA A900, AFF A900 o FAS9500 en node1.</block>
+  <block id="72c43a13e28b3b256c59b033aebd13e3" category="section-title">Paso 4: instala el módulo controlador ASA A900, AFF A900 o FAS9500 en node1.</block>
+  <block id="689243b43cadf776afe30e85949066b8" category="paragraph">Instala, cablea y conecta el módulo controlador ASA A900, AFF A900 o FAS9500 en node1.</block>
+  <block id="99857e10071c8cc3859b61ac27506dc7" category="paragraph">Sustituye el módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720 del nodo1 por un módulo controlador ASA A150, AFF A150 o FAS2820.</block>
+  <block id="fd145079b47a0096f42999dff507ae5f" category="section-title">Paso 1: quita el módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720</block>
+  <block id="aca73c2838bbbb7d9f0c302c344d2f3e" category="paragraph">Para acceder a los componentes dentro del controlador node1, retira el módulo del controlador del sistema y luego quita la cubierta del módulo del controlador.</block>
+  <block id="d42c2b83a79bc8106d3e93d7c46a08ea" category="doc">Sustituye el módulo controlador AFF A250 o AFF C250 de node1</block>
+  <block id="cab5820b2e113949ed5605f5691f01eb" category="paragraph">Reemplaza el módulo controlador AFF A250 o AFF C250 del nodo1 por un módulo controlador AFF A30, AFF A50, AFF C30 o AFF C60.</block>
+  <block id="dc3246454c20434eaed50f263f08775c" category="section-title">Paso 1: quitar el módulo controlador AFF A250 o AFF C250</block>
+  <block id="121951e57696e257502866d280fc89a1" category="paragraph">Para quitar el módulo controlador node1, retira el dispositivo de gestión de cables y desbloquea los pestillos de bloqueo. Luego, quita el módulo controlador del chasis.</block>
+  <block id="a431e3799c389bc434ccd297a4270782" category="doc">Sustituye el módulo controlador AFF A800 o AFF C800 del nodo1</block>
+  <block id="9bf660b6d88b976d50b98515b454303f" category="paragraph">Reemplaza el módulo controlador AFF A800 o AFF C800 del nodo1 por un módulo controlador AFF A90, AFF A70 o AFF C80.</block>
+  <block id="f5ea8a442f248d14db9a4a73a74e09b9" category="paragraph">En esta etapa, el nodo1 está fuera de servicio y todos los datos son servidos por el nodo2. Debes tener cuidado de quitar solo el módulo controlador del nodo1. Cuando miras los controladores desde la parte trasera del sistema, los controladores están apilados, con el controlador A normalmente en la parte superior. La etiqueta del controlador está en el chasis directamente encima del módulo controlador.</block>
+  <block id="44ecd3ac2c3d2517dbce4ace3b8fdaa3" category="section-title">Paso 1: quita el módulo controlador AFF A800 o AFF C800</block>
+  <block id="f99730af9be6d0ddfed8360f6fa22c6f" category="paragraph">Retira el dispositivo de gestión de cables del módulo node1 existente y mueve el controlador ligeramente fuera del chasis.</block>
+  <block id="68a049bced7a424143a07b55f349d548" category="list-text">Asegúrate de que todas las unidades del chasis estén firmemente asentadas contra el plano medio usando tus pulgares para empujar cada unidad hasta que sientas un tope positivo.</block>
+  <block id="5bbe8c98797b09c1ebb6c43782af51b5" category="video-title">Vídeo: confirma la colocación de la unidad</block>
+  <block id="5a2582e097121b5d7fd80a0df8885819" category="inline-image-macro">Coloca las unidades</block>
+  <block id="fc2b32ecd5a5373aca8a37f772fcb524" category="paragraph"><block ref="fc2b32ecd5a5373aca8a37f772fcb524" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="653bb4f5a64f1289bbe50fd8bff75a77" category="list-text">Revisa las unidades controladoras según el estado del sistema:</block>
+  <block id="b1180089c9de95b9a4df24a2a6f5f314" category="list-text">En la controladora sana, verifica si algún grupo RAID activo está en estado degradado, en estado de fallo o en ambos:</block>
+  <block id="d3738177ad832df0e099b0a175ecfd41" category="inline-xref">ve al siguiente subpaso para comprobar si faltan unidades de disco</block>
+  <block id="141c42dce73f2b74854e5e13b953c15d" category="list-text">Si el comando devuelve<block ref="ff552bb89260932a935c259f2e059d29" prefix=" " category="inline-code"></block>, continúa en <block ref="7d36e07de3bacab12ecbd7db0b12c345" category="inline-xref-macro-rx"></block>.</block>
+  <block id="0772d56fc2d341eab9a081d1123053df" category="list-text">Si el comando devuelve cualquier otro resultado, recopila los datos de AutoSupport de ambos controladores y contacta a NetApp Support para más ayuda.</block>
+  <block id="c84a6dd36530e6693a4e883dea830b49" category="list-text">[[Check-missing-drives]]Comprueba si faltan unidades tanto en el sistema de archivos como en las unidades de repuesto:</block>
+  <block id="1b85bf2d98246a22962246a50e9d1d61" category="inline-xref">ir al siguiente paso</block>
+  <block id="295425903ab858c790d5d7e5439268fe" category="list-text">Si el comando devuelve<block ref="ff552bb89260932a935c259f2e059d29" prefix=" " category="inline-code"></block>, continúa en <block ref="a60fa4bc4bcb0cbd6997b97ce229ccd8" category="inline-xref-macro-rx"></block>.</block>
+  <block id="8a5368755aa7e797c228749aac78e86f" category="list-text">[[quitar-cables-de-energía]]Quita los retenedores de los cables de alimentación y luego desconecta los cables de las fuentes de alimentación.</block>
+  <block id="061f5aacc4ad4bf1188f94219f3b6e15" category="section-title">Paso 2: instala el módulo controlador AFF A90, AFF A70 o AFF C80</block>
+  <block id="1c11a10891fa20f98660572f553b2716" category="paragraph">Instala, cablea y conecta el módulo controlador AFF A90, AFF A70 o AFF C80 en node1.</block>
+  <block id="027cb97f7c47a83a65901ff25c4e441c" category="admonition">Cuando insertes el módulo controlador node1 en el siguiente paso, node1 iniciará inmediatamente la inicialización de la BIOS seguida de AUTOBOOT porque el chasis ya está encendido. Evitas este AUTOBOOT conectando los cables serie y de consola antes de insertar el módulo.</block>
 </blocks>
