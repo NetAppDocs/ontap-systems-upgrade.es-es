@@ -144,7 +144,7 @@ image:black_circle_two.png["Número dos"]
 
 
 
-== Paso 4: instala el módulo controlador ASA A900, AFF A900 o FAS9500 en node1.
+== Paso 4: instala el módulo controlador ASA A900, AFF A900 o FAS9500 en node1
 
 Instala, cablea y conecta el módulo controlador ASA A900, AFF A900 o FAS9500 en node1.
 

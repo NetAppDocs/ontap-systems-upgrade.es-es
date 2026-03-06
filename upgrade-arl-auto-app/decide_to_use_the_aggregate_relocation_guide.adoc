@@ -29,9 +29,9 @@ Para actualizar las configuraciones IP de MetroCluster, consulte link:other_refe
 
 [NOTE]
 ====
-* Si está actualizando un sistema intercambiando módulos de controlador en el mismo chasis, como AFF A800 o AFF C800, NetApp recomienda encarecidamente utilizar el procedimiento de actualización quelink:../upgrade-arl-auto-in-chassis/index.html["actualiza los modelos de controlador mediante ARL, manteniendo el chasis y los discos del sistema existentes"] .  Este procedimiento ARL incluye los pasos que garantizan que los discos internos permanezcan seguros en el chasis cuando quita e instala los controladores durante el procedimiento de actualización.
+* Si vas a actualizar un sistema intercambiando módulos de controladora en el mismo chasis, como AFF A800 o AFF C800, NetApp recomienda encarecidamente usar el procedimiento de actualización que link:../upgrade-arl-auto-in-chassis/index.html["actualiza los modelos de controladores usando ARL, manteniendo el chasis del sistema, los discos y los datos existentes"]. Este procedimiento ARL incluye los pasos que aseguran que los discos internos permanezcan seguros en el chasis cuando quites e instales las controladoras durante el procedimiento de actualización.
 +
-link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["Obtenga información sobre las combinaciones de actualización del sistema compatibles mediante ARL, manteniendo el chasis y los discos del sistema existentes"].
+link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["Conoce las combinaciones de actualización de sistemas compatibles usando ARL, manteniendo el chasis, los discos y los datos del sistema existente"].
 
 * Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de volúmenes de NetApp (NVE) y el cifrado de agregados de NetApp (NAE) con este procedimiento.
 
@@ -72,6 +72,9 @@ La siguiente tabla muestra la matriz de sistemas compatibles para realizar una a
 
 
 | AFF A400, AFF A700 | AFF A900 
+
+
+| FAS2620^4^, FAS2720^4^ | FAS2820 
 |===
 
 NOTE: Si la combinación de modelo de actualización de la controladora no está en la tabla anterior, póngase en contacto con el soporte técnico.
@@ -87,7 +90,7 @@ NOTE: Si la combinación de modelo de actualización de la controladora no está
 
 Esta versión 3 para actualizaciones de sistemas FAS8020, FAS8040, AFF8020 y AFF8040 a las controladoras de sustitución de destino enumeradas en la tabla anterior; las controladoras de reemplazo deben ejecutar la misma versión de ONTAP que la controladora anterior. Tenga en cuenta que los sistemas FAS8020, FAS8040, AFF8020 y AFF8040 no admiten las versiones de ONTAP posteriores a ONTAP 9.8.
 
-Esta 4 la siguiente tabla muestra las versiones ONTAP mínimas y posteriores admitidas para estas combinaciones de actualizaciones de controladores.
+^4^La siguiente tabla muestra las versiones de ONTAP compatibles para las combinaciones de actualización de controladoras.
 
 [cols="20,30,20,30"]
 |===
@@ -97,7 +100,10 @@ Esta 4 la siguiente tabla muestra las versiones ONTAP mínimas y posteriores adm
 | Sistema | Versión de ONTAP | Sistema | Versión de ONTAP 
 
 
-| AFF A320 | 9.9.1 o posterior | AFF A400 | 9.9.1 o posterior 
+| FAS2720 | 9.13.1 o posterior | FAS2820 | 9.13.1 o posterior 
+
+
+| FAS2760 | 9.11.1P7 o anterior | FAS2820 | 9.13.1 o posterior 
 
 
 | AFF8060 | 9.8P13 o parches posteriores | AFF A900 | 9.10.1 a 9.12.1 
@@ -110,6 +116,9 @@ Esta 4 la siguiente tabla muestra las versiones ONTAP mínimas y posteriores adm
 
 
 | FAS8080 | Parches 9.8P12 o posteriores | FAS9500 | 9.10.1P3 a 9.12.1 
+
+
+| AFF A320 | 9.9.1 o posterior | AFF A400 | 9.9.1 o posterior 
 |===
 [NOTE]
 ====

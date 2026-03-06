@@ -6,9 +6,9 @@ entries:
   url: "/upgrade/upgrade-decide-to-use-this-guide.html"
 - title: Consideraciones
   url: "/upgrade/upgrade-considerations.html"
-- title: Actualizar moviendo almacenamiento
+- title: Mover almacenamiento
   entries:
-  - title: Flujo de trabajo
+  - title: Conoce cómo actualizar moviendo el almacenamiento
     url: "/upgrade/upgrade-by-moving-storage-parent.html"
   - title: Prepare
     url: "/upgrade/upgrade-prepare-when-moving-storage.html"
@@ -48,9 +48,9 @@ entries:
         url: "/upgrade/upgrade-map-network-ports-ontap-9-7-or-earlier.html"
       - title: Realice los últimos pasos en ONTAP 9.7 o anterior
         url: "/upgrade/upgrade-final-steps-ontap-9-7-or-earlier-move-storage.html"
-- title: Actualizar moviendo volúmenes
+- title: Mover volúmenes
   entries:
-  - title: Flujo de trabajo
+  - title: Conoce cómo actualizar moviendo volúmenes
     url: "/upgrade/upgrade-by-moving-volumes-parent.html"
   - title: Prepare
     url: "/upgrade/upgrade-prepare-when-moving-volumes.html"
@@ -68,39 +68,41 @@ entries:
     url: "/upgrade/upgrade-remove-original-nodes.html"
   - title: Se completó la actualización
     url: "/upgrade/upgrade-complete-move-volumes.html"
-- title: Actualización de AFF A250 a AFF A400
+- title: Convierte en un estante de unidades y mueve el almacenamiento
   entries:
-  - title: Obtenga información sobre cómo actualizar AFF A250 a AFF A400
-    url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
-  - title: Migre LIF y agregados de datos de node2 a node1
-    url: "/upgrade/upgrade_migrate_lifs_aggregates_node2_to_node1.html"
-  - title: Convierta node2 en una bandeja de unidades y conéctela a node4
-    url: "/upgrade/upgrade_convert_node2_drive_shelf_connect_node4.html"
-  - title: Reasignar unidades de node2 a node4
-    url: "/upgrade/upgrade_reassign_drives_node2_to_node4.html"
-  - title: Migre agregados de datos, épsilon y LIF en node1 a node4
-    url: "/upgrade/upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html"
-  - title: Convierta node1 en una bandeja de unidades y conéctela a node3
-    url: "/upgrade/upgrade_convert_node1_drive_shelf_connect_node3.html"
-  - title: Reasignar unidades de node1 a node3
-    url: "/upgrade/upgrade_reassign_drives_node1_to_node3.html"
-  - title: Migre LIF y agregados de datos de node4 a node3
-    url: "/upgrade/upgrade_migrate_lIFs_aggregates_node4_node3.html"
-- title: Actualización desde FAS2820
-  entries:
-  - title: Obtenga más información sobre la actualización desde FAS2820
-    url: "/upgrade/convert-fas2820-to-drive-shelf.html"
-  - title: Migre LIF y agregados de datos de node2 a node1
-    url: "/upgrade/migrate-fas2820-node2-lifs-aggregates.html"
-  - title: Convierta node2 en una bandeja de unidades y conéctela a node4
-    url: "/upgrade/convert-fas2820-node2-drive-shelf.html"
-  - title: Reasignar unidades de node2 a node4
-    url: "/upgrade/reassign-fas2820-node2-drives.html"
-  - title: Migre agregados de datos, épsilon y LIF en node1 a node4
-    url: "/upgrade/migrate-fas2820-aggregates-epsilon-lifs.html"
-  - title: Convierta node1 en una bandeja de unidades y conéctela a node3
-    url: "/upgrade/convert-fas2820-node1-drive-shelf.html"
-  - title: Reasignar unidades de node1 a node3
-    url: "/upgrade/reassign-fas2820-node1-drives.html"
-  - title: Migre LIF y agregados de datos de node4 a node3
-    url: "/upgrade/migrate-fas2820-node4-lIfs-aggregates.html"
+  - title: Actualización de AFF A250 a AFF A400
+    entries:
+    - title: Obtenga información sobre cómo actualizar AFF A250 a AFF A400
+      url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
+    - title: Migre LIF y agregados de datos de node2 a node1
+      url: "/upgrade/upgrade_migrate_lifs_aggregates_node2_to_node1.html"
+    - title: Convierta node2 en una bandeja de unidades y conéctela a node4
+      url: "/upgrade/upgrade_convert_node2_drive_shelf_connect_node4.html"
+    - title: Reasignar unidades de node2 a node4
+      url: "/upgrade/upgrade_reassign_drives_node2_to_node4.html"
+    - title: Migre agregados de datos, épsilon y LIF en node1 a node4
+      url: "/upgrade/upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html"
+    - title: Convierta node1 en una bandeja de unidades y conéctela a node3
+      url: "/upgrade/upgrade_convert_node1_drive_shelf_connect_node3.html"
+    - title: Reasignar unidades de node1 a node3
+      url: "/upgrade/upgrade_reassign_drives_node1_to_node3.html"
+    - title: Migre LIF y agregados de datos de node4 a node3
+      url: "/upgrade/upgrade_migrate_lIFs_aggregates_node4_node3.html"
+  - title: Actualiza AFF A150, AFF A220 o FAS2820
+    entries:
+    - title: Conoce cómo actualizar AFF A150, AFF A220 o FAS2820
+      url: "/upgrade/convert-to-drive-shelf.html"
+    - title: Migre LIF y agregados de datos de node2 a node1
+      url: "/upgrade/migrate-node2-lifs-aggregates.html"
+    - title: Convierta node2 en una bandeja de unidades y conéctela a node4
+      url: "/upgrade/convert-node2-to-drive-shelf.html"
+    - title: Reasignar unidades de node2 a node4
+      url: "/upgrade/reassign-node2-drives.html"
+    - title: Migre agregados de datos, épsilon y LIF en node1 a node4
+      url: "/upgrade/migrate-aggregates-epsilon-lifs.html"
+    - title: Convierta node1 en una bandeja de unidades y conéctela a node3
+      url: "/upgrade/convert-node1-to-drive-shelf.html"
+    - title: Reasignar unidades de node1 a node3
+      url: "/upgrade/reassign-node1-drives.html"
+    - title: Migre LIF y agregados de datos de node4 a node3
+      url: "/upgrade/migrate-node4-lifs-aggregates.html"

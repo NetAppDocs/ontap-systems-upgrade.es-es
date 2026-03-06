@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: upgrade 
 summary: Si va a actualizar moviendo almacenamiento, debe preparar los nodos originales y configurar los nuevos. Algunos modelos de plataforma admiten la transferencia de almacenamiento interno a los nuevos nodos. Debe reasignar discos y restaurar la configuración de volumen raíz a los nodos nuevos y configurar puertos de red. La actualización moviendo almacenamiento es un procedimiento disruptivo. 
 ---
-= Actualización moviendo el flujo de trabajo de almacenamiento
+= Conoce cómo actualizar moviendo el almacenamiento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -70,5 +70,5 @@ Complete la actualización en ONTAP 9.8 o posterior, o ONTAP 9.7 o anterior.
 
 .Información relacionada
 * link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Actualice AFF A250 a AFF A400 mediante la conversión a una bandeja de unidades"](procedimiento no disruptivo)
-* link:convert-fas2820-to-drive-shelf.html["Actualización de FAS2820 mediante la conversión a un estante de unidad"](procedimiento no disruptivo)
+* link:convert-to-drive-shelf.html["Actualiza desde AFF A150, AFF A220 o FAS2820 convirtiéndolo en un estante de unidad"] (actualización no disruptiva)
 

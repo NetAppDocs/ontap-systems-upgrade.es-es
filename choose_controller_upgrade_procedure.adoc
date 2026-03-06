@@ -44,9 +44,11 @@ Esto requiere unir los nuevos nodos, mover los volúmenes y las LIF a los nuevos
 +
 ARL es un procedimiento de reemplazo.  No es necesario expandir ni reducir el clúster con los nuevos nodos, lo cual resulta beneficioso para clústeres sin conmutador de dos nodos.  Al mover volúmenes, trasladar datos mediante la reubicación de agregados es más rápido que copiar datos entre agregados.
 
-* link:upgrade/upgrade-decide-to-use-this-guide.html["Mover almacenamiento"]
+* Convierte el sistema original en un estante para unidades y traslada el almacenamiento:
 +
-Puedes actualizar sin interrupciones de un AFF A250 a un AFF A400 o de un FAS2820 a un sistema de sustitución convirtiendo los nodos originales en estanterías de unidades y luego conectando las estanterías de unidades a los nodos de sustitución para mover el almacenamiento a bordo.
+** link:upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Convierte el AFF A250 en un estante para unidades y mueve el almacenamiento al AFF A400"]
+** link:upgrade/convert-to-drive-shelf.html["Convierte AFF A150, AFF A220 o FAS2820 en un estante para unidades y mueve el almacenamiento a un sistema de reemplazo compatible"]
+
 
 
 
@@ -62,7 +64,7 @@ Puedes actualizar sin interrupciones de un AFF A250 a un AFF A400 o de un FAS282
 
 
 
-| ¿Tengo un sistema integrado y quiero actualizarlo cambiando solo el módulo controlador, conservando el chasis y los discos existentes? | link:upgrade-arl-auto-affa900/index.html["Actualice utilizando ARL, manteniendo el mismo chasis y discos."]. 
+| ¿Tengo un sistema integrado y quiero actualizarlo cambiando solo el módulo controlador, conservando el chasis y los discos existentes? | link:upgrade-arl-auto-in-chassis/index.html["Actualice utilizando ARL, manteniendo el mismo chasis y discos."]. 
 
 
 | ¿Estoy reubicando una SVM? | Referirse alink:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html#svm-migration-workflow["Descripción general de la movilidad de datos de SVM"^] . 

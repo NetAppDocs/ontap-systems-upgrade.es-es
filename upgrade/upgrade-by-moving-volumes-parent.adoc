@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: upgrade by moving volumes 
 summary: Si estás actualizando moviendo volúmenes, preparas los nodos originales y unes los nuevos nodos al clúster. Mueves los volúmenes a los nuevos nodos, configuras los LIF y retiras los nodos originales del clúster. Actualizar moviendo volúmenes es una actualización no disruptiva. 
 ---
-= Flujo de trabajo de actualización mediante el movimiento de volúmenes
+= Conoce cómo actualizar moviendo volúmenes
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -14,7 +14,7 @@ summary: 'Decida si desea utilizar ARL para actualizar las controladoras que eje
 
 
 [role="lead"]
-Existen varios métodos de reubicación agregada (ARL) para actualizar el hardware de las controladoras. Este procedimiento de ARL describe cómo actualizar un par de controladoras de alta disponibilidad (HA) en sistemas de almacenamiento AFF y FAS introducidos en ONTAP 9.15.1 o posterior con nuevas controladoras, conservando los datos y discos existentes. Este procedimiento complejo solo debe ser utilizado por administradores de ONTAP con experiencia.
+Existen varios métodos de reubicación de agregados (ARL) para actualizar el hardware de los controladores. Este procedimiento de ARL describe cómo actualizar un par de controladores de HA en sistemas de almacenamiento AFF y FAS introducidos en ONTAP 9.15.1 o posterior con nuevos controladores, manteniendo los discos y los datos almacenados existentes. Este es un procedimiento complejo que solo deberían usar administradores de ONTAP con experiencia.
 
 Para ayudarlo a decidir si este procedimiento ARL es adecuado para la actualización del hardware de su controlador, debe revisar todas las siguientes circunstancias para actualizaciones compatibles y no compatibles.
 

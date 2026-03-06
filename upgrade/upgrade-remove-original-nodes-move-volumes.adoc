@@ -20,8 +20,6 @@ Después de mover los volúmenes de los nodos originales a los nuevos y mover o 
 ----
 storage failover modify -node <original_node_name> -enabled false
 ----
-
-
 . Cambia el nivel de privilegio a avanzado:
 +
 [source, cli]
@@ -167,7 +165,7 @@ set -privilege admin
 ----
 
 
-. Repetir pasos <<disable-ha,1>> a <<return-admin,10>> para eliminar el socio de conmutación por error del clúster.
+. Repite los pasos <<disable-ha,2>> a <<return-admin,11>> para eliminar el failover partner del clúster.
 . Si el clúster solo tiene dos nodos restantes, configure la alta disponibilidad para el clúster de dos nodos:
 +
 [source, cli]

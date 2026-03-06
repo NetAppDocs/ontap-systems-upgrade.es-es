@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html 
 keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
-summary: Decidir si utilizar el procedimiento ARL que actualiza los modelos de controladora en el mismo chasis. 
+summary: Decide si vas a usar el procedimiento ARL que actualiza los modelos de controladoras en el mismo chasis, discos y los datos almacenados en los discos. 
 ---
 = Decidir si se utilizará este procedimiento de reubicación agregada
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Decidir si utilizar el procedimiento ARL que actualiza los modelos de c
 
 
 [role="lead"]
-Existen varios métodos de reubicación agregada (ARL) para actualizar el hardware de las controladoras. Este contenido describe cómo actualizar las controladoras de almacenamiento en un par de alta disponibilidad (HA) convirtiendo el sistema existente en el sistema de reemplazo, conservando el chasis y los discos del sistema existente. Solo debe usar este complejo procedimiento si es un administrador de ONTAP con experiencia.
+Existen varios métodos de reubicación de agregados (ARL) para actualizar el hardware de los controladores. Este contenido explica cómo actualizar los controladores de almacenamiento en un par de HA convirtiendo el sistema existente en el sistema de reemplazo, manteniendo el chasis del sistema existente, los discos y los datos almacenados en los discos. Deberías usar este procedimiento complejo solo si eres un administrador de ONTAP con experiencia.
 
 Para ayudarlo a decidir si este procedimiento ARL es adecuado para la actualización del hardware de su controlador, debe revisar todas las siguientes circunstancias para actualizaciones compatibles y no compatibles.
 
@@ -58,7 +58,7 @@ Para actualizar una configuración IP de MetroCluster, consulte link:other_refer
 
 == Combinaciones de actualización del sistema admitidas
 
-La siguiente tabla muestra la matriz de sistemas compatibles para realizar una actualización del controlador convirtiendo el sistema existente al sistema de reemplazo, conservando el chasis y los discos del sistema existente.
+La siguiente tabla muestra la matriz de sistemas compatibles para realizar una actualización del controlador convirtiendo el sistema existente en el sistema de reemplazo, manteniendo el chasis del sistema existente, los discos y los datos almacenados en ellos.
 
 
 CAUTION: Este procedimiento se aplica estrictamente a las siguientes configuraciones de actualización. No utilice este procedimiento para realizar una actualización entre cualquier otra combinación del sistema. Para el resto de modelos de controladora, consulte link:other_references.html["Referencias"]el enlace a _utilice los comandos «system controller replace» para actualizar el hardware de la controladora con ONTAP 9,8 o posterior_ y _utilizando la reubicación de agregados para actualizar manualmente el hardware de la controladora con ONTAP 9,8 o posterior_.

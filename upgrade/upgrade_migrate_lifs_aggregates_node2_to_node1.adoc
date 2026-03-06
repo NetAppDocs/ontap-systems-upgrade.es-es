@@ -30,10 +30,9 @@ Compruebe que cumple los siguientes requisitos:
 * Dispone de todos los cables adecuados a mano.
 
 
-.Acerca de esta tarea
-Los siguientes pasos se realizan en AFF A250 node1.
-
 .Pasos
+Realiza estos pasos en el nodo AFF A2501.
+
 . Acceda al nivel de privilegio avanzado:
 +
 `set -privilege advanced`

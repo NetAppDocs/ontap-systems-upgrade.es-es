@@ -16,10 +16,9 @@ Después de convertir AFF A250 node2 a una bandeja de unidades NS224 y conectars
 .Antes de empezar
 Compruebe que tanto node3 como node4 están en espera en el aviso del CARGADOR.
 
-.Acerca de esta tarea
-Realice los siguientes pasos en node4.
-
 .Pasos
+Realiza estos pasos en el nodo AFF A400 node4.
+
 . En el símbolo del SISTEMA DEL CARGADOR, arranque node4 en Modo de mantenimiento:
 +
 `boot_ontap maint`

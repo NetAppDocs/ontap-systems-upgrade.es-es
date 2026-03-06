@@ -48,7 +48,7 @@ image:drw_2240_x_opening_cam_latch.png["Apertura de la palanca de leva"]
 
 
 
-== Instale el módulo de controlador ASA A150, AFF A150 o FAS2820
+== Paso 2: instala el módulo controlador ASA A150, AFF A150 o FAS2820
 
 Instale, cablee y conecte el módulo de controlador ASA A150, AFF A150 o FAS2820 en node1.
 

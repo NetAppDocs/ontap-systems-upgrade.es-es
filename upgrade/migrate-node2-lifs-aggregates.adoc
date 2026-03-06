@@ -1,22 +1,22 @@
 ---
-permalink: upgrade/migrate-fas2820-node2-lifs-aggregates.html 
+permalink: upgrade/migrate-node2-lifs-aggregates.html 
 sidebar: sidebar 
-keywords: fas2820, ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
-summary: 'Migre las interfaces lógicas (LIF) y los agregados de datos del nodo 2 de FAS2820 al nodo 1 antes de convertir el nodo 2 en un estante de unidades.' 
+keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
+summary: 'Migra las interfaces lógicas (LIF) y los agregados de datos de node2 a node1 antes de convertir node2 en una estantería de unidades.' 
 ---
-= Migrar LIF y agregados de datos del nodo 2 de FAS2820 al nodo 1
+= Migre LIF y agregados de datos de node2 a node1
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Migre las interfaces lógicas (LIF) y los agregados de datos del nodo 2 de FAS2820 al nodo 1 antes de convertir el nodo 2 en un estante de unidades.
+Migra las interfaces lógicas (LIF) y los agregados de datos de node2 a node1 antes de convertir node2 en una estantería de unidades.
 
 .Antes de empezar
 Compruebe que cumple los siguientes requisitos:
 
-* Los controladores FAS2820 y de reemplazo tienen la misma versión de parche y lanzamiento de ONTAP , cuando es posible.  Consulte la https://hwu.netapp.com["Hardware Universe de NetApp"^] para versiones compatibles de ONTAP .
+* Los controladores original y de sustitución tienen la misma versión de ONTAP y el mismo parche, cuando sea posible. Consulta la  https://hwu.netapp.com["Hardware Universe de NetApp"^] para ver las versiones de ONTAP compatibles.
 
 
 [NOTE]
@@ -31,10 +31,9 @@ Compruebe que cumple los siguientes requisitos:
 * Todo el cableado necesario está disponible.
 
 
-.Acerca de esta tarea
-Los siguientes pasos se realizan en el nodo 1 de FAS2820 .
-
 .Pasos
+Realiza estos pasos en node1.
+
 . Acceda al nivel de privilegio avanzado:
 +
 [source, cli]
@@ -144,4 +143,4 @@ halt -node <node2> -inhibit-takeover true -ignore-quorum-warnings true
 
 
 .El futuro
-link:convert-fas2820-node2-drive-shelf.html["Convierta node2 en una bandeja de unidades y conéctela a node4"]
+link:convert-node2-to-drive-shelf.html["Convierta node2 en una bandeja de unidades y conéctela a node4"]
