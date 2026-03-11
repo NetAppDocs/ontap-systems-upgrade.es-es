@@ -50,10 +50,10 @@ Necesitas considerar factores importantes antes de empezar la actualización.
 
 NOTE: Debes revisar toda la siguiente información importante.
 
-* Este procedimiento es complejo y presupone que tienes habilidades avanzadas de administración de ONTAP. Debes leer y entender link:guidelines_for_upgrading_controllers_with_arl.html["Pautas para actualizar los controladores"] y link:overview_of_the_arl_upgrade.html["Secuencia de actualización de ARL"] antes de empezar la actualización.
+* Este procedimiento es complejo y presupone que tienes habilidades avanzadas de administración de ONTAP. Debes leer y entender link:guidelines-for-upgrading-controllers-with-arl.html["Pautas para actualizar los controladores"] y link:overview-of-the-arl-upgrade.html["Secuencia de actualización de ARL"] antes de empezar la actualización.
 * En este procedimiento se asume que el hardware de la controladora de reemplazo es nuevo y no se ha usado en otro sistema. Los pasos necesarios para preparar las controladoras usadas con el `wipeconfig` el comando no se incluye en este procedimiento. Debe ponerse en contacto con el soporte técnico si el hardware de la controladora de reemplazo se utilizó anteriormente como parte de otro clúster de ONTAP o como sistema de un único nodo independiente.
 * Puede usar este procedimiento para actualizar el hardware de la controladora en clústeres con más de dos nodos; sin embargo, debe realizar el procedimiento por separado para cada pareja de alta disponibilidad del clúster.
-* Si tiene un switch que no es compatible con la versión de ONTAP y el sistema de sustitución al que está actualizando, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_.
+* Si tienes un switch que no es compatible con la versión de ONTAP y el sistema de reemplazo al que estás actualizando, consulta link:other-references.html["Referencias"] para enlazar con el _Hardware Universe_.
 * Los sistemas AFF A250 y AFF C250 utilizan puertos integrados de 10/25 GbE para la interconexión de clústeres. Para actualizar clústeres sin conmutador de dos nodos de un sistema AFF A250 o AFF C250 a un sistema AFF A50, AFF A30, AFF C60 o AFF C30, debe usar una tarjeta X60132A de 4 puertos de 10/25 GbE en la ranura 1 de ambos nodos. Esto proporciona interconexión de clústeres para los LIF de clúster a un puerto temporal en la plataforma de destino.
 * Los sistemas AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60, AFF C80, FAS70 y FAS90 comparten 100GbE puertos de red para conexiones de clúster y de alta disponibilidad. Estos sistemas pueden admitir conexiones de clúster 10GbE o 25GbE a switches de clúster heredados; sin embargo, NetApp recomienda actualizar a las velocidades de clúster de 100GbE GbE cuando los switches 10GbE y 25GbE ya no sean necesarios. Para obtener más información, consulte los siguientes artículos de la base de conocimientos:
 +
@@ -72,7 +72,7 @@ Si no puede conectar los puertos de clúster e0a o e0b del nodo existente a los 
 
 
 * Los sistemas ASA A900, AFF A900 y FAS9500 solo admiten energía de línea alta (de 200V V a 240V V CA). Si su sistema A700 o FAS9000 de AFF se ejecuta con una alimentación de línea baja (de 100 V a 120 V), debe convertir la alimentación de entrada de AFF A700 o FAS9000 antes de utilizar este procedimiento.
-* Si estás actualizando desde un sistema existente con tiempo de inactividad incluido en el link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["matriz de sistemas compatibles"], puedes actualizar el hardware del controlador moviendo el almacenamiento o contactando al soporte técnico. Consulta link:other_references.html["Referencias"] para enlazar con _actualización moviendo volúmenes o almacenamiento_.
+* Si estás actualizando desde un sistema existente con tiempo de inactividad incluido en el link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["matriz de sistemas compatibles"], puedes actualizar el hardware del controlador moviendo el almacenamiento o contactando al soporte técnico. Consulta link:other-references.html["Referencias"] para enlazar con _actualización moviendo volúmenes o almacenamiento_.
 
 
 

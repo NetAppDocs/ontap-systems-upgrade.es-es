@@ -11,7 +11,7 @@ summary: Convierte node2 en un estante de unidades y conéctalo a node4 antes de
 
 
 [role="lead"]
-Convierte el nodo2 en un estante de unidades y conéctalo al nodo4 antes de reasignar las unidades del nodo2 al nodo4. El nodo1 y el nodo2 son los controladores dentro del estante de unidades.
+Convierte el nodo2 de AFF A150, AFF A220 o FAS2820 en un estante de unidades y conéctalo al nodo4 antes de reasignar las unidades del nodo2 al nodo4. El nodo1 y el nodo2 son los controladores dentro del estante de unidades.
 
 .Pasos
 . Desconecte todos los cables de red de node2.

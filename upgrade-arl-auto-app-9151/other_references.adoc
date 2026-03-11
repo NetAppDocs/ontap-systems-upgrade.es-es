@@ -48,13 +48,7 @@ El contenido específico de esta actualización se muestra en la siguiente tabla
 | link:https://docs.netapp.com/us-en/ontap/network-management/index.html["Gestión de redes"^] | Describe cómo configurar y gestionar puertos de red físicos y virtuales (VLAN y grupos de interfaces), LIF, enrutamiento y servicios de resolución de hosts en clústeres; además, describe cómo optimizar el tráfico de red con el equilibrio de carga y cómo supervisar el clúster mediante SNMP. 
 
 
-| link:https://docs.netapp.com/us-en/ontap-cli-9131/index.html["Comandos de ONTAP 9.13.1: Referencia de páginas del manual"^] | Describe la sintaxis y el uso de los comandos de ONTAP 9.13.1 admitidos. 
-
-
-| link:https://docs.netapp.com/us-en/ontap-cli-9141/index.html["Comandos de ONTAP 9.14.1: Referencia de páginas del manual"^] | Describe la sintaxis y el uso de los comandos de ONTAP 9.14.1 admitidos. 
-
-
-| link:https://docs.netapp.com/us-en/ontap-cli/index.html["Comandos de ONTAP 9.15.1: Referencia de páginas del manual"^] | Describe la sintaxis y el uso de los comandos de ONTAP 9.15.1 admitidos. 
+| link:https://docs.netapp.com/us-en/ontap-cli/index.html["Referencia de comandos de ONTAP 9"^] | Describe la sintaxis y el uso de los comandos compatibles de ONTAP 9. 
 
 
 | link:https://docs.netapp.com/us-en/ontap/san-admin/index.html["Gestión DE SAN con CLI"^] | Describe cómo configurar y gestionar LUN, iGroups y objetivos mediante los protocolos iSCSI y FC, así como los espacios de nombres y subsistemas mediante el protocolo NVMe/FC. 

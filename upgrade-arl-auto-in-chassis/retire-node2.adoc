@@ -63,4 +63,4 @@ El módulo de la controladora se mueve ligeramente fuera del chasis.
 
 
 .Después de terminar
-Puede retirar el nodo 2 una vez completada la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].
+Puedes decomisionar node2 después de que se complete la actualización. Consulta link:decommission-old-system.html["Retire el sistema antiguo"].

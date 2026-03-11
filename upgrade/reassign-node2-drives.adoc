@@ -2,7 +2,7 @@
 permalink: upgrade/reassign-node2-drives.html 
 sidebar: sidebar 
 keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
-summary: Después de convertir node2 en un estante de unidades y conectarlo a node4, reasignas las unidades que antes pertenecían a node2 a node4. 
+summary: Después de convertir el nodo2 de AFF A150, AFF A220 o FAS2820 en una estantería de unidades y conectarlo al nodo4, reasignas las unidades que antes pertenecían al nodo2 al nodo4. 
 ---
 = Reasignar unidades de node2 a node4
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Después de convertir node2 en un estante de unidades y conectarlo a no
 
 
 [role="lead"]
-Reasigna las unidades que antes pertenecían a node2 a node4.
+Reasigna las unidades que antes pertenecían a AFF A150, AFF A220 o FAS2820 node2 a node4.
 
 .Antes de empezar
 Compruebe que tanto node3 como node4 están en espera en el aviso del CARGADOR.

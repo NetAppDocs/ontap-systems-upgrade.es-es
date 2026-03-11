@@ -50,7 +50,7 @@ No puede utilizar este procedimiento ARL en las siguientes circunstancias:
 * Quiere añadir las nuevas controladoras como una nueva pareja de HA al clúster y migrar los datos mediante los movimientos de volúmenes.
 * Debe actualizar una configuración IP de MetroCluster.
 +
-Para actualizar una configuración IP de MetroCluster, consulte link:other_references.html["Referencias"] para vincular al contenido _Actualización y Expansión de MetroCluster_.
+Para actualizar una configuración IP de MetroCluster, consulta link:other-references.html["Referencias"] para enlazar con el contenido de _MetroCluster Upgrade and Expansion_.
 
 
 
@@ -61,7 +61,7 @@ Para actualizar una configuración IP de MetroCluster, consulte link:other_refer
 La siguiente tabla muestra la matriz de sistemas compatibles para realizar una actualización del controlador convirtiendo el sistema existente en el sistema de reemplazo, manteniendo el chasis del sistema existente, los discos y los datos almacenados en ellos.
 
 
-CAUTION: Este procedimiento se aplica estrictamente a las siguientes configuraciones de actualización. No utilice este procedimiento para realizar una actualización entre cualquier otra combinación del sistema. Para el resto de modelos de controladora, consulte link:other_references.html["Referencias"]el enlace a _utilice los comandos «system controller replace» para actualizar el hardware de la controladora con ONTAP 9,8 o posterior_ y _utilizando la reubicación de agregados para actualizar manualmente el hardware de la controladora con ONTAP 9,8 o posterior_.
+CAUTION: Este procedimiento se aplica estrictamente a las siguientes configuraciones de actualización. No uses este procedimiento para realizar una actualización entre cualquier otra combinación de sistemas. Para todos los demás modelos de controladores, consulta link:other-references.html["Referencias"] para enlazar a _Use "system controller replace" commands to upgrade controller hardware running ONTAP 9.8 or later_ y _Using aggregate relocation to manually upgrade controller hardware running ONTAP 9.8 or later_.
 
 [cols="20,20,40"]
 |===

@@ -22,14 +22,14 @@ También puede utilizar la opción de arranque USB para realizar el arranque des
 
 .Antes de empezar
 * Compruebe que puede acceder a un servidor HTTP con el sistema.
-* Descargue los archivos del sistema necesarios para su sistema y la versión correcta de ONTAP en el _sitio de soporte de NetApp_. Consulte link:other_references.html["Referencias"] Para enlazar con el _sitio de soporte de NetApp_.
+* Descarga los archivos de sistema necesarios para tu sistema y la versión correcta de ONTAP desde el _NetApp Support Site_. Consulta link:other-references.html["Referencias"] para acceder al _NetApp Support Site_.
 
 
 .Acerca de esta tarea
 Debe reiniciar el sistema de las controladoras nuevas si no tienen la misma versión de ONTAP 9 instalada en ellas que se instala en las controladoras originales. Tras instalar cada controladora nueva, arranque el sistema desde la imagen de ONTAP 9 almacenada en el servidor web. A continuación, puede descargar los archivos correctos en el dispositivo multimedia de arranque para posteriores arranques del sistema.
 
 .Pasos
-. Consulte link:other_references.html["Referencias"] Para establecer un enlace al _sitio de soporte de NetApp_ para descargar los archivos que se utilizan para reiniciar el sistema.
+. Consulta link:other-references.html["Referencias"] para enlazar al _NetApp Support Site_ y descargar los archivos usados para realizar el netboot del sistema.
 . [[netboot_2_step2]]Descargue el software ONTAP adecuado desde la sección de descarga de software del sitio de soporte de NetApp y almacene el `<ontap_version>_image.tgz` archivo en un directorio accesible a través de la web.
 . Cambie al directorio accesible a la Web y compruebe que los archivos que necesita están disponibles.
 . Su lista de directorios debería contener `<ontap_version>_image.tgz`.

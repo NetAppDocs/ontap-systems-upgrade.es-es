@@ -14,7 +14,7 @@ summary: 'Puede actualizar el hardware de la controladora que ejecuta ONTAP 9.15
 
 
 [role="lead"]
-Existen varios métodos de reubicación de agregados (ARL) para actualizar el hardware de los controladores. Este procedimiento ARL describe cómo actualizar un par HA de controladores en sistemas de almacenamiento AFF y FAS introducidos en ONTAP 9.15.1 o posterior con nuevos controladores, manteniendo los discos y los datos almacenados existentes.
+Existen varios métodos de reubicación de agregados (ARL) para actualizar el hardware de los controladores. Este procedimiento ARL describe cómo actualizar un par HA de controladores en sistemas de almacenamiento AFF y FAS introducidos en ONTAP 9.15.1 o posterior con nuevos controladores, manteniendo los discos existentes y los datos almacenados en los discos.
 
 
 NOTE: No puede utilizar este procedimiento para actualizar una configuración de IP o FC de MetroCluster. Para actualizar una configuración de MetroCluster, consulte link:other_references.html["Referencias"] para vincular a la documentación _Actualización y ampliación de MetroCluster_.

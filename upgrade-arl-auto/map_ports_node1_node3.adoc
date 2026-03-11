@@ -215,7 +215,7 @@ El siguiente comando establece la directiva de conmutación por error en `broadc
 `network interface modify -vserver node3 -lif data1 failover-policy broadcast-domainwide -failover-group fg1`
 
 +
-Consulte link:other_references.html["Referencias"] Para establecer un vínculo a _Network Management_ o a los comandos _ONTAP 9: Manual Page Reference_ para obtener más información.
+Consulta link:other_references.html["Referencias"] para enlazar con _Gestión de red_ o la _ONTAP 9 Command reference_ para más información.
 
 . Verifique los cambios en el nodo 3:
 +

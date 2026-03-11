@@ -239,7 +239,7 @@ En el siguiente ejemplo, se establece la política de conmutación por error en 
 network interface modify -vserver node3 -lif data1 failover-policy broadcast-domainwide -failover-group fg1
 ----
 +
-Vaya a. link:other_references.html["Referencias"] Para establecer un vínculo a _Network Management_ o a los comandos _ONTAP 9: Manual Page Reference_ para obtener más información.
+Ve a link:other_references.html["Referencias"] para enlazar con _Gestión de red_ o la _ONTAP 9 Command reference_ para más información.
 
 . Verifique los cambios en el nodo 3:
 +

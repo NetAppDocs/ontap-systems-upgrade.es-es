@@ -75,7 +75,7 @@ NOTE: Espere a que todos los agregados que no son raíz y que pertenecen al nodo
 
 
 
-Consulte link:other_references.html["Referencias"] Para establecer un enlace a la gestión de _disco y agregados con el contenido de la CLI_ y los comandos _ONTAP 9: Manual Page Reference_ para obtener más información acerca de los comandos de reubicación de agregados de almacenamiento.
+Consulta link:other_references.html["Referencias"] para enlazar con el contenido _Disk and aggregate management with the CLI_ y la _ONTAP 9 Command reference_ para más información sobre los comandos de reubicación de agregados de almacenamiento.
 
 |===
 . [[man_reubication_1_2_step4]]] Verifique que todos los agregados que no son raíz estén en línea y su estado en el nodo 2:

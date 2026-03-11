@@ -11,7 +11,7 @@ summary: 'Migre los agregados de datos, épsilon y las interfaces lógicas (LIF)
 
 
 [role="lead"]
-Migre los agregados de datos, épsilon y las interfaces lógicas (LIF) del nodo 1 al nodo 4.
+Migra los agregados de datos, épsilon e interfaces lógicas (LIF) en AFF A150, AFF A220 o FAS2820 nodo1 a nodo4.
 
 .Pasos
 Realiza estos pasos en node4.

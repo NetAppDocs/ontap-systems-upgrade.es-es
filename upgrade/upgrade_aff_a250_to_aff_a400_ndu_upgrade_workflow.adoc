@@ -17,7 +17,7 @@ Realiza una actualización no disruptiva de un sistema AFF A250 a un sistema AFF
 Los controladores del par de alta disponibilidad (HA) AFF A250 son node1 y node2 y los controladores del par de alta disponibilidad (HA) de reemplazo AFF A400 son node3 y node4.
 
 .Antes de empezar
-Revisa los escenarios generales de actualización y las consideraciones de actualización para actualizar moviendo volúmenes o almacenamiento:
+Revisa todas las consideraciones para actualizar moviendo volúmenes o almacenamiento:
 
 * link:upgrade-decide-to-use-this-guide.html["Decidir si se actualizará el volumen o el almacenamiento"]
 * link:upgrade-considerations.html["Consideraciones que tener en cuenta para actualizar el hardware de la controladora"]

@@ -134,7 +134,7 @@ Puede comparar la salida con la que ha capturado en la sección link:prepare_nod
 `system service-processor network modify -node _node_name_`
 
 +
-Consulte link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_ para obtener información sobre los SPS y los comandos _ONTAP 9: Referencia de página del manual_ para obtener información detallada sobre el sistema `service-processor network modify` comando.
+Consulta link:other_references.html["Referencias"] para enlazar con la _System Administration Reference_ para información sobre los SP y la _ONTAP 9 Command reference_ para información detallada sobre el comando del sistema `service-processor network modify` command.
 
 . Si desea configurar un clúster sin switches en los nuevos nodos, consulte link:other_references.html["Referencias"] Para establecer un enlace al _sitio de soporte de NetApp_ y siga las instrucciones que se indican en _Cambiar a un clúster sin switch de dos nodos_.
 

@@ -11,7 +11,7 @@ summary: 'Migra las interfaces lógicas (LIF) y los agregados de datos de node2 
 
 
 [role="lead"]
-Migra las interfaces lógicas (LIF) y los agregados de datos de node2 a node1 antes de convertir node2 en una estantería de unidades.
+Migra las interfaces lógicas (LIFs) y los agregados de datos en AFF A150, AFF A220 o FAS2820 nodo2 a nodo1 antes de convertir nodo2 en una drive shelf.
 
 .Antes de empezar
 Compruebe que cumple los siguientes requisitos:

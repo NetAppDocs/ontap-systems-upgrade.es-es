@@ -99,7 +99,7 @@ Durante la fase de comprobaciones previas, el sistema ejecuta la siguiente lista
 | Comprobación de quórum de clúster | Comprueba que los nodos que se van a sustituir tengan quórum. Si los nodos no están en quórum, la tarea falla. 
 
 
-| Comprobación de la versión de la imagen | Comprueba que los nodos que se reemplazan ejecuten la misma versión de ONTAP. Si las versiones de la imagen ONTAP son diferentes, la tarea fallará. Los nodos nuevos deben tener la misma versión de ONTAP 9.x instalada en ellos que se haya instalado en los nodos originales. Si los nodos nuevos tienen instalada una versión diferente de ONTAP, debe reiniciar el sistema las controladoras nuevas después de instalarlas. Para obtener instrucciones sobre cómo actualizar ONTAP, consulte link:other_references.html["Referencias"] Para enlazar a _Upgrade ONTAP_. 
+| Comprobación de la versión de la imagen | Comprueba que los nodos que se están reemplazando ejecutan la misma versión de ONTAP. Si las versiones de imagen de ONTAP son diferentes, la tarea falla. Los nodos nuevos deben tener la misma versión de ONTAP 9.x instalada que la que está instalada en los nodos originales. Si los nuevos nodos tienen una versión diferente de ONTAP instalada, necesitas hacer netboot a los nuevos controladores después de instalarlos. Para instrucciones sobre cómo actualizar ONTAP, consulta link:other-references.html["Referencias"] para enlazar a _Upgrade ONTAP_. 
 
 
 | Comprobación de estado de HA | Comprueba si los dos nodos que se van a reemplazar se encuentran en una configuración de parejas de alta disponibilidad (ha). Si no está habilitada la conmutación por error del almacenamiento para las controladoras, la tarea falla. 
@@ -108,7 +108,7 @@ Durante la fase de comprobaciones previas, el sistema ejecuta la siguiente lista
 | Comprobación del estado del agregado | Si los nodos que se van a sustituir tienen agregados propios para los que no son el propietario principal, la tarea fallará. Los nodos no deben tener ningún agregado que no sea local. 
 
 
-| Comprobación del estado del disco | Si alguno de los nodos que se van a reemplazar tiene discos ausentes o con errores, la tarea falla. Si falta algún disco, consulte link:other_references.html["Referencias"]el enlace a _Disk and Aggregate management con CLI_, _Logical storage management con CLI_ y _HA pair management_ para configurar el almacenamiento para la pareja de alta disponibilidad. 
+| Comprobación del estado del disco | Si alguno de los nodos que se están sustituyendo tiene discos que faltan o han fallado, la tarea falla. Si falta algún disco, consulta link:other-references.html["Referencias"] para enlazar a _Disk and aggregate management with the CLI_, _Logical storage management with the CLI_ y _HA pair management_ para configurar el almacenamiento del par de HA. 
 
 
 | Comprobación del estado de LIF de datos | Comprueba si alguno de los nodos que se van a sustituir tiene LIF de datos no locales. Los nodos no deben contener ninguna LIF de datos para la cual no sean el propietario principal. Si uno de los nodos contiene LIF de datos no locales, la tarea falla. 
@@ -230,6 +230,6 @@ Cada nodo del clúster debe tener su propio archivo de licencia de NetApp (NLF).
 
 Si no dispone de un NLF, las funciones con licencia actualmente en el clúster están disponibles para la nueva controladora. Sin embargo, el uso de funciones sin licencia en la controladora puede provocar que no cumpla el contrato de licencia, por lo que debe instalar NLF en la nueva controladora una vez completada la actualización.
 
-Consulte link:other_references.html["Referencias"] Para establecer un enlace al sitio de soporte de _NetApp_, donde puede obtener su NLF. Los NLF están disponibles en la sección _My Support_ en _Software licenses_. Si el sitio no tiene el NLF que necesita, póngase en contacto con su representante de ventas de NetApp.
+Consulta link:other-references.html["Referencias"] para enlazar al _NetApp Support Site_ donde puedes obtener tu NLF. Los NLF están disponibles en la sección _My Support_ en _Software licenses_. Si el sitio no tiene los NLF que necesitas, contacta a tu representante de ventas de NetApp.
 
-Para obtener información detallada sobre las licencias, consulte link:other_references.html["Referencias"] Para vincular a _System Administration Reference_.
+Para obtener información detallada sobre las licencias, consulta link:other-references.html["Referencias"] para enlazar con la _System Administration Reference_.

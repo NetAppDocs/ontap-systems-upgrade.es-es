@@ -179,7 +179,7 @@ Si es necesario, puede forzar la reubicación mediante uno de los siguientes mé
 
 
 
-Para obtener más información sobre los comandos de reubicación de agregados de almacenamiento, vaya a. link:other_references.html["Referencias"] Para establecer un vínculo a la gestión de discos y agregados con la CLI_ y los comandos _ONTAP 9: Manual Page Reference_.
+Para más información sobre los comandos de reubicación de agregados de almacenamiento, ve a link:other_references.html["Referencias"] para enlazar con _Disk and aggregate management with the CLI_ y la _ONTAP 9 Command reference_.
 
 |===
 . [[man_relocate_2_3_step8]]Verifique que todos los agregados no raíz estén en línea en node3:

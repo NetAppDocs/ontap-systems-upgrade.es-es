@@ -151,7 +151,7 @@ NOTE: En este procedimiento, la sección _Re-creating VLAN, ifgrps y dominios de
 Después de confirmar que el nodo 2 tiene quórum y puede comunicarse con el nodo 1, compruebe que las VLAN del nodo 1, los grupos de interfaces y los dominios de retransmisión estén en el nodo 2. Además, verifique que todos los puertos de red 2 estén configurados en sus dominios de retransmisión correctos.
 
 .Acerca de esta tarea
-Para obtener más información sobre la creación y recreación de VLAN, grupos de interfaces y dominios de retransmisión, consulte link:other_references.html["Referencias"] Para vincular al contenido de _Network Management_.
+Para más información sobre cómo crear y volver a crear VLANs, grupos de interfaces y dominios de difusión, consulta link:other-references.html["Referencias"] para enlazar con el contenido de _Network Management_.
 
 .Pasos
 . Enumera todos los puertos físicos en el nodo 2 actualizado:

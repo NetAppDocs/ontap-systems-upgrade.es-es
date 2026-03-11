@@ -154,7 +154,7 @@ Puede mezclar unidades de cifrado distinto de SED en el mismo nodo o par de alta
 ====
 .. Vaya al menú de inicio especial y seleccione la opción `(10) Set Onboard Key Manager recovery secrets`.
 +
-Introduzca la frase de acceso y la información de copia de seguridad registrada anteriormente. Consulte link:manage_authentication_okm.html["Gestione claves de autenticación mediante el gestor de claves incorporado"].
+Ingresa la frase de contraseña y la información de copia de seguridad que anotaste antes en el procedimiento. Consulta link:manage_authentication_okm.html["Gestione claves de autenticación mediante el gestor de claves incorporado"].
 
 
 

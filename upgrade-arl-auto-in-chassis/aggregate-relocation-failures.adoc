@@ -38,7 +38,7 @@ La `storage aggregate relocation show` el comando muestra qué agregados se han 
 
 
 +
-Para obtener información detallada acerca de `storage aggregate relocation start`, `override-vetoes`, y. `override-destination-checks` opciones, consulte link:other_references.html["Referencias"] Para enlazar a los comandos _ONTAP 9: Manual Page Reference_.
+Para obtener información detallada sobre las opciones  `storage aggregate relocation start`,  `override-vetoes` y  `override-destination-checks`, consulta link:other-references.html["Referencias"] para enlazar con la _ONTAP 9 Command reference_.
 
 
 
@@ -69,9 +69,9 @@ Después de habilitar la conmutación al nodo de respaldo del almacenamiento, pu
 `storage aggregate show -nodes _node2_ -is-home true`
 
 +
-Para identificar los agregados que no se han reubicado correctamente, consulte la lista de agregados con el propietario raíz del nodo 1 obtenido en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] y compárelo con el resultado del comando anterior.
+Para identificar los agregados que no se reubicaron correctamente, consulta la lista de agregados con el propietario de origen de node1 que obtuviste en la sección link:prepare-nodes-for-upgrade.html["Prepare los nodos para la actualización"] y compárala con la salida del comando anterior.
 
-. Compare la salida del paso 1 con la salida capturada para el nodo 1 de la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] y anote los agregados que no se hayan reubicado correctamente.
+. Compara el resultado del paso 1 con el resultado que capturaste para node1 en la sección link:prepare-nodes-for-upgrade.html["Prepare los nodos para la actualización"] y fíjate en cualquier agregado que no se haya reubicado correctamente.
 . Reubicar los agregados en el nodo 2:
 +
 `storage aggregate relocation start -node _node2_ -aggr _aggr_node_1_ -destination _node1_`

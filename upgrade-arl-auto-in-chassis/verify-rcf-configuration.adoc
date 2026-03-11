@@ -16,7 +16,7 @@ summary: Verifique que el conmutador de clúster RCF admita los puertos de clús
 [role="lead"]
 En esta etapa del procedimiento de actualización, todos los agregados de datos deben estar en el nodo1.  Si está actualizando una configuración con clústeres conectados a conmutadores, debe validar que el archivo de configuración de referencia del conmutador del clúster (RCF) admita los puertos de clúster/HA compartidos para los nuevos controladores.
 
-Si está actualizando a una configuración de clúster sin conmutador de dos nodos, puede omitir esta sección y pasar alink:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"] .
+Si estás actualizando a una configuración de clúster sin switches de dos nodos, puedes saltarte esta sección e ir a link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"].
 
 .Pasos
 . Cambie al modo de privilegio avanzado:
@@ -36,7 +36,7 @@ En la salida, la "Conexión IC RDMA" debe tener el estado `Up` .
 | Si el estado de "Conexión IC RDMA" es... | Entonces… 
 
 
-| `Up` | Vaya a link:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"]. 
+| `Up` | Vaya a link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"]. 
 
 
 | `Down` | Vaya a <<verify-rcf-step3,Paso 3>>. 
@@ -52,4 +52,4 @@ Para obtener más información, consulte link:cable-node1-for-shared-cluster-HA-
 
 
 .¿Qué sigue?
-link:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"]
+link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Vuelva a colocar los agregados que no son raíz y las LIF de datos NAS en el nodo 2"]

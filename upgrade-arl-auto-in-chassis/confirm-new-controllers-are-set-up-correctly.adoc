@@ -67,7 +67,7 @@ Si ni el nodo 1 ni el nodo 2 tienen LIF de datos propias del hogar de otros nodo
 +
 `volume show -node <node2> -state offline`
 
-. Si alguno de los volúmenes se encuentra sin conexión, compárelo con la lista de volúmenes sin conexión que ha capturado en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"], y conectar cualquiera de los volúmenes sin conexión, según sea necesario, mediante el siguiente comando, una vez para cada volumen:
+. Si hay volúmenes sin conexión, compáralos con la lista de volúmenes sin conexión que capturaste en la sección link:prepare-nodes-for-upgrade.html["Prepare los nodos para la actualización"], y pon en línea cualquiera de los volúmenes sin conexión, según sea necesario, usando el siguiente comando, una vez por cada volumen:
 +
 `volume online -vserver <vserver_name> -volume <volume_name>`
 
@@ -121,9 +121,9 @@ Introduzca `y` para eliminar todos los paquetes.
 `system license show`
 
 +
-Puede comparar la salida con la que ha capturado en link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"] sección.
+Puedes comparar la salida con la salida que capturaste en la sección link:prepare-nodes-for-upgrade.html["Prepare los nodos para la actualización"].
 
-. [[unset_maxwait]] Si se utilizan unidades de autocifrado en la configuración y se ha configurado el `kmip.init.maxwait` variable a. `off` (Por ejemplo, en _Boot node2 con los módulos del sistema de reemplazo_, link:boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1["Paso 1"]), debe anular la definición de la variable:
+. [[unset_maxwait]] Si se están utilizando unidades de autocifrado en la configuración y has establecido la variable `kmip.init.maxwait` en `off` (por ejemplo, en _Boot node2 with the replacement system modules_, link:boot-node2-with-a900-controller-and-nvs.html#boot_node2_step1["Paso 1"]), tienes que desestablecer la variable:
 +
 `set diag; systemshell -node <node_name> -command sudo kenv -u -p kmip.init.maxwait`
 
@@ -132,10 +132,10 @@ Puede comparar la salida con la que ha capturado en link:prepare_nodes_for_upgra
 `system service-processor network modify -node <node_name>`
 
 +
-Consulte link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_ para obtener información sobre los SPS y los comandos _ONTAP 9: Referencia de página del manual_ para obtener información detallada sobre el sistema `service-processor network modify` comando.
+Consulta link:other-references.html["Referencias"] para enlazar con la _System Administration Reference_ para información sobre los SP y la _ONTAP 9 Command reference_ para información detallada sobre el comando del sistema `service-processor network modify`.
 
-. Si desea configurar un clúster sin switches en los nuevos nodos, consulte link:other_references.html["Referencias"] Para establecer un enlace al _sitio de soporte de NetApp_ y siga las instrucciones que se indican en _Cambiar a un clúster sin switch de dos nodos_.
+. Si quieres configurar un clúster sin switches en los nuevos nodos, consulta link:other-references.html["Referencias"] para enlazar al _NetApp Support Site_ y sigue las instrucciones en _Transitioning to a two-node switchless cluster_.
 
 
 .Después de terminar
-Si Storage Encryption está habilitado en los nodos 1 y 2, complete la sección link:set_up_storage_encryption_new_module.html["Configure Storage Encryption en el nuevo módulo de la controladora"]. De lo contrario, complete la sección link:decommission_old_system.html["Retire el sistema antiguo"].
+Si Storage Encryption está activado en node1 y node2, completa la sección link:set-up-storage-encryption-new-module.html["Configure Storage Encryption en el nuevo módulo de la controladora"]. De lo contrario, completa la sección link:decommission-old-system.html["Retire el sistema antiguo"].

@@ -11,7 +11,7 @@ summary: Convierte node1 en un estante de unidades y conéctalo a node3 antes de
 
 
 [role="lead"]
-Convierte node1 en un estante de unidades y conéctalo a node3 antes de reasignar las unidades de node1 a node3.
+Convierte el nodo1 de AFF A150, AFF A220 o FAS2820 en un estante de unidades y conéctalo al nodo3 antes de reasignar las unidades del nodo1 al nodo3.
 
 .Pasos
 . Desconecte todos los cables de red del node1.
