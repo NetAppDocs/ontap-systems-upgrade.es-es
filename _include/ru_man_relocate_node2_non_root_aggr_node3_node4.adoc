@@ -37,7 +37,7 @@ La reubicación se produce en segundo plano. La reubicación de un agregado pued
 `storage aggregate relocation show -node _node3_`
 
 +
-Se mostrará la salida `Done` para un agregado después de su traslado.
+La salida muestra `Done` para un agregado después de haber sido reubicado.
 
 +
 

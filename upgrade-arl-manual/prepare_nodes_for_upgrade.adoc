@@ -169,7 +169,7 @@ Si alguno de los nodos está en retorno parcial, utilice `storage failover giveb
 `storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
 
 +
-Si ni el nodo 1 ni el nodo 2 tienen agregados cuyos propietarios son actuales (pero no el propietario del hogar), el sistema devolverá un mensaje similar al siguiente ejemplo:
+Si ni node1 ni node2 poseen agregados de los que son propietarios actuales (pero no propietarios de origen), el sistema devuelve un mensaje similar al siguiente ejemplo:
 
 +
 ....
@@ -419,7 +419,7 @@ fg_6210_e0c         Default           node1:e0c, node1:e0d
 `network port vlan show -node _node_name_`
 
 +
-Las VLAN se configuran mediante puertos físicos. Si cambian los puertos físicos, deberán volver a crear las VLAN más adelante en este procedimiento.
+Las VLAN se configuran a través de puertos físicos. Si los puertos físicos cambian, entonces será necesario volver a crear las VLAN más adelante en el procedimiento.
 
 +
 El sistema muestra las VLAN que se han configurado en el nodo, como se muestra en el ejemplo siguiente:
@@ -453,7 +453,7 @@ node1   e1b-70    e1b     70      00:15:17:76:7b:69
 `network interface show -vserver _vserver_name_ -data-protocol iscsi|fcp`
 
 +
-Si no hay ningún iSCSI ni FC configurado para la SVM, el comando mostrará un mensaje similar al siguiente ejemplo:
+Si ni iSCSI ni FC están configurados para la SVM, el comando muestra un mensaje similar al siguiente ejemplo:
 
 +
 ....
@@ -464,7 +464,7 @@ There are no entries matching your query.
 Puede confirmar que el nodo está en un entorno NAS mediante el `network interface show` con el `-data-protocol nfs|cifs` parámetros.
 
 +
-Si iSCSI o FC está configurado para la SVM, el comando mostrará un mensaje similar al siguiente ejemplo:
+Si se ha configurado iSCSI o FC para la SVM, el comando muestra un mensaje similar al del ejemplo siguiente:
 
 +
 ....

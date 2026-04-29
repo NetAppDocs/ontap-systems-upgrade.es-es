@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Debe asegurarse de que los puertos físicos del nodo 1 se asignen correctamente a los puertos físicos del nodo 3, lo que permitirá que el nodo 3 se comunique con otros nodos del clúster y con la red después de la actualización.
+Debes asegurarte de que los puertos físicos de node1 se asignen correctamente a los puertos físicos de node3. Esto permite que node3 se comunique con otros nodos del clúster y con la red después de la actualización.
 
 .Antes de empezar
 Ya debe tener información acerca de los puertos en los nodos nuevos del _Hardware Universe_. (Vaya a. link:other_references.html["Referencias"] Para establecer un enlace con el _Hardware Universe_). Utilice la información posteriormente en esta sección y en link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].

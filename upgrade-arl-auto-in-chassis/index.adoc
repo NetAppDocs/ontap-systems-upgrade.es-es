@@ -77,6 +77,9 @@ Si no puede conectar los puertos de clúster e0a o e0b del nodo existente a los 
 
 
 
-== Automatice el proceso de actualización de la controladora
+== Proceso automatizado de actualización de controladores
 
 Este procedimiento proporciona los pasos para el procedimiento automatizado, que utiliza la asignación de disco automática y comprobaciones de accesibilidad de puertos de red para simplificar la experiencia de actualización de controladora.
+
+.El futuro
+Después de conocer este procedimiento de actualización ARL, link:decide-to-use-the-aggregate-relocation-guide.html["decidir si usar este procedimiento"].

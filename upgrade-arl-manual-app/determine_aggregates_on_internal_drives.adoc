@@ -157,3 +157,6 @@ NOTE: Antes de continuar, se deben mover los volúmenes a una bandeja de discos 
 | Contener volúmenes que no son raíz en las unidades internas y no se pueden mover los volúmenes a almacenamiento externo | No continúe con este procedimiento. Puede actualizar las controladoras mediante el procedimiento _Upgrade del hardware de la controladora en un par de nodos que ejecutan Data ONTAP almacenado en clúster moviendo volúmenes_. Consulte link:other_references.html["Referencias"] Para enlazar con el _sitio de soporte de NetApp_ donde puede acceder a este procedimiento. 
 |===
 
+
+.El futuro
+Después de determinar si el controlador tiene agregados en las unidades de disco internas, link:prepare_nodes_for_upgrade.html["preparar los nodos para la actualización"].

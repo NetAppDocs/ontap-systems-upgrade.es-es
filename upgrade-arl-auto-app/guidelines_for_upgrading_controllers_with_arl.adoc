@@ -70,3 +70,6 @@ Es posible que aparezca un error mientras se actualiza la pareja de nodos. El no
 Si ocurre algún problema, consulte el link:aggregate_relocation_failures.html["Solucionar problemas"] Sección al final del procedimiento para obtener más información y posibles soluciones. La información sobre las fallas que pueden ocurrir se enumera por fase del procedimiento en el link:overview_of_the_arl_upgrade.html["Secuencia de actualización de ARL"] .
 
 Si no encuentra ninguna solución al problema que encontró, póngase en contacto con el soporte técnico.
+
+.El futuro
+Después de revisar las directrices para actualizar los controladores con ARL, link:verify_health_of_metrocluster_config.html["verificar la salud de la configuración de MetroCluster"].

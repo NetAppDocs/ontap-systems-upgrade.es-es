@@ -14,7 +14,13 @@ summary: 'Preparar los nodos y ejecutar una serie de comprobaciones previas al a
 
 
 [role="lead"]
-El proceso de reemplazo de la controladora comienza con una serie de comprobaciones previas. También se recopila información sobre los nodos originales para usar más adelante del procedimiento y, si es necesario, determinar el tipo de unidades de cifrado automático que se están usando.
+El proceso de sustitución del controlador comienza con una serie de comprobaciones previas. También reúnes información sobre los nodos originales para usarla más adelante en el procedimiento. Si falla alguna comprobación previa, debes corregir la propiedad de los agregados antes de poder continuar con la actualización.
+
+
+
+== Paso 1: preparar los nodos
+
+Inicia el proceso de sustitución del controlador y ejecuta las comprobaciones previas. Si es necesario, determina el tipo de unidades de autocifrado que se están utilizando.
 
 .Pasos
 . Inicie el proceso de sustitución de la controladora con el siguiente comando en la línea de comandos de ONTAP:
@@ -26,7 +32,7 @@ El proceso de reemplazo de la controladora comienza con una serie de comprobacio
 NOTE: Solo puede ejecutar el comando system controller replace start en el nivel de privilegio avanzado: `set -privilege advanced`
 
 +
-Verá un resultado similar al siguiente ejemplo. La salida muestra la versión de ONTAP que se ejecuta en el clúster:
+Ves una salida similar a la del siguiente ejemplo. La salida muestra la versión de ONTAP que se está ejecutando en tu clúster:
 
 +
 ....
@@ -41,7 +47,7 @@ Attention: Do not try to clear the NVRAM contents. If there is a need to clear t
 4. Note: This is not a MetroCluster configuration. Controller replacement supports only ARL based procedure.
 Do you want to continue? {y|n}: y
 ....
-. Pulse `y`, verá la siguiente salida:
+. Selecciona `y`, verás el siguiente resultado:
 +
 ....
 Controller replacement operation: Prechecks in progress.
@@ -154,7 +160,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
-== Corrija la propiedad del agregado si fallan las comprobaciones previas de ARL
+== Paso 2: Corregir la propiedad del agregado si falla una comprobación previa de ARL
 
 Si falla la comprobación del estado del agregado, debe devolver los agregados propiedad del nodo asociado al nodo propietario principal e iniciar de nuevo el proceso de comprobaciones previas.
 
@@ -183,21 +189,10 @@ aggr4       node1      node1       online
 
 4 entries were displayed.
 ----
+. Reinicia el proceso de sustitución del controlador:
 
-
-
-
-=== Después de terminar
-
-Debe reiniciar el proceso de sustitución de la controladora:
 
 `system controller replace start -nodes _node_names_`
 
-
-
-== Licencia
-
-Si quiere información detallada sobre las licencias de ONTAP, consulte https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Gestión de licencias"^].
-
-
-NOTE: El uso de funciones sin licencia en la controladora puede provocar que no cumpla el contrato de licencia.
+.El futuro
+Una vez preparados los nodos, link:complete-preparation-for-upgrade.html["completar la preparación para la actualización"].

@@ -210,3 +210,6 @@ Si alguno de los volúmenes se encuentra sin conexión en el nodo 3, es necesari
 El resultado del comando no debe mostrar agregados no raíz en línea, ya que todos los agregados en línea no raíz ya se han reubicado al nodo 3.
 
 
+
+.El futuro
+Después de reubicar los agregados que no son raíz del nodo2 al nodo3, link:move_nas_lifs_node2_node3.html["mueve los LIF de datos NAS propiedad de node2 a node3"].

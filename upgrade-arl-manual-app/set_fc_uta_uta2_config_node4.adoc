@@ -219,3 +219,6 @@ f-a    2b      fc       target    cna      -          online
 
 . [[Man_check_4_step13]]Conecte el puerto.
 
+
+.El futuro
+Después de establecer la configuración FC o UTA/UTA2 en el nodo4, link:map_ports_node2_node4.html["asignar puertos del nodo2 al nodo4"].

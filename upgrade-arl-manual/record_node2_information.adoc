@@ -41,7 +41,7 @@ node2
 ----
 +
 
-NOTE: Es posible que el sistema no tenga LIF de interconexión de clústeres. Solo tendrá un LIF de gestión de clústeres en un nodo de una pareja de nodos. Se muestra una LIF de gestión del clúster en el resultado de ejemplo de link:record_node1_information.html#step1["Paso 1"] En _Record 1 Información del puerto_.
+NOTE: Es posible que tu sistema no tenga LIFs intercluster. Tienes un LIF de administración de cluster solo en un nodo de un par de nodos. Un LIF de administración de cluster se muestra en la salida de ejemplo de link:record_node1_information.html#step1["Paso 1"] en _Record node1 port information_.
 
 . Capture la información de la salida que se va a utilizar en la sección link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
 +
@@ -75,7 +75,7 @@ node2
 ----
 . Registre los puertos y sus dominios de retransmisión.
 +
-Se deberán asignar los dominios de retransmisión a los puertos en la nueva controladora más adelante en el procedimiento.
+Los dominios de difusión deben asignarse a los puertos del nuevo controlador más adelante en el procedimiento.
 
 . Determinar los puertos FC en el nodo 2:
 +

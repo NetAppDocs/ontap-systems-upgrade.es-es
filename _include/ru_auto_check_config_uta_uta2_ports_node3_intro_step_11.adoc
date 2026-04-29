@@ -1,10 +1,10 @@
-= Comprobar y configurar los puertos UTA/UTA2 en el nodo 3
+= Paso 2: comprobar y configurar los puertos UTA/UTA2 en el nodo3
 :allow-uri-read: 
 
 
 
 
-== Comprobar y configurar los puertos UTA/UTA2 en el nodo 3
+== Paso 2: comprobar y configurar los puertos UTA/UTA2 en el nodo3
 
 Si el nodo 3 tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, debe comprobar la configuración de los puertos y es posible que los vuelva a configurar, según cómo desee usar el sistema actualizado.
 

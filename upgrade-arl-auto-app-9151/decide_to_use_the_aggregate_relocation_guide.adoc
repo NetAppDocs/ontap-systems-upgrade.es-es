@@ -116,3 +116,6 @@ La siguiente tabla muestra las combinaciones de actualización de controlador co
 
 .Información relacionada
 Referirse a link:other_references.html["Referencias"] para vincular a la _Documentación de ONTAP 9_.
+
+.El futuro
+Tras decidir utilizar este procedimiento ARL, link:required_tools_and_documentation.html["conoce las herramientas y la documentación necesarias"].

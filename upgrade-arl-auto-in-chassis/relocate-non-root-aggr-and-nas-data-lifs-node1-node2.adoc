@@ -84,3 +84,6 @@ El  `vserver_name` El uso de este comando se encuentra en la salida del comando 
 `network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _nodename_ -status-admin up`
 
 
+
+.El futuro
+Después de reubicar los agregados que no son raíz y los LIF de datos NAS propiedad de node1 en node2, link:relocate-failed-or-vetoed-aggr-node2.html["reubicar los agregados fallidos o vetados en el nodo2"].

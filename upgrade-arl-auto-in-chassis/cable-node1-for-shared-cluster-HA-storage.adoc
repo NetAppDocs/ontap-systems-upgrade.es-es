@@ -140,3 +140,6 @@ Para un clúster con switch, compruebe que cumple con los siguientes requisitos 
 
 
 NOTE: Si el conmutador de clúster solo admite velocidades de 10/25 GbE, debe usar una tarjeta X60130A de 4 puertos 10/25 GbE en la ranura 1 o la ranura 2 del sistema de reemplazo para la interconexión del clúster.
+
+.El futuro
+Después de cablear el nodo1 para cluster-HA y almacenamiento compartidos, link:boot-node1-with-a900-controller-and-nvs.html["arranca el node1 con los módulos de sistema de reemplazo"].

@@ -34,3 +34,6 @@ Es posible usar servidores de protocolo de interoperabilidad de gestión de clav
 `security key-manager external restore -node _new_controller_name_`
 
 
+
+.El futuro
+Después de gestionar la autenticación mediante servidores KMIP, link:ensure_new_controllers_are_set_up_correctly.html["confirma que los nuevos controladores están configurados correctamente"].

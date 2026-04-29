@@ -314,3 +314,6 @@ NOTE: Debe mover LIF SAN a un puerto que tenga la misma velocidad de enlace que 
 `network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
 
 
+
+.El futuro
+Tras mover los LIF de datos NAS propiedad del nodo2 del nodo3 al nodo4 y verificar los LIF SAN en el nodo4, .

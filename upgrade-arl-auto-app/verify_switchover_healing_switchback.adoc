@@ -17,3 +17,6 @@ summary: 'Verifique las operaciones de conmutación de sitios, reparación y con
 Debe verificar las operaciones de conmutación de sitios, reparación y conmutación de estado de la configuración de MetroCluster.
 
 Consulte link:other_references.html["Referencias"] Para enlazar con el contenido de _MetroCluster Management and Disaster Recovery_ y utilizar los procedimientos mencionados para la conmutación negociada, la reparación y la conmutación de regreso.
+
+.El futuro
+Después de verificar la conmutación de sitios, la curación y la vuelta atrás, link:overview_of_the_arl_upgrade.html["conoce la secuencia de actualización de la ARL"].

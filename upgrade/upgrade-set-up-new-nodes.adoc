@@ -19,7 +19,7 @@ Si la versión de ONTAP que se ejecuta en los nodos nuevos es diferente de la ve
 También puede utilizar la opción de arranque USB para realizar un arranque desde el sistema. Consulte el artículo de la base de conocimientos link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Cómo utilizar el comando boot_recovery LOADER para instalar ONTAP para la configuración inicial de un sistema"^].
 
 .Pasos
-. Encienda el nodo 3 y, a continuación, pulse inmediatamente Ctrl-C en el terminal de la consola para acceder al aviso del CARGADOR.
+. Enciende el nodo 3 y, luego, introduce inmediatamente Ctrl-C en el terminal de la consola para acceder al prompt LOADER.
 +
 Si los nodos 3 y 4 se encuentran en el mismo chasis, vaya al paso 2. De lo contrario, vaya al paso 3.
 
@@ -82,7 +82,7 @@ Ignore el siguiente mensaje: `"This procedure is not supported for NonDisruptive
 `/http://web_server_ip/path_to_web-accessible_directory/<ontap_version>_image.tgz`
 
 +
-Introduzca el nombre de usuario o la contraseña, si procede, o pulse Intro para continuar.
+Introduce el nombre de usuario/contraseña si aplica, o selecciona Intro para continuar.
 
 . Introduzca `n` para omitir la recuperación de backup cuando observe un símbolo del sistema similar a lo siguiente:
 +

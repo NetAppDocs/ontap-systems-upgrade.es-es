@@ -1,10 +1,10 @@
-= Corrija la propiedad del agregado si fallan las comprobaciones previas de ARL
+= Paso 2: Corregir la propiedad del agregado si falla una comprobación previa de ARL
 :allow-uri-read: 
 
 
 
 
-== Corrija la propiedad del agregado si fallan las comprobaciones previas de ARL
+== Paso 2: Corregir la propiedad del agregado si falla una comprobación previa de ARL
 
 Si falla la comprobación del estado del agregado, debe devolver los agregados propiedad del nodo asociado al nodo propietario principal e iniciar de nuevo el proceso de comprobaciones previas.
 
@@ -33,12 +33,7 @@ aggr4       node1      node1       online
 
 4 entries were displayed.
 ----
+. Reinicia el proceso de sustitución del controlador:
 
-
-
-
-=== Después de terminar
-
-Debe reiniciar el proceso de sustitución de la controladora:
 
 `system controller replace start -nodes _node_names_`

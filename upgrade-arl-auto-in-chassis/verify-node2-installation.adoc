@@ -21,6 +21,12 @@ Después de arrancar node1 con el módulo del sistema de reemplazo, compruebe qu
 
 En este punto del procedimiento, la operación se detiene mientras el nodo 2 se une al quórum.
 
+
+
+== Paso 1: Verifica que el nodo2 está en quórum
+
+Verifica que el nodo2 está en quórum. Luego, reanuda la operación de sustitución del controlador.
+
 .Pasos
 . Verifique que el nodo 2 esté Unido al quórum:
 +
@@ -141,12 +147,12 @@ To complete the Network Reachability task, the ONTAP network configuration must 
 
 NOTE: En este procedimiento, la sección _Re-creating VLAN, ifgrps y dominios de difusión_ se ha cambiado el nombre _Restore network Configuration on 2_.
 
-. Con el reemplazo de la controladora en estado de pausa, continúe a. <<Restaure la configuración de red en el nodo 2>>.
+. Con el reemplazo del controlador en estado de pausa, procede a <<restore_network_configuration_on_node2,Restaure la configuración de red en el nodo 2>>.
 
 
 
 
-== Restaure la configuración de red en el nodo 2
+== Paso 2: restaurar la configuración de red en el nodo2
 
 Después de confirmar que el nodo 2 tiene quórum y puede comunicarse con el nodo 1, compruebe que las VLAN del nodo 1, los grupos de interfaces y los dominios de retransmisión estén en el nodo 2. Además, verifique que todos los puertos de red 2 estén configurados en sus dominios de retransmisión correctos.
 
@@ -239,7 +245,7 @@ Verifique que todos los puertos físicos tengan la habilidad esperada:
 `network port reachability show`
 
 +
-A medida que se realiza la reparación de accesibilidad, ONTAP intenta colocar los puertos en los dominios de retransmisión correctos. Sin embargo, si no se puede determinar la accesibilidad de un puerto y no pertenece a ninguno de los dominios de difusión existentes, ONTAP creará nuevos dominios de difusión para estos puertos.
+A medida que se realiza la reparación de alcanzabilidad, ONTAP intenta colocar los puertos en los dominios de difusión correctos. Sin embargo, si ONTAP no puede determinar la alcanzabilidad de un puerto y el puerto no pertenece a ninguno de los dominios de difusión existentes, ONTAP crea nuevos dominios de difusión para estos puertos.
 
 . Compruebe la accesibilidad del puerto:
 +
@@ -273,3 +279,6 @@ Cuando todos los puertos se configuran y se añaden correctamente a los dominios
 `network interface show -fields home-port,status-admin`
 
 
+
+.El futuro
+Tras verificar la instalación del nodo2, link:restore-key-manager-config-node2.html["restaurar la configuración de key-manager en node2"].

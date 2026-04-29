@@ -143,3 +143,6 @@ Ve a link:other_references.html["Referencias"] para enlazar con la _System Admin
 
 .Después de terminar
 Si el cifrado del almacenamiento está habilitado en los nodos 3 y 4, complete los pasos de link:set_up_storage_encryption_new_controller.html["Configure Storage Encryption en el nuevo módulo de la controladora"]. De lo contrario, complete los pasos de link:decommission_old_system.html["Retire el sistema antiguo"].
+
+.El futuro
+Después de confirmar que los nuevos controladores están configurados correctamente, link:set_up_storage_encryption_new_controller.html["configurar Storage Encryption en el nuevo módulo controlador"].

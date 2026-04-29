@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/set-up-netapp-volum-encryption-new-module.html 
 keywords: set up, netapp volume encryption, controller, module, nve, node 
-summary: Si es necesario, configure el nuevo módulo de controladora para NVE o NAE cuando utilice ARL para actualizar los modelos de controladoras en el mismo chasis». 
+summary: Si es necesario, configura el nuevo módulo controlador para NVE o NAE cuando uses ARL para actualizar modelos de controlador en el mismo chasis. 
 ---
 = Configure el cifrado de volúmenes de NetApp o el cifrado de agregados en el nuevo módulo de la controladora
 :hardbreaks:
@@ -84,5 +84,5 @@ Para obtener más información, vea el artículo de la base de conocimientos htt
 .Después de terminar
 Compruebe si algún volumen se desconectó debido a que no había claves de autenticación disponibles o a que no se pudo acceder a los servidores EKM. Vuelva a conectar esos volúmenes en línea mediante el `volume online` comando.
 
-.Después de terminar
-Compruebe si alguno de los volúmenes se desconectó debido a que no existían claves de autenticación o porque no se pudo acceder a los servidores de gestión de claves externos. Vuelva a poner en línea esos volúmenes mediante el uso de  `volume online` dominio.
+.El futuro
+Después de configurar NetApp Volume o Aggregate Encryption en el nuevo módulo controlador, link:decommission-old-system.html["decomisionar el antiguo sistema"].

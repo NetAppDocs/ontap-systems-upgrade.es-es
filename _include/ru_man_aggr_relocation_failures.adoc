@@ -39,8 +39,8 @@ Al final del procedimiento de actualización, el nodo 3 debe ser el nuevo nodo d
 .Acerca de esta tarea
 Es posible que los agregados no puedan reubicar correctamente y tener el nodo 1 como nodo de origen en lugar del nodo 3 en las siguientes circunstancias:
 
-* En la fase 3, cuando los agregados se trasladan del nodo 2 al nodo 3. Algunos de los agregados que se están reubicando tienen el nodo 1 como nodo de origen. Por ejemplo, un agregado de este tipo podría llamarse aggr_node_1. Si la reubicación de aggr_node_1 falla durante la etapa 3 y no se puede forzar la reubicación, el agregado se quedará detrás en el nodo 2.
-* Después de la fase 4, cuando el nodo 2 se reemplaza por el nodo 4. Cuando se reemplaza el nodo 2, aggr_node_1 estará en línea con el nodo 4 como su nodo principal en lugar del nodo 3.
+* Durante la Etapa 3, los agregados se reubican del nodo2 al nodo3. Algunos de los agregados que se reubican tienen node1 como su nodo de origen. Por ejemplo, un agregado de este tipo podría llamarse aggr_node_1. Si la reubicación de aggr_node_1 falla durante la Etapa 3 y no se puede forzar la reubicación, entonces el agregado se deja en node2.
+* Después de la Etapa 4, cuando se sustituye el nodo2 por el nodo4. Cuando se sustituye el nodo2, aggr_node_1 entra en línea con el nodo4 como nodo de origen en lugar del nodo3.
 
 
 Puede resolver el problema de propiedad incorrecto después de la fase 6 una vez que se haya habilitado la conmutación por error del almacenamiento siguiendo los pasos siguientes:

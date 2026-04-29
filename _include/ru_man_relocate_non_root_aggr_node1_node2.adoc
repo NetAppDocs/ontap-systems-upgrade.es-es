@@ -17,7 +17,7 @@ Antes de poder sustituir el nodo 1 por nodo 3, debe mover los agregados que no s
 
 .. Cuando se le solicite, introduzca `y`.
 +
-La reubicación tendrá lugar en segundo plano. La reubicación de un agregado puede tardar desde unos pocos segundos a un par de minutos. El tiempo incluye tanto la interrupción del servicio como las partes que no son de la interrupción del servicio. El comando no reasigna ningún agregado sin conexión o restringido.
+La reubicación se produce en segundo plano. La reubicación de un agregado puede tardar desde unos pocos segundos a un par de minutos. El tiempo incluye tanto la interrupción del servicio como las partes que no son de la interrupción del servicio. El comando no reasigna ningún agregado sin conexión o restringido.
 
 .. Vuelva al nivel admin. Para ello, introduzca el siguiente comando:
 +
@@ -30,7 +30,7 @@ La reubicación tendrá lugar en segundo plano. La reubicación de un agregado p
 `storage aggregate relocation show -node _node1_`
 
 +
-Se mostrará la salida `Done` para un agregado después de su traslado.
+La salida muestra `Done` para un agregado después de haber sido reubicado.
 
 +
 

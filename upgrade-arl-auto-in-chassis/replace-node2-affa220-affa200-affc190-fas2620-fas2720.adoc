@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/replace-node2-affa220-affa200-affc190-fas2620-fas2720.html 
+keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
+summary: Sustituye el módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720 del nodo2 durante una actualización ARL de modelos de controlador en el mismo chasis. 
+---
+= Sustituir el módulo controlador del nodo2 AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sustituye el módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720 del nodo2 por un módulo controlador ASA A150, AFF A150 o FAS2820.
+
+En esta etapa, el nodo2 está fuera de servicio y todos los datos son servidos por el nodo1. Debes tener cuidado de retirar solo el módulo controlador del nodo2. Normalmente, el nodo2 es el controlador B situado en el lado derecho del chasis cuando miras los controladores desde la parte trasera del sistema. La etiqueta del controlador está situada en el chasis directamente encima del módulo controlador.
+
+
+CAUTION: No apague el chasis, ya que node1 y node2 están en el mismo chasis y conectados a los mismos suministros de alimentación.
+
+.Antes de empezar
+Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
+
+
+
+== Paso 1: quita el módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720
+
+Para acceder a los componentes dentro del controlador node2, retira el módulo del controlador del sistema y luego quita la cubierta del módulo del controlador.
+
+.Pasos
+. Afloje el gancho y la correa de bucle que sujetan los cables al dispositivo de administración de cables y, a continuación, desconecte los cables del sistema y los SFP (si fuera necesario) del módulo del controlador, manteniendo un seguimiento del lugar en el que estaban conectados los cables.
++
+Deje los cables en el dispositivo de administración de cables de manera que cuando vuelva a instalar el dispositivo de administración de cables, los cables estén organizados.
+
+. Retire y retire los dispositivos de administración de cables de los lados izquierdo y derecho del módulo del controlador.
++
+image:drw_25xx_cable_management_arm.png["Quita la ARM de gestión de cables"]
+
+. Apriete el pestillo del mango de la leva hasta que se suelte, abra el mango de la leva completamente para liberar el módulo del controlador del plano medio y, a continuación, tire con dos manos del módulo del controlador para extraerlo del chasis.
++
+image:drw_2240_x_opening_cam_latch.png["Apertura de la palanca de leva"]
+
+. Dé la vuelta al módulo del controlador y colóquelo sobre una superficie plana y estable.
+
+
+
+
+== Paso 2: instala el módulo controlador ASA A150, AFF A150 o FAS2820
+
+Instala el módulo de controlador ASA A150, AFF A150 o FAS2820 que recibiste para la actualización en node2.
+
+.Antes de empezar
+* Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
+* Desconecte todos los cables, incluidos los cables de consola, gestión, almacenamiento SAS y red de datos, de la controladora que se está quitando.
+
+
+.Pasos
+. Alinee el extremo del módulo del controlador con el compartimiento B del chasis y, a continuación, empuje suavemente el módulo del controlador hasta la mitad dentro del sistema.
++
+
+TIP: La bahía B está ubicada en el lado derecho del chasis.
+
++
+
+WARNING: No inserte por completo el módulo de la controladora en el chasis hasta que se le indique hacerlo más adelante en el procedimiento.
+
+. Conecte los puertos de consola y de gestión al módulo de controladora 2.
++
+
+NOTE: Debido a que el chasis ya está encendido, el nodo 2 comienza a arrancar tan pronto como esté completamente encajado.  Para evitar que el nodo 2 arranque, conecte los cables de consola y administración antes de insertar completamente el módulo controlador.
+
+. Empuje firmemente el módulo de la controladora en el chasis hasta que se ajuste al plano medio y esté totalmente asentado.
++
+El pestillo de bloqueo se eleva cuando el módulo del controlador está completamente asentado.
+
++
+
+NOTE: Para evitar dañar los conectores, no ejerza demasiada fuerza al deslizar el módulo del controlador en el chasis.
+
+. Conecte la consola serial tan pronto como el módulo esté instalado y prepárese para interrumpir el AUTOBOOT del nodo2.
+. Después de interrumpir AUTOBOOT, el nodo2 se detiene en el prompt LOADER. Si no interrumpes AUTOBOOT a tiempo y el nodo2 comienza a arrancar, espera al prompt e introduce Ctrl-C para ir al menú de arranque. Después de que el nodo se detenga en el menú de arranque, usa la opción `8` para reiniciar el nodo e interrumpir AUTOBOOT durante el reinicio.
+
+
+.El futuro
+Después de instalar el módulo controlador ASA A150, AFF A150 o FAS2820, link:netboot-node2.html["netboot nodo2"].

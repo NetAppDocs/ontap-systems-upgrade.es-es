@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/replace-node1-affa250-affc250.html
 keywords: aff, asa, fas, replace, node1, system, modules 
 summary: Sustituya los módulos del sistema AFF A250 o AFF C250 node1 cuando utilice ARL para actualizar los modelos de controlador en el mismo chasis. 
 ---
-= Sustituye el módulo controlador AFF A250 o AFF C250 de node1
+= Sustituir el módulo controlador node1 AFF A250 o AFF C250
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -103,7 +103,7 @@ NOTE: Para evitar dañar los conectores, no ejerza demasiada fuerza al deslizar 
 . Conecte la consola de serie en cuanto esté sentado el módulo y esté listo para interrumpir EL ARRANQUE AUTOMÁTICO del nodo 1.
 . Después de interrumpir EL ARRANQUE AUTOMÁTICO, el nodo 1 se detiene en el símbolo del sistema del CARGADOR.
 +
-Si no interrumpe el AUTOARRANQUE a tiempo y node1 comienza el arranque, espere a que se le indique el prompt y pulse Ctrl-C para ir al menú de arranque. Cuando el nodo se detenga en el menú de arranque, utilice la opción `8` para reiniciar el nodo e interrumpir EL AUTOARRANQUE durante el reinicio.
+Si no interrumpes AUTOBOOT a tiempo y node1 comienza a arrancar, espera a que aparezca el prompt e introduce Ctrl-C para entrar en el menú de arranque. Después de que el nodo se detenga en el menú de arranque, usa la opción `8` para reiniciar el nodo e interrumpir AUTOBOOT durante el reinicio.
 
 . En el símbolo del SISTEMA LOADER> del nodo 1, establezca las variables de entorno predeterminadas:
 +
@@ -118,3 +118,6 @@ set-defaults
 saveenv
 ----
 
+
+.El futuro
+Después de instalar el módulo controlador AFF A30, AFF A50, AFF C30 o AFF C60, link:netboot-node1.html["netboot nodo1"].

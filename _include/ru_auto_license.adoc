@@ -1,10 +1,10 @@
-= Licencia
+= Conoce las licencias de ONTAP
 :allow-uri-read: 
 
 
 
 
-== Licencia
+== Conoce las licencias de ONTAP
 
 Algunas funciones requieren licencias, que se emiten como _packages_ que incluyen una o más funciones. Cada nodo del clúster debe tener su propia clave para cada función que se usará en el clúster.
 
@@ -12,4 +12,4 @@ Si no tiene claves de licencia nuevas, las funciones con licencia actualmente en
 
 Consulte link:other_references.html["Referencias"] Para establecer un enlace al sitio de soporte de _NetApp_, donde puede obtener nuevas claves de licencia de 28 caracteres para ONTAP. Las claves están disponibles en la sección _My Support_ en _Software licences_. Si el sitio no tiene las claves de licencia que necesita, puede ponerse en contacto con su representante de ventas de NetApp.
 
-Para obtener información detallada sobre las licencias, consulte link:other_references.html["Referencias"] Para vincular a _System Administration Reference_.
+Para obtener información detallada sobre las licencias de ONTAP, consulta link:other_references.html["Referencias"] para enlazar con la _Referencia de administración del sistema_.

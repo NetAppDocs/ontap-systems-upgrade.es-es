@@ -34,3 +34,6 @@ Una tabla muestra información del clúster, incluidos los números de serie.
 
 . Localice el clúster en la tabla y seleccione *DECOMmission este sistema* en el menú desplegable Product Tool Set (conjunto de herramientas del producto).
 
+
+.El futuro
+Tras descomisionar el sistema antiguo, link:resume_snapmirror_ops.html["reanudar las operaciones SnapMirror"].

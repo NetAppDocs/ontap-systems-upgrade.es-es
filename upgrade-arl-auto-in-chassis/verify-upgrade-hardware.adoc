@@ -50,3 +50,5 @@ Si va a convertir el sistema existente en una bandeja de almacenamiento para pod
 
 | Dos controladoras y dos módulos NVRAM 
 |===
+.El futuro
+Tras verificar el hardware de actualización, link:prepare-nodes-for-upgrade.html["preparar los nodos para la actualización"].

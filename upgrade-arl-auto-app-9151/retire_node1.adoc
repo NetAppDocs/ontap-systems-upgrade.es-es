@@ -29,3 +29,6 @@ Para retirar el nodo 1, reanude la operación automatizada para deshabilitar el 
 
 .Después de terminar
 Después de retirar el nodo 1, verifique que esté apagado y no conectado a la red.  Deje el hardware antiguo del nodo1 en este estado hasta que complete la actualización tanto del nodo1 como del nodo2.  Luego puede desmantelar el nodo 1 durantelink:manage-authentication-using-kmip-servers.html["Etapa 6. Complete la actualización"] .
+
+.El futuro
+Tras retirar el nodo1, link:prepare_for_netboot.html["preparar para netboot"].

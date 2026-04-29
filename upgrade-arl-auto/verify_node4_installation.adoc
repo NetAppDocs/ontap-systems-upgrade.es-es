@@ -17,7 +17,7 @@ summary: 'Compruebe que el nodo 4 se una al quórum, vuelva a crear las VLAN del
 Después de instalar y arrancar el nodo 4, es necesario verificar que se haya instalado correctamente, que forme parte del clúster y que se pueda comunicar con el nodo 3.
 
 .Acerca de esta tarea
-En este momento del procedimiento, la operación se pausó debido a que el quórum de node4 se une.
+En este punto del procedimiento, la operación se detiene ya que node4 se une al quórum.
 
 .Pasos
 . Verifique que el nodo 4 se haya Unido al quórum:
@@ -38,7 +38,7 @@ Si la configuración es diferente del nodo 4, es posible que se produzca una int
 . Compruebe que la controladora sustituida esté configurada correctamente para configurar MetroCluster y no en modo de conmutación.
 +
 
-CAUTION: En esta etapa la configuración de MetroCluster no estará en un estado normal y es posible que haya errores que resolver. Verlink:verify_health_of_metrocluster_config.html["Compruebe el estado de la configuración de MetroCluster"] .
+CAUTION: En esta fase, la configuración de MetroCluster no se encuentra en un estado normal y es posible que tengas errores que resolver. Consulta link:verify_health_of_metrocluster_config.html["Compruebe el estado de la configuración de MetroCluster"].
 
 
 
@@ -74,7 +74,7 @@ Para obtener más información sobre la creación y recreación de VLAN, grupos 
 
 == Restaure la configuración de gestor de claves en el nodo 4
 
-Si utiliza el cifrado de agregados de NetApp (NAE) o el cifrado de volúmenes de NetApp (NVE) para cifrar volúmenes en el sistema que se está actualizando, la configuración de cifrado debe sincronizarse con los nodos nuevos. Si no se restaura key-Manager, cuando se reinstalan los agregados de nodo 2 de nodo 3 a nodo 4 mediante ARL, los volúmenes cifrados se mostrarán sin conexión.
+Si estás utilizando NetApp Aggregate Encryption (NAE) o NetApp Volume Encryption (NVE) para cifrar volúmenes en el sistema que estás actualizando, la configuración de cifrado debe sincronizarse con los nuevos nodos. Si no restauras key-manager, cuando reubicas los agregados de node2 de node3 a node4 usando ARL, los volúmenes cifrados se ponen fuera de línea.
 
 .Pasos
 . Para sincronizar la configuración de cifrado de Onboard Key Manager, ejecute el siguiente comando en el símbolo del sistema del clúster:

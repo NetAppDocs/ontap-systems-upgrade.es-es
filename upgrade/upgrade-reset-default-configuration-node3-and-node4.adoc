@@ -20,9 +20,9 @@ Debe realizar los siguientes pasos: Nodo 3 y nodo 4. Puede realizar los pasos en
 +
 `boot_ontap menu`
 
-. En el símbolo del sistema del menú de inicio, escriba `wipeconfig` Y, a continuación, pulse Intro.
+. En el menú de arranque, escribe `wipeconfig` y luego selecciona Intro.
 +
-La siguiente pantalla muestra el indicador del menú de inicio
+Ves el siguiente resultado:
 
 +
 [listing]
@@ -50,7 +50,7 @@ Are you sure you want to continue?: yes
 Rebooting to finish wipeconfig request.
 ----
 +
-El sistema iniciará el `wipeconfig` procedimiento y reinicio. Una vez completado el procedimiento, el sistema vuelve al menú de inicio.
+El sistema inicia el `wipeconfig` procedimiento y se reinicia. Una vez finalizado el procedimiento, el sistema vuelve al menú de arranque.
 
-. En el menú de arranque, introduzca 8 para reiniciar el nodo y pulse Ctrl-C durante el AUTOARRANQUE para detener el nodo en el símbolo del sistema DEL CARGADOR.
+. Desde el menú de arranque, introduce 8 para reiniciar el nodo, e introduce Ctrl-C durante AUTOBOOT para detener el nodo en el prompt LOADER.
 

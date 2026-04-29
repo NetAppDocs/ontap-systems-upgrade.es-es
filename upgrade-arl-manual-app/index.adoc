@@ -60,3 +60,6 @@ NOTE: En este documento, los nodos originales se denominan _nodo1_ y _nodo2_, y 
 
 
 
+
+.El futuro
+Después de conocer este procedimiento ARL, link:decide_to_use_arl_guide.html["decide si usar este procedimiento ARL"].

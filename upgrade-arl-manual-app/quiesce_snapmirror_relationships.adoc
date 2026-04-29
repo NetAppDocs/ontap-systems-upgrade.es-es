@@ -34,3 +34,6 @@ La anulación falla si la relación de SnapMirror no se encuentra en el `Transfe
 `snapmirror quiesce -destination-vserver *`
 
 
+
+.El futuro
+Después de silenciar las relaciones SnapMirror, link:prepare_for_netboot.html["preparar para netboot"].

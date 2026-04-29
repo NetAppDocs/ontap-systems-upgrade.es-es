@@ -17,7 +17,7 @@ summary: 'Configure los puertos FC integrados de nodo 3, los puertos UTA/UTA2 o 
 Si el nodo 3 tiene puertos FC integrados, puertos de adaptador de objetivo unificado (UTA/UTA2) integrados o una tarjeta UTA/UTA2, debe configurar los ajustes antes de completar el resto del procedimiento.
 
 .Acerca de esta tarea
-Es posible que tenga que completar la sección <<Configure los puertos FC en el nodo 3>>, la sección <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>, o ambas secciones.
+Es posible que tengas que completar <<configure-fc-ports-on-node3,Configure los puertos FC en el nodo 3>>, o <<check-config-uta-uta2-node3,Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>, o ambas secciones.
 
 
 NOTE: Los materiales de marketing de NetApp podrían utilizar el término UTA2 para referirse a puertos y adaptadores de adaptador de red convergente (CNA). Sin embargo, la CLI utiliza el término CNA.
@@ -26,7 +26,7 @@ Si node3 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarje
 
 
 
-== Configure los puertos FC en el nodo 3
+== Paso 1: Configurar puertos FC en nodo3
 
 Si el nodo 3 tiene puertos FC, ya sea integrados o en un adaptador FC complementario, debe establecer las configuraciones de los puertos en el nodo antes de ponerlo en servicio porque los puertos no están preconfigurados cuando se envían los sistemas.  Si no configura los puertos, podría experimentar una interrupción en el servicio.
 
@@ -34,7 +34,7 @@ Si el nodo 3 tiene puertos FC, ya sea integrados o en un adaptador FC complement
 Debe tener los valores de configuración del puerto FC del nodo 1 que haya guardado en la sección link:prepare_nodes_for_upgrade.html["Prepare los nodos para la actualización"].
 
 .Acerca de esta tarea
-Puede omitir esta sección si el sistema no tiene configuraciones de FC. Si su sistema tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, debe configurarlos en <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>.
+Puedes omitir esta sección si tu sistema no tiene configuraciones FC. Si tu sistema tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, los configuras en <<check-config-uta-uta2-node3,Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>.
 
 
 IMPORTANT: Introduzca los comandos de esta sección en el indicador de shell del modo de mantenimiento.
@@ -80,15 +80,15 @@ Por ejemplo: `ucadmin modify -m fc -t initator 2b`
 
 . Ejecute una de las siguientes acciones:
 +
-** Si el nodo 3 tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, vaya a. <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>.
-** Si node3 no tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, vaya directamente <<Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>> y vaya a.link:reassign-node1-disks-to-node3.html["Reasigne discos de node1 GB a node3"]
+** Si el nodo3 tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, ve a <<check-config-uta-uta2-node3,Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>>.
+** Si el nodo3 no tiene una tarjeta UTA/UTA2 o puertos UTA/UTA2 integrados, omite <<check-config-uta-uta2-node3,Comprobar y configurar los puertos UTA/UTA2 en el nodo 3>> y ve a link:reassign-node1-disks-to-node3.html["Reasigne discos de node1 GB a node3"].
 
 
 
 
 
 
-== Comprobar y configurar los puertos UTA/UTA2 en el nodo 3
+== Paso 2: comprobar y configurar los puertos UTA/UTA2 en el nodo3
 
 Si el nodo 3 tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, debe comprobar la configuración de los puertos y es posible que los vuelva a configurar, según cómo desee usar el sistema actualizado.
 

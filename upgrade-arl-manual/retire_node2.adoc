@@ -109,5 +109,6 @@ El valor de este comando debe coincidir con el estado físico del sistema.
 
 . Detenga el nodo 2 introduciendo el siguiente comando en cualquiera de las controladoras:
 `system node halt -node _node2_`
-. Después de que el nodo 2 se apague por completo, extráigalo del chasis o del rack. Puede retirar el nodo 2 una vez completada la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].
+. Después de que el nodo2 se apague completamente, retíralo del chasis o del rack.
+. Opcionalmente, decomisionar el nodo2 una vez completada la actualización. Ver link:decommission_old_system.html["Retire el sistema antiguo"].
 

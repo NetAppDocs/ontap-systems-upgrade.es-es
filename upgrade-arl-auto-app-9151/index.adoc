@@ -26,7 +26,7 @@ En esta información, los nodos originales reciben el nombre de "nodo 1" y "nodo
 
 Los términos "1", "2", "nodo 3" y "nodo 4" solo se usan para distinguir entre los nodos originales y los nuevos. Cuando siga el procedimiento, deberá sustituir los nombres reales de los nodos originales y los nuevos. Sin embargo, en realidad los nombres de los nodos no cambian: El nodo 3 tiene el nombre 1-nodo y el nodo 4 tiene el nombre 2 después de actualizar el hardware de la controladora.
 
-.Información importante:
+.Información importante
 * Este procedimiento es complejo y asume que tiene habilidades avanzadas de administración de ONTAP. También debe leer y comprender el link:guidelines_for_upgrading_controllers_with_arl.html["Pautas para actualizar controladores con ARL"] y el link:overview_of_the_arl_upgrade.html["Secuencia de actualización de ARL"] antes de comenzar la actualización.
 * En este procedimiento se asume que el hardware de la controladora de reemplazo es nuevo y no se ha usado. En este procedimiento no se incluyen los pasos necesarios para preparar las controladoras usadas con `wipeconfig` el comando. Debe ponerse en contacto con el soporte técnico si se utilizó previamente el hardware de la controladora de reemplazo.
 * Puede usar este procedimiento para actualizar el hardware de la controladora en clústeres con más de dos nodos; sin embargo, debe realizar el procedimiento por separado para cada pareja de alta disponibilidad (ha) del clúster.
@@ -54,3 +54,9 @@ El sistema AFF A20 comparte puertos de red 10GbE y 25GbE para las conexiones cl�
 Si no puede vincular los puertos de clúster e0a o e0b del nodo existente a los puertos de clúster del nodo nuevo, consulte link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["ID de error de NetApp Bugs Online CONTAP-166978"^].
 
 
+
+.Proceso automatizado de actualización de controladores
+Durante la actualización de un controlador, el controlador existente se sustituye por otro que ejecuta una plataforma más nueva o más potente. Este contenido proporciona los pasos para el procedimiento parcialmente automatizado, que utiliza comprobaciones automáticas de accesibilidad de puertos de red para simplificar aún más la experiencia de actualización del controlador.
+
+.El futuro
+Después de conocer este procedimiento de actualización ARL, link:decide_to_use_the_aggregate_relocation_guide.html["decidir si usar este procedimiento"].

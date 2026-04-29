@@ -56,3 +56,6 @@ El listado de directorios debe contener una carpeta netboot con un archivo de ke
 Utilizará la información de los directorios en link:install_boot_node3.html["Etapa 3"] .
 
 
+
+.El futuro
+Después de preparar el arranque en red, link:relocate_non_root_aggr_node1_node2.html["reubicar los agregados que no son raíz de node1 a node2"].

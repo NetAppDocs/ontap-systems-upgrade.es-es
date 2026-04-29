@@ -157,7 +157,7 @@ Si alguno de los nodos está en retorno parcial, utilice `storage failover giveb
 `storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
 
 +
-Si ni el nodo 1 ni el nodo 2 tienen agregados cuyos propietarios son actuales (pero no el propietario del hogar), el sistema devolverá un mensaje similar al siguiente ejemplo:
+Si ni node1 ni node2 poseen agregados de los que son propietarios actuales (pero no propietarios de origen), el sistema devuelve un mensaje similar al siguiente ejemplo:
 
 +
 ....

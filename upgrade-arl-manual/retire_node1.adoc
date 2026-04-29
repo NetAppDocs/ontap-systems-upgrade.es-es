@@ -206,7 +206,5 @@ WARNING: Si el nodo 1 está en el mismo chasis que el nodo 2, no apague el chasi
 El nodo se detiene en el aviso del entorno de arranque.
 
 . Cuando el nodo 1 muestra el aviso del entorno de arranque, quitarlo del chasis o del rack.
-+
-Puede decomisionar el nodo 1 cuando finalice la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].
-
+. Opcionalmente, decomisionar el nodo1 una vez completada la actualización. Ver link:decommission_old_system.html["Retire el sistema antiguo"].
 

@@ -62,3 +62,6 @@ Si desea actualizar controladoras de nivel básico con unidades internas, consul
 Si surge algún problema al actualizar los controladores, consultelink:aggregate_relocation_failures.html["Solucionar problemas"] Para obtener más información y posibles soluciones.
 
 Si no encuentra ninguna solución al problema que encontró, póngase en contacto con el soporte técnico.
+
+.El futuro
+Después de revisar las directrices para actualizar los controladores con ARL, link:overview_of_the_arl_upgrade.html["conoce la secuencia de actualización de la ARL"].

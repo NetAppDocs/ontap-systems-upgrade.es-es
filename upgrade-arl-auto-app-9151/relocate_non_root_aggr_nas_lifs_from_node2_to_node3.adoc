@@ -77,3 +77,6 @@ El  `vserver_name` El uso de este comando se encuentra en la salida del comando 
 `network interface show -curr-node _node2_ -role data`
 
 
+
+.El futuro
+Después de reubicar los agregados que no son raíz y los LIF de datos NAS del nodo2 al nodo3, link:relocate-failed-or-vetoed-aggr-node3.html["reubicar los agregados fallidos o vetados a node3"].

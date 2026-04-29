@@ -123,7 +123,7 @@ El sistema muestra los puertos físicos del nodo, como se muestra en el ejemplo 
 ----
 . Registre los puertos y sus dominios de retransmisión.
 +
-Los dominios de retransmisión deberán asignarse a los nuevos puertos en la nueva controladora más adelante en el procedimiento.
+Los dominios de difusión deben asignarse a los nuevos puertos del nuevo controlador más adelante en el procedimiento.
 
 . Introduzca el siguiente comando en el nodo 1:
 +
@@ -201,3 +201,6 @@ El sistema muestra información acerca del nodo 1, como se muestra en el siguien
 ----
 . [[man_record_1_step12]]registre el número de ID del sistema NVRAM que se va a utilizar en la sección link:install_boot_node3.html["Instale y arranque el nodo 3"].
 
+
+.El futuro
+Tras registrar la información del nodo1, link:retire_node1.html["retirar nodo1"].

@@ -286,3 +286,6 @@ El siguiente muestra un ejemplo de resultado del comando:
 
 
 
+
+.El futuro
+Tras reasignar los discos del nodo1 al nodo3, link:verify_node3_installation.html["verifica la instalación de node3"].

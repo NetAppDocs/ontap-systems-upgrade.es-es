@@ -166,7 +166,7 @@ Ingresa la frase de contraseña y la información de copia de seguridad que anot
 
 WARNING: Si este nodo nuevo se ha usado alguna vez en cualquier otro clúster o pareja de alta disponibilidad, debe ejecutar `wipeconfig` antes de continuar. De no hacerlo, se pueden producir interrupciones del servicio o pérdida de datos. Póngase en contacto con el soporte técnico si la controladora de reemplazo se utilizó anteriormente, especialmente si las controladoras ejecutaban ONTAP en 7-Mode.
 
-. Presione CTRL-C para mostrar el menú de arranque.
+. Introduce CTRL-C para mostrar el menú de arranque.
 . [[man_install3_step19]]realice una de las siguientes acciones:
 +
 [cols="35,65"]
@@ -534,3 +534,6 @@ Es posible que el nodo pase por una ronda de reinicio antes de arrancar normalme
 
 . [[man_install3_step48]]Inicie sesión en el nodo 3.
 
+
+.El futuro
+Después de instalar y arrancar node3, link:set_fc_uta_uta2_config_node3.html["Establecer la configuración FC o UTA/UTA2 en el nodo 3"].

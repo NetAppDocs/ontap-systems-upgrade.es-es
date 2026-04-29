@@ -49,7 +49,7 @@ La reubicación se produce en segundo plano. La reubicación de un agregado pued
 `storage aggregate relocation show -node _node3_`
 
 +
-Se mostrará la salida `Done` para un agregado después de su traslado.
+La salida muestra `Done` para un agregado después de haber sido reubicado.
 
 +
 
@@ -125,3 +125,6 @@ Los agregados 2 se enumeran en la salida del comando en <<man_relocate_3_4_Step1
 `system node autosupport invoke -node _node4_ -type all -message "_node2_ successfully upgraded from _platform_old_ to _platform_new_"`
 
 
+
+.El futuro
+Tras reubicar los agregados no raíz del nodo2 desde el nodo3 al nodo4, link:manage_authentication_kmip.html["gestionar la autenticación mediante servidores KMIP"].

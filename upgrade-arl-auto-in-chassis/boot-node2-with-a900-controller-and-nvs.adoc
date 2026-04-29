@@ -46,7 +46,7 @@ No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo
 ====
 .. Vaya al menú de inicio especial y seleccione la opción `(10) Set Onboard Key Manager recovery secrets`.
 +
-Ingresa la frase de contraseña y la información de copia de seguridad que anotaste antes en el procedimiento. Consulta link:manage-storage-encryption-using-okm.html["Gestione el cifrado del almacenamiento con el gestor de claves incorporado"].
+Ingresa la frase de contraseña y la información de copia de seguridad que anotaste antes en el procedimiento. Consulta link:complete-preparation-for-upgrade.html#manage-storage-encryption-using-okm["Gestione el cifrado del almacenamiento con el gestor de claves incorporado"].
 
 
 
@@ -219,3 +219,6 @@ Entre introducir nombres de nodo en la solicitud de entrada y la solicitud de in
 
 ====
 
+
+.El futuro
+Tras arrancar el nodo2 con los módulos de sistema sustituidos, link:verify-node2-installation.html["verifica la instalación del nodo2"].

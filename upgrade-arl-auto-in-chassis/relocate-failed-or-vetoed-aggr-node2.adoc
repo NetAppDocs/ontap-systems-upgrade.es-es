@@ -41,3 +41,6 @@ El sistema pausa la operación de reubicación debido al error.
 `storage aggregate relocation start -node node1 -destination node2 -aggregate-list <aggregate_list> -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
 |===
 
+
+.El futuro
+Tras reubicar los agregados fallidos o vetados en el nodo2, link:retire-node1.html["retirar nodo1"].

@@ -41,9 +41,9 @@ Si su sistema no aparece en la lista anterior, consulte https://hwu.netapp.com["
 +
 `boot_ontap menu`
 
-. En el símbolo del sistema del menú de inicio, introduzca `9a` Y, a continuación, pulse Intro.
+. En el menú de arranque, introduce `9a` y luego selecciona Intro.
 +
-La siguiente pantalla muestra el indicador del menú de inicio.
+Ves el siguiente resultado:
 
 +
 [listing]

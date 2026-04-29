@@ -14,7 +14,7 @@ summary: Verifique que los puertos físicos en 2 se asignen correctamente al nod
 
 
 [role="lead"]
-Debe asegurarse de que los puertos físicos del nodo 2 se asignen correctamente a los puertos físicos del nodo 4, lo que permitirá que el nodo 4 se comunique con otros nodos del clúster y con la red después de la actualización.
+Los puertos físicos del nodo2 deben asignarse correctamente a los puertos físicos del nodo4. Esto permite al nodo4 comunicarse con otros nodos del clúster y con la red después de la actualización.
 
 .Antes de empezar
 Para acceder a esta información, ya debe tener información sobre los puertos en los nodos nuevos. Consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_. La información se utiliza más adelante en esta sección.
@@ -22,9 +22,9 @@ Para acceder a esta información, ya debe tener información sobre los puertos e
 La configuración de software del nodo 4 debe coincidir con la conectividad física del nodo 4, y se debe restaurar la conectividad IP antes de continuar con la actualización.
 
 .Acerca de esta tarea
-La configuración del puerto puede variar en función del modelo de los nodos. Debe hacer que el puerto y la configuración de LIF del nodo original sean compatibles con lo que planifique la configuración del nodo nuevo. Esto es así porque el nuevo nodo reproduce la misma configuración cuando arranca, lo que significa que cuando arranca el nodo 4, Data ONTAP intentará host LIF en los mismos puertos que se usaron en el nodo 2.
+La configuración de los puertos puede variar, dependiendo del modelo de los nodos. Debes hacer que la configuración de puertos y LIF del nodo original sea compatible con la que planeas que sea la configuración del nuevo nodo. Esto es porque el nuevo nodo replica la misma configuración cuando arranca, lo que significa que cuando arrancas el nodo4, Data ONTAP intenta alojar LIFs en los mismos puertos que se usaron en el nodo2.
 
-Por lo tanto, si los puertos físicos del nodo 2 no se asignan directamente a los puertos físicos del nodo 4, se necesitarán cambios de configuración del software para restaurar la conectividad de clúster, gestión y red después del arranque. Además, si los puertos del clúster en el nodo 2 no se asignan directamente a los puertos del clúster del nodo 4, es posible que el nodo 4 no vuelva a unir automáticamente el quórum cuando se reinicia hasta que se realice un cambio de configuración de software para alojar las LIF del clúster en los puertos físicos correctos.
+Por lo tanto, si los puertos físicos de node2 no se asignan directamente a los puertos físicos de node4, entonces se requieren cambios en la configuración del software para restaurar la conectividad del clúster, la gestión y la red después del arranque. Además, si los puertos del clúster de node2 no se asignan directamente a los puertos del clúster de node4, es posible que node4 no vuelva a unirse automáticamente al quórum cuando se reinicie hasta que se realice un cambio en la configuración del software para alojar los LIF del clúster en los puertos físicos correctos.
 
 .Pasos
 . Registre toda la información de cableado del nodo 2 para el nodo 2, los puertos, los dominios de retransmisión y los espacios IP en esta tabla:

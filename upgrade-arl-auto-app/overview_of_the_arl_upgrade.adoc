@@ -97,3 +97,5 @@ Propiedad agregada al final de la etapa 5:
 Durante la fase 6, confirme que los nodos nuevos están configurados correctamente y, si los nodos nuevos tienen la función de cifrado habilitada, debe configurar y configurar el cifrado de almacenamiento o NVE. También debe retirar los nodos antiguos y reanudar las operaciones de SnapMirror.
 
 |===
+.El futuro
+Después de conocer la secuencia de actualización de ARL, link:prepare_nodes_for_upgrade.html["preparar los nodos para la actualización"].

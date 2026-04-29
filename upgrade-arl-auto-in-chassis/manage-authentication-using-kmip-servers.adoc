@@ -34,3 +34,6 @@ A partir de ONTAP 9.10.1, se pueden usar servidores de protocolo de interoperabi
 `security key-manager external restore -node _new_controller_name_`
 
 
+
+.El futuro
+Después de gestionar la autenticación mediante servidores KMIP, link:confirm-new-controllers-are-set-up-correctly.html["confirma que los nuevos controladores están configurados correctamente"].

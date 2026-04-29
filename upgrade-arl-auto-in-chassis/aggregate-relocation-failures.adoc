@@ -57,7 +57,7 @@ Algunos de los agregados que se están reubicando tienen el nodo 1 como nodo de 
 
 * Después de la etapa 4, cuando node2 se sustituye por los nuevos módulos del sistema.
 +
-Cuando se sustituye el nodo 2, aggr_node_1 estará conectado con el nodo 1 como nodo raíz en lugar del nodo 2.
+Cuando se sustituye el nodo2, aggr_node_1 se conecta con el nodo1 como nombre de nodo de origen en lugar del nodo2.
 
 
 

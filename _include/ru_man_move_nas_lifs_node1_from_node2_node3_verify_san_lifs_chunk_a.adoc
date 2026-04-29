@@ -3,7 +3,7 @@
 
 
 .Acerca de esta tarea
-Las LIF remotas gestionan el tráfico a LUN DE SAN durante el procedimiento de actualización. No es necesario mover LIF DE SAN durante la actualización para el estado del clúster o del servicio. Los LIF SAN no se mueven a menos que tengan que asignarse a nuevos puertos. Verifique que las LIF estén en buen estado y se encuentren en puertos adecuados después de poner el nodo 3 en línea.
+Los LIFs remotos gestionan el tráfico a los LUNs SAN durante el procedimiento de actualización. Mover los LIFs SAN no es necesario para la salud del cluster o del servicio durante la actualización. Los LIFs SAN no se mueven a menos que necesiten ser mapeados a nuevos puertos. Necesitas verificar que los LIFs están sanos y ubicados en los puertos apropiados después de poner en línea node3.
 
 .Pasos
 . [[step1]]enumera todas las LIF de datos NAS que no son propiedad de 2 introduciendo el siguiente comando en cualquiera de los nodos y capturando la salida:

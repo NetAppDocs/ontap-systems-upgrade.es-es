@@ -10,7 +10,7 @@
 
 WARNING: Si este nodo nuevo se ha usado alguna vez en cualquier otro clúster o pareja de alta disponibilidad, debe ejecutar `wipeconfig` antes de continuar. De no hacerlo, se pueden producir interrupciones del servicio o pérdida de datos. Póngase en contacto con el soporte técnico si la controladora de reemplazo se utilizó anteriormente, especialmente si las controladoras ejecutaban ONTAP en 7-Mode.
 
-. Presione CTRL-C para mostrar el menú de arranque.
+. Introduce CTRL-C para mostrar el menú de arranque.
 . [[man_install3_step19]]realice una de las siguientes acciones:
 +
 [cols="35,65"]

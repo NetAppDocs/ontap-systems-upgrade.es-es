@@ -132,7 +132,7 @@ El módulo del controlador se reinicia pero se detiene en el menú de inicio por
 
 . Borre cualquier configuración previa en el medio de arranque.
 +
-.. En el siguiente mensaje, ejecute el  `wipeconfig` comando y presione la tecla Enter:
+.. En el siguiente indicador, ejecuta el comando `wipeconfig`. Luego selecciona Intro:
 +
 [listing]
 ----
@@ -241,3 +241,6 @@ Para el nodo 2, la `partner-sysid` debe ser la de la node1 que va a actualizar.
 `printenv partner-sysid`
 
 
+
+.El futuro
+Tras el arranque en red del nodo2, link:cable-node2-for-shared-cluster-HA-storage.html["cablea el nodo2 para clúster-HA y almacenamiento compartidos"].

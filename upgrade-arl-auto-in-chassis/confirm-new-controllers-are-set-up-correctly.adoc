@@ -139,3 +139,6 @@ Consulta link:other-references.html["Referencias"] para enlazar con la _System A
 
 .Después de terminar
 Si Storage Encryption está activado en node1 y node2, completa la sección link:set-up-storage-encryption-new-module.html["Configure Storage Encryption en el nuevo módulo de la controladora"]. De lo contrario, completa la sección link:decommission-old-system.html["Retire el sistema antiguo"].
+
+.El futuro
+Después de confirmar que los nuevos controladores están configurados correctamente, link:set-up-storage-encryption-new-module.html["configurar Storage Encryption en el nuevo módulo controlador"].

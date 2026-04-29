@@ -37,3 +37,6 @@ Cuando te lo pidan, introduce la frase de contraseña OKM para todo el clúster 
 `security key-manager onboard show-backup`
 
 
+
+.El futuro
+Después de gestionar las claves de autenticación mediante Onboard Key Manager, link:quiesce_snapmirror_relationships.html["pausa las relaciones SnapMirror"].

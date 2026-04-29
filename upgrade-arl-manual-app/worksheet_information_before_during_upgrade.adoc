@@ -78,3 +78,5 @@ Puede utilizar la siguiente hoja de trabajo para registrar la información para 
 
 | Certificados SSL privados y públicos para el sistema de almacenamiento y certificados SSL privados para cada servidor de gestión de claves | Fase 6: _Configure el cifrado del almacenamiento en los nuevos nodos_ | Más adelante en la sección |  
 |===
+.El futuro
+Tras registrar la información del nodo original, link:determine_aggregates_on_internal_drives.html["determinar si el controlador tiene agregados en las unidades de disco internas"].

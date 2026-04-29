@@ -14,7 +14,7 @@ summary: Verifique que los puertos físicos del nodo 1 se asignen correctamente 
 
 
 [role="lead"]
-Debe asegurarse de que los puertos físicos del nodo 1 se asignen correctamente a los puertos físicos del nodo 3, lo que permitirá que el nodo 3 se comunique con otros nodos del clúster y con la red después de la actualización.
+Debes asegurarte de que los puertos físicos de node1 se asignen correctamente a los puertos físicos de node3. Esto permite que node3 se comunique con otros nodos del clúster y con la red después de la actualización.
 
 .Antes de empezar
 Ya debe tener información acerca de los puertos en los nodos nuevos del _Hardware Universe_. (Vaya a. link:other_references.html["Referencias"] Para establecer un enlace con el _Hardware Universe_). Utilice la información posteriormente en esta sección y en link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
@@ -24,9 +24,9 @@ La configuración del software de node3 debe coincidir con la conectividad físi
 .Acerca de esta tarea
 La configuración del puerto puede variar en función del modelo de los nodos.
 
-Debe hacer que el puerto y la configuración de LIF del nodo original sean compatibles con lo que planifique la configuración del nodo nuevo. Esto es así porque el nuevo nodo reproduce la misma configuración cuando arranca, lo que significa que cuando arranca el nodo 3, ONTAP intentará alojar LIF en los mismos puertos que se usaron en el nodo 1.
+Debes hacer que la configuración de puertos y LIF del nodo original sea compatible con la que planeas que sea la configuración del nuevo nodo. Esto se debe a que el nuevo nodo replica la misma configuración cuando arranca, lo que significa que cuando arrancas node3, ONTAP intenta alojar LIFs en los mismos puertos que se utilizaron en node1.
 
-Por lo tanto, si los puertos físicos del nodo 1 no se asignan directamente a los puertos físicos del nodo 3, se necesitarán cambios de configuración del software para restaurar la conectividad de clúster, gestión y red después del arranque. Además, si los puertos del clúster del nodo 1 no se asignan directamente a los puertos del clúster del nodo 3, es posible que el nodo 3 no vuelva a unir automáticamente el quórum cuando se reinicia hasta que se realice un cambio de configuración de software para alojar las LIF del clúster en los puertos físicos correctos.
+Por lo tanto, si los puertos físicos de node1 no se asignan directamente a los puertos físicos de node3, entonces se requieren cambios en la configuración del software para restaurar la conectividad del clúster, la gestión y la red después del arranque. Además, si los puertos del clúster de node1 no se asignan directamente a los puertos del clúster de node3, es posible que node3 no vuelva a unirse automáticamente al quórum cuando se reinicie hasta que se realice un cambio en la configuración del software para alojar los LIF del clúster en los puertos físicos correctos.
 
 .Pasos
 . [[step1]]Registre toda la información de cableado del nodo 1 para los nodos 1, los puertos, los dominios de retransmisión y los espacios IP, en la siguiente tabla:
@@ -78,7 +78,7 @@ Por lo tanto, si los puertos físicos del nodo 1 no se asignan directamente a lo
 | Puerto de interconexión de clústeres |  |  |  |  |  |  
 |===
 +
-Consulte link:record_node1_information.html["Registre la información del nodo 1"] para obtener esta información en los pasos.
+Consulta en link:record_node1_information.html["Registre la información del nodo 1"] los pasos para obtener esta información.
 
 . [[step2]]Registre toda la información de cableado para el nodo 3, los puertos, los dominios de retransmisión y los espacios IP de la tabla anterior usando el mismo procedimiento de link:record_node1_information.html["Registre la información del nodo 1"].
 . [[step3]]siga estos pasos para verificar si la configuración es un clúster sin switch de dos nodos:

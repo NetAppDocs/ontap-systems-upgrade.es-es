@@ -49,3 +49,6 @@ Es posible que aparezca un error mientras se actualiza la pareja de nodos. El no
 Si ocurre algún problema, consulta la sección link:aggregate-relocation-failures.html["Solucionar problemas"] al final del procedimiento para más información y posibles soluciones. La información sobre los fallos que pueden ocurrir está enumerada por fase del procedimiento en el link:overview-of-the-arl-upgrade.html["Secuencia de actualización de ARL"].
 
 Si no encuentra una solución al problema encontrado, comuníquese con el soporte técnico.
+
+.El futuro
+Después de revisar las directrices para actualizar los controladores, link:overview-of-the-arl-upgrade.html["conoce la secuencia de actualización de la ARL"].

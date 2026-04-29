@@ -34,3 +34,6 @@ Con ONTAP 9.8 o una versión posterior, se pueden utilizar servidores de protoco
 `security key-manager external restore -node _new_controller_name_`
 
 
+
+.El futuro
+Después de gestionar la autenticación mediante servidores KMIP, link:ensure_new_controllers_are_set_up_correctly.html["confirma que los nuevos controladores están configurados correctamente"].

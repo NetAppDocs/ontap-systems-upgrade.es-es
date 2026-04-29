@@ -23,3 +23,6 @@ Se necesitan las siguientes herramientas para realizar la actualización:
 
 
 Vaya a la link:other_references.html["Referencias"] para acceder a la lista de documentos de referencia necesarios para esta actualización.
+
+.El futuro
+Tras revisar las herramientas y la documentación necesarias, link:worksheet_information_before_during_upgrade.html["registrar la información del nodo original para utilizarla durante la actualización"].

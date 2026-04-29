@@ -68,3 +68,6 @@ Para obtener más información, vea el artículo de la base de conocimientos htt
 
 .Después de terminar
 Compruebe si alguno de los volúmenes se desconectó debido a que no existían claves de autenticación o porque no se pudo acceder a los servidores de gestión de claves externos. Vuelva a poner en línea esos volúmenes mediante el uso de  `volume online` dominio.
+
+.El futuro
+Después de configurar NetApp Volume o Aggregate Encryption en el nuevo módulo controlador, link:decommission_old_system.html["decomisionar el antiguo sistema"].

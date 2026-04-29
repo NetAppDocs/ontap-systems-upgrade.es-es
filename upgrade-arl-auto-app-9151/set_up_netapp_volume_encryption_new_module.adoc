@@ -83,3 +83,6 @@ Para obtener más información, vea el artículo de la base de conocimientos htt
 ====
 .Después de terminar
 Compruebe si algún volumen se desconectó debido a que no había claves de autenticación disponibles o a que no se pudo acceder a los servidores EKM. Vuelva a conectar esos volúmenes en línea mediante el `volume online` comando.
+
+.El futuro
+Después de configurar NetApp Volume o Aggregate Encryption en el nuevo módulo controlador, link:decommission_old_system.html["decomisionar el antiguo sistema"].

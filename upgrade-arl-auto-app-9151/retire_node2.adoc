@@ -28,3 +28,6 @@ El nodo se detiene automáticamente.
 
 .Después de terminar
 Después de retirar el nodo 2, verifique que esté apagado y no conectado a la red.  Deje el hardware antiguo del nodo2 en este estado hasta que complete la actualización tanto del nodo1 como del nodo2.  Luego puede desmantelar el nodo 2 durantelink:manage-authentication-using-kmip-servers.html["Etapa 6. Complete la actualización"] .
+
+.El futuro
+Tras retirar el nodo2, link:install_boot_node4.html["instalar y arrancar node4"].

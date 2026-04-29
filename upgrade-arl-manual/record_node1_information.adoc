@@ -123,7 +123,7 @@ El sistema muestra los puertos físicos del nodo, como se muestra en el ejemplo 
 ----
 . Registre los puertos y sus dominios de retransmisión.
 +
-Los dominios de retransmisión deberán asignarse a los nuevos puertos en la nueva controladora más adelante en el procedimiento.
+Los dominios de difusión deben asignarse a los nuevos puertos del nuevo controlador más adelante en el procedimiento.
 
 . Introduzca el siguiente comando en el nodo 1:
 +

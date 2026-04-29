@@ -40,10 +40,10 @@ La toma de control y la devolución pueden proceder con normalidad.
 
 === El nodo 1 se bloquea durante o solo después de la fase 2 con la alta disponibilidad todavía habilitada
 
-Algunos o todos los agregados se han reubicado del nodo 1 al nodo 2 y la alta disponibilidad sigue estando habilitada. El nodo 2 tomará el volumen raíz del nodo 1 y todos los agregados que no sean raíz al que no se hayan reubicado.
+Algunos o todos los agregados han sido reubicados de node1 a node2, y HA sigue habilitada. Node2 se hace cargo del volumen raíz de node1 y de cualquier agregado no raíz que no haya sido reubicado.
 
 .Acerca de esta tarea
-La propiedad de los agregados que se reubicaron tiene el mismo aspecto que la propiedad de los agregados no raíz que se tomaron el control porque el propietario no ha cambiado. Cuando el nodo 1 entra en el `waiting for giveback state`, el nodo 2 devuelve todos los agregados no raíz del nodo 1.
+La propiedad de los agregados que fueron reubicados tiene el mismo aspecto que la propiedad de los agregados no raíz que fueron tomados porque el propietario no ha cambiado. Cuando el nodo1 entra en `waiting for giveback state`, el nodo2 devuelve todos los agregados no raíz del nodo1.
 
 .Pasos
 . Completolink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Paso 1"] en la sección _Reubicar agregados no raíz del nodo1 al nodo2_ nuevamente.
@@ -54,7 +54,7 @@ La propiedad de los agregados que se reubicaron tiene el mismo aspecto que la pr
 
 === El nodo 1 se bloquea después de la fase 2 mientras la alta disponibilidad está deshabilitada
 
-El nodo 2 no volverá a ocupar los volúmenes, pero sí estará sirviendo datos en todos los agregados que no sean raíz.
+El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados que no son raíz.
 
 .Pasos
 . Coloque el nodo 1.
@@ -71,7 +71,7 @@ Es posible que observe algunos cambios en el resultado del `storage failover sho
 El nodo 1 ha reubicado algunos de sus agregados, o todos ellos, al nodo 2. LA ALTA DISPONIBILIDAD está habilitada.
 
 .Acerca de esta tarea
-Los nodos 1 nodo 2 asumir todos los agregados del nodo 2, así como cualquiera de sus propios agregados, que se habían reubicado en el nodo 2. Cuando el nodo 2 entra en el `Waiting for Giveback` state, 1 devuelve todos los agregados del nodo 2.
+El nodo1 se hace cargo de todos los agregados del nodo2, así como de cualquiera de sus propios agregados que hubiera reubicado en el nodo2. Cuando el nodo2 entra en el estado `Waiting for Giveback`, el nodo1 devuelve todos los agregados del nodo2.
 
 .Pasos
 . Completolink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Paso 1"] en la sección _Reubicar agregados no raíz del nodo1 al nodo2_ nuevamente.
@@ -82,12 +82,12 @@ Los nodos 1 nodo 2 asumir todos los agregados del nodo 2, así como cualquiera d
 
 === El nodo 2 se bloquea después de la fase 2 y después de la desactivación de alta disponibilidad
 
-El nodo 1 no asuma el control.
+El nodo 1 no toma el control.
 
 .Pasos
 . Sube el 2.
 +
-Se producirá una interrupción del servicio del cliente en todos los agregados, mientras que el nodo 2 arranca.
+Se produce una interrupción del cliente para todos los agregados mientras node2 está arrancando.
 
 . Continúe con el resto del procedimiento de actualización de la pareja de nodos.
 
@@ -102,12 +102,12 @@ Los fallos pueden producirse durante o inmediatamente después de la fase 3, dur
 
 === El nodo 2 se bloquea durante la fase 3 con la función ha deshabilitada y antes de reubicar cualquier agregado
 
-El nodo 3 no volverá a asumir un fallo en un nodo 2, ya que la alta disponibilidad ya está deshabilitada.
+El nodo 3 no toma el relevo tras una caída del nodo 2 porque HA ya está desactivada.
 
 .Pasos
 . Sube el 2.
 +
-Se producirá una interrupción del servicio del cliente en todos los agregados, mientras que el nodo 2 arranca.
+Se produce una interrupción del cliente para todos los agregados mientras node2 está arrancando.
 
 . Continúe con el procedimiento de actualización de la pareja de nodos.
 
@@ -116,10 +116,10 @@ Se producirá una interrupción del servicio del cliente en todos los agregados,
 
 === El nodo 2 se bloquea durante la fase 3 después de reubicar algunos o todos los agregados
 
-El nodo 2 ha reubicado algunos de sus agregados, o todos ellos, al nodo 3, los cuales sirven datos de agregados que se reubicaron. LA ALTA DISPONIBILIDAD está deshabilitada.
+El nodo2 ha reubicado algunos o todos sus agregados en el nodo3, que sirve datos de los agregados que fueron reubicados. HA está deshabilitado.
 
 .Acerca de esta tarea
-Se producirá una interrupción del cliente para los agregados que no se hayan reubicado.
+Hay un corte de clientes para los agregados que no fueron reubicados.
 
 .Pasos
 . Sube el 2.
@@ -142,7 +142,7 @@ El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados qu
 
 === El nodo 3 se bloquea durante la fase 3 durante la reubicación de agregados
 
-Si el nodo 3 se bloquea mientras el nodo 2 se reubica los agregados en el nodo 3, el nodo 2 anula la reubicación de los agregados restantes.
+Si node3 se bloquea mientras node2 está reubicando agregados en node3, node2 aborta la reubicación de cualquier agregado restante.
 
 .Acerca de esta tarea
 El nodo 2 sigue sirviendo agregados restantes, pero los agregados que ya se reubicaron en el nodo 3 se encuentran en una interrupción de cliente, mientras que el nodo 3 se inicia.
@@ -183,7 +183,7 @@ El nodo 3 se bloquea después de la fase 3, pero antes de la fase 5. El par de a
 .Pasos
 . Traiga el nodo 3.
 +
-Se producirá una interrupción del servicio del cliente para todos los agregados.
+Hay un corte de clientes para todos los agregados.
 
 . Continúe con el procedimiento de actualización de la pareja de nodos.
 

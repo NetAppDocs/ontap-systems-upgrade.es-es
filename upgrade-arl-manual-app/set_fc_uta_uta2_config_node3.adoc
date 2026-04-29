@@ -259,3 +259,6 @@ La salida de los siguientes ejemplos muestra que el tipo FC4 del adaptador "1b" 
 
 . [[man_check_3_step14]]Conecte el puerto.
 
+
+.El futuro
+Después de establecer la configuración FC o UTA/UTA2 en el nodo3, link:map_ports_node1_node3.html["asignar puertos del nodo1 al nodo3"].

@@ -29,3 +29,12 @@ Para retirar node1, debe reanudar la operación automatizada para deshabilitar e
 Después de que el nodo 1 se haya detenido por completo, el nodo 1 debería estar en el símbolo del sistema LOADER>. Para ver el aviso DEL CARGADOR>, conéctese a la consola serie del nodo 1.
 
 
+
+.El futuro
+Después de retirar el nodo1, elige uno de los siguientes procedimientos de sustitución del controlador según tu configuración de actualización:
+
+* link:replace-node1-affa250-affc250.html["Sustituye el módulo controlador AFF A250 o AFF C250 de node1"]
+* link:replace-node1-affa800.html["Sustituye el módulo controlador AFF A800 o AFF C800 del nodo1"]
+* link:replace-node1-affa220-affa200-affc190-fas2620-fas2720.html["Sustituye el módulo de controlador del nodo1 AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720"]
+* link:replace-node1-aff700-fas900.html["Sustituye el controlador AFF A700 o FAS9000 de node1 y los módulos NVRAM"]
+

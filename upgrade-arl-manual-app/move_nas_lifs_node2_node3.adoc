@@ -149,3 +149,6 @@ Distribution Function: ip
 
 
 
+
+.El futuro
+Después de mover los LIF de datos NAS propiedad del nodo2 al nodo3, link:record_node2_information.html["registrar información del nodo2"].

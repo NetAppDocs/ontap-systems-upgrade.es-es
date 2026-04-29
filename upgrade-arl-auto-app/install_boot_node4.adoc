@@ -275,7 +275,7 @@ No es posible mezclar unidades FIPS con otros tipos de unidades en el mismo nodo
 ====
 .. Vaya al menú de inicio especial y seleccione la opción `(10) Set Onboard Key Manager recovery secrets`.
 +
-Introduce la frase de contraseña y la información de copia de seguridad que registraste antes en el procedimiento. Consulta link:manage_storage_encryption_using_okm.html["Gestione el cifrado del almacenamiento con el gestor de claves incorporado"].
+Ingresa la frase de contraseña y la información de copia de seguridad que anotaste antes en el procedimiento. Consulta link:complete-preparation-for-upgrade.html#manage_storage_encryption_using_okm["Gestione el cifrado del almacenamiento con el gestor de claves incorporado"].
 
 
 

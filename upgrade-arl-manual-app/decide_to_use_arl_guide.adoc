@@ -49,3 +49,6 @@ Consulte link:other_references.html["Referencias"] Para establecer un enlace al 
 
 .Información relacionada
 Referirse a link:other_references.html["Referencias"] para vincular a la _Documentación de ONTAP 9_.
+
+.El futuro
+Después de decidir si utilizar este procedimiento ARL, link:arl_upgrade_workflow.html["revisar el flujo de trabajo de actualización de ARL"].

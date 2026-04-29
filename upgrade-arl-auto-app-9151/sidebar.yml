@@ -21,8 +21,8 @@ entries:
   entries:
   - title: Prepare los nodos para la actualización
     url: "/upgrade-arl-auto-app-9151/prepare_nodes_for_upgrade.html"
-  - title: Gestione el cifrado del almacenamiento con el gestor de claves incorporado
-    url: "/upgrade-arl-auto-app-9151/manage_storage_encryption_using_okm.html"
+  - title: Completa la preparación para la actualización
+    url: "/upgrade-arl-auto-app-9151/complete-preparation-for-upgrade.html"
 - title: Fase 2. Reubicar y retirar el nodo 1
   pdf-filename: Etapa 2. Reubicar y retirar node1 (actualización con «sustitución
     de controladora del sistema» en ONTAP 9.15.1 o posterior)

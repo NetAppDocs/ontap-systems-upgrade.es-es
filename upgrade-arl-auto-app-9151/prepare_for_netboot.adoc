@@ -42,3 +42,6 @@ NOTE: No es necesario extraer el contenido del `<ontap_version>_image.tgz` archi
 Utilizará la información de los directorios en link:install_boot_node3.html["Etapa 3"].
 
 
+
+.El futuro
+Después de preparar el arranque en red, link:install_boot_node3.html["instalar y arrancar nodo3"].

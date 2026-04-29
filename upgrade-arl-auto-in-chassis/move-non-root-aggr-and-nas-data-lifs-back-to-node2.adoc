@@ -134,3 +134,6 @@ El sistema realiza las siguientes comprobaciones posteriores:
 
 
 
+
+.El futuro
+Después de mover los agregados que no son raíz y los LIF de datos NAS de vuelta al nodo2, link:manage-authentication-using-kmip-servers.html["gestionar la autenticación mediante servidores KMIP"].

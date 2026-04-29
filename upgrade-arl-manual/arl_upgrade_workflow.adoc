@@ -98,7 +98,7 @@ Propiedad agregada al final de la etapa 5:
 Durante la fase 6, el usuario confirma que los nodos nuevos están configurados correctamente y configura el cifrado de almacenamiento o el cifrado de volúmenes de NetApp si los nuevos nodos tienen la función de cifrado habilitada. También debe retirar los nodos antiguos y reanudar las operaciones de SnapMirror.
 
 
-NOTE: Las actualizaciones de recuperación ante desastres de la máquina virtual de almacenamiento (SVM) no se interrumpirán según las programaciones asignadas.
+NOTE: Las actualizaciones de recuperación ante desastres de la máquina virtual de almacenamiento (SVM) no se interrumpen según los calendarios asignados.
 
 No se producen cambios en la propiedad del agregado.
 

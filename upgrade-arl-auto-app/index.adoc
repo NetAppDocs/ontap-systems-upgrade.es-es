@@ -36,3 +36,11 @@ Este procedimiento de actualización se aplica principalmente a situaciones de a
 * Para sistemas que no son MetroCluster, como clústeres de alta disponibilidad, la actualización de ARL es el único procedimiento compatible.
 * Si actualiza desde un sistema AFF A320, puede usar el movimiento de volúmenes para actualizar el hardware de la controladora o ponerse en contacto con el soporte técnico. Consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
 
+
+.Automatice el proceso de actualización de la controladora
+Durante la actualización de una controladora, se reemplaza la controladora por otra controladora que ejecuta una plataforma más nueva o más potente. Las versiones anteriores de este contenido contenían instrucciones para un proceso de actualización de la controladora no disruptivo que incluía pasos totalmente manuales. Este contenido ofrece los pasos para el nuevo procedimiento automatizado que utiliza comprobaciones automáticas de accesibilidad de puertos de red para simplificar aún más la experiencia de actualización de la controladora.
+
+El proceso manual era largo y complejo pero, en este procedimiento simplificado, puede implementar una actualización de controladora mediante la reubicación de agregados, lo que permite realizar actualizaciones no disruptivas más eficientes para pares de alta disponibilidad. Hay muchos menos pasos manuales, especialmente en lo que respecta a la validación, recopilación de información y comprobaciones posteriores.
+
+.El futuro
+Después de conocer este procedimiento ARL, link:decide_to_use_the_aggregate_relocation_guide.html["decide si usar este procedimiento ARL"].

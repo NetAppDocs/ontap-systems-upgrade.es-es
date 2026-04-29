@@ -25,7 +25,5 @@ Para retirar el nodo 1, reanude el funcionamiento automatizado para deshabilitar
 +
 `system controller replace show-details`
 
+. Opcionalmente, decomisionar el nodo1 una vez completada la actualización. Ver link:decommission_old_system.html["Retire el sistema antiguo"].
 
-
-.Después de terminar
-Puede decomisionar el nodo 1 cuando finalice la actualización. Consulte link:decommission_old_system.html["Retire el sistema antiguo"].
