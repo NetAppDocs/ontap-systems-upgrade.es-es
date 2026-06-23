@@ -49,7 +49,7 @@ No se pueden realizar las siguientes actualizaciones:
 +
 Consulte link:other_references.html["Referencias"] Para establecer un vínculo con el _Hardware Universe_ para obtener información sobre soporte de disco.
 
-* Para las controladoras de gama básica que tienen unidades internas, por ejemplo: Un FAS 2500.
+* A controladores básicos con unidades internas, por ejemplo: un FAS2750.
 +
 Si desea actualizar las controladoras de gama básica con unidades internas, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_ y vaya al procedimiento _Upgrade una pareja de nodos que ejecutan Clustered Data ONTAP moviendo volúmenes_.
 

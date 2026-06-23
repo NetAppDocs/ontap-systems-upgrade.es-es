@@ -76,6 +76,21 @@ Si su escenario de actualización aparece en la siguiente matriz de sistemas com
 | Sistema antiguo | Sistema de sustitución | Versiones de ONTAP compatibles 
 
 
+| AFF A70 | AFF A90 | 9.18.1 y posteriores 
+
+
+| AFF A30 | AFF A50 | 9.18.1 y posteriores 
+
+
+| AFF A20 | AFF A30 y AFF A50 | 9.18.1 y posteriores 
+
+
+| AFF C30 | AFF C60 | 9.18.1 y posteriores 
+
+
+| FAS70 | FAS90 | 9.18.1 y posteriores 
+
+
 | AFF C250 | AFF C30 y AFF C60 | 9.16.1 y posterior 
 
 
