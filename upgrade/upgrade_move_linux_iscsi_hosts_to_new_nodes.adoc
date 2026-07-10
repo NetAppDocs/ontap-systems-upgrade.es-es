@@ -22,6 +22,7 @@ Si no necesita mover volúmenes de SAN iSCSI al actualizar moviendo volúmenes, 
 
 
 
+[[step-1-set-up-new-iscsi-connections]]
 == Paso 1: Configure nuevas conexiones iSCSI
 
 Para mover las conexiones iSCSI, debe configurar conexiones iSCSI nuevas a los nodos nuevos.
@@ -185,6 +186,7 @@ size=2.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
 ----
 
 
+[[step-2-add-the-new-nodes-as-reporting-nodes]]
 == Paso 2: Agregue los nuevos nodos como nodos de informe
 
 Después de configurar las conexiones a los nodos nuevos, añada los nodos nuevos como nodos de generación de informes.
@@ -374,6 +376,7 @@ up        secondary  sdah    host5        iscsi_lf__n3_p1_
 
 
 
+[[step-3-remove-reporting-nodes-and-rescan-paths]]
 == Paso 3: Quite los nodos de informes y vuelva a explorar las rutas
 
 Debe quitar los nodos de informes y volver a analizar las rutas.

@@ -18,6 +18,7 @@ La reubicación de agregados (ARL) puede fallar en diferentes puntos durante la 
 
 
 
+[[check-for-aggregate-relocation-failure]]
 == Compruebe si se ha producido un error de reubicación de agregados
 
 Durante el procedimiento, ARL podría fallar en la etapa 2, etapa 3 o etapa 5.
@@ -44,6 +45,7 @@ Para obtener información detallada sobre las opciones  `storage aggregate reloc
 
 
 
+[[aggregates-originally-on-node1-are-owned-by-node2-after-completion-of-the-upgrade]]
 == Los agregados, originalmente en el nodo 1, son propiedad del nodo 2 después de finalizar la actualización
 
 Al final del procedimiento de actualización, el nodo 1 debe ser el nuevo nodo de inicio de los agregados que originalmente tenía el nodo 1 como nodo de inicio. Puede reubicarlos tras la actualización.

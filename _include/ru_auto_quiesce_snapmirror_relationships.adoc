@@ -4,6 +4,7 @@
 
 
 
+[[optionally-quiesce-the-snapmirror-relationships]]
 == Opcionalmente, silencia las relaciones SnapMirror
 
 Antes de continuar con el procedimiento, debe confirmar que todas las relaciones de SnapMirror se ponen en modo inactivo. Cuando una relación de SnapMirror se pone en modo inactivo, sigue en modo inactivo tras reinicios y recuperaciones tras fallos.

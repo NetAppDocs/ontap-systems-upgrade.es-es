@@ -43,6 +43,7 @@ NOTE: Los términos *nodo1* y *nodo2* se usan solo como referencia a los nombres
 
 
 
+[[requirements-and-limitations]]
 == Requisitos y limitaciones
 
 Necesitas considerar factores importantes antes de empezar la actualización.
@@ -77,6 +78,7 @@ Si no puede conectar los puertos de clúster e0a o e0b del nodo existente a los 
 
 
 
+[[automated-controller-upgrade-process]]
 == Proceso automatizado de actualización de controladores
 
 Este procedimiento proporciona los pasos para el procedimiento automatizado, que utiliza la asignación de disco automática y comprobaciones de accesibilidad de puertos de red para simplificar la experiencia de actualización de controladora.

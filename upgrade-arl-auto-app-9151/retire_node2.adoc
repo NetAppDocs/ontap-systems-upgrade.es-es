@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/retire_node2.html 
 keywords: retire, node2 
-summary: 'Apague node2 y quítelo del rack o el chasis cuando actualice controladoras con ONTAP 9.15.1 o posterior con `system controller replace` comandos.' 
+summary: 'Apaga el nodo2 y quítalo del rack o chasis cuando actualices a los controladores introducidos en ONTAP 9.15.1 o versiones posteriores usando los comandos  `system controller replace`.' 
 ---
 = Retire el nodo 2
 :hardbreaks:

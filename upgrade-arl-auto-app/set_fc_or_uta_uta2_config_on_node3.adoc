@@ -22,10 +22,12 @@ Es posible que tengas que completar <<configure-fc-ports-on-node3,Configure los 
 
 NOTE: Los materiales de marketing de NetApp podrían utilizar el término UTA2 para referirse a puertos y adaptadores de adaptador de red convergente (CNA). Sin embargo, la CLI utiliza el término CNA.
 
-Si el nodo 3 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2 (por ejemplo, sistemas AFF y FAS introducidos a partir de ONTAP 9.15.1) y está actualizando un sistema con discos de almacenamiento, puede saltar alink:reassign-node1-disks-to-node3.html["Reasigne discos de node1 GB a node3"] .
+Si el nodo3 no dispone de puertos FC integrados, puertos UTA/UTA2 integrados ni una tarjeta UTA/UTA2 (por ejemplo, AFF y FAS sistemas introducidos en ONTAP 9.15.1 o versiones posteriores), y estás actualizando un sistema con discos de almacenamiento, puedes saltar a link:reassign-node1-disks-to-node3.html["Reasigne discos de node1 GB a node3"].
 
 
 
+[[step-1-configure-fc-ports-on-node3]]
+[[configure-fc-ports-on-node3]]
 == Paso 1: Configurar puertos FC en nodo3
 
 Si el nodo 3 tiene puertos FC, ya sea integrados o en un adaptador FC complementario, debe establecer las configuraciones de los puertos en el nodo antes de ponerlo en servicio porque los puertos no están preconfigurados cuando se envían los sistemas.  Si no configura los puertos, podría experimentar una interrupción en el servicio.
@@ -94,6 +96,8 @@ Por ejemplo: `ucadmin modify -m fc -t initator 2b`
 
 
 
+[[step-2-check-and-configure-utauta2-ports-on-node3]]
+[[check-config-uta-uta2-node3]]
 == Paso 2: comprobar y configurar los puertos UTA/UTA2 en el nodo3
 
 Si el nodo 3 tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2, debe comprobar la configuración de los puertos y es posible que los vuelva a configurar, según cómo desee usar el sistema actualizado.

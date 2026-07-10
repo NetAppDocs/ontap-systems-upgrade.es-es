@@ -6,12 +6,14 @@ Antes de actualizar los nodos mediante ARL, debe comprender cómo funciona el pr
 
 
 
+[[upgrade-the-node-pair]]
 == Actualice el par de nodos
 
 Para actualizar la pareja de nodos, debe preparar los nodos originales y realizar una serie de pasos en los nodos original y en los nuevos. A continuación, puede retirar los nodos originales.
 
 
 
+[[arl-upgrade-sequence-overview]]
 == Información general sobre la secuencia de actualizaciones de ARL
 
 Durante el procedimiento, debe actualizar el hardware de la controladora original con el hardware de la controladora de reemplazo, una controladora cada vez, aprovechando la configuración de par de alta disponibilidad para reubicar la propiedad de agregados que no son raíz. Todos los agregados que no son raíz deben pasar por dos reubicaciones para llegar a su destino final, que es el nodo actualizado correcto.

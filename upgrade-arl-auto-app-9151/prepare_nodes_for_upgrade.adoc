@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/prepare_nodes_for_upgrade.html 
 keywords: preparing, nodes, upgrade 
-summary: 'Preparar los nodos y ejecutar una serie de comprobaciones previas al actualizar las controladoras con ONTAP 9.15.1 o una versión posterior mediante `system controller replace` comandos.' 
+summary: 'Prepara los nodos y ejecuta una serie de comprobaciones previas al actualizar a los controladores introducidos en ONTAP 9.15.1 o versiones posteriores usando los comandos  `system controller replace`.' 
 ---
 = Prepare los nodos para la actualización
 :hardbreaks:
@@ -18,19 +18,28 @@ El proceso de sustitución del controlador comienza con una serie de comprobacio
 
 
 
-== Paso 1: preparar los nodos
+[[step-1-prepare-node1-and-node2]]
+== Paso 1: Prepara node1 y node2
 
-Inicia el proceso de sustitución del controlador y ejecuta las comprobaciones previas. Si es necesario, determina el tipo de unidades de autocifrado que se están utilizando.
+Inicia el proceso de sustitución de la controladora y ejecuta las comprobaciones previas en node1 y node2. Si es necesario, determina el tipo de unidades con cifrado automático que se están usando.
 
 .Pasos
 . Inicie el proceso de sustitución de la controladora con el siguiente comando en la línea de comandos de ONTAP:
 +
-`system controller replace start -nodes <node_names>`
-
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 +
+[NOTE]
+====
+Solo puede ejecutar `system controller replace start` el comando en el nivel de privilegio avanzado:
 
-NOTE: Solo puede ejecutar el comando system controller replace start en el nivel de privilegio avanzado: `set -privilege advanced`
-
+[source, cli]
+----
+set -privilege advanced
+----
+====
 +
 Ves una salida similar a la del siguiente ejemplo. La salida muestra la versión de ONTAP que se está ejecutando en tu clúster:
 
@@ -92,7 +101,7 @@ El sistema ejecuta las siguientes comprobaciones previas; registre la salida de 
 | Estado de LIF del clúster | Comprueba si los LIF del clúster están activos para ambos nodos. Si las LIF del clúster están inadas, la tarea falla. 
 
 
-| Comprobación del estado de ASUP | Si no se configuran las notificaciones de ASUP, la tarea falla. Debe habilitar ASUP antes de iniciar el procedimiento de reemplazo de controladora. 
+| AutoSupport Comprobación de estado | Si no se configuran las notificaciones de AutoSupport, la tarea falla. Debe habilitar AutoSupport antes de iniciar el procedimiento de reemplazo de la controladora. 
 
 
 | Comprobación del uso de CPU | Comprueba si el uso de CPU es superior al 50 % en el caso de cualquiera de los nodos que se van a sustituir. Si el uso de CPU es superior al 50 % durante un período de tiempo considerable, la tarea falla. 
@@ -123,25 +132,90 @@ Para obtener más información, consulte el artículo de la base de conocimiento
 Desde el puerto serie conectado a cada nodo, ejecute y guarde el resultado de los siguientes comandos de forma individual:
 
 +
-** `vserver services name-service dns show`
-** `network interface show -curr-node <local> -role <cluster,intercluster,node-mgmt,cluster-mgmt,data>`
-** `network port show -node <local> -type physical`
-** `service-processor show -node <local> -instance`
-** `network fcp adapter show -node <local>`
-** `network port ifgrp show -node <local>`
-** `system node show -instance -node <local>`
-** `run -node <local> sysconfig`
-** `storage aggregate show -r`
-** `storage aggregate show -node <local>`
-** `volume show -node <local>`
-** `system license show -owner <local>`
-** `storage encryption disk show`
-** `security key-manager onboard show-backup`
-** `security key-manager external show`
-** `security key-manager external show-status`
-** `network port reachability show -detail -node <local>`
-
-
+[source, cli]
+----
+vserver services name-service dns show
+----
++
+[source, cli]
+----
+network interface show -curr-node <local> -role cluster,intercluster,node-mgmt,cluster-mgmt,data
+----
++
+[source, cli]
+----
+network port show -node <local> -type physical
+----
++
+[source, cli]
+----
+service-processor show -node <local> -instance
+----
++
+[source, cli]
+----
+network fcp adapter show -node <local>
+----
++
+[source, cli]
+----
+network port ifgrp show -node <local>
+----
++
+[source, cli]
+----
+system node show -instance -node <local>
+----
++
+[source, cli]
+----
+run -node <local> sysconfig
+----
++
+[source, cli]
+----
+storage aggregate show -r
+----
++
+[source, cli]
+----
+storage aggregate show -node <local>
+----
++
+[source, cli]
+----
+volume show -node <local>
+----
++
+[source, cli]
+----
+system license show -owner <local>
+----
++
+[source, cli]
+----
+storage encryption disk show
+----
++
+[source, cli]
+----
+security key-manager onboard show-backup
+----
++
+[source, cli]
+----
+security key-manager external show
+----
++
+[source, cli]
+----
+security key-manager external show-status
+----
++
+[source, cli]
+----
+network port reachability show -detail -node <local>
+----
 +
 
 NOTE: Si se está utilizando el cifrado de volúmenes de NetApp (NVE) o el cifrado de agregado de NetApp (NAE) con el gestor de claves incorporado (OKM), mantenga la frase de acceso del administrador de claves preparada para completar el administrador de claves para resincronizar más adelante en el procedimiento.
@@ -160,6 +234,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
+[[step-2-correct-aggregate-ownership-if-an-arl-precheck-fails]]
 == Paso 2: Corregir la propiedad del agregado si falla una comprobación previa de ARL
 
 Si falla la comprobación del estado del agregado, debe devolver los agregados propiedad del nodo asociado al nodo propietario principal e iniciar de nuevo el proceso de comprobaciones previas.
@@ -167,12 +242,16 @@ Si falla la comprobación del estado del agregado, debe devolver los agregados p
 .Pasos
 . Devolver los agregados que actualmente pertenecen al nodo asociado al nodo propietario principal:
 +
-`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
-
+[source, cli]
+----
+storage aggregate relocation start -node <source_node> -destination <destination_node> -aggregate-list *
+----
 . Compruebe que ni el nodo 1 ni el nodo 2 siguen teniendo agregados cuyos propietarios son actualmente (pero no el propietario del hogar):
 +
-`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
-
+[source, cli]
+----
+storage aggregate show -nodes <node_name> -is-home false -fields owner-name, home-name, state
+----
 +
 En el ejemplo siguiente se muestra el resultado del comando cuando un nodo es al mismo tiempo el propietario actual y el propietario principal de los agregados:
 
@@ -190,9 +269,61 @@ aggr4       node1      node1       online
 4 entries were displayed.
 ----
 . Reinicia el proceso de sustitución del controlador:
++
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 
 
-`system controller replace start -nodes _node_names_`
+
+
+[[step-3-prepare-node3-and-node4]]
+== Paso 3: Prepara node3 y node4
+
+Comprueba si la imagen instalada en node3 y node4 es una imagen NODAR (sin cifrado de datos en reposo). Si la imagen es NODAR, debes instalar una imagen DARE (con cifrado de datos en reposo).
+
+.Acerca de esta tarea
+Sigue estos pasos en node3 y node4.
+
+.Pasos
+. Inicie el nodo en el menú de arranque:
++
+[source, cli]
+----
+LOADER> boot_ontap menu
+----
+. Accede a systemshell:
++
+[source, cli]
+----
+systemshell
+----
+. [[check-build]]Comprueba si la compilación es una imagen NODAR:
++
+[source, cli]
+----
+cat /BUILD
+----
++
+En la salida del comando, comprueba si `build-type` es una imagen de NODAR, por ejemplo, `DEBUG SIM NODAR`.
+
++
+
+NOTE: Si  `build-type` no es una imagen NODAR, la compilación es una imagen DARE.
+
+. Si la compilación es una imagen NODAR, instala una imagen DARE.
++
+.. Sal de systemshell y del menú de arranque:
++
+[source, cli]
+----
+halt
+----
+.. Instala una imagen de DARE. Para obtener más información, consulta el artículo de base de conocimientos link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/Netbooting_a_FAS_and_AFF_Controller_in_ONTAP_9["Arranque desde red de una controladora FAS y una controladora AFF en ONTAP 9"^].
+
+
+
 
 .El futuro
 Una vez preparados los nodos, link:complete-preparation-for-upgrade.html["completar la preparación para la actualización"].

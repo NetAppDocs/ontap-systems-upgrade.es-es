@@ -20,10 +20,12 @@ La solución a estos problemas depende de cuándo se produzcan.
 
 
 
+[[reboots-panics-or-power-cycles-during-the-pre-check-phase]]
 == Se reinicia, produce un pánico o se enciende durante la fase de comprobación previa
 
 
 
+[[node1-or-node2-crashes-before-the-pre-check-phase-with-ha-pair-still-enabled]]
 === Los nodos 1 o 2 se bloquean antes de la fase de comprobación previa con el par de alta disponibilidad, aún habilitado
 
 Si el nodo 1 o el nodo 2 se bloquean antes de la fase de comprobación previa, aún no se han reubicado agregados y la configuración de pares de alta disponibilidad está habilitada.
@@ -38,10 +40,12 @@ La toma de control y la devolución pueden proceder con normalidad.
 
 
 
+[[reboots-panics-or-power-cycles-during-first-resource-release-phase]]
 == Los reinicios, los pánicos o los ciclos de encendido y apagado durante la primera fase de la versión de recursos
 
 
 
+[[node1-crashes-during-the-first-resource-release-phase-with-ha-pair-still-enabled]]
 === El nodo 1 se bloquea durante la primera fase del lanzamiento de recursos con el par de alta disponibilidad todavía habilitado
 
 Algunos o todos los agregados se han reubicado del nodo 1 al nodo 2 y el par de alta disponibilidad sigue estando habilitado. El nodo 2 toma el volumen raíz del nodo 1 y todos los agregados que no sean raíz en la ubicación.
@@ -59,6 +63,7 @@ Cuando el nodo 1 entra en el `waiting for giveback` estado, el nodo 2 devuelve t
 
 
 
+[[node1-crashes-during-the-first-resource-release-phase-while-ha-pair-is-disabled]]
 === El nodo 1 se bloquea durante la primera fase de lanzamiento de recursos mientras se deshabilita el par de alta disponibilidad
 
 El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados que no son raíz.
@@ -70,6 +75,7 @@ El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados qu
 
 
 
+[[node2-fails-during-the-first-resource-release-phase-with-ha-pair-still-enabled]]
 === Se produce un error en el nodo 2 durante la primera fase de lanzamiento de recursos con el par de alta disponibilidad, de todos modos habilitado
 
 El nodo 1 ha reubicado algunos de sus agregados, o todos ellos, al nodo 2. La pareja de alta disponibilidad está habilitada.
@@ -84,6 +90,7 @@ El nodo 1 asume todos los agregados del nodo 2, así como todos sus propios agre
 
 
 
+[[node2-crashes-during-the-first-resource-release-phase-and-after-ha-pair-is-disabled]]
 === El nodo 2 se bloquea en la primera fase de lanzamiento de recursos y después de que se deshabilita el par de alta disponibilidad
 
 El nodo 1 no toma el control.
@@ -98,10 +105,12 @@ Se produce una interrupción del servicio del cliente en todos los agregados, mi
 
 
 
+[[reboots-panics-or-power-cycles-during-the-first-verification-phase]]
 == Reinicia, produce un pánico o ciclos de encendido durante la primera fase de verificación
 
 
 
+[[node2-crashes-during-the-first-verification-phase-with-ha-pair-disabled]]
 === El nodo 2 se bloquea en la primera fase de verificación con el par de alta disponibilidad deshabilitado
 
 El nodo 3 no retoma después de un bloqueo del nodo 2, ya que la pareja de alta disponibilidad ya está deshabilitada.
@@ -116,6 +125,7 @@ Se produce una interrupción del servicio del cliente en todos los agregados, mi
 
 
 
+[[node3-crashes-during-the-first-verification-phase-with-ha-pair-disabled]]
 === El nodo 3 se bloquea durante la primera fase de verificación con la pareja de alta disponibilidad deshabilitada
 
 El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados que no son raíz.
@@ -127,10 +137,12 @@ El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados qu
 
 
 
+[[reboots-panics-or-power-cycles-during-first-resource-regain-phase]]
 == Reinicios, pánicos o ciclos de alimentación durante la primera fase de recuperación de recursos
 
 
 
+[[node2-crashes-during-the-first-resource-regain-phase-during-aggregate-relocation]]
 === El nodo 2 se bloquea durante la primera fase de recuperación de recursos durante la reubicación de agregados
 
 El nodo 2 ha reubicado algunos o todos sus agregados del nodo 1 al nodo 3. El nodo 3 proporciona datos de agregados que se reubicaron. El par de alta disponibilidad está deshabilitado y, por lo tanto, no hay toma de control.
@@ -145,6 +157,7 @@ Hay una interrupción del cliente para los agregados que no se han reubicado. Cu
 
 
 
+[[node3-crashes-during-the-first-resource-regain-phase-during-aggregate-relocation]]
 === El nodo 3 se bloquea durante la primera fase de recuperación de recursos durante la reubicación de agregados
 
 Si el nodo 3 se bloquea mientras el nodo 2 se reubica los agregados en el nodo 3, la tarea continúa después de que se arranca el nodo 3.
@@ -159,10 +172,12 @@ El nodo 2 sigue sirviendo agregados restantes, pero los agregados que ya se reub
 
 
 
+[[reboots-panics-or-power-cycles-during-post-check-phase]]
 == Reinicios, pánicos o ciclos de alimentación durante la fase posterior a la comprobación
 
 
 
+[[node2-or-node3-crashes-during-the-post-check-phase]]
 === El nodo 2 o 3 se bloquea durante la fase de comprobación posterior
 
 El par de alta disponibilidad está deshabilitado, por lo que no se toma el control. Hay una interrupción del cliente para los agregados que pertenecen al nodo que se reinició.
@@ -174,10 +189,12 @@ El par de alta disponibilidad está deshabilitado, por lo que no se toma el cont
 
 
 
+[[reboots-panics-or-power-cycles-during-second-resource-release-phase]]
 == Reinicios, pánicos o ciclos de encendido durante la segunda fase de lanzamiento de recursos
 
 
 
+[[node3-crashes-during-the-second-resource-release-phase]]
 === El nodo 3 se bloquea durante la segunda fase de versión de recursos
 
 Si el nodo 3 se bloquea mientras el nodo 2 está reubicando agregados, la tarea continuará después de que se arranque el nodo 3.
@@ -192,6 +209,7 @@ El nodo 2 sigue sirviendo agregados restantes, pero los agregados que ya se reub
 
 
 
+[[node2-crashes-during-the-second-resource-release-phase]]
 === El nodo 2 se bloquea durante la segunda fase de publicación de recursos
 
 Si el nodo 2 se bloquea durante la reubicación de agregados, el nodo 2 no se retoma.
@@ -206,10 +224,12 @@ El nodo 3 sigue sirviendo los agregados que se reubicaron, pero los agregados pr
 
 
 
+[[reboots-panics-or-power-cycles-during-the-second-verification-phase]]
 == Reinicia, produce un pánico o ciclos de encendido durante la segunda fase de verificación
 
 
 
+[[node3-crashes-during-the-second-verification-phase]]
 === El nodo 3 se bloquea durante la segunda fase de verificación
 
 Si el nodo 3 se bloquea durante esta fase, la toma de control no se produce porque la pareja de alta disponibilidad ya está deshabilitada.
@@ -224,6 +244,7 @@ Hay una interrupción del servicio del cliente de todos los agregados hasta que 
 
 
 
+[[node4-crashes-during-the-second-verification-phase]]
 === Node4 se bloquea durante la segunda fase de verificación
 
 Si el nodo 4 se bloquea durante esta fase, la toma de control no se produce. El nodo 3 proporciona datos de los agregados.

@@ -4,6 +4,7 @@
 
 
 
+[[connect-the-e0m-and-bmc-ports]]
 == Conecte los puertos e0M y BMC
 
 Si el sistema existente tiene un puerto de gestión (e0M) y un puerto BMC, los puertos e0M y BMC se combinan y se accede a ellos a través del puerto «llave» del sistema de reemplazo. Antes de conectarse al sistema de reemplazo, debe asegurarse de que los puertos e0M y BMC estén conectados al mismo switch y a la misma subred del sistema existente.
@@ -24,6 +25,7 @@ Si el sistema existente tiene un puerto de gestión (e0M) y un puerto BMC, los p
 |===
 
 
+[[connect-to-a-two-node-switchless-cluster]]
 == Conéctese a un clúster de dos nodos sin switches
 
 En las siguientes tablas se muestra el uso de puertos del switch para configuraciones de clústeres sin switch de dos nodos.

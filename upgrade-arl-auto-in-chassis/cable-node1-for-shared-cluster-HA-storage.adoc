@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/cable-node1-for-shared-cluster-HA-storage.html 
 keywords: cluster, ha, aff, a800, shared, storage, data, management 
-summary: Conecte el clúster, la alta disponibilidad, el almacenamiento y las conexiones de datos que se habían conectado anteriormente al AFF A800 node1 al AFF A90 o AFF A70 node1 recién instalado 
+summary: Conecta el clúster, HA, el almacenamiento y las conexiones de datos que antes estaban conectadas al nodo1 del AFF A800 al nodo1 del AFF A90 o AFF A70 recién instalado. 
 ---
 = Cable node1 para cluster-HA compartido y almacenamiento
 :hardbreaks:
@@ -34,6 +34,7 @@ Si realiza una de las siguientes actualizaciones, debe conectar el clúster, la 
 |===
 
 
+[[connect-the-e0m-and-bmc-ports]]
 == Conecte los puertos e0M y BMC
 
 Si el sistema existente tiene un puerto de gestión (e0M) y un puerto BMC, los puertos e0M y BMC se combinan y se accede a ellos a través del puerto «llave» del sistema de reemplazo. Antes de conectarse al sistema de reemplazo, debe asegurarse de que los puertos e0M y BMC estén conectados al mismo switch y a la misma subred del sistema existente.
@@ -54,6 +55,7 @@ Si el sistema existente tiene un puerto de gestión (e0M) y un puerto BMC, los p
 |===
 
 
+[[connect-to-a-two-node-switchless-cluster]]
 == Conéctese a un clúster de dos nodos sin switches
 
 En las siguientes tablas se muestra el uso de puertos del switch para configuraciones de clústeres sin switch de dos nodos.
@@ -99,6 +101,8 @@ En las siguientes tablas se muestra el uso de puertos del switch para configurac
 |===
 
 
+[[connect-to-a-switch-attached-cluster]]
+[[connect-switch-attached-cluster]]
 == Conéctese a un clúster conectado a switches
 
 Para un clúster con switch, compruebe que cumple con los siguientes requisitos para el nodo AFF A30, AFF A50, AFF A70, AFF A90, AFF C30, AFF C60 o AFF C80 (reemplazo):

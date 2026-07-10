@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/restore_key-manager_configuration_node3.html 
 keywords: restoring, key-manager, configuration, node3, nve, arl, encryption, netapp, volume 
-summary: 'Si es necesario, restaure la configuración del gestor de claves en node3 si se actualizan las controladoras con ONTAP 9.15.1 o una versión posterior con `system controller replace` comandos.' 
+summary: 'Si es necesario, restaura la configuración del gestor de claves en el nodo3 al actualizar a los controladores introducidos en ONTAP 9.15.1 o versiones posteriores usando los comandos  `system controller replace`.' 
 ---
 = Restaure la configuración de gestor de claves en el nodo 3
 :hardbreaks:

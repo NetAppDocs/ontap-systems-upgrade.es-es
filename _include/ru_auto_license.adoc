@@ -4,6 +4,7 @@
 
 
 
+[[learn-about-ontap-licensing]]
 == Conoce las licencias de ONTAP
 
 Algunas funciones requieren licencias, que se emiten como _packages_ que incluyen una o más funciones. Cada nodo del clúster debe tener su propia clave para cada función que se usará en el clúster.

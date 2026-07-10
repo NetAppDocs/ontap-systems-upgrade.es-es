@@ -15,6 +15,7 @@ En función del contenido del clúster y del entorno del clúster, debe mover, e
 
 
 
+[[considerations-for-moving-san-lifs]]
 == Consideraciones para mover LIF SAN
 
 Solo debe mover las LIF SAN si va a cambiar el contenido del clúster, por ejemplo, agregando nodos al clúster o eliminando nodos del clúster. Cuando mueve una LIF, no tiene que volver a dividir en zonas la estructura de FC ni crear nuevas sesiones iSCSI entre los hosts conectados del clúster y la nueva interfaz de destino.
@@ -33,6 +34,7 @@ Para obtener más información, consulte https://docs.netapp.com/us-en/ontap/san
 
 
 
+[[delete-san-lifs-no-longer-required]]
 == Eliminar los LIF de SAN que ya no son necesarios
 
 Si el clúster está en un entorno SAN, debe eliminar cualquier LIF SAN que ya no necesite de los nodos originales antes de poder quitar los nodos originales del clúster.
@@ -89,6 +91,7 @@ js11      ps0          mixed    LIF1,                   igroup1
 
 
 
+[[create-new-san-lifs-or-re-create-deleted-san-lifs]]
 == Cree nuevos LIF SAN o vuelva a crear LIF SAN eliminadas
 
 En función de los requisitos del entorno del clúster, podría decidir crear LIF SAN nuevas o volver a crear LIF SAN que haya eliminado anteriormente en este procedimiento. Puede crear o volver a crear LIF DE SAN mediante el https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_creating_network_interfaces.html["creación de interfaces de red"^] Procedimiento de la documentación _Cluster Management Using OnCommand® System Manager_.

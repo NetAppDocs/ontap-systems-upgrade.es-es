@@ -18,6 +18,7 @@ Para comprender si puede usar ARL para actualizar un par de controladoras que ej
 
 
 
+[[supported-upgrades-for-arl]]
 == Actualizaciones compatibles de ARL
 
 Cuando actualice un par de nodos con este procedimiento ARL para ONTAP 9.8 o una versión posterior, compruebe que la ARL pueda realizarse en las controladoras originales y de reemplazo.
@@ -35,12 +36,14 @@ La actualización de la controladora mediante ARL es compatible en sistemas conf
 
 
 
+[[two-node-switchless-clusters]]
 == Clústeres de dos nodos sin switches
 
 Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar los nodos en el clúster sin switches mientras realiza la actualización. No es necesario convertirlos en un clúster con switches.
 
 
 
+[[upgrades-not-supported-for-arl]]
 == ARL no admite actualizaciones
 
 No se pueden realizar las siguientes actualizaciones:
@@ -57,12 +60,14 @@ Si desea actualizar las controladoras de gama básica con unidades internas, con
 
 
 
+[[metrocluster-fc-configuration]]
 == Configuración de FC de MetroCluster
 
 En una configuración de MetroCluster FC, debe sustituir los nodos del sitio de recuperación ante desastres/conmutación al nodo de respaldo lo antes posible. No se admite la discrepancia en los modelos de controladoras dentro de un MetroCluster, ya que el error de coincidencia del modelo de controladora puede provocar que la operación de mirroring de recuperación ante desastres se desconecte. Utilice `-skip-metrocluster-check true` el comando para omitir las comprobaciones de MetroCluster cuando va a reemplazar nodos en el segundo sitio.
 
 
 
+[[troubleshoot]]
 == Solucionar problemas
 
 Es posible que aparezca un error mientras se actualiza la pareja de nodos. El nodo podría bloquearse, es posible que los agregados no se reubiquen o que los LIF no migren. La causa del fallo y su solución dependen de cuándo se produjo el fallo durante el procedimiento de actualización.

@@ -16,7 +16,7 @@ Para confirmar que la información de configuración del medio de arranque no in
 .Acerca de esta tarea
 Debe realizar los siguientes pasos: Nodo 3 y nodo 4. Puede realizar los pasos en cada nodo en paralelo.
 
-. Arrancar el nodo en el menú de arranque:
+. Arranque el nodo en el menú de arranque:
 +
 `boot_ontap menu`
 

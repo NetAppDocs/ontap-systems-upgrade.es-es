@@ -15,6 +15,7 @@ Para planificar la actualización, debe familiarizarse con las consideraciones g
 
 
 
+[[requirements-and-limitations]]
 == Requisitos y limitaciones
 
 En función del entorno, debe tener en cuenta ciertos factores antes de iniciar la actualización. Comience revisando la siguiente tabla para ver los requisitos y limitaciones que necesita tener en cuenta.
@@ -79,6 +80,7 @@ NOTE: Puede actualizar un sistema integrado moviendo datos a nuevo almacenamient
 
 
 
+[[systems-with-internal-storage]]
 == Con almacenamiento interno
 
 Los siguientes sistemas tienen almacenamiento interno:
@@ -108,6 +110,7 @@ Transferir el almacenamiento interno es una tarea opcional del flujo de trabajo 
 
 
 
+[[situations-where-you-might-need-additional-steps]]
 == Situaciones en las que podría necesitar pasos adicionales
 
 * Si el sistema nuevo tiene menos ranuras que el sistema original, o si tiene menos puertos o tipos diferentes, puede que deba añadir un adaptador al nuevo sistema. Consulte https://hwu.netapp.com["Hardware Universe de NetApp"^].

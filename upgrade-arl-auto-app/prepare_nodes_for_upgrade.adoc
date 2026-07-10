@@ -18,6 +18,7 @@ El proceso de reemplazo de la controladora comienza con una serie de comprobacio
 
 
 
+[[step-1-prepare-the-nodes]]
 == Paso 1: preparar los nodos
 
 Inicia el proceso de sustitución del controlador y ejecuta las comprobaciones previas. Si es necesario, determina el tipo de unidades de autocifrado que se están utilizando.
@@ -25,19 +26,25 @@ Inicia el proceso de sustitución del controlador y ejecuta las comprobaciones p
 .Pasos
 . Inicie el proceso de sustitución de la controladora con el siguiente comando en la línea de comandos de ONTAP:
 +
-`system controller replace start -nodes _node_names_`
-
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 +
 [NOTE]
 ====
 ** A partir de ONTAP 9.10.1, el procedimiento de actualización basado en la conmutación negociada automática (NSO) es la opción predeterminada para una configuración FC de MetroCluster de cuatro nodos. Si va a actualizar una configuración de FC MetroCluster de cuatro nodos al utilizar el `system controller replace start` Debe evitar que el procedimiento basado en NSO se inicie configurando el `-nso` parámetro a. `false`:
 +
-`system controller replace start -nodes _node_names_ -nso false`
-
+[source, cli]
+----
+system controller replace start -nodes <node_names> -nso false
+----
 ** Solo puede ejecutar `system controller replace start` el comando en el nivel de privilegio avanzado:
 +
-`set -privilege advanced`
-
+[source, cli]
+----
+set -privilege advanced
+----
 
 
 ====
@@ -106,7 +113,7 @@ El sistema ejecuta las siguientes comprobaciones previas; registre la salida de 
 | Estado de LIF del clúster | Comprueba si los LIF del clúster están activos para ambos nodos. Si las LIF del clúster están inadas, la tarea falla. 
 
 
-| Comprobación del estado de ASUP | Si no se configuran las notificaciones de ASUP, la tarea falla. Debe habilitar ASUP antes de iniciar el procedimiento de reemplazo de controladora. 
+| AutoSupport Comprobación de estado | Si no se configuran las notificaciones de AutoSupport, la tarea falla. Debe habilitar AutoSupport antes de iniciar el procedimiento de reemplazo de la controladora. 
 
 
 | Comprobación del uso de CPU | Comprueba si el uso de CPU es superior al 50 % en el caso de cualquiera de los nodos que se van a sustituir. Si el uso de CPU es superior al 50 % durante un período de tiempo considerable, la tarea falla. 
@@ -127,25 +134,90 @@ NOTE: Si tiene un sistema con más de dos puertos de clúster por nodo, como un 
 Desde el puerto serie conectado a cada nodo, ejecute y guarde el resultado de los siguientes comandos de forma individual:
 
 +
-** `vserver services name-service dns show`
-** `network interface show -curr-node _local_ -role _cluster,intercluster,node-mgmt,cluster-mgmt,data_`
-** `network port show -node _local_ -type physical`
-** `service-processor show -node _local_ -instance`
-** `network fcp adapter show -node _local_`
-** `network port ifgrp show -node _local_`
-** `system node show -instance -node _local_`
-** `run -node _local_ sysconfig`
-** `storage aggregate show -node _local_`
-** `volume show -node _local_`
-** `storage array config show -switch _switch_name_`
-** `system license show -owner _local_`
-** `storage encryption disk show`
-** `security key-manager onboard show-backup`
-** `security key-manager external show`
-** `security key-manager external show-status`
-** `network port reachability show -detail -node _local_`
-
-
+[source, cli]
+----
+vserver services name-service dns show
+----
++
+[source, cli]
+----
+network interface show -curr-node <local> -role cluster,intercluster,node-mgmt,cluster-mgmt,data
+----
++
+[source, cli]
+----
+network port show -node <local> -type physical
+----
++
+[source, cli]
+----
+service-processor show -node <local> -instance
+----
++
+[source, cli]
+----
+network fcp adapter show -node <local>
+----
++
+[source, cli]
+----
+network port ifgrp show -node <local>
+----
++
+[source, cli]
+----
+system node show -instance -node <local>
+----
++
+[source, cli]
+----
+run -node <local> sysconfig
+----
++
+[source, cli]
+----
+storage aggregate show -node <local>
+----
++
+[source, cli]
+----
+volume show -node <local>
+----
++
+[source, cli]
+----
+storage array config show -switch <switch_name>
+----
++
+[source, cli]
+----
+system license show -owner <local>
+----
++
+[source, cli]
+----
+storage encryption disk show
+----
++
+[source, cli]
+----
+security key-manager onboard show-backup
+----
++
+[source, cli]
+----
+security key-manager external show
+----
++
+[source, cli]
+----
+security key-manager external show-status
+----
++
+[source, cli]
+----
+network port reachability show -detail -node <local>
+----
 +
 
 NOTE: Si se está utilizando el cifrado de volúmenes de NetApp (NVE) o el cifrado de agregado de NetApp (NAE) con el gestor de claves incorporado (OKM), mantenga la frase de acceso del administrador de claves preparada para completar el administrador de claves para resincronizar más adelante en el procedimiento.
@@ -171,6 +243,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
+[[step-2-correct-aggregate-ownership-if-an-arl-precheck-fails]]
 == Paso 2: Corregir la propiedad del agregado si falla una comprobación previa de ARL
 
 Si falla la comprobación del estado del agregado, debe devolver los agregados propiedad del nodo asociado al nodo propietario principal e iniciar de nuevo el proceso de comprobaciones previas.
@@ -178,12 +251,16 @@ Si falla la comprobación del estado del agregado, debe devolver los agregados p
 .Pasos
 . Devolver los agregados que actualmente pertenecen al nodo asociado al nodo propietario principal:
 +
-`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
-
+[source, cli]
+----
+storage aggregate relocation start -node <source_node> -destination <destination_node> -aggregate-list *
+----
 . Compruebe que ni el nodo 1 ni el nodo 2 siguen teniendo agregados cuyos propietarios son actualmente (pero no el propietario del hogar):
 +
-`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
-
+[source, cli]
+----
+storage aggregate show -nodes <node_name> -is-home false -fields owner-name, home-name, state
+----
 +
 En el ejemplo siguiente se muestra el resultado del comando cuando un nodo es al mismo tiempo el propietario actual y el propietario principal de los agregados:
 
@@ -201,9 +278,12 @@ aggr4       node1      node1       online
 4 entries were displayed.
 ----
 . Reinicia el proceso de sustitución del controlador:
++
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 
-
-`system controller replace start -nodes _node_names_`
 
 .El futuro
 Una vez preparados los nodos, link:complete-preparation-for-upgrade.html["completar la preparación para la actualización"].

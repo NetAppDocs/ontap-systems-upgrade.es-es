@@ -18,12 +18,14 @@ Se puede bloquear el sistema: Reinicio, alarma o interrupción de un ciclo de en
 
 
 
+[[reboots-panics-or-power-cycles-during-stage-2]]
 == Reinicia, produce un pánico o ciclos de encendido durante la etapa 2
 
 Los bloqueos pueden producirse antes, durante o inmediatamente después de la fase 2, durante la cual se reubican los agregados del nodo 1 al nodo 2, los LIF de datos y las LIF DE SAN propiedad del nodo 1 al nodo 2, los registros de la información del nodo 1 y los retirada del nodo 1.
 
 
 
+[[node1-or-node2-crashes-before-stage-2-with-ha-still-enabled]]
 === El nodo 1 o 2 se bloquea antes de la fase 2 con una alta disponibilidad todavía habilitada
 
 Si el nodo 1 o el nodo 2 se bloquean antes de la fase 2, aún no se han reubicado agregados y la configuración de alta disponibilidad sigue estando habilitada.
@@ -38,6 +40,7 @@ La toma de control y la devolución pueden proceder con normalidad.
 
 
 
+[[node1-crashes-during-or-just-after-stage-2-with-ha-still-enabled]]
 === El nodo 1 se bloquea durante o solo después de la fase 2 con la alta disponibilidad todavía habilitada
 
 Algunos o todos los agregados han sido reubicados de node1 a node2, y HA sigue habilitada. Node2 se hace cargo del volumen raíz de node1 y de cualquier agregado no raíz que no haya sido reubicado.
@@ -52,6 +55,7 @@ La propiedad de los agregados que fueron reubicados tiene el mismo aspecto que l
 
 
 
+[[node1-crashes-after-stage-2-while-ha-is-disabled]]
 === El nodo 1 se bloquea después de la fase 2 mientras la alta disponibilidad está deshabilitada
 
 El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados que no son raíz.
@@ -66,6 +70,7 @@ Es posible que observe algunos cambios en el resultado del `storage failover sho
 
 
 
+[[node2-fails-during-or-after-stage-2-with-ha-still-enabled]]
 === El nodo 2 falla durante o después de la fase 2 con alta disponibilidad aún habilitada
 
 El nodo 1 ha reubicado algunos de sus agregados, o todos ellos, al nodo 2. LA ALTA DISPONIBILIDAD está habilitada.
@@ -80,6 +85,7 @@ El nodo1 se hace cargo de todos los agregados del nodo2, así como de cualquiera
 
 
 
+[[node2-crashes-after-stage-2-and-after-ha-is-disabled]]
 === El nodo 2 se bloquea después de la fase 2 y después de la desactivación de alta disponibilidad
 
 El nodo 1 no toma el control.
@@ -94,12 +100,14 @@ Se produce una interrupción del cliente para todos los agregados mientras node2
 
 
 
+[[reboots-panics-or-power-cycles-during-stage-3]]
 == Reinicios, pánicos o ciclos de alimentación durante la etapa 3
 
 Los fallos pueden producirse durante o inmediatamente después de la fase 3, durante las cuales se instala y arranca el nodo 3, se pueden asignar puertos del nodo 1 al nodo 3, se pueden mover LIF de datos y LIF DE SAN que pertenecen al nodo 1 y al nodo 3, y se reubicarán todos los agregados del nodo 2 al nodo 3.
 
 
 
+[[node2-crash-during-stage-3-with-ha-disabled-and-before-relocating-any-aggregates]]
 === El nodo 2 se bloquea durante la fase 3 con la función ha deshabilitada y antes de reubicar cualquier agregado
 
 El nodo 3 no toma el relevo tras una caída del nodo 2 porque HA ya está desactivada.
@@ -114,6 +122,7 @@ Se produce una interrupción del cliente para todos los agregados mientras node2
 
 
 
+[[node2-crashes-during-stage-3-after-relocating-some-or-all-aggregates]]
 === El nodo 2 se bloquea durante la fase 3 después de reubicar algunos o todos los agregados
 
 El nodo2 ha reubicado algunos o todos sus agregados en el nodo3, que sirve datos de los agregados que fueron reubicados. HA está deshabilitado.
@@ -129,6 +138,7 @@ Hay un corte de clientes para los agregados que no fueron reubicados.
 
 
 
+[[node3-crashes-during-stage-3-and-before-node2-has-relocated-any-aggregates]]
 === El nodo 3 se bloquea durante la fase 3 y antes de que el nodo 2 haya reubicado cualquier agregado
 
 El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados que no son raíz.
@@ -140,6 +150,7 @@ El nodo 2 no toma el relevo, pero intenta servir datos en todos los agregados qu
 
 
 
+[[node3-crashes-during-stage-3-during-aggregate-relocation]]
 === El nodo 3 se bloquea durante la fase 3 durante la reubicación de agregados
 
 Si node3 se bloquea mientras node2 está reubicando agregados en node3, node2 aborta la reubicación de cualquier agregado restante.
@@ -155,6 +166,7 @@ El nodo 2 sigue sirviendo agregados restantes, pero los agregados que ya se reub
 
 
 
+[[node3-fails-to-boot-after-crashing-in-stage-3]]
 === El nodo 3 no arranca después de producirse un bloqueo en la fase 3
 
 Debido a un fallo catastrófico, el nodo 3 no se puede arrancar después de un bloqueo durante la fase 3.
@@ -165,6 +177,7 @@ Debido a un fallo catastrófico, el nodo 3 no se puede arrancar después de un b
 
 
 
+[[node2-crashes-after-stage-3-but-before-stage-5]]
 === El nodo 2 se bloquea después de la fase 3 pero antes de la fase 5
 
 El nodo 3 sigue sirviendo datos a todos los agregados. El par de alta disponibilidad está deshabilitado.
@@ -176,6 +189,7 @@ El nodo 3 sigue sirviendo datos a todos los agregados. El par de alta disponibil
 
 
 
+[[node3-crashes-after-stage-3-but-before-stage-5]]
 === El nodo 3 se bloquea después de la fase 3, pero antes de la fase 5
 
 El nodo 3 se bloquea después de la fase 3, pero antes de la fase 5. El par de alta disponibilidad está deshabilitado.
@@ -190,12 +204,14 @@ Hay un corte de clientes para todos los agregados.
 
 
 
+[[reboots-panics-or-power-cycles-during-stage-5]]
 == Reinicios, pánicos o ciclos de alimentación durante la etapa 5
 
 Los fallos pueden producirse durante la fase 5, en la cual se instalan y se inician el nodo 4, se asignan puertos del nodo 2 al nodo 4, se mueven LIF de datos y LIF DE SAN que pertenecen al nodo 2 de nodo 3 al nodo 4 y se reasignan todos los agregados del nodo 2 del nodo 3 al nodo 4.
 
 
 
+[[node3-crashes-during-stage-5]]
 === El nodo 3 se bloquea durante la fase 5
 
 El nodo 3 ha reubicado algunos o todos los agregados del nodo 2 a nodo 4. Node4 no toma el relevo, pero continúa sirviendo agregados que no son raíz que el nodo 3 ya se han reubicado. El par de alta disponibilidad está deshabilitado.
@@ -211,6 +227,7 @@ Hay una interrupción del servicio del resto de los agregados hasta que el nodo 
 
 
 
+[[node4-crashes-during-stage-5]]
 === Node4 se bloquea durante la etapa 5
 
 El nodo 3 ha reubicado algunos o todos los agregados del nodo 2 a nodo 4. El nodo 3 no toma el relevo, pero continúa sirviendo agregados no raíz que son propiedad del nodo 3, así como los que no se reubicaron. LA ALTA DISPONIBILIDAD está deshabilitada.

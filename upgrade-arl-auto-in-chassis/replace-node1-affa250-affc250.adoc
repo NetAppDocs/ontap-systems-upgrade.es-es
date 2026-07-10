@@ -23,6 +23,7 @@ CAUTION: No apague el chasis, ya que node1 y node2 están en el mismo chasis y c
 
 
 
+[[step-1-remove-the-aff-a250-or-aff-c250-controller-module]]
 == Paso 1: quitar el módulo controlador AFF A250 o AFF C250
 
 Para quitar el módulo controlador node1, retira el dispositivo de gestión de cables y desbloquea los pestillos de bloqueo. Luego, saca el módulo controlador del chasis.
@@ -77,6 +78,7 @@ Asegúrese de soportar el peso del módulo del controlador mientras lo desliza f
 
 
 
+[[step-2-install-the-aff-a30-aff-a50-aff-c30-or-aff-c60-controller-module]]
 == Paso 2: instala el módulo controlador AFF A30, AFF A50, AFF C30 o AFF C60
 
 Instale, conecte el cable y conecte el módulo de reemplazo en node1.

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/guidelines_for_upgrading_controllers_with_arl.html 
 keywords: guidelines, upgrading, controllers, ARL 
-summary: 'Determine si puede actualizar controladoras que ejecutan ONTAP 9.15.1 o posterior mediante `system controller replace` comandos.' 
+summary: 'Comprueba si puedes actualizar a los controladores introducidos en ONTAP 9.15.1 o versiones posteriores mediante los comandos  `system controller replace`.' 
 ---
 = Directrices para actualizar controladoras con ARL
 :hardbreaks:
@@ -14,10 +14,11 @@ summary: 'Determine si puede actualizar controladoras que ejecutan ONTAP 9.15.1 
 
 
 [role="lead"]
-Para comprender si puede utilizar ARL para actualizar un par de controladoras que ejecuten ONTAP 9.15.1 o posterior depende de la plataforma y de la configuración de las controladoras originales y de sustitución.
+Para saber si puedes usar ARL para actualizar a un par de controladoras introducidas en ONTAP 9.15.1 o versiones posteriores, depende de la plataforma y la configuración tanto de las controladoras originales como de las de reemplazo.
 
 
 
+[[supported-upgrades-for-arl]]
 == Actualizaciones compatibles de ARL
 
 Antes de actualizar un par de nodos mediante este procedimiento ARL, revise los siguientes requisitos para asegurarse de que la configuración es compatible:
@@ -41,12 +42,14 @@ La actualización de la controladora mediante ARL es compatible en sistemas conf
 
 
 
+[[two-node-switchless-clusters]]
 == Clústeres de dos nodos sin switches
 
 Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar los nodos en el clúster sin switches mientras realiza la actualización. No es necesario convertirlos en un clúster con switches.
 
 
 
+[[upgrades-not-supported-for-arl]]
 == ARL no admite actualizaciones
 
 No es posible actualizar controladoras de reemplazo que no admiten las bandejas de discos conectadas a las controladoras originales.
@@ -57,6 +60,7 @@ Si desea actualizar controladoras de nivel básico con unidades internas, consul
 
 
 
+[[troubleshoot]]
 == Solucionar problemas
 
 Si surge algún problema al actualizar los controladores, consultelink:aggregate_relocation_failures.html["Solucionar problemas"] Para obtener más información y posibles soluciones.

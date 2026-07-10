@@ -18,6 +18,7 @@ Para comprender si puede utilizar la reubicación de agregados (ARL) para actual
 
 
 
+[[supported-upgrades-for-arl]]
 == Actualizaciones compatibles de ARL
 
 Puede actualizar un par de nodos mediante ARL en las siguientes circunstancias:
@@ -48,6 +49,7 @@ Si tiene un sistema con más de dos puertos de clúster por nodo, como un sistem
 
 
 
+[[upgrades-not-supported-for-arl]]
 == ARL no admite actualizaciones
 
 No se pueden realizar las siguientes actualizaciones:
@@ -69,6 +71,7 @@ NOTE: Si desea actualizar ONTAP en nodos de un clúster, consulte link:other_ref
 
 
 
+[[assumptions-and-terminology]]
 == Suposiciones y terminología
 
 Este documento se escribe con las siguientes suposiciones:
@@ -98,6 +101,7 @@ LOADER>
 ----
 
 
+[[licensing-in-ontap-9-8-or-later]]
 == Licencia en ONTAP 9.8 o posterior
 
 Algunas funciones requieren licencias, que se emiten como _packages_ que incluyen una o más funciones. Cada nodo del clúster debe tener su propia clave para cada función que se usará en el clúster.
@@ -110,6 +114,7 @@ Para obtener información detallada sobre las licencias, vaya a. link:other_refe
 
 
 
+[[storage-encryption]]
 == Cifrado del almacenamiento
 
 Los nodos originales o los nodos nuevos pueden estar habilitados para el cifrado de almacenamiento. En ese caso, deberá seguir los pasos adicionales de este procedimiento para verificar que Storage Encryption esté configurado correctamente.
@@ -118,12 +123,14 @@ Si desea usar Storage Encryption, todas las unidades de disco asociadas a los no
 
 
 
+[[two-node-switchless-clusters]]
 == Clústeres de dos nodos sin switches
 
 Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar los nodos en el clúster sin switches mientras realiza la actualización. No es necesario convertirlos en un clúster con switches
 
 
 
+[[troubleshoot]]
 == Solucionar problemas
 
 Es posible que aparezca un error mientras se actualiza la pareja de nodos. El nodo podría bloquearse, es posible que los agregados no se reubiquen o que los LIF no migren. La causa del fallo y su solución dependen de cuándo se produjo el fallo durante el procedimiento de actualización.

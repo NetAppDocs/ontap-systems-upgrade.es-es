@@ -23,6 +23,7 @@ Si el nodo 4 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una t
 
 
 
+[[configure-fc-ports-on-node4]]
 == Configure los puertos FC en el nodo 4
 
 Si el nodo 4 tiene puertos FC, ya sea integrados o de un adaptador de FC, se deben establecer configuraciones de puertos en el nodo antes de llevarlo al servicio, ya que los puertos no están preconfigurados. Si no se configuran los puertos, es posible que experimente una interrupción del servicio.
@@ -92,6 +93,7 @@ IMPORTANT: Introduzca los comandos de esta sección en el indicador del clúster
 
 
 
+[[check-and-configure-utauta2-ports-on-node4]]
 == Comprobar y configurar los puertos UTA/UTA2 en el nodo 4
 
 Si el nodo 4 tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA 2, debe comprobar la configuración de los puertos y configurarlos, según cómo se desee usar el sistema actualizado.

@@ -26,6 +26,7 @@ Si usted no está ya conectado a tierra, correctamente tierra usted mismo.
 
 
 
+[[step-1-remove-the-aff-a220-aff-a200-aff-c190-fas2620-or-fas2720-controller-module]]
 == Paso 1: quita el módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 o FAS2720
 
 Para acceder a los componentes dentro del controlador node2, retira el módulo del controlador del sistema y luego quita la cubierta del módulo del controlador.
@@ -48,6 +49,7 @@ image:drw_2240_x_opening_cam_latch.png["Apertura de la palanca de leva"]
 
 
 
+[[step-2-install-the-asa-a150-aff-a150-or-fas2820-controller-module]]
 == Paso 2: instala el módulo controlador ASA A150, AFF A150 o FAS2820
 
 Instala el módulo de controlador ASA A150, AFF A150 o FAS2820 que recibiste para la actualización en node2.

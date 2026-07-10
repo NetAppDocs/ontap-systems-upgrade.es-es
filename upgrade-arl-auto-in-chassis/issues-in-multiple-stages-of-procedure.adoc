@@ -18,6 +18,7 @@ Algunos problemas pueden ocurrir durante diferentes etapas del procedimiento.
 
 
 
+[[unexpected-storage-failover-show-command-output]]
 == Resultado de comando "Storage Failover show" inesperado
 
 Durante el procedimiento, si el nodo que aloja todos los agregados de datos produce una alarma o se reinicia por accidente, podría ver un resultado inesperado para el `storage failover show` comando antes y después del reinicio, la alarma o el ciclo de apagado y encendido.

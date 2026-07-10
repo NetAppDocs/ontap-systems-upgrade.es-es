@@ -18,6 +18,7 @@ Para comprender si puede utilizar la reubicación de agregados (ARL), que mantie
 
 
 
+[[supported-upgrades-for-arl]]
 == Actualizaciones compatibles de ARL
 
 Las actualizaciones del controlador son compatibles con determinadas configuraciones del sistema. Consulta la link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems["Combinaciones de actualización del sistema admitidas"] para ver la lista de sistemas compatibles y la versión mínima de ONTAP.
@@ -28,12 +29,14 @@ La actualización de la controladora mediante ARL es compatible en sistemas conf
 
 
 
+[[two-node-switchless-clusters]]
 == Clústeres de dos nodos sin switches
 
 Si va a actualizar nodos en un clúster sin switches de dos nodos, puede dejar los nodos en el clúster sin switches mientras realiza la actualización. No es necesario convertirlos en un clúster con switches.
 
 
 
+[[switch-attached-clusters]]
 == Cambiar clústeres conectados
 
 Si va a actualizar nodos en un clúster conectado a un switch de clúster, debe comprobar que la marca, el modelo, la versión de firmware, RCF y la versión de ONTAP que se ejecutan en el switch serán las mismas que las que se ejecutan en la controladora de reemplazo después de la actualización. Si es necesario, debe realizar la actualización del switch antes de actualizar las controladoras mediante ARL.
@@ -42,6 +45,7 @@ Para obtener más información, consulte link:cable-node1-for-shared-cluster-HA-
 
 
 
+[[troubleshoot]]
 == Solucionar problemas
 
 Es posible que aparezca un error mientras se actualiza la pareja de nodos. El nodo podría bloquearse, es posible que los agregados no se reubiquen o que los LIF no migren. La causa del fallo y su solución dependen de cuándo se produjo el fallo durante el procedimiento de actualización.

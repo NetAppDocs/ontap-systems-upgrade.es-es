@@ -4,6 +4,7 @@
 
 
 
+[[check-for-aggregate-relocation-failure]]
 == Compruebe si se ha producido un error de reubicación de agregados
 
 Durante el procedimiento, ARL podría fallar en la etapa 2, etapa 3 o etapa 5.

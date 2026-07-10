@@ -4,20 +4,21 @@ sidebar: sidebar
 keywords:  
 summary: 'En general, la forma en que actualice el hardware de la controladora depende de los modelos de plataforma de los nodos originales. Se actualiza moviendo agregados o volúmenes de almacenamiento (procedimientos no disruptivos) o moviendo almacenamiento (un procedimiento disruptivo).' 
 ---
-= Seleccione el procedimiento de actualización del hardware de la controladora
+= Elige un procedimiento de actualización para el hardware de la controladora AFF, ASA o FAS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
 
 
 [role="lead"]
-En general, la forma en que actualice el hardware de la controladora depende de los modelos de plataforma de los nodos originales. Se actualiza reubicando agregados o moviendo volúmenes (ambos procedimientos no disruptivos) o moviendo el almacenamiento (un procedimiento disruptivo). Si tiene distintas versiones de ONTAP ejecutándose en los nodos originales y en los nuevos, es posible que deba realizar una actualización de software antes de iniciar la actualización de hardware.
+En general, la forma en que actualizas el hardware de una controladora AFF, ASA o FAS de NetApp depende de los modelos de plataforma de los nodos originales. Puedes actualizar reubicando los agregados o moviendo los volúmenes (ambos procedimientos sin interrupciones), o moviendo el almacenamiento (un procedimiento con interrupción). Si tienes versiones diferentes de ONTAP ejecutándose en los nodos originales y en los nuevos, puede que necesites hacer una actualización de software antes de empezar la actualización de hardware.
 
 
 NOTE: No se admiten las actualizaciones de ASA a un sistema de sustitución de ASA R2. Para obtener más información sobre la migración de datos de un sistema ASA a ASA R2, consulte link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite el acceso a datos desde hosts SAN a su sistema de almacenamiento ASA R2"^].
 
 
 
+[[which-upgrade-procedure-should-i-use]]
 == ¿Qué procedimiento de actualización debo utilizar?
 
 Para seleccionar el procedimiento de actualización adecuado, revise todas las preguntas que aparecen en la tabla a continuación.
@@ -77,6 +78,7 @@ ARL es un procedimiento de reemplazo.  No es necesario expandir ni reducir el cl
 |===
 
 
+[[example-fas9500-to-fas90-upgrade]]
 == Ejemplo: Actualización de FAS9500 a FAS90
 
 Este ejemplo te da posibles respuestas para una actualización de controlador FAS9500 a FAS90.

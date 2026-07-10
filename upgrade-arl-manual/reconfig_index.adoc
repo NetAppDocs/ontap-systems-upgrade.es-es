@@ -27,7 +27,7 @@ Debe realizar esta tarea si su distribución existente del switch de FC se confi
 Este procedimiento no genera interrupciones y tarda aproximadamente cuatro horas en completarse (excepto en el rack y la pila) cuando los discos se ponen a cero.
 
 .Pasos
-. link:send_custom_asup_message_prior_reconfig_switches.html["Envíe un mensaje de AutoSupport personalizado antes de reconfigurar los switches"]
+. link:send_custom_autosupport_message_prior_reconfig_switches.html["Envíe un mensaje de AutoSupport personalizado antes de reconfigurar los switches"]
 . link:verify_health_mcc_config.html["Compruebe el estado de la configuración de MetroCluster"]
 . link:check_mcc_config_errors.html["Compruebe si hay errores de configuración de MetroCluster"]
 . link:persist_disable_switches.html["Desactive los switches de forma persistente"]

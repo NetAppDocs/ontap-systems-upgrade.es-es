@@ -23,6 +23,7 @@ En este punto del procedimiento, la operación se detiene mientras el nodo 2 se 
 
 
 
+[[step-1-verify-that-node2-is-in-quorum]]
 == Paso 1: Verifica que el nodo2 está en quórum
 
 Verifica que el nodo2 está en quórum. Luego, reanuda la operación de sustitución del controlador.
@@ -152,6 +153,8 @@ NOTE: En este procedimiento, la sección _Re-creating VLAN, ifgrps y dominios de
 
 
 
+[[step-2-restore-network-configuration-on-node2]]
+[[restore_network_configuration_on_node2]]
 == Paso 2: restaurar la configuración de red en el nodo2
 
 Después de confirmar que el nodo 2 tiene quórum y puede comunicarse con el nodo 1, compruebe que las VLAN del nodo 1, los grupos de interfaces y los dominios de retransmisión estén en el nodo 2. Además, verifique que todos los puertos de red 2 estén configurados en sus dominios de retransmisión correctos.

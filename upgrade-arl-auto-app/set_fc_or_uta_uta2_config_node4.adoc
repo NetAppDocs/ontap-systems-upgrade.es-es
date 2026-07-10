@@ -21,13 +21,15 @@ Puede que tengas que completar <<configure-fc-ports-on-node4,Configure los puert
 
 [NOTE]
 ====
-Si el nodo 4 no tiene puertos FC integrados, puertos UTA/UTA2 integrados o una tarjeta UTA/UTA2 (por ejemplo, sistemas AFF y FAS introducidos a partir de ONTAP 9.15.1) y está actualizando un sistema con discos de almacenamiento, puede saltar alink:reassign-node2-disks-to-node4.html["Reasigne discos de node2 GB a node4"] .
+Si el nodo 4 no dispone de puertos FC integrados, puertos UTA/UTA2 integrados ni una tarjeta UTA/UTA2 (por ejemplo, los sistemas AFF y FAS introducidos en ONTAP 9.15.1 o versiones posteriores), y vas a actualizar un sistema con discos de almacenamiento, puedes pasar directamente a link:reassign-node2-disks-to-node4.html["Reasigne discos de node2 GB a node4"].
 
 Asegúrese de que el nodo 4 tenga suficiente espacio en rack. Si el nodo 4 se encuentra en un chasis separado del nodo 2, es posible colocar el nodo 4 en la misma ubicación que el nodo 3. Si el nodo 2 y el nodo 4 están en el mismo chasis, el nodo 4 ya se encuentra en la ubicación de rack adecuada.
 
 ====
 
 
+[[step-1-configure-fc-ports-on-node4]]
+[[configure-fc-ports-on-node4]]
 == Paso 1: Configurar puertos FC en nodo4
 
 Si el nodo 4 tiene puertos FC, ya sea integrados o en un adaptador FC complementario, debe establecer las configuraciones de los puertos en el nodo antes de ponerlo en servicio porque los puertos no están preconfigurados cuando se envían los sistemas.  Si no configura los puertos según lo requerido, podría experimentar una interrupción en el servicio.
@@ -90,6 +92,8 @@ Por ejemplo: `ucadmin modify -m fc -t initator 2b`
 
 
 
+[[step-2-check-and-configure-utauta2-ports-on-node4]]
+[[check-config-uta-uta2-node4]]
 == Paso 2: comprobar y configurar los puertos UTA/UTA2 en el nodo4
 
 Si el nodo 4 tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA 2, debe comprobar la configuración de los puertos y configurarlos, según cómo se desee usar el sistema actualizado.

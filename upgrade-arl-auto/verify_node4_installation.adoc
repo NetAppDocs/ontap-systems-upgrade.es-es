@@ -44,6 +44,7 @@ CAUTION: En esta fase, la configuración de MetroCluster no se encuentra en un e
 
 
 
+[[re-create-vlans-interface-groups-and-broadcast-domains-on-node4]]
 == Vuelva a crear VLAN, grupos de interfaces y dominios de retransmisión en el nodo 4
 
 Una vez que se confirma que el nodo 4 funciona de quórum y que se puede comunicar con el nodo 3, es necesario volver a crear las VLAN del nodo 2, los grupos de interfaces y los dominios de retransmisión en el nodo 4. También es necesario añadir los puertos de nodo 3 a los dominios de retransmisión recientemente creados.
@@ -72,6 +73,7 @@ Para obtener más información sobre la creación y recreación de VLAN, grupos 
 
 
 
+[[restore-key-manager-configuration-on-node4]]
 == Restaure la configuración de gestor de claves en el nodo 4
 
 Si estás utilizando NetApp Aggregate Encryption (NAE) o NetApp Volume Encryption (NVE) para cifrar volúmenes en el sistema que estás actualizando, la configuración de cifrado debe sincronizarse con los nuevos nodos. Si no restauras key-manager, cuando reubicas los agregados de node2 de node3 a node4 usando ARL, los volúmenes cifrados se ponen fuera de línea.

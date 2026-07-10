@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/decide_to_use_the_aggregate_relocation_guide.html 
 keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
-summary: 'Decida si desea utilizar ARL para actualizar las controladoras que ejecutan ONTAP 9.15.1 o posterior mediante `system controller replace` comandos.' 
+summary: 'Decide si quieres usar ARL para actualizar a los controladores introducidos en ONTAP 9.15.1 o versiones posteriores usando los comandos  `system controller replace`.' 
 ---
 = Decidir si se utilizará este procedimiento de reubicación agregada
 :hardbreaks:
@@ -14,12 +14,13 @@ summary: 'Decida si desea utilizar ARL para actualizar las controladoras que eje
 
 
 [role="lead"]
-Existen varios métodos de reubicación de agregados (ARL) para actualizar el hardware de los controladores. Este procedimiento ARL explica cómo actualizar un par de controladores HA en sistemas de almacenamiento AFF y FAS introducidos en ONTAP 9.15.1 o versiones posteriores con nuevos controladores, manteniendo los discos existentes y los datos almacenados en ellos. Este es un procedimiento complejo que solo deberían usar administradores de ONTAP con experiencia.
+Existen varios métodos de reubicación agregada (ARL) para actualizar el hardware de los controladores. Este procedimiento de ARL describe cómo actualizar un par de controladores de alta disponibilidad (HA) en sistemas de almacenamiento AFF y FAS a controladores introducidos en ONTAP 9.15.1 o versiones posteriores, conservando al mismo tiempo los discos existentes y los datos almacenados en los discos. Este es un procedimiento complejo que solo deberían usar administradores de ONTAP con experiencia.
 
 Para ayudarlo a decidir si este procedimiento ARL es adecuado para la actualización del hardware de su controlador, debe revisar todas las siguientes circunstancias para actualizaciones compatibles y no compatibles.
 
 
 
+[[supported-upgrades-for-this-arl-procedure]]
 == Actualizaciones compatibles con este procedimiento de ARL
 
 Puede utilizar este procedimiento ARL para actualizar un par de nodos en las siguientes circunstancias:
@@ -35,6 +36,7 @@ NOTE: Puede usar el cifrado de almacenamiento de NetApp (NSE), el cifrado de vol
 
 
 
+[[upgrades-not-supported-for-this-arl-procedure]]
 == Actualizaciones no compatibles con este procedimiento de ARL
 
 No puede utilizar este procedimiento ARL para actualizar un par de nodos en las siguientes circunstancias:
@@ -57,13 +59,15 @@ No puede utilizar este procedimiento ARL para actualizar un par de nodos en las 
 | AFF C800 | AFF C80 
 |===
 +
-Para realizar una actualización de una lista en la tabla anterior, consulte link:other_references.html["Referencias"] el enlace a comandos _Utilizar «system controller replace» para actualizar los modelos de controladora en el mismo chasis_.
+Para realizar una actualización de las indicadas en la tabla anterior, consulta link:other_references.html["Referencias"] para acceder a _Usa los comandos "system controller replace" para actualizar modelos de controladora en el mismo chasis_.
 
 * Va a actualizar una configuración IP o FC MetroCluster. Para actualizar una configuración de MetroCluster, consulte link:other_references.html["Referencias"] para vincular a la documentación _Actualización y ampliación de MetroCluster_.
 
 
 
 
+[[supported-system-upgrade-combinations]]
+[[sys_commands_9151_supported_systems]]
 == Combinaciones de actualización del sistema admitidas
 
 La siguiente tabla muestra las combinaciones de actualización de controlador compatibles con ARL para sistemas AFF y FAS introducidos en ONTAP 9.15.1 o posterior. Si su combinación de actualización de controlador no aparece en la lista, contacte con el soporte técnico.
@@ -108,6 +112,7 @@ La siguiente tabla muestra las combinaciones de actualización de controlador co
 
 
 
+[[choose-a-different-hardware-upgrade-procedure]]
 == Elija un procedimiento de actualización de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise los métodos ARL alternativos disponibles para actualizar el hardware del controlador"].

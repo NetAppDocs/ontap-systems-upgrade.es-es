@@ -62,35 +62,35 @@ cluster modify -node <node_name> -epsilon true
 ----
 
 
-. Identificar el nodo maestro actual:
+. Identifica el nodo principal actual:
 +
 [source, cli]
 ----
 cluster ring show
 ----
 +
-El nodo maestro es el nodo que contiene procesos como `mgmt`, `vldb`, `vifmgr`, `bcomd`, y `crs`.
+El nodo principal es el nodo que alberga procesos como `mgmt`, `vldb`, `vifmgr`, `bcomd` y `crs`.
 
-. Si el nodo que estás eliminando es el nodo maestro actual, habilita otro nodo en el clúster para que sea elegido como nodo maestro:
+. Si el nodo que vas a eliminar es el nodo primario actual, habilita otro nodo del clúster para que pueda ser elegido como nodo primario:
 +
-.. Hacer que el nodo maestro actual no sea elegible para participar en el clúster:
+.. Haz que el nodo primario actual no pueda participar en el clúster:
 +
 [source, cli]
 ----
 cluster modify -node <node_name> -eligibility false
 ----
 +
-El nodo se marca como no saludable hasta que se restablece la elegibilidad. Cuando el nodo maestro deja de ser elegible, uno de los nodos restantes es elegido por el quórum del clúster como el nuevo maestro.
+El nodo se marca como no operativo hasta que se restablezca su elegibilidad. Cuando el nodo primario deja de ser elegible, el quórum del clúster elige a uno de los nodos restantes como nuevo nodo primario.
 
 +
 [NOTE]
 ====
 Si realizas este paso en el primer nodo de un par de HA, deberías marcar solo ese nodo como no apto. No modifiques el estado del compañero de HA.
 
-Si el nodo asociado es seleccionado como el nuevo maestro, necesitas verificar si tiene epsilon antes de hacerlo inelegible. Si el nodo asociado tiene epsilon, necesitas mover epsilon a un nodo diferente que permanezca en el cluster antes de hacerlo inelegible. Haces esto cuando repites estos pasos para remover el nodo asociado.
+Si se selecciona el nodo asociado como nuevo primario, debes comprobar si alberga epsilon antes de declararlo no apto. Si el nodo asociado alberga epsilon, debes trasladar epsilon a otro nodo que permanezca en el clúster antes de declararlo no apto. Haces esto cuando repites estos pasos para eliminar el nodo asociado.
 
 ====
-.. Hacer que el nodo maestro anterior sea elegible nuevamente para participar en el clúster:
+.. Haz que el nodo primario anterior vuelva a ser apto para participar en el clúster:
 +
 [source, cli]
 ----
@@ -143,7 +143,7 @@ El sistema le informa lo siguiente:
 Se genera un mensaje de error si hay condiciones que se deben abordar antes de eliminar el nodo. Por ejemplo, el mensaje puede indicar que el nodo tiene recursos compartidos que debe eliminar o que el nodo está en una configuración de alta disponibilidad de clúster o de conmutación por error de almacenamiento que debe deshabilitar.
 
 +
-Si el nodo es el quorum master, el clúster perderá brevemente y luego volverá al quorum. Esta pérdida de quorum es temporal y no afecta ninguna operación de datos.
+Si el nodo es el primario del quórum, el clúster perderá brevemente el quórum y luego lo recuperará. Esta pérdida de quórum es temporal y no afecta ninguna operación de datos.
 
 
 

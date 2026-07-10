@@ -4,6 +4,7 @@
 
 
 
+[[aggregates-originally-on-node1-are-owned-by-node4-after-completion-of-the-upgrade]]
 == Los agregados, originalmente del nodo 1, son propiedad del nodo 4 después de completar la actualización
 
 Al final del procedimiento de actualización, el nodo 3 debe ser el nuevo nodo de inicio de los agregados que originalmente tenían el nodo 1 como nodo de inicio. Puede reubicarlos tras la actualización.

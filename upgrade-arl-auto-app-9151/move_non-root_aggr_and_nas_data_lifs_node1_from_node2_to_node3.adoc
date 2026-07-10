@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/move_non-root_aggr_and_nas_data_lifs_node1_from_node2_to_node3.html 
 keywords: moving, non-root, aggregates, nas, lif, node1, node2, node3 
-summary: 'Compruebe que los LIF de datos NAS node1 en node2 se reubican de node2 a node3 cuando se actualizan las controladoras que ejecutan ONTAP 9.15.1 o posterior mediante `system controller replace` comandos.' 
+summary: 'Comprueba que las LIF de datos NAS del nodo1 en el nodo2 se reubiquen del nodo2 al nodo3 al actualizar a controladores introducidos en ONTAP 9.15.1 o versiones posteriores usando los comandos  `system controller replace`.' 
 ---
 = Mueva agregados que no son raíz y LIF de datos NAS que pertenecen al nodo 1 del nodo 2 al nodo 3
 :hardbreaks:

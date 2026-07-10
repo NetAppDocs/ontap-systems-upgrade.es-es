@@ -4,6 +4,7 @@
 
 
 
+[[check-and-configure-utauta2-ports-on-node4]]
 == Comprobar y configurar los puertos UTA/UTA2 en el nodo 4
 
 Si el nodo 4 tiene puertos UTA/UTA2 integrados o una tarjeta UTA/UTA 2, debe comprobar la configuración de los puertos y configurarlos, según cómo se desee usar el sistema actualizado.

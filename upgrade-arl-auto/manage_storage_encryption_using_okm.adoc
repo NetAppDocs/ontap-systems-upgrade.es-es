@@ -15,6 +15,7 @@ summary: 'Configure y gestione el cifrado de almacenamiento, gestione las claves
 
 
 
+[[manage-storage-encryption-using-the-onboard-key-manager]]
 == Gestione el cifrado del almacenamiento con el gestor de claves incorporado
 
 Usa el Onboard Key Manager (OKM) para gestionar las claves de cifrado. Si tienes el OKM configurado, debes registrar la frase de contraseña y el material de copia de seguridad antes de comenzar la actualización.
@@ -43,6 +44,7 @@ Cuando te lo pidan, introduce la frase de contraseña OKM para todo el clúster 
 
 
 
+[[optionally-quiesce-the-snapmirror-relationships]]
 == Opcionalmente, silencia las relaciones SnapMirror
 
 Antes de continuar con el procedimiento, debe confirmar que todas las relaciones de SnapMirror se ponen en modo inactivo. Cuando una relación de SnapMirror se pone en modo inactivo, sigue en modo inactivo tras reinicios y recuperaciones tras fallos.
