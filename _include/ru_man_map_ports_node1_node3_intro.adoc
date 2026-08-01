@@ -5,7 +5,7 @@
 Debes asegurarte de que los puertos físicos de node1 se asignen correctamente a los puertos físicos de node3. Esto permite que node3 se comunique con otros nodos del clúster y con la red después de la actualización.
 
 .Antes de empezar
-Ya debe tener información acerca de los puertos en los nodos nuevos del _Hardware Universe_. (Vaya a. link:other_references.html["Referencias"] Para establecer un enlace con el _Hardware Universe_). Utilice la información posteriormente en esta sección y en link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
+Seguramente ya dispones de información sobre los puertos de los nuevos nodos procedente de _Hardware Universe_. (Ve a link:other-references.html["Referencias"] para enlazar con _Hardware Universe_). Usarás la información más adelante en esta sección y en link:map_ports_node2_node4.html["Asigne puertos del nodo 2 al nodo 4"].
 
 La configuración del software de node3 debe coincidir con la conectividad física de node3 y se debe restaurar la conectividad de red antes de continuar con la actualización.
 

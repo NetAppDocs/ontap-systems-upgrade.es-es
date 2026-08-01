@@ -100,3 +100,6 @@ Todos los discos enumerados deben estar sin asignar.
 `halt`
 
 
+
+.El futuro
+Tras eliminar la propiedad de los discos conectados a los nuevos nodos, link:upgrade-reset-default-configuration-node3-and-node4.html["restablece la configuración predeterminada en los nuevos nodos"].

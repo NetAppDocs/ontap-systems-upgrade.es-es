@@ -128,7 +128,7 @@ Si el clúster ha no se ha deshabilitado, repita <<man_retire_1_step2,Paso 2>>.
 `cluster show`
 
 +
-Dado que en un cluster existe la posibilidad de empate con un número par de nodos, uno de ellos tiene un peso adicional fraccionario al votar, llamado épsilon. Consulte link:other_references.html["Referencias"] Para obtener más información, vincule a _System Administration Reference_.
+Dado que existe la posibilidad de que se produzca un empate en un clúster que cuente con un número par de nodos, un nodo tiene un peso de voto fraccionario adicional denominado epsilon. Consulta link:other-references.html["Referencias"] para enlazar a la _System Administration Reference_ y obtener más información.
 
 +
 [NOTE]

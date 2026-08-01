@@ -170,3 +170,6 @@ NOTE: No es necesario extraer el contenido del `<ontap_version>_image.tgz` archi
 
 
 Utilizará información en el directorio a. link:upgrade-set-up-new-nodes.html["configure los nodos nuevos"].
+
+.El futuro
+Tras preparar la actualización, link:upgrade-shutdown-remove-original-nodes.html["apaga los nodos originales"].

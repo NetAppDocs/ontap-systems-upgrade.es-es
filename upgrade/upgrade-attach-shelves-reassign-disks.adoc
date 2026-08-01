@@ -14,13 +14,19 @@ summary: Debe reasignar los discos que pertenecen al nodo 1 y al nodo 2 respecti
 Debe reasignar los discos que pertenecen al nodo 1 y al nodo 2 respectivamente al nodo 3 y al nodo 4.
 
 .Acerca de esta tarea
-Es necesario realizar los pasos de esta sección, como nodo 3 y nodo 4, completar cada paso del nodo 3 y luego nodo 4 antes de pasar al siguiente paso.
+Debes seguir los pasos de esta sección en node3 y node4. Completa cada paso en node3 y luego en node4 antes de pasar al siguiente paso.
 
+[[reassign-spare-disks-step1]]
 .Pasos
-. Conecte los cables de la bandeja de almacenamiento de las bandejas que se conectaron previamente a node1/node2 a node3/node4.
+. Conecta los cables de las estanterías de almacenamiento que ya estaban montadas:
++
+** Conecta los cables de node1 a node3
+** Conecta los cables de node2 a node4.
 +
 
-CAUTION: No debe conectar las nuevas bandejas a node3/node4 durante este procedimiento de actualización. Puede conectar nuevas bandejas al sistema de forma no disruptiva una vez completada la actualización de la controladora.
+CAUTION: No conectes nuevas unidades de almacenamiento a node3 o node4 durante este procedimiento de actualización. Puedes conectar nuevas unidades de almacenamiento al sistema sin interrumpir el servicio después de completar la actualización del controlador.
+
+
 
 . Verifique el suministro de alimentación y la conectividad física de las bandejas.
 . Desde el símbolo del sistema DEL CARGADOR de nodo 3, arranque en modo de mantenimiento:
@@ -39,26 +45,38 @@ Local System ID: 101268854
 ...
 ----
 +
-Registre el ID del sistema del nodo 3 para usar en el paso 4 a continuación.
+Anota el ID del sistema de node3 para utilizarlo en <<reassign-disks-and-aggregates,Paso 5>>.
 
-. Reasignar los discos de repuesto del nodo 1, los discos que pertenecen al agregado raíz y cualquier agregado de datos:
+
+
+[[reassign-disks-and-aggregates]]
+. Reasigna los discos y los agregados de datos:
 +
-`disk reassign -s _node1_sysid_ -d _node3_sysid_ -p _node2_sysID_`
-
-+
---
-** El parámetro `_node1_sysid_` Es el valor registrado en _Apagar los nodos originales_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Paso 5"].
-** Especifique el parámetro `_-p partner_sysID_` solo cuando haya discos compartidos presentes.
-
-
-[NOTE]
+[role="tabbed-block"]
 ====
-Cuando se reasignan discos de repuesto del nodo 2, discos que pertenecen al agregado raíz y cualquier agregado de datos, el comando es:
-
-`disk reassign -s node2_sysid -d node4_sysid -p node3_sysID`
-
-====
+.Reasignar a node3
 --
+Reasigna los discos de reserva de node1, los discos que pertenecen al agregado raíz y cualquier agregado de datos a node3:
+
+`disk reassign -s <node1_sysid> -d <node3_sysid> -p <node4_sysid>`
+
+** El parámetro  `node1_sysid` es el valor que anotaste en _Apagado de los nodos originales_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Paso 5"].
+** Especifica el parámetro  `-p <node2_sysid>` solo cuando haya discos compartidos.
+
+
+--
+.Reasignar a node4
+--
+Reasigna los discos de reserva del nodo2, los discos que pertenecen al agregado raíz y cualquier agregado de datos al nodo4:
+
+`disk reassign -s <node2_sysid> -d <node4_sysid> -p <node3_sysid>`
+
+** El parámetro  `node2_sysid` es el valor que anotaste en _Apagado de los nodos originales_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Paso 5"].
+** Especifica el parámetro  `-p <node3_sysid>` solo cuando haya discos compartidos.
+
+
+--
+====
 +
 El sistema muestra un mensaje similar a lo siguiente:
 
@@ -100,8 +118,12 @@ Debería ver una salida similar a la siguiente:
           aggr0 online          raid_dp, aggr         root
                                 64-bit
 ----
-. Salir del modo de mantenimiento:
+. [[reassign-spare-disks-step9]]Sal del modo de mantenimiento:
 +
 `halt`
 
+. Repite <<reassign-spare-disks-step1,Paso 1>> a <<reassign-spare-disks-step9,Paso 9>> en node4.
 
+
+.El futuro
+Tras conectar las bandejas de almacenamiento y reasignar la propiedad de los discos, link:upgrade-restore-root-volume-config.html["restaurar la configuración del volumen raíz"].

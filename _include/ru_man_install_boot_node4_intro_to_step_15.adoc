@@ -36,7 +36,7 @@ Si el nodo 4 se encuentra en un chasis separado del nodo 3, es posible colocar e
 . Instale el nodo 4 en el rack, siguiendo las instrucciones de _Installation and Setup_ para el modelo de nodo.
 . [[man_install4_Step4]]nodo de cable 4, moviendo las conexiones del nodo 2 al nodo 4.
 +
-Las siguientes referencias le ayudan a realizar las conexiones de cable adecuadas. Vaya a. link:other_references.html["Referencias"] para vincularlos.
+Las siguientes referencias te ayudan a realizar las conexiones de cables correctamente. Ve a link:other-references.html["Referencias"] para enlazarlas.
 
 +
 ** _Instrucciones de instalación y configuración_ para la plataforma node4

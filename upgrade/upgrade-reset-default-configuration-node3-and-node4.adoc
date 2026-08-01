@@ -54,3 +54,6 @@ El sistema inicia el `wipeconfig` procedimiento y se reinicia. Una vez finalizad
 
 . Desde el menú de arranque, introduce 8 para reiniciar el nodo, e introduce Ctrl-C durante AUTOBOOT para detener el nodo en el prompt LOADER.
 
+
+.El futuro
+Tras restablecer la configuración predeterminada en los nuevos nodos, link:upgrade-install-new-nodes.html["instalar los nuevos nodos"].

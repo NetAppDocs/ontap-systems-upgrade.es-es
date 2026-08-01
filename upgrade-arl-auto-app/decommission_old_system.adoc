@@ -17,7 +17,7 @@ summary: 'Deje que NetApp sepa que el sistema antiguo ya no funciona después de
 Tras la actualización, puede retirar el sistema antiguo a través del sitio de soporte de NetApp. Decomisionando el sistema indica a NetApp que el sistema ya no está en funcionamiento y lo elimina de las bases de datos de soporte.
 
 .Pasos
-. Consulte link:other_references.html["Referencias"] Para enlazar con el _sitio de soporte de NetApp_ e iniciar sesión.
+. Consulta link:other-references.html["Referencias"] para enlazar al _NetApp Support Site_ e iniciar sesión.
 . Seleccione *Productos > Mis productos* en el menú.
 . En la página *Ver sistemas instalados*, elija los *criterios de selección* que desea utilizar para mostrar información sobre su sistema.
 +

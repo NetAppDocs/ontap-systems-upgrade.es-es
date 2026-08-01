@@ -145,4 +145,4 @@ entries:
   - title: Los LIF están en puertos no válidos tras la actualización
     url: "/upgrade-arl-manual/lifs_invalid_ports_after_upgrade.html"
 - title: Referencias
-  url: "/upgrade-arl-manual/other_references.html"
+  url: "/upgrade-arl-manual/other-references.html"

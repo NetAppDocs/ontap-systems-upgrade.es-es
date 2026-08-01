@@ -22,7 +22,7 @@ Esta tarea debe realizarse en cada sitio MetroCluster.
 .Paso
 Use el contenido _MetroCluster con conexión a la estructura y configuración_ para determinar la distribución del cableado para el tipo de switch y el uso del puerto para una configuración MetroCluster de ocho nodos. El uso del puerto del switch FC debe coincidir con el uso descrito en el contenido para poder utilizar los archivos de configuración de referencia (RCF).
 
-Vaya a. link:other_references.html["Referencias"] Para enlazar con el contenido _Fabric-Attached MetroCluster Installation and Configuration_.
+Ve a link:other-references.html["Referencias"] para enlazar con el contenido _Fabric-attached MetroCluster Installation and Configuration_.
 
 
 NOTE: Si el entorno no puede cablearse de forma que se puedan utilizar los RCF, póngase en contacto con el soporte técnico. No utilice este procedimiento si el cableado no puede utilizar RCF.

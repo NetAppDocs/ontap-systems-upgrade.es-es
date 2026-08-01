@@ -31,7 +31,7 @@ NOTE: Si está actualizando a un sistema con ambos nodos en el mismo chasis, ins
 Conecte las siguientes conexiones utilizando las _Instrucciones de instalación y configuración_ para la plataforma node3, el documento de estante de discos apropiado y la documentación de _Administración de pares HA_.
 
 +
-Referirse alink:other_references.html["Referencias"] para vincular a la _gestión de pares HA_.
+Consulta link:other-references.html["Referencias"] para enlazar con _HA pair management_.
 
 +
 ** Consola (puerto de gestión remota)

@@ -17,7 +17,7 @@ summary: 'Verifique que los puertos físicos del nodo 1 se asignen correctamente
 Debes verificar que los puertos físicos de node1 se asignen correctamente a los puertos físicos de node3. Esto permite que node3 se comunique con otros nodos del clúster y con la red después de la actualización.
 
 .Acerca de esta tarea
-Consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_ y obtener información acerca de los puertos en los nuevos nodos. Utilizará la información más adelante en esta sección.
+Accede a link:other-references.html["Referencias"] para conectarte a _Hardware Universe_ y recopilar información sobre los puertos de los nuevos nodos. Utilizarás esta información más adelante en esta sección.
 
 La disposición física de los puertos puede variar, dependiendo del modelo de los nodos. Cuando el nuevo nodo arranca, ONTAP intenta determinar qué puertos deben alojar los LIF del clúster para entrar automáticamente en quórum.
 
@@ -145,7 +145,7 @@ NOTE: En este procedimiento, se ha cambiado el nombre de la sección _Re-creatin
 Una vez que se confirma que el nodo 3 está en quórum y que se puede comunicar con el nodo 2, compruebe que las VLAN del nodo 1, los grupos de interfaces y los dominios de retransmisión se ven en el nodo 3. Además, verifique que todos los puertos de red de nodo 3 estén configurados en los dominios de retransmisión correctos.
 
 .Acerca de esta tarea
-Para obtener más información sobre la creación y recreación de VLAN, grupos de interfaces y dominios de retransmisión, consulte link:other_references.html["Referencias"] Para establecer un vínculo con _Network Management_.
+Para obtener más información sobre cómo crear y volver a crear VLAN, grupos de interfaces y dominios de difusión, consulta link:other-references.html["Referencias"] para enlazar con _Network Management_.
 
 
 NOTE: Si está cambiando la velocidad de puerto de los puertos de los clústeres de e0a y e1a en sistemas AFF A800 o AFF C800, puede observar que se están recibiendo paquetes con formato incorrecto tras la conversión de velocidad. Consulte https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["ID de error de NetApp Bugs Online: 1570339"^] y el artículo de la base de conocimientos https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["Errores de CRC en puertos T6 después de convertir de 40GbE a 100GbE"^] para obtener orientación.

@@ -51,4 +51,4 @@ https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migración a un cl
 
 
 .El futuro
-link:upgrade-install-and-join-new-nodes-move-vols.html["Instale los nodos nuevos y únalos al clúster"]
+Tras preparar la actualización, link:upgrade-install-and-join-new-nodes-move-vols.html["instala los nuevos nodos e incorpóralos al clúster"].

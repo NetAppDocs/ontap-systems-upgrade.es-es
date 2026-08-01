@@ -28,7 +28,7 @@ NOTE: Si está actualizando a un sistema con ambos nodos en el mismo chasis, ins
 
 . [[step3]]cable node3, moviendo las conexiones del nodo 1 al nodo 3.
 +
-Las siguientes referencias le ayudan a realizar las conexiones de cable adecuadas. Vaya a. link:other_references.html["Referencias"] para vincularlos.
+Las siguientes referencias te ayudan a realizar las conexiones de cables correctamente. Ve a link:other-references.html["Referencias"] para enlazarlas.
 
 +
 ** _Instrucciones de instalación y configuración_ para la plataforma node3

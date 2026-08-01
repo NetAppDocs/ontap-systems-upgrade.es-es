@@ -20,4 +20,4 @@ Durante el procedimiento, debe actualizar el hardware de la controladora origina
 
 Cada agregado tiene un propietario particular y un propietario actual. El propietario del hogar es el propietario real del agregado, y el propietario actual es el propietario temporal.
 
-La siguiente tabla describe las tareas de alto nivel que realiza durante cada etapa y el estado de propiedad del agregado al final de la etapa. Los pasos detallados se proporcionan más adelante en el procedimiento:
+Infórmate sobre las tareas a grandes rasgos que debes realizar en cada etapa y el estado de la propiedad del agregado al final de la etapa. Los pasos detallados se proporcionan más adelante en el procedimiento.

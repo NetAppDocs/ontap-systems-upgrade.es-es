@@ -50,3 +50,6 @@ Una vez que los volúmenes se hayan trasladado a los nuevos nodos, elimine los n
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Ocho"]link:upgrade-complete-move-volumes.html["Complete la actualización"]
 [role="quick-margin-para"]
 Para completar el procedimiento de actualización moviendo volúmenes, debe configurar el Service Processor (SP), instalar licencias nuevas y configurar AutoSupport. También es posible que deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o NCA.
+
+.El futuro
+Después de informarte sobre cómo actualizar moviendo volúmenes, link:upgrade-prepare-when-moving-volumes.html["prepárate para la actualización"].

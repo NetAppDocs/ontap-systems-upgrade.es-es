@@ -34,7 +34,7 @@ Este procedimiento de actualización se aplica principalmente a situaciones de a
 * Este procedimiento se aplica a los sistemas FAS y AFF .
 * Este procedimiento se aplica a sistemas que ejecutan configuración MetroCluster de NetApp de 4 nodos o superior. Dado que los sitios de configuración de MetroCluster pueden estar en dos ubicaciones físicamente diferentes, la actualización automatizada de la controladora debe realizarse individualmente en cada site de MetroCluster para lograr un par de alta disponibilidad.
 * Para sistemas que no son MetroCluster, como clústeres de alta disponibilidad, la actualización de ARL es el único procedimiento compatible.
-* Si actualiza desde un sistema AFF A320, puede usar el movimiento de volúmenes para actualizar el hardware de la controladora o ponerse en contacto con el soporte técnico. Consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+* Si vas a actualizar desde un sistema AFF A320, puedes utilizar el traslado de volúmenes para actualizar el hardware del controlador o ponerte en contacto con el soporte técnico. Consulta link:other-references.html["Referencias"] para acceder a la sección _Actualización mediante el traslado de volúmenes o almacenamiento_.
 
 
 .Automatice el proceso de actualización de la controladora

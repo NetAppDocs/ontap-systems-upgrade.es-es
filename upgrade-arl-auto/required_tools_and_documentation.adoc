@@ -22,4 +22,4 @@ Se necesitan las siguientes herramientas para realizar la actualización:
 * Destornillador Phillips número 2
 
 
-Vaya a la link:other_references.html["Referencias"] para acceder a la lista de documentos de referencia y sitios de referencia necesarios para esta actualización
+Ve a la sección link:other-references.html["Referencias"] para acceder a la lista de documentos de referencia y sitios de referencia necesarios para esta actualización

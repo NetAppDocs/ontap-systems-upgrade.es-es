@@ -498,4 +498,4 @@ multipath -ll -d
 
 
 .El futuro
-link:upgrade-create-aggregate-move-volumes.html["Cree un agregado y mueva volúmenes a los nuevos nodos"]
+Tras trasladar los hosts iSCSI de Linux a los nuevos nodos, link:upgrade-create-aggregate-move-volumes.html["crear un agregado y trasladar los volúmenes a los nuevos nodos"].

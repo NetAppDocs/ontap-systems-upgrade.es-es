@@ -59,9 +59,9 @@ No puede utilizar este procedimiento ARL para actualizar un par de nodos en las 
 | AFF C800 | AFF C80 
 |===
 +
-Para realizar una actualización de las indicadas en la tabla anterior, consulta link:other_references.html["Referencias"] para acceder a _Usa los comandos "system controller replace" para actualizar modelos de controladora en el mismo chasis_.
+Para realizar una actualización de las indicadas en la tabla anterior, consulta link:other-references.html["Referencias"] para acceder a _Usa los comandos "system controller replace" para actualizar modelos de controladora en el mismo chasis_.
 
-* Va a actualizar una configuración IP o FC MetroCluster. Para actualizar una configuración de MetroCluster, consulte link:other_references.html["Referencias"] para vincular a la documentación _Actualización y ampliación de MetroCluster_.
+* Estás actualizando una configuración de FC o IP de MetroCluster. Para actualizar una configuración de MetroCluster, consulta link:other-references.html["Referencias"] para acceder a la documentación sobre la actualización y ampliación de _MetroCluster_.
 
 
 
@@ -116,11 +116,11 @@ La siguiente tabla muestra las combinaciones de actualización de controlador co
 == Elija un procedimiento de actualización de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise los métodos ARL alternativos disponibles para actualizar el hardware del controlador"].
-* Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+* Si prefieres un método diferente para actualizar el hardware del controlador y estás dispuesto a realizar movimientos de volúmenes, consulta link:other-references.html["Referencias"] para enlazar con _Actualización moviendo volúmenes o almacenamiento_.
 
 
 .Información relacionada
-Referirse a link:other_references.html["Referencias"] para vincular a la _Documentación de ONTAP 9_.
+Consulta link:other-references.html["Referencias"] para acceder a la _Documentación de ONTAP 9_.
 
 .El futuro
 Tras decidir utilizar este procedimiento ARL, link:required_tools_and_documentation.html["conoce las herramientas y la documentación necesarias"].

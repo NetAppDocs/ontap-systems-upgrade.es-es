@@ -19,7 +19,7 @@ Antes de poder sustituir los nodos originales, debe confirmar que están en un p
 .Pasos
 . Confirme que cada uno de los nodos originales tiene suficientes recursos para admitir adecuadamente la carga de trabajo de ambos nodos durante el modo de toma de control.
 +
-Consulte link:other_references.html["Referencias"]el enlace _HA PARK MANAGEMENT_ y siga la sección _Best practices for HA PARES_. Ninguno de los nodos originales debe estar funcionando con una utilización superior al 50 %; si el nodo se está ejecutando con una utilización inferior al 50 %, puede manejar las cargas de ambos nodos durante la actualización de la controladora.
+Consulta link:other-references.html["Referencias"] para enlazar con _Gestión de pares de alta disponibilidad_ y sigue la sección _Prácticas recomendadas para pares de alta disponibilidad_. Ninguno de los nodos originales debe estar funcionando con más del 50 por ciento de utilización; si un nodo está funcionando con menos del 50 por ciento de utilización, puede manejar las cargas de ambos nodos durante la actualización del controlador.
 
 . Complete los siguientes subpasos para crear una base de rendimiento para los nodos originales:
 +
@@ -29,23 +29,23 @@ Consulte link:other_references.html["Referencias"]el enlace _HA PARK MANAGEMENT_
 ====
 La cuenta de usuario de diagnóstico está diseñada únicamente para fines de diagnóstico de bajo nivel y sólo se debe utilizar con la orientación del soporte técnico.
 
-Para obtener información acerca de cómo desbloquear las cuentas de usuario, consulte link:other_references.html["Referencias"] Para vincular a _System Administration Reference_.
+Para obtener información sobre cómo desbloquear las cuentas de usuario, consulta link:other-references.html["Referencias"] para acceder a la _Referencia de administración del sistema_.
 
 ====
-.. Consulte link:other_references.html["Referencias"] Para establecer un enlace al _sitio de soporte de NetApp_ y descargar el recopilador de rendimiento y estadísticas (Perfstat Converged).
+.. Consulta link:other-references.html["Referencias"] para enlazar al _NetApp Support Site_ y descargar el Performance and Statistics Collector (Perfstat Converged).
 +
 La herramienta convergente Perfstat le permite establecer una base de rendimiento para realizar la comparación después de la actualización.
 
 .. Cree una línea de rendimiento de base, siguiendo las instrucciones que se encuentran en el sitio de soporte de NetApp.
 
 
-. Consulte link:other_references.html["Referencias"] Para enlazar con el _sitio de soporte de NetApp_ y abrir un caso de soporte en el sitio de soporte de NetApp.
+. Consulta link:other-references.html["Referencias"] para enlazar al _NetApp Support Site_ y abrir un caso de soporte en el NetApp Support Site.
 +
 Puede utilizar este caso para informar de los problemas que puedan surgir durante la actualización.
 
 . Verifique que se carguen las baterías de NVMEM o NVRAM de nodo 3 y nodo 4 y carguen si no lo son.
 +
-Debe comprobar físicamente los nodos 3 y 4 para ver si se cargan las baterías de NVMEM o NVRAM. Para obtener información sobre los LED del modelo de nodo 3 y nodo 4, consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_.
+Debes comprobar físicamente node3 y node4 para ver si las baterías de NVMEM o NVRAM están cargadas. Para obtener información sobre los LED del modelo de node3 y node4, consulta link:other-references.html["Referencias"] para acceder a _Hardware Universe_.
 
 +
 
@@ -53,7 +53,7 @@ WARNING: No intente borrar el contenido de la NVRAM .  Si es necesario borrar el
 
 . Comprobar la versión de ONTAP en los nodos 3 y 4.
 +
-Los nodos nuevos deben tener la misma versión de ONTAP 9.x instalada en ellos que se haya instalado en los nodos originales. Si los nodos nuevos tienen otra versión de ONTAP instalada, debe reiniciar las controladoras nuevas después de instalarlas. Para obtener instrucciones sobre cómo actualizar ONTAP, consulte link:other_references.html["Referencias"] Para enlazar a _Upgrade ONTAP_.
+Los nuevos nodos deben tener instalada la misma versión de ONTAP 9.x que la de los nodos originales. Si los nuevos nodos tienen instalada una versión diferente de ONTAP, debes hacer un arranque por red de los nuevos controladores después de instalarlos. Para ver instrucciones sobre cómo actualizar ONTAP, consulta link:other-references.html["Referencias"] para enlazar a _Upgrade ONTAP_.
 
 +
 En las cajas de envío, se debe incluir información sobre la versión de ONTAP en los nodos 3 y 4. La versión de ONTAP se muestra cuando el nodo arranca o puede arrancar el nodo en modo de mantenimiento y ejecutar el comando:
@@ -162,7 +162,7 @@ node1          node2          true     Connected to node2, Partial giveback
 node2          node1          true     Connected to node1
 ....
 +
-Si alguno de los nodos está en retorno parcial, utilice `storage failover giveback` el comando para realizar el retorno al nodo primario y, a continuación, utilice `storage failover show-giveback` el comando para asegurarse de que aún no es necesario devolver agregados. Para obtener información detallada sobre los comandos, consulte link:other_references.html["Referencias"]el enlace a _HA pair management_.
+Si alguno de los nodos está en giveback parcial, usa el comando  `storage failover giveback` para realizar el giveback y luego usa el comando  `storage failover show-giveback` para asegurarte de que no queden agregados pendientes de devolver. Para información detallada sobre los comandos, consulta link:other-references.html["Referencias"] para enlazar a _HA pair management_.
 
 . [[man_prepare_Nodes_step9]]confirme que ni el nodo 1 ni el nodo 2 poseen los agregados para los que es el propietario actual (pero no el propietario del hogar):
 +
@@ -251,7 +251,7 @@ node1    None                None
 node2    None                None
 ....
 +
-Si falta algún disco, consulte link:other_references.html["Referencias"]el enlace a _Disk and Aggregate management con CLI_, _Logical storage management con CLI_ y _HA pair management_ para configurar el almacenamiento para la pareja de alta disponibilidad.
+Si falta algún disco, consulta link:other-references.html["Referencias"] para enlazar a _Disk and aggregate management with the CLI_, _Logical storage management with the CLI_ y _HA pair management_ para configurar el almacenamiento del par de HA.
 
 . Confirmar que los nodos 1 y 2 están en buen estado y que pueden participar en el clúster:
 +
@@ -327,14 +327,14 @@ vs0
 `network interface revert -vserver * -lif *`
 
 +
-Para obtener información detallada sobre el  `network interface revert` comando, consulta link:other_references.html["Referencias"] para enlazar con la _ONTAP 9 Command reference_.
+Para obtener información detallada sobre el  `network interface revert` comando, consulta link:other-references.html["Referencias"] para enlazar con la _ONTAP 9 Command reference_.
 
 . Compruebe si el nodo 1 o el nodo 2 tienen algún disco con errores:
 +
 `storage disk show -nodelist _node1,node2_ -broken`
 
 +
-Si alguno de los discos ha fallado, extráigalos siguiendo las instrucciones de la gestión de _Disk y aggregate con la CLI_. (Consulte link:other_references.html["Referencias"] Para enlazar con _Disk y aggregate Management con la CLI_).
+Si alguno de los discos ha fallado, retíralo siguiendo las instrucciones de _Disk and aggregate management with the CLI_. (Consulta link:other-references.html["Referencias"] para enlazar a _Disk and aggregate management with the CLI_.)
 
 . Recopile información acerca de los nodos 1 y 2 completando los siguientes subpasos y grabando la salida de cada comando:
 +
@@ -510,7 +510,7 @@ node1         node1         in-quorum     true          operational
 2 entries were displayed.
 ....
 +
-Los nodos de un clúster quórum cuando una mayoría simple de nodos están en buen estado y pueden comunicarse entre sí. Para obtener más información, consulte link:other_references.html["Referencias"] Para vincular a _System Administration Reference_.
+Los nodos del clúster se encuentran en quórum cuando una mayoría simple de los nodos están operativos y pueden comunicarse entre sí. Para obtener más información, consulta link:other-references.html["Referencias"] para acceder a la _Referencia de administración del sistema_.
 
 .. Volver al nivel de privilegio administrativo:
 +
@@ -600,7 +600,7 @@ El sistema muestra información detallada sobre el SP en ambos nodos.
 .. Confirme que la red del SP está configurada.
 .. Registre la dirección IP y otra información acerca del SP.
 +
-Quizá quieras reutilizar los parámetros de red de los dispositivos de administración remota, en este caso los SP, del sistema original para los SP en los nuevos nodos. Para información detallada sobre el SP, consulta link:other_references.html["Referencias"] para enlazar a la _System Administration Reference_ y la _ONTAP 9 Command reference_.
+Quizá quieras reutilizar los parámetros de red de los dispositivos de administración remota, en este caso los SP, del sistema original para los SP en los nuevos nodos. Para información detallada sobre el SP, consulta link:other-references.html["Referencias"] para enlazar a la _System Administration Reference_ y la _ONTAP 9 Command reference_.
 
 
 
@@ -627,7 +627,7 @@ FlexClone         site    FlexClone License     -
 SnapVault         site    SnapVault License     -
 6 entries were displayed.
 ....
-. Obtenga claves de licencia nuevas para los nodos nuevos en el _sitio de soporte de NetApp_. Consulte link:other_references.html["Referencias"] Para enlazar con _sitio de soporte de NetApp_.
+. Consigue nuevas claves de licencia para los nuevos nodos en el _sitio de soporte técnico de NetApp_. Consulta link:other-references.html["Referencias"] para acceder al _sitio de soporte técnico de NetApp_.
 +
 Si el sitio no tiene las claves de licencia que necesita, póngase en contacto con su representante de ventas de NetApp.
 
@@ -662,7 +662,7 @@ Vaya a. <<man_prepare_nodes_step34,Paso 34>>.
 
 
 | No tiene AutoSupport habilitado...  a| 
-Habilite AutoSupport siguiendo las instrucciones de _System Administration Reference_. (Consulte link:other_references.html["Referencias"] Para establecer un vínculo a la _referencia de administración del sistema_.)
+Activa AutoSupport siguiendo las instrucciones de la _Referencia de administración del sistema_. (Consulta link:other-references.html["Referencias"] para acceder a la _Referencia de administración del sistema_.)
 
 *Nota:* AutoSupport se activa de forma predeterminada cuando configura el sistema de almacenamiento por primera vez. Aunque puede deshabilitar AutoSupport en cualquier momento, debe dejarla habilitada. Habilitar AutoSupport puede ayudar de forma significativa a identificar problemas y soluciones cuando se producen fallos en el sistema de almacenamiento.
 
@@ -672,7 +672,7 @@ Habilite AutoSupport siguiendo las instrucciones de _System Administration Refer
 `system node autosupport show -node node_name -instance`
 
 +
-Para obtener información detallada sobre AutoSupport, consulta link:other_references.html["Referencias"] para enlazar con la _Referencia de administración del sistema_ y la _Referencia de comandos de ONTAP 9_.
+Para obtener información detallada sobre AutoSupport, consulta link:other-references.html["Referencias"] para enlazar con la _Referencia de administración del sistema_ y la _Referencia de comandos de ONTAP 9_.
 
 . [[man_prepare_Nodes_step35,Paso 35]]] Enviar un mensaje de AutoSupport a NetApp para el nodo 1 introduciendo el comando siguiente:
 +

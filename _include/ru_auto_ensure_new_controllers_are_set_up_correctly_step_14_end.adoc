@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-. Si desea configurar un clúster sin switches en los nuevos nodos, consulte link:other_references.html["Referencias"] Para establecer un enlace al _sitio de soporte de NetApp_ y siga las instrucciones que se indican en _Cambiar a un clúster sin switch de dos nodos_.
+. Si quieres configurar un clúster sin switches en los nuevos nodos, consulta link:other-references.html["Referencias"] para enlazar al _NetApp Support Site_ y sigue las instrucciones en _Transitioning to a two-node switchless cluster_.
 
 
 .Después de terminar

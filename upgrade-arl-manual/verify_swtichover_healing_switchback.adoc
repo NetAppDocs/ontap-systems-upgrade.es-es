@@ -17,4 +17,4 @@ summary: Verifique las operaciones de conmutación de sitios, reparación y conm
 Debe verificar las operaciones de conmutación de sitios, reparación y conmutación de estado de la configuración de MetroCluster.
 
 .Paso
-Consulte link:other_references.html["Referencias"] Para enlazar con el contenido de _MetroCluster Management y recuperación ante desastres_ y seguir los procedimientos para la conmutación negociada, la reparación y la conmutación de estado.
+Consulta link:other-references.html["Referencias"] para acceder al contenido de _MetroCluster Management and Disaster Recovery_ y sigue los procedimientos para la conmutación de sitios, la recuperación y la conmutación inversa.

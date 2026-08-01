@@ -17,7 +17,7 @@ summary: 'Comprueba que los puertos físicos del nodo 2 se asignen correctamente
 Debes verificar que los puertos físicos de node2 se asignen correctamente a los puertos físicos de node4. Esto permite que node4 se comunique con otros nodos del clúster y con la red después de la actualización.
 
 .Acerca de esta tarea
-Consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_ y obtener información acerca de los puertos en los nuevos nodos. Utilizará la información más adelante en esta sección.
+Accede a link:other-references.html["Referencias"] para conectarte a _Hardware Universe_ y recopilar información sobre los puertos de los nuevos nodos. Utilizarás esta información más adelante en esta sección.
 
 La disposición física de los puertos puede variar, dependiendo del modelo de los nodos. Cuando el nuevo nodo arranca, ONTAP intenta determinar qué puertos deben alojar los LIF del clúster para entrar automáticamente en quórum.
 
@@ -103,7 +103,7 @@ NOTE: En este procedimiento, se ha cambiado el nombre de la sección _Re-creatin
 Una vez que se confirma que el nodo 4 está en quórum y se puede comunicar con el nodo 3, verifique que las VLAN, los grupos de interfaces y los dominios de retransmisión del nodo 4. Además, verifique que todos los puertos de red de nodo 4 estén configurados en los dominios de retransmisión correctos.
 
 .Acerca de esta tarea
-Para obtener más información sobre la creación y recreación de VLAN, grupos de interfaces y dominios de retransmisión, consulte link:other_references.html["Referencias"] Para establecer un vínculo con _Network Management_.
+Para obtener más información sobre cómo crear y volver a crear VLAN, grupos de interfaces y dominios de difusión, consulta link:other-references.html["Referencias"] para enlazar con _Network Management_.
 
 .Pasos
 . Enumera todos los puertos físicos en el nodo 2 actualizado (conocido como nodo 4):

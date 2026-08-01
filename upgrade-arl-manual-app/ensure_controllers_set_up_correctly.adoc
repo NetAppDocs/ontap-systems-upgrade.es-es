@@ -136,9 +136,9 @@ Puedes comparar la salida con la salida que capturaste enlink:prepare_nodes_for_
 `system service-processor network modify -node <node_name>`
 
 +
-Ve a link:other_references.html["Referencias"] para enlazar con la _System Administration Reference_ para información sobre los SP y la _ONTAP 9 Command reference_ para información detallada sobre el comando  `system service- processor network modify`.
+Ve a link:other-references.html["Referencias"] para enlazar con la _System Administration Reference_ para información sobre los SP y la _ONTAP 9 Command reference_ para información detallada sobre el comando  `system service- processor network modify`.
 
-. Si desea configurar un clúster sin switches en los nuevos nodos, vaya a. link:other_references.html["Referencias"] Para establecer un enlace al _sitio de soporte de red_ y siga las instrucciones de _transición a un clúster_ sin switch de dos nodos.
+. Si deseas configurar un clúster sin switches en los nuevos nodos, ve a link:other-references.html["Referencias"] para acceder al _Network Support Site_ y sigue las instrucciones de _Transitioning to a two-node switchless cluster_.
 
 
 .Después de terminar

@@ -33,5 +33,5 @@ NOTE: En este documento, los nodos originales se denominan _nodo1_ y _nodo2_, y 
 * Puede usar este procedimiento para actualizar el hardware de la controladora en clústeres con más de dos nodos; sin embargo, debe realizar el procedimiento por separado para cada pareja de alta disponibilidad (ha) del clúster.
 
 
-* Este procedimiento se aplica a las configuraciones de cuatro y ocho nodos de MetroCluster que ejecuten ONTAP 9.5 y versiones anteriores. Para configuraciones de MetroCluster que ejecuten ONTAP 9.6 y posteriores, vaya a. link:other_references.html["Referencias"] Para vincular a _utilizando comandos para reemplazar la controladora del sistema' para actualizar el hardware de la controladora que ejecuta ONTAP 9,5 a ONTAP 9,7_.
+* Este procedimiento se aplica a las configuraciones de cuatro y ocho nodos de MetroCluster que ejecutan ONTAP 9.5 y versiones anteriores. Para las configuraciones de MetroCluster que ejecutan ONTAP 9.6 y versiones posteriores, ve a link:other-references.html["Referencias"] para enlazar a _Using "system controller replace" Commands to Upgrade Controller Hardware Running ONTAP 9.5 to ONTAP 9.7_.
 

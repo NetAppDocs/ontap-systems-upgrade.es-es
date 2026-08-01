@@ -36,72 +36,28 @@ En la siguiente ilustración se muestran las etapas del procedimiento. Las flech
 
 image:arl_upgrade_manual_image1.PNG["Ilustración que muestra las etapas del procedimiento ARL"]
 
-La siguiente tabla describe las tareas de alto nivel que realiza durante cada etapa y el estado de propiedad del agregado al final de la etapa. Los pasos detallados se proporcionan más adelante en el procedimiento:
+Infórmate sobre las tareas a grandes rasgos que debes realizar en cada etapa y el estado de la propiedad del agregado al final de la etapa. Los pasos detallados se proporcionan más adelante en el procedimiento.
 
-[cols="35,65"]
-|===
-| Etapa | Descripción 
-
-
-| link:determine_aggregates_on_internal_drives.html["Fase 1: Prepárese para la actualización"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Uno"]link:determine_aggregates_on_internal_drives.html["Fase 1: Prepárese para la actualización"]
+[role="quick-margin-para"]
 Durante la fase 1, si es necesario, puede confirmar que las unidades de disco internas no contienen agregados raíz ni agregados de datos, preparar los nodos para la actualización y ejecutar una serie de comprobaciones previas. Si es necesario, vuelva a clave los discos para el cifrado de almacenamiento y prepárese para reiniciar el sistema con las nuevas controladoras.
 
-Propiedad del agregado al final de la fase 1:
-
-* El nodo 1 es el propietario raíz y el propietario actual de los agregados del nodo 1.
-* El nodo 2 es el propietario particular y el propietario actual de los agregados del nodo 2.
-
-
-
-
-| link:relocate_non_root_aggr_node1_node2.html["Fase 2: Retire el nodo 1"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]link:relocate_non_root_aggr_node1_node2.html["Fase 2: Retire el nodo 1"]
+[role="quick-margin-para"]
 Durante la etapa 2, se reubicarán los agregados no raíz del nodo 1 al nodo 2 y se moverán los LIF de datos no SAN que pertenecen al nodo 1 al nodo 2, incluidos los agregados con errores o con vetados. Puede registrar la información del nodo 1 necesaria para utilizarla más adelante en el procedimiento y, a continuación, retirar el nodo 1.
 
-Propiedad del agregado al final de la fase 2:
-
-* El nodo 1 es el propietario raíz de los agregados del nodo 1.
-* El nodo 2 es el propietario actual de los agregados del nodo 1.
-* El nodo 2 es el propietario particular y el propietario actual de agregados del nodo 2.
-
-
-
-
-| link:install_boot_node3.html["Fase 3: Nodo de instalación y arranque 3"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]link:install_boot_node3.html["Fase 3: Nodo de instalación y arranque 3"]
+[role="quick-margin-para"]
 Durante la fase 3, debe instalar y arrancar el nodo 3, asignar los puertos de gestión del clúster y del nodo del nodo 1 al nodo 3, verificar la instalación del nodo 3 y mover las LIF de datos y LAS LIF DE SAN que pertenecen al nodo 1 del nodo 2 al nodo 3. También se pueden reubicar todos los agregados del nodo 2 al nodo 3 y mover las LIF de datos y las LIF DE SAN propiedad del nodo 2 al nodo 3.
 
-Propiedad agregada al final de la etapa 3:
-
-* El nodo 2 es el propietario particular de los agregados del nodo 2, pero no del propietario actual.
-* Node3 es el propietario raíz y el propietario actual de agregados que pertenecen originalmente al nodo 1.
-* El nodo 2 es el propietario particular y el propietario actual de los agregados que pertenecen al nodo 2, pero no al propietario en casa.
-
-
-
-
-| link:record_node2_information.html["Etapa 4: Retirar 2"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"]link:record_node2_information.html["Etapa 4: Retirar 2"]
+[role="quick-margin-para"]
 En la etapa 4, puede registrar la información necesaria del nodo 2 para usarla posteriormente en el procedimiento y, a continuación, retirar el nodo 2.
 
-No se producen cambios en la propiedad del agregado.
-
-
-
-| link:install_boot_node4.html["Fase 5: Nodo de instalación y arranque 4"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:install_boot_node4.html["Fase 5: Nodo de instalación y arranque 4"]
+[role="quick-margin-para"]
 En la etapa 5, se instalan y se iniciarán el nodo 4, se deben asignar los puertos de gestión del clúster y del nodo del nodo 2 al nodo 4, verificar la instalación de nodo 4, y mover las LIF de datos y LAS LIF DE SAN que pertenecen al nodo 2 del nodo 3 al nodo 4. También se pueden reubicar agregados de nodo 3 a nodo 4 y mover las LIF NAS del nodo 2 de nodo 3 a nodo 4.
 
-Propiedad agregada al final de la etapa 5:
-
-* Nodo 3 es el propietario raíz y el propietario actual de los agregados que originalmente pertenecían al nodo 1.
-* Node4 es el propietario nacional y el propietario actual de agregados que pertenecía originalmente al nodo 2.
-
-
-
-
-| link:manage_authentication_kmip.html["Fase 6: Complete la actualización"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"]link:manage_authentication_kmip.html["Fase 6: Complete la actualización"]
+[role="quick-margin-para"]
 Durante la fase 6, el usuario confirma que los nodos nuevos están configurados correctamente y configura el cifrado de almacenamiento o el cifrado de volúmenes de NetApp si los nuevos nodos tienen la función de cifrado habilitada. También debe retirar los nodos antiguos y reanudar las operaciones de SnapMirror.
-
-
-NOTE: Las actualizaciones de recuperación ante desastres de la máquina virtual de almacenamiento (SVM) no se interrumpen según los calendarios asignados.
-
-No se producen cambios en la propiedad del agregado.
-
-|===

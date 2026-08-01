@@ -114,4 +114,4 @@ Al forzar la operación de movimiento de volúmenes para que finalice, se puede 
 
 
 .El futuro
-link:upgrade-move-lifs-to-new-nodes.html["Mueva LIF de datos que no sean SAN y LIF de gestión de clúster a los nuevos nodos"]
+Tras crear un agregado y trasladar los volúmenes a los nuevos nodos, link:upgrade-move-lifs-to-new-nodes.html["mueve las LIF de datos que no sean de SAN y las LIF de gestión de clúster a los nuevos nodos"].

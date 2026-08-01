@@ -124,3 +124,6 @@ La `ha-config modify controller ha` se configura el comando `ha` para establecer
 El sistema se detiene en el aviso del CARGADOR
 
 
+
+.El futuro
+Tras configurar los nuevos nodos, si lo deseas, link:upgrade-move-internal-drives.html["mueve las unidades internas del nodo original"] o link:upgrade-convert-node-to-shelf.html["convertir el nodo original en una bandeja de unidades"]. Luego, link:upgrade-attach-shelves-reassign-disks.html["instalar estantes de almacenamiento y reasignar la propiedad de los discos"].

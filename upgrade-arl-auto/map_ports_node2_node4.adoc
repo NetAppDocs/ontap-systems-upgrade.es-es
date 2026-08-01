@@ -17,7 +17,7 @@ summary: 'Verifique que los puertos físicos en 2 se asignen correctamente al no
 Debes verificar que los puertos físicos en el nodo2 se asignen correctamente a los puertos físicos en el nodo4. Esto permite que el nodo4 se comunique con otros nodos del clúster y con la red después de la actualización.
 
 .Acerca de esta tarea
-Consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_ y obtener información acerca de los puertos en los nuevos nodos. Utilizará la información más adelante en esta sección.
+Accede a link:other-references.html["Referencias"] para conectarte a _Hardware Universe_ y recopilar información sobre los puertos de los nuevos nodos. Utilizarás esta información más adelante en esta sección.
 
 La configuración de software del nodo 4 debe coincidir con la conectividad física de los nodos 4 y la conectividad IP se debe restaurar antes de continuar con la actualización.
 
@@ -203,7 +203,7 @@ El siguiente comando establece la directiva de conmutación por error en `broadc
 `network interface modify -vserver node4 -lif data1 failover-policy broadcast-domainwide -failover-group fg1`
 
 +
-Consulta link:other_references.html["Referencias"] para enlazar con _Network Management_ o _ONTAP 9 Command reference_ y mira _Configuring failover settings on a LIF_ para más información.
+Consulta link:other-references.html["Referencias"] para enlazar con _Network Management_ o _ONTAP 9 Command reference_ y mira _Configuring failover settings on a LIF_ para más información.
 
 . Verifique los cambios en el nodo 4:
 +

@@ -37,3 +37,6 @@ Cada bandeja de unidades, incluido el chasis, requiere un ID único.
 . Encienda la bandeja de unidades convertida y cualquier otra bandeja de unidades conectada a los nodos nuevos.
 . Encienda los nodos nuevos y, a continuación, interrumpa el proceso de arranque de cada nodo pulsando Ctrl-C para acceder al aviso del entorno de arranque.
 
+
+.El futuro
+Tras convertir un nodo original en una bahía de discos, link:upgrade-attach-shelves-reassign-disks.html["instalar estantes de almacenamiento y reasignar la propiedad de los discos"].

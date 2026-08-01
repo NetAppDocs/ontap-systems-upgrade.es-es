@@ -55,8 +55,8 @@ NOTE: En este documento, los nodos originales se denominan _nodo1_ y _nodo2_, y 
 
 * Además de configuraciones que no sean de MetroCluster, este procedimiento se aplica a configuraciones de cuatro y ocho nodos de Fabric MetroCluster que ejecuten ONTAP 9.8 y versiones posteriores.
 +
-** Para configuraciones de MetroCluster que ejecuten ONTAP 9.7 y versiones anteriores, vaya a. link:other_references.html["Referencias"] Para enlazar con _Using aggregate Relocation a Upgrade manualmente hardware de controladora que ejecuta ONTAP 9.7 o anterior_.
-** Para configuraciones de IP de MetroCluster y opciones de actualización adicionales para configuraciones de Fabric MetroCluster, vaya a. link:other_references.html["Referencias"] Para vincular al contenido de _MetroCluster Upgrade y Expansion_.
+** Para las configuraciones de MetroCluster que ejecutan ONTAP 9.7 y versiones anteriores, ve a link:other-references.html["Referencias"] para consultar _Uso de la reubicación de agregados para actualizar manualmente el hardware del controlador que ejecuta ONTAP 9.7 o versiones anteriores_.
+** Para las configuraciones de IP de MetroCluster y opciones adicionales de actualización para las configuraciones de Fabric MetroCluster, ve a link:other-references.html["Referencias"] para enlazar con el contenido _MetroCluster Upgrade and Expansion_.
 
 
 

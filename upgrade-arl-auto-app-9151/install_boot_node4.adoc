@@ -32,7 +32,7 @@ Si el nodo 4 se encuentra en un chasis separado del nodo 2, es posible colocar e
 Conecte las siguientes conexiones, utilizando las instrucciones de las _Instrucciones de instalación y configuración_ para la plataforma node4, el documento del estante de discos apropiado y la _administración de pares HA_.
 
 +
-Referirse alink:other_references.html["Referencias"] para vincular a la _gestión de pares HA_.
+Consulta link:other-references.html["Referencias"] para enlazar con _HA pair management_.
 
 +
 ** Consola (puerto de gestión remota)

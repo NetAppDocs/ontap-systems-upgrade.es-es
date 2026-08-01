@@ -56,3 +56,6 @@ La secuencia de inicio se inicia normalmente.
 
 
 Si falla la actualización de la controladora y genera un informe en `rlib_port_ipspace_assign` Mensaje de error, debe revertir la actualización y eliminar los LIF en los puertos de red del sistema original que se están usando como puertos de alta disponibilidad en el sistema de reemplazo. Para obtener más información, consulte link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/PANIC_%3A_rlib_port_ipspace_assign%3A_port_e0a_could_not_be_moved_to_HA_ipspace["Este artículo de la base de conocimientos"^].
+
+.El futuro
+Tras restaurar la configuración del volumen raíz, link:upgrade-complete.html["completa el flujo de trabajo de actualización de almacenamiento de move"].

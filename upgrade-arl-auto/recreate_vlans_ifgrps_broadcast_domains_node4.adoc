@@ -17,7 +17,7 @@ summary: 'Vuelva a crear las VLAN, los grupos de interfaces y los dominios de re
 Una vez que se confirma que el nodo 4 funciona de quórum y que se puede comunicar con el nodo 3, es necesario volver a crear las VLAN del nodo 2, los grupos de interfaces y los dominios de retransmisión en el nodo 4. También es necesario añadir los puertos de nodo 3 a los dominios de retransmisión recientemente creados.
 
 .Acerca de esta tarea
-Para obtener más información sobre la creación y recreación de VLAN, grupos de interfaces y dominios de retransmisión, vaya a. link:other_references.html["Referencias"] Y enlace a _Network Management_.
+Para obtener más información sobre cómo crear y volver a crear VLAN, grupos de interfaces y dominios de difusión, visita link:other-references.html["Referencias"] y haz clic en el enlace _Network Management_.
 
 .Pasos
 . Vuelva a crear las VLAN en el nodo 4 mediante la información 2 registrada en el link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Reubique los agregados que no son raíz y los LIF de datos NAS del nodo 2 al nodo 3"] sección:

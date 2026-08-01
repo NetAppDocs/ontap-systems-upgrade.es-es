@@ -17,7 +17,7 @@ summary: Verifique que los puertos físicos en 2 se asignen correctamente al nod
 Debes asegurarte de que los puertos físicos en node2 se asignen correctamente a los puertos físicos en node4. Esto permite que node4 se comunique con otros nodos del clúster y con la red después de la actualización.
 
 .Antes de empezar
-Para acceder a esta información, ya debe tener información sobre los puertos en los nodos nuevos. Consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_. La información se utiliza más adelante en esta sección.
+Seguramente ya dispones de información sobre los puertos de los nuevos nodos; para acceder a esta información, consulta link:other-references.html["Referencias"] para enlazar con _Hardware Universe_. Usarás esta información más adelante en esta sección.
 
 La configuración de software del nodo 4 debe coincidir con la conectividad física del nodo 4, y se debe restaurar la conectividad IP antes de continuar con la actualización.
 

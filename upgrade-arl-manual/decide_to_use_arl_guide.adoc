@@ -34,9 +34,9 @@ link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide
 
 
 ====
-Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+Si prefieres un método diferente para actualizar el hardware del controlador y estás dispuesto a realizar movimientos de volúmenes, consulta link:other-references.html["Referencias"] para enlazar con _Actualización moviendo volúmenes o almacenamiento_.
 
-Consulte link:other_references.html["Referencias"] Para establecer un enlace al centro de documentación de _ONTAP 9_, donde puede acceder a la documentación de producto de ONTAP 9.
+Consulta link:other-references.html["Referencias"] para enlazar al _ONTAP 9 Documentation Center_, donde puedes acceder a la documentación del producto ONTAP 9.
 
 
 
@@ -44,8 +44,8 @@ Consulte link:other_references.html["Referencias"] Para establecer un enlace al 
 == Elija un procedimiento de actualización de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise los métodos ARL alternativos disponibles para actualizar el hardware del controlador"].
-* Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+* Si prefieres un método diferente para actualizar el hardware del controlador y estás dispuesto a realizar movimientos de volúmenes, consulta link:other-references.html["Referencias"] para enlazar con _Actualización moviendo volúmenes o almacenamiento_.
 
 
 .Información relacionada
-Referirse a link:other_references.html["Referencias"] para vincular a la _Documentación de ONTAP 9_.
+Consulta link:other-references.html["Referencias"] para acceder a la _Documentación de ONTAP 9_.

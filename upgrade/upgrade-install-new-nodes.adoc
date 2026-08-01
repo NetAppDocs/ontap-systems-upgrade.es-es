@@ -26,3 +26,6 @@ No conecte las bandejas de discos de los nodos originales a los nuevos nodos en 
 Esto incluye cables Fibre Channel y Ethernet que no se utilizan para conectar bandejas de almacenamiento.
 
 
+
+.El futuro
+Tras instalar los nuevos nodos, link:upgrade-set-up-new-nodes.html["configure los nodos nuevos"].

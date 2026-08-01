@@ -40,4 +40,4 @@ http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=30
 
 
 .El futuro
-link:upgrade_move_linux_iscsi_hosts_to_new_nodes.html["Mueva hosts iSCSI de Linux a nodos nuevos"]
+Tras instalar e integrar los nuevos nodos, link:upgrade_move_linux_iscsi_hosts_to_new_nodes.html["trasladar los hosts iSCSI de Linux a los nuevos nodos"].

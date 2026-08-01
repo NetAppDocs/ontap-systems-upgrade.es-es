@@ -17,7 +17,7 @@ summary: Instalar archivos RCF para volver a configurar los switches de Cisco y 
 Debe aplicar los archivos de configuración de referencia (RCF) adecuados para volver a configurar los conmutadores para que se adapten a los nuevos nodos. Después de aplicar los RCF, puede recuperar los conmutadores.
 
 .Antes de empezar
-El uso del puerto del switch FC debe coincidir con el uso descrito en el contenido de _MetroCluster conectado a la estructura y configuración_ para poder utilizar los RCF. Vaya a. link:other_references.html["Referencias"] Para enlazar con el contenido _Fabric-Attached MetroCluster Installation and Configuration_.
+El uso del puerto del switch FC debe coincidir con el uso descrito en el contenido _Instalación y configuración de MetroCluster conectado a la estructura_ para que se puedan usar los RCF. Ve a link:other-references.html["Referencias"] para enlazar al contenido _Instalación y configuración de MetroCluster conectado a la estructura_.
 
 .Pasos
 . Vaya a la https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["Descargas de RCF de MetroCluster"^] Y seleccione los RCF para la configuración del switch.

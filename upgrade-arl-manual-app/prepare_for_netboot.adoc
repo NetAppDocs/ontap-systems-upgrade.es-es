@@ -18,7 +18,7 @@ Después de montar físicamente en rack los nodos 3 y 4 posteriormente en el pro
 
 .Antes de empezar
 * Compruebe que puede acceder a un servidor HTTP con el sistema.
-* Consulte link:other_references.html["Referencias"] Para crear un enlace al _sitio de soporte de NetApp_ y descargar los archivos del sistema necesarios para su plataforma y la versión correcta de ONTAP.
+* Consulta link:other-references.html["Referencias"] para enlazar al _NetApp Support Site_ y descargar los archivos de sistema necesarios para tu plataforma y la versión correcta de ONTAP.
 
 
 .Acerca de esta tarea

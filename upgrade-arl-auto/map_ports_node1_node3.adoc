@@ -17,7 +17,7 @@ summary: 'Compruebe que los puertos físicos del nodo 1 se asignan correctamente
 Debes verificar que los puertos físicos de node1 se asignen correctamente a los puertos físicos de node3. Esto permite que node3 se comunique con otros nodos del clúster y con la red después de la actualización.
 
 .Acerca de esta tarea
-Consulte link:other_references.html["Referencias"] Para enlazar con _Hardware Universe_ y obtener información acerca de los puertos en los nuevos nodos. Utilizará la información más adelante en esta sección.
+Accede a link:other-references.html["Referencias"] para conectarte a _Hardware Universe_ y recopilar información sobre los puertos de los nuevos nodos. Utilizarás esta información más adelante en esta sección.
 
 La configuración de los puertos puede variar en función del modelo de los nodos. Debes hacer que la configuración de puertos y LIF del nodo original sea compatible con el uso y la configuración previstos del nuevo nodo. Esto es porque el nuevo nodo reproduce la misma configuración cuando arranca, lo que significa que cuando arrancas el nodo3, ONTAP intenta alojar las LIF en los mismos puertos que se usaron en el nodo1.
 
@@ -215,7 +215,7 @@ El siguiente comando establece la directiva de conmutación por error en `broadc
 `network interface modify -vserver node3 -lif data1 failover-policy broadcast-domainwide -failover-group fg1`
 
 +
-Consulta link:other_references.html["Referencias"] para enlazar con _Gestión de red_ o la _ONTAP 9 Command reference_ para más información.
+Consulta link:other-references.html["Referencias"] para enlazar con _Gestión de red_ o la _ONTAP 9 Command reference_ para más información.
 
 . Verifique los cambios en el nodo 3:
 +

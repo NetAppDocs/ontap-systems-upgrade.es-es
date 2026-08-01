@@ -83,8 +83,8 @@ Jesús 5 Si va a actualizar desde un AFF A300 a un AFF A400 o una FAS8200 a un s
 == Elija un procedimiento de actualización de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise los métodos ARL alternativos disponibles para actualizar el hardware del controlador"].
-* Si prefiere un método diferente de actualización del hardware de la controladora y desea realizar movimientos de volúmenes, consulte link:other_references.html["Referencias"] Para enlazar con _Upgrade moviendo volúmenes o Storage_.
+* Si prefieres un método diferente para actualizar el hardware del controlador y estás dispuesto a realizar movimientos de volúmenes, consulta link:other-references.html["Referencias"] para enlazar con _Actualización moviendo volúmenes o almacenamiento_.
 
 
 .Información relacionada
-Referirse a link:other_references.html["Referencias"] para vincular a la _Documentación de ONTAP 9_.
+Consulta link:other-references.html["Referencias"] para acceder a la _Documentación de ONTAP 9_.
