@@ -47,10 +47,7 @@ Local System ID: 101268854
 +
 Anota el ID del sistema de node3 para utilizarlo en <<reassign-disks-and-aggregates,Paso 5>>.
 
-
-
-[[reassign-disks-and-aggregates]]
-. Reasigna los discos y los agregados de datos:
+. [[reassign-disks-and-aggregates]]Reasigna los discos y los agregados de datos:
 +
 [role="tabbed-block"]
 ====

@@ -2,7 +2,7 @@
 permalink: upgrade/upgrade-final-upgrade-steps-in-ontap-9-8.html 
 sidebar: sidebar 
 keywords: complete, procedure, upgrading, upgrade, moving, move, storage, delete, unused, port, lif, re-enable, failover, availability, service, processor, sp, autosupport, volume, encryption, fc, cna, perform final upgrade steps in ontap 9.8 
-summary: 'Para completar el procedimiento de actualización, mueva almacenamiento, debe eliminar los puertos y las LIF no utilizados de los nuevos nodos, volver a habilitar la conmutación al respaldo del almacenamiento o la alta disponibilidad, configurar Service Processor \(SP\), instalar licencias nuevas y configurar AutoSupport. Es posible que también deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o CNA.' 
+summary: 'Para completar el procedimiento de actualización, mueva el almacenamiento, debe eliminar los puertos y las LIF no utilizados de los nuevos nodos, volver a habilitar la conmutación al respaldo del almacenamiento o la alta disponibilidad, configurar el Service Processor (SP), instalar licencias nuevas y configurar AutoSupport. Es posible que también deba configurar almacenamiento o cifrado de volúmenes y los puertos FC o CNA.' 
 ---
 = Realice los pasos finales de la actualización en ONTAP 9.8 o posterior
 :allow-uri-read: 
