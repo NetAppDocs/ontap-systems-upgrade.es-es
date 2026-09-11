@@ -173,7 +173,7 @@ Si ni node1 ni node2 poseen agregados de los que son propietarios actuales (pero
 
 +
 ....
-cluster::> storage aggregate show -node node2 -is-home false -fields owner-name,homename,state
+cluster::> storage aggregate show -node node2 -is-home false -fields owner-name,home-name,state
 There are no entries matching your query.
 ....
 +
