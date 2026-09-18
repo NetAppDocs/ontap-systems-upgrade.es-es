@@ -18,8 +18,8 @@ NOTE: No se admiten las actualizaciones de ASA a un sistema de sustitución de A
 
 
 
-[[which-upgrade-procedure-should-i-use]]
-== ¿Qué procedimiento de actualización debo utilizar?
+[[step-1-select-the-correct-upgrade-procedure]]
+== Paso 1: selecciona el procedimiento de actualización adecuado
 
 Para seleccionar el procedimiento de actualización adecuado, revise todas las preguntas que aparecen en la tabla a continuación.
 
@@ -68,10 +68,24 @@ ARL es un procedimiento de reemplazo.  No es necesario expandir ni reducir el cl
 | ¿Tengo un sistema integrado y quiero actualizarlo cambiando solo el módulo controlador, conservando el chasis y los discos existentes? | link:upgrade-arl-auto-in-chassis/index.html["Actualiza usando ARL, manteniendo el mismo chasis, los discos y los datos almacenados en los discos"]. 
 
 
+| ¿Estoy actualizando una configuración de MetroCluster ? | Referirse alink:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Actualice, actualice o expanda la configuración de MetroCluster"^] . 
+|===
+
+
+[[step-2-prepare-for-the-upgrade]]
+== Paso 2: prepárate para la actualización
+
+Antes de iniciar el procedimiento de actualización, revisa todas las preguntas que figuran en la tabla siguiente.
+
+[cols="30,70"]
+|===
+| Pregúntate… | Si tu respuesta es sí, tienes que hacer lo siguiente… 
+
+
 | ¿Estoy reubicando una SVM? | Referirse alink:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html#svm-migration-workflow["Descripción general de la movilidad de datos de SVM"^] . 
 
 
-| ¿Estoy actualizando una configuración de MetroCluster ? | Referirse alink:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Actualice, actualice o expanda la configuración de MetroCluster"^] . 
+| ¿Existe una configuración FC SAN en el clúster de mi sistema original? | Comprueba la configuración de zonas de la SAN para todos los nodos, tanto en el sistema original como en el de sustitución. Consulta link:https://docs.netapp.com/us-en/ontap/san-config/fibre-channel-fcoe-zoning-concept.html["Infórmate sobre la división en zonas FC y FCoE con los sistemas ONTAP"^] y link:https://docs.netapp.com/us-en/ontap/san-config/fc-fcoe-recommended-zoning-configuration.html["Configuraciones de división en zonas recomendadas para FC y FCoE en sistemas ONTAP"^]. 
 
 
 | ¿Estoy reemplazando un componente individual? | Consulte ellink:https://docs.netapp.com/us-en/ontap-systems/index.html["Documentación de los sistemas de hardware de ONTAP"^] y localice el folleto de la unidad reemplazable en campo (FRU) para ese componente. 
@@ -88,7 +102,7 @@ Este ejemplo te da posibles respuestas para una actualización de controlador FA
 | Pregunta | Ejemplo de respuesta 
 
 
-| ¿Estoy utilizando una versión de software diferente en los nodos original y nuevo? | No. Tanto FAS9500 como FAS90 ejecutan ONTAP 9.15.1. 
+| ¿Estoy utilizando una versión de software diferente en los nodos original y nuevo? | No. Tanto FAS9500 como FAS90 funcionan con ONTAP 9.17.1. 
 
 
 | ¿Deseo realizar una actualización disruptiva? | No. Quiero mantener mi entorno de producción en línea durante la actualización. 
@@ -110,6 +124,9 @@ Este ejemplo te da posibles respuestas para una actualización de controlador FA
 
 
 | ¿Estoy actualizando una configuración de MetroCluster ? | No. Este es un clúster de pares HA estándar. 
+
+
+| ¿Existe una configuración FC SAN en el clúster de mi sistema original? | Sí. He validado la configuración de división en zonas SAN en todos los nodos, tanto en el sistema original como en el de reemplazo. 
 
 
 | ¿Estoy reemplazando un componente individual? | No. Estoy actualizando todo el sistema de control. 
