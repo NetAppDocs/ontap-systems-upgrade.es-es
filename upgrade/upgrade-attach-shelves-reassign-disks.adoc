@@ -58,7 +58,7 @@ Reasigna los discos de reserva de node1, los discos que pertenecen al agregado r
 `disk reassign -s <node1_sysid> -d <node3_sysid> -p <node4_sysid>`
 
 ** El parámetro  `node1_sysid` es el valor que anotaste en _Apagado de los nodos originales_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Paso 5"].
-** Especifica el parámetro  `-p <node2_sysid>` solo cuando haya discos compartidos.
+** Especifica el parámetro  `-p <node4_sysid>` solo cuando haya discos compartidos.
 
 
 --
