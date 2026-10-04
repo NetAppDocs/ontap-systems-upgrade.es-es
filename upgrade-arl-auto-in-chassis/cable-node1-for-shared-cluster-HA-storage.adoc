@@ -56,30 +56,44 @@ Si el sistema existente tiene un puerto de gestión (e0M) y un puerto BMC, los p
 
 
 [[connect-to-a-two-node-switchless-cluster]]
+[[two-node-switch-ports]]
 == Conéctese a un clúster de dos nodos sin switches
 
 En las siguientes tablas se muestra el uso de puertos del switch para configuraciones de clústeres sin switch de dos nodos.
 
+[cols="2,2,2,2a"]
 |===
-| Tipo de puerto | AFF A800 y AFF C800 | AFF A90 | AFF A70 y AFF C80 
+| Tipo de puerto | AFF A800 y AFF C800 | AFF A90, AFF A70 | AFF C80 
 
 
-| Clúster | e0a | e1a | e1a 
+| Clúster | e0a | e1a  a| 
+e1a
 
 
-| Clúster | e1a | e7a (use e1b si no hay e7a) | e1b 
+
+| Clúster | e1a | e7a (use e1b si no hay e7a)  a| 
+e1b
 
 
-| HA | e0b | No te conectes | No te conectes 
+
+| HA | e0b | No te conectes  a| 
+No te conectes
 
 
-| HA | e1b | No te conectes | No te conectes 
+
+| HA | e1b | No te conectes  a| 
+No te conectes
 
 
-| Puertos de almacenamiento SAS (si existen y se utilizan) | Cualquier puerto disponible | Cualquier puerto disponible | Cualquier puerto disponible 
+
+| Puertos de almacenamiento SAS (si existen y se utilizan) | Cualquier puerto disponible | Cualquier puerto disponible  a| 
+Cualquier puerto disponible
 
 
-| Puertos de almacenamiento Ethernet para bandejas NS224 | Cualquier puerto disponible | Consulte Asignación de conectividad de almacenamiento Ethernet | Consulte Asignación de conectividad de almacenamiento Ethernet 
+
+| Puertos de almacenamiento Ethernet para bandejas NS224 | Cualquier puerto disponible | Consulte Asignación de conectividad de almacenamiento Ethernet  a| 
+Consulte Asignación de conectividad de almacenamiento Ethernet
+
 |===
 |===
 | Puerto | AFF A250 y AFF C250 | AFF A30, AFF C30, AFF C60 | AFF A50 

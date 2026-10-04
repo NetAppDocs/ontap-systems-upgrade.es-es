@@ -46,21 +46,21 @@ El resultado del `health` el campo debe ser `true`.
 --
 Si el nodo2 no se une al quórum automáticamente:
 
-.. Verifique el espacio IP de los puertos e1a y e1b:
+.. link:https://docs.netapp.com/us-en/ontap-systems/index.html["Comprueba los puertos del clúster de node2"^], a continuación, comprueba el IPspace de los puertos del clúster de node2:
 +
 `network port show`
 
-.. Si el espacio IP no es "Cluster", cambie el espacio IP a "Cluster" en e1a y e1b:
+.. Si el IPspace no es «Cluster», cambia el IPspace a «Cluster» en los puertos de clúster de node2:
 +
 `network port modify -node <node_name> -port <port> -ipspace Cluster`
 
-.. Verifique que el espacio IP de los puertos e1a y e1b sea "Cluster":
+.. Comprueba que el IPspace de los puertos del clúster de node2 sea «Cluster»:
 +
 `network port show`
 
-.. Migrar los LIF del clúster nodo2 a e1a y e1b:
+.. Migra las LIF del clúster de node2 a los puertos del clúster de node2:
 +
-`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node2_name> -destination-port <port_name`
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node2_name> -destination-port <port_name>`
 
 
 
@@ -107,7 +107,7 @@ Si e2a está presente y es un puerto de red de 100 GbE, este es el segundo puert
 
 .. Verifique que solo los puertos del clúster e4a, e2a o e4a, e4b estén en el dominio de difusión "Clúster"
 +
-`broadcast domain show`
+`network port broadcast-domain show`
 
 .. Retire las conexiones de cable entre el nodo e1a 1 y el nodo e1a 2, y entre el nodo e1b 1 y el nodo e1b 2 para garantizar que solo se utilicen conexiones de clúster-HA válidas y que no haya conectividad redundante.
 
