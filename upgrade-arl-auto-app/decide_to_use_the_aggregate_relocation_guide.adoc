@@ -105,7 +105,7 @@ Esta versión 3 para actualizaciones de sistemas FAS8020, FAS8040, AFF8020 y AFF
 | FAS2720 | 9.13.1 o posterior | FAS2820 | 9.13.1 o posterior 
 
 
-| FAS2760 | 9.11.1P7 o anterior | FAS2820 | 9.13.1 o posterior 
+| FAS2620 | 9.11.1 o posterior | FAS2820 | 9.13.1 o posterior 
 
 
 | AFF8060 | 9.8P13 o parches posteriores | AFF A900 | 9.10.1 a 9.12.1 
